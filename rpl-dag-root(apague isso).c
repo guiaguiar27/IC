@@ -58,7 +58,7 @@ rpl_dag_root_print_links(const char *str)
 {
   if(rpl_dag_root_is_root()) {
     if(uip_sr_num_nodes() > 0) {
-      FILE *fl = fopen("arvre.txt", "w");
+      FILE *fl = fopen("arvre.dot", "w");
       fprintf(fl, "digraph g{\n");
       fclose(fl);
       uip_sr_node_t *link;
@@ -73,7 +73,7 @@ rpl_dag_root_print_links(const char *str)
         link = uip_sr_node_next(link);
       }
       LOG_INFO("links: end of list\n");
-      fl = fopen("arvre.txt", "a");
+      fl = fopen("arvre.dot", "a");
       fprintf(fl, "}");
       fclose(fl);
     } else {
