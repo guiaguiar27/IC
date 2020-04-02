@@ -208,7 +208,7 @@ void escreve_arq(const char *buf){
       break;
     }
   }
-  fl = fopen("arvre.txt", "a");
+  fl = fopen("arvre.dot", "a");
   fprintf(fl, " %s\n", copia);
   fclose(fl);
 }
