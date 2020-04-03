@@ -203,10 +203,12 @@ void escreve_arq(const char *buf){
       copia[x] = '-';
       copia[++x]= '>';
     }
-    if(copia[x] == '('){
+    else if(copia[x] == '('){
       copia[x] = '\0';
       break;
     }
+    else if(copia[x] == ':')
+      copia[x] = '_';
   }
   fl = fopen("arvre.dot", "a");
   fprintf(fl, " %s\n", copia);
