@@ -1,0 +1,16 @@
+digraph g{
+    node[shape = circle]
+    b -> a
+    c -> a
+    d -> c
+    e -> c
+    f -> b
+    g -> b
+    h -> a
+    i -> e
+    k -> g
+    l -> e
+    p -> h
+    m -> h
+    y -> p
+}
