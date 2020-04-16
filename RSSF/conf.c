@@ -2,6 +2,7 @@
 
     /*
     * matriz: matriz de adjacência do grafo da rede
+    * graf_conf: grafo de conflito
     * mapa_graf_conf: Mapa do grafo de conflito
     *   - Mapeia os nós da rede pros nós do grafo de conflito
     * num_no: número de nós do grafo da rede
@@ -14,18 +15,23 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     */
     int x, y;
     int no_atual;
+    srand(time(NULL));
     
-    //Seleciona o nó folha com maior carga pra ser transmitida
-    no_atual = 0;
+    //Seleciona o nó com maior carga pra ser transmitida
+    do{
+        no_atual = rand() % num_no;
+    }while(no_atual == raiz);
+    
     for(x = 0; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
             no_atual = x;
-
+    
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
     for(x = 0; x < num_aresta; x++)
         if(mapa_graf_conf[x][0] == no_atual)
             return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, x);
 
+    printf("Caímos no pior caso\n");
     return NULL;
 }
 

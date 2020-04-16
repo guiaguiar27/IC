@@ -30,7 +30,7 @@ int **leDOT(char *arquivo, int *numNos, int *numArest, char ***vetor){
     *vetor = (char**) malloc(*numNos * sizeof(char*));
     matriz = (int**) malloc(*numNos * sizeof(int*));
     for(z = 0; z < *numNos; z++){
-        (*vetor)[z] = (char*) malloc(10 * sizeof(char));
+        (*vetor)[z] = (char*) malloc(100 * sizeof(char));
         matriz[z] = (int*) malloc(*numNos * sizeof(int));
     }
 

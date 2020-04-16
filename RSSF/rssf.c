@@ -10,18 +10,38 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 int *alocaPacotes(int num_no);
 
 int main(){
-    int **adj, **conf, **matconf, tamNo, tamAresta, z, i, no_atual = 5;
-    int **matching, pacote_entregue = 0, total_pacotes = 0, raiz, flg = 1;
-    int cont = 0;
-    int **aloca_canais, x, y, canal = 0, edge_selected, temp;
-    char **nome_no, *nome_arq_dot = "\0";
-    int *pacotes;
+    int **adj,                  //grafo da rede
+    **conf,                     //mapa do grafo de conflito pro grafo da rede
+    **matconf,                  //matriz de conflito
+    tamNo,                      //Nº de nós da rede
+    tamAresta,                  //Nº de arestas da rede
+    z, i;                       //Variáveis temporárias
+    int **matching,             //Matching da rede
+    pacote_entregue = 0, 
+    total_pacotes = 0, 
+    raiz,                       //Nó raiz do grafo da rede
+    flg = 1;                    //Variável temporária
+    int cont = 0;               //Time do slotframe
+    int **aloca_canais,         //Slotframe
+    x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+    char **nome_no,             //Nome dos nós no grafo da rede
+    *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+    int *pacotes;               //Pacotes por nó no grafo da rede
 
+    //Lê o arquivo .dot
     adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);
+    
+    //Aloca os pacotes para cada nó
     pacotes = alocaPacotes(tamNo);
+    
+    //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
     conf = mapGraphConf(adj, tamNo, tamAresta);
+    
+    //Gera a matriz de conflito
     matconf = fazMatrizConf(conf, adj, tamAresta);
 
+    //Aloca o slotframe e o preenche com -1
     aloca_canais = (int**) malloc(16 * sizeof(int*));
     for(x = 0; x < 16; x++){
         aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
@@ -29,6 +49,7 @@ int main(){
             aloca_canais[x][y] = -1;
     }
 
+    //Busca pelo nó raiz da rede
     for(z = 0; z < tamNo; z++){
         for(i = 0; i < tamNo; i++)
             if(adj[z][i] != 0){
@@ -42,12 +63,13 @@ int main(){
     }
     raiz = z;
 
-    printf("\nNúmero de nós: %d\nNúmero de arestas: %d\nNó raiz: %s\n\n", tamNo, tamAresta, nome_no[raiz]);
+    printf("\nNúmero de nós: %d \nNúmero de arestas: %d \nNome do nó raiz: %s \nNúmero do nó raiz: %d \n\n", tamNo, tamAresta, nome_no[raiz], raiz);
 
     //adj[1][4] = 0;
     //adj[2][1] = 2;
     //adj[5][2] = 0;
 
+    //Mostra as arestas q representam cada nó do grafo de conflito
     for(z = 0; z < tamAresta; z++)
         printf("[%d] = %s - > %s\n", z + 1, nome_no[conf[z][0]], nome_no[conf[z][1]]);
 
@@ -63,12 +85,13 @@ int main(){
         printf("\n");
     }
 
-    //mostram os pacotes contentes em cada nó da rede
+    //Mostram os pacotes contentes em cada nó da rede
     printf("\nPacotes por nó da rede\nTempo: %d\nPacotes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
     for(z = 0; z < tamNo; z++){
         printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
     }
     printf("\n");
+    
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
     
     while(pacote_entregue < total_pacotes){
