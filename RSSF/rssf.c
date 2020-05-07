@@ -140,7 +140,7 @@ int main(){
         canal = 0;
         
         //mostram os pacotes contentes em cada nó da rede
-        printf("\nPacotes por nó da rede\nTempo: %d\nPacotes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
+        printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
         for(z = 0; z < tamNo; z++){
             printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
         }
@@ -151,11 +151,25 @@ int main(){
     printf("\nCanais alocados  | |");
     printf("\n                \\   /");
     printf("\n                 \\ /\n\n");
+    
     for(x = 0; x < 16; x++){
-        for(y = 0; y < temp_canais; y++)
-            printf("%d  ", aloca_canais[x][y] + 1);
+        for(y = 0; y < temp_canais; y++) 
+            // linhas = tempo - coluna = canal 
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n"); 
+    } 
+    /*  
+    for(y = 0 ; y < temp_canais; y++){ 
+        for(x = 0 ; x < 16 ; x++){ 
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
         printf("\n");
-    }
+         } 
+
+    } 
+    */ 
+    
 
     //nome_arq_dot = criaGrafoConf(matconf, conf, nome_no, tamAresta);
 
