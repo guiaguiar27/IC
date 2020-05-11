@@ -338,7 +338,8 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
     /*  
     TAD TSCH_link  
     composição : 
-    struct tsch_link { 
+    struct tsch_link {
+ 
         struct tsch_link *next; 
         uint16_t handle;
         linkaddr_t addr; 
@@ -394,13 +395,19 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
     }
     raiz = z;
     LOG_INFO("\nNúmero de nós: %d \nNúmero de arestas: %d \nNome do nó raiz: %s \nNúmero do nó raiz: %d \n\n", tamNo, tamAresta, nome_no[raiz], raiz); 
+
+    //Guarda o total de pacotes a serem enviados pela
     for(z = 0; z < tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z]; 
 
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);    
-
-    for(x = 0; x < tamNo; x ++){
+    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    
+    while(pacote_entregue < total_pacotes){
+        LOG_INFO("\nMatching\n");
+        
+        //Aloca os canais
+        for(x = 0; x < tamNo; x ++){
             for(y = 0; y < tamNo; y++){
                 if(matching[x][y]){
                     for(temp = 0; temp < tamAresta; temp++)
@@ -420,5 +427,51 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
             if(canal == 16)
                 break;
         }
-    
+        LOG_INFO("\nCanais alocados  | |");
+        
+
+        //Executa a primeira carga de transferência
+        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+        cont++;
+        canal = 0;
+        
+        //mostram os pacotes contentes em cada nó da rede
+        LOG_INFO("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
+
+        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    } 
+
+    // passar os canais alocados para o TAD do contiki  
+    // ao invez de printar  
+     for(x = 0; x < 16; x++){
+        for(y = 0; y < temp_canais; y++) 
+            // linhas = tempo - coluna = canal 
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n"); 
+    } 
+
+} 
+void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
+    int x, y, z, i;
+
+    for(i = 0; i < 16; i++){
+        if(aloca_canal[i][tempo] == -1)
+            continue;
+        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]]--;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]]++;
+        }
+        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
+            (*pacote_entregue)++;
+    }
 }
+
+int *alocaPacotes(int num_no){
+    int *vetor, x;
+    vetor = (int*) malloc(num_no * sizeof(int));
+    for(x = 0; x < num_no; x++)
+        vetor[x] = peso;
+    return vetor;
+}
+
