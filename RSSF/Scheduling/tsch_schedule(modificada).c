@@ -375,7 +375,8 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
     *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;   
 
-
+    struct tsch_slotframe *sf = list_head(slotframe_list);   
+    while(sf!= NULL){
     adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);  
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
     conf = mapGraphConf(adj, tamNo, tamAresta);
@@ -451,7 +452,10 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
         printf("\n"); 
     } 
 
-} 
+}// fim do while para slotframe --- se tiver apenas um slotframe so vai percorrer uma vez   
+
+
+}
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int x, y, z, i;
 
