@@ -151,10 +151,10 @@ int main(){
     printf("\nCanais alocados  | |");
     printf("\n                \\   /");
     printf("\n                 \\ /\n\n");
-    
-    for(x = 0; x < 16; x++){
+    printf(" temp_canais =  %d\n",temp_canais);
+    for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) 
-            // linhas = tempo - coluna = canal 
+            // linhas = tempo - coluna = canal  
             printf("%d  ", aloca_canais[x][y] + 1);  
              
         printf("\n"); 
