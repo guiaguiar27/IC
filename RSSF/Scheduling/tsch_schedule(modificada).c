@@ -454,7 +454,8 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
 
 }// fim do while para slotframe --- se tiver apenas um slotframe so vai percorrer uma vez   
 
-
+// ------------------------------- 
+// funcoes internas para a funçãod de proximo link ativo
 }
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int x, y, z, i;
@@ -470,12 +471,91 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
             (*pacote_entregue)++;
     }
 }
-
+//-------------------------------------------------------------- 
+ // funcoes internas para a funçãod de proximo link ativo
 int *alocaPacotes(int num_no){
     int *vetor, x;
     vetor = (int*) malloc(num_no * sizeof(int));
     for(x = 0; x < num_no; x++)
         vetor[x] = peso;
     return vetor;
+} 
+
+/*---------------------------------------------------------------------------*/
+/* Module initialization, call only once at startup. Returns 1 is success, 0 if failure. */
+int
+tsch_schedule_init(void)
+{
+  if(tsch_get_lock()) {
+    memb_init(&link_memb);
+    memb_init(&slotframe_memb);
+    list_init(slotframe_list);
+    tsch_release_lock();
+    return 1;
+  } else {
+    return 0;
+  }
 }
+/*---------------------------------------------------------------------------*/
+/* Create a 6TiSCH minimal schedule */
+void
+tsch_schedule_create_minimal(void)
+{
+  struct tsch_slotframe *sf_min;
+  /* First, empty current schedule */
+  tsch_schedule_remove_all_slotframes();
+  /* Build 6TiSCH minimal schedule.
+   * We pick a slotframe length of TSCH_SCHEDULE_DEFAULT_LENGTH */
+  sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
+  /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
+   * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
+   * but is required according to 802.15.4e if also used for EB transmission.
+   * Timeslot: 0, channel offset: 0. */
+  tsch_schedule_add_link(sf_min,
+      (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      0, 0);
+}
+/*---------------------------------------------------------------------------*/
+struct tsch_slotframe *
+tsch_schedule_slotframe_head(void)
+{
+  return list_head(slotframe_list);
+}
+/*---------------------------------------------------------------------------*/
+struct tsch_slotframe *
+tsch_schedule_slotframe_next(struct tsch_slotframe *sf)
+{
+  return list_item_next(sf);
+}
+/*---------------------------------------------------------------------------*/
+/* Prints out the current schedule (all slotframes and links) */
+void
+tsch_schedule_print(void)
+{
+  if(!tsch_is_locked()) {
+    struct tsch_slotframe *sf = list_head(slotframe_list);
+
+    LOG_PRINT("----- start slotframe list -----\n");
+
+    while(sf != NULL) {
+      struct tsch_link *l = list_head(sf->links_list);
+
+      LOG_PRINT("Slotframe Handle %u, size %u\n", sf->handle, sf->size.val);
+
+      while(l != NULL) {
+        LOG_PRINT("* Link Options %02x, type %u, timeslot %u, channel offset %u, address %u\n",
+               l->link_options, l->link_type, l->timeslot, l->channel_offset, l->addr.u8[7]);
+        l = list_item_next(l);
+      }
+
+      sf = list_item_next(sf);
+    }
+
+    LOG_PRINT("----- end slotframe list -----\n");
+  }
+}
+/*---------------------------------------------------------------------------*/
+/** @} */
+
 
