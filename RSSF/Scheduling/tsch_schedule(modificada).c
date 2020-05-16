@@ -530,18 +530,19 @@ tsch_schedule_create_minimal(void)
             // linhas = tempo - coluna = canal  
             // sera passado como parametro o id do canal 
             aux_timeslot = y ;     
-            aux_channel_offset = aloca_canais[x][y] + 1 ;  
+            aux_channel_offset = x + 11 ;  
             /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
    * but is required according to 802.15.4e if also used for EB transmission.
    * Timeslot: 0, channel offset: 0. */ 
-
-            tsch_schedule_add_link(sf_min,
+            for(int k = 0 ; k < aloca_canais[x][y]; k++){  
+                // cada enlace desse for deve ser um link distinto 
+                tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0,aux_channel_offset);
-        }
-        printf("\n"); 
+      aux_timeslot,aux_channel_offset);    
+            }
+        }  
     }
    
 }
