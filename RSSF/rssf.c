@@ -9,11 +9,11 @@
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no);
 
-int main(){
+int main(){ 
+    uint16_t tamNo; 
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
-    **matconf,                  //matriz de conflito
-    tamNo,                      //Nº de nós da rede
+    **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
     z, i;                       //Variáveis temporárias
     int **matching,             //Matching da rede

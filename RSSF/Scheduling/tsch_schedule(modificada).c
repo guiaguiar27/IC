@@ -332,153 +332,69 @@ int *alocaPacotes(int num_no);
 struct tsch_link *
 tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset,
     struct tsch_link **backup_link)
-{  // sera necessario passar alguns parametros para o modelo do tsch 
-    // o algoritmo "Symphony" não pode ser configurado sem os TADs do TSCH no contiki   
-    // por isso a criação de links e dos slotframes  
-    /*  
-    TAD TSCH_link  
-    composição : 
-    struct tsch_link {
- 
-        struct tsch_link *next; 
-        uint16_t handle;
-        linkaddr_t addr; 
-        uint16_t slotframe_handle; 
-        uint8_t handle;
-        uint16_t timeslot;
-        uint16_t channel_offset;
-        uint8_t link_options; 
-        enum link_type link_type;
-        void *data;
-    };  
-*/ 
-    uint16_t time_to_curr_best = 0;
-    struct tsch_link *curr_best = NULL;
-    struct tsch_link *curr_backup = NULL; 
+{  
+     struct tsch_link *l = NULL;
+  if(slotframe != NULL) {
+    /* We currently support only one link per timeslot in a given slotframe. */
 
-    int **adj,                  //grafo da rede
-    **conf,                     //mapa do grafo de conflito pro grafo da rede
-    **matconf,                  //matriz de conflito
-    tamNo,                      //Nº de nós da rede
-    tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
-    int **matching,             //Matching da rede
-    pacote_entregue = 0, 
-    total_pacotes = 0, 
-    raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária
-    int cont = 0;               //Time do slotframe timeslot  
-    int **aloca_canais,         //Slotframe
-    x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp;        //Variáveis temporárias
-    char **nome_no,             //Nome dos nós no grafo da rede
-    *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
-    int *pacotes;   
-
-    struct tsch_slotframe *sf = list_head(slotframe_list);   
-    while(sf!= NULL){
-    adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);  
-    //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    conf = mapGraphConf(adj, tamNo, tamAresta);
-    
-    //Gera a matriz de conflito
-    matconf = fazMatrizConf(conf, adj, tamAresta);  
-    for(z = 0; z < tamNo; z++){
-        for(i = 0; i < tamNo; i++)
-            if(adj[z][i] != 0){
-                flg = 0;
-                break;
-            }
-        if(flg)
-            break;
-        else
-            flg = 1;
+    /* Validation of specified timeslot and channel_offset */
+    if(timeslot > (slotframe->size.val - 1)) {
+      LOG_ERR("! add_link invalid timeslot: %u\n", timeslot);
+      return NULL;
     }
-    raiz = z;
-    LOG_INFO("\nNúmero de nós: %d \nNúmero de arestas: %d \nNome do nó raiz: %s \nNúmero do nó raiz: %d \n\n", tamNo, tamAresta, nome_no[raiz], raiz); 
 
-    //Guarda o total de pacotes a serem enviados pela
-    for(z = 0; z < tamNo; z++)
-        if(z != raiz)
-            total_pacotes += pacotes[z]; 
+    /* Start with removing the link currently installed at this timeslot (needed
+     * to keep neighbor state in sync with link options etc.) */
+    tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
+    if(!tsch_get_lock()) {
+      LOG_ERR("! add_link memb_alloc couldn't take lock\n");
+    } else { 
+      
+      l = memb_alloc(&link_memb);
+      if(l == NULL) {
+        LOG_ERR("! add_link memb_alloc failed\n");
+        tsch_release_lock();
+      } else {
+        static int current_link_handle = 0;
+        struct tsch_neighbor *n;
+        /* Add the link to the slotframe */
+        list_add(slotframe->links_list, l);
+        /* Initialize link */
+        l->handle = current_link_handle++;
+        l->link_options = link_options;
+        l->link_type = link_type;
+        l->slotframe_handle = slotframe->handle;
+        l->timeslot = timeslot;
+        l->channel_offset = channel_offset;
+        l->data = NULL;
+        if(address == NULL) {
+          address = &linkaddr_null;
+        }
+        linkaddr_copy(&l->addr, address);
 
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-    
-    while(pacote_entregue < total_pacotes){
-        LOG_INFO("\nMatching\n");
-        
-        //Aloca os canais
-        for(x = 0; x < tamNo; x ++){
-            for(y = 0; y < tamNo; y++){
-                if(matching[x][y]){
-                    for(temp = 0; temp < tamAresta; temp++)
-                        if(conf[temp][0] == x && conf[temp][1] == y)
-                            break;
-                    edge_selected = temp;
-                    for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == 16)
-                            break;
-                        aloca_canais[canal][cont] = edge_selected;
-                        canal++;
-                    }
-                }
-                if(canal == 16)
-                    break;
+        LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
+                 slotframe->handle,
+                 print_link_options(link_options),
+                 print_link_type(link_type), timeslot, channel_offset);
+        LOG_INFO_LLADDR(address);
+        LOG_INFO_("\n");
+        /* Release the lock before we update the neighbor (will take the lock) */
+        tsch_release_lock();
+
+        if(l->link_options & LINK_OPTION_TX) {
+          n = tsch_queue_add_nbr(&l->addr);
+          /* We have a tx link to this neighbor, update counters */
+          if(n != NULL) {
+            n->tx_links_count++;
+            if(!(l->link_options & LINK_OPTION_SHARED)) {
+              n->dedicated_tx_links_count++;
             }
-            if(canal == 16)
-                break;
+          }
         }
-        LOG_INFO("\nCanais alocados  | |");
-        
-
-        //Executa a primeira carga de transferência
-        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
-        cont++;
-        canal = 0;
-        
-        //mostram os pacotes contentes em cada nó da rede
-        LOG_INFO("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-
-        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-    } 
-
-    // passar os canais alocados para o TAD do contiki  
-    // ao invez de printar  
-     for(x = 0; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
-            // linhas = tempo - coluna = canal 
-            printf("%d  ", aloca_canais[x][y] + 1);  
-             
-        printf("\n"); 
-    } 
-
-}// fim do while para slotframe --- se tiver apenas um slotframe so vai percorrer uma vez   
-
-// ------------------------------- 
-// funcoes internas para a funçãod de proximo link ativo
-}
-void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
-    int x, y, z, i;
-
-    for(i = 0; i < 16; i++){
-        if(aloca_canal[i][tempo] == -1)
-            continue;
-        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]]--;
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]]++;
-        }
-        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-            (*pacote_entregue)++;
+      }
     }
-}
-//-------------------------------------------------------------- 
- // funcoes internas para a funçãod de proximo link ativo
-int *alocaPacotes(int num_no){
-    int *vetor, x;
-    vetor = (int*) malloc(num_no * sizeof(int));
-    for(x = 0; x < num_no; x++)
-        vetor[x] = peso;
-    return vetor;
+  }
+  return l; 
 } 
 
 /*---------------------------------------------------------------------------*/
