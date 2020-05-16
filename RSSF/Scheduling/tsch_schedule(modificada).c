@@ -523,7 +523,8 @@ tsch_schedule_create_minimal(void)
    * We pick a slotframe length of TSCH_SCHEDULE_DEFAULT_LENGTH */
   sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
   
-
+  LOG_PRINT("----- Escalonamento feito  -----\n"); 
+  LOG_PRINT("----- Passagem de informações-----\n");
    // a cada nó selecionado vou ir adicionando 
   for(x = 0; x < 16; x++){
         for(y = 0; y < temp_canais; y++){
