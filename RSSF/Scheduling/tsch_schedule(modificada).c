@@ -413,24 +413,137 @@ tsch_schedule_init(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-/* Create a 6TiSCH minimal schedule */
+/* Create a 6TiSCH minimal schedule */ 
+
+void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
+    int x, y, z, i;
+
+    for(i = 0; i < 16; i++){
+        if(aloca_canal[i][tempo] == -1)
+            continue;
+        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]]--;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]]++;
+        }
+        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
+            (*pacote_entregue)++;
+    }
+}
+//-------------------------------------------------------------- 
+ // funcoes internas para a funçãod de proximo link ativo
+int *alocaPacotes(int num_no){
+    int *vetor, x;
+    vetor = (int*) malloc(num_no * sizeof(int));
+    for(x = 0; x < num_no; x++)
+        vetor[x] = peso;
+    return vetor; 
+}
 void
 tsch_schedule_create_minimal(void)
-{
-  struct tsch_slotframe *sf_min;
+{  uint16_t aux_timeslot; 
+   uint16_t aux_channel_offset;   
+  int **adj,                  //grafo da rede
+    **conf,                     //mapa do grafo de conflito pro grafo da rede
+    **matconf,                  //matriz de conflito
+    tamNo,                      //Nº de nós da rede
+    tamAresta,                  //Nº de arestas da rede
+    z, i;                       //Variáveis temporárias
+    int **matching,             //Matching da rede
+    pacote_entregue = 0, 
+    total_pacotes = 0, 
+    raiz,                       //Nó raiz do grafo da rede
+    flg = 1;                    //Variável temporária
+    int cont = 0;               //Time do slotframe timeslot  
+    int **aloca_canais,         //Slotframe
+    x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+    char **nome_no,             //Nome dos nós no grafo da rede
+    *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+    int *pacotes;   
+    adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);  
+    //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
+    conf = mapGraphConf(adj, tamNo, tamAresta);
+    //Gera a matriz de conflito
+    matconf = fazMatrizConf(conf, adj, tamAresta);  
+    for(z = 0; z < tamNo; z++){
+        for(i = 0; i < tamNo; i++)   
+        if(adj[z][i] != 0){
+                flg = 0;
+                break;
+            }
+        if(flg)
+            break;
+        else
+            flg = 1;
+    }
+    raiz = z;
+    for(z = 0; z < tamNo; z++)
+        if(z != raiz)
+            total_pacotes += pacotes[z]; 
+
+    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    
+    while(pacote_entregue < total_pacotes){
+        LOG_INFO("\nMatching\n");
+        
+        //Aloca os canais
+        for(x = 0; x < tamNo; x ++){
+            for(y = 0; y < tamNo; y++){
+                if(matching[x][y]){
+                    for(temp = 0; temp < tamAresta; temp++)
+                        if(conf[temp][0] == x && conf[temp][1] == y)
+                            break;
+                    edge_selected = temp;
+                    for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+                        if(canal == 16)
+                            break;
+                        aloca_canais[canal][cont] = edge_selected;
+                        canal++;
+                    }
+                }
+                if(canal == 16)
+                    break;
+            }
+            if(canal == 16)
+                break;
+        }
+        //Executa a primeira carga de transferência
+        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+        cont++;
+        canal = 0;
+        
+        //mostram os pacotes contentes em cada nó da rede
+        
+        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    }     
   /* First, empty current schedule */
-  tsch_schedule_remove_all_slotframes();
+  tsch_schedule_remove_all_slotframes();  
+
   /* Build 6TiSCH minimal schedule.
    * We pick a slotframe length of TSCH_SCHEDULE_DEFAULT_LENGTH */
   sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
-  /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
+  
+
+   // a cada nó selecionado vou ir adicionando 
+  for(x = 0; x < 16; x++){
+        for(y = 0; y < temp_canais; y++){
+            // linhas = tempo - coluna = canal  
+            // sera passado como parametro o id do canal 
+            aux_timeslot = y ;     
+            aux_channel_offset = &aloca_canais[x][y] + 1 ;  
+            /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
    * but is required according to 802.15.4e if also used for EB transmission.
-   * Timeslot: 0, channel offset: 0. */
-  tsch_schedule_add_link(sf_min,
+   * Timeslot: 0, channel offset: 0. */ 
+
+            tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0);
+      0,aux_channel_offset);
+        }
+        printf("\n"); 
+    }
+   
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
