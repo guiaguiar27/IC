@@ -537,6 +537,8 @@ tsch_schedule_create_minimal(void)
    * Timeslot: 0, channel offset: 0. */ 
             for(int k = 0 ; k < aloca_canais[x][y]; k++){  
                 // cada enlace desse for deve ser um link distinto 
+                // tenho q descobrir como passar a informação do link como parametro 
+                // para quem vai e pra quem recebe a mensagem  
                 tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
