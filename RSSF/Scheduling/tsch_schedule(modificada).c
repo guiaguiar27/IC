@@ -464,7 +464,16 @@ tsch_schedule_create_minimal(void)
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
     conf = mapGraphConf(adj, tamNo, tamAresta);
     //Gera a matriz de conflito
-    matconf = fazMatrizConf(conf, adj, tamAresta);  
+    matconf = fazMatrizConf(conf, adj, tamAresta);   
+    
+    // inicia a alocaçao de canais  
+    aloca_canais = (int**) malloc(16 * sizeof(int*));
+    for(x = 0; x < 16; x++){
+        aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
+        for(y = 0; y < temp_canais; y++)
+            aloca_canais[x][y] = -1;
+    } 
+    // encontra o no raiz  
     for(z = 0; z < tamNo; z++){
         for(i = 0; i < tamNo; i++)   
         if(adj[z][i] != 0){
@@ -476,7 +485,9 @@ tsch_schedule_create_minimal(void)
         else
             flg = 1;
     }
-    raiz = z;
+    raiz = z; 
+
+    // encontra o total de pacotes  
     for(z = 0; z < tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z]; 
@@ -500,7 +511,8 @@ tsch_schedule_create_minimal(void)
                         aloca_canais[canal][cont] = edge_selected;
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
-                        LOG_PRINT("----- Passagem de informações-----\n");  
+                        LOG_PRINT("----- Passagem de informações-----\n"); 
+                        // quantidade de links     
                         for(int z = 0  ; z < aloca_canais[canal][cont]; z++){   
                           /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
