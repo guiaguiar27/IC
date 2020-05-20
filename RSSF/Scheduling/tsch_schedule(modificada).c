@@ -498,7 +498,23 @@ tsch_schedule_create_minimal(void)
                         if(canal == 16)
                             break;
                         aloca_canais[canal][cont] = edge_selected;
-                        canal++;
+                        aux_timeslot = cont ;     
+                        aux_channel_offset = canal + 11 ;  
+                        LOG_PRINT("----- Passagem de informações-----\n");  
+                        for(int z = 0  ; z < aloca_canais[canal][cont]; z++){   
+                          /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
+   * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
+   * but is required according to 802.15.4e if also used for EB transmission.
+   * Timeslot: 0, channel offset: 0. */
+                            // cada enlace desse for deve ser um link distinto 
+                // tenho q descobrir como passar a informação do link como parametro 
+                // para quem vai e pra quem recebe a mensagem
+                            tsch_schedule_add_link(sf_min,  
+                            (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
+                             LINK_TYPE_ADVERTISING, &tsch_broadcast_address,aux_timeslot,aux_channel_offset);
+                          
+                        } 
+                        canal++;    
                     }
                 }
                 if(canal == 16)
@@ -526,27 +542,8 @@ tsch_schedule_create_minimal(void)
   LOG_PRINT("----- Escalonamento feito  -----\n"); 
   LOG_PRINT("----- Passagem de informações-----\n");
    // a cada nó selecionado vou ir adicionando 
-  for(x = 0; x < 16; x++){
-        for(y = 0; y < temp_canais; y++){
-            // linhas = tempo - coluna = canal  
-            // sera passado como parametro o id do canal 
-            aux_timeslot = y ;     
-            aux_channel_offset = x + 11 ;  
-            /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
-   * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
-   * but is required according to 802.15.4e if also used for EB transmission.
-   * Timeslot: 0, channel offset: 0. */ 
-            for(int k = 0 ; k < aloca_canais[x][y]; k++){  
-                // cada enlace desse for deve ser um link distinto 
-                // tenho q descobrir como passar a informação do link como parametro 
-                // para quem vai e pra quem recebe a mensagem  
-                tsch_schedule_add_link(sf_min,
-      (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
-      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      aux_timeslot,aux_channel_offset);    
-            }
-        }  
-    }
+ 
+    
    
 }
 /*---------------------------------------------------------------------------*/
