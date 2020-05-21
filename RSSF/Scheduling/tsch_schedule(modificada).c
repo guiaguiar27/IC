@@ -441,7 +441,8 @@ int *alocaPacotes(int num_no){
 void
 tsch_schedule_create_minimal(void)
 {  uint16_t aux_timeslot; 
-   uint16_t aux_channel_offset;   
+   uint16_t aux_channel_offset;    
+   char link1 , link2 ; 
   int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                  //matriz de conflito
@@ -509,10 +510,13 @@ tsch_schedule_create_minimal(void)
                         if(canal == 16)
                             break;
                         aloca_canais[canal][cont] = edge_selected;
+                        
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
                         LOG_PRINT("----- Passagem de informações-----\n"); 
-                        // quantidade de links     
+                        // quantidade de links      
+                        //nome_no[conf[edge_selected][0]]; ----> no q envia  
+                        //nome_no[conf[edge_selected[1]]];--------> no q recebe  
                         for(int z = 0  ; z < aloca_canais[canal][cont]; z++){   
                           /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
@@ -521,9 +525,14 @@ tsch_schedule_create_minimal(void)
                             // cada enlace desse for deve ser um link distinto 
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem
-                            tsch_schedule_add_link(sf_min,  
-                            (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
-                             LINK_TYPE_ADVERTISING, &tsch_broadcast_address,aux_timeslot,aux_channel_offset);
+                            if(nome_no[conf[edge_selected][0]])
+                              tsch_schedule_add_link(sf_min,  
+                                (LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
+                                LINK_TYPE_NORMAL , &tsch_broadcast_address,aux_timeslot,aux_channel_offset); 
+                            else if(nome_no[conf[edge_selected][1]]) 
+                                tsch_schedule_add_link(sf_min,  
+                                (LINK_OPTION_RX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
+                                LINK_TYPE_NORMAL , &tsch_broadcast_address,aux_timeslot,aux_channel_offset); 
                           
                         } 
                         canal++;    
