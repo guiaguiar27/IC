@@ -525,16 +525,10 @@ tsch_schedule_create_minimal(void)
                             // cada enlace desse for deve ser um link distinto 
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem
-                            if(nome_no[conf[edge_selected][0]])
                               tsch_schedule_add_link(sf_min,  
-                                (LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
+                                (LINK_OPTION_TX| LINK_OPTION_RX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
                                 LINK_TYPE_NORMAL , &tsch_broadcast_address,aux_timeslot,aux_channel_offset); 
-                            else if(nome_no[conf[edge_selected][1]]) 
-                                tsch_schedule_add_link(sf_min,  
-                                (LINK_OPTION_RX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
-                                LINK_TYPE_NORMAL , &tsch_broadcast_address,aux_timeslot,aux_channel_offset); 
-                          
-                        } 
+                            } 
                         canal++;    
                     }
                 }
