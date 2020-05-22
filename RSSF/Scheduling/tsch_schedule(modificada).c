@@ -440,11 +440,14 @@ int *alocaPacotes(int num_no){
 }
 void
 tsch_schedule_create_minimal(void)
-{  uint16_t aux_timeslot; 
-   uint16_t aux_channel_offset;     
-   int aux_no = 0 ; 
-   char link1 , link2 ; 
-  int **adj,                  //grafo da rede
+{  
+    sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
+    tsch_schedule_remove_all_slotframes();  
+    uint16_t aux_timeslot; 
+    uint16_t aux_channel_offset;     
+    int aux_no = 0 ; 
+    char link1 , link2 ; 
+    int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                  //matriz de conflito
     tamNo,                      //Nº de nós da rede
@@ -525,17 +528,16 @@ tsch_schedule_create_minimal(void)
    * Timeslot: 0, channel offset: 0. */
                             // cada enlace desse for deve ser um link distinto 
                 // tenho q descobrir como passar a informação do link como parametro 
-                // para quem vai e pra quem recebe a mensagem 
+                // para quem vai e pra quem recebe a mensagem  
+                
                         if(nome_no[conf[z][aux_no]]){  
                           // emissor 
-                              tsch_schedule_add_link(sf_min,LINK_OPTION_TX, 
-                                LINK_TYPE_NORMAL, Addr_destino  ,aux_timeslot,aux_channel_offset); 
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, Addr_destino  ,aux_timeslot,aux_channel_offset); 
                                 aux_no++;   
                         } 
                         else if(nome[conf[z][aux_no]]){  
                           // destino 
-                              tsch_schedule_add_link(sf_min,  
-                                 LINK_OPTION_RX, LINK_TYPE_NORMAL, addr_emissor ,aux_timeslot,aux_channel_offset);
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, addr_emissor ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;  
                         }
                             } 
@@ -557,15 +559,13 @@ tsch_schedule_create_minimal(void)
         
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
     }     
-  /* First, empty current schedule */
-  tsch_schedule_remove_all_slotframes();  
+  /* First, empty current schedule */  
 
   /* Build 6TiSCH minimal schedule.
    * We pick a slotframe length of TSCH_SCHEDULE_DEFAULT_LENGTH */
-  sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
+ 
   
   LOG_PRINT("----- Escalonamento feito  -----\n"); 
-  LOG_PRINT("----- Passagem de informações-----\n");
    // a cada nó selecionado vou ir adicionando 
  
     
