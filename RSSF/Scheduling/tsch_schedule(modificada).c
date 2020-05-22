@@ -441,7 +441,8 @@ int *alocaPacotes(int num_no){
 void
 tsch_schedule_create_minimal(void)
 {  uint16_t aux_timeslot; 
-   uint16_t aux_channel_offset;    
+   uint16_t aux_channel_offset;     
+   int aux_no = 0 ; 
    char link1 , link2 ; 
   int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
@@ -524,10 +525,19 @@ tsch_schedule_create_minimal(void)
    * Timeslot: 0, channel offset: 0. */
                             // cada enlace desse for deve ser um link distinto 
                 // tenho q descobrir como passar a informação do link como parametro 
-                // para quem vai e pra quem recebe a mensagem
+                // para quem vai e pra quem recebe a mensagem 
+                        if(nome_no[conf[z][aux_no]]){  
+                          // emissor 
+                              tsch_schedule_add_link(sf_min,LINK_OPTION_TX, 
+                                LINK_TYPE_NORMAL, Addr_destino  ,aux_timeslot,aux_channel_offset); 
+                                aux_no++;   
+                        } 
+                        else if(nome[conf[z][aux_no]]){  
+                          // destino 
                               tsch_schedule_add_link(sf_min,  
-                                (LINK_OPTION_TX| LINK_OPTION_RX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING), 
-                                LINK_TYPE_NORMAL , &tsch_broadcast_address,aux_timeslot,aux_channel_offset); 
+                                 LINK_OPTION_RX, LINK_TYPE_NORMAL, addr_emissor ,aux_timeslot,aux_channel_offset);
+                              aux_no = 0 ;  
+                        }
                             } 
                         canal++;    
                     }
