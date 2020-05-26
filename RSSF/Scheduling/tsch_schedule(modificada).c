@@ -514,14 +514,15 @@ tsch_schedule_create_minimal(void)
                         if(canal == 16)
                             break;
                         aloca_canais[canal][cont] = edge_selected;
-                        
+                        // aloca_canais[canal][cont] representa o link em questão
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
                         LOG_PRINT("----- Passagem de informações-----\n"); 
                         // quantidade de links      
                         //nome_no[conf[edge_selected][0]]; ----> no q envia  
-                        //nome_no[conf[edge_selected[1]]];--------> no q recebe  
-                        for(int z = 0  ; z < aloca_canais[canal][cont]; z++){   
+                        //nome_no[conf[edge_selected[1]]];--------> no q recebe
+
+                           
                           /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
    * but is required according to 802.15.4e if also used for EB transmission.
@@ -530,17 +531,17 @@ tsch_schedule_create_minimal(void)
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem  
                 
-                        if(nome_no[conf[z][aux_no]]){  
+                        if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
                           // emissor 
                               tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, Addr_destino  ,aux_timeslot,aux_channel_offset); 
                                 aux_no++;   
                         } 
-                        else if(nome[conf[z][aux_no]]){  
+                        else if(nome[conf[aloca_canais[canal][cont]][aux_no]]){  
                           // destino 
                               tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, addr_emissor ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;  
                         }
-                            } 
+                            
                         canal++;    
                     }
                 }
