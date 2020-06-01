@@ -58,7 +58,7 @@ rpl_dag_root_print_links(const char *str)
 {
   if(rpl_dag_root_is_root()) {
     if(uip_sr_num_nodes() > 0) {
-      FILE *fl = fopen("arvre.dot", "w");
+      FILE *fl = fopen("/os/net/mac/tsch/arvre.dot", "w");
       fprintf(fl, "digraph g{\n");
       fclose(fl);
       uip_sr_node_t *link;

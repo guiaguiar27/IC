@@ -437,12 +437,24 @@ int *alocaPacotes(int num_no){
     for(x = 0; x < num_no; x++)
         vetor[x] = peso;
     return vetor; 
+} 
+void colect_addres(char **ex){ 
+  int i = 0, j = 0 ; 
+  while(ex != NULL){ 
+    if(ex[i][j] == "-"){ 
+
+    }
+    i++; 
+    j++;   
+  } 
+
 }
 void
 tsch_schedule_create_minimal(void)
 {  
     sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
-    tsch_schedule_remove_all_slotframes();  
+    tsch_schedule_remove_all_slotframes();   
+    linkaddr_t transmitter , receptor ;  
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset;     
     int aux_no = 0 ; 
@@ -531,14 +543,17 @@ tsch_schedule_create_minimal(void)
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem  
                 
-                        if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
+                        if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){   
+                          
                           // emissor 
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, Addr_destino  ,aux_timeslot,aux_channel_offset); 
+                           // utilizar função do linkaddr_copy(&l->addr, address);   
+
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, transmitter ,aux_timeslot,aux_channel_offset); 
                                 aux_no++;   
                         } 
-                        else if(nome[conf[aloca_canais[canal][cont]][aux_no]]){  
+                        else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
                           // destino 
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, addr_emissor ,aux_timeslot,aux_channel_offset);
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, receptor ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;  
                         }
                             

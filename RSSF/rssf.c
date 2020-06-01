@@ -7,10 +7,11 @@
 #define peso 1
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
-int *alocaPacotes(int num_no);
+int *alocaPacotes(int num_no); 
+void colect_addres(char **ex);
 
 int main(){ 
-    uint16_t tamNo; 
+    int tamNo; 
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
@@ -113,7 +114,8 @@ int main(){
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
                         if(canal == 16)
                             break;
-                        aloca_canais[canal][cont] = edge_selected;
+                        aloca_canais[canal][cont] = edge_selected; 
+                        colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
                         canal++;
                     }
                 }
@@ -199,7 +201,28 @@ int *alocaPacotes(int num_no){
     for(x = 0; x < num_no; x++)
         vetor[x] = peso;
     return vetor;
-}
+} 
+void colect_addres(char **ex){      
+    printf("Entrou\n");  
+    char *colect; 
+    while(ex != NULL){   
+        printf("%s",colect );
+        if(ex == "-"){ 
+            ex++; 
+            while(ex != "-"){ 
+                 
+                colect = ex; 
+                ex++; 
+                printf("%s",colect );  
+                if(colect == "-") break ; 
+            } 
+        
+        } 
+        if(ex == NULL) break ;  
+    }
+    printf("%s",colect );
+
+} 
 
 
 
