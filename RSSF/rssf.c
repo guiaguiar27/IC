@@ -8,7 +8,7 @@
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no); 
-void colect_addres(char **ex);
+char colect_addres(char **ex);
 
 int main(){ 
     int tamNo; 
@@ -202,26 +202,25 @@ int *alocaPacotes(int num_no){
         vetor[x] = peso;
     return vetor;
 } 
-void colect_addres(char **ex){      
+char colect_addres(char **ex){      
     printf("Entrou\n");  
     char *colect; 
     while(ex != NULL){   
         printf("%s",colect );
-        if(ex == "-"){ 
+        if(ex == "_"){ 
             ex++; 
-            while(ex != "-"){ 
-                 
+            while(ex != "_"){         
                 colect = ex; 
                 ex++; 
                 printf("%s",colect );  
-                if(colect == "-") break ; 
+                if(colect == "_") break ; 
             } 
         
         } 
         if(ex == NULL) break ;  
     }
-    printf("%s",colect );
-
+    printf("%s",colect);
+    return colect;  
 } 
 
 
