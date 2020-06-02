@@ -204,8 +204,10 @@ int *alocaPacotes(int num_no){
 } 
 char colect_addres(char **ex){      
     printf("Entrou\n");  
+    int tam1 ;   
+    tam1 = strlen(ex);  
     char *colect; 
-    while(ex != NULL){   
+    for(int i = 0 ; i < tam1 ; i++){   
         printf("%s",colect );
         if(ex == "_"){ 
             ex++; 
