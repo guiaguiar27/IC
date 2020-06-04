@@ -210,7 +210,7 @@ char colect_addres(char **ex){
     colect[0] = '\0';
     for(i = 0 ; i < tam1 ; i++){   
         printf("%s\n",colect ); 
-        printf("\n-\n");
+        
         if(ex[i] == '_'){ 
             i++; 
             while(ex[i] != '_' && ex[i] != '\0'){         
