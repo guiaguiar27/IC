@@ -203,26 +203,36 @@ int *alocaPacotes(int num_no){
     return vetor;
 } 
 char colect_addres(char **ex){      
-    printf("Entrou\n");  
-    int tam1 ;   
+   printf("Entrou");  
+    int tam1, i, idx = 0;   
     tam1 = strlen(ex);  
-    char *colect; 
-    for(int i = 0 ; i < tam1 ; i++){   
-        printf("%s",colect );
-        if(ex == "_"){ 
-            ex++; 
-            while(ex != "_"){         
-                colect = ex; 
-                ex++; 
-                printf("%s",colect );  
-                if(colect == "_") break ; 
+    char *colect = (char*) malloc(100 * sizeof(char)); 
+    colect[0] = '\0';
+    for(i = 0 ; i < tam1 ; i++){   
+        printf("%s\n",colect ); 
+        printf("\n-\n");
+        if(ex[i] == '_'){ 
+            i++; 
+            while(ex[i] != '_' && ex[i] != '\0'){         
+                colect[idx] = ex[i];
+                idx++;
+                colect[idx] = '\0';
+                i++; 
+                printf("%s\n",colect );  
+                //if(colect == "_") break ; 
             } 
         
         } 
-        if(ex == NULL) break ;  
+        else {
+            colect[idx] = ex[i];
+            idx++;
+            colect[idx] = '\0';
+        }            
+        if(ex[i] == '\0') break ;  
     }
-    printf("%s",colect);
+    printf("%s\n",colect);
     return colect;  
+    
 } 
 
 
