@@ -439,15 +439,33 @@ int *alocaPacotes(int num_no){
     return vetor; 
 } 
 void colect_addres(char **ex){ 
-  int i = 0, j = 0 ; 
-  while(ex != NULL){ 
-    if(ex[i][j] == "-"){ 
-
+    int tam1, i, idx = 0;   
+    tam1 = strlen(ex);  
+    char *colect = (char*) malloc(100 * sizeof(char)); 
+    colect[0] = '\0';
+    for(i = 0 ; i < tam1 ; i++){   
+        //printf("%s\n",colect ); 
+        
+        if(ex[i] == '_'){ 
+            i++; 
+            while(ex[i] != '_' && ex[i] != '\0'){         
+                colect[idx] = ex[i];
+                idx++;
+                colect[idx] = '\0';
+                i++; 
+                //printf("%s\n",colect );  
+                //if(colect == "_") break ; 
+            } 
+        
+        } 
+        else {
+            colect[idx] = ex[i];
+            idx++;
+            colect[idx] = '\0';
+        }            
+        if(ex[i] == '\0') break ;  
     }
-    i++; 
-    j++;   
-  } 
-
+    return colect;  
 }
 void
 tsch_schedule_create_minimal(void)
