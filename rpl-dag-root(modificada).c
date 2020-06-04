@@ -210,7 +210,7 @@ void escreve_arq(const char *buf){
     else if(copia[x] == ':')
       copia[x] = '_';
   }
-  fl = fopen("arvre.dot", "a");
+  fl = fopen("/contiki-ng/os/net/mac/tsch/arvre.dot", "a");
   fprintf(fl, " %s\n", copia);
   fclose(fl);
 }
