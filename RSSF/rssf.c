@@ -8,12 +8,13 @@
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no); 
-char *colect_addres(char **ex);
+char *colect_addres(char *ex);
 
 int main(){    
     int tam_addres ; // armazenara o strlen 
     char *aux_addres ;  // armazenara o endereco a convertido em int  
-    int addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
+    
+    int *addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     int tamNo; 
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
@@ -121,9 +122,8 @@ int main(){
                             break;
                         aloca_canais[canal][cont] = edge_selected; 
                         aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
-                        tam_addres = strlen(aux_addres); 
-                       printf("\ntam_addres : %d\n",tam_addres); 
-                       printf("\naddres : %s\n",aux_addres); 
+                       addres_integer = *aux_addres - '0';   
+                       printf("\n Addr_int:  %d\n",addres_integer); 
                         canal++;
                     }
                 }
@@ -209,16 +209,16 @@ int *alocaPacotes(int num_no){
     for(x = 0; x < num_no; x++)
         vetor[x] = peso;
     return vetor;
-} 
-char *colect_addres(char **ex){      
-   //printf("Entrou");  
+}  
+
+char *colect_addres(char *ex){      
+    printf("Entrou");  
     int tam1, i, idx = 0;   
     tam1 = strlen(ex);  
     char *colect = (char*) malloc(100 * sizeof(char)); 
     colect[0] = '\0';
     for(i = 0 ; i < tam1 ; i++){   
-        //printf("%s\n",colect ); 
-        
+        //printf("%s\n",colect );
         if(ex[i] == '_'){ 
             i++; 
             while(ex[i] != '_' && ex[i] != '\0'){         
@@ -226,27 +226,25 @@ char *colect_addres(char **ex){
                 idx++;
                 colect[idx] = '\0';
                 i++; 
-                //printf("%s\n",colect );  
-                //if(colect == "_") break ; 
+            //printf("%s\n",colect );  
+            //if(colect == "_") break ; 
             } 
-        
-        } 
-        else {
-            colect[idx] = ex[i];
-            idx++;
-            colect[idx] = '\0';
-        }            
+            //i--;
+        }           
         if(ex[i] == '\0') break ;  
-    } 
-    while(colect[i] != '\0'){ 
-        if(colect[i] == "f"){ 
-            colect[i] = " "; 
-        }  
-        if(colect[i] == '\0') break;
     }
-   // printf("\n%s\n",colect);
-    return colect;  
     
+    while(colect[i] != '\0'){  
+        if(colect[i] == ' '){ 
+            colect[i] = 'p' ;
+        }         
+        i++;
+        if(colect[i] == '\0') break ; 
+
+    } 
+    
+    //printf("%s\n",colect);
+    return colect;  
 } 
 
 

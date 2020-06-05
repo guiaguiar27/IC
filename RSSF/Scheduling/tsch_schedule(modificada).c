@@ -469,7 +469,9 @@ void colect_addres(char **ex){
 }
 void
 tsch_schedule_create_minimal(void)
-{  
+{   
+    char *aux_addres ;  // armazenara o endereco a convertido em int  
+    int *addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
     tsch_schedule_remove_all_slotframes();   
     linkaddr_t transmitter , receptor ;  
@@ -543,7 +545,9 @@ tsch_schedule_create_minimal(void)
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
                         if(canal == 16)
                             break;
-                        aloca_canais[canal][cont] = edge_selected;
+                        aloca_canais[canal][cont] = edge_selected; 
+                        aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
+                       addres_integer = *aux_addres - '0';
                         // aloca_canais[canal][cont] representa o link em questão
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
