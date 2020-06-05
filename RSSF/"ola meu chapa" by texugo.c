@@ -23,13 +23,8 @@ char *colect_addres(char *ex){
                 printf("%s\n",colect );  
                 //if(colect == "_") break ; 
             } 
-        
-        } 
-        else {
-            colect[idx] = ex[i];
-            idx++;
-            colect[idx] = '\0';
-        }            
+            i--;
+        }           
         if(ex[i] == '\0') break ;  
     }
     printf("%s\n",colect);
