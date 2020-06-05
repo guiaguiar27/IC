@@ -430,22 +430,24 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
     }
 }
 //-------------------------------------------------------------- 
- // funcoes internas para a funçãod de proximo link ativo
+ // funcoes internas para a funçãod de proximo link ativo 
+ // tem que incluir no scheduled.h 
 int *alocaPacotes(int num_no){
     int *vetor, x;
     vetor = (int*) malloc(num_no * sizeof(int));
     for(x = 0; x < num_no; x++)
         vetor[x] = peso;
     return vetor; 
-} 
-void colect_addres(char **ex){ 
+}  
+// tem que icluir no scheduled.h 
+void colect_addres(char *ex){ 
+  printf("Entrou");  
     int tam1, i, idx = 0;   
     tam1 = strlen(ex);  
     char *colect = (char*) malloc(100 * sizeof(char)); 
     colect[0] = '\0';
     for(i = 0 ; i < tam1 ; i++){   
-        //printf("%s\n",colect ); 
-        
+        //printf("%s\n",colect );
         if(ex[i] == '_'){ 
             i++; 
             while(ex[i] != '_' && ex[i] != '\0'){         
@@ -453,18 +455,24 @@ void colect_addres(char **ex){
                 idx++;
                 colect[idx] = '\0';
                 i++; 
-                //printf("%s\n",colect );  
-                //if(colect == "_") break ; 
+            //printf("%s\n",colect );  
+            //if(colect == "_") break ; 
             } 
-        
-        } 
-        else {
-            colect[idx] = ex[i];
-            idx++;
-            colect[idx] = '\0';
-        }            
+            //i--;
+        }           
         if(ex[i] == '\0') break ;  
     }
+    
+    while(colect[i] != '\0'){  
+        if(colect[i] == ' '){ 
+            colect[i] = 'p' ;
+        }         
+        i++;
+        if(colect[i] == '\0') break ; 
+
+    } 
+    
+    //printf("%s\n",colect);
     return colect;  
 }
 void
@@ -546,8 +554,7 @@ tsch_schedule_create_minimal(void)
                         if(canal == 16)
                             break;
                         aloca_canais[canal][cont] = edge_selected; 
-                        aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
-                       addres_integer = *aux_addres - '0';
+                        
                         // aloca_canais[canal][cont] representa o link em questão
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
@@ -569,14 +576,23 @@ tsch_schedule_create_minimal(void)
                           
                           // emissor 
                            // utilizar função do linkaddr_copy(&l->addr, address);   
-
+                              aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
+                              addres_integer = *aux_addres - '0';  
+                              transmitter = {{addres_integer,0}}
+                              linkaddr_set_node_addr(&addres_integer);
                               tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, transmitter ,aux_timeslot,aux_channel_offset); 
-                                aux_no++;   
+                                aux_no++; 
+                                addres_integer = 0 ;     
                         } 
                         else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
                           // destino 
+                              aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
+                              addres_integer = *aux_addres - '0'; 
+                              receptor = {{addres_integer,0}}
+                              linkaddr_set_node_addr(&addres_integer); 
                               tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, receptor ,aux_timeslot,aux_channel_offset);
-                              aux_no = 0 ;  
+                              aux_no = 0 ;   
+                              addres_integer = 0 
                         }
                             
                         canal++;    
