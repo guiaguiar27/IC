@@ -51,6 +51,7 @@
 #include "sys/log.h"
 #define LOG_MODULE "RPL"
 #define LOG_LEVEL LOG_LEVEL_RPL
+#define endereco "/home/user/contiki-ng/os/arvre.dot"
 
 /*---------------------------------------------------------------------------*/
 void
@@ -58,7 +59,7 @@ rpl_dag_root_print_links(const char *str)
 {
   if(rpl_dag_root_is_root()) {
     if(uip_sr_num_nodes() > 0) {
-      FILE *fl = fopen("/os/net/mac/tsch/arvre.dot", "w");
+      FILE *fl = fopen(endereco, "w");
       fprintf(fl, "digraph g{\n");
       fclose(fl);
       uip_sr_node_t *link;
@@ -73,7 +74,7 @@ rpl_dag_root_print_links(const char *str)
         link = uip_sr_node_next(link);
       }
       LOG_INFO("links: end of list\n");
-      fl = fopen("arvre.dot", "a");
+      fl = fopen(endereco, "a");
       fprintf(fl, "}");
       fclose(fl);
     } else {
@@ -170,29 +171,6 @@ rpl_dag_root_is_root(void)
   return curr_instance.used && curr_instance.dag.rank == ROOT_RANK;
 }
 /*---------------------------------------------------------------------------*/
-void escreve_links(const char *str){
-  LOG_INFO("INICIO DA MINHA FUNÇÃO... TUTURUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-  if(rpl_dag_root_is_root()) {
-    if(uip_sr_num_nodes() > 0) {
-      uip_sr_node_t *link;
-      /* Our routing links */
-      LOG_INFO("links: %u routing links in total (%s)\n", uip_sr_num_nodes(), str);
-      link = uip_sr_node_head();
-      while(link != NULL) {
-        char buf[100];
-	uip_sr_link_snprint(buf, sizeof(buf), link);
-	escreve_arq(buf);
-	LOG_INFO("links: %s\n", buf);
-        link = uip_sr_node_next(link);
-      }
-      LOG_INFO("links: end of list\n");
-    } else {
-      LOG_INFO("No routing links\n");
-    }
-  }
-  LOG_INFO("FIM DA MINHA FUNÇÃO... TUTURUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-}
-
 void escreve_arq(const char *buf){
   FILE *fl;
   char copia[100];
@@ -210,7 +188,7 @@ void escreve_arq(const char *buf){
     else if(copia[x] == ':')
       copia[x] = '_';
   }
-  fl = fopen("/contiki-ng/os/net/mac/tsch/arvre.dot", "a");
+  fl = fopen(endereco, "a");
   fprintf(fl, " %s\n", copia);
   fclose(fl);
 }
