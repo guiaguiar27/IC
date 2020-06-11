@@ -60,6 +60,9 @@ void tsch_schedule_create_minimal(void);
  * \brief Prints out the current schedule (all slotframes and links)
  */
 void tsch_schedule_print(void);
+void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
+int *alocaPacotes(int num_no); 
+void colect_addres(char *ex);
 
 
 /**
