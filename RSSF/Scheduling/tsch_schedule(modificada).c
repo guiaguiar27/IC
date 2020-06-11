@@ -581,11 +581,12 @@ tsch_schedule_create_minimal(void)
                               transmitter = {{addres_integer,0}}
                               linkaddr_set_node_addr(&addres_integer);
                               tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, transmitter ,aux_timeslot,aux_channel_offset); 
-                                aux_no++; 
-                                addres_integer = 0 ;     
+                              aux_no++; 
+                              addres_integer = 0 ;     
                         } 
                         else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
-                          // destino 
+                          // destino  
+
                               aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
                               addres_integer = *aux_addres - '0'; 
                               receptor = {{addres_integer,0}}
