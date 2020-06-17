@@ -18,9 +18,9 @@
 #include <stdio.h>
 #include <stdlib.h> 
 // includes syphony   
-#include "rgraph.h"
-#include "conf.h"
-#include "criaDOT.h"
+#include "net/mac/tsch/rgraph.h"
+#include "net/mac/tsch/conf.h"
+#include "net/mac/tsch/criaDOT.h"
 #define temp_canais 23
 #define peso 1
 
