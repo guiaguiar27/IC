@@ -14,7 +14,9 @@
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
 #define LOG_LEVEL LOG_LEVEL_MAC
-
+ 
+#include <stdio.h>
+#include <stdlib.h> 
 // includes syphony   
 #include "rgraph.h"
 #include "conf.h"

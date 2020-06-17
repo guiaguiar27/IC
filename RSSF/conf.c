@@ -13,7 +13,7 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
-    int x, y;
+    int x ;
     int no_atual;
     srand(time(NULL));
     
@@ -162,7 +162,7 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
    * tam: nº de arestas do grafo da rede
    */
 int **fazMatrizConf(int **mapConf, int **graf_rede, int tam_arest){
-    int **grafoconf, x, y, z, i, j;
+    int **grafoconf, x, y, z, i;
 
     //Aloca e preenche a matriz de conflito
     grafoconf = (int**) malloc(tam_arest * sizeof(int*));
