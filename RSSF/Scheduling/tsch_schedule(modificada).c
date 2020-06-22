@@ -488,7 +488,7 @@ tsch_schedule_create_minimal(void)
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset;     
     int aux_no = 0 ; 
-    char link1 , link2 ; 
+    //char link1 , link2 ; 
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                  //matriz de conflito
@@ -504,8 +504,8 @@ tsch_schedule_create_minimal(void)
     int **aloca_canais,         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    char **nome_no,             //Nome dos nós no grafo da rede
-    *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+    char **nome_no;              //Nome dos nós no grafo da rede
+    //char  *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;   
     adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);  
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
@@ -595,7 +595,7 @@ tsch_schedule_create_minimal(void)
                               linkaddr_set_node_addr(&addres_integer); 
                               tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, receptor ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;   
-                              addres_integer = 0 
+                              addres_integer = 0 ;
                         }
                             
                         canal++;    
