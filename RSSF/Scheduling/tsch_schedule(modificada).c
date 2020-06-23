@@ -443,7 +443,7 @@ int *alocaPacotes(int num_no){
     return vetor; 
 }  
 // tem que icluir no scheduled.h 
-void colect_addres(char *ex){ 
+char colect_addres(char *ex){ 
   printf("Entrou");  
     int tam1, i, idx = 0;   
     tam1 = strlen(ex);  
