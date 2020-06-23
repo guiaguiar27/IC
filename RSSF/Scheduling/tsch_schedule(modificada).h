@@ -56,14 +56,18 @@ int tsch_schedule_init(void);
  * \brief Create a 6tisch minimal schedule with length TSCH_SCHEDULE_DEFAULT_LENGTH
  */
 void tsch_schedule_create_minimal(void);
-/**
- * \brief Prints out the current schedule (all slotframes and links)
- */
-void tsch_schedule_print(void);
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
+
 int *alocaPacotes(int num_no); 
+
 void colect_addres(char *ex);
+
+
+/**
+ * \brief Prints out the current schedule (all slotframes and links)
+ */ 
+void tsch_schedule_print(void);
 
 
 /**
@@ -118,11 +122,9 @@ struct tsch_link *tsch_schedule_get_link_by_handle(uint16_t handle);
  * \brief Looks within a slotframe for a link with a given timeslot
  * \param slotframe The desired slotframe
  * \param timeslot The desired timeslot
- * \param channel_offset The desired channel offset 
  * \return The link if found, NULL otherwise
  */
-struct tsch_link *tsch_schedule_get_link_by_timeslot(struct tsch_slotframe *slotframe,
-                                                     uint16_t timeslot, uint16_t channel_offset);
+struct tsch_link *tsch_schedule_get_link_by_timeslot(struct tsch_slotframe *slotframe, uint16_t timeslot);
 
 /**
  * \brief Removes a link
@@ -136,11 +138,10 @@ int tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link
  * \brief Removes a link from a slotframe and timeslot
  * \param slotframe The slotframe where to look for the link
  * \param timeslot The timeslot where to look for the link within the target slotframe
- * \param channel_offset The channel offset where to look for the link within the target slotframe
  * \return 1 if success, 0 if failure
  */
-int tsch_schedule_remove_link_by_timeslot(struct tsch_slotframe *slotframe,
-                                          uint16_t timeslot);
+int tsch_schedule_remove_link_by_timeslot(struct tsch_slotframe *slotframe, uint16_t timeslot);
+
 
 /**
  * \brief Returns the next active link after a given ASN, and a backup link (for the same ASN, with Rx flag)

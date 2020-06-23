@@ -206,5 +206,3 @@ int **fazMatrizConf(int **mapConf, int **graf_rede, int tam_arest){
 
 
 
-
-
