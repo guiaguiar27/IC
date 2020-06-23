@@ -60,6 +60,7 @@ void tsch_schedule_create_minimal(void);
  * \brief Prints out the current schedule (all slotframes and links)
  */
 void tsch_schedule_print(void);
+
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
 int *alocaPacotes(int num_no); 
 void colect_addres(char *ex);
@@ -139,7 +140,7 @@ int tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link
  * \return 1 if success, 0 if failure
  */
 int tsch_schedule_remove_link_by_timeslot(struct tsch_slotframe *slotframe,
-                                          uint16_t timeslot, uint16_t channel_offset);
+                                          uint16_t timeslot);
 
 /**
  * \brief Returns the next active link after a given ASN, and a backup link (for the same ASN, with Rx flag)
