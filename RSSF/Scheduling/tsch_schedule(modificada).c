@@ -583,7 +583,7 @@ tsch_schedule_create_minimal(void)
                            // utilizar função do linkaddr_copy(&l->addr, address);   
                               aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
                               addres_integer = *aux_addres - '0';  
-                              transmitter = {{addres_integer,0}}
+                              transmitter = {{addres_integer,0}};
                               linkaddr_set_node_addr(&addres_integer);
                               tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, transmitter ,aux_timeslot,aux_channel_offset); 
                               aux_no++; 
@@ -594,7 +594,7 @@ tsch_schedule_create_minimal(void)
 
                               aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
                               addres_integer = *aux_addres - '0'; 
-                              receptor = {{addres_integer,0}}
+                              receptor = {{addres_integer,0}};
                               linkaddr_set_node_addr(&addres_integer); 
                               tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, receptor ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;   
