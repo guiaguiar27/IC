@@ -484,7 +484,11 @@ tsch_schedule_create_minimal(void)
     static linkaddr_t node_generic_address = { { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff } };
  
     struct tsch_slotframe *sf_min;  
+<<<<<<< HEAD
     //int num ;  
+=======
+    
+>>>>>>> 794f3e57a2ee71a75eb187f07843737ccf199d96
     char *aux_addres ;  // armazenara o endereco a convertido em int  
     int *addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
@@ -586,9 +590,15 @@ tsch_schedule_create_minimal(void)
                            // utilizar função do linkaddr_copy(&l->addr, address);   
                               aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
                               addres_integer = *aux_addres - '0';  
+<<<<<<< HEAD
                               linkaddr_copy(&node_generic_address, &linkaddr_node_addr); 
                               node_generic_address.u8[7] = 0xaddres_integer;
                               tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &node_generic_address ,aux_timeslot,aux_channel_offset); 
+=======
+                              //transmitter = {{addres_integer,0}};
+                              //linkaddr_set_node_addr(&addres_integer);
+                              //tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &transmitter ,aux_timeslot,aux_channel_offset); 
+>>>>>>> 794f3e57a2ee71a75eb187f07843737ccf199d96
                               aux_no++; 
                               addres_integer = 0 ;     
                         } 
@@ -597,11 +607,17 @@ tsch_schedule_create_minimal(void)
 
                               aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
                               addres_integer = *aux_addres - '0'; 
+<<<<<<< HEAD
                               //receptor = {{addres_integer,0}};
                               //linkaddr_set_node_addr(&addres_integer);  
                               linkaddr_copy(&node_generic_address, &linkaddr_node_addr); 
                               node_generic_address.u8[7] = 0xaddres_integer;
                               tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &node_generic_address ,aux_timeslot,aux_channel_offset);
+=======
+                              //receptor = {{addres_integer,0}};
+                              //linkaddr_set_node_addr(&addres_integer); 
+                              //tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &node_generic_address ,aux_timeslot,aux_channel_offset);
+>>>>>>> 794f3e57a2ee71a75eb187f07843737ccf199d96
                               aux_no = 0 ;   
                               addres_integer = 0 ;
                         }
