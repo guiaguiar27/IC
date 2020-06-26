@@ -482,7 +482,7 @@ void
 tsch_schedule_create_minimal(void)
 {    
     struct tsch_slotframe *sf_min;  
-    uint8_t link_option_tx,  link_option_rx ; 
+    
     char *aux_addres ;  // armazenara o endereco a convertido em int  
     int *addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
@@ -585,7 +585,7 @@ tsch_schedule_create_minimal(void)
                               addres_integer = *aux_addres - '0';  
                               transmitter = {{addres_integer,0}};
                               linkaddr_set_node_addr(&addres_integer);
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, transmitter ,aux_timeslot,aux_channel_offset); 
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &transmitter ,aux_timeslot,aux_channel_offset); 
                               aux_no++; 
                               addres_integer = 0 ;     
                         } 
@@ -596,7 +596,7 @@ tsch_schedule_create_minimal(void)
                               addres_integer = *aux_addres - '0'; 
                               receptor = {{addres_integer,0}};
                               linkaddr_set_node_addr(&addres_integer); 
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, receptor ,aux_timeslot,aux_channel_offset);
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &receptor ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;   
                               addres_integer = 0 ;
                         }
