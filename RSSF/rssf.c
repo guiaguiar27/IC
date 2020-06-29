@@ -12,9 +12,9 @@ char *colect_addres(char *ex);
 
 int main(){    
     int tam_addres ; // armazenara o strlen 
-    char *aux_addres ;  // armazenara o endereco a convertido em int  
+    char *aux_addres = (char*) malloc(100 * sizeof(char)); ;  // armazenara o endereco a convertido em int  
     
-    int *addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
+    int addres_integer  ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     int tamNo; 
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
@@ -35,7 +35,7 @@ int main(){
     int *pacotes;               //Pacotes por nó no grafo da rede
 
     // alocando espaco para receber o endereco 
-    *aux_addres = (char*)malloc(100*sizeof(char)); 
+
     //Lê o arquivo .dot
     adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);
     
