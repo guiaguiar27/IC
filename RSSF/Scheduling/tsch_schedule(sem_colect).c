@@ -453,8 +453,8 @@ tsch_schedule_create_minimal(void)
     linkaddr_t transmitter , receptor ;  
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset;     
-    int aux_no = 0 ; 
-    //char link1 , link2 ; 
+    int aux_no = 0 ;   
+    
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                  //matriz de conflito
