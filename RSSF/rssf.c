@@ -12,8 +12,8 @@ char *colect_addres(char *ex);
 
 int main(){    
     int tam_addres ; // armazenara o strlen 
-    char *aux_addres = (char*) malloc(100 * sizeof(char)); ;  // armazenara o endereco a convertido em int  
-    
+    char *aux_addres = (char*) malloc(100 * sizeof(char));  // armazenara o endereco a convertido em int  
+    char hex[8]; 
     int addres_integer  ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     int tamNo; 
     int **adj,                  //grafo da rede
@@ -123,7 +123,8 @@ int main(){
                         aloca_canais[canal][cont] = edge_selected; 
                         aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
                        addres_integer = *aux_addres - '0';   
-                       printf("\n Addr_int:  %d\n",addres_integer); 
+                       printf("\n Addr_int:  %d\n",addres_integer);  
+                       printf("%x",addres_integer);
                         canal++;
                     }
                 }
