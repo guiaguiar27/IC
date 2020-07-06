@@ -447,10 +447,8 @@ void
 tsch_schedule_create_minimal(void)
 {    
     struct tsch_slotframe *sf_min;  
-    uint8_t link_option_tx,  link_option_rx ; 
     sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
     tsch_schedule_remove_all_slotframes();   
-    linkaddr_t transmitter , receptor ;  
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset;     
     int aux_no = 0 ;   
@@ -546,15 +544,13 @@ tsch_schedule_create_minimal(void)
                            // utilizar função do linkaddr_copy(&l->addr, address);   
                               
                               tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &tsch_eb_address ,aux_timeslot,aux_channel_offset); 
-                              aux_no++; 
-                              addres_integer = 0 ;     
+                              aux_no++;    
                         } 
                         else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
                           // destino  
 
                               tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &tsch_eb_addres ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;   
-                              addres_integer = 0 ;
                         }
                             
                         canal++;    
