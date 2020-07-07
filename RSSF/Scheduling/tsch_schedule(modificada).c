@@ -515,7 +515,7 @@ tsch_schedule_create_minimal(void)
     conf = mapGraphConf(adj, tamNo, tamAresta);
     //Gera a matriz de conflito
     matconf = fazMatrizConf(conf, adj, tamAresta);   
-    
+    pacotes = alocaPacotes(tamNo);
     // inicia a alocaçao de canais  
     aloca_canais = (int**) malloc(16 * sizeof(int*));
     for(x = 0; x < 16; x++){
