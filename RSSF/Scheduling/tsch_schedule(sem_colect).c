@@ -501,7 +501,7 @@ tsch_schedule_create_minimal(void)
     // encontra o total de pacotes  
     for(z = 0; z < tamNo; z++)
         if(z != raiz)
-            total_pacotes += pacotes[z]; 
+            total_pacotes = total_pacotes + pacotes[z]; 
 
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
     
