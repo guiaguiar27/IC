@@ -549,7 +549,7 @@ tsch_schedule_create_minimal(void)
                         else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
                           // destino  
 
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &tsch_eb_addres ,aux_timeslot,aux_channel_offset);
+                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &tsch_eb_address ,aux_timeslot,aux_channel_offset);
                               aux_no = 0 ;   
                         }
                             
