@@ -61,8 +61,6 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 
 int *alocaPacotes(int num_no); 
 
-char colect_addres(char *ex);
-
 
 /**
  * \brief Prints out the current schedule (all slotframes and links)

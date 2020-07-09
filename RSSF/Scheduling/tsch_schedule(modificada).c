@@ -443,61 +443,29 @@ int *alocaPacotes(int num_no){
     return vetor; 
 }  
 // tem que icluir no scheduled.h 
-char colect_addres(char *ex){ 
-  printf("Entrou");  
-    int tam1, i, idx = 0;   
-    tam1 = strlen(ex);  
-    char *colect = (char*) malloc(100 * sizeof(char)); 
-    colect[0] = '\0';
-    for(i = 0 ; i < tam1 ; i++){   
-        //printf("%s\n",colect );
-        if(ex[i] == '_'){ 
-            i++; 
-            while(ex[i] != '_' && ex[i] != '\0'){         
-                colect[idx] = ex[i];
-                idx++;
-                colect[idx] = '\0';
-                i++; 
-            //printf("%s\n",colect );  
-            //if(colect == "_") break ; 
-            } 
-            //i--;
-        }           
-        if(ex[i] == '\0') break ;  
-    }
-    
-    while(colect[i] != '\0'){  
-        if(colect[i] == ' '){ 
-            colect[i] = 'p' ;
-        }         
-        i++;
-        if(colect[i] == '\0') break ; 
 
-    } 
-    
-    //printf("%s\n",colect);
-    return colect;  
-}
 void
 tsch_schedule_create_minimal(void)
 {     
-    static linkaddr_t node_generic_address = { { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff } };
-    struct tsch_slotframe *sf_min;  
-      
-    char *aux_addres = (char*) malloc(100 * sizeof(char));    // armazenara o endereco a convertido em int  
-    int addres_integer ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
-    sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
-    tsch_schedule_remove_all_slotframes();   
-    //linkaddr_t transmitter , receptor ;  
+     struct tsch_slotframe *sf_min = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
     uint16_t aux_timeslot; 
-    uint16_t aux_channel_offset;     
-    int aux_no = 0 ; 
+    uint16_t aux_channel_offset; 
+    linkadd_t addr;  
+    uint8_t link_options; 
+    int addr_integer = 0 ; 
+    
+    int tam1, i, idx,  aux_no = 0 ; 
+    // coleta do id do nó  
+    char *colect = (char*) malloc(100 * sizeof(char));  
+    colect[0] = '\0'; 
+
+
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                  //matriz de conflito
     tamNo,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
+    z, i, j ;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -509,7 +477,8 @@ tsch_schedule_create_minimal(void)
     edge_selected, temp;        //Variáveis temporárias
     char **nome_no;              //Nome dos nós no grafo da rede
     //char  *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
-    int *pacotes;   
+    int *pacotes; 
+
     adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);  
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
     conf = mapGraphConf(adj, tamNo, tamAresta);
@@ -544,8 +513,8 @@ tsch_schedule_create_minimal(void)
             total_pacotes = total_pacotes+ pacotes[z]; 
 
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-    
-    while(pacote_entregue < total_pacotes){
+
+     while(pacote_entregue < total_pacotes){
         LOG_INFO("\nMatching\n");
         
         //Aloca os canais
@@ -570,46 +539,60 @@ tsch_schedule_create_minimal(void)
                         //nome_no[conf[edge_selected[1]]];--------> no q recebe
 
                            
-                          /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
-   * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
-   * but is required according to 802.15.4e if also used for EB transmission.
-   * Timeslot: 0, channel offset: 0. */
                             // cada enlace desse for deve ser um link distinto 
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem  
                 
-                        if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){   
-                          
-                          // emissor 
-                           // utilizar função do linkaddr_copy(&l->addr, address);   
-                              *aux_addres = &colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
-                              addres_integer = *aux_addres - '0';  
-                              
-                              linkaddr_copy(&node_generic_address, &linkaddr_node_addr); 
-                              node_generic_address.u8[7] = addres_integer;
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &node_generic_address ,aux_timeslot,aux_channel_offset); 
-                             //transmitter = {{addres_integer,0}};
-                              //linkaddr_set_node_addr(&addres_integer);
-                              //tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &transmitter ,aux_timeslot,aux_channel_offset); 
-
-                              aux_no++; 
-                              addres_integer = 0 ;     
+                        if(aux_no = 0){    
+                           tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);   
+                           // extrai o id do nó a partir do endereço contido no arquivo.dot  
+                            for(i = 0 ; i < tam1 ; i++){   
+                                    
+                                    if(ex[i] == '_'){ 
+                                        i++; 
+                                        while(ex[i] != '_' && ex[i] != '\0'){         
+                                            colect[idx] = ex[i];
+                                            idx++;
+                                            colect[idx] = '\0';
+                                            i++; 
+                                        }}           
+                                    if(ex[i] == '\0') break ;   }             
+                           // converte o id para inteiro                  
+                           addr_integer = *aux_addres - '0';  
+                           // atribui o id para o novo endereco                
+                           for(j = 0; j < sizeof(addr); j += 2) {
+                                addr.u8[j + 1] = addr_integer & 0xff;
+                                addr.u8[j + 0] = addr_integer >> 8;
+                                }
+                            link_options =  LINK_OPTION_TX
+                            // cria um novo link
+                            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
+                             
+                            aux_no++; 
+                            addr_integer = 0 ;     
                         } 
-                        else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
-                          // destino  
-
-                              *aux_addres = &colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]); 
-                              addres_integer = *aux_addres - '0'; 
-                            
-                              linkaddr_copy(&node_generic_address, &linkaddr_node_addr); 
-                              node_generic_address.u8[7] = addres_integer;
-                              tsch_schedule_add_link  (sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &node_generic_address ,aux_timeslot,aux_channel_offset);
-                              //receptor = {{addres_integer,0}};
-                              //linkaddr_set_node_addr(&addres_integer); 
-                              //tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &node_generic_address ,aux_timeslot,aux_channel_offset);
-
-                              aux_no = 0 ;   
-                              addres_integer = 0 ;
+                        else if(aux_no = 1 ){  
+                          // destino   
+                          tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);  
+                            for(i = 0 ; i < tam1 ; i++){   
+                                    if(ex[i] == '_'){ 
+                                        i++; 
+                                        while(ex[i] != '_' && ex[i] != '\0'){         
+                                            colect[idx] = ex[i];
+                                            idx++;
+                                            colect[idx] = '\0';
+                                            i++; 
+                                        } }           
+                                    if(ex[i] == '\0') break ; }              
+                            addr_integer = *aux_addres - '0';
+                            for(j = 0; j < sizeof(addr); j += 2) {
+                                addr.u8[j + 1] = addr_integer & 0xff;
+                                addr.u8[j + 0] = addr_integer >> 8;
+                            }
+                            link_options =  LINK_OPTION_TX
+                            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
+                              aux_no++; 
+                            addr_integer = 0 ;     
                         }
                             
                         canal++;    
@@ -630,17 +613,8 @@ tsch_schedule_create_minimal(void)
         
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
     }     
-  /* First, empty current schedule */  
 
-  /* Build 6TiSCH minimal schedule.
-   * We pick a slotframe length of TSCH_SCHEDULE_DEFAULT_LENGTH */
- 
-  
-  LOG_PRINT("----- Escalonamento feito  -----\n"); 
-   // a cada nó selecionado vou ir adicionando 
- 
-    
-   
+
 }
 
 /*---------------------------------------------------------------------------*/
