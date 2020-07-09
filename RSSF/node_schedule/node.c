@@ -62,7 +62,7 @@ int *alocaPacotes(int num_no){
 // cria um  unico slotframe slotframe   
 static  void 
 initialize_tsch_schedule_global(void){ 
-    int i, j;
+  
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
@@ -85,7 +85,7 @@ initialize_tsch_schedule_root()
     struct tsch_slotframe *sf_min = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset; 
-    linkadd_t addr;  
+    linkaddr_t addr;  
     uint8_t link_options; 
     int addr_integer = 0 ; 
     
@@ -100,7 +100,7 @@ initialize_tsch_schedule_root()
     **matconf,                  //matriz de conflito
     tamNo,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i, j ;                       //Variáveis temporárias
+    z, j ;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -178,53 +178,53 @@ initialize_tsch_schedule_root()
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem  
                 
-                        if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){    
+                        if(aux_no = 0){    
                            tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);   
                            // extrai o id do nó a partir do endereço contido no arquivo.dot  
                             for(i = 0 ; i < tam1 ; i++){   
                                     
-                                    if(ex[i] == '_'){ 
+                                    if(nome_no[i] == '_'){ 
                                         i++; 
-                                        while(ex[i] != '_' && ex[i] != '\0'){         
-                                            colect[idx] = ex[i];
+                                        while(nome_no[i] != '_' && nome_no[i] != '\0'){         
+                                            colect[idx] = nome_no[i];
                                             idx++;
                                             colect[idx] = '\0';
                                             i++; 
                                         }}           
-                                    if(ex[i] == '\0') break ;   }             
+                                    if(nome_no[i] == '\0') break ;   }             
                            // converte o id para inteiro                  
-                           addr_integer = *aux_addres - '0';  
+                           addr_integer = *colect - '0';  
                            // atribui o id para o novo endereco                
                            for(j = 0; j < sizeof(addr); j += 2) {
                                 addr.u8[j + 1] = addr_integer & 0xff;
                                 addr.u8[j + 0] = addr_integer >> 8;
                                 }
-                            link_options =  LINK_OPTION_TX
+                            link_options =  LINK_OPTION_TX; 
                             // cria um novo link
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
                              
                             aux_no++; 
                             addr_integer = 0 ;     
                         } 
-                        else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
+                        else if(aux_no = 1 ){  
                           // destino   
                           tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);  
                             for(i = 0 ; i < tam1 ; i++){   
-                                    if(ex[i] == '_'){ 
+                                    if(nome_no[i] == '_'){ 
                                         i++; 
-                                        while(ex[i] != '_' && ex[i] != '\0'){         
-                                            colect[idx] = ex[i];
+                                        while(nome_no[i] != '_' && nome_no[i] != '\0'){         
+                                            colect[idx] = nome_no[i];
                                             idx++;
                                             colect[idx] = '\0';
                                             i++; 
                                         } }           
-                                    if(ex[i] == '\0') break ; }              
-                            addr_integer = *aux_addres - '0';
+                                    if(nome_no[i] == '\0') break ; }              
+                            addr_integer = *colect - '0';
                             for(j = 0; j < sizeof(addr); j += 2) {
                                 addr.u8[j + 1] = addr_integer & 0xff;
                                 addr.u8[j + 0] = addr_integer >> 8;
                             }
-                            link_options =  LINK_OPTION_TX
+                            link_options =  LINK_OPTION_RX; 
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
                               aux_no++; 
                             addr_integer = 0 ;     
@@ -279,7 +279,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
 
-  initialize_tsch_schedule();
+  initialize_tsch_schedule_global();
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
