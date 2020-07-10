@@ -3,7 +3,7 @@ all: $(CONTIKI_PROJECT)
 
 PLATFORMS_ONLY = cooja
 
-CONTIKI=../../..
+CONTIKI= ../..
 
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
