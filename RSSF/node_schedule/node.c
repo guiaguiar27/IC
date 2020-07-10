@@ -178,20 +178,20 @@ initialize_tsch_schedule_root()
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem  
                 
-                        if(aux_no = 0){    
+                        if(aux_no ==  0){    
                            tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);   
                            // extrai o id do nó a partir do endereço contido no arquivo.dot  
                             for(i = 0 ; i < tam1 ; i++){   
                                     
-                                    if(nome_no[i] == '_'){ 
+                                    if(nome_no[conf[i][aux_no]] == '_'){ 
                                         i++; 
-                                        while(nome_no[i] != '_' && nome_no[i] != '\0'){         
-                                            colect[idx] = nome_no[i];
+                                        while(nome_no[conf[i][aux_no]] != '_' && nome_no[conf[i][aux_no]] != '\0'){         
+                                            colect[idx] = nome_no[conf[i][aux_no]];
                                             idx++;
                                             colect[idx] = '\0';
                                             i++; 
                                         }}           
-                                    if(nome_no[i] == '\0') break ;   }             
+                                    if(nome_no[conf[i][aux_no]] == '\0') break ;   }             
                            // converte o id para inteiro                  
                            addr_integer = *colect - '0';  
                            // atribui o id para o novo endereco                
@@ -206,19 +206,19 @@ initialize_tsch_schedule_root()
                             aux_no++; 
                             addr_integer = 0 ;     
                         } 
-                        else if(aux_no = 1 ){  
+                        else if(aux_no == 1 ){  
                           // destino   
                           tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);  
                             for(i = 0 ; i < tam1 ; i++){   
                                     if(nome_no[i] == '_'){ 
                                         i++; 
-                                        while(nome_no[i] != '_' && nome_no[i] != '\0'){         
-                                            colect[idx] = nome_no[i];
+                                        while(nome_no[conf[i][aux_no]] != '_' && nome_no[conf[i][aux_no]] != '\0'){         
+                                            colect[idx] = nome_no[conf[i][aux_no]];
                                             idx++;
                                             colect[idx] = '\0';
                                             i++; 
                                         } }           
-                                    if(nome_no[i] == '\0') break ; }              
+                                    if(nome_no[conf[i][aux_no]] == '\0') break ; }              
                             addr_integer = *colect - '0';
                             for(j = 0; j < sizeof(addr); j += 2) {
                                 addr.u8[j + 1] = addr_integer & 0xff;
