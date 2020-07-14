@@ -124,7 +124,7 @@ int main(){
                         aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
                        addres_integer = *aux_addres - '0';   
                        printf("\n Addr_int:  %d\n",addres_integer);  
-                       printf("%x",addres_integer);
+                      // printf("%x",addres_integer);
                         canal++;
                     }
                 }
@@ -245,7 +245,7 @@ char *colect_addres(char *ex){
     } 
     
     //printf("%s\n",colect);
-    return colect;  
+    return (char *)colect;  
 } 
 
 

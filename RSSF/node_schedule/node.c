@@ -57,7 +57,44 @@ int *alocaPacotes(int num_no){
     for(x = 0; x < num_no; x++)
         vetor[x] = peso;
     return vetor; 
-}  
+}   
+
+char *colect_addres(char *ex){      
+    printf("Entrou");  
+    int tam1, i, idx = 0;   
+    tam1 = strlen(ex);  
+    char *colect = (char*) malloc(100 * sizeof(char)); 
+    colect[0] = '\0';
+    for(i = 0 ; i < tam1 ; i++){   
+        //printf("%s\n",colect );
+        if(ex[i] == '_'){ 
+            i++; 
+            while(ex[i] != '_' && ex[i] != '\0'){         
+                colect[idx] = ex[i];
+                idx++;
+                colect[idx] = '\0';
+                i++; 
+            //printf("%s\n",colect );  
+            //if(colect == "_") break ; 
+            } 
+            //i--;
+        }           
+        if(ex[i] == '\0') break ;  
+    }
+    
+    while(colect[i] != '\0'){  
+        if(colect[i] == ' '){ 
+            colect[i] = 'p' ;
+        }         
+        i++;
+        if(colect[i] == '\0') break ; 
+
+    } 
+    
+    //printf("%s\n",colect);
+    return (char *)colect;  
+} 
+
  
 // cria um  unico slotframe slotframe   
 static  void 
@@ -76,7 +113,7 @@ initialize_tsch_schedule_global(void){
       slot_offset, channel_offset);
  
     
-}
+}  
 
  static void 
 initialize_tsch_schedule_root()
@@ -89,10 +126,10 @@ initialize_tsch_schedule_root()
     uint8_t link_options; 
     int addr_integer = 0 ; 
     
-    int tam1, i, idx,  aux_no = 0 ; 
+    //int tam1, i, idx,  aux_no = 0 ; 
     // coleta do id do nó  
-    char *colect = (char*) malloc(100 * sizeof(char));  
-    colect[0] = '\0'; 
+    //char *colect = (char*) malloc(100 * sizeof(char));  
+    //colect[0] = '\0'; 
 
 
     int **adj,                  //grafo da rede
@@ -179,21 +216,7 @@ initialize_tsch_schedule_root()
                 // para quem vai e pra quem recebe a mensagem  
                 
                         if(aux_no ==  0){    
-                           tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);   
-                           // extrai o id do nó a partir do endereço contido no arquivo.dot  
-                            for(i = 0 ; i < tam1 ; i++){   
-                                    
-                                    if(nome_no[conf[i][aux_no]] == '_'){ 
-                                        i++; 
-                                        while(nome_no[conf[i][aux_no]] != '_' && nome_no[conf[i][aux_no]] != '\0'){         
-                                            colect[idx] = nome_no[conf[i][aux_no]];
-                                            idx++;
-                                            colect[idx] = '\0';
-                                            i++; 
-                                        }}           
-                                    if(nome_no[conf[i][aux_no]] == '\0') break ;   }             
-                           // converte o id para inteiro                  
-                           addr_integer = *colect - '0';  
+                           addr_integer = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
                            // atribui o id para o novo endereco                
                            for(j = 0; j < sizeof(addr); j += 2) {
                                 addr.u8[j + 1] = addr_integer & 0xff;
@@ -207,19 +230,7 @@ initialize_tsch_schedule_root()
                             addr_integer = 0 ;     
                         } 
                         else if(aux_no == 1 ){  
-                          // destino   
-                          tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);  
-                            for(i = 0 ; i < tam1 ; i++){   
-                                    if(nome_no[i] == '_'){ 
-                                        i++; 
-                                        while(nome_no[conf[i][aux_no]] != '_' && nome_no[conf[i][aux_no]] != '\0'){         
-                                            colect[idx] = nome_no[conf[i][aux_no]];
-                                            idx++;
-                                            colect[idx] = '\0';
-                                            i++; 
-                                        } }           
-                                    if(nome_no[conf[i][aux_no]] == '\0') break ; }              
-                            addr_integer = *colect - '0';
+                            addr_integer = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
                             for(j = 0; j < sizeof(addr); j += 2) {
                                 addr.u8[j + 1] = addr_integer & 0xff;
                                 addr.u8[j + 0] = addr_integer >> 8;
