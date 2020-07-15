@@ -126,7 +126,7 @@ initialize_tsch_schedule_root()
     uint8_t link_options; 
     int addr_integer = 0 ; 
     
-    //int tam1, i, idx,  aux_no = 0 ; 
+    int  i,aux_no = 0 ; 
     // coleta do id do nó  
     //char *colect = (char*) malloc(100 * sizeof(char));  
     //colect[0] = '\0'; 
