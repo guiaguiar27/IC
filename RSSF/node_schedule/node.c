@@ -124,7 +124,7 @@ initialize_tsch_schedule_root()
     uint16_t aux_channel_offset; 
     linkaddr_t addr;  
     uint8_t link_options; 
-    int addr_integer = 0 ; 
+    char addr_aux ; 
     
     int  i,aux_no = 0 ; 
     // coleta do id do nó  
@@ -216,29 +216,29 @@ initialize_tsch_schedule_root()
                 // para quem vai e pra quem recebe a mensagem  
                 
                         if(aux_no ==  0){    
-                           addr_integer = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
+                           addr_aux = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
                            // atribui o id para o novo endereco                
                            for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = addr_integer & 0xff;
-                                addr.u8[j + 0] = addr_integer >> 8;
+                                addr.u8[j + 1] = addr_aux & 0xff;
+                                addr.u8[j + 0] = addr_aux >> 8;
                                 }
                             link_options =  LINK_OPTION_TX; 
                             // cria um novo link
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
                              
                             aux_no++; 
-                            addr_integer = 0 ;     
+                            strcpy(addr_aux , " ");     
                         } 
                         else if(aux_no == 1 ){  
-                            addr_integer = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
+                            addr_aux = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
                             for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = addr_integer & 0xff;
-                                addr.u8[j + 0] = addr_integer >> 8;
+                                addr.u8[j + 1] = addr_aux & 0xff;
+                                addr.u8[j + 0] = addr_aux >> 8;
                             }
                             link_options =  LINK_OPTION_RX; 
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
                               aux_no++; 
-                            addr_integer = 0 ;     
+                            strcpy(addr_aux, " ")    
                         }
                             
                         canal++;    
