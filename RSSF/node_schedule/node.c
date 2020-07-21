@@ -219,8 +219,8 @@ initialize_tsch_schedule_root()
                            //addr_aux =  - '0';  
                            // atribui o id para o novo endereco                
                            for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = *colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) & 0xff;
-                                addr.u8[j + 0] = *colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) >> 8;
+                                addr.u8[j + 1] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) & 0xff;
+                                addr.u8[j + 0] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) >> 8;
                                 }
                             link_options =  LINK_OPTION_TX; 
                             // cria um novo link
@@ -232,8 +232,8 @@ initialize_tsch_schedule_root()
                         else if(aux_no == 1 ){  
                             //addr_aux = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
                             for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = *colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) & 0xff;
-                                addr.u8[j + 0] = *colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) >> 8;
+                                addr.u8[j + 1] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) & 0xff;
+                                addr.u8[j + 0] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) >> 8;
                             }
                             link_options =  LINK_OPTION_RX; 
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
