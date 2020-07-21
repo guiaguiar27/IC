@@ -124,7 +124,7 @@ initialize_tsch_schedule_root()
     uint16_t aux_channel_offset; 
     linkaddr_t addr;  
     uint8_t link_options; 
-    char addr_aux ; 
+    //char addr_aux ; 
     
     int  i,aux_no = 0 ; 
     // coleta do id do nó  

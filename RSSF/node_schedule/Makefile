@@ -8,7 +8,10 @@ CONTIKI= ../..
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
 
-MAKE_MAC = MAKE_MAC_TSCH
+MAKE_MAC = MAKE_MAC_TSCH 
+
+PROJECT_SOURCEFILES += rsa_get_size.c 
+MODULES += ./tomcrypt
 
 include $(CONTIKI)/Makefile.dir-variables
 MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell
