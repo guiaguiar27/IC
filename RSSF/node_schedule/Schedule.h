@@ -1,3 +1,10 @@
+#include "net/mac/tsch/tsch.h" 
+#include "contiki.h"
+#include "net/ipv6/simple-udp.h"
+#include "lib/random.h"
+#include "sys/node-id.h"
+#include "sys/log.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "rgraph.h"
