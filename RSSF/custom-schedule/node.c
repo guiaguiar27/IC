@@ -6,7 +6,7 @@
 #include "sys/node-id.h"
 #include "sys/log.h"
 
-#include <stdio.h>s
+#include <stdio.h>
 #include <stdlib.h>
 #include "rgraph.h"
 #include "conf.h"
