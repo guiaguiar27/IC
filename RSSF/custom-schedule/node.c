@@ -124,7 +124,8 @@ initialize_tsch_schedule_root()
     uint8_t link_options; 
     //char addr_aux ; 
     
-    int  i,aux_no = 0 ; 
+    int  i,aux_no = 0 ;  
+    int aux_addr = 0 ; 
     // coleta do id do nó  
     //char *colect = (char*) malloc(100 * sizeof(char));  
     //colect[0] = '\0'; 
@@ -215,10 +216,11 @@ initialize_tsch_schedule_root()
                 
                         if(aux_no ==  0){    
                            //addr_aux =  - '0';  
-                           // atribui o id para o novo endereco                
+                           // atribui o id para o novo endereco       
+                           aux_addr = atoi(colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]));          
                            for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) & 0xff;
-                                addr.u8[j + 0] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) >> 8;
+                                addr.u8[j + 1] = aux_addr & 0xff;
+                                addr.u8[j + 0] = aux_addr >> 8;
                                 }
                             link_options =  LINK_OPTION_TX; 
                             // cria um novo link
@@ -227,11 +229,11 @@ initialize_tsch_schedule_root()
                             aux_no++; 
                             //strcpy(addr_aux , " ");     
                         } 
-                        else if(aux_no == 1 ){  
-                            //addr_aux = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) - '0';  
+                        else if(aux_no == 1 ){   
+                            aux_addr = atoi(colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]])); 
                             for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) & 0xff;
-                                addr.u8[j + 0] = colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]) >> 8;
+                                addr.u8[j + 1] = aux_addr & 0xff;
+                                addr.u8[j + 0] = aux_addr >> 8;
                             }
                             link_options =  LINK_OPTION_RX; 
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
