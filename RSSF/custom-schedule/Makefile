@@ -1,7 +1,9 @@
 CONTIKI_PROJECT = node
 all: $(CONTIKI_PROJECT)
 
-PLATFORMS_ONLY = cooja
+PROJECT_SOURCEFILES += node.c
+
+#PLATFORMS_ONLY = cooja
 
 CONTIKI= ../..
 
