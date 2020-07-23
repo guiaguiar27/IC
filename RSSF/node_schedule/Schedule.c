@@ -1,4 +1,4 @@
-#include "schedule.h"  
+#include "Schedule.h"  
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int i;
