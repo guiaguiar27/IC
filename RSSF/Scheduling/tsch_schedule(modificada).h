@@ -59,7 +59,8 @@ void tsch_schedule_create_minimal(void);
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
 
-int *alocaPacotes(int num_no); 
+int *alocaPacotes(int num_no);  
+char *colect_addres(char *ex)
 
 
 /**

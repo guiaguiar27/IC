@@ -418,6 +418,41 @@ tsch_schedule_init(void)
 /* Create a 6TiSCH minimal schedule */
 
 
+char *colect_addres(char *ex){      
+    printf("Entrou");  
+    int tam1, i, idx = 0;   
+    tam1 = strlen(ex);  
+    char *colect = (char*) malloc(100 * sizeof(char)); 
+    colect[0] = '\0';
+    for(i = 0 ; i < tam1 ; i++){   
+        //printf("%s\n",colect );
+        if(ex[i] == '_'){ 
+            i++; 
+            while(ex[i] != '_' && ex[i] != '\0'){         
+                colect[idx] = ex[i];
+                idx++;
+                colect[idx] = '\0';
+                i++; 
+            //printf("%s\n",colect );  
+            //if(colect == "_") break ; 
+            } 
+            //i--;
+        }           
+        if(ex[i] == '\0') break ;  
+    }
+    
+    while(colect[i] != '\0'){  
+        if(colect[i] == ' '){ 
+            colect[i] = 'p' ;
+        }         
+        i++;
+        if(colect[i] == '\0') break ; 
+
+    } 
+    
+    //printf("%s\n",colect);
+    return (char *)colect;  
+}  
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int i;
 
@@ -447,17 +482,19 @@ int *alocaPacotes(int num_no){
 void
 tsch_schedule_create_minimal(void)
 {     
-     struct tsch_slotframe *sf_min = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+    struct tsch_slotframe *sf_min = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset; 
-    linkadd_t addr;  
-    uint8_t link_options; 
-    int addr_integer = 0 ; 
+    static linkaddr_t addr = { { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff } }; 
+      
+    uint8_t link_op tions; 
+    //char addr_aux ; 
     
-    int tam1, i, idx,  aux_no = 0 ; 
+    int  i,aux_no = 0 ;  
+    int aux_addr = 0 ; 
     // coleta do id do nó  
-    char *colect = (char*) malloc(100 * sizeof(char));  
-    colect[0] = '\0'; 
+    //char *colect = (char*) malloc(100 * sizeof(char));  
+    //colect[0] = '\0'; 
 
 
     int **adj,                  //grafo da rede
@@ -465,7 +502,7 @@ tsch_schedule_create_minimal(void)
     **matconf,                  //matriz de conflito
     tamNo,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i, j ;                       //Variáveis temporárias
+    z, j ;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -543,56 +580,31 @@ tsch_schedule_create_minimal(void)
                 // tenho q descobrir como passar a informação do link como parametro 
                 // para quem vai e pra quem recebe a mensagem  
                 
-                        if(aux_no = 0){    
-                           tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);   
-                           // extrai o id do nó a partir do endereço contido no arquivo.dot  
-                            for(i = 0 ; i < tam1 ; i++){   
-                                    
-                                    if(ex[i] == '_'){ 
-                                        i++; 
-                                        while(ex[i] != '_' && ex[i] != '\0'){         
-                                            colect[idx] = ex[i];
-                                            idx++;
-                                            colect[idx] = '\0';
-                                            i++; 
-                                        }}           
-                                    if(ex[i] == '\0') break ;   }             
-                           // converte o id para inteiro                  
-                           addr_integer = *aux_addres - '0';  
-                           // atribui o id para o novo endereco                
+                        if(aux_no ==  0){    
+                           //addr_aux =  - '0';  
+                           // atribui o id para o novo endereco       
+                           aux_addr = atoi(colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]));          
                            for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = addr_integer & 0xff;
-                                addr.u8[j + 0] = addr_integer >> 8;
+                                addr.u8[j + 1] = aux_addr & 0xff;
+                                addr.u8[j + 0] = aux_addr >> 8;
                                 }
-                            link_options =  LINK_OPTION_TX
+                            link_options =  LINK_OPTION_TX; 
                             // cria um novo link
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
                              
                             aux_no++; 
-                            addr_integer = 0 ;     
+                            //strcpy(addr_aux , " ");     
                         } 
-                        else if(aux_no = 1 ){  
-                          // destino   
-                          tam1 = strlen(nome_no[conf[aloca_canais[canal][cont]][aux_no]]);  
-                            for(i = 0 ; i < tam1 ; i++){   
-                                    if(ex[i] == '_'){ 
-                                        i++; 
-                                        while(ex[i] != '_' && ex[i] != '\0'){         
-                                            colect[idx] = ex[i];
-                                            idx++;
-                                            colect[idx] = '\0';
-                                            i++; 
-                                        } }           
-                                    if(ex[i] == '\0') break ; }              
-                            addr_integer = *aux_addres - '0';
+                        else if(aux_no == 1 ){   
+                            aux_addr = atoi(colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]])); 
                             for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = addr_integer & 0xff;
-                                addr.u8[j + 0] = addr_integer >> 8;
+                                addr.u8[j + 1] = aux_addr & 0xff;
+                                addr.u8[j + 0] = aux_addr >> 8;
                             }
-                            link_options =  LINK_OPTION_TX
+                            link_options =  LINK_OPTION_RX; 
                             tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
                               aux_no++; 
-                            addr_integer = 0 ;     
+                            //strcpy(addr_aux, " ")    
                         }
                             
                         canal++;    
@@ -615,7 +627,8 @@ tsch_schedule_create_minimal(void)
     }     
 
 
-}
+}  
+
 
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
