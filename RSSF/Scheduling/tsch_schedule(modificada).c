@@ -417,6 +417,21 @@ tsch_schedule_init(void)
 /*---------------------------------------------------------------------------*/
 /* Create a 6TiSCH minimal schedule */
 
+void tsch_schedule_create_minimal(void)
+
+{
+
+  struct tsch_slotframe *sf_min;
+  tsch_schedule_remove_all_slotframes();
+
+  sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
+  tsch_schedule_add_link(sf_min,
+      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      0, 0);
+
+}
+
 
 char *colect_addres(char *ex){      
     printf("Entrou");  
@@ -477,10 +492,11 @@ int *alocaPacotes(int num_no){
         vetor[x] = peso;
     return vetor; 
 }  
-// tem que icluir no scheduled.h 
+// tem que icluir no scheduled.h  
+
 
 void
-tsch_schedule_create_minimal(void)
+tsch_schedule_own(void)
 {     
     struct tsch_slotframe *sf_min = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
     uint16_t aux_timeslot; 

@@ -55,7 +55,9 @@ int tsch_schedule_init(void);
 /**
  * \brief Create a 6tisch minimal schedule with length TSCH_SCHEDULE_DEFAULT_LENGTH
  */
-void tsch_schedule_create_minimal(void);
+void tsch_schedule_create_minimal(void); 
+void
+tsch_schedule_own(void);
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
 
