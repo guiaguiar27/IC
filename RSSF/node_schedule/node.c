@@ -222,8 +222,7 @@ initialize_tsch_schedule_root()
                                 }
                             link_options =  LINK_OPTION_TX; 
                             // cria um novo link
-                            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
-                             
+                            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset);   
                             aux_no++; 
                             //strcpy(addr_aux , " ");     
                         } 
@@ -303,8 +302,10 @@ PROCESS_THREAD(node_process, ev, data)
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   // colocar no ulitmo como nó raiz  
+  NETSTACK_MAC.on();
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start(); 
+    
     initialize_tsch_schedule_root(); 
 
   }
