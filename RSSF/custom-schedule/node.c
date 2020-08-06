@@ -6,7 +6,7 @@
 #include "sys/node-id.h"
 #include "sys/log.h"
 
-#include <stdio.h>
+#include <stdio.h>s
 #include <stdlib.h>
 #include "rgraph.h"
 #include "conf.h"
@@ -38,7 +38,8 @@ AUTOSTART_PROCESSES(&node_process);
 // cria um  unico slotframe slotframe   
 static  void 
 initialize_tsch_schedule_global(void){ 
-  
+  linkaddr_t addr; 
+  linkaddr_t addr_r ; 
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
@@ -52,216 +53,45 @@ initialize_tsch_schedule_global(void){
       slot_offset, channel_offset);
  
     
-}   
-
-void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
-    int i;
-
-    for(i = 0; i < 16; i++){
-        if(aloca_canal[i][tempo] == -1)
-            continue;
-        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]]--;
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]]++;
-        }
-        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-            (*pacote_entregue)++;
-    }
-}
-
-int *alocaPacotes(int num_no){
-    int *vetor, x;
-    vetor = (int*) malloc(num_no * sizeof(int));
-    for(x = 0; x < num_no; x++)
-        vetor[x] = peso;
-    return vetor; 
-}   
-
-char *colect_addres(char *ex){      
-    printf("Entrou");  
-    int tam1, i, idx = 0;   
-    tam1 = strlen(ex);  
-    char *colect = (char*) malloc(100 * sizeof(char)); 
-    colect[0] = '\0';
-    for(i = 0 ; i < tam1 ; i++){   
-        //printf("%s\n",colect );
-        if(ex[i] == '_'){ 
-            i++; 
-            while(ex[i] != '_' && ex[i] != '\0'){         
-                colect[idx] = ex[i];
-                idx++;
-                colect[idx] = '\0';
-                i++; 
-            //printf("%s\n",colect );  
-            //if(colect == "_") break ; 
-            } 
-            //i--;
-        }           
-        if(ex[i] == '\0') break ;  
-    }
-    
-    while(colect[i] != '\0'){  
-        if(colect[i] == ' '){ 
-            colect[i] = 'p' ;
-        }         
-        i++;
-        if(colect[i] == '\0') break ; 
-
-    } 
-    
-    //printf("%s\n",colect);
-    return (char *)colect;  
-}  
-
-static void 
-initialize_tsch_schedule_root()
-{
-  // variaveis padrão do contiki_ng rodando tsch    
-    struct tsch_slotframe *sf_min = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-    uint16_t aux_timeslot; 
-    uint16_t aux_channel_offset; 
-    linkaddr_t addr;  
-    uint8_t link_options; 
-    //char addr_aux ; 
-    
-    int  i,aux_no = 0 ;  
-    int aux_addr = 0 ; 
-    // coleta do id do nó  
-    //char *colect = (char*) malloc(100 * sizeof(char));  
-    //colect[0] = '\0'; 
-
-
-    int **adj,                  //grafo da rede
-    **conf,                     //mapa do grafo de conflito pro grafo da rede
-    **matconf,                  //matriz de conflito
-    tamNo,                      //Nº de nós da rede
-    tamAresta,                  //Nº de arestas da rede
-    z, j ;                       //Variáveis temporárias
-    int **matching,             //Matching da rede
-    pacote_entregue = 0, 
-    total_pacotes = 0, 
-    raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária
-    int cont = 0;               //Time do slotframe timeslot  
-    int **aloca_canais,         //Slotframe
-    x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp;        //Variáveis temporárias
-    char **nome_no;              //Nome dos nós no grafo da rede
-    //char  *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
-    int *pacotes; 
-
-    adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);  
-    //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    conf = mapGraphConf(adj, tamNo, tamAresta);
-    //Gera a matriz de conflito
-    matconf = fazMatrizConf(conf, adj, tamAresta);   
-    pacotes = alocaPacotes(tamNo);
-    // inicia a alocaçao de canais  
-    aloca_canais = (int**) malloc(16 * sizeof(int*));
-    for(x = 0; x < 16; x++){
-        aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
-        for(y = 0; y < temp_canais; y++)
-            aloca_canais[x][y] = -1;
-    } 
-    // encontra o no raiz  
-    for(z = 0; z < tamNo; z++){
-        for(i = 0; i < tamNo; i++)   
-        if(adj[z][i] != 0){
-                flg = 0;
-                break;
-            }
-        if(flg)
-            break;
-        else
-            flg = 1;
-    }
-    raiz = z; 
-
-    // encontra o total de pacotes  
-     
-    for(z = 0; z < tamNo; z++)
-        if(z != raiz)
-            total_pacotes = total_pacotes+ pacotes[z]; 
-
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-
-     while(pacote_entregue < total_pacotes){
-        LOG_INFO("\nMatching\n");
+}     
+for(int i = 1 ; i <= 3; i ++){  
         
-        //Aloca os canais
-        for(x = 0; x < tamNo; x ++){
-            for(y = 0; y < tamNo; y++){
-                if(matching[x][y]){
-                    for(temp = 0; temp < tamAresta; temp++)
-                        if(conf[temp][0] == x && conf[temp][1] == y)
-                            break;
-                    edge_selected = temp;
-                    for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == 16)
-                            break;
-                        aloca_canais[canal][cont] = edge_selected; 
-                        
-                        // aloca_canais[canal][cont] representa o link em questão
-                        aux_timeslot = cont ;     
-                        aux_channel_offset = canal + 11 ;  
-                        LOG_PRINT("----- Passagem de informações-----\n"); 
-                        // quantidade de links      
-                        //nome_no[conf[edge_selected][0]]; ----> no q envia  
-                        //nome_no[conf[edge_selected[1]]];--------> no q recebe
-
-                           
-                            // cada enlace desse for deve ser um link distinto 
-                // tenho q descobrir como passar a informação do link como parametro 
-                // para quem vai e pra quem recebe a mensagem  
-                
-                        if(aux_no ==  0){    
-                           //addr_aux =  - '0';  
-                           // atribui o id para o novo endereco       
-                           aux_addr = atoi(colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]]));          
-                           for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = aux_addr & 0xff;
-                                addr.u8[j + 0] = aux_addr >> 8;
-                                }
-                            link_options =  LINK_OPTION_TX; 
-                            // cria um novo link
-                            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
+        if(i == 1){    
+            // no 1 envia para o no 2 
+            for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = 2 & 0xff;
+            addr.u8[j + 0] = 2 >> 8;
+            }
+            link_options =  LINK_OPTION_TX; 
+            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,0 ,1);
+        }
+        if(i == 2 ){   
+            // no 2 recebe do no 1
+            for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = 1 & 0xff;
+            addr.u8[j + 0] = 1 >> 8;
+            }  
+            link_options =  LINK_OPTION_RX; 
+            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,0 ,1); 
+            // no 2 envia para o no 3 
+            for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = 3 & 0xff;
+            addr.u8[j + 0] = 3 >> 8;
+            }
+            link_options =  LINK_OPTION_TX;  
+            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr,0,2);
+        else {  
+            // no 3 recebe do no 2 
+            for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = 2 & 0xff;
+            addr.u8[j + 0] = 2 >> 8;
+                }  
+            link_options =  LINK_OPTION_RX; 
+            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,0 ,2); 
+            
+        }
                              
-                            aux_no++; 
-                            //strcpy(addr_aux , " ");     
-                        } 
-                        else if(aux_no == 1 ){   
-                            aux_addr = atoi(colect_addres(nome_no[conf[aloca_canais[canal][cont]][aux_no]])); 
-                            for(j = 0; j < sizeof(addr); j += 2) {
-                                addr.u8[j + 1] = aux_addr & 0xff;
-                                addr.u8[j + 0] = aux_addr >> 8;
-                            }
-                            link_options =  LINK_OPTION_RX; 
-                            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,aux_timeslot,aux_channel_offset); 
-                              aux_no++; 
-                            //strcpy(addr_aux, " ")    
-                        }
-                            
-                        canal++;    
-                    }
-                }
-                if(canal == 16)
-                    break;
-            }
-            if(canal == 16)
-                break;
-        }
-        //Executa a primeira carga de transferência
-        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
-        cont++;
-        canal = 0;
-        
-        //mostram os pacotes contentes em cada nó da rede
-        
-        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-    }     
-
-
-}  
+}
 
 /* 
  caso precise incluir no makefile
@@ -304,13 +134,15 @@ PROCESS_THREAD(node_process, ev, data)
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  // colocar no ulitmo como nó raiz   
+  // colocar no ulitmo como nó raiz  
   NETSTACK_MAC.on();
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start(); 
-    initialize_tsch_schedule_root(); 
+    
+    
 
-  }
+  } 
+  initialize_tsch_schedule_global(); 
 
   /* Main loop */
   while(1) {

@@ -2,9 +2,10 @@ CONTIKI_PROJECT = node
 all: $(CONTIKI_PROJECT)
 
 PROJECT_SOURCEFILES += node.c
+CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 #PLATFORMS_ONLY = cooja
 
-CONTIKI= ../..
+CONTIKI= ../../..
 
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
