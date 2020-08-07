@@ -81,16 +81,12 @@ initialize_tsch_schedule(void)
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
 
-  for (i = 0 ; i <=  TSCH_SCHEDULE_MAX_LINKS ; ++i) {
+  for (i = 0 ; i <=  3 ; ++i) {
     // a cada iteração ele cria novas estruturas  
     uint8_t link_options;
-    linkaddr_t addr;
+    linkaddr_t addr;  
     uint16_t remote_id = i + 1;
 
-    for(j = 0; j < sizeof(addr); j += 2) {
-      addr.u8[j + 1] = remote_id & 0xff;
-      addr.u8[j + 0] = remote_id >> 8;
-    }
 
     /* Add a unicast cell for each potential neighbor (in Cooja) */ 
     
@@ -100,19 +96,32 @@ initialize_tsch_schedule(void)
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */ 
 
-    if(node_id == 1 ){ 
-      link_options = LINK_OPTION_TX;  
+    if(node_id == 1 ){  
+      for(j = 0; j < sizeof(addr); j += 2) {
+      addr.u8[j + 1] = remote_id & 0xff;
+      addr.u8[j + 0] = remote_id >> 8;
     }
-    else{ 
-      link_options = LINK_OPTION_RX; 
-    } 
-
-     LOG_INFO_(" %d --> %d ",node_id , remote_id);
-    
-    tsch_schedule_add_link(sf_common,
+      link_options = LINK_OPTION_TX;  
+      tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
         slot_offset, channel_offset, 1);
+    }
+    else{  
+      for(j = 0; j < sizeof(addr); j += 2) {
+      addr.u8[j + 1] = node_id & 0xff;
+      addr.u8[j + 0] = node_id >> 8;
+      }
+      link_options = LINK_OPTION_RX;   
+      tsch_schedule_add_link(sf_common,
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset, 1);
+
+    } 
+
+     LOG_INFO_(" %d --> %d ", node_id , remote_id);
+
   }
 }
 
