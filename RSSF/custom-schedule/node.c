@@ -1,40 +1,74 @@
+/*
+ * Copyright (c) 2020, Institute of Electronics and Computer Science (EDI)
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. Neither the name of the Institute nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ */
+/**
+ * \file
+ *         An example that demonstrates a simple custom scheduler for TSCH.
+ *
+ * \author Atis Elsts <atis.elsts@edi.lv>
+ */
 
-#include "net/mac/tsch/tsch.h" 
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h"
+#include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
 #include "sys/node-id.h"
+
 #include "sys/log.h"
-
-#define temp_canais 23
-#define peso 1 
-
-void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
-int *alocaPacotes(int num_no); 
-char *colect_addres(char *ex); 
-static void initialize_tsch_schedule_root();
-
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 #define UDP_PORT	8765
-#define SEND_INTERVAL		  (60 * CLOCK_SECOND) 
+#define SEND_INTERVAL		  (60 * CLOCK_SECOND)
 
+PROCESS(node_process, "TSCH Schedule Node");
+AUTOSTART_PROCESSES(&node_process);
 
+/*
+ * Note! This is not an example how to design a *good* schedule for TSCH,
+ * nor this is the right place for complete beginners in TSCH.
+ * We recommend using the default Orchestra schedule for a start.
+ *
+ * The intention of this file is instead to serve a starting point for those interested in building
+ * their own schedules for TSCH that are different from Orchestra and 6TiSCH minimal.
+ */
 
-PROCESS(node_process, "TSCH Schedule Node"); 
-AUTOSTART_PROCESSES(&node_process);  
-
-
+/* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
+/* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
- 
- 
-// cria um  unico slotframe slotframe   
-static  void 
-initialize_tsch_schedule_global(void){ 
-  linkaddr_t addr; 
-  linkaddr_t addr_r ; 
+
+static void
+initialize_tsch_schedule(void)
+{
+  // isso é executado em cada nó  
+  int i, j;
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
@@ -45,75 +79,60 @@ initialize_tsch_schedule_global(void){
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset);
- 
+      slot_offset, channel_offset, 1);
+
+  for (i = node_id - 1 ; i < node_id ; ++i) {
+    // a cada iteração ele cria novas estruturas  
+    uint8_t link_options;
+    linkaddr_t addr;
+    uint16_t remote_id = i + 1;
+
+    for(j = 0; j < sizeof(addr); j += 2) {
+      addr.u8[j + 1] = remote_id & 0xff;
+      addr.u8[j + 0] = remote_id >> 8;
+    }
+
+    /* Add a unicast cell for each potential neighbor (in Cooja) */ 
     
-}     
-for(int i = 1 ; i <= 3; i ++){  
-        
-        if(i == 1){    
-            // no 1 envia para o no 2 
-            for(j = 0; j < sizeof(addr); j += 2) {
-            addr.u8[j + 1] = 2 & 0xff;
-            addr.u8[j + 0] = 2 >> 8;
-            }
-            link_options =  LINK_OPTION_TX; 
-            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,0 ,1);
-        }
-        if(i == 2 ){   
-            // no 2 recebe do no 1
-            for(j = 0; j < sizeof(addr); j += 2) {
-            addr.u8[j + 1] = 1 & 0xff;
-            addr.u8[j + 0] = 1 >> 8;
-            }  
-            link_options =  LINK_OPTION_RX; 
-            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,0 ,1); 
-            // no 2 envia para o no 3 
-            for(j = 0; j < sizeof(addr); j += 2) {
-            addr.u8[j + 1] = 3 & 0xff;
-            addr.u8[j + 0] = 3 >> 8;
-            }
-            link_options =  LINK_OPTION_TX;  
-            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr,0,2);
-        else {  
-            // no 3 recebe do no 2 
-            for(j = 0; j < sizeof(addr); j += 2) {
-            addr.u8[j + 1] = 2 & 0xff;
-            addr.u8[j + 0] = 2 >> 8;
-                }  
-            link_options =  LINK_OPTION_RX; 
-            tsch_schedule_add_link(sf_min, link_options, LINK_TYPE_NORMAL, &addr ,0 ,2); 
-            
-        }
-                             
+    /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
+    slot_offset = APP_UNICAST_TIMESLOT;
+    channel_offset = i;
+    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+     * backoff windows will not be reset correctly! */ 
+
+    if(node_id == 1 ){ 
+      link_options = LINK_OPTION_TX;  
+    }
+    else{ 
+      link_options = LINK_OPTION_RX; 
+    }
+    
+    tsch_schedule_add_link(sf_common,
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset, 1);
+  }
 }
 
-/* 
- caso precise incluir no makefile
-PROJECT_SOURCEFILES += rsa_get_size.c 
-MODULES += ./tomcrypt
-
-*/
-
- 
 static void
-        rx_packet(struct simple_udp_connection *c,
-                const uip_ipaddr_t *sender_addr,
-                uint16_t sender_port,
-                const uip_ipaddr_t *receiver_addr,
-                uint16_t receiver_port,
-                const uint8_t *data,
-                uint16_t datalen)
+rx_packet(struct simple_udp_connection *c,
+          const uip_ipaddr_t *sender_addr,
+          uint16_t sender_port,
+          const uip_ipaddr_t *receiver_addr,
+          uint16_t receiver_port,
+          const uint8_t *data,
+          uint16_t datalen)
 {
-uint32_t seqnum;
+  uint32_t seqnum;
 
-if(datalen >= sizeof(seqnum)) {
+  if(datalen >= sizeof(seqnum)) {
     memcpy(&seqnum, data, sizeof(seqnum));
-        LOG_INFO("Received from ");
-        LOG_INFO_6ADDR(sender_addr);
-        LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-        }
-} 
+
+    LOG_INFO("Received from ");
+    LOG_INFO_6ADDR(sender_addr);
+    LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+  }
+}
 
 PROCESS_THREAD(node_process, ev, data)
 {
@@ -124,20 +143,15 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
 
-  initialize_tsch_schedule_global();
+  initialize_tsch_schedule();
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  // colocar no ulitmo como nó raiz  
-  
-  if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start(); 
-    
-    
 
-  } 
-  initialize_tsch_schedule_global(); 
+  if(node_id == 1) {  /* Running on the root? */
+    NETSTACK_ROUTING.root_start();
+  }
 
   /* Main loop */
   while(1) {
@@ -156,5 +170,3 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_END();
 }
-
-

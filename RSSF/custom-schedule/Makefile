@@ -1,16 +1,14 @@
 CONTIKI_PROJECT = node
 all: $(CONTIKI_PROJECT)
 
-PROJECT_SOURCEFILES += node.c
+PLATFORMS_ONLY = cooja
 
-#PLATFORMS_ONLY = cooja
-
-CONTIKI= ../../..
+CONTIKI=../../..
 
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
 
-MAKE_MAC = MAKE_MAC_TSCH 
+MAKE_MAC = MAKE_MAC_TSCH
 
 include $(CONTIKI)/Makefile.dir-variables
 MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell
@@ -20,4 +18,3 @@ CFLAGS += -DWITH_SECURITY=1
 endif
 
 include $(CONTIKI)/Makefile.include
-  
