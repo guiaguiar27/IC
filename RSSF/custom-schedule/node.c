@@ -105,7 +105,9 @@ initialize_tsch_schedule(void)
     }
     else{ 
       link_options = LINK_OPTION_RX; 
-    }
+    } 
+
+     LOG_INFO_(" %d --> %d "\n",node_id , remote_id);
     
     tsch_schedule_add_link(sf_common,
         link_options,
