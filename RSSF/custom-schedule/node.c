@@ -6,11 +6,6 @@
 #include "sys/node-id.h"
 #include "sys/log.h"
 
-#include <stdio.h>s
-#include <stdlib.h>
-#include "rgraph.h"
-#include "conf.h"
-#include "criaDOT.h"
 #define temp_canais 23
 #define peso 1 
 
