@@ -81,7 +81,7 @@ initialize_tsch_schedule(void)
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
   if (node_id ==1 ){ 
-    for (i = 0 ; i <=  3 ; ++i) {
+    for (i = 0 ; i < 3 ; ++i) {
     // a cada iteração ele cria novas estruturas  
     uint8_t link_options;
     linkaddr_t addr;  
@@ -97,8 +97,8 @@ initialize_tsch_schedule(void)
      * backoff windows will not be reset correctly! */ 
 
     for(j = 0; j < sizeof(addr); j += 2) {
-    addr.u8[j + 1] = remote_id & 0xff;
-    addr.u8[j + 0] = remote_id >> 8;
+      addr.u8[j + 1] = remote_id & 0xff;
+      addr.u8[j + 0] = remote_id >> 8;
     }
     link_options = LINK_OPTION_TX;  
     tsch_schedule_add_link(sf_common,
@@ -108,7 +108,10 @@ initialize_tsch_schedule(void)
     LOG_INFO_(" %d --> %d ", node_id , remote_id);
   } 
   }
-  else{  
+  else{   
+    uint8_t link_options;
+    linkaddr_t addr;  
+    uint16_t remote_id = node_id;
       for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = 1 & 0xff;
       addr.u8[j + 0] = 1 >> 8;
@@ -118,13 +121,12 @@ initialize_tsch_schedule(void)
         link_options,
         LINK_TYPE_NORMAL, &addr,
         slot_offset, channel_offset, 1);
-
+      LOG_INFO_(" %d <-- %d ", remote_id, 1);
     } 
 
-     LOG_INFO_(" %d --> %d ", remote_id, 1);
 
   }
-}
+
 
 static void
 rx_packet(struct simple_udp_connection *c,
