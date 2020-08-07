@@ -109,8 +109,8 @@ initialize_tsch_schedule(void)
     }
     else{  
       for(j = 0; j < sizeof(addr); j += 2) {
-      addr.u8[j + 1] = node_id & 0xff;
-      addr.u8[j + 0] = node_id >> 8;
+      addr.u8[j + 1] = 1 & 0xff;
+      addr.u8[j + 0] = 1 >> 8;
       }
       link_options = LINK_OPTION_RX;   
       tsch_schedule_add_link(sf_common,
@@ -159,6 +159,7 @@ PROCESS_THREAD(node_process, ev, data)
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
+  
   initialize_tsch_schedule();
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
