@@ -81,7 +81,7 @@ initialize_tsch_schedule(void)
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
 
-  for (i = node_id - 1 ; i < node_id ; ++i) {
+  for (i = 0 ; i <=  TSCH_SCHEDULE_MAX_LINKS ; ++i) {
     // a cada iteração ele cria novas estruturas  
     uint8_t link_options;
     linkaddr_t addr;
@@ -107,7 +107,7 @@ initialize_tsch_schedule(void)
       link_options = LINK_OPTION_RX; 
     } 
 
-     LOG_INFO_(" %d --> %d "\n",node_id , remote_id);
+     LOG_INFO_(" %d --> %d ",node_id , remote_id);
     
     tsch_schedule_add_link(sf_common,
         link_options,
@@ -145,7 +145,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
 
-  initialize_tsch_schedule();
+  
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -153,6 +153,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
+    initialize_tsch_schedule();
   }
 
   /* Main loop */
