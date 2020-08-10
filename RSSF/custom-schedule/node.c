@@ -68,7 +68,8 @@ static void
 initialize_tsch_schedule(void)
 {
   // isso é executado em cada nó  
-  int i, j;
+  int i, j; 
+  
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
@@ -80,6 +81,7 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
+      
   if (node_id ==1 ){ 
     for (i = 0 ; i < 3 ; ++i) {
     // a cada iteração ele cria novas estruturas  
@@ -121,9 +123,10 @@ initialize_tsch_schedule(void)
         link_options,
         LINK_TYPE_NORMAL, &addr,
         slot_offset, channel_offset, 1);
-      LOG_INFO_(" %d <-- %d ", remote_id, 1);
-    } 
-
+      LOG_INFO_(" %d <-- %d ", remote_id, 1); 
+      
+    }  
+    
 
   }
 

@@ -525,33 +525,6 @@ tsch_schedule_create_minimal(void)
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
                         LOG_PRINT("----- Passagem de informações-----\n"); 
-                        // quantidade de links      
-                        //nome_no[conf[edge_selected][0]]; ----> no q envia  
-                        //nome_no[conf[edge_selected[1]]];--------> no q recebe
-
-                           
-                          /* Add a single Tx|Rx|Shared slot using broadcast address (i.e. usable for unicast and broadcast).
-   * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
-   * but is required according to 802.15.4e if also used for EB transmission.
-   * Timeslot: 0, channel offset: 0. */
-                            // cada enlace desse for deve ser um link distinto 
-                // tenho q descobrir como passar a informação do link como parametro 
-                // para quem vai e pra quem recebe a mensagem  
-                
-                        if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){   
-                          
-                          // emissor 
-                           // utilizar função do linkaddr_copy(&l->addr, address);   
-                              
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_TX, LINK_TYPE_NORMAL, &tsch_eb_address ,aux_timeslot,aux_channel_offset); 
-                              aux_no++;    
-                        } 
-                        else if(nome_no[conf[aloca_canais[canal][cont]][aux_no]]){  
-                          // destino  
-
-                              tsch_schedule_add_link(sf_min, LINK_OPTION_RX , LINK_TYPE_NORMAL, &tsch_eb_address ,aux_timeslot,aux_channel_offset);
-                              aux_no = 0 ;   
-                        }
                             
                         canal++;    
                     }
