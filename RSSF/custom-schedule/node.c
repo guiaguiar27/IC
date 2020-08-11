@@ -67,7 +67,12 @@ AUTOSTART_PROCESSES(&node_process);
 static void 
 sort_links(void){ 
     int i = 0 ;  
-    struct tsch_link *L ;  
+    struct tsch_link *L = NULL ;  
+    L  = memb_alloc(&link_memb);  
+    if(L  == NULL) {
+        LOG_ERR("! add_link memb_alloc failed\n");
+        tsch_release_lock();
+      }
     int sorted_handle = 0;  
     int num_max_of_links = 3 ; 
     for(i = 1 ; i <= num_max_of_links;i++){  
