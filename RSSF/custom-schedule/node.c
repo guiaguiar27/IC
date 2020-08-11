@@ -64,7 +64,8 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 3
 
-static  void sort_links(void){ 
+static void 
+sort_links(void){ 
     int i = 0 ;  
     struct tsch_link *L ;  
     int sorted_handle = 0;  
@@ -73,7 +74,7 @@ static  void sort_links(void){
          if(i == 1 ){ 
             sorted_handle = 2; 
             L = tsch_schedule_get_link_by_handle(sorted_handle); 
-            L->timeslot  = 1   ;
+            L->timeslot  = 1 ;
             L->channel_offset =  1 ;
          } 
          else if (i == 3 ){ 
@@ -92,6 +93,7 @@ static  void sort_links(void){
 
     }
 }
+/*
 static void
 initialize_tsch_schedule(void)
 {
@@ -102,7 +104,7 @@ initialize_tsch_schedule(void)
   uint16_t slot_offset;
   uint16_t channel_offset;
 
-  /* A "catch-all" cell at (0, 0) */
+  // A "catch-all" cell at (0, 0) 
   slot_offset = 0;
   channel_offset = 0;
   tsch_schedule_add_link(sf_common,
@@ -118,13 +120,13 @@ initialize_tsch_schedule(void)
     uint16_t remote_id = i + 1;
 
 
-    /* Add a unicast cell for each potential neighbor (in Cooja) */ 
+    // Add a unicast cell for each potential neighbor (in Cooja) 
     
-    /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
+    // Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes
     slot_offset = APP_UNICAST_TIMESLOT;
     channel_offset = i;
-    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-     * backoff windows will not be reset correctly! */ 
+     //Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+     // backoff windows will not be reset correctly!  
 
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
@@ -157,7 +159,7 @@ initialize_tsch_schedule(void)
     
 
   }
-
+*/
 
 static void
 rx_packet(struct simple_udp_connection *c,
@@ -194,11 +196,11 @@ PROCESS_THREAD(node_process, ev, data)
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-  initialize_tsch_schedule();
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
-    
-  }
+      
+  } 
+  NETSTACK_MAC.on();
 
   /* Main loop */
   while(1) { 
