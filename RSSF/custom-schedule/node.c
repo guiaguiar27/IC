@@ -62,8 +62,36 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
-#define APP_UNICAST_TIMESLOT 1
+#define APP_UNICAST_TIMESLOT 3
 
+static  void sort_links(void){ 
+    int i = 0 ;  
+    struct tsch_link *L ;  
+    int sorted_handle = 0;  
+    int num_max_of_links = 3 ; 
+    for(i = 1 ; i <= num_max_of_links;i++){  
+         if(i == 1 ){ 
+            sorted_handle = 2; 
+            L = tsch_schedule_get_link_by_handle(sorted_handle); 
+            L->timeslot  = 1   ;
+            L->channel_offset =  1 ;
+         } 
+         else if (i == 3 ){ 
+            sorted_handle = 1 ;   
+            L = tsch_schedule_get_link_by_handle(sorted_handle); 
+            L->timeslot  = 1   ;
+            L->channel_offset =  2 ;
+         } 
+         else { 
+             sorted_handle = 3;  
+            L = tsch_schedule_get_link_by_handle(sorted_handle); 
+            L->timeslot  = 1   ;
+            L->channel_offset =  3 ;
+         }
+          
+
+    }
+}
 static void
 initialize_tsch_schedule(void)
 {
@@ -173,7 +201,8 @@ PROCESS_THREAD(node_process, ev, data)
   }
 
   /* Main loop */
-  while(1) {
+  while(1) { 
+    sort_links();
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
