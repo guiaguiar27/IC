@@ -554,39 +554,6 @@ tsch_schedule_print(void)
     LOG_PRINT("----- end slotframe list -----\n");
   }
 } 
-void 
-sort_links(void){ 
-    int i = 0 ;   
-    memb_init(&link_memb);
-    struct tsch_link *L = NULL ;  
-    L  = memb_alloc(&link_memb);  
-    if(L  == NULL) {
-        LOG_ERR("! add_link memb_alloc failed\n");
-        tsch_release_lock();
-      }
-    int sorted_handle = 0;  
-    int num_max_of_links = 3 ; 
-    for(i = 1 ; i <= num_max_of_links;i++){  
-         if(i == 1 ){ 
-            sorted_handle = 2; 
-            L = tsch_schedule_get_link_by_handle(sorted_handle); 
-            L->timeslot  = 1 ;
-            L->channel_offset =  1 ;
-         } 
-         else if (i == 3 ){ 
-            sorted_handle = 1 ;   
-            L = tsch_schedule_get_link_by_handle(sorted_handle); 
-            L->timeslot  = 1   ;
-            L->channel_offset =  2 ;
-         } 
-         else { 
-             sorted_handle = 3;  
-            L = tsch_schedule_get_link_by_handle(sorted_handle); 
-            L->timeslot  = 1   ;
-            L->channel_offset =  3 ;
-         }  
-         memb_free(&link_memb, L);
-    }
-}
+
 /*---------------------------------------------------------------------------*/
 /** @} */
