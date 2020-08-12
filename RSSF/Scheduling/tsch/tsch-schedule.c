@@ -556,7 +556,8 @@ tsch_schedule_print(void)
 } 
 void 
 sort_links(void){ 
-    int i = 0 ;  
+    int i = 0 ;   
+    memb_init(&link_memb);
     struct tsch_link *L = NULL ;  
     L  = memb_alloc(&link_memb);  
     if(L  == NULL) {
@@ -583,9 +584,8 @@ sort_links(void){
             L = tsch_schedule_get_link_by_handle(sorted_handle); 
             L->timeslot  = 1   ;
             L->channel_offset =  3 ;
-         }
-          
-
+         }  
+         memb_free(&link_memb, L);
     }
 }
 /*---------------------------------------------------------------------------*/
