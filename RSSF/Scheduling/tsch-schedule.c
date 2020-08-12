@@ -445,8 +445,10 @@ int *alocaPacotes(int num_no){
 
 void
 tsch_schedule_create_minimal(void)
-{      
-    struct tsch_link *L  = NULL;  
+{    
+    struct tsch_slotframe *sf_min;  
+    sf_min = tsch_schedule_add_slotframe(0, TSCH_SCHEDULE_DEFAULT_LENGTH);
+    tsch_schedule_remove_all_slotframes();   
     uint16_t aux_timeslot; 
     uint16_t aux_channel_offset;     
     int aux_no = 0 ;   
@@ -523,9 +525,7 @@ tsch_schedule_create_minimal(void)
                         aux_timeslot = cont ;     
                         aux_channel_offset = canal + 11 ;  
                         LOG_PRINT("----- Passagem de informações-----\n"); 
-                        L = tsch_schedule_get_link_by_handle(edge_selected);  
-                        L-> channel_offset= aux_channel_offset; 
-                        L-> timeslot = aux_timeslot; 
+                            
                         canal++;    
                     }
                 }
