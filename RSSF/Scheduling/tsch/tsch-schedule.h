@@ -60,7 +60,7 @@ void tsch_schedule_create_minimal(void);
  * \brief Prints out the current schedule (all slotframes and links)
  */
 void tsch_schedule_print(void); 
-
+void sort_links(void);
 
 
 /**
