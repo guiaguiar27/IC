@@ -50,7 +50,6 @@
 PROCESS(node_process, "TSCH Schedule Node");
 AUTOSTART_PROCESSES(&node_process);
 
-MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /*
  * Note! This is not an example how to design a *good* schedule for TSCH,
  * nor this is the right place for complete beginners in TSCH.

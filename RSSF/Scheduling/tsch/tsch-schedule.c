@@ -62,7 +62,8 @@
 #define LOG_LEVEL LOG_LEVEL_MAC
 
 /* Pre-allocated space for links */
-MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
+MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
+MEMB(link_memb_aux, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
@@ -486,7 +487,10 @@ int
 tsch_schedule_init(void)
 {
   if(tsch_get_lock()) {
-    memb_init(&link_memb);
+    memb_init(&link_memb);  
+    // ##########################
+    memb_init(&link_memb_aux); 
+    // ##########################
     memb_init(&slotframe_memb);
     list_init(slotframe_list);
     tsch_release_lock();
@@ -558,52 +562,43 @@ tsch_schedule_print(void)
 /*---------------------------------------------------------------------------*/
 /** @} */ 
 
+
 void 
 sort_links(void){ 
     int i = 0 ;    
-
-    memb_init(&link_memb);
-    struct tsch_link *L = NULL ;  
-    
+    struct tsch_link *L = NULL ;    
+    L  = memb_alloc(&link_memb_aux);
+    if(L  == NULL) {
+              LOG_ERR("! add_link memb_alloc failed\n");
+              tsch_release_lock();
+            } 
+    // handle diferente do indice do for 
     int sorted_handle = 0;  
+    // define a quantidade de links a serem tratados 
     int num_max_of_links = 3 ; 
+    
     for(i = 1 ; i <= num_max_of_links;i++){  
          if(i == 1 ){ 
             sorted_handle = 2; 
-            L  = memb_alloc(&link_memb);  
-            if(L  == NULL) {
-              LOG_ERR("! add_link memb_alloc failed\n");
-              tsch_release_lock();
-            }
             L = tsch_schedule_get_link_by_handle(sorted_handle); 
             L->timeslot  = 1 ;
             L->channel_offset =  1 ;
-            memb_free(&link_memb, L);
          } 
          else if (i == 3 ){ 
             sorted_handle = 1 ;   
-            L  = memb_alloc(&link_memb);  
-            if(L  == NULL) {
-              LOG_ERR("! add_link memb_alloc failed\n");
-              tsch_release_lock();
-            }
+            
             L = tsch_schedule_get_link_by_handle(sorted_handle); 
             L->timeslot  = 1   ;
             L->channel_offset =  2 ; 
-            memb_free(&link_memb, L);
          } 
          else { 
             sorted_handle = 3;   
-            if(L  == NULL) {
-              LOG_ERR("! add_link memb_alloc failed\n");
-              tsch_release_lock();
-            }
             L = tsch_schedule_get_link_by_handle(sorted_handle); 
             L->timeslot  = 1   ;
-            L->channel_offset =  3 ; 
-            memb_free(&link_memb, L);
+            L->channel_offset =  3 ;     
          }   
-    } 
+    }  
+    memb_free(&link_memb_aux, L);
      
 }
 
