@@ -63,7 +63,6 @@
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
-MEMB(link_memb_aux, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
@@ -488,9 +487,6 @@ tsch_schedule_init(void)
 {
   if(tsch_get_lock()) {
     memb_init(&link_memb);  
-    // ##########################
-    memb_init(&link_memb_aux); 
-    // ##########################
     memb_init(&slotframe_memb);
     list_init(slotframe_list);
     tsch_release_lock();
