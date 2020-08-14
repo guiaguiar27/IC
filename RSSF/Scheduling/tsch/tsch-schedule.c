@@ -560,9 +560,10 @@ tsch_schedule_print(void)
 
 
 void 
-sort_links(void){ 
+sort_links(void){  
+  LOG_PRINT("----- ENTROU -----\n");
     int i = 0 ;         
-    if(!tsch_is_locked()) {
+    if(!tsch_is_locked()) { 
     struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
       struct tsch_link *l = list_head(sf->links_list);
@@ -571,7 +572,10 @@ sort_links(void){
         
         if(l->handle%2 == 0) {
           l->timeslot = i; 
-          l-> channel_offset = i+ 1 ;  
+          l-> channel_offset = i+ 1 ;    
+          LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
+          LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
+          LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);  
           
         }
         l = list_item_next(l);
@@ -580,7 +584,6 @@ sort_links(void){
       sf = list_item_next(sf);
     }
   }
-  return NULL;
-     
+       
 }
 
