@@ -55,6 +55,9 @@
 #include "sys/process.h"
 #include "sys/rtimer.h"
 #include <string.h>
+#include <stdio.h>  /* printf, NULL */ 
+#include <stdlib.h>  /* srand, rand */ 
+#include <time.h> /* time */
 
 /* Log configuration */
 #include "sys/log.h"  
