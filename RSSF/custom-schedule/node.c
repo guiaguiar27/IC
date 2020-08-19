@@ -176,8 +176,12 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */
   while(1) {  
     // função de organização de links
-    sort_links();
+    
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+    
+    if(node_id ==1 ){ 
+      sort_links();
+    }
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
       /* Send network uptime timestamp to the network root node */

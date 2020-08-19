@@ -562,7 +562,19 @@ tsch_schedule_print(void)
 void 
 sort_links(void){  
   LOG_PRINT("----- ENTROU -----\n");
-    int i = 0 ;         
+    int i, j = 0 ;          
+    int total_timeslot = 5, total_channel_of = 10 ; 
+    int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
+    // generate random integers 
+    srand(time(NULL)); 
+    // linhas = channel_offset  
+    // colunas = time slot
+    // initialize example matrix
+    for(i = 0 ; i<total_channel_of ; i++){ 
+       for(j = 0 ; j < total_timeslot ;j++){ 
+          coordenadas[i][j] = rand()%5 ;  
+      }
+    }   
     if(!tsch_is_locked()) { 
     struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
