@@ -62,75 +62,48 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
-#define APP_UNICAST_TIMESLOT 3
+#define APP_UNICAST_TIMESLOT 1
 
-/*
 static void
 initialize_tsch_schedule(void)
 {
-  // isso é executado em cada nó  
-  int i, j; 
-  
+  int i, j;
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
 
-  // A "catch-all" cell at (0, 0) 
+  /* A "catch-all" cell at (0, 0) */
   slot_offset = 0;
   channel_offset = 0;
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
-      
-  if (node_id ==1 ){ 
-    for (i = 0 ; i < 3 ; ++i) {
-    // a cada iteração ele cria novas estruturas  
+
+  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
     uint8_t link_options;
-    linkaddr_t addr;  
+    linkaddr_t addr;
     uint16_t remote_id = i + 1;
-
-
-    // Add a unicast cell for each potential neighbor (in Cooja) 
-    
-    // Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes
-    slot_offset = APP_UNICAST_TIMESLOT;
-    channel_offset = i;
-     //Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-     // backoff windows will not be reset correctly!  
 
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
       addr.u8[j + 0] = remote_id >> 8;
     }
-    link_options = LINK_OPTION_TX;  
+
+    /* Add a unicast cell for each potential neighbor (in Cooja) */
+    /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
+    slot_offset = APP_UNICAST_TIMESLOT + i;
+    channel_offset = i;
+    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+     * backoff windows will not be reset correctly! */
+    link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
         slot_offset, channel_offset, 1);
-    LOG_INFO_(" %d --> %d ", node_id , remote_id);
-  } 
   }
-  else{   
-    uint8_t link_options;
-    linkaddr_t addr;  
-    uint16_t remote_id = node_id;
-      for(j = 0; j < sizeof(addr); j += 2) {
-      addr.u8[j + 1] = 1 & 0xff;
-      addr.u8[j + 0] = 1 >> 8;
-      }
-      link_options = LINK_OPTION_RX;   
-      tsch_schedule_add_link(sf_common,
-        link_options,
-        LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset, 1);
-      LOG_INFO_(" %d <-- %d ", remote_id, 1); 
-      
-    }  
-    
-
-  }
-*/
+}
 
 static void
 rx_packet(struct simple_udp_connection *c,
@@ -161,27 +134,23 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
 
-  
+  initialize_tsch_schedule();
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  
+
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
-      
   } 
-  NETSTACK_MAC.on();
+
 
   /* Main loop */
-  while(1) {  
-    // função de organização de links
-    
+  while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    
-    if(node_id ==1 ){ 
-      sort_links();
-    }
+    if(node_id == 1) {  /* Running on the root? */
+    sort_links();
+    } 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
       /* Send network uptime timestamp to the network root node */
