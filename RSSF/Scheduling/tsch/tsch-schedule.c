@@ -57,7 +57,7 @@
 #include <string.h>
 #include <stdio.h>  /* printf, NULL */ 
 #include <stdlib.h>  /* srand, rand */ 
-#include <time.h> /* time */
+//#include <time.h> /* time */
 
 /* Log configuration */
 #include "sys/log.h"  
@@ -566,21 +566,26 @@ void
 sort_links(void){  
   LOG_PRINT("----- ENTROU -----\n");
     int i, j = 0 ;          
-    int total_timeslot = 5, total_channel_of = 10 ; 
+    int total_timeslot = 2, total_channel_of = 2 ; 
     int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
     for(i = 0; i< total_channel_of; i++) {
       coordenadas[i] = (int *) malloc(total_timeslot * sizeof(int));
     }
     // generate random integers 
-    srand(time(NULL)); 
+    // srand(time(NULL)); 
     // linhas = channel_offset  
     // colunas = time slot
     // initialize example matrix
-    for(i = 0 ; i<total_channel_of ; i++){ 
-       for(j = 0 ; j < total_timeslot ;j++){ 
-          coordenadas[i][j] = rand()%5 ;  
-      }
-    }   
+    coordenadas[0][0] = 3 ;
+    coordenadas[0][1] = 5 ; 
+    coordenadas[1][0] = 7 ; 
+    coordenadas[1][1] = 1; 
+    
+    //for(i = 0 ; i<total_channel_of ; i++){ 
+    //   for(j = 0 ; j < total_timeslot ;j++){ 
+    //      coordenadas[i][j] = rand()%5 ;   
+    //  }
+    //}   
     if(!tsch_is_locked()) { 
     struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
