@@ -586,30 +586,23 @@ sort_links(void){
     while(sf != NULL) {
       struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
-      while(l != NULL) { 
+      
         for(i = 0 ; i<total_channel_of ; i++){ 
-       for(j = 0 ; j < total_timeslot ;j++){ 
-          //coordenadas[i][j] = rand()%16  ;  
-          if(coordenadas[i][j] == l->handle){ 
-            l->timeslot = i; 
-            l-> channel_offset = j ;  
-            LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
-            LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-            LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);  
-         
-          }
+          for(j = 0 ; j < total_timeslot ;j++){ 
+            //coordenadas[i][j] = rand()%16  ;  
+            if(coordenadas[i][j] == l->handle){ 
+              l->timeslot = i; 
+              l-> channel_offset = j ;  
+              LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
+              l = list_item_next(l); 
+            }
       }
       }    
-      /*
-        if(l->handle%2 == 0) {
-          l->timeslot = i; 
-          l-> channel_offset = i+ 1 ;    
-        */
-         
-        }
-        l = list_item_next(l);
+        
        
-      }
+      
       sf = list_item_next(sf);
     }
   }
