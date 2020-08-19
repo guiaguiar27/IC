@@ -568,6 +568,9 @@ sort_links(void){
     int i, j = 0 ;          
     int total_timeslot = 5, total_channel_of = 10 ; 
     int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
+    for(i = 0; i< total_channel_of; i++) {
+      coordenadas[i] = (int *) malloc(total_timeslot * sizeof(int));
+    }
     // generate random integers 
     srand(time(NULL)); 
     // linhas = channel_offset  
