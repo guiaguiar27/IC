@@ -54,6 +54,34 @@
 #define endereco "/home/user/contiki-ng/os/arvre.dot"
 
 /*---------------------------------------------------------------------------*/
+void escreve_dot(void){  
+  LOG_INFO(".DOT EM PROCESSAMENTO\n");
+
+  if(rpl_dag_root_is_root()) {
+    if(uip_sr_num_nodes() > 0) {
+      FILE *fl = fopen(endereco, "w");
+      fprintf(fl, "digraph g{\n");
+      fclose(fl);
+      uip_sr_node_t *link;
+      /* Our routing links */
+      
+      link = uip_sr_node_head();
+      while(link != NULL) {
+        char buf[100];
+        uip_sr_link_snprint(buf, sizeof(buf), link);
+        
+	      escreve_arq(buf);
+        link = uip_sr_node_next(link);
+      }
+      
+      fl = fopen(endereco, "a");
+      fprintf(fl, "}");
+      fclose(fl);
+    } else {
+      
+    }
+  }
+} 
 void
 rpl_dag_root_print_links(const char *str)
 {
@@ -64,7 +92,8 @@ rpl_dag_root_print_links(const char *str)
       fclose(fl);
       uip_sr_node_t *link;
       /* Our routing links */
-      LOG_INFO("links: %u routing links in total (%s)\n", uip_sr_num_nodes(), str);
+      LOG_INFO("links: %u routing links in total (%s)\n", uip_sr_num_nodes(), str)
+      ;
       link = uip_sr_node_head();
       while(link != NULL) {
         char buf[100];

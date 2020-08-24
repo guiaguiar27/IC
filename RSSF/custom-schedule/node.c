@@ -38,8 +38,8 @@
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
-#include "sys/node-id.h"
-
+#include "sys/node-id.h" 
+#include "net/routing/rpl-lite/rpl-dag-root.h"
 #include "sys/log.h"
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
@@ -148,7 +148,9 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+    // scheduler
     if(node_id == 1) {  /* Running on the root? */
+    escreve_dot();
     sort_links();
     } 
     if(NETSTACK_ROUTING.node_is_reachable()
