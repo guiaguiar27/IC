@@ -150,7 +150,6 @@ PROCESS_THREAD(node_process, ev, data)
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     // scheduler
     if(node_id == 1) {  /* Running on the root? */
-    escreve_dot();
     sort_links();
     } 
     if(NETSTACK_ROUTING.node_is_reachable()

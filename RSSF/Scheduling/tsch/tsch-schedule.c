@@ -53,7 +53,8 @@
 #include "net/mac/tsch/tsch.h"
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
-#include "sys/rtimer.h"
+#include "sys/rtimer.h" 
+#include "net/routing/rpl-lite/rpl-dag-root.h"
 #include <string.h>
 #include <stdio.h>  /* printf, NULL */ 
 #include <stdlib.h>  /* srand, rand */ 
@@ -692,8 +693,9 @@ int *alocaPacotes(int num_no){
 
 
 void 
-sort_links(void){  
-  LOG_PRINT("----- ENTROU -----\n");
+sort_links(void){   
+  LOG_PRINT("----- ENTROU -----\n"); 
+  escreve_dot();
     int i, j = 0 ;          
     int total_timeslot = 3, total_channel_of = 25 ; 
     int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
