@@ -69,7 +69,8 @@ int rpl_dag_root_is_root(void);
  * \param str A descriptive text on the caller
 */
 void rpl_dag_root_print_links(const char *str);
-void escreve_arq(const char *buf);
+void escreve_arq(const char *buf); 
+void escreve_dot(void); 
 
  /** @} */
 
