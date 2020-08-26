@@ -77,8 +77,6 @@ void escreve_dot(void){
       fl = fopen(endereco, "a");
       fprintf(fl, "}");
       fclose(fl);
-    } else {
-      
     }
   }
 } 
