@@ -572,7 +572,7 @@ tsch_schedule_print(void)
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no);
 
-int main(){      
+int gera_matriz(){      
 
     int tamNo; 
     int **adj,                  //grafo da rede
