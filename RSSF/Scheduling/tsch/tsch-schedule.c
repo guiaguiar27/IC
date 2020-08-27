@@ -734,7 +734,9 @@ int gera_matriz(){
         cont++; canal = 0; 
         //mostram os pacotes contentes em cada nó da rede
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-    } return 0; 
+    }  
+    sort_links(aloca_canais);
+     return 0; 
     //nome_arq_dot = criaGrafoConf(matconf, conf, nome_no, tamAresta);
     
 }
