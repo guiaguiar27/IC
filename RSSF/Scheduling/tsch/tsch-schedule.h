@@ -65,7 +65,7 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 int gera_matriz(void);
 //void init(MADJ *Matriz) ; 
 //void matriz_adj(MADJ *Matriz, int no1, int no2);
-void sort_links(**coordenadas);
+void sort_links(int **coordenadas);
 
 
 /**
