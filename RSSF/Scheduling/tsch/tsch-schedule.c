@@ -627,11 +627,11 @@ int *alocaPacotes(int num_no);
 
 int gera_matriz(){     
     int tamNo; 
-    int **adj,                  //grafo da rede
-    **conf,                     //mapa do grafo de conflito pro grafo da rede
+    int **adj (int**)malloc(tamNo  * sizeof(int*)); //grafo da rede                     
+    int**conf                   //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
+    z, i,j;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -641,8 +641,8 @@ int gera_matriz(){
     int **aloca_canais,         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    char **nome_no,             //Nome dos nós no grafo da rede
-    *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+    //char **nome_no;             //Nome dos nós no grafo da rede
+    //, *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
 
     // alocando espaco para receber o endereco 
@@ -650,7 +650,7 @@ int gera_matriz(){
     //Lê o arquivo .dot 
     tamNo = 4; 
     tamAresta = 16 ;  
-    adj = (int**)malloc(tamNo  * sizeof(int*)); 
+    adj =  
     for( i = 0 ; i < tamNo ; i++){ 
         for(j = 0 ; j< tamNo; j++){ 
             adj = (int*)malloc(tamNo*sizeof(int)); 
@@ -738,7 +738,7 @@ int gera_matriz(){
 }
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
-    int x, y, z, i;
+    int i;
 
     for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
