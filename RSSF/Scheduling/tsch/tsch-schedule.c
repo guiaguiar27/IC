@@ -627,8 +627,8 @@ int *alocaPacotes(int num_no);
 
 int gera_matriz(){     
       // tamNo quantidade de nós na rede 
-    int **adj (int**)malloc(tamNo  * sizeof(int*)); //grafo da rede                     
-    int**conf                   //mapa do grafo de conflito pro grafo da rede
+    int **adj = (int**)malloc(tamNo  * sizeof(int*)); //grafo da rede                     
+    int**conf,                   //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
     z, i,j,tamNo;                       //Variáveis temporárias
