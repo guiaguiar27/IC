@@ -12,7 +12,7 @@ na schedule já há includes básicos
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no);
 
-int main(){     
+int gera_matriz(){     
     int tamNo; 
     int **adj,                  //grafo da rede
     **conf,                     //mapa do grafo de conflito pro grafo da rede

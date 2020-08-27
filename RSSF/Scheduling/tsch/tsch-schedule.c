@@ -651,13 +651,12 @@ int gera_matriz(){
     //Lê o arquivo .dot 
     tamNo = 4; 
     tamAresta = 16 ; 
-    **adj = (int**)malloc(tamNo  * sizeof(int*));  
+    adj = (int**)malloc(tamNo  * sizeof(int*));  
      
-    for( i = 0 ; i < tamNo ; i++){ 
-        for(j = 0 ; j< tamNo; j++){ 
-            adj[i] = (int*)malloc(tamNo*sizeof(int)); 
-        }
-    } 
+    for(j = 0 ; j< tamNo; j++){ 
+      adj[j] = (int*)malloc(tamNo*sizeof(int)); 
+    }
+  
     for(i = 0 ; i < tamNo ; i++){ 
         for(j = 0 ; j< tamNo; j++){ 
              if(i == j) adj[i][j] = 0 ; 
