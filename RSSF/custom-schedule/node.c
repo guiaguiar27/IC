@@ -71,7 +71,10 @@ initialize_tsch_schedule(void)
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
-
+  if(node_id == 1 ){ 
+    MADJ *Matriz; 
+    init(Matriz);
+  }
   /* A "catch-all" cell at (0, 0) */
   slot_offset = 0;
   channel_offset = 0;
@@ -133,7 +136,7 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
 
   PROCESS_BEGIN();
-
+  
   initialize_tsch_schedule();
 
   /* Initialization; `rx_packet` is the function for packet reception */
@@ -142,6 +145,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
+       
   } 
 
 
@@ -150,7 +154,7 @@ PROCESS_THREAD(node_process, ev, data)
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     // scheduler
     if(node_id == 1) {  /* Running on the root? */
-    sort_links();
+    gera_matriz(); 
     } 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {

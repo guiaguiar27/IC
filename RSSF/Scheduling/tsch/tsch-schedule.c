@@ -625,7 +625,8 @@ void matriz_adj(MADJ *Matriz, int no1, int no2){
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no);
 
-int gera_matriz(){     
+int gera_matriz(){      
+   LOG_PRINT("GERANDO MATRIZ\n");
       // tamNo quantidade de nós na rede 
     int **adj ; //grafo da rede                     
     int**conf,                   //mapa do grafo de conflito pro grafo da rede
