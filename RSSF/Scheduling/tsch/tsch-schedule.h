@@ -60,11 +60,11 @@ void tsch_schedule_create_minimal(void);
  * \brief Prints out the current schedule (all slotframes and links)
  */
 void tsch_schedule_print(void); 
-//int *alocaPacotes(int num_no); 
-//void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
-//int gera_matriz(void);
-void init(MADJ *Matriz) ; 
-void matriz_adj(MADJ *Matriz, int no1, int no2);
+int *alocaPacotes(int num_no); 
+void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
+int gera_matriz(void);
+//void init(MADJ *Matriz) ; 
+//void matriz_adj(MADJ *Matriz, int no1, int no2);
 void sort_links(void);
 
 
