@@ -626,12 +626,12 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 int *alocaPacotes(int num_no);
 
 int gera_matriz(){     
-    int tamNo; 
+      // tamNo quantidade de nós na rede 
     int **adj (int**)malloc(tamNo  * sizeof(int*)); //grafo da rede                     
     int**conf                   //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i,j;                       //Variáveis temporárias
+    z, i,j,tamNo;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -817,7 +817,8 @@ sort_links(void){
       
       sf = list_item_next(sf);
     }
-  }
-       
+  } 
 }
+       
+
 
