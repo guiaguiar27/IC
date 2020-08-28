@@ -543,11 +543,9 @@ without_name(int node_id){
       addr.u8[j + 0] = node_id >> 8; 
     }  
     
-    // obtem o 
-    
+    // obtem o tsch neighbor 
     n = tsch_queue_get_nbr(&addr);  
     // copia o endereco obtido para o endereco generico do neighbor  
-    
     linkaddr_copy(&neighbor_addr, tsch_queue_get_nbr_address(n));  
     LOG_INFO_LLADDR(&addr);
     LOG_INFO_(" -> ");
