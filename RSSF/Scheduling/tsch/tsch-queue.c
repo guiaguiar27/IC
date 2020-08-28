@@ -532,6 +532,7 @@ tsch_queue_init(void)
 /** @} */
 void  
 without_name(int node_id){ 
+    LOG_INFO_("\n----ENTROU----\n"); 
     int j; 
     struct tsch_neighbor *n = NULL;
     linkaddr_t addr;  
@@ -543,9 +544,10 @@ without_name(int node_id){
     }  
     
     // obtem o 
-    if(node_id == 10 ){
+    
     n = tsch_queue_get_nbr(&addr);  
     // copia o endereco obtido para o endereco generico do neighbor  
+    if(node_id == 10 ){
     linkaddr_cmp(&neighbor_addr, tsch_queue_get_nbr_address(n));  
     LOG_INFO_LLADDR(&addr);
     LOG_INFO_(" -> ");
