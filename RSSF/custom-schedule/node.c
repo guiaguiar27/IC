@@ -33,8 +33,6 @@
  *
  * \author Atis Elsts <atis.elsts@edi.lv>
  */
-#include "net/mac/tsch/tsch-queue.h"
-#include "net/mac/tsch/tsch-log.h"
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
