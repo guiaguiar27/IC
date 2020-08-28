@@ -545,9 +545,9 @@ without_name(int node_id){
     n = tsch_queue_get_nbr(&addr);  
     // copia o endereco obtido para o endereco generico do neighbor  
     linkaddr_cmp(&neighbor_addr, tsch_queue_get_nbr_address(n));  
-    LOG_INFO_LLADDR(addr);
+    LOG_INFO_LLADDR(&addr);
     LOG_INFO_(" -> ");
-    LOG_INFO_LLADDR(neighbor_addr);
+    LOG_INFO_LLADDR(&neighbor_addr);
 
 
 }
