@@ -64,27 +64,7 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
-static void  
-without_name(int node_id){ 
-    int j; 
-    linkaddr_t addr;  
-    linkaddr_t neighbor_addr ;   
-    
-    for(j = 0; j < sizeof(addr); j += 2) {
-      addr.u8[j + 1] = node_id & 0xff;
-      addr.u8[j + 0] = node_id >> 8; 
-    }  
-    struct tsch_neighbor *n = NULL;
-    // obtem o 
-    n = tsch_queue_get_nbr(&addr);  
-    // copia o endereco obtido para o endereco generico do neighbor  
-    linkaddr_cmp(&neighbor_addr, tsch_queue_get_nbr_address(n));  
-    LOG_INFO_LLADDR(addr);
-    LOG_INFO_(" -> ");
-    LOG_INFO_LLADDR(neighbor_addr);
 
-
-}
 static void
 initialize_tsch_schedule(void)
 {
@@ -92,10 +72,7 @@ initialize_tsch_schedule(void)
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
-  if(node_id == 1 ){ 
-    MADJ *Matriz; 
-    init(Matriz);
-  }
+  
   /* A "catch-all" cell at (0, 0) */
   slot_offset = 0;
   channel_offset = 0;
