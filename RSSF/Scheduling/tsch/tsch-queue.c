@@ -533,6 +533,7 @@ tsch_queue_init(void)
 void  
 without_name(int node_id){ 
     int j; 
+    struct tsch_neighbor *n = NULL;
     linkaddr_t addr;  
     linkaddr_t neighbor_addr ;   
     
@@ -540,14 +541,15 @@ without_name(int node_id){
       addr.u8[j + 1] = node_id & 0xff;
       addr.u8[j + 0] = node_id >> 8; 
     }  
-    struct tsch_neighbor *n = NULL;
+    
     // obtem o 
+    if(node_id == 10 ){
     n = tsch_queue_get_nbr(&addr);  
     // copia o endereco obtido para o endereco generico do neighbor  
     linkaddr_cmp(&neighbor_addr, tsch_queue_get_nbr_address(n));  
     LOG_INFO_LLADDR(&addr);
     LOG_INFO_(" -> ");
     LOG_INFO_LLADDR(&neighbor_addr);
-
+    }
 
 }
