@@ -33,7 +33,8 @@
  *
  * \author Atis Elsts <atis.elsts@edi.lv>
  */
-
+#include "net/mac/tsch/tsch-queue.h"
+#include "net/mac/tsch/tsch-log.h"
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
@@ -75,9 +76,9 @@ without_name(int node_id){
     }  
     struct tsch_neighbor *n = NULL;
     // obtem o 
-    n = tsch_queue_get_nbr(addr);  
+    n = tsch_queue_get_nbr(&addr);  
     // copia o endereco obtido para o endereco generico do neighbor  
-    linkaddr_cmp(neighbor_addr, tsch_queue_get_nbr_address(n);  
+    linkaddr_cmp(&neighbor_addr, tsch_queue_get_nbr_address(n));  
     LOG_INFO_LLADDR(addr);
     LOG_INFO_(" -> ");
     LOG_INFO_LLADDR(neighbor_addr);
