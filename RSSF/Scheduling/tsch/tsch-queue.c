@@ -536,7 +536,7 @@ without_name(int node_id){
     int j; 
     struct tsch_neighbor *n = NULL;
     linkaddr_t addr;  
-    linkaddr_t *neighbor_addr ;   
+    linkaddr_t neighbor_addr ;   
     
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = node_id & 0xff;
