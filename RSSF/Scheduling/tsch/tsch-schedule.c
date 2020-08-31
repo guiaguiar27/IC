@@ -59,7 +59,14 @@
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
-#define LOG_LEVEL LOG_LEVEL_MAC
+#define LOG_LEVEL LOG_LEVEL_MAC 
+#define MAX_NOS 100  
+ typedef struct { 
+    int **MADJ; 
+    int Num_nos ;  
+    int num_arestas ;  
+
+}MADJ; 
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
@@ -499,7 +506,8 @@ tsch_schedule_init(void)
 /* Create a 6TiSCH minimal schedule */
 void
 tsch_schedule_create_minimal(void)
-{
+{ 
+  MADJ Madjacencia ; 
   struct tsch_slotframe *sf_min;
   /* First, empty current schedule */
   tsch_schedule_remove_all_slotframes();
@@ -510,6 +518,7 @@ tsch_schedule_create_minimal(void)
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
    * but is required according to 802.15.4e if also used for EB transmission.
    * Timeslot: 0, channel offset: 0. */
+  init(&Madjacencia);
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
@@ -556,3 +565,49 @@ tsch_schedule_print(void)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
+
+void init(MADJ *Matriz){ 
+     
+    Matriz->MADJ = (int**)malloc(MAX_NOS  * sizeof(int*)); 
+    for(int j = 0 ; j< MAX_NOS; j++){ 
+        Matriz->MADJ[j] = (int*)malloc(MAX_NOS *sizeof(int)); 
+    }
+     
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){ 
+            Matriz->MADJ = 0 ; 
+        }
+    }  
+    Matriz-> Num_nos = 0 ; 
+    Matriz -> num_arestas = 0 ; 
+    
+}   
+void matriz_adj(MADJ *Matriz, uint16_t node_id_own, const linkaddr_t *address_node_param){ 
+   // no1 emissor  
+   // no2 receptor   
+   uint16_t node_id_param = 0; 
+   node_id_param = address_node_param.u8[LINKADDR_SIZE - 1]
+            + (address_node_param.u8[LINKADDR_SIZE - 2] << 8);
+    
+    int qnt_no_dest , qnt_no_emis ; 
+    if(no1 > no2){ 
+        if(no1> Matriz->Num_nos){ 
+            Matriz->Num_nos = no1;
+        } 
+    }   
+    else { 
+        if(no2 > Matriz->Num_nos){ 
+            Matriz->Num_nos = no2; 
+        }
+    } 
+    for(int i = 0 ; i < Matriz->Num_nos;i++){ 
+        for(int j= 0 ; j< Matriz-> Num_nos;j++){ 
+            if(i == no1){ 
+                if(j == no2){ 
+                    Matriz->MADJ[i][j] = 1 ;  
+                }
+            }
+        }
+    }
+
+}    
