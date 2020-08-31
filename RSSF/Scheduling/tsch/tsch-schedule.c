@@ -590,20 +590,20 @@ void matriz_adj(MADJ *Matriz, uint16_t node_id_own, const linkaddr_t *address_no
             + (address_node_param.u8[LINKADDR_SIZE - 2] << 8);
     
     int qnt_no_dest , qnt_no_emis ; 
-    if(no1 > no2){ 
-        if(no1> Matriz->Num_nos){ 
-            Matriz->Num_nos = no1;
+    if(node_id_own > node_id_param){ 
+        if(node_id_own > Matriz->Num_nos){ 
+            Matriz->Num_nos = node_id_own;
         } 
     }   
     else { 
-        if(no2 > Matriz->Num_nos){ 
-            Matriz->Num_nos = no2; 
+        if(node_id_param > Matriz->Num_nos){ 
+            Matriz->Num_nos = node_id_param; 
         }
     } 
     for(int i = 0 ; i < Matriz->Num_nos;i++){ 
         for(int j= 0 ; j< Matriz-> Num_nos;j++){ 
-            if(i == no1){ 
-                if(j == no2){ 
+            if(i == node_id_onw){ 
+                if(j == node_id_param){ 
                     Matriz->MADJ[i][j] = 1 ;  
                 }
             }
