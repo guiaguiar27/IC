@@ -46,12 +46,6 @@
 #include "net/linkaddr.h"
 
 /********** Functions *********/
-typedef struct { 
-    int **MADJ; 
-    int Num_nos ;  
-    int num_arestas ;  
-
-}MADJ; 
 
 /**
  * \brief Module initialization, call only once at init
@@ -167,7 +161,7 @@ struct tsch_slotframe *tsch_schedule_slotframe_head(void);
  * \return The next slotframe if any, NULL otherwise
  */
 struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
-void matriz_adj(MADJ *Matriz, uint16_t node_id_own, const linkaddr_t *address_node_param); 
-void init(MADJ *Matriz); 
+void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, const linkaddr_t *address_node_param); 
+void init(MatrizAdj*Matriz); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */ 
