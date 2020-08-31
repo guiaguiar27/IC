@@ -534,7 +534,8 @@ void
 without_name(int node_id){ 
     LOG_INFO_("\n----ENTROU----\n"); 
     int j; 
-    struct tsch_neighbor *n = (struct tsch_neighbor *)nbr_table_head(tsch_neighbors);
+    struct tsch_neighbor *n = NULL ;   
+    //(struct tsch_neighbor *)nbr_table_head(tsch_neighbors);
     linkaddr_t addr;  
     //linkaddr_t neighbor_addr ;   
     
@@ -543,7 +544,7 @@ without_name(int node_id){
       addr.u8[j + 0] = node_id >> 8; 
     }  
     
-    // obtem o tsch neighbor 
+    // obtem o tsch neighbor  
     n = tsch_queue_get_nbr(&addr);  
     // copia o endereco obtido para o endereco generico do neighbor  
     //linkaddr_copy(&neighbor_addr,);   
