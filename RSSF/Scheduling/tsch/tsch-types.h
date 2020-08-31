@@ -119,7 +119,14 @@ struct tsch_neighbor {
   struct tsch_packet *tx_array[TSCH_QUEUE_NUM_PER_NEIGHBOR];
   /* Circular buffer of pointers to packet. */
   struct ringbufindex tx_ringbuf;
-};
+}; 
+typedef struct { 
+    int **MADJ; 
+    int Num_nos ;  
+    int num_arestas ;  
+
+}MatrizAdj; 
+
 
 /** \brief TSCH timeslot timing elements. Used to index timeslot timing
  * of different units, such as rtimer tick or micro-second */

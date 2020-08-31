@@ -61,12 +61,7 @@
 #define LOG_MODULE "TSCH Sched"
 #define LOG_LEVEL LOG_LEVEL_MAC 
 #define MAX_NOS 100  
- typedef struct { 
-    int **MADJ; 
-    int Num_nos ;  
-    int num_arestas ;  
-
-}MADJ; 
+ 
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
@@ -566,7 +561,7 @@ tsch_schedule_print(void)
 /*---------------------------------------------------------------------------*/
 /** @} */
 
-void init(MADJ *Matriz){ 
+void init(MatrizAdj *Matriz){ 
      
     Matriz->MADJ = (int**)malloc(MAX_NOS  * sizeof(int*)); 
     for(int j = 0 ; j< MAX_NOS; j++){ 
@@ -582,7 +577,7 @@ void init(MADJ *Matriz){
     Matriz -> num_arestas = 0 ; 
     
 }   
-void matriz_adj(MADJ *Matriz, uint16_t node_id_own, const linkaddr_t *address_node_param){ 
+void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, const linkaddr_t *address_node_param){ 
    // no1 emissor  
    // no2 receptor   
    uint16_t node_id_param = 0; 

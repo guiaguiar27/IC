@@ -46,6 +46,12 @@
 #include "net/linkaddr.h"
 
 /********** Functions *********/
+typedef struct { 
+    int **MADJ; 
+    int Num_nos ;  
+    int num_arestas ;  
+
+}MADJ; 
 
 /**
  * \brief Module initialization, call only once at init
