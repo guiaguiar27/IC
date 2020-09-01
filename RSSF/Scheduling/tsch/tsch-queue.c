@@ -545,13 +545,17 @@ without_name(int node_id){
     }  
     
     // obtem o tsch neighbor  
-    n = tsch_queue_get_nbr(&addr);  
+    
     // copia o endereco obtido para o endereco generico do neighbor  
     //linkaddr_copy(&neighbor_addr,);   
-    LOG_INFO_LLADDR(&addr);
-    LOG_INFO_(" -> ");
-    LOG_INFO_LLADDR(tsch_queue_get_nbr_address(n));
-    
+    while(n!= NULL){ 
+    if(!tsch_is_locked){
+      n = tsch_queue_get_nbr(&addr);  
+      LOG_INFO_LLADDR(&addr);
+      LOG_INFO_(" -> "); 
+      LOG_INFO_LLADDR(tsch_queue_get_nbr_address(n)); 
+    }
+    }  
 
 
 
