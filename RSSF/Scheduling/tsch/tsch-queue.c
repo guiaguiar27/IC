@@ -530,6 +530,7 @@ tsch_queue_init(void)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
+/*
 void  
 without_name(int node_id){ 
     LOG_INFO_("\n----ENTROU----\n"); 
@@ -560,4 +561,5 @@ without_name(int node_id){
 
 
 
-}
+} 
+*/
