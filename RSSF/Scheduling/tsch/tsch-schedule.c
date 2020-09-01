@@ -59,9 +59,7 @@
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
-#define LOG_LEVEL LOG_LEVEL_MAC 
-#define MAX_NOS 100  
- 
+#define LOG_LEVEL LOG_LEVEL_MAC  
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
@@ -259,8 +257,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
           address = &linkaddr_null;
         }
         linkaddr_copy(&l->addr, address); 
-        node_id_aux = address.u8[LINKADDR_SIZE - 1]
-            + (address.u8[LINKADDR_SIZE - 2] << 8);
+        node_id_aux = l->addr.u8[LINKADDR_SIZE - 1]
+            + (l->addr.u8[LINKADDR_SIZE - 2] << 8);
         LOG_PRINT("\nLINK ENTRE %u-> %u \n",node_id, node_id_aux);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
