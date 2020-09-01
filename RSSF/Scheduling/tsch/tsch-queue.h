@@ -65,6 +65,7 @@ struct tsch_neighbor *tsch_queue_add_nbr(const linkaddr_t *addr);
  * \param addr The link-layer address of the neighbor we are looking for
  * \return A pointer to the neighbor queue, NULL if not found
  */
+
 struct tsch_neighbor *tsch_queue_get_nbr(const linkaddr_t *addr);
 /**
  * \brief Get the TSCH time source (we currently assume there is only one)

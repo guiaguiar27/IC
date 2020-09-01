@@ -219,7 +219,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
                        uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
 {
-  struct tsch_link *l = NULL;
+  struct tsch_link *l = NULL; 
+  uint16_t node_id_aux = 0;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -257,8 +258,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         if(address == NULL) {
           address = &linkaddr_null;
         }
-        linkaddr_copy(&l->addr, address);
-
+        linkaddr_copy(&l->addr, address); 
+        node_id_aux = address.u8[LINKADDR_SIZE - 1]
+            + (address.u8[LINKADDR_SIZE - 2] << 8);
+        LOG_INFO("\nLINK ENTRE %d -> %d \n",node_id, node_id_aux);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -303,6 +306,7 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
       if(l == current_link) {
         current_link = NULL;
       }
+
       LOG_INFO("remove_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                slotframe->handle,
                print_link_options(l->link_options),
