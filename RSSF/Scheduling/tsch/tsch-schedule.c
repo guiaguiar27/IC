@@ -261,7 +261,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         linkaddr_copy(&l->addr, address); 
         node_id_aux = address.u8[LINKADDR_SIZE - 1]
             + (address.u8[LINKADDR_SIZE - 2] << 8);
-        LOG_INFO("\nLINK ENTRE %d -> %d \n",node_id, node_id_aux);
+        LOG_INFO("\nLINK ENTRE %u-> %u \n",node_id, node_id_aux);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -506,7 +506,6 @@ tsch_schedule_init(void)
 void
 tsch_schedule_create_minimal(void)
 { 
-  MADJ Madjacencia ; 
   struct tsch_slotframe *sf_min;
   /* First, empty current schedule */
   tsch_schedule_remove_all_slotframes();
@@ -517,7 +516,7 @@ tsch_schedule_create_minimal(void)
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
    * but is required according to 802.15.4e if also used for EB transmission.
    * Timeslot: 0, channel offset: 0. */
-  init(&Madjacencia);
+  
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
