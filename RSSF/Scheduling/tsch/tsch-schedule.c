@@ -55,7 +55,8 @@
 #include "sys/process.h"
 #include "sys/rtimer.h" 
 #include "sys/node-id.h" 
-#include <string.h> 
+#include <string.h>  
+#include <stdlib.h>
 
 /* Log configuration */
 #include "sys/log.h"
@@ -602,7 +603,7 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
     } 
     for(int i = 0 ; i < Matriz->Num_nos;i++){ 
         for(int j= 0 ; j< Matriz-> Num_nos;j++){ 
-            if(i == node_id_onw){ 
+            if(i == node_id_own){ 
                 if(j == node_id_param){ 
                     Matriz->MADJ[i][j] = 1 ;  
                 }
