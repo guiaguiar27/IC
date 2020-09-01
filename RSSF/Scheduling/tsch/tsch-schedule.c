@@ -54,7 +54,7 @@
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
 #include "sys/rtimer.h" 
-#include "sys/node-id.h" 
+
 #include <string.h>  
 #include <stdlib.h>
 

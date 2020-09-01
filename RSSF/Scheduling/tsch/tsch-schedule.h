@@ -43,7 +43,8 @@
 /********** Includes **********/
 
 #include "contiki.h"
-#include "net/linkaddr.h"
+#include "net/linkaddr.h" 
+#include "sys/node-id.h" 
 
 /********** Functions *********/
 
