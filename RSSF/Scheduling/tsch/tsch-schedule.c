@@ -589,8 +589,7 @@ void init(MatrizAdj *Matriz){
 void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
-    
-    int qnt_no_dest , qnt_no_emis ; 
+     
     if(node_id_own > node_id_param){ 
         if(node_id_own > Matriz->Num_nos){ 
             Matriz->Num_nos = node_id_own;
@@ -612,7 +611,4 @@ void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param)
     } 
 
 } 
-int existe_aresta(matrizAdj *g, int v1, int v2) {
-  return v1 > v2 ? g->MADJ[v1][v2] : g->MADJ[v2][v1];
-}
 
