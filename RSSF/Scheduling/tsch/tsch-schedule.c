@@ -53,7 +53,8 @@
 #include "net/mac/tsch/tsch.h"
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
-#include "sys/rtimer.h"
+#include "sys/rtimer.h" 
+#include "sys/node-id.h" 
 #include <string.h>
 
 /* Log configuration */
@@ -259,7 +260,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         linkaddr_copy(&l->addr, address); 
         node_id_aux = l->addr.u8[LINKADDR_SIZE - 1]
             + (l->addr.u8[LINKADDR_SIZE - 2] << 8);
-        LOG_PRINT("\nLINK ENTRE %u-> %u \n",node_id, node_id_aux);
+        LOG_PRINT("\nLINK ENTRE %u-> %u \n", node_id,node_id_aux);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
