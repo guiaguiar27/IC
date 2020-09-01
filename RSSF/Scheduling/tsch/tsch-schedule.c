@@ -570,7 +570,7 @@ tsch_schedule_print(void)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */ 
-void init(MatrizAdj *Matriz){ 
+void init(struct MatrizAdj *Matriz){ 
      
     Matriz->MADJ = (int**)malloc(MAX_NOS  * sizeof(int*)); 
     for(int j = 0 ; j< MAX_NOS; j++){ 
@@ -586,7 +586,7 @@ void init(MatrizAdj *Matriz){
     Matriz -> num_arestas = 0 ; 
     
 }    
-void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
+void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
      
