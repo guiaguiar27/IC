@@ -548,6 +548,7 @@ without_name(int node_id){
     
     // copia o endereco obtido para o endereco generico do neighbor  
     //linkaddr_copy(&neighbor_addr,);   
+    n = tsch_queue_get_nbr(&addr);  
     while(n!= NULL){ 
     
       n = tsch_queue_get_nbr(&addr);  

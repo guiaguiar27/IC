@@ -55,7 +55,7 @@
 #include "sys/process.h"
 #include "sys/rtimer.h" 
 #include "sys/node-id.h" 
-#include <string.h>
+#include <string.h> 
 
 /* Log configuration */
 #include "sys/log.h"
@@ -70,12 +70,16 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 LIST(slotframe_list);
 
 /* Adds and returns a slotframe (NULL if failure) */
+
+
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
-{
+{ 
+  
   if(size == 0) {
     return NULL;
   }
+
 
   if(tsch_schedule_get_slotframe_by_handle(handle)) {
     /* A slotframe with this handle already exists */
@@ -83,10 +87,13 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
   }
 
   if(tsch_get_lock()) {
-    struct tsch_slotframe *sf = memb_alloc(&slotframe_memb);
+    struct tsch_slotframe *sf = memb_alloc(&slotframe_memb); 
+
     if(sf != NULL) {
       /* Initialize the slotframe */
-      sf->handle = handle;
+      sf->handle = handle;  
+      init(sf->Grafo);  
+
       TSCH_ASN_DIVISOR_INIT(sf->size, size);
       LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */
@@ -260,7 +267,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         linkaddr_copy(&l->addr, address); 
         node_id_aux = l->addr.u8[LINKADDR_SIZE - 1]
             + (l->addr.u8[LINKADDR_SIZE - 2] << 8);
-        LOG_PRINT("\nLINK ENTRE %u-> %u \n", node_id,node_id_aux);
+        LOG_PRINT("\nLINK ENTRE %u->  %u \n", node_id,node_id_aux);
+        matriz_adj(slotframe->Grafo, uint16_t node_id_own, uint16_t node_id_param)
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -561,5 +569,50 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-/** @} */
+/** @} */ 
+void init(MatrizAdj *Matriz){ 
+     
+    Matriz->MADJ = (int**)malloc(MAX_NOS  * sizeof(int*)); 
+    for(int j = 0 ; j< MAX_NOS; j++){ 
+        Matriz->MADJ[j] = (int*)malloc(MAX_NOS *sizeof(int)); 
+    }
+     
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){ 
+            Matriz->MADJ = 0 ; 
+        }
+    }   
+    Matriz-> Num_nos = 0 ; 
+    Matriz -> num_arestas = 0 ; 
+    
+}    
+void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
+   // no1 emissor  
+   // no2 receptor   
+    
+    int qnt_no_dest , qnt_no_emis ; 
+    if(node_id_own > node_id_param){ 
+        if(node_id_own > Matriz->Num_nos){ 
+            Matriz->Num_nos = node_id_own;
+        } 
+    }   
+    else { 
+        if(node_id_param > Matriz->Num_nos){ 
+            Matriz->Num_nos = node_id_param; 
+        }
+    } 
+    for(int i = 0 ; i < Matriz->Num_nos;i++){ 
+        for(int j= 0 ; j< Matriz-> Num_nos;j++){ 
+            if(i == node_id_onw){ 
+                if(j == node_id_param){ 
+                    Matriz->MADJ[i][j] = 1 ;  
+                }
+            }
+        }
+    } 
+
+} 
+int existe_aresta(matrizAdj *g, int v1, int v2) {
+  return v1 > v2 ? g->MADJ[v1][v2] : g->MADJ[v2][v1];
+}
 

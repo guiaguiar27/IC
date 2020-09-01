@@ -40,7 +40,9 @@
  */
 
 #ifndef __TSCH_TYPES_H__
-#define __TSCH_TYPES_H__
+#define __TSCH_TYPES_H__ 
+#define MAX_NOS 100 
+
 
 /********** Includes **********/
 
@@ -49,11 +51,17 @@
 #include "lib/ringbufindex.h"
 
 /********** Data types **********/
+ struct MatrizAdj { 
+    int **MADJ; 
+    int Num_nos ;  
+    int num_arestas ;  
+    
+};
 
 /** \brief 802.15.4e link types. LINK_TYPE_ADVERTISING_ONLY is an extra one: for EB-only links. */
 enum link_type { LINK_TYPE_NORMAL, LINK_TYPE_ADVERTISING, LINK_TYPE_ADVERTISING_ONLY };
 
-/** \brief An IEEE 802.15.4-2015 TSCH link (also called cell or slot) */
+/** \brief An IEEE 802.15.4-2015 TSCH link (also called cell or slot) */ 
 struct tsch_link {
   /* Links are stored as a list: "next" must be the first field */
   struct tsch_link *next;
@@ -88,7 +96,8 @@ struct tsch_slotframe {
   uint16_t handle;
   /* Number of timeslots in the slotframe.
    * Stored as struct asn_divisor_t because we often need ASN%size */
-  struct tsch_asn_divisor_t size;
+  struct tsch_asn_divisor_t size; 
+  struct MatrizAdj Grafo;  
   /* List of links belonging to this slotframe */
   LIST_STRUCT(links_list);
 };
