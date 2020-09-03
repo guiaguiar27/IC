@@ -585,7 +585,7 @@ void init(struct MatrizAdj *Matriz){
     }   
     Matriz-> Num_nos = 0 ; 
     Matriz -> num_arestas = 0 ; 
-    
+    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
 }    
 void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
@@ -593,21 +593,17 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
      
     if(node_id_own > node_id_param){ 
         if(node_id_own > Matriz->Num_nos){ 
-            Matriz->Num_nos = node_id_own;
-        } 
+            Matriz->Num_nos = node_id_own; 
+            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;  
+            LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param); 
+        }
+
     }   
     else { 
         if(node_id_param > Matriz->Num_nos){ 
-            Matriz->Num_nos = node_id_param; 
-        }
-    } 
-    for(int i = 0 ; i < Matriz->Num_nos;i++){ 
-        for(int j= 0 ; j< Matriz-> Num_nos;j++){ 
-            if(i == node_id_own){ 
-                if(j == node_id_param){ 
-                    Matriz->MADJ[i][j] = 1 ;  
-                }
-            }
+            Matriz->Num_nos = node_id_param;   
+            Matriz ->MADJ[node_id_own][node_id_param] = 1 ; 
+            LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param);  
         }
     } 
 
