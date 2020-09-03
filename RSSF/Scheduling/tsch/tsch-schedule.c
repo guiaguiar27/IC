@@ -54,7 +54,7 @@
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
 #include "sys/rtimer.h" 
-
+#include "sys/node-id.h" 
 #include <string.h>  
 #include <stdlib.h>
 
@@ -579,7 +579,7 @@ void init(struct MatrizAdj *Matriz){
     
      
     for(int i = 0 ; i < MAX_NOS ; i++){ 
-        for(int j = 0 ; j< MAX_NOS; j++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){  
             Matriz->MADJ = 0 ; 
         }
     }   
