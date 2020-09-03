@@ -573,9 +573,9 @@ tsch_schedule_print(void)
 /** @} */ 
 void init(struct MatrizAdj *Matriz){ 
     
-    matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
-    matriz->MADJ[0] = NULL;
-    for (int i = 1; i < MAX_NOS; i++) matriz->MADJ = calloc (i, sizeof(int));
+    Matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
+    Matriz->MADJ[0] = NULL;
+    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = calloc (i, sizeof(int));
     
      
     for(int i = 0 ; i < MAX_NOS ; i++){ 
