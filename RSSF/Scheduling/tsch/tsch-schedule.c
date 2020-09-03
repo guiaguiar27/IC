@@ -594,15 +594,17 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
     if(node_id_own > node_id_param){ 
         if(node_id_own > Matriz->Num_nos){ 
             Matriz->Num_nos = node_id_own; 
-            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;  
+            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
+            Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
             LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param); 
         }
 
     }   
     else { 
         if(node_id_param > Matriz->Num_nos){ 
-            Matriz->Num_nos = node_id_param;   
-            Matriz ->MADJ[node_id_own][node_id_param] = 1 ; 
+            Matriz->Num_nos = node_id_param;    
+            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
+            Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
             LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param);  
         }
     } 
