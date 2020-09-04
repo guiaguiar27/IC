@@ -41,7 +41,7 @@
 
 #ifndef __TSCH_TYPES_H__
 #define __TSCH_TYPES_H__ 
-#define MAX_NOS 50 
+#define MAX_NOS 10 
 
 
 /********** Includes **********/

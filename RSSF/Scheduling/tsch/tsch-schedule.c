@@ -533,6 +533,7 @@ tsch_schedule_create_minimal(void)
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
 tsch_schedule_slotframe_head(void)
+
 {
   return list_head(slotframe_list);
 }
