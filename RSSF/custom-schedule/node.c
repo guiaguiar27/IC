@@ -62,12 +62,8 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
-
-static void
-initialize_tsch_schedule(void)
-{
-  int i, j;
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+static void init_slotframe(struct tsch_slotframe *sf_common){ 
+  *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
   
@@ -79,6 +75,18 @@ initialize_tsch_schedule(void)
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
 
+ }
+static void
+initialize_tsch_schedule(struct tsch_slotframe *sf_common)
+{
+  int i, j;
+  uint16_t slot_offset;
+  uint16_t channel_offset;
+  
+  /* A "catch-all" cell at (0, 0) */
+  slot_offset = 0;
+  channel_offset = 0;
+ 
   for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
     uint8_t link_options;
     linkaddr_t addr;
@@ -133,16 +141,19 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
   
-  initialize_tsch_schedule();
+  
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
 
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();
+    struct tsch_slotframe *sf_common; 
+    NETSTACK_ROUTING.root_start();  
+    init_slotframe(&sf_common);
        
   } 
+  initialize_tsch_schedule(&sf_common); 
 
 
   /* Main loop */
