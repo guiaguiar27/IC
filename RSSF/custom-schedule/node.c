@@ -65,7 +65,7 @@ AUTOSTART_PROCESSES(&node_process);
 
 static void  
 init_slotframe(struct tsch_slotframe *sf_common){ 
-  *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
   
@@ -148,9 +148,9 @@ PROCESS_THREAD(node_process, ev, data)
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-
+  
+  struct tsch_slotframe *sf_common = NULL;
   if(node_id == 1) {  /* Running on the root? */
-    struct tsch_slotframe *sf_common = NULL; 
     NETSTACK_ROUTING.root_start();  
     init_slotframe(sf_common);
        
