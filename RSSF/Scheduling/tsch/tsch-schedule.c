@@ -266,10 +266,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
           address = &linkaddr_null;
         }
         linkaddr_copy(&l->addr, address); 
-        node_id_aux = l->addr.u8[LINKADDR_SIZE - 1]
-            + (l->addr.u8[LINKADDR_SIZE - 2] << 8);
+        node_id_aux = address.u8[LINKADDR_SIZE - 1]
+            + (address.u8[LINKADDR_SIZE - 2] << 8);
         LOG_PRINT("\nLINK ENTRE %u->%u \n",node_id,node_id_aux);
-        matriz_adj(&slotframe->Grafo,node_id, node_id_aux);
+        //matriz_adj(&slotframe->Grafo,node_id, node_id_aux);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
