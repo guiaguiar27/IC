@@ -62,7 +62,9 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
-static void init_slotframe(struct tsch_slotframe *sf_common){ 
+
+static void  
+init_slotframe(struct tsch_slotframe *sf_common){ 
   *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
@@ -148,12 +150,12 @@ PROCESS_THREAD(node_process, ev, data)
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
 
   if(node_id == 1) {  /* Running on the root? */
-    struct tsch_slotframe *sf_common; 
+    struct tsch_slotframe *sf_common = NULL; 
     NETSTACK_ROUTING.root_start();  
-    init_slotframe(&sf_common);
+    init_slotframe(sf_common);
        
   } 
-  initialize_tsch_schedule(&sf_common); 
+  initialize_tsch_schedule(sf_common); 
 
 
   /* Main loop */
