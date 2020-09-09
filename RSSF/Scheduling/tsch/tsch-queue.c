@@ -69,7 +69,8 @@
 
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
-NBR_TABLE(struct tsch_neighbor, tsch_neighbors);
+NBR_TABLE(struct tsch_neighbor, tsch_neighbors); 
+LIST(neighbor_list);
 
 /* Broadcast and EB virtual neighbors */
 struct tsch_neighbor *n_broadcast;
@@ -555,7 +556,7 @@ void  tsch_neighbour_maping(int node_id)
     
     // copia o endereco obtido para o endereco generico do neighbor  
     //linkaddr_copy(&neighbor_addr,);   
-    
+
     // take the first neighbor  
     n = tsch_queue_get_nbr(&addr);   
     if(n!= NULL){      
