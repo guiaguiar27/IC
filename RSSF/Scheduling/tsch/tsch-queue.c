@@ -530,9 +530,8 @@ tsch_queue_init(void)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
-/*
-void  
-without_name(int node_id){ 
+
+void  tsch_neighbour_maping(int node_id){ 
     LOG_INFO_("\n----ENTROU----\n"); 
     int j; 
     struct tsch_neighbor *n = NULL ;   
@@ -562,4 +561,3 @@ without_name(int node_id){
 
 
 } 
-*/

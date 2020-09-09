@@ -41,7 +41,7 @@
 
 #ifndef __TSCH_TYPES_H__
 #define __TSCH_TYPES_H__ 
-#define MAX_NOS 10 
+#define MAX_NOS 10
 
 
 /********** Includes **********/
@@ -97,7 +97,7 @@ struct tsch_slotframe {
   /* Number of timeslots in the slotframe.
    * Stored as struct asn_divisor_t because we often need ASN%size */
   struct tsch_asn_divisor_t size; 
-  struct MatrizAdj Grafo;  
+  
   /* List of links belonging to this slotframe */
   LIST_STRUCT(links_list);
 };
