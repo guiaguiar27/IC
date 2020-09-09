@@ -559,13 +559,14 @@ void  tsch_neighbour_maping(int node_id)
 
     // take the first neighbor  
     n = tsch_queue_get_nbr(&addr);   
-    if(n!= NULL){      
-      LOG_INFO_LLADDR(&addr);
-      LOG_INFO_(" -> "); 
-      LOG_INFO_LLADDR(tsch_queue_get_nbr_address(n));  
-        
+    if(n!= NULL){  
+      if(tsch_get_lock()) {     
+        LOG_INFO_LLADDR(&addr);
+        LOG_INFO_(" -> "); 
+        LOG_INFO_LLADDR(&n->addr);  
+       }
     
     } 
    }
     
-} 
+ 

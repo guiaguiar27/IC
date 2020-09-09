@@ -93,7 +93,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     if(sf != NULL) {
       /* Initialize the slotframe */
       sf->handle = handle;  
-      init(&sf->Grafo);  
+        
 
       TSCH_ASN_DIVISOR_INIT(sf->size, size);
       LIST_STRUCT_INIT(sf, links_list);
