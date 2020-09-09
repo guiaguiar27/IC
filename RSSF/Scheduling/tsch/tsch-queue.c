@@ -108,9 +108,15 @@ tsch_queue_add_nbr(const linkaddr_t *addr)
 /* Get a TSCH neighbor */
 struct tsch_neighbor *
 tsch_queue_get_nbr(const linkaddr_t *addr)
-{
+{  
   if(!tsch_is_locked()) {
-    return (struct tsch_neighbor *)nbr_table_get_from_lladdr(tsch_neighbors, addr);
+    struct tsch_neighbor *n = list_head(neighbor_list);
+    while(n != NULL) {
+      if(linkaddr_cmp(&n->addr, addr)) {
+        return n;
+      }
+      n = list_item_next(n);
+    }
   }
   return NULL;
 }
@@ -531,7 +537,8 @@ tsch_queue_init(void)
 /*---------------------------------------------------------------------------*/
 /** @} */
 
-void  tsch_neighbour_maping(int node_id){ 
+void  tsch_neighbour_maping(int node_id) 
+{ 
     LOG_INFO_("\n----ENTROU----\n"); 
     int j; 
     struct tsch_neighbor *n = NULL ;   
@@ -548,16 +555,16 @@ void  tsch_neighbour_maping(int node_id){
     
     // copia o endereco obtido para o endereco generico do neighbor  
     //linkaddr_copy(&neighbor_addr,);   
-    n = tsch_queue_get_nbr(&addr);  
-    while(n!= NULL){ 
     
-      n = tsch_queue_get_nbr(&addr);  
+    // take the first neighbor  
+    n = tsch_queue_get_nbr(&addr);   
+    if(n!= NULL){      
       LOG_INFO_LLADDR(&addr);
       LOG_INFO_(" -> "); 
-      LOG_INFO_LLADDR(tsch_queue_get_nbr_address(n)); 
-    }
-      
-
-
-
+      LOG_INFO_LLADDR(tsch_queue_get_nbr_address(n));  
+        
+    
+    } 
+   }
+    
 } 
