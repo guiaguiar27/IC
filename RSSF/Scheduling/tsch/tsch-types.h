@@ -113,22 +113,24 @@ struct tsch_packet {
   uint8_t header_len; /* length of header and header IEs (needed for link-layer security) */
   uint8_t tsch_sync_ie_offset; /* Offset within the frame used for quick update of EB ASN and join priority */
 };
-
 /** \brief TSCH neighbor information */
 struct tsch_neighbor {
-  uint8_t is_broadcast; /* is this neighbor a virtual neighbor used for broadcast (of data packets or EBs) */
-  uint8_t is_time_source; /* is this neighbor a time source? */
-  uint8_t backoff_exponent; /* CSMA backoff exponent */
-  uint8_t backoff_window; /* CSMA backoff window (number of slots to skip) */
-  uint8_t last_backoff_window; /* Last CSMA backoff window */
-  uint8_t tx_links_count; /* How many links do we have to this neighbor? */
-  uint8_t dedicated_tx_links_count; /* How many dedicated links do we have to this neighbor? */
-  /* Array for the ringbuf. Contains pointers to packets.
+/* Neighbors are stored as a list: "next" must be the first field */
+struct tsch_neighbor *next;
+linkaddr_t addr; /* MAC address of the neighbor */
+uint8_t is_broadcast; /* is this neighbor a virtual neighbor used for broadcast (of data packets or EBs) */
+uint8_t is_time_source; /* is this neighbor a time source? */
+uint8_t backoff_exponent; /* CSMA backoff exponent */
+uint8_t backoff_window; /* CSMA backoff window (number of slots to skip) */
+uint8_t last_backoff_window; /* Last CSMA backoff window */
+uint8_t tx_links_count; /* How many links do we have to this neighbor? */
+uint8_t dedicated_tx_links_count; /* How many dedicated links do we have to this neighbor? */
+/* Array for the ringbuf. Contains pointers to packets.
    * Its size must be a power of two to allow for atomic put */
-  struct tsch_packet *tx_array[TSCH_QUEUE_NUM_PER_NEIGHBOR];
-  /* Circular buffer of pointers to packet. */
-  struct ringbufindex tx_ringbuf;
-}; 
+struct tsch_packet *tx_array[TSCH_QUEUE_NUM_PER_NEIGHBOR];
+/* Circular buffer of pointers to packet. */
+struct ringbufindex tx_ringbuf;
+};
 /** \brief TSCH timeslot timing elements. Used to index timeslot timing
  * of different units, such as rtimer tick or micro-second */
 enum tsch_timeslot_timing_elements {
