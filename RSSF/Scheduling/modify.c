@@ -137,7 +137,7 @@ void  tsch_neighbour_maping(void)
       if(generate_node_id == 20) break;  
       else generate_node_id++ ;  
 
-    }
+    } 
     // obtem o tsch neighbor  
     
     // copia o endereco obtido para o endereco generico do neighbor  
@@ -146,5 +146,5 @@ void  tsch_neighbour_maping(void)
     // take the first neighbor  
        
     
-   }
+   
  

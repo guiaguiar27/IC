@@ -533,9 +533,7 @@ tsch_queue_init(void)
   /* Add virtual EB and the broadcast neighbors */
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
-}
-/*---------------------------------------------------------------------------*/
-/** @} */
+} 
 void  tsch_neighbour_maping(void) 
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
@@ -556,25 +554,16 @@ void  tsch_neighbour_maping(void)
       n = tsch_queue_get_nbr(&addr);
       
       if(n!= NULL){  
-           
+        if(tsch_get_lock()) {     
           LOG_INFO_LLADDR(&addr);
           LOG_INFO_(" -> "); 
           LOG_INFO_LLADDR(&n->addr);  
-        
+        }
       }   
 
-      if(generate_node_id == Max) break;  
+      if(generate_node_id == 20) break;  
       else generate_node_id++ ;  
 
-    }
-    // obtem o tsch neighbor  
-    
-    // copia o endereco obtido para o endereco generico do neighbor  
-    //linkaddr_copy(&neighbor_addr,);   
-
-    // take the first neighbor  
-       
-    
-   }
-    
- 
+    } 
+/*---------------------------------------------------------------------------*/
+/** @} */
