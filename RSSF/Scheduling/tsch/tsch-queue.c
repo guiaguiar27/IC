@@ -558,14 +558,14 @@ void  tsch_neighbour_maping(void)
       n = tsch_queue_get_nbr(&addr);
       
       if(n!= NULL){  
-        if(tsch_get_lock()) {     
+           
           LOG_INFO_LLADDR(&addr);
           LOG_INFO_(" -> "); 
           LOG_INFO_LLADDR(&n->addr);  
-        }
+        
       }   
 
-      if(generate_node_id == 20) break;  
+      if(generate_node_id == Max) break;  
       else generate_node_id++ ;  
 
     }
