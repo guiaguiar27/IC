@@ -53,13 +53,15 @@
 #include "net/mac/tsch/tsch.h"
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
-#include "sys/rtimer.h"
-#include <string.h>
+#include "sys/rtimer.h" 
+#include "sys/node-id.h" 
+#include <string.h>  
+#include <stdlib.h>
 
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
-#define LOG_LEVEL LOG_LEVEL_MAC
+#define LOG_LEVEL LOG_LEVEL_MAC  
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
@@ -69,12 +71,16 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 LIST(slotframe_list);
 
 /* Adds and returns a slotframe (NULL if failure) */
+
+
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
-{
+{ 
+  
   if(size == 0) {
     return NULL;
   }
+
 
   if(tsch_schedule_get_slotframe_by_handle(handle)) {
     /* A slotframe with this handle already exists */
@@ -82,10 +88,13 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
   }
 
   if(tsch_get_lock()) {
-    struct tsch_slotframe *sf = memb_alloc(&slotframe_memb);
+    struct tsch_slotframe *sf = memb_alloc(&slotframe_memb); 
+
     if(sf != NULL) {
       /* Initialize the slotframe */
-      sf->handle = handle;
+      sf->handle = handle;  
+        
+
       TSCH_ASN_DIVISOR_INIT(sf->size, size);
       LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */
@@ -217,7 +226,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
                        uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
 {
-  struct tsch_link *l = NULL;
+  struct tsch_link *l = NULL; 
+  uint16_t node_id_aux = 0;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -255,8 +265,14 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         if(address == NULL) {
           address = &linkaddr_null;
         }
-        linkaddr_copy(&l->addr, address);
-
+        linkaddr_copy(&l->addr, address); 
+        if (link_type == LINK_TYPE_NORMAL){
+          node_id_aux = l->addr.u8[LINKADDR_SIZE - 1]
+              + (l->addr.u8[LINKADDR_SIZE - 2] << 8);
+          LOG_PRINT("\nLINK ENTRE %u->%u \n",node_id,node_id_aux);
+          //matriz_adj(&slotframe->Grafo,node_id, node_id_aux);
+        }
+        
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -301,6 +317,7 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
       if(l == current_link) {
         current_link = NULL;
       }
+
       LOG_INFO("remove_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                slotframe->handle,
                print_link_options(l->link_options),
@@ -499,7 +516,7 @@ tsch_schedule_init(void)
 /* Create a 6TiSCH minimal schedule */
 void
 tsch_schedule_create_minimal(void)
-{
+{ 
   struct tsch_slotframe *sf_min;
   /* First, empty current schedule */
   tsch_schedule_remove_all_slotframes();
@@ -510,6 +527,7 @@ tsch_schedule_create_minimal(void)
    * We set the link type to advertising, which is not compliant with 6TiSCH minimal schedule
    * but is required according to 802.15.4e if also used for EB transmission.
    * Timeslot: 0, channel offset: 0. */
+  
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
@@ -518,6 +536,7 @@ tsch_schedule_create_minimal(void)
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
 tsch_schedule_slotframe_head(void)
+
 {
   return list_head(slotframe_list);
 }
@@ -555,4 +574,44 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-/** @} */
+/** @} */ 
+void init(struct MatrizAdj *Matriz){ 
+    
+    Matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
+    Matriz->MADJ[0] = NULL;
+    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = calloc (i, sizeof(int));
+    
+     
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){  
+            Matriz->MADJ = 0 ; 
+        }
+    }   
+    Matriz-> Num_nos = 0 ; 
+    Matriz -> num_arestas = 0 ; 
+    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
+}    
+void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
+   // no1 emissor  
+   // no2 receptor   
+     
+    if(node_id_own > node_id_param){ 
+        if(node_id_own > Matriz->Num_nos){ 
+            Matriz->Num_nos = node_id_own; 
+            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
+            Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
+            LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param); 
+        }
+
+    }   
+    else { 
+        if(node_id_param > Matriz->Num_nos){ 
+            Matriz->Num_nos = node_id_param;    
+            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
+            Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
+            LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param);  
+        }
+    } 
+
+} 
+

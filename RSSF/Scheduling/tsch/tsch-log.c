@@ -114,7 +114,17 @@ tsch_log_process_pending(void)
                 log->rx.is_unicast == 0 ? "bc" : "uc", log->rx.is_data, log->rx.sec_level);
         log_lladdr_compact(&log->rx.src);
         printf("->");
-        log_lladdr_compact(log->rx.is_unicast ? &linkaddr_node_addr : NULL);
+        log_lladdr_compact(log->rx.is_unicast ? &linkaddr_node_addr : NULL); 
+        send = log->rx.src.u8[LINKADDR_SIZE - 1]
+              + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8); 
+        if(log->rx.is_unicast){
+        dest = log->rx.is_unicast.u8[LINKADDR_SIZE - 1]
+              + (log->rx.is_unicast.u8[LINKADDR_SIZE - 2] << 8); 
+        } 
+        else { 
+
+        }
+        printf("\n-------LINK : %u -> %u--------\n",send,dest);
         printf(", len %3u, seq %3u",
                 log->rx.datalen, log->rx.seqno);
         printf(", edr %3d", (int)log->rx.estimated_drift);

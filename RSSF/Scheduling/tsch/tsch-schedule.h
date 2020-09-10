@@ -43,8 +43,7 @@
 /********** Includes **********/
 
 #include "contiki.h"
-#include "net/linkaddr.h" 
-
+#include "net/linkaddr.h"
 
 /********** Functions *********/
 
@@ -162,7 +161,6 @@ struct tsch_slotframe *tsch_schedule_slotframe_head(void);
  * \return The next slotframe if any, NULL otherwise
  */
 struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
-void init(struct MatrizAdj *Matriz); 
-void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param);
+
 #endif /* __TSCH_SCHEDULE_H__ */
-/** @} */ 
+/** @} */
