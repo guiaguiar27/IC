@@ -69,8 +69,7 @@
 
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
-NBR_TABLE(struct tsch_neighbor, tsch_neighbors); 
-LIST(neighbor_list);
+NBR_TABLE(struct tsch_neighbor, tsch_neighbors);
 
 /* Broadcast and EB virtual neighbors */
 struct tsch_neighbor *n_broadcast;
@@ -109,15 +108,9 @@ tsch_queue_add_nbr(const linkaddr_t *addr)
 /* Get a TSCH neighbor */
 struct tsch_neighbor *
 tsch_queue_get_nbr(const linkaddr_t *addr)
-{  
+{
   if(!tsch_is_locked()) {
-    struct tsch_neighbor *n = list_head(neighbor_list);
-    while(n != NULL) {
-      if(linkaddr_cmp(&n->addr, addr)) {
-        return n;
-      }
-      n = list_item_next(n);
-    }
+    return (struct tsch_neighbor *)nbr_table_get_from_lladdr(tsch_neighbors, addr);
   }
   return NULL;
 }
@@ -535,9 +528,7 @@ tsch_queue_init(void)
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
 }
-/*---------------------------------------------------------------------------*/
-/** @} */
-
+/*---------------------------------------------------------------------------*/ 
 void  tsch_neighbour_maping(void) 
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
@@ -561,22 +552,15 @@ void  tsch_neighbour_maping(void)
         if(tsch_get_lock()) {     
           LOG_INFO_LLADDR(&addr);
           LOG_INFO_(" -> "); 
-          LOG_INFO_LLADDR(&n->addr);  
+          LOG_INFO_LLADDR(&tsch_queue_get_nbr_address(&n));  
         }
       }   
 
-      if(generate_node_id == 20) break;  
+      if(generate_node_id == Max) break;  
       else generate_node_id++ ;  
 
     }
-    // obtem o tsch neighbor  
-    
-    // copia o endereco obtido para o endereco generico do neighbor  
-    //linkaddr_copy(&neighbor_addr,);   
-
-    // take the first neighbor  
-       
-    
    }
-    
- 
+  
+/*---------------------------------------------------------------------------*/
+/** @} */

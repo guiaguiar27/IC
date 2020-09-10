@@ -162,7 +162,7 @@ PROCESS_THREAD(node_process, ev, data)
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     // scheduler
     if(node_id == 10){ 
-    tsch_neighbour_maping(); 
+      tsch_neighbour_maping(); 
     } 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
