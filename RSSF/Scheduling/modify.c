@@ -106,7 +106,7 @@ sort_links(int **coordenadas){
 
 // ************************************ 
 // tsch queue  
-void  tsch_neighbour_maping(void)
+void  tsch_neighbour_maping(void); 
 void  tsch_neighbour_maping(void) 
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
