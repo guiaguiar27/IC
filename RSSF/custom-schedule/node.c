@@ -103,8 +103,7 @@ initialize_tsch_schedule(struct tsch_slotframe *sf_common)
     /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
     slot_offset = APP_UNICAST_TIMESLOT + i;
     channel_offset = i;
-    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-     * backoff windows will not be reset correctly! */
+    // change the type 
     link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
 
     tsch_schedule_add_link(sf_common,
@@ -162,8 +161,9 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     // scheduler
-  
-    tsch_neighbour_maping( node_id);
+    if(node_id == 10){ 
+    tsch_neighbour_maping(); 
+    } 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
       /* Send network uptime timestamp to the network root node */
