@@ -51,7 +51,7 @@
 #include "lib/ringbufindex.h"
 #include "sys/log.h"
 
-#if TSCH_LOG_PER_SLOT
+//#if TSCH_LOG_PER_SLOT
 
 PROCESS_NAME(tsch_pending_events_process);
 
@@ -70,7 +70,8 @@ void
 tsch_log_process_pending(void)
 {
   static int last_log_dropped = 0;
-  int16_t log_index;
+  int16_t log_index; 
+  uint16_t dest , send ; 
   /* Loop on accessing (without removing) a pending input packet */
   if(log_dropped != last_log_dropped) {
     printf("[WARN: TSCH-LOG  ] logs dropped %u\n", log_dropped);
@@ -92,9 +93,15 @@ tsch_log_process_pending(void)
       case tsch_log_tx:
         printf("%s-%u-%u tx ",
                 linkaddr_cmp(&log->tx.dest, &linkaddr_null) ? "bc" : "uc", log->tx.is_data, log->tx.sec_level);
-        log_lladdr_compact(&linkaddr_node_addr);
+        log_lladdr_compact(&linkaddr_node_addr); 
         printf("->");
-        log_lladdr_compact(&log->tx.dest);
+        log_lladdr_compact(&log->tx.dest); 
+        send = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+              + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8); 
+        dest = log->tx.dest.u8[LINKADDR_SIZE - 1]
+              + (log->tx.dest.u8[LINKADDR_SIZE - 2] << 8); 
+         
+        printf("\n-------LINK : %u -> %u--------\n",send,dest);
         printf(", len %3u, seq %3u, st %d %2d",
                 log->tx.datalen, log->tx.seqno, log->tx.mac_tx_status, log->tx.num_tx);
         if(log->tx.drift_used) {
@@ -176,5 +183,5 @@ tsch_log_stop(void)
   }
 }
 
-#endif /* TSCH_LOG_PER_SLOT */
+//#endif /* TSCH_LOG_PER_SLOT */
 /** @} */
