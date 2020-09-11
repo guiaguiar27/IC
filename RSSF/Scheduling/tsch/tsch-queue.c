@@ -552,9 +552,11 @@ void  tsch_neighbour_maping(void)
         addr.u8[j + 1] = generate_node_id & 0xff;
         addr.u8[j + 0] = generate_node_id >> 8;   
       }    
-      LOG_INFO_LLADDR(&addr); 
+       
+      
       n = tsch_queue_get_nbr(&addr); 
       real_neighbor =  tsch_queue_get_nbr(&n->addr);
+      LOG_INFO_LLADDR(&n->addr);
       LOG_INFO_(" -> "); 
       LOG_INFO_LLADDR(&real_neighbor->addr); 
       LOG_INFO("\n");
