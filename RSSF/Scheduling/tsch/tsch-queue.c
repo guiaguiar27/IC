@@ -555,7 +555,7 @@ void  tsch_neighbour_maping(void)
        
       
       n = tsch_queue_get_nbr(&addr); 
-      real_neighbor =  tsch_queue_get_nbr(&n->addr);
+      //real_neighbor =  tsch_queue_get_nbr(&n->addr);
       LOG_INFO_LLADDR(&n->addr);
       LOG_INFO_(" -> "); 
       LOG_INFO_LLADDR(&real_neighbor->addr); 
