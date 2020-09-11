@@ -78,7 +78,7 @@ initialize_tsch_schedule(void)
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset, 1);
+      slot_offset, channel_offset);
 
   for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
     uint8_t link_options;
@@ -101,7 +101,7 @@ initialize_tsch_schedule(void)
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset, 1);
+        slot_offset, channel_offset);
   }
 }
 
@@ -148,7 +148,7 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     if(node_id == 10){ 
       LOG_INFO("Generate topology by neighbor structure\n");
-       tsch_neighbour_maping(void);  
+       tsch_neighbour_maping();  
     }
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
