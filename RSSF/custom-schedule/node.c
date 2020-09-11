@@ -33,12 +33,13 @@
  *
  * \author Atis Elsts <atis.elsts@edi.lv>
  */
+
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
+#include "sys/node-id.h"
 
-#include "net/routing/rpl-lite/rpl-dag-root.h"
 #include "sys/log.h"
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
@@ -63,12 +64,14 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
 
-static void  
-init_slotframe(struct tsch_slotframe *sf_common){ 
-  sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+static void
+initialize_tsch_schedule(void)
+{
+  int i, j;
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset;
-  
+
   /* A "catch-all" cell at (0, 0) */
   slot_offset = 0;
   channel_offset = 0;
@@ -77,18 +80,6 @@ init_slotframe(struct tsch_slotframe *sf_common){
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset, 1);
 
- }
-static void
-initialize_tsch_schedule(struct tsch_slotframe *sf_common)
-{
-  int i, j;
-  uint16_t slot_offset;
-  uint16_t channel_offset;
-  
-  /* A "catch-all" cell at (0, 0) */
-  slot_offset = 0;
-  channel_offset = 0;
- 
   for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
     uint8_t link_options;
     linkaddr_t addr;
@@ -101,9 +92,10 @@ initialize_tsch_schedule(struct tsch_slotframe *sf_common)
 
     /* Add a unicast cell for each potential neighbor (in Cooja) */
     /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
-    slot_offset = APP_UNICAST_TIMESLOT + i;
+    slot_offset = APP_UNICAST_TIMESLOT;
     channel_offset = i;
-    // change the type 
+    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+     * backoff windows will not be reset correctly! */
     link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
 
     tsch_schedule_add_link(sf_common,
@@ -141,29 +133,24 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
 
   PROCESS_BEGIN();
-  
-  
+
+  initialize_tsch_schedule();
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  
-  struct tsch_slotframe *sf_common = NULL;
-  if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();  
-    init_slotframe(sf_common);
-       
-  } 
-  initialize_tsch_schedule(sf_common); 
 
+  if(node_id == 1) {  /* Running on the root? */
+    NETSTACK_ROUTING.root_start();
+  }
 
   /* Main loop */
-  while(1) {
-    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    // scheduler
+  while(1) { 
     if(node_id == 10){ 
-      tsch_neighbour_maping(); 
-    } 
+      LOG_INFO("Generate topology by neighbor structure\n");
+       tsch_neighbour_maping(void);  
+    }
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
       /* Send network uptime timestamp to the network root node */
