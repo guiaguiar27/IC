@@ -537,32 +537,32 @@ tsch_queue_init(void)
 void  tsch_neighbour_maping(void) 
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
-    int j, generate_node_id, Max; 
-    generate_node_id = 1 ;  
+    int i,j, Max; 
+      
     Max = 10 ;    
     struct tsch_neighbor *n = NULL ;   
-    //(struct tsch_neighbor *)nbr_table_head(tsch_neighbors);
-    linkaddr_t addr;  
+     
     //linkaddr_t neighbor_addr ;   
-    while(generate_node_id < Max){ 
-
+    for (i = 0; i < Max - 1; ++i){ 
+      
+      linkaddr_t addr; 
+      uint16_t generate_node_id = i + 1; 
       for(j = 0; j < sizeof(addr); j += 2){
         addr.u8[j + 1] = generate_node_id & 0xff;
         addr.u8[j + 0] = generate_node_id >> 8;   
-      }  
-      
+      }    
+      LOG_INFO_LLADDR(&addr);
       n = tsch_queue_get_nbr(&addr);
-      
+      /*
       if(n!= NULL){  
         if(tsch_get_lock()) {     
           LOG_INFO_LLADDR(&addr);
           LOG_INFO_(" -> "); 
           LOG_INFO_LLADDR(&n->addr);  
         }
-      }   
-
-      if(generate_node_id == 20) break;  
-      else generate_node_id++ ;  
+      }  
+      */   
+ 
 
     } 
 } 
