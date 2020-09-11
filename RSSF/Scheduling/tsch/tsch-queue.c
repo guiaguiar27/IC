@@ -551,24 +551,14 @@ void  tsch_neighbour_maping(void)
         addr.u8[j + 1] = generate_node_id & 0xff;
         addr.u8[j + 0] = generate_node_id >> 8;   
       }    
-       
-      
-      n = tsch_queue_get_nbr(&addr); 
-      LOG_INFO_LLADDR(&n->addr);
-      LOG_INFO_(" -> "); 
-      LOG_INFO_LLADDR(&n->addr_neighbor); 
-      LOG_INFO("\n");
-      /*
-      if(n!= NULL){  
-        if(tsch_get_lock()) {     
-          LOG_INFO_LLADDR(&addr);
-          LOG_INFO_(" -> "); 
-          LOG_INFO_LLADDR(&n->addr);  
-        }
-      }  
-      */   
- 
 
+      n = tsch_queue_get_nbr(&addr); 
+      if(n != NULL){
+        LOG_INFO_LLADDR(&n->addr);
+        LOG_INFO_(" -> "); 
+        LOG_INFO_LLADDR(&n->addr_neighbor); 
+        LOG_INFO("\n");
+      } 
     } 
 } 
 /*---------------------------------------------------------------------------*/
