@@ -265,7 +265,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
 
         if(l->link_options & LINK_OPTION_TX) {
           n = tsch_queue_add_nbr(&l->addr); 
-          linkaddr_copy(&n->addr_neighbor, linkaddr_node_addr);
+          linkaddr_copy(&n->addr_neighbor, &linkaddr_node_addr);
           
           /* We have a tx link to this neighbor, update counters */
           if(n != NULL) {
