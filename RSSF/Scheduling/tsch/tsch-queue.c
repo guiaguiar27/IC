@@ -544,8 +544,7 @@ void  tsch_neighbour_maping(void)
      
     //linkaddr_t neighbor_addr ;   
     for (i = 0; i < Max - 1; ++i){ 
-      struct tsch_neighbor *n = NULL ;  
-      //struct tsch_neighbor *real_neighbor = NULL ;      
+      struct tsch_neighbor *n = NULL ;       
       linkaddr_t addr; 
       uint16_t generate_node_id = i + 1; 
       for(j = 0; j < sizeof(addr); j += 2){
@@ -555,10 +554,9 @@ void  tsch_neighbour_maping(void)
        
       
       n = tsch_queue_get_nbr(&addr); 
-      //real_neighbor =  tsch_queue_get_nbr(&n->addr);
       LOG_INFO_LLADDR(&n->addr);
       LOG_INFO_(" -> "); 
-      //LOG_INFO_LLADDR(&real_neighbor->addr); 
+      LOG_INFO_LLADDR(&n->addr_neighbor); 
       LOG_INFO("\n");
       /*
       if(n!= NULL){  
