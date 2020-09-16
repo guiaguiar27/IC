@@ -538,11 +538,7 @@ void  tsch_neighbour_maping(void)
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
-      
-    Max = 10 ;    
-       
-     
-    //linkaddr_t neighbor_addr ;   
+    Max = 10 ;     
     for (i = 0; i < Max - 1; ++i){ 
       struct tsch_neighbor *n = NULL ;       
       linkaddr_t addr; 
@@ -551,7 +547,6 @@ void  tsch_neighbour_maping(void)
         addr.u8[j + 1] = generate_node_id & 0xff;
         addr.u8[j + 0] = generate_node_id >> 8;   
       }    
-
       n = tsch_queue_get_nbr(&addr); 
       if(n != NULL){
         LOG_INFO_LLADDR(&n->addr_neighbor); 
