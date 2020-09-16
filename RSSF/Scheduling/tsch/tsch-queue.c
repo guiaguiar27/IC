@@ -601,7 +601,7 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
 
 }
 /*---------------------------------------------------------------------------*/  
-void init(struct MatrizAdj *Matriz){ 
+void init_MADJ(struct MatrizAdj *Matriz){ 
     
     Matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
     Matriz->MADJ[0] = NULL;
