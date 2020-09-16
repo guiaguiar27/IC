@@ -131,7 +131,7 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer;
   static uint32_t seqnum;
   uip_ipaddr_t dst;
-
+  struct MatrizAdj *Matriz =  init(Matriz); 
   PROCESS_BEGIN();
 
   initialize_tsch_schedule();

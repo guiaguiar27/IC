@@ -156,7 +156,14 @@ struct input_packet {
   int len; /* Packet len */
   int16_t rssi; /* RSSI for this packet */
   uint8_t channel; /* Channel we received the packet on */
-};
+}; 
+/** \brief Adjacence matrix for run the scheduel  */
+struct MatrizAdj { 
+    int **MADJ; 
+    int Num_nos;  
+    int num_arestas ;  
+    
+};  
 
 #endif /* __TSCH_CONF_H__ */
 /** @} */
