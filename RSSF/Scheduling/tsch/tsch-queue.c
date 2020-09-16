@@ -533,12 +533,15 @@ tsch_queue_init(void)
   /* Add virtual EB and the broadcast neighbors */
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
-} 
+}  
+/*---------------------------------------------------------------------------*/
 void  tsch_neighbour_maping(void) 
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
-    Max = 10 ;     
+    int n = 10 ;
+    Max = n*n ; 
+    uint16_t node_neighbor, node;      
     for (i = 0; i < Max - 1; ++i){ 
       struct tsch_neighbor *n = NULL ;       
       linkaddr_t addr; 
@@ -548,10 +551,12 @@ void  tsch_neighbour_maping(void)
         addr.u8[j + 0] = generate_node_id >> 8;   
       }    
       n = tsch_queue_get_nbr(&addr); 
-      if(n != NULL){
-        LOG_INFO_LLADDR(&n->addr_neighbor); 
-        LOG_INFO_(" -> "); 
-        LOG_INFO_LLADDR(&n->addr); 
+      if(n != NULL){ 
+        node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
+            + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
+        node =   n->addr.u8[LINKADDR_SIZE - 1]
+            + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+        LOG_INFO_(" %u -> %u ",node_neighbor, node); 
         LOG_INFO("\n");
       } 
     } 
