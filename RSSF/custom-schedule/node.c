@@ -131,7 +131,7 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer;
   static uint32_t seqnum;
   uip_ipaddr_t dst;
-  struct MatrizAdj *Matriz =  init(Matriz); 
+  struct MatrizAdj *Matriz ;
   PROCESS_BEGIN();
 
   initialize_tsch_schedule();
@@ -141,7 +141,8 @@ PROCESS_THREAD(node_process, ev, data)
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
 
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();
+    NETSTACK_ROUTING.root_start(); 
+    init(Matriz); 
   }
 
   /* Main loop */
