@@ -160,9 +160,8 @@ struct input_packet {
 /** \brief Adjacence matrix for run the scheduel  */
 struct MatrizAdj { 
     int **MADJ; 
-    int Num_nos;  
-    int num_arestas ;  
-    
+    int Nodes;  
+    int Edges;  
 };  
 
 #endif /* __TSCH_CONF_H__ */
