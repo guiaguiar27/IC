@@ -566,7 +566,7 @@ void tsch_neighbour_maping_init_matrix(struct MatrizAdj *Matriz){
     
     Matriz->MADJ = (int**)malloc(MAX_NOS*sizeof(int*));
     Matriz->MADJ[0] = NULL;
-    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ[i] = (int)malloc(sizeof(int));
+    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ[i] = (int)malloc(MAX_NOS*sizeof(int));
     
      
     for(int i = 0 ; i < MAX_NOS ; i++){ 
@@ -584,8 +584,8 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
    // no2 receptor   
      
     if(node_id_own > node_id_param){ 
-        if(node_id_own > Matriz->Num_nos){ 
-            Matriz->Num_nos = node_id_own; 
+        if(node_id_own > Matriz->Nodes){ 
+            Matriz->Nodes += 2 ; 
             Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
             Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
             LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param); 
@@ -593,8 +593,8 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
 
     }   
     else { 
-        if(node_id_param > Matriz->Num_nos){ 
-            Matriz->Num_nos = node_id_param;    
+        if(node_id_param > Matriz->Nodes){ 
+            Matriz->Nodes += 2;    
             Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
             Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
             LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param);  
