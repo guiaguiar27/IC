@@ -538,7 +538,7 @@ tsch_queue_init(void)
 }  
 
 /*---------------------------------------------------------------------------*/
-void  tsch_neighbour_maping() 
+void  tsch_neighbour_maping(struct MatrizADJ *Matriz) 
 {
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
