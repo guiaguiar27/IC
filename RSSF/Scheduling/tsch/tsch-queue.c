@@ -69,6 +69,7 @@
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
 MEMB(neighbor_memb, struct tsch_neighbor, TSCH_QUEUE_MAX_NEIGHBOR_QUEUES);
+MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS)
 LIST(neighbor_list);
 
 /* Broadcast and EB virtual neighbors */
@@ -562,9 +563,9 @@ void  tsch_neighbour_maping(void)
       } 
     } 
 }   
-void tsch_neighbour_maping_init_matrix(MatrizAdj *Matriz){ 
-    
-    Matriz->MADJ = (int**)malloc(MAX_NOS*sizeof(int*));
+struct MatrizAdj *tsch_neighbour_maping_init_matrix(){  
+    if(tsch_get_lock()){
+    struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);
     Matriz->MADJ[0] = NULL;
     for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ[i] = (int)malloc(MAX_NOS*sizeof(int));
     
@@ -576,7 +577,12 @@ void tsch_neighbour_maping_init_matrix(MatrizAdj *Matriz){
     }   
     Matriz->Nodes = 0 ; 
     Matriz ->Edges = 0 ; 
-    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
+    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
+    tsch_release_lock();
+    return sf;
+    }  
+    return NULL;  
+
 }    
 
 void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
