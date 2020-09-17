@@ -538,7 +538,7 @@ tsch_queue_init(void)
 }  
 
 /*---------------------------------------------------------------------------*/
-void  tsch_neighbour_maping(void) 
+void  tsch_neighbour_maping() 
 {
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
@@ -558,12 +558,13 @@ void  tsch_neighbour_maping(void)
             + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
         node =   n->addr.u8[LINKADDR_SIZE - 1]
             + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
-        LOG_INFO_(" %u -> %u ",node_neighbor, node); 
-        LOG_INFO("\n");
+        LOG_INFO_(" %u -> %u ",node_neighbor, node);  
+        LOG_INFO("\n"); 
+        matriz_adj(Matriz,node_neighbor,node); 
       } 
     } 
 }   
-struct MatrizAdj *tsch_neighbour_maping_init_matrix(){  
+struct MatrizAdj *tsch_neighbour_maping_init_matrix(struct MatrizADJ *Matriz){  
     if(tsch_get_lock()){
     struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);
     Matriz->MADJ[0] = NULL;
@@ -585,7 +586,7 @@ struct MatrizAdj *tsch_neighbour_maping_init_matrix(){
 
 }    
 
-void matriz_adj( MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
+void matriz_adj( struct MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
      
