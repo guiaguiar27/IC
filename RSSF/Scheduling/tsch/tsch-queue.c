@@ -70,7 +70,7 @@
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
 MEMB(neighbor_memb, struct tsch_neighbor, TSCH_QUEUE_MAX_NEIGHBOR_QUEUES);
-MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS); 
+//MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS); 
 LIST(neighbor_list);
 
 /* Broadcast and EB virtual neighbors */
@@ -567,10 +567,10 @@ void  tsch_neighbour_maping(struct MatrizADJ *Matriz)
 }   
 struct MatrizADJ *tsch_neighbour_maping_init_matrix(){  
     if(tsch_get_lock()){
-    struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);
+    //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb); 
+    Matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
     Matriz->MADJ[0] = NULL;
-    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = (int)malloc(i*MAX_NOS*sizeof(int));
-    
+    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = calloc (i, sizeof(int));
      
     for(int i = 0 ; i < MAX_NOS ; i++){ 
         for(int j = 0 ; j< MAX_NOS; j++){  
