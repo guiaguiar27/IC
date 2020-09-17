@@ -562,7 +562,7 @@ void  tsch_neighbour_maping(void)
       } 
     } 
 }   
-void tsch_neighbour_maping_matrix(struct MatrizAdj *Matriz){ 
+void tsch_neighbour_maping_init_matrix(struct MatrizAdj *Matriz){ 
     
     Matriz->MADJ = (int**)malloc(MAX_NOS*sizeof(int*));
     Matriz->MADJ[0] = NULL;
@@ -574,8 +574,8 @@ void tsch_neighbour_maping_matrix(struct MatrizAdj *Matriz){
             Matriz->MADJ = 0 ; 
         }
     }   
-    Matriz-> Num_nos = 0 ; 
-    Matriz -> num_arestas = 0 ; 
+    Matriz->Nodes = 0 ; 
+    Matriz ->Edges = 0 ; 
     LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
 }    
 
