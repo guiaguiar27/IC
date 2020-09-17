@@ -53,7 +53,8 @@
 #include "lib/random.h"
 #include "net/queuebuf.h"
 #include "net/mac/tsch/tsch.h"
-#include <string.h>
+#include <string.h> 
+#include <stdlib.h>
 
 /* Log configuration */
 #include "sys/log.h"
@@ -564,11 +565,11 @@ void  tsch_neighbour_maping(struct MatrizADJ *Matriz)
       } 
     } 
 }   
-struct MatrizADJ *tsch_neighbour_maping_init_matrix(struct MatrizADJ *Matriz){  
+struct MatrizADJ *tsch_neighbour_maping_init_matrix(){  
     if(tsch_get_lock()){
     struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);
     Matriz->MADJ[0] = NULL;
-    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ[i] = (int)malloc(MAX_NOS*sizeof(int));
+    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = (int)malloc(i*MAX_NOS*sizeof(int));
     
      
     for(int i = 0 ; i < MAX_NOS ; i++){ 
