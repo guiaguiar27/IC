@@ -178,6 +178,8 @@ void tsch_queue_update_all_backoff_windows(const linkaddr_t *dest_addr);
  * \brief Initialize TSCH queue module
  */
 void tsch_queue_init(void);
-void  tsch_neighbour_maping(void) ;
+void tsch_neighbour_maping(void) ; 
+void tsch_neighbour_maping_matrix(struct MatrizAdj *Matriz);
+void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param); 
 #endif /* __TSCH_QUEUE_H__ */
 /** @} */

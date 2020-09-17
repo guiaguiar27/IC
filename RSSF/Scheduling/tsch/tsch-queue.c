@@ -535,6 +535,7 @@ tsch_queue_init(void)
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
 }  
+
 /*---------------------------------------------------------------------------*/
 void  tsch_neighbour_maping(void) 
 { 
@@ -560,30 +561,8 @@ void  tsch_neighbour_maping(void)
         LOG_INFO("\n");
       } 
     } 
-}    
-void teste(void){ 
+}  
 
-    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
-}
-
-void tsch_neighbour_maping_matrix(struct MatrizAdj *Matriz){ 
-    
-   
-    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
-}    
-/* 
-
- Matriz->MADJ = (int**)malloc(MAX_NOS * sizeof(int*));
-    Matriz->MADJ[0] = NULL;
-    for (int i = 1; i < MAX_NOS; i++)  Matriz->MADJ[i] = (int*)malloc(sizeof(int));
-    
-    for(int i = 0 ; i < MAX_NOS ; i++){ 
-        for(int j = 0 ; j< MAX_NOS; j++){  
-            Matriz->MADJ = 0 ; 
-        }
-    }   
-    Matriz->Nodes = 0 ; 
-    Matriz->Edges  = 0 ; 
 void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
@@ -607,7 +586,7 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
     } 
 
 } 
-*/ 
+ 
 /*---------------------------------------------------------------------------*/  
 
 /** @} */
