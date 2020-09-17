@@ -532,7 +532,8 @@ tsch_queue_init(void)
 {
   list_init(neighbor_list);
   memb_init(&neighbor_memb);
-  memb_init(&packet_memb);
+  memb_init(&packet_memb); 
+  memb_init(&matriz_adj);
   /* Add virtual EB and the broadcast neighbors */
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
@@ -578,7 +579,6 @@ struct MatrizADJ *tsch_neighbour_maping_init_matrix(){
     for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = calloc (i, sizeof(int));
       
     */ 
-    struct MatrizADJ *Matriz = NULL;  
     struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);  
     
     for(int i = 0 ; i < MAX_NOS ; i++){ 
