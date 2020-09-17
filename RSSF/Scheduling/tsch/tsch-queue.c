@@ -532,8 +532,8 @@ tsch_queue_init(void)
 {
   list_init(neighbor_list);
   memb_init(&neighbor_memb);
-  memb_init(&packet_memb); 
-  memb_init(&matriz_adj);
+  memb_init(&packet_memb);  
+  memb_init(&matriz_memb);
   /* Add virtual EB and the broadcast neighbors */
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
