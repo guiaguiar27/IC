@@ -58,7 +58,8 @@
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Queue"
-#define LOG_LEVEL LOG_LEVEL_MAC
+#define LOG_LEVEL LOG_LEVEL_MAC 
+#define MAX_NOS 20
 
 /* Check if TSCH_QUEUE_NUM_PER_NEIGHBOR is power of two */
 #if (TSCH_QUEUE_NUM_PER_NEIGHBOR & (TSCH_QUEUE_NUM_PER_NEIGHBOR - 1)) != 0
@@ -539,8 +540,7 @@ void  tsch_neighbour_maping(void)
 { 
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
-    int n = 10 ;
-    Max = n*n ; 
+    Max = MAX_NOS * MAX_NOS ; 
     uint16_t node_neighbor, node;      
     for (i = 0; i < Max - 1; ++i){ 
       struct tsch_neighbor *n = NULL ;       
@@ -561,13 +561,12 @@ void  tsch_neighbour_maping(void)
       } 
     } 
 }  
-void init_MADJ(struct MatrizAdj *Matriz){ 
+void initialize_matrix(struct MatrizAdj *Matriz){ 
     
     Matriz->MADJ = (int**)malloc(MAX_NOS * sizeof(int*));
     Matriz->MADJ[0] = NULL;
     for (int i = 1; i < MAX_NOS; i++)  Matriz->MADJ[i] = (int*)malloc(sizeof(int));
     
-     
     for(int i = 0 ; i < MAX_NOS ; i++){ 
         for(int j = 0 ; j< MAX_NOS; j++){  
             Matriz->MADJ = 0 ; 
@@ -577,6 +576,7 @@ void init_MADJ(struct MatrizAdj *Matriz){
     Matriz -> num_arestas = 0 ; 
     LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
 }    
+/*
 void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
@@ -599,7 +599,8 @@ void matriz_adj(struct MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id
         }
     } 
 
-}
+} 
+*/ 
 /*---------------------------------------------------------------------------*/  
 
 /** @} */
