@@ -580,7 +580,7 @@ struct MatrizAdj *tsch_neighbour_maping_init_matrix(struct MatrizADJ *Matriz){
     Matriz ->Edges = 0 ; 
     LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
     tsch_release_lock();
-    return sf;
+    return Matriz;
     }  
     return NULL;  
 
