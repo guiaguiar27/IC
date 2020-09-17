@@ -69,7 +69,7 @@
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
 MEMB(neighbor_memb, struct tsch_neighbor, TSCH_QUEUE_MAX_NEIGHBOR_QUEUES);
-MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS)
+MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS); 
 LIST(neighbor_list);
 
 /* Broadcast and EB virtual neighbors */
@@ -564,7 +564,7 @@ void  tsch_neighbour_maping(struct MatrizADJ *Matriz)
       } 
     } 
 }   
-struct MatrizAdj *tsch_neighbour_maping_init_matrix(struct MatrizADJ *Matriz){  
+struct MatrizADJ *tsch_neighbour_maping_init_matrix(struct MatrizADJ *Matriz){  
     if(tsch_get_lock()){
     struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);
     Matriz->MADJ[0] = NULL;
