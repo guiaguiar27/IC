@@ -560,7 +560,12 @@ void  tsch_neighbour_maping(void)
         LOG_INFO("\n");
       } 
     } 
-}  
+}    
+void teste(void){ 
+
+    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n");
+}
+
 void tsch_neighbour_maping_matrix(struct MatrizAdj *Matriz){ 
     
    
