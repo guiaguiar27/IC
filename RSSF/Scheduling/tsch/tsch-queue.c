@@ -585,7 +585,7 @@ struct MatrizAdj *tsch_neighbour_maping_init_matrix(){
 
 }    
 
-void matriz_adj(MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
+void matriz_adj( MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
      

@@ -142,7 +142,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();  
-    struct MatrizAdJ  *Matriz = tsch_neighbour_maping_init_matrix();  
+    struct MatrizADJ *Matriz = tsch_neighbour_maping_init_matrix();  
   }
 
   /* Main loop */

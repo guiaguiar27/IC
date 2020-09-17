@@ -179,7 +179,7 @@ void tsch_queue_update_all_backoff_windows(const linkaddr_t *dest_addr);
  */
 void tsch_queue_init(void);
 void tsch_neighbour_maping(void) ; 
-struct MatrizAdj *tsch_neighbour_maping_init_matrix();
-void matriz_adj( MatrizAdj *Matriz, uint16_t node_id_own, uint16_t node_id_param); 
+struct  MatrizADJ *tsch_neighbour_maping_init_matrix();
+void matriz_adj(  MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_id_param); 
 #endif /* __TSCH_QUEUE_H__ */
 /** @} */
