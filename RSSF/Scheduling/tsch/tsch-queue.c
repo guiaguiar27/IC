@@ -570,7 +570,7 @@ struct MatrizADJ *tsch_neighbour_maping_init_matrix(){
     //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb); 
     struct MatrizADJ *Matriz = NULL; 
     *Matriz->MADJ = (uint16_t**)malloc(MAX_NOS *sizeof(uint16_t*)); 
-    for(i = 0; i< total_channel_of; i++) {
+    for(int i = 0; i< MAX_NOS; i++) {
       Matriz->MADJ[i] = (uint16_t*) malloc(MAX_NOS * sizeof(uint16_t));
     }  
     
