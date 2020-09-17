@@ -159,7 +159,7 @@ struct input_packet {
 }; 
 /** \brief Adjacence matrix for run the scheduel  */
 struct MatrizADJ{ 
-    uint16_t  **MADJ; 
+    int **MADJ; 
     int Nodes;  
     int Edges;  
 };  

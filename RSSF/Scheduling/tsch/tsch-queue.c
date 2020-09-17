@@ -569,9 +569,9 @@ struct MatrizADJ *tsch_neighbour_maping_init_matrix(){
     if(tsch_get_lock()){
     //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb); 
     struct MatrizADJ *Matriz = NULL; 
-    *Matriz->MADJ = (uint16_t**)malloc(MAX_NOS *sizeof(uint16_t*)); 
+    *Matriz->MADJ = (int**)malloc(MAX_NOS *sizeof(int*)); 
     for(int i = 0; i< MAX_NOS; i++) {
-      Matriz->MADJ[i] = (uint16_t*) malloc(MAX_NOS * sizeof(uint16_t));
+      Matriz->MADJ[i] = (int*)malloc(MAX_NOS * sizeof(int));
     }  
     
     Matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
