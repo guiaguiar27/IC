@@ -158,21 +158,14 @@ struct input_packet {
   uint8_t channel; /* Channel we received the packet on */
 }; 
 /** \brief Adjacence matrix for run the scheduel  */
+
 /*
-struct Adjacency_matrix{ 
-    
-       
+struct Adjacency_matrix{        
     int Nodes;  
     int Edges; 
-    /** 
-    *This list will contain three paramns   
-    * \param node_receptor   
-    * \param node_emissor  
-    * \param value 0 or 1 if has an edge
-    */
     LIST_STRUCT(topology_list);    
 
 };  
-*/ 
+ */ 
 #endif /* __TSCH_CONF_H__ */
 /** @} */

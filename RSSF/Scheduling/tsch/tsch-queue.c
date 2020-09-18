@@ -567,7 +567,9 @@ void  tsch_neighbour_maping()
     } 
 }   
 int *tsch_neighbour_maping_init_matrix(){  
+  LOG_PRINT("----- ENTROU -----\n");  
     if(tsch_get_lock()){
+    LOG_PRINT("----- TSCH LOCK -----\n"); 
     int **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
     for(i = 0; i< total_channel_of; i++) {
       coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
