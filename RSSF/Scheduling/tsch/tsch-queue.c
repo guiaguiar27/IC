@@ -540,7 +540,7 @@ tsch_queue_init(void)
 }  
 
 /*---------------------------------------------------------------------------*/
-void  tsch_neighbour_maping(struct MatrizADJ *Matriz) 
+void  tsch_neighbour_maping() 
 {
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
@@ -562,7 +562,7 @@ void  tsch_neighbour_maping(struct MatrizADJ *Matriz)
             + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
         LOG_INFO_(" %u -> %u ",node_neighbor, node);  
         LOG_INFO("\n"); 
-        matriz_adj(Matriz,node_neighbor,node); 
+        //matriz_adj(Matriz,node_neighbor,node); 
       } 
     } 
 }   
