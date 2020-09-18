@@ -158,11 +158,6 @@ struct input_packet {
   uint8_t channel; /* Channel we received the packet on */
 }; 
 /** \brief Adjacence matrix for run the scheduel  */
-struct MatrizADJ{ 
-    int **MADJ; 
-    int Nodes;  
-    int Edges;  
-};  
 
 #endif /* __TSCH_CONF_H__ */
 /** @} */

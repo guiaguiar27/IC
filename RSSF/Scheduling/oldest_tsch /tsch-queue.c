@@ -60,7 +60,7 @@
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Queue"
 #define LOG_LEVEL LOG_LEVEL_MAC 
-
+#define MAX_NOS 20
 
 /* Check if TSCH_QUEUE_NUM_PER_NEIGHBOR is power of two */
 #if (TSCH_QUEUE_NUM_PER_NEIGHBOR & (TSCH_QUEUE_NUM_PER_NEIGHBOR - 1)) != 0
@@ -70,8 +70,7 @@
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
 MEMB(neighbor_memb, struct tsch_neighbor, TSCH_QUEUE_MAX_NEIGHBOR_QUEUES);
-MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS); 
-
+LIST(neighbor_list);
 
 /* Broadcast and EB virtual neighbors */
 struct tsch_neighbor *n_broadcast;
@@ -539,7 +538,7 @@ tsch_queue_init(void)
 }  
 
 /*---------------------------------------------------------------------------*/
-void  tsch_neighbour_maping() 
+void  tsch_neighbour_maping(struct MatrizADJ *Matriz) 
 {
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
@@ -560,10 +559,11 @@ void  tsch_neighbour_maping()
         node =   n->addr.u8[LINKADDR_SIZE - 1]
             + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
         LOG_INFO_(" %u -> %u ",node_neighbor, node);  
-        LOG_INFO("\n");  
+        LOG_INFO("\n"); 
+        matriz_adj(Matriz,node_neighbor,node); 
       } 
     } 
-}  
+}   
 /*---------------------------------------------------------------------------*/  
 
 /** @} */
