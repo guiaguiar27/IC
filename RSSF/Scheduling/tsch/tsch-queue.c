@@ -70,7 +70,7 @@
 /* We have as many packets are there are queuebuf in the system */
 MEMB(packet_memb, struct tsch_packet, QUEUEBUF_NUM);
 MEMB(neighbor_memb, struct tsch_neighbor, TSCH_QUEUE_MAX_NEIGHBOR_QUEUES);
-MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS); 
+//MEMB(matriz_memb, struct  MatrizADJ, MAX_NOS); 
 LIST(neighbor_list);
 
 /* Broadcast and EB virtual neighbors */
@@ -533,7 +533,7 @@ tsch_queue_init(void)
   list_init(neighbor_list);
   memb_init(&neighbor_memb);
   memb_init(&packet_memb);  
-  memb_init(&matriz_memb);
+  //memb_init(&matriz_memb);
   /* Add virtual EB and the broadcast neighbors */
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
@@ -571,7 +571,7 @@ int *tsch_neighbour_maping_init_matrix(){
     if(tsch_get_lock()){
     LOG_PRINT("----- TSCH LOCK -----\n"); 
     int **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
-    for(i = 0; i< total_channel_of; i++) {
+    for(i = 0; i< MAX_NOS; i++) {
       coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
     }  
     //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);  
