@@ -566,12 +566,12 @@ void  tsch_neighbour_maping()
       } 
     } 
 }   
-int *tsch_neighbour_maping_init_matrix(){  
+int tsch_neighbour_maping_init_matrix(){  
   LOG_PRINT("----- ENTROU -----\n");  
     if(tsch_get_lock()){
     LOG_PRINT("----- TSCH LOCK -----\n"); 
     int **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
-    for(i = 0; i< MAX_NOS; i++) {
+    for(int i = 0; i< MAX_NOS; i++) {
       coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
     }  
     //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);  
