@@ -566,11 +566,11 @@ void  tsch_neighbour_maping()
       } 
     } 
 }   
-int tsch_neighbour_maping_init_matrix(){  
+int tsch_neighbour_maping_init_matrix(int **coordenadas){  
   LOG_PRINT("----- ENTROU -----\n");  
     if(tsch_get_lock()){
     LOG_PRINT("----- TSCH LOCK -----\n"); 
-    int **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
+    **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
     for(int i = 0; i< MAX_NOS; i++) {
       coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
     }  
@@ -584,9 +584,9 @@ int tsch_neighbour_maping_init_matrix(){
     
     LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
     tsch_release_lock();
-    return coordenadas;
+    return 1;
     }  
-    return NULL;  
+    return 0;  
 
 }    
 /*
