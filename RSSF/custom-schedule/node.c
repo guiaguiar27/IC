@@ -133,8 +133,6 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
   
   PROCESS_BEGIN();
-  
-  initialize_tsch_schedule();
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -142,9 +140,13 @@ PROCESS_THREAD(node_process, ev, data)
 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();  
-    /*struct MatrizADJ *Matriz = tsch_neighbour_maping_init_matrix();  
-    tsch_neighbour_maping(Matriz);  
-    */
+    int **Matriz = tsch_neighbour_maping_init_matrix();  
+    tsch_neighbour_maping();  
+    
+  } 
+  else {  
+    // another nodes 1, 2 ,3,  4
+      initialize_tsch_schedule();
   }
 
   /* Main loop */

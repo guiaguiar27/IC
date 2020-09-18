@@ -566,36 +566,28 @@ void  tsch_neighbour_maping()
       } 
     } 
 }   
-struct MatrizADJ *tsch_neighbour_maping_init_matrix(){  
+int *tsch_neighbour_maping_init_matrix(){  
     if(tsch_get_lock()){
-    /*(*Matriz)->MADJ = (int**)malloc(MAX_NOS *sizeof(int*)); 
-    for(int i = 0; i< MAX_NOS; i++) {
-      Matriz->MADJ[i] = (int*)malloc(MAX_NOS * sizeof(int));
-    } */  
-    /************************************************/ 
-    /*
-    Matriz->MADJ = calloc (MAX_NOS, sizeof(int*));
-    Matriz->MADJ[0] = NULL;
-    for (int i = 1; i < MAX_NOS; i++) Matriz->MADJ = calloc (i, sizeof(int));
-      
-    */ 
-    struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);  
+    int **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
+    for(i = 0; i< total_channel_of; i++) {
+      coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
+    }  
+    //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);  
     
     for(int i = 0 ; i < MAX_NOS ; i++){ 
         for(int j = 0 ; j< MAX_NOS; j++){  
-            Matriz->MADJ = 0 ; 
+            coordenadas[i][j] = 0 ; 
         }
     }   
-    Matriz->Nodes = 0 ; 
-    Matriz ->Edges = 0 ; 
+    
     LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
     tsch_release_lock();
-    return Matriz;
+    return coordenadas;
     }  
     return NULL;  
 
 }    
-
+/*
 void matriz_adj( struct MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
    // no1 emissor  
    // no2 receptor   
@@ -618,7 +610,8 @@ void matriz_adj( struct MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_i
         }
     } 
 
-} 
+}  
+*/
  
 /*---------------------------------------------------------------------------*/  
 
