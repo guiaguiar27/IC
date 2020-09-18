@@ -40,28 +40,20 @@
  */
 
 #ifndef __TSCH_TYPES_H__
-#define __TSCH_TYPES_H__ 
-#define MAX_NOS 10
-
+#define __TSCH_TYPES_H__
 
 /********** Includes **********/
 
 #include "net/mac/tsch/tsch-asn.h"
 #include "lib/list.h"
-#include "lib/ringbufindex.h"
+#include "lib/ringbufindex.h" 
 
 /********** Data types **********/
- struct MatrizAdj { 
-    int **MADJ; 
-    int Num_nos ;  
-    int num_arestas ;  
-    
-};
 
 /** \brief 802.15.4e link types. LINK_TYPE_ADVERTISING_ONLY is an extra one: for EB-only links. */
 enum link_type { LINK_TYPE_NORMAL, LINK_TYPE_ADVERTISING, LINK_TYPE_ADVERTISING_ONLY };
 
-/** \brief An IEEE 802.15.4-2015 TSCH link (also called cell or slot) */ 
+/** \brief An IEEE 802.15.4-2015 TSCH link (also called cell or slot) */
 struct tsch_link {
   /* Links are stored as a list: "next" must be the first field */
   struct tsch_link *next;
@@ -96,8 +88,7 @@ struct tsch_slotframe {
   uint16_t handle;
   /* Number of timeslots in the slotframe.
    * Stored as struct asn_divisor_t because we often need ASN%size */
-  struct tsch_asn_divisor_t size; 
-  
+  struct tsch_asn_divisor_t size;
   /* List of links belonging to this slotframe */
   LIST_STRUCT(links_list);
 };
@@ -113,24 +104,27 @@ struct tsch_packet {
   uint8_t header_len; /* length of header and header IEs (needed for link-layer security) */
   uint8_t tsch_sync_ie_offset; /* Offset within the frame used for quick update of EB ASN and join priority */
 };
+
 /** \brief TSCH neighbor information */
 struct tsch_neighbor {
-/* Neighbors are stored as a list: "next" must be the first field */
-struct tsch_neighbor *next;
-linkaddr_t addr; /* MAC address of the neighbor */
-uint8_t is_broadcast; /* is this neighbor a virtual neighbor used for broadcast (of data packets or EBs) */
-uint8_t is_time_source; /* is this neighbor a time source? */
-uint8_t backoff_exponent; /* CSMA backoff exponent */
-uint8_t backoff_window; /* CSMA backoff window (number of slots to skip) */
-uint8_t last_backoff_window; /* Last CSMA backoff window */
-uint8_t tx_links_count; /* How many links do we have to this neighbor? */
-uint8_t dedicated_tx_links_count; /* How many dedicated links do we have to this neighbor? */
-/* Array for the ringbuf. Contains pointers to packets.
+  /* Neighbors are stored as a list: "next" must be the first field */
+  struct tsch_neighbor *next;
+  linkaddr_t addr; /* MAC address of the neighbor */
+  linkaddr_t addr_neighbor ;  
+  uint8_t is_broadcast; /* is this neighbor a virtual neighbor used for broadcast (of data packets or EBs) */
+  uint8_t is_time_source; /* is this neighbor a time source? */
+  uint8_t backoff_exponent; /* CSMA backoff exponent */
+  uint8_t backoff_window; /* CSMA backoff window (number of slots to skip) */
+  uint8_t last_backoff_window; /* Last CSMA backoff window */
+  uint8_t tx_links_count; /* How many links do we have to this neighbor? */
+  uint8_t dedicated_tx_links_count; /* How many dedicated links do we have to this neighbor? */
+  /* Array for the ringbuf. Contains pointers to packets.
    * Its size must be a power of two to allow for atomic put */
-struct tsch_packet *tx_array[TSCH_QUEUE_NUM_PER_NEIGHBOR];
-/* Circular buffer of pointers to packet. */
-struct ringbufindex tx_ringbuf;
+  struct tsch_packet *tx_array[TSCH_QUEUE_NUM_PER_NEIGHBOR];
+  /* Circular buffer of pointers to packet. */
+  struct ringbufindex tx_ringbuf;
 };
+
 /** \brief TSCH timeslot timing elements. Used to index timeslot timing
  * of different units, such as rtimer tick or micro-second */
 enum tsch_timeslot_timing_elements {
@@ -162,7 +156,13 @@ struct input_packet {
   int len; /* Packet len */
   int16_t rssi; /* RSSI for this packet */
   uint8_t channel; /* Channel we received the packet on */
-};
+}; 
+/** \brief Adjacence matrix for run the scheduel  */
+struct MatrizADJ{ 
+    int **MADJ; 
+    int Nodes;  
+    int Edges;  
+};  
 
 #endif /* __TSCH_CONF_H__ */
 /** @} */

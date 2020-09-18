@@ -51,7 +51,7 @@
 #include "lib/ringbufindex.h"
 #include "sys/log.h"
 
-//#if TSCH_LOG_PER_SLOT
+#if TSCH_LOG_PER_SLOT
 
 PROCESS_NAME(tsch_pending_events_process);
 
@@ -70,8 +70,7 @@ void
 tsch_log_process_pending(void)
 {
   static int last_log_dropped = 0;
-  int16_t log_index; 
-  uint16_t dest , send ; 
+  int16_t log_index;
   /* Loop on accessing (without removing) a pending input packet */
   if(log_dropped != last_log_dropped) {
     printf("[WARN: TSCH-LOG  ] logs dropped %u\n", log_dropped);
@@ -86,22 +85,16 @@ tsch_log_process_pending(void)
       printf("[INFO: TSCH-LOG  ] {asn %02x.%08lx link %2u %3u %3u %2u %2u ch %2u} ",
              log->asn.ms1b, log->asn.ls4b,
              log->link->slotframe_handle, sf ? sf->size.val : 0,
-             log->burst_count, log->link->timeslot + log->burst_count, log->channel_offset,
+             log->burst_count, log->link->timeslot + log->burst_count, log->link->channel_offset,
              log->channel);
     }
     switch(log->type) {
       case tsch_log_tx:
         printf("%s-%u-%u tx ",
                 linkaddr_cmp(&log->tx.dest, &linkaddr_null) ? "bc" : "uc", log->tx.is_data, log->tx.sec_level);
-        log_lladdr_compact(&linkaddr_node_addr); 
+        log_lladdr_compact(&linkaddr_node_addr);
         printf("->");
-        log_lladdr_compact(&log->tx.dest); 
-        send = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-              + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8); 
-        dest = log->tx.dest.u8[LINKADDR_SIZE - 1]
-              + (log->tx.dest.u8[LINKADDR_SIZE - 2] << 8); 
-         
-        printf("\n-------LINK : %u -> %u--------\n",send,dest);
+        log_lladdr_compact(&log->tx.dest);
         printf(", len %3u, seq %3u, st %d %2d",
                 log->tx.datalen, log->tx.seqno, log->tx.mac_tx_status, log->tx.num_tx);
         if(log->tx.drift_used) {
@@ -114,17 +107,7 @@ tsch_log_process_pending(void)
                 log->rx.is_unicast == 0 ? "bc" : "uc", log->rx.is_data, log->rx.sec_level);
         log_lladdr_compact(&log->rx.src);
         printf("->");
-        log_lladdr_compact(log->rx.is_unicast ? &linkaddr_node_addr : NULL); 
-        send = log->rx.src.u8[LINKADDR_SIZE - 1]
-              + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8); 
-        if(log->rx.is_unicast){
-        dest = log->rx.is_unicast.u8[LINKADDR_SIZE - 1]
-              + (log->rx.is_unicast.u8[LINKADDR_SIZE - 2] << 8); 
-        } 
-        else { 
-
-        }
-        printf("\n-------LINK : %u -> %u--------\n",send,dest);
+        log_lladdr_compact(log->rx.is_unicast ? &linkaddr_node_addr : NULL);
         printf(", len %3u, seq %3u",
                 log->rx.datalen, log->rx.seqno);
         printf(", edr %3d", (int)log->rx.estimated_drift);
@@ -155,7 +138,6 @@ tsch_log_prepare_add(void)
     log->link = current_link;
     log->burst_count = tsch_current_burst_count;
     log->channel = tsch_current_channel;
-    log->channel_offset = tsch_current_channel_offset;
     return log;
   } else {
     log_dropped++;
@@ -193,5 +175,5 @@ tsch_log_stop(void)
   }
 }
 
-//#endif /* TSCH_LOG_PER_SLOT */
+#endif /* TSCH_LOG_PER_SLOT */
 /** @} */
