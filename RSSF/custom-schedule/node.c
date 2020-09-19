@@ -146,7 +146,6 @@ PROCESS_THREAD(node_process, ev, data)
     
   } 
   else {  
-    // another nodes 1, 2 ,3,  4
       initialize_tsch_schedule();
   }
 
