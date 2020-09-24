@@ -63,12 +63,7 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
-int **matriz(int id){ 
-    int **matriz; 
-    if(id == 1 ){ 
-      return **matriz; 
-    }
-}
+
 
 static void
 initialize_tsch_schedule(void)
@@ -144,10 +139,11 @@ PROCESS_THREAD(node_process, ev, data)
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
 
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();  
-    tsch_neighbour_maping_init_matrix(matriz(node_id));  
-    tsch_neighbour_maping();  
-    
+    NETSTACK_ROUTING.root_start();   
+    int **matriz = NULL ; 
+    tsch_neighbour_maping_init_matrix(matriz);  
+    tsch_neighbour_maping(matriz);  
+    initialize_tsch_schedule();
   } 
   else {  
       initialize_tsch_schedule();

@@ -540,7 +540,7 @@ tsch_queue_init(void)
 }  
 
 /*---------------------------------------------------------------------------*/
-void  tsch_neighbour_maping() 
+void  tsch_neighbour_maping(int **Matriz) 
 {
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
@@ -561,8 +561,8 @@ void  tsch_neighbour_maping()
         node =   n->addr.u8[LINKADDR_SIZE - 1]
             + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
         LOG_INFO_(" %u -> %u ",node_neighbor, node);  
-        LOG_INFO("\n"); 
-        //matriz_adj(Matriz,node_neighbor,node); 
+        LOG_INFO("\n");  
+        matriz_adj(Matriz,node_neighbor,node); 
       } 
     } 
 }   
@@ -570,7 +570,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
   LOG_PRINT("----- ENTROU -----\n");  
     if(tsch_get_lock()){
     LOG_PRINT("----- TSCH LOCK -----\n"); 
-    **coordenadas = (int**)malloc(MAX_NOS *sizeof(int*)); 
+    coordenadas = (int**)malloc(MAX_NOS * sizeof(int*)); 
     for(int i = 0; i< MAX_NOS; i++) {
       coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
     }  
@@ -589,31 +589,20 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
     return 0;  
 
 }    
-/*
-void matriz_adj( struct MatrizADJ *Matriz, uint16_t node_id_own, uint16_t node_id_param){ 
-   // no1 emissor  
-   // no2 receptor   
-     
-    if(node_id_own > node_id_param){ 
-        if(node_id_own > Matriz->Nodes){ 
-            Matriz->Nodes += 2 ; 
-            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
-            Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
-            LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param); 
-        }
 
-    }   
-    else { 
-        if(node_id_param > Matriz->Nodes){ 
-            Matriz->Nodes += 2;    
-            Matriz ->MADJ[node_id_own][node_id_param] = 1 ;   
-            Matriz ->MADJ[node_id_param][node_id_own] = 1 ; 
-            LOG_PRINT("----- ARESTA ADICIONADA EM [%u][%u]  -----\n",node_id_own, node_id_param);  
-        }
+void matriz_adj( int **Matriz, uint16_t node_origin, uint16_t node_destin){ 
+  
+    if (Matriz[node_origin][node_destin] == 1){ 
+      return; 
     } 
+    else {   
+      for(int i = 0; i < MAX_NOS ; i++){ 
+        for(int j = 0 ;j < MAX_NOS; j++){ 
+          *(*(Matriz+i)+j) = 1 ; 
+        }
+      } 
 
 }  
-*/
  
 /*---------------------------------------------------------------------------*/  
 
