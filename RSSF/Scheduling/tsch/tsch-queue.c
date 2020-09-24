@@ -592,17 +592,17 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 
 void matriz_adj( int **Matriz, uint16_t node_origin, uint16_t node_destin){ 
   
-    if (Matriz[node_origin][node_destin] == 1){ 
-      return; 
+  if (Matriz[node_origin][node_destin] == 1){ 
+    return; 
+  } 
+  else {   
+    for(int i = 0; i < MAX_NOS ; i++){ 
+      for(int j = 0 ;j < MAX_NOS; j++){ 
+        *(*(Matriz+i)+j) = 1 ; 
+      }
     } 
-    else {   
-      for(int i = 0; i < MAX_NOS ; i++){ 
-        for(int j = 0 ;j < MAX_NOS; j++){ 
-          *(*(Matriz+i)+j) = 1 ; 
-        }
-      } 
-
-}  
+  }  
+}
  
 /*---------------------------------------------------------------------------*/  
 
