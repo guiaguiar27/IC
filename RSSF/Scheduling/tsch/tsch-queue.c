@@ -606,4 +606,14 @@ void matriz_adj( int **Matriz, uint16_t node_origin, uint16_t node_destin){
  
 /*---------------------------------------------------------------------------*/  
 
+void print_matrix(int **Matriz){ 
+  for(int i = 0; i < MAX_NOS ; i++){ 
+      for(int j = 0 ;j < MAX_NOS; j++){ 
+        LOG_PRINT("%d",*(*(Matriz+i)+j)) ; 
+      }
+    } 
+    LOG_PRINT("\n");
+}
+/*---------------------------------------------------------------------------*/  
+
 /** @} */
