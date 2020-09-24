@@ -134,21 +134,23 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
   
   PROCESS_BEGIN();
+
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   initialize_tsch_schedule(); 
-
+       
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();   
-    int **matriz = NULL ;    
-    tsch_neighbour_maping_init_matrix(matriz);
+    
     
   } 
   /* Main loop */
   while(1) { 
     if(node_id == 1){ 
-      LOG_INFO("ADJACENCE MATRIZ\n");
+      LOG_INFO("ADJACENCE MATRIZ\n"); 
+      int **matriz = NULL ;
+      tsch_neighbour_maping_init_matrix(matriz);
       matriz_adj(matriz); 
     } 
     

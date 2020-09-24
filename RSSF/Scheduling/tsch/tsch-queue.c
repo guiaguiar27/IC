@@ -61,7 +61,7 @@
 #define LOG_MODULE "TSCH Queue"
 #define LOG_LEVEL LOG_LEVEL_MAC  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"
-#define MAX_NOS 20
+#define MAX_NOS 10
 
 /* Check if TSCH_QUEUE_NUM_PER_NEIGHBOR is power of two */
 #if (TSCH_QUEUE_NUM_PER_NEIGHBOR & (TSCH_QUEUE_NUM_PER_NEIGHBOR - 1)) != 0
@@ -557,10 +557,12 @@ void  tsch_neighbour_maping()
       }    
       n = tsch_queue_get_nbr(&addr); 
       if(n != NULL){ 
+
         node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
             + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
         node =   n->addr.u8[LINKADDR_SIZE - 1]
             + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+        
         LOG_INFO_(" %u -> %u ",node_neighbor, node);  
         LOG_INFO("\n");  
         escreve_arq(node_neighbor,node); 
@@ -600,7 +602,7 @@ void matriz_adj( int **Matriz){
         return ; 
   } 
   while(!feof(fl)){     
-    fscanf(fl,"%d %d",node_origin, node_destin); 
+    fscanf(fl,"%d %d",&node_origin, &node_destin); 
     
         
     if (Matriz[node_origin][node_destin] == 1){ 
