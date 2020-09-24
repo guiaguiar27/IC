@@ -181,5 +181,6 @@ void tsch_queue_init(void);
 void tsch_neighbour_maping(int **Matriz); 
 int tsch_neighbour_maping_init_matrix(int **coordenadas);
 void matriz_adj( int **Matriz, uint16_t node_origin, uint16_t node_destin); 
+void print_matrix(int **Matriz);
 #endif /* __TSCH_QUEUE_H__ */
 /** @} */
