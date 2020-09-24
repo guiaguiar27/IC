@@ -63,6 +63,12 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
+int **matriz(int id){ 
+    int **matriz; 
+    if(id == 1 ){ 
+      return **matriz; 
+    }
+}
 
 static void
 initialize_tsch_schedule(void)
@@ -133,15 +139,13 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
   
   PROCESS_BEGIN();
-
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();  
-    int **Matriz;   
-    tsch_neighbour_maping_init_matrix(Matriz);  
+    tsch_neighbour_maping_init_matrix(matriz(node_id));  
     tsch_neighbour_maping();  
     
   } 
