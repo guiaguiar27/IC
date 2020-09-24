@@ -273,7 +273,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
             if(!(l->link_options & LINK_OPTION_SHARED)) {
               n->dedicated_tx_links_count++;
             }
-           // tsch_neighbour_maping();  
+            tsch_neighbour_maping();  
           }
         }
       }

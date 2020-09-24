@@ -146,4 +146,14 @@ void  tsch_neighbour_maping(void)
        
     
    
- 
+  
+  void escreve_arq(int n_origin, int n_destin){
+  FILE *fl; 
+  fl = fopen("teste.txt", "a");
+  if(arch == NULL){
+        printf("The file was not opened\n");
+        return ; 
+  } 
+  fprintf(fl, "%d %d\n", int n_origin, int n_destin);
+  fclose(fl);
+}
