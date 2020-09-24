@@ -142,7 +142,7 @@ PROCESS_THREAD(node_process, ev, data)
     NETSTACK_ROUTING.root_start();   
     int **matriz = NULL ; 
     tsch_neighbour_maping_init_matrix(matriz);  
-    tsch_neighbour_maping(matriz);  
+
     initialize_tsch_schedule();
   } 
   else {  
@@ -150,12 +150,10 @@ PROCESS_THREAD(node_process, ev, data)
   }
 
   /* Main loop */
-  while(1) { 
-   /* if(node_id == 10){ 
-      LOG_INFO("Generate topology by neighbor structure\n");
-       tsch_neighbour_maping();  
-    } 
-    */
+  while(1) {  
+    LOG_INFO("Generate topology by neighbor structure\n");
+    tsch_neighbour_maping();  
+    
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
