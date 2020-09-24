@@ -570,54 +570,45 @@ void  tsch_neighbour_maping()
     } 
 }   
 int tsch_neighbour_maping_init_matrix(int **coordenadas){  
-  LOG_PRINT("----- ENTROU -----\n");  
-    if(tsch_get_lock()){
-    LOG_PRINT("----- TSCH LOCK -----\n"); 
-    coordenadas = (int**)malloc(MAX_NOS * sizeof(int*)); 
-    for(int i = 0; i< MAX_NOS; i++) {
-      coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
-    }  
-    //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);  
-    
-    for(int i = 0 ; i < MAX_NOS ; i++){ 
-        for(int j = 0 ; j< MAX_NOS; j++){  
-            coordenadas[i][j] = 0 ; 
-        }
-    }   
-    
-    LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
-    tsch_release_lock();
-    return 1;
-    }  
-    return 0;  
-
-}    
-
-void matriz_adj( int **Matriz){ 
+  LOG_PRINT("----- ENTROU -----\n");   
   int node_origin, node_destin ; 
   FILE *fl; 
   fl = fopen(endereco, "a");
+  if(tsch_get_lock()){
+  LOG_PRINT("----- TSCH LOCK -----\n"); 
+  coordenadas = (int**)malloc(MAX_NOS * sizeof(int*)); 
+  for(int i = 0; i< MAX_NOS; i++) {
+    coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
+  }  
+    //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);    
+  for(int i = 0 ; i < MAX_NOS ; i++){ 
+    for(int j = 0 ; j< MAX_NOS; j++){  
+      coordenadas[i][j] = 0 ; 
+      }
+  }   
+  LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
   if(fl == NULL){
-        printf("The file was not opened\n");
-        return ; 
+      printf("The file was not opened\n");
+      return 0  ; 
   } 
   while(!feof(fl)){     
-    fscanf(fl,"%d %d",&node_origin, &node_destin); 
-    
-        
-    if (Matriz[node_origin][node_destin] == 1){ 
-      return; 
-    }  
-    else {   
+    fscanf(fl,"%d %d",&node_origin, &node_destin);    
+    if (coordenadas[node_origin][node_destin] == 0 && coordenadas[node_destin][node_origin] == 0){   
       for(int i = 0; i < MAX_NOS ; i++){ 
         for(int j = 0 ;j < MAX_NOS; j++){ 
-          *(*(Matriz+i)+j) = 1 ; 
+          *(*(coordenadas+i)+j) = 1 ; 
         }
       } 
     } 
     if(feof(fl)) break ;  
-  } 
-}
+  }
+  tsch_release_lock();
+  return 1;
+  }   
+
+  return 0;  
+
+}    
  
 /*---------------------------------------------------------------------------*/  
 

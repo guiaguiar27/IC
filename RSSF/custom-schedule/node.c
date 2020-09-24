@@ -64,7 +64,6 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
 
-
 static void
 initialize_tsch_schedule(void)
 {
@@ -134,26 +133,24 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
   
   PROCESS_BEGIN();
-
+  initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  initialize_tsch_schedule(); 
-       
+  int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();   
+    NETSTACK_ROUTING.root_start();  
+    tsch_neighbour_maping_init_matrix(matriz); 
     
-    
-  } 
+  }
+
   /* Main loop */
   while(1) { 
-    if(node_id == 1){ 
-      LOG_INFO("ADJACENCE MATRIZ\n"); 
-      int **matriz = NULL ;
-      tsch_neighbour_maping_init_matrix(matriz);
-      matriz_adj(matriz); 
+   /* if(node_id == 10){ 
+      LOG_INFO("Generate topology by neighbor structure\n");
+       tsch_neighbour_maping();  
     } 
-    
+    */
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
