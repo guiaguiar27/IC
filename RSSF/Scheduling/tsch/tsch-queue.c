@@ -60,7 +60,9 @@
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Queue"
 #define LOG_LEVEL LOG_LEVEL_MAC  
-#define endereco "/home/user/contiki-ng/os/arvore.txt"
+#define endereco "/home/user/contiki-ng/os/arvore.txt" 
+#define endereco2 "/home/user/contiki-ng/os/matriz.txt" 
+
 #define MAX_NOS 10
 
 /* Check if TSCH_QUEUE_NUM_PER_NEIGHBOR is power of two */
@@ -605,8 +607,9 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
             
             } 
         } 
-        
-    }  
+         
+    }   
+  print_matrix(coordenadas); 
   tsch_release_lock();
   return 1;
   }   
@@ -618,12 +621,18 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 /*---------------------------------------------------------------------------*/  
 
 void print_matrix(int **Matriz){ 
-  for(int i = 0; i < MAX_NOS ; i++){ 
-      for(int j = 0 ;j < MAX_NOS; j++){ 
-        LOG_PRINT("%d",*(*(Matriz+i)+j)) ; 
-      }
-    } 
-    LOG_PRINT("\n");
+  FILE   *file;  
+  file = fopen(endereco2,"a");
+  if(file== NULL){
+         printf("The file was not opened\n");
+          return 0 ; 
+  }
+  for(int i=1;i<MAX_NOS;i++) {
+        for(int j=1;j<MAX_NOS;j++) {
+            fprintf(file,"%d ",coordenadas[i][j]);
+    }
+        fprintf(file,"\n"); 
+    }
 }
 /*---------------------------------------------------------------------------*/  
 void escreve_arq(int n_origin, int n_destin){
