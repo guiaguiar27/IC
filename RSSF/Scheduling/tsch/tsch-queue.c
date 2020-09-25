@@ -591,17 +591,21 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
       printf("The file was not opened\n");
       return 0  ; 
   } 
-  while(!feof(fl)){     
-    fscanf(fl,"%d %d",&node_origin, &node_destin);    
-    if (coordenadas[node_origin][node_destin] == 0 && coordenadas[node_destin][node_origin] == 0){   
-      for(int i = 0; i < MAX_NOS ; i++){ 
-        for(int j = 0 ;j < MAX_NOS; j++){ 
-          *(*(coordenadas+i)+j) = 1 ; 
-        }
-      } 
-    } 
-    if(feof(fl)) break ;  
-  }
+   while(!feof(fl)){      
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        printf(" %d-> %d\n",node_origin, node_destin);   
+        if(feof(fl)) break ; 
+
+        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+            if (coordenadas[node_origin][node_destin] == 0 && coordenadas[node_destin][node_origin] == 0){  
+                coordenadas[node_origin][node_destin] = 1 ; 
+                coordenadas[node_destin][node_origin] = 1 ;   
+
+            
+            } 
+        } 
+        
+    }  
   tsch_release_lock();
   return 1;
   }   
