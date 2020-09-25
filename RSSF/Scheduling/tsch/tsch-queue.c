@@ -600,7 +600,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (coordenadas[node_origin][node_destin] == 0 && coordenadas[node_destin][node_origin] == 0){  
-                printf(" %d-> %d\n",node_origin, node_destin);
+                //printf(" %d-> %d\n",node_origin, node_destin);
                 coordenadas[node_origin][node_destin] = 1 ; 
                 coordenadas[node_destin][node_origin] = 1 ;   
 
@@ -608,8 +608,13 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
             } 
         } 
          
-    }   
-  print_matrix(coordenadas); 
+    } 
+  for(int i = 1; i < MAX_NOS ; i++){ 
+        for(int j = 1 ;j < MAX_NOS; j++)
+             printf("%d     ", coordenadas[i][j]);
+        printf("\n");
+  }   
+  //print_matrix(coordenadas); 
   tsch_release_lock();
   return 1;
   }   
@@ -625,11 +630,11 @@ void print_matrix(int **Matriz){
   file = fopen(endereco2,"a");
   if(file== NULL){
          printf("The file was not opened\n");
-          return 0 ; 
+          return  ; 
   }
   for(int i=1;i<MAX_NOS;i++) {
         for(int j=1;j<MAX_NOS;j++) {
-            fprintf(file,"%d ",coordenadas[i][j]);
+            fprintf(file,"%d ",Matriz[i][j]);
     }
         fprintf(file,"\n"); 
     }
