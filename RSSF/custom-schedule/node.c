@@ -145,10 +145,10 @@ PROCESS_THREAD(node_process, ev, data)
 
   /* Main loop */
   while(1) { 
-   if(node_id == 10){ 
+   if(node_id == 1){ 
       LOG_INFO("Generate topology by neighbor structure\n");
       tsch_neighbour_maping_init_matrix(matriz);  
-    } 
+  } 
     
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()

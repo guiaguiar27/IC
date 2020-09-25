@@ -271,12 +271,15 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
           /* We have a tx link to this neighbor, update counters */
           if(n != NULL) {
             n->tx_links_count++;
+ 
             if(!(l->link_options & LINK_OPTION_SHARED)) {
+            // escrve topologia em um arquivo  
               n->dedicated_tx_links_count++; 
               node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
               node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              
               escreve_arq(node, node_neighbor); 
             }
             //tsch_neighbour_maping();  

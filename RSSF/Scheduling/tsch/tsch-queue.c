@@ -543,9 +543,10 @@ tsch_queue_init(void)
 }  
 
 /*---------------------------------------------------------------------------*/
+// não está sendo utilizada  
+// a topologia está sendo coletada no tsch_scheudle_add_link 
 void  tsch_neighbour_maping() 
 {   
-
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
     Max = MAX_NOS * MAX_NOS ; 
@@ -575,30 +576,40 @@ void  tsch_neighbour_maping()
 int tsch_neighbour_maping_init_matrix(int **coordenadas){  
   LOG_PRINT("----- ENTROU -----\n");   
   int node_origin, node_destin ; 
+  // inicia arquivo 
   FILE *fl; 
   fl = fopen(endereco, "r");
+  // bloqueia o tsch  
   if(tsch_get_lock()){
   LOG_PRINT("----- TSCH LOCK -----\n"); 
+  // inicializa a matriz 
+  // aloca a memoria da matriz 
   coordenadas = (int**)malloc(MAX_NOS * sizeof(int*)); 
   for(int i = 0; i< MAX_NOS; i++) {
     coordenadas[i] = (int *)malloc(MAX_NOS * sizeof(int));
   }  
     //struct MatrizADJ *Matriz = memb_alloc(&matriz_memb);    
+  // preenche a matriz com 0
+  
   for(int i = 0 ; i < MAX_NOS ; i++){ 
     for(int j = 0 ; j< MAX_NOS; j++){  
       coordenadas[i][j] = 0 ; 
       }
   }   
   LOG_PRINT("----- MATRIZ DE ADJACENCIA INCIADA -----\n"); 
+  // verifica se o arquivo foi aberto 
   if(fl == NULL){
       printf("The file was not opened\n");
       return 0  ; 
-  } 
+  }  
+  // percorre o arquivo da topologia 
    while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);      
         if(feof(fl)) break ; 
+        // se o no origem e o destino for de id menor que o MAX_NOS  
 
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+          // se nessa celula da matriz não tiver nenhuma aresta ela preenche  
             if (coordenadas[node_origin][node_destin] == 0 && coordenadas[node_destin][node_origin] == 0){  
                 //printf(" %d-> %d\n",node_origin, node_destin);
                 coordenadas[node_origin][node_destin] = 1 ; 
@@ -608,13 +619,16 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
             } 
         } 
          
-    } 
+    }  
+
+  // printa a matriz  
   for(int i = 1; i < MAX_NOS ; i++){ 
         for(int j = 1 ;j < MAX_NOS; j++)
              printf("%d     ", coordenadas[i][j]);
         printf("\n");
   }   
   //print_matrix(coordenadas); 
+  //  
   tsch_release_lock();
   return 1;
   }   
@@ -624,7 +638,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 }    
  
 /*---------------------------------------------------------------------------*/  
-
+// não está sendo utilizada 
 void print_matrix(int **Matriz){ 
   FILE   *file;  
   file = fopen(endereco2,"a");
@@ -640,6 +654,7 @@ void print_matrix(int **Matriz){
     }
 }
 /*---------------------------------------------------------------------------*/  
+// função usada para ler a topologia e escrever em um arquivo  
 void escreve_arq(int n_origin, int n_destin){
   FILE *fl; 
   fl = fopen(endereco, "a");
@@ -652,4 +667,7 @@ void escreve_arq(int n_origin, int n_destin){
 } 
 /*---------------------------------------------------------------------------*/  
 
-/** @} */
+/** @} */ 
+
+
+
