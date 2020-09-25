@@ -542,7 +542,8 @@ tsch_queue_init(void)
 
 /*---------------------------------------------------------------------------*/
 void  tsch_neighbour_maping() 
-{
+{   
+
     LOG_INFO_("\n----ENTROU----\n"); 
     int i,j, Max; 
     Max = MAX_NOS * MAX_NOS ; 
@@ -573,7 +574,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
   LOG_PRINT("----- ENTROU -----\n");   
   int node_origin, node_destin ; 
   FILE *fl; 
-  fl = fopen(endereco, "a");
+  fl = fopen(endereco, "r");
   if(tsch_get_lock()){
   LOG_PRINT("----- TSCH LOCK -----\n"); 
   coordenadas = (int**)malloc(MAX_NOS * sizeof(int*)); 
@@ -592,12 +593,12 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
       return 0  ; 
   } 
    while(!feof(fl)){      
-        fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf(" %d-> %d\n",node_origin, node_destin);   
+        fscanf(fl,"%d %d",&node_origin, &node_destin);      
         if(feof(fl)) break ; 
 
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (coordenadas[node_origin][node_destin] == 0 && coordenadas[node_destin][node_origin] == 0){  
+                printf(" %d-> %d\n",node_origin, node_destin);
                 coordenadas[node_origin][node_destin] = 1 ; 
                 coordenadas[node_destin][node_origin] = 1 ;   
 
