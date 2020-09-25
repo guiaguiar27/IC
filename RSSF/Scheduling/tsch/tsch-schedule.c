@@ -216,7 +216,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
                        uint16_t timeslot, uint16_t channel_offset)
 {
-  struct tsch_link *l = NULL;
+  struct tsch_link *l = NULL; 
+  uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -271,9 +272,14 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
           if(n != NULL) {
             n->tx_links_count++;
             if(!(l->link_options & LINK_OPTION_SHARED)) {
-              n->dedicated_tx_links_count++;
+              n->dedicated_tx_links_count++; 
+              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
+                + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              escreve_arq(node, node_neighbor); 
             }
-            tsch_neighbour_maping();  
+            //tsch_neighbour_maping();  
           }
         }
       }
