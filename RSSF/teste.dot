@@ -1,8 +1,0 @@
-digraph g{
-    node[shape = circle]
-    z -> y
-    x -> y
-    b -> y
-    y -> k
-    t -> x
-}
