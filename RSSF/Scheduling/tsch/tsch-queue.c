@@ -630,6 +630,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
   //print_matrix(coordenadas); 
   //  
   tsch_release_lock();
+  sort_links(coordenadas);
   return 1;
   }   
 

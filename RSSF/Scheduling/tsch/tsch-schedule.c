@@ -675,6 +675,7 @@ int SCHEDULE(int **adj){
       tamAresta = i;
 
     sort_links(adj);
+  tsch_release_lock();
   }
     return 0;
     }  
