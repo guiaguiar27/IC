@@ -570,7 +570,7 @@ int *alocaPacotes(int num_no, int **adj){
 
 void 
 sort_links(int **coordenadas){   
-  LOG_PRINT("----- ENTROU -----\n"); 
+  LOG_PRINT("----- ENTROU SORTI_LINKS -----\n"); 
   //escreve_dot();
     int i, j = 0 ;          
     int total_timeslot = 3, total_channel_of = 25 ; 
@@ -631,7 +631,8 @@ sort_links(int **coordenadas){
         
 
 /*-----------------------------------------------------------------------------------------------------*/
-int SCHEDULE(int **adj){     
+int SCHEDULE(int **adj){      
+   LOG_PRINT("Entrou SCHEDULE\n")
    int tamNo; 
     adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
