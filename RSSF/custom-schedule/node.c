@@ -80,7 +80,7 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
-  for (i = 0; i < MAX_NOS; ++i) { 
+  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1 ; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr; 

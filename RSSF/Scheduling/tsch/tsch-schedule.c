@@ -690,7 +690,12 @@ int SCHEDULE(int **adj){
               } 
           } 
           if(feof(fl)) break ;
-      }
+      } 
+  for(int i = 1; i < MAX_NOS ; i++){ 
+      for(int j = 1 ;j < MAX_NOS; j++)
+            printf("%d     ", adj[i][j]);
+        printf("\n");
+  }
     LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
       tamAresta = i;
 
