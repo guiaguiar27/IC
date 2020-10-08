@@ -54,7 +54,8 @@
 #include "sys/process.h"
 #include "sys/rtimer.h"
 #include <string.h>  
-#include <stdlib.h>
+#include <stdlib.h> 
+#include  <time.h>
 #include "conf.h" 
 #define temp_canais 23
 #define peso 1 
@@ -779,6 +780,15 @@ int SCHEDULE(int **adj){
         printf("\n"); 
     }
   tsch_release_lock();
-  }
+  } 
+  
     return 0;
     }  
+
+int inc(){ 
+  int i = 0 ; 
+  srand(time(NULL)); 
+   
+  i = rand()%MAX_NOS -1 ; 
+  return i ;    
+}
