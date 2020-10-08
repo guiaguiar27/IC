@@ -635,7 +635,7 @@ sort_links(int **coordenadas){
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
     int tamNo; 
-   int tamAresta; 
+     int tamAresta; 
     int node_origin, node_destin ; 
     /*******************************************************************/ 
     // inicia arquivo 
@@ -671,6 +671,7 @@ int SCHEDULE(int **adj){
           } 
           if(feof(fl)) break ;
       }
+    LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
       tamAresta = i;
 
     sort_links(adj);
