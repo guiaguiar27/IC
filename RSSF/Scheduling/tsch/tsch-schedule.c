@@ -636,11 +636,12 @@ int SCHEDULE(int **adj){
    LOG_PRINT("Entrou SCHEDULE\n");
     int tamNo; 
 
-    int total_timeslot = 6, total_channel_of = 10;  
-      int **conf ,                     //mapa do grafo de conflito pro grafo da rede
+  //  int total_timeslot = 6, total_channel_of = 10;  
+    // int j ' 
+    int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i,j;                       //Variáveis temporárias
+    z, i;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
