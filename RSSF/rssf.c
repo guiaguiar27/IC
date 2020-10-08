@@ -33,7 +33,7 @@ int main(){
     int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
-    // inicia arquivo 
+    // inicia arquivo  
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;   
