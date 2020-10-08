@@ -635,22 +635,7 @@ sort_links(int **coordenadas){
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
     int tamNo; 
-    int **conf ,                     //mapa do grafo de conflito pro grafo da rede
-    **matconf,                      //Nº de nós da rede
-    tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
-    int **matching,             //Matching da rede
-    pacote_entregue = 0, 
-    total_pacotes = 0, 
-    raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária
-    int cont = 0;               //Time do slotframe
-    int **aloca_canais,         //Slotframe
-    x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp;        //Variáveis temporárias
-                                 //Nome dos nós no grafo da rede
-                                 //Nom do arquivo contendo o grafo de conflito (não usado)
-    int *pacotes;               //Pacotes por nó no grafo da rede
+   int tamAresta; 
     int node_origin, node_destin ; 
     /*******************************************************************/ 
     // inicia arquivo 
