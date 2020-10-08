@@ -634,7 +634,7 @@ sort_links(int **coordenadas){
 /*-----------------------------------------------------------------------------------------------------*/
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
-    int tamNo; 
+    int tamNo,i; 
      int tamAresta; 
     int node_origin, node_destin ; 
     /*******************************************************************/ 
