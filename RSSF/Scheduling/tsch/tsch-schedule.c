@@ -573,7 +573,6 @@ int *alocaPacotes(int num_no, int **adj){
 void 
 sort_links(){   
   LOG_PRINT("----- ENTROU SORTI_LINKS -----\n"); 
-  //escreve_dot();
     int i, j = 0 ;          
     int total_timeslot = 3, total_channel_of = 25 ; 
     int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
@@ -785,12 +784,12 @@ int SCHEDULE(int **adj){
              
         printf("\n"); 
     }  
-
+/*
    struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) { 
 
       struct tsch_link *l = list_head(sf->links_list);
-      /* Loop over all items. Assume there is max one link per timeslot */
+      // Loop over all items. Assume there is max one link per timeslot 
       
         for(i = 0 ; i<total_channel_of ; i++){ 
           for(j = 0 ; j < total_timeslot ;j++){ 
@@ -815,7 +814,7 @@ int SCHEDULE(int **adj){
       
       sf = list_item_next(sf);
     }
-
+*/
 
   tsch_release_lock();
   } 

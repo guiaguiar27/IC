@@ -25,8 +25,6 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     for(x = 0; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
             no_atual = x;
-
-    printf("\nno atual %d\n", no_atual);
     
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
     for(x = 0; x < num_aresta; x++)

@@ -84,13 +84,8 @@ initialize_tsch_schedule(void)
 
     uint8_t link_options;
     linkaddr_t addr; 
-    uint16_t remote_id ; 
-    if(node_id%2 == 0){ 
-       remote_id = i + 1;
-    } 
-    else { 
-      remote_id = i + 2;  
-    }
+    uint16_t remote_id= i+1  ; 
+    
     
 
     for(j = 0; j < sizeof(addr); j += 2) {
@@ -105,7 +100,7 @@ initialize_tsch_schedule(void)
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */
     link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-
+    
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
