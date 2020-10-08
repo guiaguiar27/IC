@@ -654,6 +654,7 @@ int SCHEDULE(int **adj){
                                  //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
 
+   struct tsch_slotframe *sf = list_head(slotframe_list);
 
 
     int node_origin, node_destin ; 
@@ -783,7 +784,35 @@ int SCHEDULE(int **adj){
             printf("%d  ", aloca_canais[x][y] + 1);  
              
         printf("\n"); 
+    } 
+    while(sf != NULL) {
+      /* Loop over all items. Assume there is max one link per timeslot */
+      
+        for(i = 0 ; i<total_channel_of ; i++){ 
+          for(j = 0 ; j < total_timeslot ;j++){ 
+            //coordenadas[i][j] = rand()%16  ;  
+            if(aloca_canais[i][j] == l->handle){   
+              LOG_PRINT("---------------------------\n"); 
+              LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
+              l-> timeslot = i; 
+              l-> channel_offset = j ;  
+              LOG_PRINT("----CHANGE-----\n"); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
+              LOG_PRINT("-----------------------------\n");   
+              l = list_item_next(l); 
+            }
+      }
+      }    
+        
+       
+      
+      sf = list_item_next(sf);
     }
+
+
   tsch_release_lock();
   } 
   
