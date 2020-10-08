@@ -576,11 +576,11 @@ sort_links(int **coordenadas){
   //escreve_dot();
     int i, j = 0 ;          
     int total_timeslot = 3, total_channel_of = 25 ; 
-    /*int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
+    int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
     for(i = 0; i< total_channel_of; i++) {
       coordenadas[i] = (int *) malloc(total_timeslot * sizeof(int));
     }  
-    */ 
+    
      
     // linhas = channel_offset  
     // colunas = time slot
@@ -592,13 +592,13 @@ sort_links(int **coordenadas){
     coordenadas[1][1] = 1 ; 
     */ 
     // generate random integers 
-    /*srand(time(NULL));
+    srand(time(NULL));
     for(i = 0 ; i<total_channel_of ; i++){ 
        for(j = 0 ; j < total_timeslot ;j++){ 
           coordenadas[i][j] = rand()%10;   
       }
     }  
-    */  
+      
     if(!tsch_is_locked()) { 
     struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
