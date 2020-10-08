@@ -1,23 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "rgraph.h"
 #include "conf.h"
-#include "criaDOT.h"
 #define temp_canais 23
-#define peso 1
+#define peso 1 
+#define MAX_NOS 11
+#define no_raiz 1
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
 int *alocaPacotes(int num_no); 
-char *colect_addres(char *ex);
+int *alocaPacotes2(int num_no, int **adj); 
 
 int main(){    
-    int tam_addres ; // armazenara o strlen 
-    char *aux_addres = (char*) malloc(100 * sizeof(char));  // armazenara o endereco a convertido em int  
-    char hex[8]; 
-    int addres_integer  ;  // armazenara o endereco inteiro que sera passado para o tipo linkaddr_t  
     int tamNo; 
-    int **adj,                  //grafo da rede
-    **conf,                     //mapa do grafo de conflito pro grafo da rede
+    int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+    
+    int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
     z, i;                       //Variáveis temporárias
@@ -30,20 +27,58 @@ int main(){
     int **aloca_canais,         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    char **nome_no,             //Nome dos nós no grafo da rede
-    *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+   // char **nome_no,             //Nome dos nós no grafo da rede
+    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
-
+    int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
+    /*******************************************************************/ 
+    // inicia arquivo 
+    FILE *fl;  
+    tamNo = MAX_NOS ;  
+    tamAresta = MAX_NOS;   
+    fl = fopen("teste.txt", "r"); 
+    if(fl == NULL){
+        printf("The file was not opened\n");
+        return 0  ; 
+    } 
+    // matriz 
+    for(int i = 0; i< MAX_NOS; i++) {
+        adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
+    }
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){  
+            adj[i][j] = 0 ; 
+        }
+    }  
 
-    //Lê o arquivo .dot
-    adj = leDOT("arvre.dot", &tamNo, &tamAresta, &nome_no);
-    
-    //Aloca os pacotes para cada nó
-    pacotes = alocaPacotes(tamNo);
-    
+    i = 0;
+    printf("Enter here!\n");
+    while(!feof(fl)){      
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        printf(" %d-> %d\n",node_origin, node_destin);    
+        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+            if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+                adj[node_origin][node_destin] = 1;
+                i++;
+            } 
+        } 
+        if(feof(fl)) break ;
+    }
+    tamAresta = i;
+
+    for(int i = 0; i < MAX_NOS ; i++){ 
+        for(int j = 0 ;j < MAX_NOS; j++)
+             printf("%d ", adj[i][j]);
+        printf("\n");
+    }
+     
+    pacotes = alocaPacotes2(tamNo, adj);
+    printf("Pacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    conf = mapGraphConf(adj, tamNo, tamAresta);
+
+    conf = mapGraphConf(adj, tamNo, tamAresta); 
+    printf("Matriz de conflito gerada");
     
     //Gera a matriz de conflito
     matconf = fazMatrizConf(conf, adj, tamAresta);
@@ -54,6 +89,7 @@ int main(){
         aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
         for(y = 0; y < temp_canais; y++)
             aloca_canais[x][y] = -1;
+    
     }
 
     //Busca pelo nó raiz da rede
@@ -70,16 +106,19 @@ int main(){
     }
     raiz = z;
 
-    printf("\nNúmero de nós: %d \nNúmero de arestas: %d \nNome do nó raiz: %s \nNúmero do nó raiz: %d \n\n", tamNo, tamAresta, nome_no[raiz], raiz);
+    //Por hora definimos ele manualmente
+    raiz = no_raiz;
+
+    //printf("\nNúmero de nós: %d \nNúmero de arestas: %d \nNome do nó raiz: %s \nNúmero do nó raiz: %d \n\n", tamNo, tamAresta, nome_no[raiz], raiz);
 
     //adj[1][4] = 0;
     //adj[2][1] = 2;
     //adj[5][2] = 0;
 
     //Mostra as arestas q representam cada nó do grafo de conflito
-    for(z = 0; z < tamAresta; z++)
+    /*for(z = 0; z < tamAresta; z++)
         printf("[%d] = %s - > %s\n", z + 1, nome_no[conf[z][0]], nome_no[conf[z][1]]);
-
+    */  
     //Guarda o total de pacotes a serem enviados pela
     for(z = 0; z < tamNo; z++)
         if(z != raiz)
@@ -94,13 +133,13 @@ int main(){
 
     //Mostram os pacotes contentes em cada nó da rede
     printf("\nPacotes por nó da rede\nTempo: %d\nPacotes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
+    /*
     for(z = 0; z < tamNo; z++){
         printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
     }
     printf("\n");
-    
+    */
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-    
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
         for(x = 0; x < tamNo; x++){
@@ -108,6 +147,9 @@ int main(){
                 printf("%d ", matching[x][y]);
             printf("\n");
         }
+        printf("\nPacotes:\n");
+        for(x = 0; x < tamNo; x++)
+            printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
         //Aloca os canais
         for(x = 0; x < tamNo; x ++){
@@ -121,10 +163,6 @@ int main(){
                         if(canal == 16)
                             break;
                         aloca_canais[canal][cont] = edge_selected; 
-                        aux_addres = colect_addres(nome_no[conf[aloca_canais[canal][cont]][0]]); 
-                       addres_integer = *aux_addres - '0';   
-                       printf("\n Addr_int:  %d\n",addres_integer);  
-                      // printf("%x",addres_integer);
                         canal++;
                     }
                 }
@@ -152,11 +190,14 @@ int main(){
         
         //mostram os pacotes contentes em cada nó da rede
         printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-        for(z = 0; z < tamNo; z++){
+        
+        /*for(z = 0; z < tamNo; z++){
             printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
         }
         printf("\n");
+        */ 
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    
     }
 
     printf("\nCanais alocados  | |");
@@ -185,6 +226,7 @@ int main(){
     //nome_arq_dot = criaGrafoConf(matconf, conf, nome_no, tamAresta);
 
     printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot);
+    
 
     return 0;
 }
@@ -196,11 +238,11 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
         if(aloca_canal[i][tempo] == -1)
             continue;
         if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]]--;
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]]++;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
         }
         if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-            (*pacote_entregue)++;
+            (*pacote_entregue) += peso;
     }
 }
 
@@ -212,43 +254,27 @@ int *alocaPacotes(int num_no){
     return vetor;
 }  
 
-char *colect_addres(char *ex){      
-    printf("Entrou");  
-    int tam1, i, idx = 0;   
-    tam1 = strlen(ex);  
-    char *colect = (char*) malloc(100 * sizeof(char)); 
-    colect[0] = '\0';
-    for(i = 0 ; i < tam1 ; i++){   
-        //printf("%s\n",colect );
-        if(ex[i] == '_'){ 
-            i++; 
-            while(ex[i] != '_' && ex[i] != '\0'){         
-                colect[idx] = ex[i];
-                idx++;
-                colect[idx] = '\0';
-                i++; 
-            //printf("%s\n",colect );  
-            //if(colect == "_") break ; 
-            } 
-            //i--;
-        }           
-        if(ex[i] == '\0') break ;  
+int *alocaPacotes2(int num_no, int **adj){
+    int *vetor, x, y, qtd_pacotes = 0;
+    vetor = (int*) malloc(num_no * sizeof(int));
+    //Percorre o vetor de pacotes
+    for(x = 0; x < num_no; x++){
+        //Percorre a linha da matriz para saber se o nó X está conectado à alguém
+        for(y = 0; y < num_no; y++)
+            //Se sim, adiciona um pacote
+            if(adj[x][y]){
+                qtd_pacotes = peso;
+                break;
+            }
+
+        if(qtd_pacotes)
+            vetor[x] = qtd_pacotes;
+        else
+            vetor[x] = 0;
+
+        //Reseta o contador
+        qtd_pacotes = 0;
     }
     
-    while(colect[i] != '\0'){  
-        if(colect[i] == ' '){ 
-            colect[i] = 'p' ;
-        }         
-        i++;
-        if(colect[i] == '\0') break ; 
-
-    } 
-    
-    //printf("%s\n",colect);
-    return (char *)colect;  
-} 
-
-
-
-
-
+    return vetor;
+}  
