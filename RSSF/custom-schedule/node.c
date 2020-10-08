@@ -38,12 +38,13 @@
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
-#include "sys/node-id.h"
+#include "sys/node-id.h" 
+#include "time.h"
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
-
+#define MAX_NOS 10
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)
 
@@ -79,11 +80,12 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
+  srand(time(NULL));
+  for (i = 0; i < MAX_NOS; ++i) { 
 
-  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
     uint8_t link_options;
     linkaddr_t addr;
-    uint16_t remote_id = i + 1;
+    uint16_t remote_id = rand()%MAX_NOS;
 
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
