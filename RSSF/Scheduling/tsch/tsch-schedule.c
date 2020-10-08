@@ -637,10 +637,11 @@ int SCHEDULE(int **adj){
    LOG_PRINT("Entrou SCHEDULE\n");
     int tamNo; 
 
+    int total_timeslot = 6, total_channel_of = 10;  
       int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
+    z, i,j;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -654,7 +655,6 @@ int SCHEDULE(int **adj){
                                  //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
 
-   struct tsch_slotframe *sf = list_head(slotframe_list);
 
 
     int node_origin, node_destin ; 
@@ -784,8 +784,12 @@ int SCHEDULE(int **adj){
             printf("%d  ", aloca_canais[x][y] + 1);  
              
         printf("\n"); 
-    } 
-    while(sf != NULL) {
+    }  
+
+   struct tsch_slotframe *sf = list_head(slotframe_list);
+    while(sf != NULL) { 
+
+      struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
       
         for(i = 0 ; i<total_channel_of ; i++){ 
