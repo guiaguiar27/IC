@@ -784,11 +784,3 @@ int SCHEDULE(int **adj){
   
     return 0;
     }  
-
-int inc(){ 
-  int i = 0 ; 
-  srand(time(NULL)); 
-   
-  i = rand()%MAX_NOS -1 ; 
-  return i ;    
-}

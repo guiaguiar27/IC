@@ -83,8 +83,15 @@ initialize_tsch_schedule(void)
   for (i = 0; i < MAX_NOS; ++i) { 
 
     uint8_t link_options;
-    linkaddr_t addr;
-    uint16_t remote_id = inc();
+    linkaddr_t addr; 
+    uint16_t remote_id ; 
+    if(node_id%2 == 0){ 
+       remote_id = i + 1;
+    } 
+    else { 
+      remote_id = i + 2;  
+    }
+    
 
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
