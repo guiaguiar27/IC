@@ -634,8 +634,27 @@ sort_links(int **coordenadas){
 /*-----------------------------------------------------------------------------------------------------*/
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
-    int tamNo,i; 
-     int tamAresta; 
+    int tamNo; 
+
+      int **conf ,                     //mapa do grafo de conflito pro grafo da rede
+    **matconf,                      //Nº de nós da rede
+    tamAresta,                  //Nº de arestas da rede
+    z, i;                       //Variáveis temporárias
+    int **matching,             //Matching da rede
+    pacote_entregue = 0, 
+    total_pacotes = 0, 
+    raiz,                       //Nó raiz do grafo da rede
+    flg = 1;                    //Variável temporária
+    int cont = 0;               //Time do slotframe
+    int **aloca_canais,         //Slotframe
+    x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+                                 //Nome dos nós no grafo da rede
+                                 //Nom do arquivo contendo o grafo de conflito (não usado)
+    int *pacotes;               //Pacotes por nó no grafo da rede
+
+
+
     int node_origin, node_destin ; 
     /*******************************************************************/ 
     // inicia arquivo 
@@ -674,7 +693,84 @@ int SCHEDULE(int **adj){
     LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
       tamAresta = i;
 
-    sort_links(adj);
+
+     
+     
+     
+      pacotes = alocaPacotes(tamNo, adj);
+      //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
+
+      conf = mapGraphConf(adj, tamNo, tamAresta); 
+      
+      //Gera a matriz de conflito
+      matconf = fazMatrizConf(conf, adj, tamAresta);
+
+      //Aloca o slotframe e o preenche com -1
+      aloca_canais = (int**) malloc(16 * sizeof(int*));
+      for(x = 0; x < 16; x++){
+          aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
+          for(y = 0; y < temp_canais; y++)
+              aloca_canais[x][y] = -1;
+      
+      }
+
+      //Busca pelo nó raiz da rede
+      for(z = 0; z < tamNo; z++){
+          for(i = 0; i < tamNo; i++)
+              if(adj[z][i] != 0){
+                  flg = 0;
+                  break;
+              }
+          if(flg)
+              break;
+          else
+              flg = 1;
+      }
+      raiz = z;
+
+      //Por hora definimos ele manualmente
+      raiz = no_raiz;
+
+      //Guarda o total de pacotes a serem enviados pela
+      for(z = 0; z < tamNo; z++)
+          if(z != raiz)
+              total_pacotes += pacotes[z];
+
+
+      matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+      while(pacote_entregue < total_pacotes){
+          //Aloca os canais
+          for(x = 0; x < tamNo; x ++){
+              for(y = 0; y < tamNo; y++){
+                  if(matching[x][y]){
+                      for(temp = 0; temp < tamAresta; temp++)
+                          if(conf[temp][0] == x && conf[temp][1] == y)
+                              break;
+                      edge_selected = temp;
+                      for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+                          if(canal == 16)
+                              break;
+                          aloca_canais[canal][cont] = edge_selected; 
+                          canal++;
+                      }
+                  }
+                  if(canal == 16)
+                      break;
+              }
+              if(canal == 16)
+                  break;
+          }
+          
+          //Executa a primeira carga de transferência
+          executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+          cont++;
+          canal = 0;
+          
+          //mostram os pacotes contentes em cada nó da rede
+    
+          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+      
+      } 
   tsch_release_lock();
   }
     return 0;
