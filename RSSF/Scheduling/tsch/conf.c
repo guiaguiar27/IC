@@ -25,11 +25,13 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     for(x = 0; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
             no_atual = x;
+
+    printf("\nno atual %d\n", no_atual);
     
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
     for(x = 0; x < num_aresta; x++)
         if(mapa_graf_conf[x][0] == no_atual)
-            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, x);
+            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
     return NULL;
@@ -40,9 +42,10 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     *   mat_adj: matriz de adjacência do grafo da rede
     *   graf_conf: matriz de ajacência do grafo de conflito
     *   tam: tamanho do grafo de conflito
+    *   tam_rede: tamanho do grafo da rede
     *   node: aresta selecionada para iniciar o matching
     */
-int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int tam, int node){
+int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int tam, int tam_rede, int node){
     
     /*
     * x, y: usado para percorrer o vetor
@@ -58,10 +61,10 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     int x, y, vetor[tam][2], **resultado, maior_peso, cont = 1, flg = 1;
 
     //Alocando e preenchendo com zeros a matriz do matching
-    resultado = (int**) malloc((tam + 1) * sizeof(int*));
-    for(x = 0; x < tam + 1; x++){
-        resultado[x] = (int*) malloc((tam + 1) * sizeof(int));
-        for(y = 0; y < tam + 1; y++)
+    resultado = (int**) malloc((tam_rede) * sizeof(int*));
+    for(x = 0; x < tam_rede; x++){
+        resultado[x] = (int*) malloc((tam_rede) * sizeof(int));
+        for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
     }
 
@@ -105,7 +108,7 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
                 cont = 1;
         flg = 1;
     }
-
+    
     //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
     for(x = 0; x < tam; x++){
         if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
