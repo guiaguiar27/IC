@@ -59,7 +59,8 @@
 #define temp_canais 23
 #define peso 1 
 #define MAX_NOS 11
-#define no_raiz 1
+#define no_raiz 1 
+#define endereco "/home/user/contiki-ng/os/arvore.txt" 
 
 /* Log configuration */
 #include "sys/log.h"
@@ -632,7 +633,7 @@ sort_links(int **coordenadas){
 
 /*-----------------------------------------------------------------------------------------------------*/
 int SCHEDULE(int **adj){      
-   LOG_PRINT("Entrou SCHEDULE\n")
+   LOG_PRINT("Entrou SCHEDULE\n");
    int tamNo; 
     adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
@@ -659,7 +660,7 @@ int SCHEDULE(int **adj){
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;   
-    fl = fopen("teste.txt", "r"); 
+    fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
         return 0  ; 
