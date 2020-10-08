@@ -527,7 +527,7 @@ tsch_schedule_print(void)
 /** @} */ 
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
-    int x, y, z, i;
+    int  i;
 
     for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
@@ -543,15 +543,17 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 
 /*------------------------------------------------------------------------------------------------------------*/
 int *alocaPacotes(int num_no, int **adj){
-    int *vetor, x, y, qtd_pacotes = 0;
+ int *vetor, x, y, qtd_pacotes = 0;
     vetor = (int*) malloc(num_no * sizeof(int));
     //Percorre o vetor de pacotes
     for(x = 0; x < num_no; x++){
         //Percorre a linha da matriz para saber se o nó X está conectado à alguém
         for(y = 0; y < num_no; y++)
             //Se sim, adiciona um pacote
-            if(adj[x][y])
-                qtd_pacotes += peso;
+            if(adj[x][y]){
+                qtd_pacotes = peso;
+                break;
+            }
 
         if(qtd_pacotes)
             vetor[x] = qtd_pacotes;
@@ -562,8 +564,7 @@ int *alocaPacotes(int num_no, int **adj){
         qtd_pacotes = 0;
     }
     
-    return vetor;
-}  
+    return vetor;}  
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -632,7 +633,7 @@ sort_links(int **coordenadas){
 /*-----------------------------------------------------------------------------------------------------*/
 int SCHEDULE(int **adj){     
    int tamNo; 
-    int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+    adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
@@ -648,7 +649,7 @@ int SCHEDULE(int **adj){
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
    // char **nome_no,             //Nome dos nós no grafo da rede
-    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+           //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
     int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
@@ -693,7 +694,7 @@ int SCHEDULE(int **adj){
         printf("\n");
     }
      
-    pacotes = alocaPacotes2(tamNo, adj);
+    pacotes = alocaPacotes(tamNo, adj);
     printf("Pacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
 
