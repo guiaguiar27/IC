@@ -771,6 +771,13 @@ int SCHEDULE(int **adj){
           matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
       
       } 
+      for(x = 0 ; x < 16; x++){
+        for(y = 0; y < temp_canais; y++) 
+            // linhas = tempo - coluna = canal  
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n"); 
+    }
   tsch_release_lock();
   }
     return 0;
