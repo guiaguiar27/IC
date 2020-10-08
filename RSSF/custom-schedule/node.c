@@ -39,7 +39,7 @@
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
 #include "sys/node-id.h" 
-#include  <time.h>
+
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
@@ -80,12 +80,11 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
-  srand(time(NULL));
   for (i = 0; i < MAX_NOS; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr;
-    uint16_t remote_id = rand()%MAX_NOS;
+    uint16_t remote_id = inc();
 
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
