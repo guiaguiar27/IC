@@ -571,7 +571,7 @@ int *alocaPacotes(int num_no, int **adj){
 /*----------------------------------------------------------------------------------------------------------------*/
 
 void 
-sort_links(int **coordenadas){   
+sort_links(){   
   LOG_PRINT("----- ENTROU SORTI_LINKS -----\n"); 
   //escreve_dot();
     int i, j = 0 ;          
