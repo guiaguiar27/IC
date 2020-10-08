@@ -635,7 +635,7 @@ sort_links(int **coordenadas){
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
    int tamNo; 
-    adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+                     //grafo da rede
     
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
@@ -664,7 +664,8 @@ int SCHEDULE(int **adj){
         printf("The file was not opened\n");
         return 0  ; 
     } 
-    // matriz 
+    // matriz  
+    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     for(int i = 0; i< MAX_NOS; i++) {
         adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
     }
