@@ -531,15 +531,15 @@ tsch_schedule_print(void)
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int  i;
 
-    for(i = 0; i < 16; i++){
+     for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
             continue;
         if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]]+=peso;
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]]-=peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
         }
         if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-            (*pacote_entregue)++;
+            (*pacote_entregue) += peso;
     }
 }
 
@@ -566,7 +566,8 @@ int *alocaPacotes(int num_no, int **adj){
         qtd_pacotes = 0;
     }
     
-    return vetor;}  
+    return vetor; 
+    }  
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -691,14 +692,15 @@ int SCHEDULE(int **adj){
               } 
           } 
           if(feof(fl)) break ;
-      } 
+      }  
+      tamAresta = i;
   for(int i = 1; i < MAX_NOS ; i++){ 
       for(int j = 1 ;j < MAX_NOS; j++)
             printf("%d     ", adj[i][j]);
         printf("\n");
   }
     LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
-      tamAresta = i;
+      
 
 
      
@@ -767,7 +769,19 @@ int SCHEDULE(int **adj){
               if(canal == 16)
                   break;
           }
-          
+          printf("\nCanais alocados  | |");
+        printf("\n                \\   /");
+        printf("\n                 \\ /\n\n");
+        for(x = 0; x < 16; x++){
+            for(y = 0; y < temp_canais; y++)
+                printf("%d  ", aloca_canais[x][y] + 1);
+            printf("\n");
+        }
+        printf("\n");
+
+           
+           
+
           //Executa a primeira carga de transferência
           executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
           cont++;
