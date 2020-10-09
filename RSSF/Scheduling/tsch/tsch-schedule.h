@@ -162,6 +162,6 @@ void  sort_links();
 int SCHEDULE(int **adj);  
 int *alocaPacotes(int num_no, int **adj);  
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
-
+void tsch_num_nos();
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

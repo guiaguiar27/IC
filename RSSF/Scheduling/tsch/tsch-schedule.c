@@ -657,7 +657,7 @@ int SCHEDULE(int **adj){
     int *pacotes;               //Pacotes por nó no grafo da rede
 
 
-
+    struct tsch_slotframe *sf = list_head(slotframe_list);
     int node_origin, node_destin ; 
     /*******************************************************************/ 
     // inicia arquivo 
@@ -789,7 +789,29 @@ int SCHEDULE(int **adj){
           
           //mostram os pacotes contentes em cada nó da rede
     
-          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+          if(sf != NULL){
+          struct tsch_link *l = list_head(sf->links_list); 
+          for(x = 0 ; x < 16; x++){
+            for(y = 0; y < temp_canais; y++){ 
+              if(aloca_canais[x][y] == l->handle){   
+              LOG_PRINT("---------------------------\n"); 
+              LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
+              l-> timeslot = x; 
+              l-> channel_offset = y ;  
+              LOG_PRINT("----CHANGE-----\n"); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
+              LOG_PRINT("-----------------------------\n");   
+              l = list_item_next(l); 
+             }
+            } 
+          } 
+           sf = list_item_next(sf); 
+          }
+          
       
       } 
       for(x = 0 ; x < 16; x++){
@@ -799,40 +821,15 @@ int SCHEDULE(int **adj){
              
         printf("\n"); 
     }  
-/*
-   struct tsch_slotframe *sf = list_head(slotframe_list);
-    while(sf != NULL) { 
 
-      struct tsch_link *l = list_head(sf->links_list);
-      // Loop over all items. Assume there is max one link per timeslot 
-      
-        for(i = 0 ; i<total_channel_of ; i++){ 
-          for(j = 0 ; j < total_timeslot ;j++){ 
-            //coordenadas[i][j] = rand()%16  ;  
-            if(aloca_canais[i][j] == l->handle){   
-              LOG_PRINT("---------------------------\n"); 
-              LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
-              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
-              l-> timeslot = i; 
-              l-> channel_offset = j ;  
-              LOG_PRINT("----CHANGE-----\n"); 
-              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
-              LOG_PRINT("-----------------------------\n");   
-              l = list_item_next(l); 
-            }
-      }
-      }    
-        
-       
-      
-      sf = list_item_next(sf);
-    }
-*/
+
 
   tsch_release_lock();
   } 
   
     return 0;
     }  
+void tsch_num_nos(){ 
+  int i = MAX_NOS; 
+  return i; 
+}

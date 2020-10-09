@@ -71,7 +71,8 @@ initialize_tsch_schedule(void)
   int i, j;
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
-  uint16_t channel_offset;
+  uint16_t channel_offset; 
+  int node_number = tsch_num_nos();
 
   /* A "catch-all" cell at (0, 0) */
   slot_offset = 0;
@@ -80,7 +81,7 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
-  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1 ; ++i) { 
+  for (i = 0; i < node_number ; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr; 
@@ -100,7 +101,7 @@ initialize_tsch_schedule(void)
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */
     link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-    
+    if(node_id%2 == 0)
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
