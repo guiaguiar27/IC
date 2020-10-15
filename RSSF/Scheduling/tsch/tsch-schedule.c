@@ -790,7 +790,19 @@ int SCHEDULE(int **adj){
           //mostram os pacotes contentes em cada nó da rede
     
           matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
-          if(sf != NULL){
+          
+         
+          
+      
+      } 
+      for(x = 0 ; x < 16; x++){
+        for(y = 0; y < temp_canais; y++) 
+            // linhas = tempo - coluna = canal  
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n"); 
+    }   
+     if(sf != NULL){
           struct tsch_link *l = list_head(sf->links_list); 
           for(x = 0 ; x < 16; x++){
             for(y = 0; y < temp_canais; y++){ 
@@ -799,8 +811,8 @@ int SCHEDULE(int **adj){
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
-              l-> timeslot = x; 
-              l-> channel_offset = y ;  
+              l->timeslot = x; 
+              l->channel_offset = y ;  
               LOG_PRINT("----CHANGE-----\n"); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
@@ -811,16 +823,6 @@ int SCHEDULE(int **adj){
           } 
            sf = list_item_next(sf); 
           }
-          
-      
-      } 
-      for(x = 0 ; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
-            // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
-             
-        printf("\n"); 
-    }  
 
 
 
@@ -829,7 +831,7 @@ int SCHEDULE(int **adj){
   
     return 0;
     }  
-void tsch_num_nos(){ 
+int tsch_num_nos(){ 
   int i = MAX_NOS; 
   return i; 
 }
