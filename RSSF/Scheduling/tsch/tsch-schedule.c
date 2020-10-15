@@ -247,7 +247,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else {
-        static int current_link_handle = slotframe-> num_links;
+        static int current_link_handle = slotframe->num_links;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -475,7 +475,7 @@ tsch_schedule_init(void)
 /* Create a 6TiSCH minimal schedule */
 void
 tsch_schedule_create_minimal(void)
-{ int n = 0 ; 
+{ 
   struct tsch_slotframe *sf_min;
   /* First, empty current schedule */
   tsch_schedule_remove_all_slotframes();
