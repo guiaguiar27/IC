@@ -610,7 +610,7 @@ sort_links(){
             //coordenadas[i][j] = rand()%16  ;
             l = memb_alloc(&link_memb); 
             l = tsch_schedule_get_link_by_handle(coordenadas[i][j]);
-            /*
+            
             if(coordenadas[i][j] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
@@ -624,7 +624,7 @@ sort_links(){
               LOG_PRINT("-----------------------------\n");   
               l = list_item_next(l); 
             } 
-            */ 
+            
       }
       }    
         
@@ -805,11 +805,25 @@ int SCHEDULE(int **adj){
             printf("%d  ", aloca_canais[x][y] + 1);  
              
         printf("\n"); 
-    }   
+    }    
+
+
+    
     while(sf != NULL){
           struct tsch_link *l = NULL; 
-          for(i = 0 ; i<16; i++){ 
-          for(j = 0 ; j < temp_canais;j++){ 
+           l = memb_alloc(&link_memb); 
+            l = list_head(sf->links_list); 
+          for(x = 0 ; x < 100 ; x++){ 
+            LOG_PRINT("----HANDLE: %d-----\n", l-> handle);  
+             l = list_item_next(l); 
+          }
+          
+          
+          
+          
+          /*
+          for(x = 0 ; x<16; x++){ 
+          for(y = 0 ; y < temp_canais;y++){ 
             //coordenadas[i][j] = rand()%16  ;
             l = memb_alloc(&link_memb); 
             l = list_head(sf->links_list);   
@@ -820,8 +834,8 @@ int SCHEDULE(int **adj){
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
-              l-> timeslot = i; 
-              l-> channel_offset = j ;  
+              l-> timeslot = x; 
+              l-> channel_offset = y ; 
               LOG_PRINT("----CHANGE-----\n"); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
@@ -831,6 +845,7 @@ int SCHEDULE(int **adj){
            
         }
         }    
+        */ 
           sf = list_item_next(sf); 
       }
 
