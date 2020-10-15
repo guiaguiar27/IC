@@ -96,6 +96,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       TSCH_ASN_DIVISOR_INIT(sf->size, size);
       LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */
+      sf->num_links = 0 ; 
       list_add(slotframe_list, sf);
     }
     LOG_INFO("add_slotframe %u %u\n",
@@ -222,7 +223,7 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset, int *n)
+                       uint16_t timeslot, uint16_t channel_offset)
 {
   struct tsch_link *l = NULL; 
   uint16_t node_neighbor, node;
@@ -246,10 +247,11 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else {
-        static int current_link_handle = 0;
+        static int current_link_handle = slotframe-> num_links;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
-        list_add(slotframe->links_list, l);
+        list_add(slotframe->links_list, l); 
+  
         /* Initialize link */  
         l->link_options = link_options;
         l->link_type = link_type;
@@ -257,11 +259,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        current_link_handle = *n;
-        l->handle = current_link_handle;  
-        (*n)++;
+        l->handle = current_link_handle++; 
+        slotframe->num_links++;   
         LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
-      
+        
         if(address == NULL) {
           address = &linkaddr_null;
         }
@@ -488,7 +489,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, &n);
+      0, 0);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *

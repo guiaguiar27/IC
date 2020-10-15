@@ -69,7 +69,7 @@ static void
 initialize_tsch_schedule(void)
 {
   int i, j, n; 
-  n = 0 ;
+  
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset; 
@@ -81,7 +81,7 @@ initialize_tsch_schedule(void)
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset, &n);
+      slot_offset, channel_offset);
   for (i = 0; i < node_number ; ++i) { 
 
     uint8_t link_options;
@@ -106,7 +106,7 @@ initialize_tsch_schedule(void)
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset, n);
+        slot_offset, channel_offset);
   }
 }
 

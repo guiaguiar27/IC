@@ -89,6 +89,7 @@ struct tsch_slotframe {
   /* Number of timeslots in the slotframe.
    * Stored as struct asn_divisor_t because we often need ASN%size */
   struct tsch_asn_divisor_t size;
+  int num_links; 
   /* List of links belonging to this slotframe */
   LIST_STRUCT(links_list);
 };
