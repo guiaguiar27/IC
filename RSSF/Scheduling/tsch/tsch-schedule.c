@@ -581,9 +581,6 @@ sort_links(){
       coordenadas[i] = (int *) malloc(total_timeslot * sizeof(int));
     }  
      
-
-
-     
     // linhas = channel_offset  
     // colunas = time slot
     // initialize example matrix
@@ -809,29 +806,33 @@ int SCHEDULE(int **adj){
              
         printf("\n"); 
     }   
-     if(sf != NULL){
+    while(sf != NULL){
           struct tsch_link *l = NULL; 
-          for(x = 0 ; x < 16; x++){
-            for(y = 0; y < temp_canais; y++){ 
-              l = memb_alloc(&link_memb); 
-              l = list_head(sf->links_list); 
-              if(aloca_canais[x][y] == l->handle){   
+          for(i = 0 ; i<16; i++){ 
+          for(j = 0 ; j < temp_canais;j++){ 
+            //coordenadas[i][j] = rand()%16  ;
+            l = memb_alloc(&link_memb); 
+            l = list_head(sf->links_list);   
+            LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
+             
+            if(aloca_canais[i][j] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
-              l->timeslot = x; 
-              l->channel_offset = y ;  
+              l-> timeslot = i; 
+              l-> channel_offset = j ;  
               LOG_PRINT("----CHANGE-----\n"); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
               LOG_PRINT("-----------------------------\n");   
               l = list_item_next(l); 
-             }
             } 
-          } 
-           sf = list_item_next(sf); 
-          }
+           
+        }
+        }    
+          sf = list_item_next(sf); 
+      }
 
 
 
