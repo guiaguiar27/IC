@@ -604,13 +604,15 @@ sort_links(){
     if(!tsch_is_locked()) { 
     //struct tsch_slotframe *sf = list_head(slotframe_list);
     //while(sf != NULL) {
-     // struct tsch_link *l = list_head(sf->links_list);
+      struct tsch_link *l =  NULL;
+      //list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
       
         for(i = 0 ; i<total_channel_of ; i++){ 
           for(j = 0 ; j < total_timeslot ;j++){ 
-            //coordenadas[i][j] = rand()%16  ;   
-            tsch_schedule_get_link_by_handle(coordenadas[i][j]);
+            //coordenadas[i][j] = rand()%16  ;
+            l = memb_alloc(&link_memb); 
+            l = tsch_schedule_get_link_by_handle(coordenadas[i][j]);
             /*
             if(coordenadas[i][j] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
