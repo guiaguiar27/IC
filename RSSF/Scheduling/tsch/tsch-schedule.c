@@ -251,7 +251,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        l->handle = current_link_handle++;
+        l->handle = current_link_handle++; 
+        LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -811,23 +812,11 @@ int SCHEDULE(int **adj){
     
     while(sf != NULL){
           struct tsch_link *l = NULL; 
-           l = memb_alloc(&link_memb); 
-            l = list_head(sf->links_list); 
-          for(x = 0 ; x < 100 ; x++){ 
-            LOG_PRINT("----HANDLE: %d-----\n", l-> handle);  
-             l = list_item_next(l); 
-          }
-          
-          
-          
-          
-          /*
           for(x = 0 ; x<16; x++){ 
           for(y = 0 ; y < temp_canais;y++){ 
             //coordenadas[i][j] = rand()%16  ;
             l = memb_alloc(&link_memb); 
             l = list_head(sf->links_list);   
-            LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
              
             if(aloca_canais[i][j] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
@@ -845,7 +834,6 @@ int SCHEDULE(int **adj){
            
         }
         }    
-        */ 
           sf = list_item_next(sf); 
       }
 
