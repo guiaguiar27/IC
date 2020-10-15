@@ -580,7 +580,9 @@ sort_links(){
     for(i = 0; i< total_channel_of; i++) {
       coordenadas[i] = (int *) malloc(total_timeslot * sizeof(int));
     }  
-    
+     
+
+
      
     // linhas = channel_offset  
     // colunas = time slot
@@ -600,14 +602,16 @@ sort_links(){
     }  
       
     if(!tsch_is_locked()) { 
-    struct tsch_slotframe *sf = list_head(slotframe_list);
-    while(sf != NULL) {
-      struct tsch_link *l = list_head(sf->links_list);
+    //struct tsch_slotframe *sf = list_head(slotframe_list);
+    //while(sf != NULL) {
+     // struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
       
         for(i = 0 ; i<total_channel_of ; i++){ 
           for(j = 0 ; j < total_timeslot ;j++){ 
-            //coordenadas[i][j] = rand()%16  ;  
+            //coordenadas[i][j] = rand()%16  ;   
+            tsch_schedule_get_link_by_handle(coordenadas[i][j]);
+            /*
             if(coordenadas[i][j] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
@@ -620,14 +624,15 @@ sort_links(){
               LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
               LOG_PRINT("-----------------------------\n");   
               l = list_item_next(l); 
-            }
+            } 
+            */ 
       }
       }    
         
        
       
-      sf = list_item_next(sf);
-    }
+     // sf = list_item_next(sf);
+    //}
   } 
 }
         
