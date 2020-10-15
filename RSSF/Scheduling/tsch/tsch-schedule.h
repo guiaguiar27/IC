@@ -102,7 +102,7 @@ int tsch_schedule_remove_all_slotframes(void);
  */
 struct tsch_link *tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                                          uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                                         uint16_t timeslot, uint16_t channel_offset);
+                                         uint16_t timeslot, uint16_t channel_offset, int n);
 /**
 * \brief Looks for a link from a handle
 * \param handle The target handle

@@ -222,7 +222,7 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset)
+                       uint16_t timeslot, uint16_t channel_offset, int *n)
 {
   struct tsch_link *l = NULL; 
   uint16_t node_neighbor, node;
@@ -250,15 +250,17 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l);
-        /* Initialize link */
-        l->handle = current_link_handle++; 
-        LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
+        /* Initialize link */  
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
-        l->data = NULL;
+        l->data = NULL; 
+        if(!(l->link_options & LINK_OPTION_SHARED)) current_link_handle = (*n)++;
+        l->handle = current_link_handle; 
+        LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
+      
         if(address == NULL) {
           address = &linkaddr_null;
         }
@@ -818,7 +820,7 @@ int SCHEDULE(int **adj){
             l = memb_alloc(&link_memb); 
             l = list_head(sf->links_list);   
              
-            if(aloca_canais[i][j] == l->handle){   
+            if(aloca_canais[x][y] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
               LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
