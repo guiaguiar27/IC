@@ -127,7 +127,8 @@ rx_packet(struct simple_udp_connection *c,
     LOG_INFO_6ADDR(sender_addr);
     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
   }
-}
+} 
+
 
 PROCESS_THREAD(node_process, ev, data)
 {
@@ -141,7 +142,7 @@ PROCESS_THREAD(node_process, ev, data)
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
- // int **matriz = NULL ; 
+  int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();   
     
@@ -151,8 +152,8 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
    if(node_id == 1){ 
       LOG_INFO("Generate topology by neighbor structure\n");
-   //   SCHEDULE(matriz); 
-   sort_links(); 
+       SCHEDULE(matriz); 
+   
   } 
     
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));

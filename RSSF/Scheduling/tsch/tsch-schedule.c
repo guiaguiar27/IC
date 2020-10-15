@@ -810,9 +810,11 @@ int SCHEDULE(int **adj){
         printf("\n"); 
     }   
      if(sf != NULL){
-          struct tsch_link *l = list_head(sf->links_list); 
+          struct tsch_link *l = NULL; 
           for(x = 0 ; x < 16; x++){
             for(y = 0; y < temp_canais; y++){ 
+              l = memb_alloc(&link_memb); 
+              l = list_head(sf->links_list); 
               if(aloca_canais[x][y] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
