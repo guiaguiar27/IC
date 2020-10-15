@@ -247,7 +247,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else {
-        static int current_link_handle = slotframe->num_links;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -259,8 +258,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = current_link_handle++; 
-        slotframe->num_links++;   
+        l->handle = slotframe->num_links++; 
         LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
         
         if(address == NULL) {

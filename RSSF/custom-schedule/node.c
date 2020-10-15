@@ -68,7 +68,7 @@ AUTOSTART_PROCESSES(&node_process);
 static void
 initialize_tsch_schedule(void)
 {
-  int i, j, n; 
+  int i, j; 
   
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
