@@ -302,6 +302,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
 }
 /*---------------------------------------------------------------------------*/
 /* Removes a link from slotframe. Return 1 if success, 0 if failure */
+
 int
 tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
 {
@@ -580,19 +581,18 @@ sort_links(int n){
     int i, node;           
     node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-    srand(time(NULL));
-    while(true){ 
-        i = rand()%n;
-        LOG_PRINT("NO %u\n", node); 
-        LOG_PRINT("NO SORTED %u\n", i);
-        if(i == node){ 
-          i = rand()%n;  
-        } 
-        if(i != node){ 
-          break;
-        }
-    }  
-    return i; 
+    srand(time(NULL)); 
+    i = rand()%n;
+    LOG_PRINT("NO %u\n", node); 
+    LOG_PRINT("NO SORTED %u\n", i);
+    if(i == node){ 
+      i = rand()%n;  
+    } 
+    if(i != node){ 
+      return i; 
+    } 
+        
+   
     
          
        
