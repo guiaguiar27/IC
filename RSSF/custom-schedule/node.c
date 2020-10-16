@@ -85,8 +85,8 @@ initialize_tsch_schedule(void)
   for (i = 0; i < node_number ; ++i) { 
 
     uint8_t link_options;
-    linkaddr_t addr; 
-    uint16_t remote_id= i+1  ; 
+    linkaddr_t addr;  
+    uint16_t remote_id= sort_links(node_number); ; 
     
     
 

@@ -574,68 +574,27 @@ int *alocaPacotes(int num_no, int **adj){
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
-void 
-sort_links(){   
+int
+sort_links(int n){   
   LOG_PRINT("----- ENTROU SORTI_LINKS -----\n"); 
-    int i, j = 0 ;          
-    int total_timeslot = 3, total_channel_of = 25 ; 
-    int **coordenadas = (int**)malloc(total_channel_of *sizeof(int*)); 
-    for(i = 0; i< total_channel_of; i++) {
-      coordenadas[i] = (int *) malloc(total_timeslot * sizeof(int));
-    }  
-     
-    // linhas = channel_offset  
-    // colunas = time slot
-    // initialize example matrix
-    /*
-    coordenadas[0][0] = 3 ;
-    coordenadas[0][1] = 5 ; 
-    coordenadas[1][0] = 7 ; 
-    coordenadas[1][1] = 1 ; 
-    */ 
-    // generate random integers 
+    int i, node;           
+    node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     srand(time(NULL));
-    for(i = 0 ; i<total_channel_of ; i++){ 
-       for(j = 0 ; j < total_timeslot ;j++){ 
-          coordenadas[i][j] = rand()%10;   
-      }
+    while(true){ 
+        i = rand()%n;
+        if(i == node){ 
+          i = rand()%n;  
+        } 
+        if(i != node){ 
+          break;
+        }
     }  
-      
-    if(!tsch_is_locked()) { 
-    //struct tsch_slotframe *sf = list_head(slotframe_list);
-    //while(sf != NULL) {
-      struct tsch_link *l =  NULL;
-      //list_head(sf->links_list);
-      /* Loop over all items. Assume there is max one link per timeslot */
-      
-        for(i = 0 ; i<total_channel_of ; i++){ 
-          for(j = 0 ; j < total_timeslot ;j++){ 
-            //coordenadas[i][j] = rand()%16  ;
-            l = memb_alloc(&link_memb); 
-            l = tsch_schedule_get_link_by_handle(coordenadas[i][j]);
-            
-            if(coordenadas[i][j] == l->handle){   
-              LOG_PRINT("---------------------------\n"); 
-              LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
-              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
-              l-> timeslot = i; 
-              l-> channel_offset = j ;  
-              LOG_PRINT("----CHANGE-----\n"); 
-              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
-              LOG_PRINT("-----------------------------\n");   
-              l = list_item_next(l); 
-            } 
-            
-      }
-      }    
-        
+    return i; 
+    
+         
        
       
-     // sf = list_item_next(sf);
-    //}
-  } 
 }
         
 
@@ -812,7 +771,10 @@ int SCHEDULE(int **adj){
 
 
     
-    while(sf != NULL){ 
+
+
+    while(sf != NULL){  
+          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
           LOG_PRINT("--Number of links %u-----\n", sf->number_of_links);    
           struct tsch_link *l = NULL; 
           for(x = 0 ; x<16; x++){ 
