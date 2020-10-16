@@ -258,7 +258,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = slotframe->num_links++; 
+        l->handle = slotframe->number_of_links++; 
         LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
         
         if(address == NULL) {
@@ -812,7 +812,8 @@ int SCHEDULE(int **adj){
 
 
     
-    while(sf != NULL){
+    while(sf != NULL){ 
+          LOG_PRINT("--Number of links %d-----\n", sf->number_of_links);    
           struct tsch_link *l = NULL; 
           for(x = 0 ; x<16; x++){ 
           for(y = 0 ; y < temp_canais;y++){ 
@@ -822,14 +823,14 @@ int SCHEDULE(int **adj){
              
             if(aloca_canais[x][y] == l->handle){   
               LOG_PRINT("---------------------------\n"); 
-              LOG_PRINT("----HANDLE: %d-----\n", l-> handle); 
-              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset);   
+              LOG_PRINT("----HANDLE: %d-----\n", l->handle); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l->channel_offset);   
               l-> timeslot = x; 
               l-> channel_offset = y ; 
               LOG_PRINT("----CHANGE-----\n"); 
-              LOG_PRINT("----TIMESLOT: %d-----\n", l-> timeslot); 
-              LOG_PRINT("----CHANNEL: %d-----\n", l-> channel_offset); 
+              LOG_PRINT("----TIMESLOT: %d-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %d-----\n", l->channel_offset); 
               LOG_PRINT("-----------------------------\n");   
               l = list_item_next(l); 
             } 
