@@ -576,13 +576,15 @@ int *alocaPacotes(int num_no, int **adj){
 
 int
 sort_links(int n){   
-  LOG_PRINT("----- ENTROU SORTI_LINKS -----\n"); 
+   
     int i, node;           
     node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     srand(time(NULL));
     while(true){ 
         i = rand()%n;
+        LOG_PRINT("NO %u\n", node); 
+        LOG_PRINT("NO SORTED %u\n", i);
         if(i == node){ 
           i = rand()%n;  
         } 
