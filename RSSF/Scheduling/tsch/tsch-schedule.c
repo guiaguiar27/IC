@@ -585,12 +585,11 @@ sort_links(int n){
     i = rand()%n;
     LOG_PRINT("NO %u\n", node); 
     LOG_PRINT("NO SORTED %u\n", i);
-    if(i == node){ 
+    while(i == node){ 
       i = rand()%n;  
     } 
-    if(i != node){ 
-      return i; 
-    } 
+    if(i != node) return i; 
+  
         
    
     
