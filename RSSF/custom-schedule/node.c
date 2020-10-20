@@ -145,15 +145,16 @@ PROCESS_THREAD(node_process, ev, data)
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();   
-    tsch_neighbor_maping();  
+    NETSTACK_ROUTING.root_start();      
+    
     
   }
 
   /* Main loop */
   while(1) { 
    if(node_id == 1){ 
-      LOG_INFO("Generate topology by neighbor structure\n");
+      LOG_INFO("Generate topology by neighbor structure\n"); 
+      tsch_neighbour_maping(); 
        SCHEDULE(matriz); 
    
   } 

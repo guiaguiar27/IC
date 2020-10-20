@@ -604,7 +604,7 @@ int SCHEDULE(int **adj){
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
+    z, i,j ;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -622,11 +622,38 @@ int SCHEDULE(int **adj){
     struct tsch_slotframe *sf = list_head(slotframe_list);
     int node_origin, node_destin ; 
     /*******************************************************************/ 
-    // Get the topology  
-    tsch_neighbour_maping(); 
+    // Get the topology   
+     
     //*****************************************************************/ 
     FILE *fl;  
-    if(!tsch_get_lock()){  
+    if(!tsch_get_lock()){   
+      for (i = 0; i < Max - 1; ++i){ 
+      struct tsch_neighbor *n = NULL ;       
+      linkaddr_t addr; 
+      uint16_t generate_node_id = i + 1; 
+      for(j = 0; j < sizeof(addr); j += 2){
+        addr.u8[j + 1] = generate_node_id & 0xff;
+        addr.u8[j + 0] = generate_node_id >> 8;   
+      }    
+      n = tsch_queue_get_nbr(&addr); 
+      if(n != NULL){ 
+
+        node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
+            + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
+        node =   n->addr.u8[LINKADDR_SIZE - 1]
+            + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+        
+        LOG_INFO_(" %u -> %u ",node_neighbor, node);  
+        LOG_INFO("\n");  
+        escreve_arq(node_neighbor,node); 
+      } 
+    } 
+
+
+
+
+
+
       LOG_PRINT("----- TSCH LOCK -----\n");
       tamNo = MAX_NOS ;  
       tamAresta = MAX_NOS;   
