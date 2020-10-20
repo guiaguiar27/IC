@@ -226,7 +226,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint16_t timeslot, uint16_t channel_offset)
 {
   struct tsch_link *l = NULL; 
- // uint16_t node_neighbor, node;
+ uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -286,12 +286,12 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
             if(!(l->link_options & LINK_OPTION_SHARED)) {
             // escrve topologia em um arquivo  
               n->dedicated_tx_links_count++; 
-              //node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-              //  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-              //node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
-              //  + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
+                + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-             // escreve_arq(node, node_neighbor); 
+              escreve_arq(node, node_neighbor); 
             }
           }
         }
@@ -627,27 +627,7 @@ int SCHEDULE(int **adj){
     //*****************************************************************/ 
     FILE *fl;  
     if(!tsch_get_lock()){   
-      for (i = 0; i < Max - 1; ++i){ 
-      struct tsch_neighbor *n = NULL ;       
-      linkaddr_t addr; 
-      uint16_t generate_node_id = i + 1; 
-      for(j = 0; j < sizeof(addr); j += 2){
-        addr.u8[j + 1] = generate_node_id & 0xff;
-        addr.u8[j + 0] = generate_node_id >> 8;   
-      }    
-      n = tsch_queue_get_nbr(&addr); 
-      if(n != NULL){ 
-
-        node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
-            + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
-        node =   n->addr.u8[LINKADDR_SIZE - 1]
-            + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
-        
-        LOG_INFO_(" %u -> %u ",node_neighbor, node);  
-        LOG_INFO("\n");  
-        escreve_arq(node_neighbor,node); 
-      } 
-    } 
+      
 
 
 

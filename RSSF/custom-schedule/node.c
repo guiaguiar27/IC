@@ -154,8 +154,8 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
    if(node_id == 1){ 
       LOG_INFO("Generate topology by neighbor structure\n"); 
-      tsch_neighbour_maping(); 
-       SCHEDULE(matriz); 
+      //tsch_neighbour_maping(); 
+      SCHEDULE(matriz); 
    
   } 
     
