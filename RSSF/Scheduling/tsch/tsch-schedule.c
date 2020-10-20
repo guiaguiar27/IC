@@ -303,6 +303,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
 /*---------------------------------------------------------------------------*/
 /* Removes a link from slotframe. Return 1 if success, 0 if failure */
 
+/*
 int
 tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
 {
@@ -311,13 +312,13 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
       uint8_t link_options;
       linkaddr_t addr;
 
-      /* Save link option and addr in local variables as we need them
-       * after freeing the link */
+      // Save link option and addr in local variables as we need them
+      //  after freeing the link 
       link_options = l->link_options;
       linkaddr_copy(&addr, &l->addr);
 
-      /* The link to be removed is scheduled as next, set it to NULL
-       * to abort the next link operation */
+      // The link to be removed is scheduled as next, set it to NULL
+      // to abort the next link operation 
       if(l == current_link) {
         current_link = NULL;
       }
@@ -331,10 +332,10 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
       list_remove(slotframe->links_list, l);
       memb_free(&link_memb, l);
 
-      /* Release the lock before we update the neighbor (will take the lock) */
+      // Release the lock before we update the neighbor (will take the lock) 
       tsch_release_lock();
 
-      /* This was a tx link to this neighbor, update counters */
+      // This was a tx link to this neighbor, update counters 
       if(link_options & LINK_OPTION_TX) {
         struct tsch_neighbor *n = tsch_queue_add_nbr(&addr);
         if(n != NULL) {
@@ -351,7 +352,8 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
     }
   }
   return 0;
-}
+} 
+*/ 
 /*---------------------------------------------------------------------------*/
 /* Removes a link from slotframe and timeslot. Return a 1 if success, 0 if failure */
 int

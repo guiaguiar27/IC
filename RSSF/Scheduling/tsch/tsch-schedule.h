@@ -124,7 +124,7 @@ struct tsch_link *tsch_schedule_get_link_by_timeslot(struct tsch_slotframe *slot
  * \param l The link to be removed
  * \return 1 if success, 0 if failure
  */
-int tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l);
+//int tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l);
 
 /**
  * \brief Removes a link from a slotframe and timeslot
