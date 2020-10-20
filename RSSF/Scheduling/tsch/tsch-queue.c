@@ -638,21 +638,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 }    
  
 /*---------------------------------------------------------------------------*/  
-// não está sendo utilizada 
-void print_matrix(int **Matriz){ 
-  FILE   *file;  
-  file = fopen(endereco2,"a");
-  if(file== NULL){
-         printf("The file was not opened\n");
-          return  ; 
-  }
-  for(int i=1;i<MAX_NOS;i++) {
-        for(int j=1;j<MAX_NOS;j++) {
-            fprintf(file,"%d ",Matriz[i][j]);
-    }
-        fprintf(file,"\n"); 
-    }
-}
+
 /*---------------------------------------------------------------------------*/  
 // função usada para ler a topologia e escrever em um arquivo  
 void escreve_arq(int n_origin, int n_destin){
