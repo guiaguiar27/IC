@@ -604,7 +604,7 @@ int SCHEDULE(int **adj){
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i,j ;                       //Variáveis temporárias
+    z, i;                       //Variáveis temporárias
     int **matching,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
