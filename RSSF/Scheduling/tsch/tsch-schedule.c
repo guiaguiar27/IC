@@ -226,7 +226,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint16_t timeslot, uint16_t channel_offset)
 {
   struct tsch_link *l = NULL; 
-  uint16_t node_neighbor, node;
+ // uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -286,12 +286,12 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
             if(!(l->link_options & LINK_OPTION_SHARED)) {
             // escrve topologia em um arquivo  
               n->dedicated_tx_links_count++; 
-              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-              node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
-                + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              //node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+              //  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              //node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
+              //  + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              escreve_arq(node, node_neighbor); 
+             // escreve_arq(node, node_neighbor); 
             }
           }
         }
@@ -589,16 +589,12 @@ sort_links(int n){
       i = rand()%n;  
     } 
     if(i != node) return i; 
-  
-        
-   
-    
-         
-       
-      
 }
         
 
+
+
+x
 /*-----------------------------------------------------------------------------------------------------*/
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
@@ -627,7 +623,9 @@ int SCHEDULE(int **adj){
     struct tsch_slotframe *sf = list_head(slotframe_list);
     int node_origin, node_destin ; 
     /*******************************************************************/ 
-    // inicia arquivo 
+    // Get the topology  
+    tsch_neighbour_maping(); 
+    //*****************************************************************/ 
     FILE *fl;  
     if(!tsch_get_lock()){  
       LOG_PRINT("----- TSCH LOCK -----\n");
@@ -810,6 +808,7 @@ int SCHEDULE(int **adj){
   
     return 0;
     }  
+     
 int tsch_num_nos(){ 
   int i = MAX_NOS; 
   return i; 
