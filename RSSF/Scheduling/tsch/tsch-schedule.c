@@ -589,12 +589,11 @@ sort_links(int n){
       i = rand()%n;  
     } 
     if(i != node) return i; 
+  return 0 ; 
 }
         
 
 
-
-x
 /*-----------------------------------------------------------------------------------------------------*/
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");

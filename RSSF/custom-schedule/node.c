@@ -86,7 +86,7 @@ initialize_tsch_schedule(void)
 
     uint8_t link_options;
     linkaddr_t addr;  
-    uint16_t remote_id= sort_links(node_number); ; 
+    uint16_t remote_id = i + 1 ; 
     
     
 
@@ -146,6 +146,7 @@ PROCESS_THREAD(node_process, ev, data)
   int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();   
+    tsch_neighbor_maping();  
     
   }
 
