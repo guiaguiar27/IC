@@ -258,14 +258,15 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = slotframe->number_of_links++; 
+        l->handle = slotframe->number_of_links++;  
+        
         LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
         
         if(address == NULL) {
           address = &linkaddr_null;
         }
         linkaddr_copy(&l->addr, address);
-
+        linkaddr_copy(&l->addr_owner,linkaddr_node_addr);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -824,30 +825,39 @@ int tsch_num_nos(){
 void  tsch_neighbour_maping() 
 {   
     LOG_INFO_("\n----ENTROU----\n"); 
-    int i,j, Max; 
-    uint16_t node_neighbor, node;      
+    int x,y; 
+    uint16_t node, node_neighbor ;  
+    struct tsch_slotframe *sf = list_head(slotframe_list);
+       
     if(tsch_get_lock()){
-      for (i = 0; i < MAX_NOS; ++i){ 
-        struct tsch_neighbor *n = NULL ;       
-        linkaddr_t addr;  
-        uint16_t generate_node_id = i + 1; 
-        for(j = 0; j < sizeof(addr); j += 2){
-          addr.u8[j + 1] = generate_node_id & 0xff;
-          addr.u8[j + 0] = generate_node_id >> 8;   
-        }    
-        n = tsch_queue_get_nbr(&addr); 
-        if(n != NULL){ 
-        
-          node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
-              + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
-          node =   n->addr.u8[LINKADDR_SIZE - 1]
-              + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+       while(sf != NULL){  
+          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+          LOG_PRINT("--Number of links %u-----\n", sf->number_of_links);    
+          struct tsch_link *l = NULL; 
+          l = memb_alloc(&link_memb); 
+          l = list_head(sf->links_list);   
+          while(l != NULL){ 
+            l = memb_alloc(&link_memb);
+            l = memb_alloc(&link_memb); 
+            l = list_head(sf->links_list);   
+             //if( !(l->link_options & LINK_OPTION_SHARED)){ 
+              node = l->addr_owner.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
+                + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              escreve_arq(node, node_neighbor);
+
+             //}   
+             LOG_PRINT("%u %u", node, node_neighbor);
+             l = list_item_next(l);
+          }
+
           
-          LOG_INFO_(" %u -> %u ",node_neighbor, node);  
-          LOG_INFO("\n");  
-          escreve_arq(node_neighbor,node); 
-        } 
-      }   
+             
+          sf = list_item_next(sf); 
+        }
+      }
+
     tsch_release_lock(); 
     } 
 }   
