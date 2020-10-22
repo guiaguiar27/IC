@@ -818,4 +818,36 @@ int SCHEDULE(int **adj){
 int tsch_num_nos(){ 
   int i = MAX_NOS; 
   return i; 
-}
+} 
+
+
+void  tsch_neighbour_maping() 
+{   
+    LOG_INFO_("\n----ENTROU----\n"); 
+    int i,j, Max; 
+    uint16_t node_neighbor, node;      
+    if(tsch_get_lock()){
+      for (i = 0; i < MAX_NOS; ++i){ 
+        struct tsch_neighbor *n = NULL ;       
+        linkaddr_t addr;  
+        uint16_t generate_node_id = i + 1; 
+        for(j = 0; j < sizeof(addr); j += 2){
+          addr.u8[j + 1] = generate_node_id & 0xff;
+          addr.u8[j + 0] = generate_node_id >> 8;   
+        }    
+        n = tsch_queue_get_nbr(&addr); 
+        if(n != NULL){ 
+        
+          node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
+              + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
+          node =   n->addr.u8[LINKADDR_SIZE - 1]
+              + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+          
+          LOG_INFO_(" %u -> %u ",node_neighbor, node);  
+          LOG_INFO("\n");  
+          escreve_arq(node_neighbor,node); 
+        } 
+      }   
+    tsch_release_lock(); 
+    } 
+}   
