@@ -226,7 +226,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint16_t timeslot, uint16_t channel_offset)
 {
   struct tsch_link *l = NULL; 
- uint16_t node_neighbor, node;
+  uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -254,13 +254,15 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         /* Initialize link */  
         l->link_options = link_options;
         l->link_type = link_type;
-        l->slotframe_handle = 10;
+        l->slotframe_handle = slotframe->number_of_links;
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
         l->handle = slotframe->number_of_links++;  
         
-        LOG_PRINT("----HANDLE: %d-----\n", l-> handle);
+
+        LOG_PRINT("----HANDLE: %d-----\n", slotframe->number_of_links); 
+        LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
           address = &linkaddr_null;
