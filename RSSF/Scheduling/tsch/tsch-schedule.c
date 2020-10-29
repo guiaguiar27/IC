@@ -254,7 +254,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         /* Initialize link */  
         l->link_options = link_options;
         l->link_type = link_type;
-        l->slotframe_handle = slotframe->handle;
+        l->slotframe_handle = 10;
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
