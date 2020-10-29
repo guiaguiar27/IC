@@ -142,12 +142,14 @@ PROCESS_THREAD(node_process, ev, data)
   initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
-  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
+  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
+  struct tsch_slotframe *sf
   //int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();      
-    struct tsch_slotframe *sf =tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);  
-    sf->number_of_links = 0 ; 
+    sf =tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);  
+    sf->number_of_links = 0 ;  
+    LOG_PRINT("Number of links: %u",sf->number_of_links);
 
   }
 
@@ -156,7 +158,7 @@ PROCESS_THREAD(node_process, ev, data)
    if(node_id == 1){ 
       LOG_INFO("Generate topology by neighbor structure\n"); 
       //tsch_neighbour_maping(); 
-      SCHEDULE(matriz); 
+     // SCHEDULE(matriz); 
    
   } 
     
