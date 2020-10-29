@@ -78,7 +78,7 @@ LIST(slotframe_list);
 /* Adds and returns a slotframe (NULL if failure) */
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
-{
+{ LOG_PRINT("New slotframe!\n");
   if(size == 0) {
     return NULL;
   }
@@ -96,6 +96,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       TSCH_ASN_DIVISOR_INIT(sf->size, size);
       LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */
+      for(int i = 1; i< )
       sf->number_of_links = 0 ; 
       list_add(slotframe_list, sf);
     }
