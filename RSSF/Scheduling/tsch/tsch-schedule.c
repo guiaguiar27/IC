@@ -257,7 +257,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = (*slotframe->number_of_links)++;  
+        (*slotframe->number_of_links)++ 
+        l->handle = slotframe->number_of_links;  
         LOG_PRINT("----Slotframe: %d-----\n", slotframe->number_of_links); 
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
@@ -823,7 +824,7 @@ int tsch_num_nos(){
 void teste(){  
 
     struct tsch_slotframe *sf = list_head(slotframe_list);  
-    int tam = MAX_NOS*MAX_NOS ;  
+    int tam = MAX_NOS ;  
     if(!tsch_get_lock()){ 
       while(sf != NULL){  
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
