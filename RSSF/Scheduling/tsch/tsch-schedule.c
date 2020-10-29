@@ -95,9 +95,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       sf->handle = handle;
       TSCH_ASN_DIVISOR_INIT(sf->size, size);
       LIST_STRUCT_INIT(sf, links_list);
-      /* Add the slotframe to the global list */
-      for(int i = 1; i< )
-      sf->number_of_links = 0 ; 
+      /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
     LOG_INFO("add_slotframe %u %u\n",
@@ -260,9 +258,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->channel_offset = channel_offset;
         l->data = NULL; 
         l->handle = slotframe->number_of_links++;  
-        
-
-        LOG_PRINT("----HANDLE: %d-----\n", slotframe->number_of_links); 
+        LOG_PRINT("----Slotframe: %d-----\n", slotframe->number_of_links); 
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
@@ -893,4 +889,5 @@ void  tsch_neighbour_maping()
 
     tsch_release_lock(); 
     } 
+  
    

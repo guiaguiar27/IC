@@ -146,17 +146,17 @@ PROCESS_THREAD(node_process, ev, data)
   //int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();      
-    //tsch_neighbour_maping() ;
-    
+    struct tsch_slotframe *sf =tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);  
+    sf->number_of_links = 0 ; 
+
   }
 
   /* Main loop */
   while(1) { 
    if(node_id == 1){ 
       LOG_INFO("Generate topology by neighbor structure\n"); 
-      teste();
       //tsch_neighbour_maping(); 
-      //SCHEDULE(matriz); 
+      SCHEDULE(matriz); 
    
   } 
     
