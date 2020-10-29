@@ -834,7 +834,7 @@ void teste(){
             //coordenadas[i][j] = rand()%16  ;
             l = memb_alloc(&link_memb); 
             l = list_head(sf->links_list);   
-             
+            LOG_PRINT("---- i :%d-----\n",i);  
             if(i == l->handle){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
