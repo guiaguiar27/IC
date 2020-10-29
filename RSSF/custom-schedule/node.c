@@ -146,7 +146,7 @@ PROCESS_THREAD(node_process, ev, data)
   //int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();      
-    tsch_neighbour_maping() ;
+    //tsch_neighbour_maping() ;
     
   }
 
@@ -154,6 +154,7 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
    if(node_id == 1){ 
       LOG_INFO("Generate topology by neighbor structure\n"); 
+      teste();
       //tsch_neighbour_maping(); 
       //SCHEDULE(matriz); 
    
