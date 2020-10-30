@@ -266,7 +266,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
           address = &linkaddr_null;
         }
         linkaddr_copy(&l->addr, address);
-        linkaddr_copy(&l->addr_owner, &linkaddr_node_addr);
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -845,43 +844,4 @@ void teste(){
     }
   
 }
-void  tsch_neighbour_maping() 
-{   
-    LOG_INFO_("\n----ENTROU----\n"); 
-    
-    uint16_t node, node_neighbor ;  
-    struct tsch_slotframe *sf = list_head(slotframe_list);
-       
-    if(tsch_get_lock()){
-       while(sf != NULL){  
-          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-          LOG_PRINT("--Number of links %u-----\n", sf->number_of_links);    
-          struct tsch_link *l = NULL; 
-          l = memb_alloc(&link_memb); 
-          l = list_head(sf->links_list);   
-          while(l != NULL){ 
-            l = memb_alloc(&link_memb);
-            l = memb_alloc(&link_memb); 
-            l = list_head(sf->links_list);   
-             //if( !(l->link_options & LINK_OPTION_SHARED)){ 
-              node = l->addr_owner.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-              node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
-                + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-              escreve_arq(node, node_neighbor);
-
-             //}   
-             LOG_PRINT("%u %u", node, node_neighbor);
-             l = list_item_next(l);
-          }
-
-          
-             
-          sf = list_item_next(sf); 
-        }
-      }
-
-    tsch_release_lock(); 
-    } 
-  
    
