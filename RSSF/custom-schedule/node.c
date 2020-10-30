@@ -71,6 +71,7 @@ initialize_tsch_schedule(void)
   int i, j; 
   
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  if(node_id == 1 ) tsch_init_slotframe_number_links(sf_common);
   uint16_t slot_offset;
   uint16_t channel_offset; 
   int node_number = tsch_num_nos();
@@ -161,7 +162,7 @@ PROCESS_THREAD(node_process, ev, data)
      // SCHEDULE(matriz); 
    
   } 
-    
+    teste(); 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {

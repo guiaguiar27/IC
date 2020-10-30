@@ -75,7 +75,11 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);
 
-/* Adds and returns a slotframe (NULL if failure) */
+/* Adds and returns a slotframe (NULL if failure) */ 
+void tsch_init_slotframe_number_links(struct tsch_slotframe *slotframe){  
+        slotframe->number_of_links = 0 ; 
+
+} 
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
 { LOG_PRINT("New slotframe!\n");
@@ -823,7 +827,6 @@ int tsch_num_nos(){
 void teste(){  
 
     struct tsch_slotframe *sf = list_head(slotframe_list);  
-    int tam = MAX_NOS ;  
     if(!tsch_get_lock()){ 
       while(sf != NULL){  
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
@@ -838,9 +841,10 @@ void teste(){
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
               l = list_item_next(l); 
             } 
+      sf = list_item_next(sf);  
       }     
             
-          sf = list_item_next(sf);  
+          
         
       } 
 
