@@ -78,8 +78,8 @@ LIST(slotframe_list);
 /* Adds and returns a slotframe (NULL if failure) */ 
 void tsch_init_counter(struct tsch_slotframe *slotframe){  
   LOG_PRINT("Init the counter!\n");
-  slotframe->number_of_links = (int*)malloc(sizeof(int)); 
-  slotframe->number_of_links = 0 ; 
+  //slotframe->number_of_links = (int*)malloc(sizeof(int)); 
+  //slotframe->number_of_links = 0 ; 
 }
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
