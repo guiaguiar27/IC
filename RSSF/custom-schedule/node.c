@@ -148,10 +148,7 @@ PROCESS_THREAD(node_process, ev, data)
   //int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();      
-    sf =tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);  
-    sf->number_of_links = 0 ;  
     LOG_PRINT("Number of links: %u",sf->number_of_links);
-
   }
 
   /* Main loop */
