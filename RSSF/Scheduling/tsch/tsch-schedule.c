@@ -262,7 +262,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = (*slotframe->number_of_links)++;  
+        l->handle = slotframe->number_of_links;  
+        slotframe->number_of_links++;
         LOG_PRINT("----Slotframe: %d-----\n", slotframe->number_of_links); 
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
@@ -332,7 +333,8 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
       LOG_INFO_LLADDR(&l->addr);
       LOG_INFO_("\n");
 
-      list_remove(slotframe->links_list, l);
+      list_remove(slotframe->links_list, l); 
+      slotframe->number_of_links-- ;
       memb_free(&link_memb, l);
 
       /* Release the lock before we update the neighbor (will take the lock) */
