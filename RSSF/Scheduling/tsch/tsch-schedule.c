@@ -842,11 +842,7 @@ void teste(){
               l = list_item_next(l); 
             } 
       sf = list_item_next(sf);  
-      }     
-            
-          
-        
-      } 
+      }    
 
   tsch_release_lock();
     }
