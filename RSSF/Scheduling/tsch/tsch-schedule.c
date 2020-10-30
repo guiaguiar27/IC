@@ -829,20 +829,17 @@ void teste(){
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
           LOG_PRINT("--Number of links %u-----\n", sf->number_of_links);    
           struct tsch_link *l = NULL; 
-          for(int i = 0 ; i < tam ; i++){
-            //coordenadas[i][j] = rand()%16  ;
-            l = memb_alloc(&link_memb); 
-            l = list_head(sf->links_list);   
-            LOG_PRINT("---- i :%d-----\n",i);  
-            if(i == l->handle){   
+          l = memb_alloc(&link_memb); 
+          l = list_head(sf->links_list);   
+            while(l!= NULL){   
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
               l = list_item_next(l); 
             } 
-           
-        }    
+      }     
+            
           sf = list_item_next(sf);  
         
       } 
