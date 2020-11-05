@@ -850,9 +850,9 @@ int tsch_count_link(uint16_t handle){
     while(sf != NULL) {
       struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
-      while(l != NULL) {
-        if(l->handle == handle) { 
+      while(l != NULL) { 
           LOG_PRINT("Count links:%d",count);
+        if(l->handle == handle) { 
           return count;
         }
         count++; 

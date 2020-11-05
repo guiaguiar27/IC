@@ -87,7 +87,7 @@ initialize_tsch_schedule(void)
 
     uint8_t link_options;
     linkaddr_t addr;  
-    uint16_t remote_id = i + 1 ; 
+    uint16_t remote_id = i ; 
     
   
     for(j = 0; j < sizeof(addr); j += 2) {
