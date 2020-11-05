@@ -261,8 +261,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->data = NULL; 
         l->handle = current_link_handle++; 
 
-        //l->handle = tsch_count_link(handle); 
-        
         if(address == NULL) {
           address = &linkaddr_null;
         }
