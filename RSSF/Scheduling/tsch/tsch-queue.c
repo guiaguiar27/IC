@@ -621,7 +621,7 @@ int escreve_arq(int n_origin, int n_destin){
   fl = fopen(endereco, "a");
   if(fl == NULL){
         printf("The file was not opened\n");
-        return ; 
+        return 0  ; 
   }  
   fprintf(fl, "%d %d\n",n_origin,n_destin); 
 
