@@ -290,7 +290,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              l->handle = escreve_arq(node, node_neighbor);  
+              tsch_queue_write_in_file(node,node_neighbor);   
               LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
             }
@@ -824,8 +824,9 @@ void teste(){
 
     struct tsch_slotframe *sf = list_head(slotframe_list);  
     if(!tsch_get_lock()){ 
-      while(sf != NULL){  
+      while(sf != NULL){ 
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+          LOG_PRINT("%d",list_length(sf->links_list))  
           struct tsch_link *l = NULL; 
           l = memb_alloc(&link_memb); 
           l = list_head(sf->links_list);   
@@ -848,7 +849,8 @@ int tsch_count_link(uint16_t handle){
   LOG_PRINT("Count links:%d",count); 
   if(!tsch_is_locked()) {
     struct tsch_slotframe *sf = list_head(slotframe_list);
-    while(sf != NULL) {
+    while(sf != NULL) { 
+
       struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
       while(l != NULL) { 

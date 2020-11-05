@@ -614,27 +614,17 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 
 /*---------------------------------------------------------------------------*/  
 // função usada para ler a topologia e escrever em um arquivo  
-int escreve_arq(int n_origin, int n_destin){ 
-  char currentChar ; 
-  FILE *fl;  
-  int totalLinesCount = 0 ; 
-  fl = fopen(endereco, "a");
+void tsch_queue_write_in_file(int n_origin, int n_destin){ 
+  FILE *fl;   
+  fl = fopen(endereco, "r");
   if(fl == NULL){
         printf("The file was not opened\n");
-        return 0  ; 
+        return   ; 
   }  
   fprintf(fl, "%d %d\n",n_origin,n_destin); 
 
-  while((currentChar = fgetc(fl)) !=  EOF){
-        //6
-        if(currentChar == '\n'){ 
-
-            totalLinesCount ++; 
-            LOG_PRINT("numero de linhas: %d",totalLinesCount);
-        }
-    }
   fclose(fl); 
-  return totalLinesCount; 
+  return ; 
 } 
 /*---------------------------------------------------------------------------*/  
 
