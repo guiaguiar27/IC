@@ -825,8 +825,8 @@ void teste(){
     struct tsch_slotframe *sf = list_head(slotframe_list);  
     if(!tsch_get_lock()){ 
       while(sf != NULL){ 
-          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-          LOG_PRINT("%d",list_length(sf->links_list))  
+          LOG_PRINT("\nSLOTFRAME HANDLE: %u\n",sf->handle);
+          LOG_PRINT("Tamanho da lista: %d\n",list_length(sf->links_list));  
           struct tsch_link *l = NULL; 
           l = memb_alloc(&link_memb); 
           l = list_head(sf->links_list);   
