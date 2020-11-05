@@ -627,8 +627,10 @@ int escreve_arq(int n_origin, int n_destin){
 
   while((currentChar = fgetc(fl)) !=  EOF){
         //6
-        if(currentChar == '\n'){
-            totalLinesCount ++;
+        if(currentChar == '\n'){ 
+
+            totalLinesCount ++; 
+            LOG_PRINT("numero de linhas: %d",totalLinesCount);
         }
     }
   fclose(fl); 
