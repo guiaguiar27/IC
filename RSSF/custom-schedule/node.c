@@ -83,27 +83,23 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
-  for (i = 0; i < node_number ; ++i) { 
+  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1 ; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr;  
     uint16_t remote_id = i + 1 ; 
     
-    
-
+  
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
       addr.u8[j + 0] = remote_id >> 8;
-    }
-
-    /* Add a unicast cell for each potential neighbor (in Cooja) */
-    /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
+    } 
     slot_offset = APP_UNICAST_TIMESLOT;
     channel_offset = i;
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */
     link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-    if(node_id%2 == 0)
+
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
