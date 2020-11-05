@@ -235,7 +235,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       LOG_ERR("! add_link invalid timeslot: %u\n", timeslot);
       return NULL;
     }
-    if()
     /* Start with removing the link currently installed at this timeslot (needed
      * to keep neighbor state in sync with link options etc.) */
     //tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
@@ -246,7 +245,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       if(l == NULL) {
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
-      } else {
+      } else { 
+        static int current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -258,9 +258,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = slotframe->number_of_links++;
-        l->handle = 0 ; 
-        LOG_PRINT("----Slotframe: %d-----\n", slotframe->number_of_links); 
+        l->handle = current_link_handle++; 
+
+        //l->handle = tsch_count_link(handle); 
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
@@ -844,5 +844,26 @@ void teste(){
   tsch_release_lock();
     }
   
+} 
+int tsch_count_link(uint16_t handle){  
+  int count = 0 ; 
+  if(!tsch_is_locked()) {
+    struct tsch_slotframe *sf = list_head(slotframe_list);
+    while(sf != NULL) {
+      struct tsch_link *l = list_head(sf->links_list);
+      /* Loop over all items. Assume there is max one link per timeslot */
+      while(l != NULL) {
+        if(l->handle == handle) {
+          return count;
+        }
+        count++; 
+        l = list_item_next(l); 
+      }
+      sf = list_item_next(sf);
+    }
+  }
+  return 0 ;
+
 }
+  
    
