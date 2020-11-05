@@ -79,13 +79,14 @@ LIST(slotframe_list);
 
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
-{ LOG_PRINT("New slotframe!\n");
+{ 
   if(size == 0) {
     return NULL;
   }
 
   if(tsch_schedule_get_slotframe_by_handle(handle)) {
     /* A slotframe with this handle already exists */
+    LOG_PRINT("New slotframe!\n");
     return NULL;
   }
 
@@ -261,7 +262,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->handle = current_link_handle++; 
 
         //l->handle = tsch_count_link(handle); 
-        LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
           address = &linkaddr_null;
@@ -292,7 +292,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              escreve_arq(node, node_neighbor); 
+              l->handle = escreve_arq(node, node_neighbor);  
+              LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
+        
             }
           }
         }
@@ -845,13 +847,14 @@ void teste(){
 } 
 int tsch_count_link(uint16_t handle){  
   int count = 0 ; 
+  LOG_PRINT("Count links:%d",count); 
   if(!tsch_is_locked()) {
     struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
       struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
       while(l != NULL) { 
-          LOG_PRINT("Count links:%d",count);
+          
         if(l->handle == handle) { 
           return count;
         }
