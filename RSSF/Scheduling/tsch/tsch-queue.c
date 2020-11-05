@@ -617,7 +617,7 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 int escreve_arq(int n_origin, int n_destin){ 
   char currentChar ; 
   FILE *fl;  
-  int totoalLinesCount = 0 ; 
+  int totalLinesCount = 0 ; 
   fl = fopen(endereco, "a");
   if(fl == NULL){
         printf("The file was not opened\n");
@@ -632,7 +632,7 @@ int escreve_arq(int n_origin, int n_destin){
         }
     }
   fclose(fl); 
-  return totoalLinesCount; 
+  return totalLinesCount; 
 } 
 /*---------------------------------------------------------------------------*/  
 
