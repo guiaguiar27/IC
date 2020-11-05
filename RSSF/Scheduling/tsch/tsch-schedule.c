@@ -95,7 +95,8 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     if(sf != NULL) {
       /* Initialize the slotframe */
       sf->handle = handle;
-      TSCH_ASN_DIVISOR_INIT(sf->size, size);
+      TSCH_ASN_DIVISOR_INIT(sf->size, size); 
+      LOG_PRINT("The list was be initialized");
       LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
