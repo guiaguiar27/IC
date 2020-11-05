@@ -162,7 +162,7 @@ int  sort_links(int n);
 int SCHEDULE(int **adj);  
 int *alocaPacotes(int num_no, int **adj);  
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
-int tsch_num_nos();  
+int tsch_num_nos();   
 void teste(); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
