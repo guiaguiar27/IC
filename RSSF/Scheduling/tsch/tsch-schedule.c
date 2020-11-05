@@ -235,7 +235,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       LOG_ERR("! add_link invalid timeslot: %u\n", timeslot);
       return NULL;
     }
-
+    if()
     /* Start with removing the link currently installed at this timeslot (needed
      * to keep neighbor state in sync with link options etc.) */
     //tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
@@ -258,7 +258,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-      //  l->handle = (*slotframe->number_of_links)++;
+        l->handle = slotframe->number_of_links++;
         l->handle = 0 ; 
         LOG_PRINT("----Slotframe: %d-----\n", slotframe->number_of_links); 
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
