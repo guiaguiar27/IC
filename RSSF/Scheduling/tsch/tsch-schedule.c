@@ -781,7 +781,6 @@ int SCHEDULE(int **adj){
 
     while(sf != NULL){  
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-          LOG_PRINT("--Number of links %u-----\n", sf->number_of_links);    
           struct tsch_link *l = NULL; 
           for(x = 0 ; x<16; x++){ 
           for(y = 0 ; y < temp_canais;y++){ 
@@ -827,7 +826,6 @@ void teste(){
     if(!tsch_get_lock()){ 
       while(sf != NULL){  
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-          LOG_PRINT("--Number of links %u-----\n", sf->number_of_links);    
           struct tsch_link *l = NULL; 
           l = memb_alloc(&link_memb); 
           l = list_head(sf->links_list);   
@@ -853,7 +851,8 @@ int tsch_count_link(uint16_t handle){
       struct tsch_link *l = list_head(sf->links_list);
       /* Loop over all items. Assume there is max one link per timeslot */
       while(l != NULL) {
-        if(l->handle == handle) {
+        if(l->handle == handle) { 
+          LOG_PRINT("Count links:%d",count);
           return count;
         }
         count++; 
