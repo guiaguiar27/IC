@@ -83,8 +83,6 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
   if(size == 0) {
     return NULL;
   } 
-  uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);
   
   if(tsch_schedule_get_slotframe_by_handle(handle)) {
     /* A slotframe with this handle already exists */
@@ -99,7 +97,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       sf->handle = handle;
       TSCH_ASN_DIVISOR_INIT(sf->size, size); 
       LOG_PRINT("The list was be initialized");
-      if(node == 8) LIST_STRUCT_INIT(sf, links_list);
+      LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
@@ -851,7 +849,7 @@ void teste(){
   
 } 
 int tsch_count_link(uint16_t handle){  
-  int count = 0 ; 
+  static int count = 0 ; 
   LOG_PRINT("Count links:%d",count); 
   if(!tsch_is_locked()) {
     struct tsch_slotframe *sf = list_head(slotframe_list);
@@ -872,6 +870,7 @@ int tsch_count_link(uint16_t handle){
   }
   return 0 ;
 
-}
+} 
+
   
    
