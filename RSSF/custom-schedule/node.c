@@ -68,16 +68,9 @@ AUTOSTART_PROCESSES(&node_process);
 static void
 initialize_tsch_schedule(struct tsch_slotframe *sf_common)
 {
-  int i, j;  
-  if(!tsch_is_locked()) {
-  sf_common = list_head(slotframe_list);  
-  while(sf_common != NULL) {
-      if(sf_common->handle == APP_SLOTFRAME_HANDLE) {
-        break;
-      }
-      sf_common = list_item_next(sf_common);
-    }
-  }
+  int i, j; 
+  sf_common = tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);  
+
   //if (node_id == 1 ) tsch_init_counter(sf_common); 
   uint16_t slot_offset;
   uint16_t channel_offset; 
@@ -142,8 +135,10 @@ PROCESS_THREAD(node_process, ev, data)
   static uint32_t seqnum;
   uip_ipaddr_t dst;
   PROCESS_BEGIN();
-  struct tsch_slotframe *sf_common = NULL; 
-  initialize_tsch_schedule(sf_common);
+  struct tsch_slotframe *sf_common = NULL;   
+  if(node_id == 8) 
+    sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  initialize_tsch_schedule(struct tsch_slotframe *sf_common);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
@@ -151,9 +146,6 @@ PROCESS_THREAD(node_process, ev, data)
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();      
   } 
-  if(node_id == 8) 
-    sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-
   /* Main loop */
   while(1) { 
    if(node_id == 1){ 
