@@ -83,11 +83,12 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
   if(size == 0) {
     return NULL;
   }
+   struct tsch_slotframe *sf_exists = tsch_schedule_get_slotframe_by_handle(handle);  
 
-  if(tsch_schedule_get_slotframe_by_handle(handle)) {
+  if(sf_exists != NULL){
     /* A slotframe with this handle already exists */
     LOG_PRINT("New slotframe!\n");
-    return NULL;
+    return sf_exists ;
   } 
   else { 
     if(tsch_get_lock()) {
