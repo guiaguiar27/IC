@@ -66,11 +66,10 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_UNICAST_TIMESLOT 1
 
 static void
-initialize_tsch_schedule(struct tsch_slotframe *sf_common)
+initialize_tsch_schedule()
 {
   int i, j; 
-  sf_common = tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);  
-
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   //if (node_id == 1 ) tsch_init_counter(sf_common); 
   uint16_t slot_offset;
   uint16_t channel_offset; 
@@ -134,11 +133,8 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer;
   static uint32_t seqnum;
   uip_ipaddr_t dst;
-  PROCESS_BEGIN();
-  struct tsch_slotframe *sf_common = NULL;   
-  if(node_id == 8) 
-    sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-  initialize_tsch_schedule(struct tsch_slotframe *sf_common);
+  PROCESS_BEGIN();   
+  initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
