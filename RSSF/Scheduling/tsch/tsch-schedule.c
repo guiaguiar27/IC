@@ -88,9 +88,9 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     /* A slotframe with this handle already exists */
     LOG_PRINT("New slotframe!\n");
     return NULL;
-  }
-
-  if(tsch_get_lock()) {
+  } 
+  else { 
+    if(tsch_get_lock()) {
     struct tsch_slotframe *sf = memb_alloc(&slotframe_memb);
     if(sf != NULL) {
       /* Initialize the slotframe */
@@ -107,6 +107,9 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     return sf;
   }
   return NULL;
+  }
+
+  
 }
 /*---------------------------------------------------------------------------*/
 /* Removes all slotframes, resulting in an empty schedule */
