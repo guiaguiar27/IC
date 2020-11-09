@@ -62,19 +62,21 @@
 #define MAX_NOS 11
 #define no_raiz 1 
 #define endereco "/home/user/contiki-ng/os/arvore.txt" 
-
+static int counter = 0 ; 
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
-#define LOG_LEVEL LOG_LEVEL_MAC
-
+#define LOG_LEVEL LOG_LEVEL_MAC 
+// lista copia 
+ 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
-LIST(slotframe_list);
-
+LIST(slotframe_list); 
+LIST(links_list_aux);  
+static int counter = 0 ; 
 /* Adds and returns a slotframe (NULL if failure) */ 
 
 struct tsch_slotframe *
@@ -96,8 +98,9 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       /* Initialize the slotframe */
       sf->handle = handle;
       TSCH_ASN_DIVISOR_INIT(sf->size, size); 
-      LOG_PRINT("The list was be initialized");
-      if(sf == list_head(slotframe_list)) LIST_STRUCT_INIT(sf, links_list);
+      LOG_PRINT("The list was be initialized"); 
+      
+      LIST_STRUCT_INIT(sf, links_list);
       /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
@@ -241,8 +244,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       return NULL;
     }
     /* Start with removing the link currently installed at this timeslot (needed
-     * to keep neighbor state in sync with link options etc.) */
-    //tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
+     * to keep neighbor state in sync with link options etc.) */ 
+    if(timeslot != NULL){ 
+      tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
+    }
     if(!tsch_get_lock()) {
       LOG_ERR("! add_link memb_alloc couldn't take lock\n");
     } else {
@@ -251,7 +256,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else { 
-        static int current_link_handle = 0;
+       // static int current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -263,7 +268,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = current_link_handle++; 
+        l->handle = counter++;  
+         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
+        
+        list_add(links_list_aux, l); 
 
         if(address == NULL) {
           address = &linkaddr_null;
@@ -295,8 +303,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
               tsch_queue_write_in_file(node,node_neighbor);   
-              LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
-        
+             
             }
           }
         }
@@ -468,7 +475,8 @@ tsch_schedule_init(void)
   if(tsch_get_lock()) {
     memb_init(&link_memb);
     memb_init(&slotframe_memb);
-    list_init(slotframe_list);
+    list_init(slotframe_list); 
+    list_init(links_list_aux);
     tsch_release_lock();
     return 1;
   } else {
