@@ -1024,13 +1024,17 @@ tsch_init(void)
     return;
   }
 
-  /* Init TSCH sub-modules */
+  /* Init TSCH sub-modules */ 
+ #if !tsch_is_initialized 
   tsch_reset();
   tsch_queue_init();
   tsch_schedule_init();
   tsch_log_init();
   ringbufindex_init(&input_ringbuf, TSCH_MAX_INCOMING_PACKETS);
   ringbufindex_init(&dequeued_ringbuf, TSCH_DEQUEUED_ARRAY_SIZE);
+  } 
+#endif
+  
 #if TSCH_AUTOSELECT_TIME_SOURCE
   nbr_table_register(sync_stats, NULL);
 #endif /* TSCH_AUTOSELECT_TIME_SOURCE */
