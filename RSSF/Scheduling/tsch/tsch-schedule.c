@@ -100,7 +100,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       LOG_PRINT("The list was be initialized"); 
       
       LIST_STRUCT_INIT(sf, links_list); 
-      list_copy	(links_list,liks_list_aux);	
+      list_copy	(sf->links_list,links_list_aux);	
       /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
@@ -834,7 +834,7 @@ void print_list(){
   if(!tsch_get_lock()){ 
     struct tsch_link *l = NULL; 
     l = memb_alloc(&link_memb); 
-    l = list_head(link_list_aux);  
+    l = list_head(links_list_aux);  
     
     while(l != NULL){ 
       LOG_PRINT("---------------------------\n"); 
