@@ -76,7 +76,6 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list); 
 LIST(links_list_aux);  
-static int counter = 0 ; 
 /* Adds and returns a slotframe (NULL if failure) */ 
 
 struct tsch_slotframe *
@@ -245,9 +244,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
     }
     /* Start with removing the link currently installed at this timeslot (needed
      * to keep neighbor state in sync with link options etc.) */ 
-    if(timeslot != NULL){ 
-      tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
-    }
+    //tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
+    
     if(!tsch_get_lock()) {
       LOG_ERR("! add_link memb_alloc couldn't take lock\n");
     } else {
