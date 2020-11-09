@@ -258,7 +258,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
        // static int current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
-        list_add(slotframe->links_list, l); 
+        //list_add(slotframe->links_list, l); 
   
         /* Initialize link */  
         l->link_options = link_options;
