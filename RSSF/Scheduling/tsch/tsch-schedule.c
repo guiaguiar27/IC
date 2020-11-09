@@ -99,7 +99,8 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       TSCH_ASN_DIVISOR_INIT(sf->size, size); 
       LOG_PRINT("The list was be initialized"); 
       
-      LIST_STRUCT_INIT(sf, links_list);
+      LIST_STRUCT_INIT(sf, links_list); 
+      list_copy	(links_list,liks_list_aux);	
       /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
@@ -829,7 +830,22 @@ int tsch_num_nos(){
   int i = MAX_NOS; 
   return i; 
 } 
-
+void print_list(){ 
+  if(!tsch_get_lock()){ 
+    struct tsch_link *l = NULL; 
+    l = memb_alloc(&link_memb); 
+    l = list_head(link_list_aux);  
+    
+    while(l != NULL){ 
+      LOG_PRINT("---------------------------\n"); 
+      LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+      LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+      LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);           
+      l = list_item_next(l);           
+    }  
+    tsch_release_lock(); 
+    }
+}
 void teste(){  
 
     struct tsch_slotframe *sf = list_head(slotframe_list);  
