@@ -62,20 +62,18 @@
 #define MAX_NOS 11
 #define no_raiz 1 
 #define endereco "/home/user/contiki-ng/os/arvore.txt" 
-static int counter = 0 ; 
+ 
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
 #define LOG_LEVEL LOG_LEVEL_MAC 
 // lista copia 
- 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list); 
-LIST(links_list_aux);  
 /* Adds and returns a slotframe (NULL if failure) */ 
 
 struct tsch_slotframe *
@@ -100,7 +98,6 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
       LOG_PRINT("The list was be initialized"); 
       
       LIST_STRUCT_INIT(sf, links_list); 
-      list_copy	(sf->links_list,links_list_aux);	
       /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
@@ -258,7 +255,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
        // static int current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
-        //list_add(slotframe->links_list, l); 
+        list_add(slotframe->links_list, l); 
   
         /* Initialize link */  
         l->link_options = link_options;
@@ -267,11 +264,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = counter++;  
+        l->handle = count_lines();  
          LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
-        list_add(links_list_aux, l); 
-
+        
         if(address == NULL) {
           address = &linkaddr_null;
         }
@@ -475,7 +471,6 @@ tsch_schedule_init(void)
     memb_init(&link_memb);
     memb_init(&slotframe_memb);
     list_init(slotframe_list); 
-    list_init(links_list_aux);
     tsch_release_lock();
     return 1;
   } else {
@@ -830,22 +825,7 @@ int tsch_num_nos(){
   int i = MAX_NOS; 
   return i; 
 } 
-void print_list(){ 
-  if(!tsch_get_lock()){ 
-    struct tsch_link *l = NULL; 
-    l = memb_alloc(&link_memb); 
-    l = list_head(links_list_aux);  
-    
-    while(l != NULL){ 
-      LOG_PRINT("---------------------------\n"); 
-      LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-      LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-      LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);           
-      l = list_item_next(l);           
-    }  
-    tsch_release_lock(); 
-    }
-}
+
 void teste(){  
 
     struct tsch_slotframe *sf = list_head(slotframe_list);  
@@ -870,28 +850,19 @@ void teste(){
     }
   
 } 
-int tsch_count_link(uint16_t handle){  
-  static int count = 0 ; 
-  LOG_PRINT("Count links:%d",count); 
-  if(!tsch_is_locked()) {
-    struct tsch_slotframe *sf = list_head(slotframe_list);
-    while(sf != NULL) { 
 
-      struct tsch_link *l = list_head(sf->links_list);
-      /* Loop over all items. Assume there is max one link per timeslot */
-      while(l != NULL) { 
-          
-        if(l->handle == handle) { 
-          return count;
-        }
-        count++; 
-        l = list_item_next(l); 
-      }
-      sf = list_item_next(sf);
-    }
-  }
-  return 0 ;
-
+int count_lines() 
+{ 
+    FILE *fp; 
+    int count = 0;    
+    char c;  
+    fp = fopen(endereco, "r"); 
+    if (fp == NULL) return 0; 
+    for (c = getc(fp); c != EOF; c = getc(fp)) 
+        if (c == '\n') 
+            count = count + 1; 
+    fclose(fp); 
+    return count; 
 } 
 
   
