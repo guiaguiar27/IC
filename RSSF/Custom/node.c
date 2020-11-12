@@ -151,7 +151,7 @@ PROCESS_THREAD(node_process, ev, data)
      // SCHEDULE(matriz); 
    
   }  
-    print_list();
+    teste();
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {

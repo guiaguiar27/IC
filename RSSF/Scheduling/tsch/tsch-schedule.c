@@ -264,8 +264,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = count_lines();  
-         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         
         if(address == NULL) {
@@ -298,7 +296,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
               tsch_queue_write_in_file(node,node_neighbor);   
-             
+              l->handle = count_lines();  
+              LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
             }
           }
         }
