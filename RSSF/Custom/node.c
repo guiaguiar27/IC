@@ -98,12 +98,17 @@ initialize_tsch_schedule()
     channel_offset = i;
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */
-    link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+    //link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
 
     tsch_schedule_add_link(sf_common,
-        link_options,
-        LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset);
+      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset, 1);
+
+    // tsch_schedule_add_link(sf_common,
+    //     link_options,
+    //     LINK_TYPE_NORMAL, &addr,
+    //     slot_offset, channel_offset);
   }
 }
 
