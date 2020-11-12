@@ -264,7 +264,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        
+        l->handle = count_lines();  
+        LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
           address = &linkaddr_null;
@@ -296,8 +297,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
               tsch_queue_write_in_file(node,node_neighbor);   
-              l->handle = count_lines();  
-              LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
+              
             }
           }
         }
@@ -581,22 +581,6 @@ int *alocaPacotes(int num_no, int **adj){
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
-int
-sort_links(int n){   
-   
-    int i, node;           
-    node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-    srand(time(NULL)); 
-    i = rand()%n;
-    LOG_PRINT("NO %u\n", node); 
-    LOG_PRINT("NO SORTED %u\n", i);
-    while(i == node){ 
-      i = rand()%n;  
-    } 
-    if(i != node) return i; 
-  return 0 ; 
-}
         
 
 
@@ -627,17 +611,9 @@ int SCHEDULE(int **adj){
 
     struct tsch_slotframe *sf = list_head(slotframe_list);
     int node_origin, node_destin ; 
-    /*******************************************************************/ 
-    // Get the topology   
-     
-    //*****************************************************************/ 
     FILE *fl;  
     if(!tsch_get_lock()){   
       
-
-
-
-
 
 
       LOG_PRINT("----- TSCH LOCK -----\n");
@@ -821,15 +797,19 @@ int SCHEDULE(int **adj){
   } 
   
     return 0;
-    }  
-     
+    }   
+/*------------------------------------------------------------------------------------------------------------*/
+
+ // Return the number of nodes defined for this network     
 int tsch_num_nos(){ 
   int i = MAX_NOS; 
   return i; 
-} 
+}  
+/*------------------------------------------------------------------------------------------------------------*/
 
+
+// the purpose of this function is verify how much links the slotframe have. 
 void teste(){  
-
     struct tsch_slotframe *sf = list_head(slotframe_list);  
     if(!tsch_get_lock()){ 
       while(sf != NULL){ 
@@ -852,6 +832,7 @@ void teste(){
     }
   
 } 
+/*------------------------------------------------------------------------------------------------------------*/
 
 int count_lines() 
 { 
