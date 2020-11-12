@@ -36,7 +36,6 @@
  * \author
  *         Simon Duquennoy <simonduq@sics.se>
  *         Beshr Al Nahas <beshr@sics.se>
- *         Atis Elsts <atis.elsts@edi.lv>
  */
 
 /**
@@ -54,41 +53,51 @@
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
 #include "sys/rtimer.h"
-#include <string.h>
-
+#include <string.h>  
+#include <stdlib.h> 
+#include  <time.h>
+#include "conf.h" 
+#define temp_canais 23
+#define peso 1 
+#define MAX_NOS 11
+#define no_raiz 1 
+#define endereco "/home/user/contiki-ng/os/arvore.txt" 
+ 
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
-#define LOG_LEVEL LOG_LEVEL_MAC
-
+#define LOG_LEVEL LOG_LEVEL_MAC 
+// lista copia 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
-LIST(slotframe_list);
+LIST(slotframe_list); 
+/* Adds and returns a slotframe (NULL if failure) */ 
 
-/* Adds and returns a slotframe (NULL if failure) */
 struct tsch_slotframe *
 tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
-{
+{ 
   if(size == 0) {
     return NULL;
-  }
-
+  } 
+  
   if(tsch_schedule_get_slotframe_by_handle(handle)) {
     /* A slotframe with this handle already exists */
-    return NULL;
-  }
-
+    LOG_PRINT("New slotframe!\n");
+    return NULL ;
+  } 
   if(tsch_get_lock()) {
     struct tsch_slotframe *sf = memb_alloc(&slotframe_memb);
     if(sf != NULL) {
       /* Initialize the slotframe */
       sf->handle = handle;
-      TSCH_ASN_DIVISOR_INIT(sf->size, size);
-      LIST_STRUCT_INIT(sf, links_list);
-      /* Add the slotframe to the global list */
+      TSCH_ASN_DIVISOR_INIT(sf->size, size); 
+      LOG_PRINT("The list was be initialized"); 
+      
+      LIST_STRUCT_INIT(sf, links_list); 
+      /* Add the slotframe to the global list */ 
       list_add(slotframe_list, sf);
     }
     LOG_INFO("add_slotframe %u %u\n",
@@ -97,6 +106,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     return sf;
   }
   return NULL;
+  
 }
 /*---------------------------------------------------------------------------*/
 /* Removes all slotframes, resulting in an empty schedule */
@@ -215,9 +225,10 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
+                       uint16_t timeslot, uint16_t channel_offset)
 {
-  struct tsch_link *l = NULL;
+  struct tsch_link *l = NULL; 
+  uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -226,12 +237,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       LOG_ERR("! add_link invalid timeslot: %u\n", timeslot);
       return NULL;
     }
-
-    if(do_remove) {
-      /* Start with removing the link currently installed at this timeslot (needed
-       * to keep neighbor state in sync with link options etc.) */
-      tsch_schedule_remove_link_by_timeslot(slotframe, timeslot, channel_offset);
-    }
+    /* Start with removing the link currently installed at this timeslot (needed
+     * to keep neighbor state in sync with link options etc.) */
+    
+    
     if(!tsch_get_lock()) {
       LOG_ERR("! add_link memb_alloc couldn't take lock\n");
     } else {
@@ -239,24 +248,26 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       if(l == NULL) {
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
-      } else {
-        static int current_link_handle = 0;
-        struct tsch_neighbor *n;
+      } else { 
+       // static int current_link_handle = 0;
+        struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
-        list_add(slotframe->links_list, l);
-        /* Initialize link */
-        l->handle = current_link_handle++;
+        list_add(slotframe->links_list, l); 
+  
+        /* Initialize link */  
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
-        l->data = NULL;
+        l->data = NULL; 
+        l->handle = count_lines();  
+        LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
+        
         if(address == NULL) {
           address = &linkaddr_null;
         }
         linkaddr_copy(&l->addr, address);
-
         LOG_INFO("add_link sf=%u opt=%s type=%s ts=%u ch=%u addr=",
                  slotframe->handle,
                  print_link_options(link_options),
@@ -267,12 +278,23 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         tsch_release_lock();
 
         if(l->link_options & LINK_OPTION_TX) {
-          n = tsch_queue_add_nbr(&l->addr);
+          n = tsch_queue_add_nbr(&l->addr);   
+          linkaddr_copy(&n->addr_neighbor, &linkaddr_node_addr);
+           
           /* We have a tx link to this neighbor, update counters */
           if(n != NULL) {
             n->tx_links_count++;
+ 
             if(!(l->link_options & LINK_OPTION_SHARED)) {
-              n->dedicated_tx_links_count++;
+            // escrve topologia em um arquivo  
+              n->dedicated_tx_links_count++; 
+              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
+                + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              
+              tsch_queue_write_in_file(node,node_neighbor);   
+              
             }
           }
         }
@@ -283,6 +305,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
 }
 /*---------------------------------------------------------------------------*/
 /* Removes a link from slotframe. Return 1 if success, 0 if failure */
+
 int
 tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
 {
@@ -316,7 +339,7 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
 
       /* This was a tx link to this neighbor, update counters */
       if(link_options & LINK_OPTION_TX) {
-        struct tsch_neighbor *n = tsch_queue_get_nbr(&addr);
+        struct tsch_neighbor *n = tsch_queue_add_nbr(&addr);
         if(n != NULL) {
           n->tx_links_count--;
           if(!(link_options & LINK_OPTION_SHARED)) {
@@ -335,39 +358,22 @@ tsch_schedule_remove_link(struct tsch_slotframe *slotframe, struct tsch_link *l)
 /*---------------------------------------------------------------------------*/
 /* Removes a link from slotframe and timeslot. Return a 1 if success, 0 if failure */
 int
-tsch_schedule_remove_link_by_timeslot(struct tsch_slotframe *slotframe,
-                                      uint16_t timeslot, uint16_t channel_offset)
+tsch_schedule_remove_link_by_timeslot(struct tsch_slotframe *slotframe, uint16_t timeslot)
 {
-  int ret = 0;
-  if(!tsch_is_locked()) {
-    if(slotframe != NULL) {
-      struct tsch_link *l = list_head(slotframe->links_list);
-      /* Loop over all items and remove all matching links */
-      while(l != NULL) {
-        struct tsch_link *next = list_item_next(l);
-        if(l->timeslot == timeslot && l->channel_offset == channel_offset) {
-          if(tsch_schedule_remove_link(slotframe, l)) {
-            ret = 1;
-          }
-        }
-        l = next;
-      }
-    }
-  }
-  return ret;
+  return slotframe != NULL &&
+         tsch_schedule_remove_link(slotframe, tsch_schedule_get_link_by_timeslot(slotframe, timeslot));
 }
 /*---------------------------------------------------------------------------*/
 /* Looks within a slotframe for a link with a given timeslot */
 struct tsch_link *
-tsch_schedule_get_link_by_timeslot(struct tsch_slotframe *slotframe,
-                                   uint16_t timeslot, uint16_t channel_offset)
+tsch_schedule_get_link_by_timeslot(struct tsch_slotframe *slotframe, uint16_t timeslot)
 {
   if(!tsch_is_locked()) {
     if(slotframe != NULL) {
       struct tsch_link *l = list_head(slotframe->links_list);
-      /* Loop over all items. Assume there is max one link per timeslot and channel_offset */
+      /* Loop over all items. Assume there is max one link per timeslot */
       while(l != NULL) {
-        if(l->timeslot == timeslot && l->channel_offset == channel_offset) {
+        if(l->timeslot == timeslot) {
           return l;
         }
         l = list_item_next(l);
@@ -377,29 +383,6 @@ tsch_schedule_get_link_by_timeslot(struct tsch_slotframe *slotframe,
   }
   return NULL;
 }
-/*---------------------------------------------------------------------------*/
-static struct tsch_link *
-default_tsch_link_comparator(struct tsch_link *a, struct tsch_link *b)
-{
-  if(!(a->link_options & LINK_OPTION_TX)) {
-    /* None of the links are Tx: simply return the first link */
-    return a;
-  }
-
-  /* Two Tx links at the same slotframe; return the one with most packets to send */
-  if(!linkaddr_cmp(&a->addr, &b->addr)) {
-    struct tsch_neighbor *an = tsch_queue_get_nbr(&a->addr);
-    struct tsch_neighbor *bn = tsch_queue_get_nbr(&b->addr);
-    int a_packet_count = an ? ringbufindex_elements(&an->tx_ringbuf) : 0;
-    int b_packet_count = bn ? ringbufindex_elements(&bn->tx_ringbuf) : 0;
-    /* Compare the number of packets in the queue */
-    return a_packet_count >= b_packet_count ? a : b;
-  }
-
-  /* Same neighbor address; simply return the first link */
-  return a;
-}
-
 /*---------------------------------------------------------------------------*/
 /* Returns the next active link after a given ASN, and a backup link (for the same ASN, with Rx flag) */
 struct tsch_link *
@@ -434,13 +417,8 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
            * By standard: prioritize Tx links first, second by lowest handle */
           if((curr_best->link_options & LINK_OPTION_TX) == (l->link_options & LINK_OPTION_TX)) {
             /* Both or neither links have Tx, select the one with lowest handle */
-            if(l->slotframe_handle != curr_best->slotframe_handle) {
-              if(l->slotframe_handle < curr_best->slotframe_handle) {
-                new_best = l;
-              }
-            } else {
-              /* compare the link against the current best link and return the newly selected one */
-              new_best = TSCH_LINK_COMPARATOR(curr_best, l);
+            if(l->slotframe_handle < curr_best->slotframe_handle) {
+              new_best = l;
             }
           } else {
             /* Select the link that has the Tx option */
@@ -450,15 +428,13 @@ tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, uint16_t *time_offset
           }
 
           /* Maintain backup_link */
-          /* Check if 'l' best can be used as backup */
-          if(new_best != l && (l->link_options & LINK_OPTION_RX)) { /* Does 'l' have Rx flag? */
-            if(curr_backup == NULL || l->slotframe_handle < curr_backup->slotframe_handle) {
+          if(curr_backup == NULL) {
+            /* Check if 'l' best can be used as backup */
+            if(new_best != l && (l->link_options & LINK_OPTION_RX)) { /* Does 'l' have Rx flag? */
               curr_backup = l;
             }
-          }
-          /* Check if curr_best can be used as backup */
-          if(new_best != curr_best && (curr_best->link_options & LINK_OPTION_RX)) { /* Does curr_best have Rx flag? */
-            if(curr_backup == NULL || curr_best->slotframe_handle < curr_backup->slotframe_handle) {
+            /* Check if curr_best can be used as backup */
+            if(new_best != curr_best && (curr_best->link_options & LINK_OPTION_RX)) { /* Does curr_best have Rx flag? */
               curr_backup = curr_best;
             }
           }
@@ -490,7 +466,7 @@ tsch_schedule_init(void)
   if(tsch_get_lock()) {
     memb_init(&link_memb);
     memb_init(&slotframe_memb);
-    list_init(slotframe_list);
+    list_init(slotframe_list); 
     tsch_release_lock();
     return 1;
   } else {
@@ -501,7 +477,7 @@ tsch_schedule_init(void)
 /* Create a 6TiSCH minimal schedule */
 void
 tsch_schedule_create_minimal(void)
-{
+{ 
   struct tsch_slotframe *sf_min;
   /* First, empty current schedule */
   tsch_schedule_remove_all_slotframes();
@@ -515,7 +491,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, 1);
+      0, 0);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
@@ -556,5 +532,316 @@ tsch_schedule_print(void)
     LOG_PRINT("----- end slotframe list -----\n");
   }
 }
-/*---------------------------------------------------------------------------*/
-/** @} */
+/*---------------------------------------------------------------------------------------------------*/
+/** @} */ 
+
+void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
+    int  i;
+
+     for(i = 0; i < 16; i++){
+        if(aloca_canal[i][tempo] == -1)
+            continue;
+        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
+        }
+        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
+            (*pacote_entregue) += peso;
+    }
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+int *alocaPacotes(int num_no, int **adj){
+ int *vetor, x, y, qtd_pacotes = 0;
+    vetor = (int*) malloc(num_no * sizeof(int));
+    //Percorre o vetor de pacotes
+    for(x = 0; x < num_no; x++){
+        //Percorre a linha da matriz para saber se o nó X está conectado à alguém
+        for(y = 0; y < num_no; y++)
+            //Se sim, adiciona um pacote
+            if(adj[x][y]){
+                qtd_pacotes = peso;
+                break;
+            }
+
+        if(qtd_pacotes)
+            vetor[x] = qtd_pacotes;
+        else
+            vetor[x] = 0;
+
+        //Reseta o contador
+        qtd_pacotes = 0;
+    }
+    
+    return vetor; 
+    }  
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
+        
+
+
+/*-----------------------------------------------------------------------------------------------------*/
+int SCHEDULE(int **adj){      
+   LOG_PRINT("Entrou SCHEDULE\n");
+    int tamNo; 
+  //  int total_timeslot = 6, total_channel_of = 10;  
+    // int j ' 
+    int **conf ,                     //mapa do grafo de conflito pro grafo da rede
+    **matconf,                      //Nº de nós da rede
+    tamAresta,                  //Nº de arestas da rede
+    z, i;                       //Variáveis temporárias
+    int **matching,             //Matching da rede
+    pacote_entregue = 0, 
+    total_pacotes = 0, 
+    raiz,                       //Nó raiz do grafo da rede
+    flg = 1;                    //Variável temporária
+    int cont = 0;               //Time do slotframe
+    int **aloca_canais,         //Slotframe
+    x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+                                 //Nome dos nós no grafo da rede
+                                 //Nom do arquivo contendo o grafo de conflito (não usado)
+    int *pacotes;               //Pacotes por nó no grafo da rede
+
+
+    struct tsch_slotframe *sf = list_head(slotframe_list); 
+    LOG_PRINT("Slotframe :%u",sf->handle);
+    int node_origin, node_destin ; 
+    FILE *fl;  
+    
+    if(!tsch_get_lock()){   
+      LOG_PRINT("----- TSCH LOCK -----\n");
+      tamNo = MAX_NOS ;  
+      tamAresta = MAX_NOS;   
+      fl = fopen(endereco, "r"); 
+      if(fl == NULL){
+          printf("The file was not opened\n");
+          return 0  ; 
+      } 
+      // matriz  
+      adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+      for(int i = 0; i< MAX_NOS; i++) {
+          adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
+      }
+      for(int i = 0 ; i < MAX_NOS ; i++){ 
+          for(int j = 0 ; j< MAX_NOS; j++){  
+              adj[i][j] = 0 ; 
+          }
+      }  
+
+      i = 0;
+      while(!feof(fl)){      
+          fscanf(fl,"%d %d",&node_origin, &node_destin);   
+          if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+              if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+                  adj[node_origin][node_destin] = 1;
+                  i++;
+              } 
+          } 
+          if(feof(fl)) break ;
+      }  
+      tamAresta = i;
+  for(int i = 1; i < MAX_NOS ; i++){ 
+      for(int j = 1 ;j < MAX_NOS; j++)
+            printf("%d     ", adj[i][j]);
+        printf("\n");
+  }
+    LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
+      
+
+
+     
+     
+     
+      pacotes = alocaPacotes(tamNo, adj);
+      //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
+
+      conf = mapGraphConf(adj, tamNo, tamAresta); 
+      
+      //Gera a matriz de conflito
+      matconf = fazMatrizConf(conf, adj, tamAresta);
+
+      //Aloca o slotframe e o preenche com -1
+      aloca_canais = (int**) malloc(16 * sizeof(int*));
+      for(x = 0; x < 16; x++){
+          aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
+          for(y = 0; y < temp_canais; y++)
+              aloca_canais[x][y] = -1;
+      
+      }
+
+      //Busca pelo nó raiz da rede
+      for(z = 0; z < tamNo; z++){
+          for(i = 0; i < tamNo; i++)
+              if(adj[z][i] != 0){
+                  flg = 0;
+                  break;
+              }
+          if(flg)
+              break;
+          else
+              flg = 1;
+      }
+      raiz = z;
+
+      //Por hora definimos ele manualmente
+      raiz = no_raiz;
+
+      //Guarda o total de pacotes a serem enviados pela
+      for(z = 0; z < tamNo; z++)
+          if(z != raiz)
+              total_pacotes += pacotes[z];
+
+
+      matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+      while(pacote_entregue < total_pacotes){
+          //Aloca os canais
+          for(x = 0; x < tamNo; x ++){
+              for(y = 0; y < tamNo; y++){
+                  if(matching[x][y]){
+                      for(temp = 0; temp < tamAresta; temp++)
+                          if(conf[temp][0] == x && conf[temp][1] == y)
+                              break;
+                      edge_selected = temp;
+                      for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+                          if(canal == 16)
+                              break;
+                          aloca_canais[canal][cont] = edge_selected; 
+                          canal++;
+                      }
+                  }
+                  if(canal == 16)
+                      break;
+              }
+              if(canal == 16)
+                  break;
+          }
+          printf("\nCanais alocados  | |");
+        printf("\n                \\   /");
+        printf("\n                 \\ /\n\n");
+        for(x = 0; x < 16; x++){
+            for(y = 0; y < temp_canais; y++)
+                printf("%d  ", aloca_canais[x][y] + 1);
+            printf("\n");
+        }
+        printf("\n");
+
+           
+           
+
+          //Executa a primeira carga de transferência
+          executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+          cont++;
+          canal = 0;
+          
+          //mostram os pacotes contentes em cada nó da rede
+    
+          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+          
+         
+          
+      
+      } 
+      for(x = 0 ; x < 16; x++){
+        for(y = 0; y < temp_canais; y++) 
+            // linhas = tempo - coluna = canal  
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n"); 
+    }    
+
+
+    
+
+
+    while(sf != NULL){  
+          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+          struct tsch_link *l = NULL;  
+          //struc tsch_link *l_aux = NULL;  
+          for(x = 0 ; x<16; x++){ 
+          for(y = 0 ; y < temp_canais;y++){ 
+            //coordenadas[i][j] = rand()%16  ;
+            l = memb_alloc(&link_memb); 
+            l = list_head(sf->links_list);   
+             
+            if(aloca_canais[x][y] == l->handle){   
+              LOG_PRINT("---------------------------\n"); 
+              LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+  
+             // if (tsch_schedule_get_link_by_timeslot(sf,x)) l_aux = tsch_schedule_get_link_by_timeslot(sf,x); 
+              l-> timeslot = x; 
+              l-> channel_offset = y ;   
+              LOG_PRINT("----CHANGE-----\n"); 
+              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+              LOG_PRINT("-----------------------------\n");   
+              l = list_item_next(l); 
+            } 
+           
+        }
+        }    
+          sf = list_item_next(sf); 
+      }
+
+
+
+  tsch_release_lock();
+  } 
+  
+    return 0;
+    }   
+/*------------------------------------------------------------------------------------------------------------*/
+
+ // Return the number of nodes defined for this network     
+int tsch_num_nos(){ 
+  int i = MAX_NOS; 
+  return i; 
+}  
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+// the purpose of this function is verify how much links the slotframe have. 
+void teste(){  
+    struct tsch_slotframe *sf = list_head(slotframe_list);  
+    if(!tsch_get_lock()){ 
+      while(sf != NULL){ 
+          LOG_PRINT("\nSLOTFRAME HANDLE: %u\n",sf->handle);
+          LOG_PRINT("Tamanho da lista: %d\n",list_length(sf->links_list));  
+          struct tsch_link *l = NULL; 
+          l = memb_alloc(&link_memb); 
+          l = list_head(sf->links_list);   
+            while(l!= NULL){   
+              LOG_PRINT("---------------------------\n"); 
+              LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+              l = list_item_next(l); 
+            } 
+      sf = list_item_next(sf);  
+      }    
+
+  tsch_release_lock();
+    }
+  
+} 
+/*------------------------------------------------------------------------------------------------------------*/
+
+int count_lines() 
+{ 
+    FILE *fp; 
+    int count = 0;    
+    char c;  
+    fp = fopen(endereco, "r"); 
+    if (fp == NULL) return 0; 
+    for (c = getc(fp); c != EOF; c = getc(fp)) 
+        if (c == '\n') 
+            count = count + 1; 
+    fclose(fp); 
+    return count; 
+} 
+
+  
+   
