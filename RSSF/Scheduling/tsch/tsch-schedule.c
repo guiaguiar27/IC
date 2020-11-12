@@ -786,7 +786,8 @@ int SCHEDULE(int **adj){
 
     while(sf != NULL){  
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-          struct tsch_link *l = NULL; 
+          struct tsch_link *l = NULL;  
+          struc tsch_link *l_aux = NULL;  
           for(x = 0 ; x<16; x++){ 
           for(y = 0 ; y < temp_canais;y++){ 
             //coordenadas[i][j] = rand()%16  ;
@@ -798,8 +799,10 @@ int SCHEDULE(int **adj){
               LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+  
+             // if (tsch_schedule_get_link_by_timeslot(sf,x)) l_aux = tsch_schedule_get_link_by_timeslot(sf,x); 
               l-> timeslot = x; 
-              l-> channel_offset = y ; 
+              l-> channel_offset = y ;   
               LOG_PRINT("----CHANGE-----\n"); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
