@@ -756,9 +756,9 @@ int SCHEDULE(int **adj){
 
 
     while(sf != NULL){  
-          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+          LOG_PRINT("SLOTFRAME HANDLE: %u",,sf->handle);
           struct tsch_link *l = NULL;  
-          struc tsch_link *l_aux = NULL;  
+          //struc tsch_link *l_aux = NULL;  
           for(x = 0 ; x<16; x++){ 
           for(y = 0 ; y < temp_canais;y++){ 
             //coordenadas[i][j] = rand()%16  ;
