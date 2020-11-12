@@ -609,13 +609,12 @@ int SCHEDULE(int **adj){
     int *pacotes;               //Pacotes por nó no grafo da rede
 
 
-    struct tsch_slotframe *sf = list_head(slotframe_list);
+    struct tsch_slotframe *sf = list_head(slotframe_list); 
+    LOG_PRINT("Slotframe :%u"sf->handle);
     int node_origin, node_destin ; 
     FILE *fl;  
+    
     if(!tsch_get_lock()){   
-      
-
-
       LOG_PRINT("----- TSCH LOCK -----\n");
       tamNo = MAX_NOS ;  
       tamAresta = MAX_NOS;   
