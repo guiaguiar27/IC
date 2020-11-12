@@ -88,8 +88,7 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     LOG_PRINT("New slotframe!\n");
     return NULL ;
   } 
-  else { 
-    if(tsch_get_lock()) {
+  if(tsch_get_lock()) {
     struct tsch_slotframe *sf = memb_alloc(&slotframe_memb);
     if(sf != NULL) {
       /* Initialize the slotframe */
@@ -107,8 +106,6 @@ tsch_schedule_add_slotframe(uint16_t handle, uint16_t size)
     return sf;
   }
   return NULL;
-  }
-
   
 }
 /*---------------------------------------------------------------------------*/
@@ -241,8 +238,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       return NULL;
     }
     /* Start with removing the link currently installed at this timeslot (needed
-     * to keep neighbor state in sync with link options etc.) */ 
-    //tsch_schedule_remove_link_by_timeslot(slotframe, timeslot);
+     * to keep neighbor state in sync with link options etc.) */
+    
     
     if(!tsch_get_lock()) {
       LOG_ERR("! add_link memb_alloc couldn't take lock\n");
@@ -588,7 +585,6 @@ int *alocaPacotes(int num_no, int **adj){
 int SCHEDULE(int **adj){      
    LOG_PRINT("Entrou SCHEDULE\n");
     int tamNo; 
-
   //  int total_timeslot = 6, total_channel_of = 10;  
     // int j ' 
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
