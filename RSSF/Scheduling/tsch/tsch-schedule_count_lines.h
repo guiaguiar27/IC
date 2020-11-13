@@ -158,9 +158,11 @@ struct tsch_slotframe *tsch_schedule_slotframe_head(void);
  */
 struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
 
-void  sort_links(int **coordenadas); 
 int SCHEDULE(int **adj);  
 int *alocaPacotes(int num_no, int **adj);  
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
+int tsch_num_nos();    
+void teste(); 
+int count_lines();
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
