@@ -38,12 +38,13 @@
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
-#include "sys/node-id.h"
+#include "sys/node-id.h" 
+
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
-
+#define MAX_NOS 10
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)
 
@@ -65,12 +66,13 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_UNICAST_TIMESLOT 1
 
 static void
-initialize_tsch_schedule(void)
+initialize_tsch_schedule()
 {
-  int i, j;
+  int i, j; 
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
-  uint16_t channel_offset;
+  uint16_t channel_offset; 
+  int node_number = tsch_num_nos();
 
   /* A "catch-all" cell at (0, 0) */
   slot_offset = 0;
@@ -79,19 +81,19 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
+  for (i = 0; i <  node_number - 1 ; 
+  
+  ++i) { 
 
-  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
     uint8_t link_options;
-    linkaddr_t addr;
-    uint16_t remote_id = i + 1;
-
+    linkaddr_t addr;  
+    uint16_t remote_id = i ; 
+    
+  
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
       addr.u8[j + 0] = remote_id >> 8;
-    }
-
-    /* Add a unicast cell for each potential neighbor (in Cooja) */
-    /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
+    } 
     slot_offset = APP_UNICAST_TIMESLOT;
     channel_offset = i;
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
@@ -123,7 +125,8 @@ rx_packet(struct simple_udp_connection *c,
     LOG_INFO_6ADDR(sender_addr);
     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
   }
-}
+} 
+
 
 PROCESS_THREAD(node_process, ev, data)
 {
@@ -131,25 +134,20 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer;
   static uint32_t seqnum;
   uip_ipaddr_t dst;
-  
-  PROCESS_BEGIN();
+  PROCESS_BEGIN();   
   initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   int **matriz = NULL ; 
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();   
-    
-  }
-
+    NETSTACK_ROUTING.root_start();      
+  } 
   /* Main loop */
   while(1) { 
-   if(node_id == 1){ 
-      LOG_INFO("Generate topology by neighbor structure\n");
-      tsch_neighbour_maping_init_matrix(matriz);  
-  } 
-    
+      LOG_INFO("Generate topology by neighbor structure\n"); 
+      SCHEDULE(matriz); 
+      teste();
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {

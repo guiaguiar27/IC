@@ -545,34 +545,7 @@ tsch_queue_init(void)
 /*---------------------------------------------------------------------------*/
 // não está sendo utilizada  
 // a topologia está sendo coletada no tsch_scheudle_add_link 
-void  tsch_neighbour_maping() 
-{   
-    LOG_INFO_("\n----ENTROU----\n"); 
-    int i,j, Max; 
-    Max = MAX_NOS * MAX_NOS ; 
-    uint16_t node_neighbor, node;      
-    for (i = 0; i < Max - 1; ++i){ 
-      struct tsch_neighbor *n = NULL ;       
-      linkaddr_t addr; 
-      uint16_t generate_node_id = i + 1; 
-      for(j = 0; j < sizeof(addr); j += 2){
-        addr.u8[j + 1] = generate_node_id & 0xff;
-        addr.u8[j + 0] = generate_node_id >> 8;   
-      }    
-      n = tsch_queue_get_nbr(&addr); 
-      if(n != NULL){ 
 
-        node_neighbor = n->addr_neighbor.u8[LINKADDR_SIZE - 1]
-            + (n->addr_neighbor.u8[LINKADDR_SIZE - 2] << 8); 
-        node =   n->addr.u8[LINKADDR_SIZE - 1]
-            + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
-        
-        LOG_INFO_(" %u -> %u ",node_neighbor, node);  
-        LOG_INFO("\n");  
-        escreve_arq(node_neighbor,node); 
-      } 
-    } 
-}   
 int tsch_neighbour_maping_init_matrix(int **coordenadas){  
   LOG_PRINT("----- ENTROU -----\n");   
   int node_origin, node_destin ; 
@@ -638,25 +611,11 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 }    
  
 /*---------------------------------------------------------------------------*/  
-// não está sendo utilizada 
-void print_matrix(int **Matriz){ 
-  FILE   *file;  
-  file = fopen(endereco2,"a");
-  if(file== NULL){
-         printf("The file was not opened\n");
-          return  ; 
-  }
-  for(int i=1;i<MAX_NOS;i++) {
-        for(int j=1;j<MAX_NOS;j++) {
-            fprintf(file,"%d ",Matriz[i][j]);
-    }
-        fprintf(file,"\n"); 
-    }
-}
+
 /*---------------------------------------------------------------------------*/  
 // função usada para ler a topologia e escrever em um arquivo  
-void escreve_arq(int n_origin, int n_destin){
-  FILE *fl; 
+void tsch_queue_write_in_file(int n_origin, int n_destin){ 
+   FILE *fl; 
   fl = fopen(endereco, "a");
   if(fl == NULL){
         printf("The file was not opened\n");
