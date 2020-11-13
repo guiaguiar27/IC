@@ -254,7 +254,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        l->handle = current_link_handle++;
+        l->handle = count_lines(); 
+        LOG_PRINT("HANDLE:  %u",l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
