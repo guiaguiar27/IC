@@ -606,7 +606,9 @@ int SCHEDULE(int **adj){
 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
-    LOG_PRINT("Slotframe :%u",sf->handle);
+    LOG_PRINT("Slotframe :%u",sf->handle); 
+    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+    for(int i = 0; i< MAX_NOS; i++) adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
     int node_origin, node_destin ; 
     FILE *fl;  
     LOG_PRINT("----- TSCH LOCK -----\n");
@@ -618,11 +620,7 @@ int SCHEDULE(int **adj){
           printf("The file was not opened\n");
           return 0  ; 
       } 
-      // matriz  
-      adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
-      for(int i = 0; i< MAX_NOS; i++) {
-          adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
-      }
+      // matriz 
       for(int i = 0 ; i < MAX_NOS ; i++){ 
           for(int j = 0 ; j< MAX_NOS; j++){  
               adj[i][j] = 0 ; 
@@ -647,11 +645,6 @@ int SCHEDULE(int **adj){
         printf("\n");
   }
     LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
-      
-
-
-     
-     
      
       pacotes = alocaPacotes(tamNo, adj);
       //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
