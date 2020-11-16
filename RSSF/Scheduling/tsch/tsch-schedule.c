@@ -249,7 +249,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else { 
-        int current_link_handle = 0;
+        //int current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 

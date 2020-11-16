@@ -139,7 +139,7 @@ PROCESS_THREAD(node_process, ev, data)
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  int **matriz; 
+  int **matriz = NULL; 
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
   }
