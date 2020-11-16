@@ -42,7 +42,8 @@ int main(){
         printf("The file was not opened\n");
         return 0  ; 
     } 
-    // matriz 
+    // matriz  
+
     for(int i = 0; i< MAX_NOS; i++) {
         adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
     }
@@ -120,8 +121,8 @@ int main(){
         printf("[%d] = %s - > %s\n", z + 1, nome_no[conf[z][0]], nome_no[conf[z][1]]);
     */  
     //Guarda o total de pacotes a serem enviados pela
-    for(z = 0; z < tamNo; z++)
-        if(z != raiz)
+    for(z = 1; z < tamNo; z++)
+        //if(z != raiz)
             total_pacotes += pacotes[z];
 
     printf("\nMatriz de adjacencia do grafo de conflito\n");
@@ -148,7 +149,7 @@ int main(){
             printf("\n");
         }
         printf("\nPacotes:\n");
-        for(x = 0; x < tamNo; x++)
+        for(x = 1; x < tamNo ; x++)
             printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
         //Aloca os canais

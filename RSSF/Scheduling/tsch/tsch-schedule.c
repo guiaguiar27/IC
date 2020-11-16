@@ -612,7 +612,7 @@ int SCHEDULE(int **adj){
     int node_origin, node_destin ; 
     FILE *fl;  
     LOG_PRINT("----- TSCH LOCK -----\n");
-    if(!tsch_get_lock()){   
+    if(tsch_get_lock()){   
       tamNo = MAX_NOS ;  
       tamAresta = MAX_NOS;   
       fl = fopen(endereco, "r"); 
@@ -681,7 +681,7 @@ int SCHEDULE(int **adj){
       raiz = no_raiz;
 
       //Guarda o total de pacotes a serem enviados pela
-      for(z = 0; z < tamNo; z++)
+      for(z = 1; z < tamNo; z++)
           if(z != raiz)
               total_pacotes += pacotes[z];
 

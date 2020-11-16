@@ -22,7 +22,7 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
         no_atual = rand() % num_no;
     }while(no_atual == raiz);
     
-    for(x = 0; x < num_no; x++)
+    for(x = 1; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
             no_atual = x;
     
@@ -138,8 +138,8 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
         alocado[x] = (int*) malloc(2 * sizeof(int));
     
     //"Captura" as arestas e armazena
-    for(x = 0; x < tam_no; x++)
-        for(y = 0; y < tam_no; y++)
+    for(x = 1; x < tam_no; x++)
+        for(y = 1; y < tam_no; y++)
             if(mat[x][y] != 0){
                 alocado[noConf][0] = x;
                 alocado[noConf][1] = y;
