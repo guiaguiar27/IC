@@ -15,6 +15,7 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     */
     int x ;
     int no_atual;
+    printf("entrou\n ");
     srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida

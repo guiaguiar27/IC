@@ -36,7 +36,7 @@ int main(){
     // inicia arquivo  
     FILE *fl;  
     tamNo = MAX_NOS ;  
-    tamAresta = MAX_NOS;   
+    tamAresta = MAX_NOS;    
     fl = fopen("teste.txt", "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
