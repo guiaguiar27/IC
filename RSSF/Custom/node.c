@@ -143,7 +143,7 @@ PROCESS_THREAD(node_process, ev, data)
   } 
   /* Main loop */
   while(1) { 
-      if(clock_time() == SEND_INTERVAL*60){ 
+      if(node_id == 1 ){ 
         LOG_INFO("\n SCHEDULE \n"); 
       
       }
