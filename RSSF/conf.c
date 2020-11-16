@@ -20,7 +20,8 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     
     //Seleciona o nó com maior carga pra ser transmitida
     do{
-        no_atual = rand() % num_no;
+        no_atual = rand() % num_no; 
+        printf("num no %d", no_atual);
     }while(no_atual == raiz);
     
     for(x = 0; x < num_no; x++)
