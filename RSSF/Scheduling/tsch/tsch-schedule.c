@@ -603,68 +603,70 @@ int SCHEDULE(int **adj){
                                  //Nome dos nós no grafo da rede
                                  //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
-
-
+    int node_origin, node_destin ;
     struct tsch_slotframe *sf = list_head(slotframe_list); 
-    LOG_PRINT("Slotframe :%u",sf->handle); 
-    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
-    for(int i = 0; i< MAX_NOS; i++) adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
-    int node_origin, node_destin ; 
     FILE *fl;  
+    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+    
+     
     LOG_PRINT("----- TSCH LOCK -----\n");
     if(tsch_get_lock()){   
+      
       tamNo = MAX_NOS ;  
-      tamAresta = MAX_NOS;   
-      fl = fopen(endereco, "r"); 
+      tamAresta = MAX_NOS;    
+      fl = fopen("teste.txt", "r"); 
       if(fl == NULL){
           printf("The file was not opened\n");
           return 0  ; 
       } 
-      // matriz 
+      for(int i = 0; i< MAX_NOS; i++) {
+          adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
+      }
       for(int i = 0 ; i < MAX_NOS ; i++){ 
           for(int j = 0 ; j< MAX_NOS; j++){  
               adj[i][j] = 0 ; 
           }
       }  
-
       i = 0;
       while(!feof(fl)){      
-          fscanf(fl,"%d %d",&node_origin, &node_destin);   
-          if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-              if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
-                  adj[node_origin][node_destin] = 1;
-                  i++;
+              fscanf(fl,"%d %d",&node_origin, &node_destin);   
+              printf(" %d-> %d\n",node_origin, node_destin);    
+              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+                      adj[node_origin][node_destin] = 1;
+                      i++;
+                  } 
               } 
-          } 
-          if(feof(fl)) break ;
-      }  
+              if(feof(fl)) break ;
+          }
       tamAresta = i;
-  for(int i = 1; i < MAX_NOS ; i++){ 
-      for(int j = 1 ;j < MAX_NOS; j++)
-            printf("%d     ", adj[i][j]);
-        printf("\n");
-  }
-    LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
-     
+
+      for(int i = 1; i < MAX_NOS ; i++){ 
+          for(int j = 1 ;j < MAX_NOS; j++)
+                printf("%d     ", adj[i][j]);
+            printf("\n");
+      }
+      LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
+      
       pacotes = alocaPacotes(tamNo, adj);
-      //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
+        //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
 
       conf = mapGraphConf(adj, tamNo, tamAresta); 
-      
-      //Gera a matriz de conflito
+        
+        //Gera a matriz de conflito
       matconf = fazMatrizConf(conf, adj, tamAresta);
 
-      //Aloca o slotframe e o preenche com -1
+        //Aloca o slotframe e o preenche com -1
       aloca_canais = (int**) malloc(16 * sizeof(int*));
+        
       for(x = 0; x < 16; x++){
           aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
           for(y = 0; y < temp_canais; y++)
               aloca_canais[x][y] = -1;
-      
       }
 
-      //Busca pelo nó raiz da rede
-      for(z = 0; z < tamNo; z++){
+        //Busca pelo nó raiz da rede
+    for(z = 0; z < tamNo; z++){
           for(i = 0; i < tamNo; i++)
               if(adj[z][i] != 0){
                   flg = 0;
@@ -680,14 +682,14 @@ int SCHEDULE(int **adj){
       //Por hora definimos ele manualmente
       raiz = no_raiz;
 
-      //Guarda o total de pacotes a serem enviados pela
-      for(z = 1; z < tamNo; z++)
-          if(z != raiz)
-              total_pacotes += pacotes[z];
+        //Guarda o total de pacotes a serem enviados pela
+        for(z = 1; z < tamNo; z++)
+            if(z != raiz)
+                total_pacotes += pacotes[z];
 
 
-      matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
-      while(pacote_entregue < total_pacotes){
+        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+        while(pacote_entregue < total_pacotes){
           //Aloca os canais
           for(x = 0; x < tamNo; x ++){
               for(y = 0; y < tamNo; y++){
@@ -709,80 +711,63 @@ int SCHEDULE(int **adj){
               if(canal == 16)
                   break;
           }
+          
           printf("\nCanais alocados  | |");
-        printf("\n                \\   /");
-        printf("\n                 \\ /\n\n");
-        for(x = 0; x < 16; x++){
-            for(y = 0; y < temp_canais; y++)
-                printf("%d  ", aloca_canais[x][y] + 1);
-            printf("\n");
-        }
-        printf("\n");
-
-           
-           
+          printf("\n                \\   /");
+          printf("\n                 \\ /\n\n");
+          for(x = 0; x < 16; x++){
+              for(y = 0; y < temp_canais; y++)
+                  printf("%d  ", aloca_canais[x][y] + 1);
+              printf("\n");
+          }
+          printf("\n");
 
           //Executa a primeira carga de transferência
           executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
           cont++;
           canal = 0;
           
-          //mostram os pacotes contentes em cada nó da rede
-    
           matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
-          
-         
-          
+        }
+
       
-      } 
-      for(x = 0 ; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
-            // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
-             
-        printf("\n"); 
-    }    
 
 
-    
-
-
-    while(sf != NULL){  
+      while(sf != NULL){  
           LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
           struct tsch_link *l = NULL;  
-          //struc tsch_link *l_aux = NULL;  
           for(x = 0 ; x<16; x++){ 
-          for(y = 0 ; y < temp_canais;y++){ 
-            //coordenadas[i][j] = rand()%16  ;
-            l = memb_alloc(&link_memb); 
-            l = list_head(sf->links_list);   
-             
-            if(aloca_canais[x][y] == l->handle){   
-              LOG_PRINT("---------------------------\n"); 
-              LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-  
-             // if (tsch_schedule_get_link_by_timeslot(sf,x)) l_aux = tsch_schedule_get_link_by_timeslot(sf,x); 
-              l-> timeslot = x; 
-              l-> channel_offset = y ;   
-              LOG_PRINT("----CHANGE-----\n"); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-              LOG_PRINT("-----------------------------\n");   
-              l = list_item_next(l); 
-            } 
-           
-        }
-        }    
+            for(y = 0 ; y < temp_canais;y++){ 
+              //coordenadas[i][j] = rand()%16  ; 
+
+              l = memb_alloc(&link_memb); 
+              l = list_head(sf->links_list);        
+              while(l!= NULL){   
+                if(aloca_canais[x][y] == l->handle){
+                LOG_PRINT("---------------------------\n"); 
+                LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+                LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+                l-> timeslot = x; 
+                l-> channel_offset = y ;   
+                LOG_PRINT("----CHANGE-----\n"); 
+                LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                LOG_PRINT("-----------------------------\n");     
+                } 
+                l = list_item_next(l);
+              } 
+              
+            }
+          }    
           sf = list_item_next(sf); 
       }
 
 
-    } 
-  else{ 
+
     tsch_release_lock();
-  } 
+    } 
+   
   
     return 0;
     }   
@@ -817,7 +802,7 @@ void teste(){
       }    
 
   tsch_release_lock();
-    }
+  }
   
 } 
 /*------------------------------------------------------------------------------------------------------------*/

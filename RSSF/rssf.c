@@ -3,7 +3,7 @@
 #include "conf.h"
 #define temp_canais 23
 #define peso 1 
-#define MAX_NOS 11
+#define MAX_NOS 14
 #define no_raiz 1
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
