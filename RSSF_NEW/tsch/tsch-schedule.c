@@ -54,7 +54,16 @@
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
 #include "sys/rtimer.h"
-#include <string.h>
+#include <string.h>  
+#include <stdlib.h> 
+#include  <time.h>
+#include "conf.h" 
+#define temp_canais 23
+#define peso 1 
+#define MAX_NOS 11
+#define no_raiz 1 
+#define endereco "/home/user/contiki-ng/os/arvore.txt" 
+
 
 /* Log configuration */
 #include "sys/log.h"
