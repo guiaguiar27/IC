@@ -261,8 +261,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = current_link_handle++;
-        //l->handle = count_lines();  
+        l->handle = count_lines();  
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
@@ -604,8 +603,8 @@ int SCHEDULE(int **adj){
                                  //Nome dos nós no grafo da rede
                                  //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
-    //int node_origin, node_destin ;
-    //struct tsch_slotframe *sf = list_head(slotframe_list); 
+    int node_origin, node_destin ;
+    struct tsch_slotframe *sf = list_head(slotframe_list); 
     FILE *fl;  
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     
@@ -734,35 +733,35 @@ int SCHEDULE(int **adj){
       
 
 
-      // while(sf != NULL){  
-      //     LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-      //     struct tsch_link *l = NULL;  
-      //     for(x = 0 ; x<16; x++){ 
-      //       for(y = 0 ; y < temp_canais;y++){ 
-      //         //coordenadas[i][j] = rand()%16  ; 
+      while(sf != NULL){  
+          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+          struct tsch_link *l = NULL;  
+          for(x = 0 ; x<16; x++){ 
+            for(y = 0 ; y < temp_canais;y++){ 
+              //coordenadas[i][j] = rand()%16  ; 
 
-      //         l = memb_alloc(&link_memb); 
-      //         l = list_head(sf->links_list);        
-      //         while(l!= NULL){   
-      //           if(aloca_canais[x][y] == l->handle){
-      //           LOG_PRINT("---------------------------\n"); 
-      //           LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-      //           LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-      //           LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-      //           l-> timeslot = x; 
-      //           l-> channel_offset = y ;   
-      //           LOG_PRINT("----CHANGE-----\n"); 
-      //           LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-      //           LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-      //           LOG_PRINT("-----------------------------\n");     
-      //           } 
-      //           l = list_item_next(l);
-      //         } 
+              l = memb_alloc(&link_memb); 
+              l = list_head(sf->links_list);        
+              while(l!= NULL){   
+                if(aloca_canais[x][y] == l->handle){
+                LOG_PRINT("---------------------------\n"); 
+                LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+                LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+                l-> timeslot = x; 
+                l-> channel_offset = y ;   
+                LOG_PRINT("----CHANGE-----\n"); 
+                LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                LOG_PRINT("-----------------------------\n");     
+                } 
+                l = list_item_next(l);
+              } 
               
-      //       }
-      //     }    
-      //     sf = list_item_next(sf); 
-      // }
+            }
+          }    
+          sf = list_item_next(sf); 
+      }
 
 
 
