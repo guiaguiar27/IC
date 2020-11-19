@@ -824,7 +824,7 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf ;
+  int *pacotes, ** conf, **matconf, **aloca_canais;
   int  tamAresta,tamNo, i, node_origin, node_destin, total_pacotes = 0; 
 
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
@@ -877,7 +877,14 @@ int SCHEDULE_AUX(int **adj){
         for(i = 0; i < tamAresta; i++)
             printf("%d ", matconf[z][i]);
         printf("\n");
-      }  
+      } 
+      aloca_canais = (int**) malloc(16 * sizeof(int*));
+      for(x = 0; x < 16; x++){
+        aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
+        for(y = 0; y < temp_canais; y++)
+            aloca_canais[x][y] = -1;
+      }
+
     }  
   return 0; 
   }
