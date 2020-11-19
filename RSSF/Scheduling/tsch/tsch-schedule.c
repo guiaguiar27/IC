@@ -824,8 +824,8 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **aloca_canais;
-  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0,flg =1 ; 
+  int *pacotes, ** conf, **matconf, **aloca_canais, **matching;
+  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
 
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
