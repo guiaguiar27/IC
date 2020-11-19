@@ -825,7 +825,7 @@ int count_lines()
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
   int *pacotes, ** conf, **matconf, **aloca_canais;
-  int  tamAresta,tamNo,i,y,z,x,node_origin,node_destin,total_pacotes = 0; 
+  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0,flg =1 ; 
 
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
@@ -886,9 +886,16 @@ int SCHEDULE_AUX(int **adj){
         aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
         for( y = 0; y < temp_canais; y++)
             aloca_canais[x][y] = -1;
-      }
+      } 
 
-    }  
+    raiz = no_raiz; 
+    for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z]; 
+    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    
+
+
+    
+    } //close the tsch_lock   
   return 0; 
   }
 /*------------------------------------------------------------------------------------------------------------*/
