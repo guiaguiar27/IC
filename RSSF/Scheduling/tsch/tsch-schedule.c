@@ -823,13 +823,13 @@ int count_lines()
 
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
-  FILE *fl;   
-  int tamNo, tamAresta, node_origin, node_destin;
+  FILE *fl;    
+  int i ; 
+  int  tamAresta, node_origin, node_destin;
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
     if(tsch_get_lock()){   
       
-      tamNo = MAX_NOS ;  
       tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
