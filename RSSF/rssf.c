@@ -80,11 +80,7 @@ int main(){
 
     conf = mapGraphConf(adj, tamNo, tamAresta); 
     printf("Matriz de conflito gerada"); 
-    for(int i = 0; i < MAX_NOS ; i++){ 
-        for(int j = 0 ;j < MAX_NOS; j++)
-             printf("%d ", conf[i][j]);
-        printf("\n");
-    }
+    
     
     //Gera a matriz de conflito
     matconf = fazMatrizConf(conf, adj, tamAresta);

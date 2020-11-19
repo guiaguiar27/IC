@@ -823,10 +823,9 @@ int count_lines()
 
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
-  FILE *fl;    
-  int i ;  
-  int *pacotes, ** conf ;
-  int  tamAresta,tamNo , node_origin, node_destin, total_pacotes = 0; 
+  FILE *fl;      
+  int *pacotes, ** conf, **matconf ;
+  int  tamAresta,tamNo, i, node_origin, node_destin, total_pacotes = 0; 
 
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
@@ -840,13 +839,14 @@ int SCHEDULE_AUX(int **adj){
       } 
       for(int i = 0; i< MAX_NOS; i++) {
           adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
-      }
+      } 
       for(int i = 0 ; i < MAX_NOS ; i++){ 
           for(int j = 0 ; j< MAX_NOS; j++){  
               adj[i][j] = 0 ; 
           }
       }  
       i = 0;
+      // read the topology 
       while(!feof(fl)){      
               fscanf(fl,"%d %d",&node_origin, &node_destin);   
               printf(" %d-> %d\n",node_origin, node_destin);    
@@ -857,7 +857,8 @@ int SCHEDULE_AUX(int **adj){
                   } 
               } 
               if(feof(fl)) break ;
-          }
+          } 
+      // change the number of edges 
       tamAresta = i; 
 
       for(int i = 1; i < MAX_NOS ; i++){ 
@@ -869,7 +870,9 @@ int SCHEDULE_AUX(int **adj){
       pacotes = alocaPacotes(tamNo, adj); 
       for(int z = 1; z < tamNo; z++)
             total_pacotes += pacotes[z];
-      conf = mapGraphConf(adj, tamNo, tamAresta);
+      conf = mapGraphConf(adj, tamNo, tamAresta); 
+      matconf = fazMatrizConf(conf, adj, tamAresta); 
+
 }  
 return 0; 
 }
