@@ -57,7 +57,7 @@
 #include <stdlib.h> 
 #include  <time.h>
 #include "conf.h" 
-#define temp_canais 23
+#define temp_canais 16
 #define peso 1 
 #define MAX_NOS 11
 #define no_raiz 1 
@@ -819,7 +819,48 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
+}  
+
+/*------------------------------------------------------------------------------------------------------------*/
+int SCHEDULE_AUX(int **adj){ 
+  FILE *fl;   
+  int tamNo, tamAresta, node_origin, node_destin;
+    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+    LOG_PRINT("----- TSCH LOCK -----\n");
+    if(tsch_get_lock()){   
+      
+      tamNo = MAX_NOS ;  
+      tamAresta = MAX_NOS;    
+      fl = fopen(endereco, "r"); 
+      if(fl == NULL){
+          printf("The file was not opened\n");
+          return 0  ; 
+      } 
+      for(int i = 0; i< MAX_NOS; i++) {
+          adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
+      }
+      for(int i = 0 ; i < MAX_NOS ; i++){ 
+          for(int j = 0 ; j< MAX_NOS; j++){  
+              adj[i][j] = 0 ; 
+          }
+      }  
+      i = 0;
+      while(!feof(fl)){      
+              fscanf(fl,"%d %d",&node_origin, &node_destin);   
+              printf(" %d-> %d\n",node_origin, node_destin);    
+              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+                      adj[node_origin][node_destin] = 1;
+                      i++;
+                  } 
+              } 
+              if(feof(fl)) break ;
+          }
+      tamAresta = i;
 } 
+}
+/*------------------------------------------------------------------------------------------------------------*/
+
 
   
    
