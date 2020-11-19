@@ -824,12 +824,14 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;    
-  int i ; 
-  int  tamAresta,tamNo , node_origin, node_destin;
+  int i ;  
+  int *pacotes;
+  int  tamAresta,tamNo , node_origin, node_destin, total_pacotes = 0; 
+
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
     if(tsch_get_lock()){   
-      tamNo; 
+      tamNo = MAX_NOS; 
       tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
@@ -864,7 +866,9 @@ int SCHEDULE_AUX(int **adj){
             printf("\n");
       }
       LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta); 
-      pacotes = alocaPacotes(tamNo, adj);
+      pacotes = alocaPacotes(tamNo, adj); 
+      for(int z = 1; z < tamNo; z++)
+            total_pacotes += pacotes[z];
 }  
 return 0; 
 }
