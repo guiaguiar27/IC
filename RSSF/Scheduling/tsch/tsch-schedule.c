@@ -872,10 +872,15 @@ int SCHEDULE_AUX(int **adj){
             total_pacotes += pacotes[z];
       conf = mapGraphConf(adj, tamNo, tamAresta); 
       matconf = fazMatrizConf(conf, adj, tamAresta); 
-
-}  
-return 0; 
-}
+      printf("\nMatriz de adjacencia do grafo de conflito\n");
+      for(z = 0; z < tamAresta; z++){
+        for(i = 0; i < tamAresta; i++)
+            printf("%d ", matconf[z][i]);
+        printf("\n");
+      }  
+    }  
+  return 0; 
+  }
 /*------------------------------------------------------------------------------------------------------------*/
 
 
