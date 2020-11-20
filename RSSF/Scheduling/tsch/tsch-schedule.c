@@ -823,7 +823,7 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **aloca_canais, **matching;
+  int *pacotes, ** conf, **matconf, **aloca_canais ;// **matching;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
 
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
@@ -889,12 +889,12 @@ int SCHEDULE_AUX(int **adj){
 
     raiz = no_raiz; 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z]; 
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
-    for(z = 0; z < tamAresta; z++){
-        for(i = 0; i < tamAresta; i++)
-            printf("%d ", matching[z][i]);
-        printf("\n");
-      }  
+    // matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+    // for(z = 0; z < tamAresta; z++){
+    //     for(i = 0; i < tamAresta; i++)
+    //         printf("%d ", matching[z][i]);
+    //     printf("\n");
+    //   }  
     
 
 
