@@ -19,7 +19,7 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     
     //Seleciona o nó com maior carga pra ser transmitida
     do{
-        no_atual = rand() % num_no;
+        no_atual = rand()%num_no;
     }while(no_atual == raiz);
     
     for(x = 1; x < num_no; x++)
@@ -59,9 +59,9 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     int x, y, vetor[tam][2], **resultado, maior_peso, cont = 1, flg = 1;
 
     //Alocando e preenchendo com zeros a matriz do matching
-    resultado = (int**) malloc((tam_rede) * sizeof(int*));
+    resultado = (int**) malloc(tam_rede *sizeof(int*));
     for(x = 0; x < tam_rede; x++){
-        resultado[x] = (int*) malloc((tam_rede) * sizeof(int));
+        resultado[x] = (int*) malloc(tam_rede * sizeof(int));
         for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
     }
@@ -133,7 +133,7 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
     int noConf = 0;
 
     //Aloca a matriz
-    alocado = (int**) malloc((tam_aresta) * sizeof(int*));
+    alocado = (int**) malloc(tam_aresta * sizeof(int*));
     for(x = 0; x < tam_aresta; x++)
         alocado[x] = (int*) malloc(2 * sizeof(int));
     
