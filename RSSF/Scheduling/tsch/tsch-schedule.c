@@ -890,12 +890,12 @@ int SCHEDULE_AUX(int **adj){
 
     raiz = no_raiz; 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z]; 
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    matching = geraMaching(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
     
 
 
     
-    } //close the tsch_lock   
+    } //close the tsch_lock     
   return 0; 
   }
 /*------------------------------------------------------------------------------------------------------------*/
