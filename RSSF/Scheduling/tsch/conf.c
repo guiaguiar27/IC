@@ -13,10 +13,11 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
-    int x ;
-    int no_atual;
-    srand(time(NULL));
-    
+    int x ; 
+    random_init(node_id);
+    unsigned int no_atual = random_rand(); 
+    printf("sort %u",no_atual );
+   
     //Seleciona o nó com maior carga pra ser transmitida
     do{
         no_atual = rand()%num_no;
