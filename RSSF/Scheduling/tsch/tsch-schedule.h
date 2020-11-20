@@ -165,6 +165,5 @@ int tsch_num_nos();
 void teste(); 
 int count_lines(); 
 int SCHEDULE_AUX(int **adj); 
-int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz);
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
