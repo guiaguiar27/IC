@@ -18,14 +18,14 @@
     *   node: aresta selecionada para iniciar o matching 
     * 
     */
-   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz){
+   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz, int id, uint16_t node){
     /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ; 
     int no_atual; 
-    srand(time(NULL));
+    srand(node);
     
     //Seleciona o nó com maior carga pra ser transmitida
     do{

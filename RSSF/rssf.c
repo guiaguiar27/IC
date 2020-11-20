@@ -106,7 +106,6 @@ int main(){
         else
             flg = 1;
     }
-    raiz = z;
 
     //Por hora definimos ele manualmente
     raiz = no_raiz;
