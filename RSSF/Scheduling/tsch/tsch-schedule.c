@@ -55,7 +55,6 @@
 #include "sys/rtimer.h"
 #include <string.h>  
 #include <stdlib.h> 
-#include  <time.h>
 #include "conf.h" 
 #define temp_canais 16
 #define peso 1 
@@ -890,7 +889,7 @@ int SCHEDULE_AUX(int **adj){
 
     raiz = no_raiz; 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z]; 
-    matching = geraMaching(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
     
 
 
