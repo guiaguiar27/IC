@@ -687,7 +687,7 @@ int SCHEDULE(int **adj){
                 total_pacotes += pacotes[z];
 
 
-        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1);
         while(pacote_entregue < total_pacotes){
           //Aloca os canais
           for(x = 0; x < tamNo; x ++){
@@ -726,7 +726,7 @@ int SCHEDULE(int **adj){
           cont++;
           canal = 0;
           
-          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); 
         }
 
       
@@ -823,7 +823,7 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **aloca_canais ;// **matching;
+  int *pacotes, ** conf, **matconf, **aloca_canais , **matching;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
   uint16_t node;   
   node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1] + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
