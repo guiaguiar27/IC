@@ -18,7 +18,7 @@
     *   node: aresta selecionada para iniciar o matching 
     * 
     */
-   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz, int id, int  node){
+   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz, int  node){
     /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
