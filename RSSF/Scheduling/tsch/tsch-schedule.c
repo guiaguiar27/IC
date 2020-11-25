@@ -64,7 +64,7 @@
  
 /* Log configuration */
 #include "sys/log.h" 
-#include "sys/node-id.h"
+#include "lib/ramdom.h"
 #define LOG_MODULE "TSCH Sched"
 #define LOG_LEVEL LOG_LEVEL_MAC 
 // lista copia 
@@ -825,7 +825,7 @@ int count_lines()
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
   int *pacotes, ** conf, **matconf, **aloca_canais; // , **matching; 
-  int no_atual;
+  //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
   uint16_t node;   
   node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1] + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
@@ -863,7 +863,7 @@ int SCHEDULE_AUX(int **adj){
           } 
       // change the number of edges 
       tamAresta = i; 
-      random_init(node_id);
+      random_init(node);
       unsigned short r = random_rand(); 
       LOG_PRINT("%d",r);
       for(int i = 1; i < MAX_NOS ; i++){ 
