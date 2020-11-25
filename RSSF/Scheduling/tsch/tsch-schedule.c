@@ -63,7 +63,8 @@
 #define endereco "/home/user/contiki-ng/os/arvore.txt" 
  
 /* Log configuration */
-#include "sys/log.h"
+#include "sys/log.h" 
+#include "sys/node-id.h"
 #define LOG_MODULE "TSCH Sched"
 #define LOG_LEVEL LOG_LEVEL_MAC 
 // lista copia 
@@ -862,7 +863,9 @@ int SCHEDULE_AUX(int **adj){
           } 
       // change the number of edges 
       tamAresta = i; 
-
+      random_init(node_id);
+      unsigned short r = random_rand(); 
+      LOG_PRINT("%d",r);
       for(int i = 1; i < MAX_NOS ; i++){ 
           for(int j = 1 ;j < MAX_NOS; j++)
                 printf("%d     ", adj[i][j]);
@@ -890,11 +893,11 @@ int SCHEDULE_AUX(int **adj){
             aloca_canais[x][y] = -1;
       } 
 
-    raiz = no_raiz; 
+    raiz = no_raiz;  
+    LOG_PRINT(" raiz: %d", no_raiz);
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
 
-    srand(node);
-    no_atual = rand()%num_no;
+   
     // matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz, node); 
     // for(z = 0; z < tamAresta; z++){
     //   for(i = 0; i < tamAresta; i++)
