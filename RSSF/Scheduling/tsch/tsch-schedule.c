@@ -64,7 +64,7 @@
  
 /* Log configuration */
 #include "sys/log.h" 
-#include "lib/ramdom.h"
+//#include "lib/ramdom.h"
 #define LOG_MODULE "TSCH Sched"
 #define LOG_LEVEL LOG_LEVEL_MAC 
 // lista copia 
@@ -886,7 +886,7 @@ int SCHEDULE_AUX(int **adj){
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
 
    
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz, node); 
+    //matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz, node); 
     // for(z = 0; z < tamAresta; z++){
     //   for(i = 0; i < tamAresta; i++)
     //     printf("%d ", matching[z][i]);
