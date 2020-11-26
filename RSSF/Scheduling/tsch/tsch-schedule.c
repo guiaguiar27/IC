@@ -804,11 +804,11 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **matching , canal = 0;
+  int *pacotes, ** conf, **matconf, **matching,  **aloca_canais ;
   //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0 ;
   // auxiliar variables 
-  //int pacote_entregue = 0,cont = 0,  **aloca_canais, edge_selected, temp ; 
+  //int pacote_entregue = 0,cont = 0, edge_selected, temp, , canal = 0 ; 
   
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
@@ -877,8 +877,14 @@ int SCHEDULE_AUX(int **adj){
     LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
-    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);   
-
+    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
+    for(z = 0; z < tamAresta; z++){
+        for(i = 0; i < tamAresta; i++)
+            printf("%d ", matching[z][i]);
+        printf("\n");
+      }  
+  
+    
     // while(pacote_entregue < total_pacotes){
     //       //Aloca os canais
     //       for(x = 0; x < tamNo; x ++){
