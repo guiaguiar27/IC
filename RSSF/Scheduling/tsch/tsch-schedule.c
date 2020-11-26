@@ -591,12 +591,13 @@ int SCHEDULE(int **adj){
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
     z, i;                       //Variáveis temporárias
-    int **matching,             //Matching da rede
-    pacote_entregue = 0, 
+                                  
+    int pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária
-    int cont = 0;               //Time do slotframe
+    flg = 1;                    //Variável temporária 
+    int **matching = NULL;  //Matching da rede
+    int cont = 0;                //Time do slotframe
     int **aloca_canais,         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
@@ -607,12 +608,9 @@ int SCHEDULE(int **adj){
     struct tsch_slotframe *sf = list_head(slotframe_list); 
     FILE *fl;  
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
-    
-     
     LOG_PRINT("----- TSCH LOCK -----\n");
     if(tsch_get_lock()){   
-      
-      tamNo = MAX_NOS ;  
+      tamNo = MAX_NOS; 
       tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
@@ -621,13 +619,14 @@ int SCHEDULE(int **adj){
       } 
       for(int i = 0; i< MAX_NOS; i++) {
           adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
-      }
+      } 
       for(int i = 0 ; i < MAX_NOS ; i++){ 
           for(int j = 0 ; j< MAX_NOS; j++){  
               adj[i][j] = 0 ; 
           }
       }  
       i = 0;
+      // read the topology 
       while(!feof(fl)){      
               fscanf(fl,"%d %d",&node_origin, &node_destin);   
               printf(" %d-> %d\n",node_origin, node_destin);    
@@ -638,57 +637,44 @@ int SCHEDULE(int **adj){
                   } 
               } 
               if(feof(fl)) break ;
-          }
-      tamAresta = i;
-
+          } 
       for(int i = 1; i < MAX_NOS ; i++){ 
           for(int j = 1 ;j < MAX_NOS; j++)
                 printf("%d     ", adj[i][j]);
             printf("\n");
       }
-      LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta);
-      
-      pacotes = alocaPacotes(tamNo, adj);
-        //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
 
+      LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta); 
+      pacotes = alocaPacotes(tamNo, adj); 
+      for(int z = 1; z < tamNo; z++)
+            total_pacotes += pacotes[z];
       conf = mapGraphConf(adj, tamNo, tamAresta); 
-        
-        //Gera a matriz de conflito
-      matconf = fazMatrizConf(conf, adj, tamAresta);
+      matconf = fazMatrizConf(conf, adj, tamAresta); 
+      
+      printf("\nMatriz de adjacencia do grafo de conflito\n");
+      // print the confitos matrix 
+      // for(z = 0; z < tamAresta; z++){
+      //   for(i = 0; i < tamAresta; i++)
+      //       printf("%d ", matconf[z][i]);
+      //   printf("\n");
+      // }  
 
-        //Aloca o slotframe e o preenche com -1
       aloca_canais = (int**) malloc(16 * sizeof(int*));
-        
-      for(x = 0; x < 16; x++){
-          aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
-          for(y = 0; y < temp_canais; y++)
-              aloca_canais[x][y] = -1;
-      }
+      for( x = 0; x < 16; x++){
+        aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
+        for( y = 0; y < temp_canais; y++)
+            aloca_canais[x][y] = -1;
+      } 
 
-        //Busca pelo nó raiz da rede
-    for(z = 0; z < tamNo; z++){
-          for(i = 0; i < tamNo; i++)
-              if(adj[z][i] != 0){
-                  flg = 0;
-                  break;
-              }
-          if(flg)
-              break;
-          else
-              flg = 1;
-      }
-      raiz = z;
+    raiz = no_raiz;  
+    //LOG_PRINT(" raiz: %d", no_raiz);
+    // aloca pacotes 
+    for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
 
-      //Por hora definimos ele manualmente
-      raiz = no_raiz;
+   
 
-        //Guarda o total de pacotes a serem enviados pela
-        for(z = 1; z < tamNo; z++)
-            if(z != raiz)
-                total_pacotes += pacotes[z];
-
-
-        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1);
+       //matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); 
+       
         while(pacote_entregue < total_pacotes){
           //Aloca os canais
           for(x = 0; x < tamNo; x ++){
@@ -765,7 +751,6 @@ int SCHEDULE(int **adj){
 
 
 
-    tsch_release_lock();
     } 
    
   
@@ -862,10 +847,10 @@ int SCHEDULE_AUX(int **adj){
               if(feof(fl)) break ;
           } 
       // change the number of edges 
-      tamAresta = i; 
-      srand(node);
-      unsigned short r = random_rand(); 
-      LOG_PRINT("%d",r); 
+      // tamAresta = i; 
+      // srand(node);
+      // unsigned short r = random_rand(); 
+      // LOG_PRINT("%d",r); 
 
       for(int i = 1; i < MAX_NOS ; i++){ 
           for(int j = 1 ;j < MAX_NOS; j++)
