@@ -666,10 +666,10 @@ int SCHEDULE(){
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
-    for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];
+    for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];
     printf("\nMatriz de adjacencia do grafo de conflito\n");
     
-    for(z = 0; z < tamAresta; z++){
+    for(int z = 0; z < tamAresta; z++){
         for(i = 0; i < tamAresta; i++)
             printf("%d ", matconf[z][i]);
         printf("\n");
@@ -740,7 +740,6 @@ int SCHEDULE(){
         printf("\n"); 
     } 
    
-    printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot);
     
 
     return 0;
@@ -873,9 +872,9 @@ int SCHEDULE_AUX(int **adj){
     raiz = no_raiz;  
     LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
-    for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
+    for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
-    for(z = 0; z < tamAresta; z++){
+    for(int z = 0; z < tamAresta; z++){
         for(i = 0; i < tamAresta; i++)
             printf("%d ", matching[z][i]);
         printf("\n");
