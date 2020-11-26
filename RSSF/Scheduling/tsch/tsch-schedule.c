@@ -804,7 +804,7 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **aloca_canais, **matching; 
+  int *pacotes, ** conf, **matconf, **aloca_canais, **matching , **aloca_canais, canal = 0, edge_selected, temp;
   //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
   
@@ -875,7 +875,7 @@ int SCHEDULE_AUX(int **adj){
     LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
-    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, , raiz);   
+    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);   
 
         while(pacote_entregue < total_pacotes){
           //Aloca os canais
