@@ -13,21 +13,28 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
-    int x ;
+    int x ; 
+    static unint  k = 0 ; 
     int no_atual;
-    srand(time(NULL));
+    srand(k);
     
     //Seleciona o nó com maior carga pra ser transmitida
-    do{
+    no_atual = rand() % num_no;   
+    printf("sorted nó:%d\n",no_atual);
+    while(no_atual == raiz){ 
         no_atual = rand() % num_no;
-        printf("sorted nó:%d",no_atual);
-    }while(no_atual == raiz);
-    //printf("no atual:%d",no_atual);
+    }
+    // do{
+        
+        
+    // }while(no_atual == raiz); 
+    // //printf("no atual:%d",no_atual);
     for(x = 1; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
             no_atual = x;
     
-    //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
+    //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado 
+    k ++ ; 
     for(x = 0; x < num_aresta; x++)
         if(mapa_graf_conf[x][0] == no_atual)
             return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);

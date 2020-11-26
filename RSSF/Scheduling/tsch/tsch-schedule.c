@@ -863,14 +863,16 @@ int SCHEDULE_AUX(int **adj){
           } 
       // change the number of edges 
       tamAresta = i; 
-      random_init(node);
+      srand(node);
       unsigned short r = random_rand(); 
-      LOG_PRINT("%d",r);
+      LOG_PRINT("%d",r); 
+
       for(int i = 1; i < MAX_NOS ; i++){ 
           for(int j = 1 ;j < MAX_NOS; j++)
                 printf("%d     ", adj[i][j]);
             printf("\n");
       }
+
       LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta); 
       pacotes = alocaPacotes(tamNo, adj); 
       for(int z = 1; z < tamNo; z++)
@@ -895,10 +897,11 @@ int SCHEDULE_AUX(int **adj){
 
     raiz = no_raiz;  
     LOG_PRINT(" raiz: %d", no_raiz);
+    // aloca pacotes 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
 
    
-    // matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz, node); 
+    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz, node); 
     // for(z = 0; z < tamAresta; z++){
     //   for(i = 0; i < tamAresta; i++)
     //     printf("%d ", matching[z][i]);
