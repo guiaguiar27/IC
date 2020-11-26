@@ -804,9 +804,11 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **aloca_canais, **matching , **aloca_canais, canal = 0, edge_selected, temp;
+  int *pacotes, ** conf, **matconf, **matching , canal = 0;
   //int no_atual;
-  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0, pacote_entregue = 0,cont = 0  ; 
+  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0 ;
+  // auxiliar variables 
+  //int pacote_entregue = 0,cont = 0,  **aloca_canais, edge_selected, temp ; 
   
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
@@ -877,46 +879,46 @@ int SCHEDULE_AUX(int **adj){
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);   
 
-    while(pacote_entregue < total_pacotes){
-          //Aloca os canais
-          for(x = 0; x < tamNo; x ++){
-              for(y = 0; y < tamNo; y++){
-                  if(matching[x][y]){
-                      for(temp = 0; temp < tamAresta; temp++)
-                          if(conf[temp][0] == x && conf[temp][1] == y)
-                              break;
-                      edge_selected = temp;
-                      for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                          if(canal == 16)
-                              break;
-                          aloca_canais[canal][cont] = edge_selected; 
-                          canal++;
-                      }
-                  }
-                  if(canal == 16)
-                      break;
-              }
-              if(canal == 16)
-                  break;
-          }
+    // while(pacote_entregue < total_pacotes){
+    //       //Aloca os canais
+    //       for(x = 0; x < tamNo; x ++){
+    //           for(y = 0; y < tamNo; y++){
+    //               if(matching[x][y]){
+    //                   for(temp = 0; temp < tamAresta; temp++)
+    //                       if(conf[temp][0] == x && conf[temp][1] == y)
+    //                           break;
+    //                   edge_selected = temp;
+    //                   for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+    //                       if(canal == 16)
+    //                           break;
+    //                       aloca_canais[canal][cont] = edge_selected; 
+    //                       canal++;
+    //                   }
+    //               }
+    //               if(canal == 16)
+    //                   break;
+    //           }
+    //           if(canal == 16)
+    //               break;
+    //       }
           
-          printf("\nCanais alocados  | |");
-          printf("\n                \\   /");
-          printf("\n                 \\ /\n\n");
-          for(x = 0; x < 16; x++){
-              for(y = 0; y < temp_canais; y++)
-                  printf("%d  ", aloca_canais[x][y] + 1);
-              printf("\n");
-          }
-          printf("\n");
+    //       printf("\nCanais alocados  | |");
+    //       printf("\n                \\   /");
+    //       printf("\n                 \\ /\n\n");
+    //       for(x = 0; x < 16; x++){
+    //           for(y = 0; y < temp_canais; y++)
+    //               printf("%d  ", aloca_canais[x][y] + 1);
+    //           printf("\n");
+    //       }
+    //       printf("\n");
 
-          //Executa a primeira carga de transferência
-          executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
-          cont++;
-          canal = 0;
+    //       //Executa a primeira carga de transferência
+    //       executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+    //       cont++;
+    //       canal = 0;
           
-          matching =  geraMaching(pacotes, adj, matconf, conf,tamAresta, tamNo, raiz); 
-        }
+    //       matching =  geraMaching(pacotes, adj, matconf, conf,tamAresta, tamNo, raiz); 
+    //     }
     
 
 
