@@ -669,9 +669,13 @@ int SCHEDULE(int **adj){
     // aloca pacotes 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
 
-   
 
-       //matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); 
+
+      for(int i = 0 ; i <tamAresta ; i++) 
+        for(int j = 0; j < tamAresta ; j++) 
+          matching[i][j] = 0  
+          
+       /* matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); */
        
         while(pacote_entregue < total_pacotes){
           //Aloca os canais
@@ -710,8 +714,8 @@ int SCHEDULE(int **adj){
           executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
           cont++;
           canal = 0;
-          
-          matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); 
+          /* matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); */
+         
         }
 
       
