@@ -668,14 +668,7 @@ int SCHEDULE(int **adj){
     //LOG_PRINT(" raiz: %d", no_raiz);
     // aloca pacotes 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
-
-
-
-      for(int i = 0 ; i <tamAresta ; i++) 
-        for(int j = 0; j < tamAresta ; j++) 
-          matching[i][j] = 0  
-          
-       /* matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); */
+    matching =  geraMaching(pacotes, adj, matconf, conf,tamAresta, tamNo, raiz); 
        
         while(pacote_entregue < total_pacotes){
           //Aloca os canais
@@ -714,8 +707,8 @@ int SCHEDULE(int **adj){
           executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
           cont++;
           canal = 0;
-          /* matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz,1); */
-         
+          
+          matching =  geraMaching(pacotes, adj, matconf, conf,tamAresta, tamNo, raiz); 
         }
 
       
