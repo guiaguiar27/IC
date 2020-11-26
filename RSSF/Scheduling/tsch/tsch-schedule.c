@@ -590,12 +590,10 @@ int SCHEDULE(int **adj){
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
-                                  
+    z, i;                       //Variáveis temporárias                   
     int pacote_entregue = 0, 
     total_pacotes = 0, 
-    raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária 
+    raiz ;                   
     int **matching = NULL;  //Matching da rede
     int cont = 0;                //Time do slotframe
     int **aloca_canais,         //Slotframe
@@ -812,7 +810,7 @@ int SCHEDULE_AUX(int **adj){
   int *pacotes, ** conf, **matconf, **aloca_canais; // , **matching; 
   //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
-  uint16_t node;   
+  //uint16_t node;   
   node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1] + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
   
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
@@ -881,7 +879,7 @@ int SCHEDULE_AUX(int **adj){
       } 
 
     raiz = no_raiz;  
-    LOG_PRINT(" raiz: %d", no_raiz);
+    LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
     for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
 
