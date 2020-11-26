@@ -804,11 +804,9 @@ int count_lines()
 /*------------------------------------------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **aloca_canais; // , **matching; 
+  int *pacotes, ** conf, **matconf, **aloca_canais, **matching; 
   //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0; 
-  //uint16_t node;   
-  //node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1] + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
   
     adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
@@ -842,10 +840,8 @@ int SCHEDULE_AUX(int **adj){
               if(feof(fl)) break ;
           } 
       // change the number of edges 
-      // tamAresta = i; 
-      // srand(node);
-      // unsigned short r = random_rand(); 
-      // LOG_PRINT("%d",r); 
+      tamAresta = i; 
+      
 
       for(int i = 1; i < MAX_NOS ; i++){ 
           for(int j = 1 ;j < MAX_NOS; j++)
@@ -878,15 +874,49 @@ int SCHEDULE_AUX(int **adj){
     raiz = no_raiz;  
     LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
-    for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];  
+    for(z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
+    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, , raiz);   
 
-   
-    //matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz, node); 
-    // for(z = 0; z < tamAresta; z++){
-    //   for(i = 0; i < tamAresta; i++)
-    //     printf("%d ", matching[z][i]);
-    //   printf("\n");
-    // }  
+        while(pacote_entregue < total_pacotes){
+          //Aloca os canais
+          for(x = 0; x < tamNo; x ++){
+              for(y = 0; y < tamNo; y++){
+                  if(matching[x][y]){
+                      for(temp = 0; temp < tamAresta; temp++)
+                          if(conf[temp][0] == x && conf[temp][1] == y)
+                              break;
+                      edge_selected = temp;
+                      for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+                          if(canal == 16)
+                              break;
+                          aloca_canais[canal][cont] = edge_selected; 
+                          canal++;
+                      }
+                  }
+                  if(canal == 16)
+                      break;
+              }
+              if(canal == 16)
+                  break;
+          }
+          
+          printf("\nCanais alocados  | |");
+          printf("\n                \\   /");
+          printf("\n                 \\ /\n\n");
+          for(x = 0; x < 16; x++){
+              for(y = 0; y < temp_canais; y++)
+                  printf("%d  ", aloca_canais[x][y] + 1);
+              printf("\n");
+          }
+          printf("\n");
+
+          //Executa a primeira carga de transferência
+          executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+          cont++;
+          canal = 0;
+          
+          matching =  geraMaching(pacotes, adj, matconf, conf,tamAresta, tamNo, raiz); 
+        }
     
 
 
