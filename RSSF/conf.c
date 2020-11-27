@@ -16,7 +16,7 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     int x ; 
     static unint  k = 0 ; 
     int no_atual;
-    srand(k);
+    srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
     no_atual = rand() % num_no;   
@@ -31,7 +31,8 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     // //printf("no atual:%d",no_atual);
     for(x = 1; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
-            no_atual = x;
+            no_atual = x; 
+            printf("Nó selecionado: ");
     
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado 
     k ++ ; 
@@ -70,6 +71,8 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     resultado = (int**) malloc(tam_rede * sizeof(int*));
     for(x = 0; x < tam_rede; x++){
         resultado[x] = (int*) malloc(tam_rede * sizeof(int));
+    } 
+    for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
     }

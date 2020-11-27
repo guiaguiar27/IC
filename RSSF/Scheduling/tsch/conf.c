@@ -18,14 +18,14 @@
     *   node: aresta selecionada para iniciar o matching 
     * 
     */
-   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz, int  node){
+   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz){
     /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ; 
     int no_atual; 
-    srand(node);
+    srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
     do{
@@ -57,12 +57,14 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-    int x, y, vetor[tam][2], **resultado, maior_peso, cont = 1, flg = 1;
+    int x, y, vetor[tam][2], maior_peso, cont = 1, flg = 1;
 
     //Alocando e preenchendo com zeros a matriz do matching
-    resultado = (int**) malloc(tam_rede *sizeof(int*));
+    int **resultado = (int**) malloc(tam_rede * sizeof(int*));
     for(x = 0; x < tam_rede; x++){
         resultado[x] = (int*) malloc(tam_rede * sizeof(int));
+    } 
+    for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
     }
