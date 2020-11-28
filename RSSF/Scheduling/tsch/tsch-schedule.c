@@ -262,7 +262,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = current_link_handle ++ ; 
+        l->handle = current_link_handle++ ; 
         //l->handle = count_lines();  
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
