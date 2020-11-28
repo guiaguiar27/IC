@@ -82,13 +82,11 @@ initialize_tsch_schedule()
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset);
-  for (i = 0; i <  node_number ; ++i) { 
+  for (i = node_id ; i <  node_number ; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr;  
     uint16_t remote_id = i ; 
-    
-  
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
       addr.u8[j + 0] = remote_id >> 8;

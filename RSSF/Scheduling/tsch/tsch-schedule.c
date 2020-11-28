@@ -294,7 +294,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
                 + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              tsch_queue_write_in_file(node_neighbor, node);   
+              tsch_queue_write_in_file(node, node_neighbor);   
               
             }
           }
@@ -739,7 +739,7 @@ int SCHEDULE(int **adj){
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
         if(matching == NULL){  
           matching = (int **)malloc(MAX_NOS *sizeof(int*));
-          for(int i = 0; i < MAX_NOS  ; i++) {
+          for(int i = 0; i < MAX_NOS ; i++){
               matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
           }
           for(int i = 0 ; i < MAX_NOS ; i++){ 

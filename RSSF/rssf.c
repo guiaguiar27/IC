@@ -233,7 +233,7 @@ int main(){
 }
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
-    int x, y, z, i;
+    int i;
 
     for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
