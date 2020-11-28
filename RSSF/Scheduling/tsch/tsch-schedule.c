@@ -736,7 +736,8 @@ int SCHEDULE(int **adj){
     canal = 0 ;
     for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) 
-            aloca_canais[x][y] = canal ++;  
+            if (canal <= MAX_NOS) aloca_canais[x][y] = canal ++;   
+            
     }
     for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) 
