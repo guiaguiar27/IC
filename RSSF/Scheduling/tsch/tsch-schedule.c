@@ -250,7 +250,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else { 
-       // int static  current_link_handle = 0;
+       int static  current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -262,7 +262,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = count_lines();  
+        l->handle = current_link_handle ++ ; 
+        //l->handle = count_lines();  
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
@@ -630,7 +631,7 @@ int SCHEDULE(int **adj){
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf(" %d-> %d\n",node_origin, node_destin);    
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-            if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+            if (adj[node_origin][node_destin] == 0){
                 adj[node_origin][node_destin] = 1;
                 i++;
             } 
