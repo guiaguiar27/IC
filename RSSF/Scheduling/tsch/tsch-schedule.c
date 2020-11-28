@@ -733,6 +733,11 @@ int SCHEDULE(int **adj){
     printf("\n                \\   /");
     printf("\n                 \\ /\n\n");
     printf(" temp_canais =  %d\n",temp_canais);
+    canal = 0 ;
+    for(x = 0 ; x < 16; x++){
+        for(y = 0; y < temp_canais; y++) 
+            aloca_canais[x][y] = canal ++;  
+    }
     for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) 
             // linhas = tempo - coluna = canal  
