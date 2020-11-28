@@ -831,7 +831,7 @@ int count_lines()
 }   
 
 /*------------------------------------------------------------------------------------------------------------*/
-int SCHEDULE_AUX(int **adj){ 
+int SCHEDULE_AUX(){ 
   FILE *fl;      
   int *pacotes, ** conf, **matconf, **matching,  **aloca_canais ;
   //int no_atual;
@@ -839,7 +839,7 @@ int SCHEDULE_AUX(int **adj){
   // auxiliar variables 
   //int pacote_entregue = 0,cont = 0, edge_selected, temp, , canal = 0 ; 
   
-    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+    int **adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
     if(tsch_get_lock()){   
       tamNo = MAX_NOS; 
