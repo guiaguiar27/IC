@@ -583,10 +583,10 @@ int *alocaPacotes(int num_no, int **adj){
 
 
 /*-----------------------------------------------------------------------------------------------------*/
-int SCHEDULE(int **adj){       
+int SCHEDULE(){       
 
     int tamNo = MAX_NOS; 
-    adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+    int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
@@ -774,8 +774,12 @@ int SCHEDULE(int **adj){
      }
         
     
+  free(adj);  
+  free(conf); 
+  free(matconf); 
+  free(aloca_canais); 
 
-    return 0;
+  return 0;
 
 
 
@@ -831,7 +835,7 @@ int count_lines()
 }   
 
 /*------------------------------------------------------------------------------------------------------------*/
-int SCHEDULE_AUX(){ 
+int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
   int *pacotes, ** conf, **matconf, **matching,  **aloca_canais ;
   //int no_atual;
@@ -839,7 +843,7 @@ int SCHEDULE_AUX(){
   // auxiliar variables 
   //int pacote_entregue = 0,cont = 0, edge_selected, temp, , canal = 0 ; 
   
-    int **adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
     LOG_PRINT("----- TSCH LOCK -----\n");
     if(tsch_get_lock()){   
       tamNo = MAX_NOS; 
