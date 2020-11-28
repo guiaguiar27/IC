@@ -56,7 +56,7 @@
 #include <string.h>  
 #include <stdlib.h>  
 #include <stdio.h>
-#include "conf.h"  
+#include "conf.c"  
 #define temp_canais 16
 #define peso 1 
 #define MAX_NOS 11
@@ -597,7 +597,7 @@ int SCHEDULE(){
     raiz;                    //Variável temporária
     int cont = 0;               //Time do slotframe
     int **aloca_canais,         //Slotframe
-    x, y, canal = 0,            //Variáveis temporárias
+    x, y, canal = 0 ,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
    // char **nome_no,             //Nome dos nós no grafo da rede
           //Nom do arquivo contendo o grafo de conflito (não usado)
@@ -608,7 +608,7 @@ int SCHEDULE(){
     // inicia arquivo  
     FILE *fl;  
     tamAresta = MAX_NOS;    
-    fl = fopen(endereco, "r"); 
+    fl = fopen(endereco, "r");
     if(fl == NULL){
         printf("The file was not opened\n");
         return 0  ; 

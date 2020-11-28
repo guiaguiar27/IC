@@ -60,7 +60,7 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     int x, y, vetor[tam][2], maior_peso, cont = 1, flg = 1;
 
     //Alocando e preenchendo com zeros a matriz do matching
-    int **resultado = (int**) malloc(tam_rede * sizeof(int*));
+    int **resultado = (int**)malloc(tam_rede * sizeof(int*));
     for(x = 0; x < tam_rede; x++){
         resultado[x] = (int*) malloc(tam_rede * sizeof(int));
     } 
