@@ -553,7 +553,7 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 
 /*------------------------------------------------------------------------------------------------------------*/
 int *alocaPacotes(int num_no, int **adj){
- int *vetor, x, y, qtd_pacotes = 0;
+  int *vetor, x, y, qtd_pacotes = 0;
     vetor = (int*) malloc(num_no * sizeof(int));
     //Percorre o vetor de pacotes
     for(x = 0; x < num_no; x++){

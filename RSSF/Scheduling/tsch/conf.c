@@ -42,7 +42,7 @@
             return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
-    return ;
+    return NULL ;
 }
 int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int tam, int tam_rede, int node){
     
@@ -141,8 +141,8 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
         alocado[x] = (int*) malloc(2 * sizeof(int));
     
     //"Captura" as arestas e armazena
-    for(x = 1; x < tam_no; x++)
-        for(y = 1; y < tam_no; y++)
+    for(x = 0; x < tam_no; x++)
+        for(y = 0; y < tam_no; y++)
             if(mat[x][y] != 0){
                 alocado[noConf][0] = x;
                 alocado[noConf][1] = y;
