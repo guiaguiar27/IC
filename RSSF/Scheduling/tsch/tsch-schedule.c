@@ -250,7 +250,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else { 
-        //int current_link_handle = 0;
+       // int static  current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -554,7 +554,6 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 /*------------------------------------------------------------------------------------------------------------*/
 int *alocaPacotes(int num_no, int **adj){
   int *vetor, x, y, qtd_pacotes = 0; 
-  int real_size_node = num_no - 1 ; 
     vetor = (int*) malloc(num_no * sizeof(int));
     //Percorre o vetor de pacotes
     for(x = 0; x < num_no; x++){
@@ -677,7 +676,18 @@ int SCHEDULE(int **adj){
         printf("\n");
     }
 
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+    if(matching == NULL){  
+      matching = (int **)malloc(MAX_NOS *sizeof(int*))
+      for(int i = 0; i < MAX_NOS  ; i++) {
+          matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+      }
+      for(int i = 0 ; i < MAX_NOS ; i++){ 
+          for(int j = 0 ; j < MAX_NOS; j++){  
+              matching[i][j] = 0 ; 
+          }
+      }  
+    }
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
         for(x = 0; x < tamNo; x++){
@@ -726,7 +736,18 @@ int SCHEDULE(int **adj){
         cont++;
         canal = 0;
 
-        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);
+        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+        if(matching == NULL){  
+          matching = (int **)malloc(MAX_NOS *sizeof(int*))
+          for(int i = 0; i < MAX_NOS  ; i++) {
+              matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+          }
+          for(int i = 0 ; i < MAX_NOS ; i++){ 
+              for(int j = 0 ; j < MAX_NOS; j++){  
+                  matching[i][j] = 0 ; 
+              }
+          }  
+    }
     
     }
 
@@ -967,7 +988,3 @@ int SCHEDULE_AUX(int **adj){
   return 0; 
   }
 /*------------------------------------------------------------------------------------------------------------*/
-
-
-  
-   
