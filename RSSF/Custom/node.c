@@ -65,7 +65,8 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 1
 
-static void
+static void 
+
 initialize_tsch_schedule()
 {
   int i, j; 
@@ -134,8 +135,7 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
 
   PROCESS_BEGIN();
-
-  initialize_tsch_schedule();
+  if (node_id != 1) initialize_tsch_schedule();
   int **adj = NULL ; 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
