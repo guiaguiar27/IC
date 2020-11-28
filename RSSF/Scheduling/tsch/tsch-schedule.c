@@ -678,7 +678,7 @@ int SCHEDULE(int **adj){
 
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
     if(matching == NULL){  
-      matching = (int **)malloc(MAX_NOS *sizeof(int*))
+      matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
       for(int i = 0; i < MAX_NOS  ; i++) {
           matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
       }
@@ -738,7 +738,7 @@ int SCHEDULE(int **adj){
 
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
         if(matching == NULL){  
-          matching = (int **)malloc(MAX_NOS *sizeof(int*))
+          matching = (int **)malloc(MAX_NOS *sizeof(int*));
           for(int i = 0; i < MAX_NOS  ; i++) {
               matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
           }
