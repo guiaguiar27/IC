@@ -739,7 +739,36 @@ int SCHEDULE(){
              
         printf("\n"); 
     } 
-   
+   while(sf != NULL){  
+          LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+          struct tsch_link *l = NULL;  
+          for(x = 0 ; x<16; x++){ 
+            for(y = 0 ; y < temp_canais;y++){ 
+              //coordenadas[i][j] = rand()%16  ; 
+
+              l = memb_alloc(&link_memb); 
+              l = list_head(sf->links_list);        
+              while(l!= NULL){   
+                if(aloca_canais[x][y] == l->handle){
+                LOG_PRINT("---------------------------\n"); 
+                LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+                LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+                l-> timeslot = x; 
+                l-> channel_offset = y ;   
+                LOG_PRINT("----CHANGE-----\n"); 
+                LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                LOG_PRINT("-----------------------------\n");     
+                } 
+                l = list_item_next(l);
+              } 
+              
+            }
+          }    
+          sf = list_item_next(sf); 
+      }
+
     
 
     return 0;
