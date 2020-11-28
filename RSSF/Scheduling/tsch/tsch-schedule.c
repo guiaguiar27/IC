@@ -553,7 +553,8 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 
 /*------------------------------------------------------------------------------------------------------------*/
 int *alocaPacotes(int num_no, int **adj){
-  int *vetor, x, y, qtd_pacotes = 0;
+  int *vetor, x, y, qtd_pacotes = 0; 
+  int real_size_node = num_no - 1 ; 
     vetor = (int*) malloc(num_no * sizeof(int));
     //Percorre o vetor de pacotes
     for(x = 0; x < num_no; x++){
@@ -657,8 +658,8 @@ int SCHEDULE(int **adj){
     matconf = fazMatrizConf(conf, adj, tamAresta);
 
     //Aloca o slotframe e o preenche com -1
-    aloca_canais = (int**) malloc(16 * sizeof(int*));
-    for(x = 0; x < 16; x++){
+    aloca_canais = (int**) malloc(temp_canais * sizeof(int*));
+    for(x = 0; x < temp_canais; x++){
         aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
         for(y = 0; y < temp_canais; y++)
             aloca_canais[x][y] = -1;
@@ -667,7 +668,7 @@ int SCHEDULE(int **adj){
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
-    for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];
+    for(int z = 0; z < tamNo; z++) total_pacotes += pacotes[z];
     printf("\nMatriz de adjacencia do grafo de conflito\n");
     
     for(int z = 0; z < tamAresta; z++){
