@@ -756,11 +756,7 @@ int SCHEDULE(int **adj){
     printf("\n                 \\ /\n\n");
     printf(" temp_canais =  %d\n",temp_canais);
     canal = 0 ;
-    for(x = 0 ; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
-            if (canal <= MAX_NOS) aloca_canais[x][y] = canal ++;   
-            
-    }
+    
     for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) 
             // linhas = tempo - coluna = canal  
@@ -889,7 +885,7 @@ int SCHEDULE_AUX(int **adj){
               fscanf(fl,"%d %d",&node_origin, &node_destin);   
               printf(" %d-> %d\n",node_origin, node_destin);    
               if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
                       adj[node_origin][node_destin] = 1;
                       i++;
                   } 
