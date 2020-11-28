@@ -136,10 +136,11 @@ PROCESS_THREAD(node_process, ev, data)
   PROCESS_BEGIN();
 
   initialize_tsch_schedule();
+  int **adj = NULL ; 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-
+  
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
   }
@@ -147,7 +148,7 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
-    SCHEDULE(); 
+    SCHEDULE(adj); 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
       /* Send network uptime timestamp to the network root node */
