@@ -540,16 +540,15 @@ tsch_schedule_print(void)
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int  i;
 
-     for(i = 0; i < 16; i++){ 
-       
-        // if(aloca_canal[i][tempo] == -1)
-        //     continue;
-        // if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-        //     pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
-        //     pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
-        // }
+     for(i = 0; i < 16; i++){
+        if(aloca_canal[i][tempo] == -1)
+            continue;
+        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
+        }
         // if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-            (*pacote_entregue) += peso;
+        //     (*pacote_entregue) += peso;
     }
 }
 
