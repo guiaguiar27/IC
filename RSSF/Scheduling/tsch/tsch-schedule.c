@@ -738,7 +738,17 @@ int SCHEDULE(int **adj){
         printf("\n");
 
         //Executa a primeira carga de transferência
-        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
+      //  executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
+        // funcao executa desemcapsulada 
+        for(int i = 0 ; i < temp_canais; i++){ 
+           if(pacotes[conf[aloca_canais[i][cont]][0]] > 0){
+            pacotes[conf[aloca_canais[i][cont]][0]] -= peso;
+            pacotes[conf[aloca_canais[i][cont]][1]] += peso;
+            }
+          if(conf[aloca_canais[i][cont]][1] == no_raiz)
+              pacote_entregue += peso;
+        }
+       
         cont++;
         canal = 0;
 
@@ -779,7 +789,7 @@ int SCHEDULE(int **adj){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] == l->handle){
+          if(aloca_canais[x][y] + 1 == l->handle){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
