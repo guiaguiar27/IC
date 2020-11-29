@@ -583,10 +583,10 @@ int *alocaPacotes(int num_no, int **adj){
 
 
 /*-----------------------------------------------------------------------------------------------------*/
-int SCHEDULE(int **adj){       
+int SCHEDULE(){       
 
     int tamNo = MAX_NOS; 
-    adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+    int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
@@ -732,13 +732,13 @@ int SCHEDULE(int **adj){
         printf("\n");
 
         //Executa a primeira carga de transferência
-      //  executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
+         executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
         // funcao executa desemcapsulada 
         for(int i = 0 ; i < temp_canais; i++){ 
           printf(" Aloca_canais[i][cont]: %d",aloca_canais[i][cont] ); 
           printf("conf[aloca_canais[i][cont]][0]: %d", conf[aloca_canais[i][cont]][0]); 
           printf("pacotes[conf[aloca_canais[i][cont]][0]]: %d",pacotes[conf[aloca_canais[i][cont]][0]]); 
-          pacotes[conf[aloca_canais[i][cont]][0]] += 1;  
+          //pacotes[conf[aloca_canais[i][cont]][0]] += 1;  
           //  if(pacotes[conf[aloca_canais[i][cont]][0]] > 0){
           //   pacotes[conf[aloca_canais[i][cont]][0]] -= peso;
           //   pacotes[conf[aloca_canais[i][cont]][1]] += peso;

@@ -10,7 +10,7 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 int *alocaPacotes(int num_no); 
 int *alocaPacotes2(int num_no, int **adj); 
 
-int main(){    
+int rssf(){    
     int tamNo; 
     int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
@@ -278,4 +278,19 @@ int *alocaPacotes2(int num_no, int **adj){
     }
     
     return vetor;
-}  
+}   
+void main(){ 
+    int  ans = 0 ; 
+    for(int i = 0; i< 10; i++){  
+        
+        printf("Digite 1 para continuar");
+        scanf("%d",&ans);
+        if(ans == 1){ 
+            break;
+        }   
+        else { 
+            rssf(); 
+        }
+
+    } 
+}
