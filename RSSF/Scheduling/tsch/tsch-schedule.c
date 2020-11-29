@@ -539,21 +539,15 @@ tsch_schedule_print(void)
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int  i;
-    int index_aux1, index_aux2 ; 
      for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
             continue; 
-        index_aux1 = aloca_canal[i][tempo]; 
-        printf("Index:%d \n", index_aux1); 
-        index_aux2 = mapa_graf_conf[index_aux1][0]; 
-        printf("Index2- mapa-graph-conf: %d \n",index_aux2); 
-        printf("pacotes na posição I1 e I2: %d \n", pacotes[index_aux2]);
-        // if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-        //     pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
-        //     pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
-        // }
-        // if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-        //      (*pacote_entregue) += peso;
+        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
+        }
+        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
+             (*pacote_entregue) += peso;
     }
 }
 
@@ -741,12 +735,16 @@ int SCHEDULE(int **adj){
       //  executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
         // funcao executa desemcapsulada 
         for(int i = 0 ; i < temp_canais; i++){ 
-           if(pacotes[conf[aloca_canais[i][cont]][0]] > 0){
-            pacotes[conf[aloca_canais[i][cont]][0]] -= peso;
-            pacotes[conf[aloca_canais[i][cont]][1]] += peso;
-            }
-          if(conf[aloca_canais[i][cont]][1] == no_raiz)
-              pacote_entregue += peso;
+          printf(" Aloca_canais[i][cont]: %d",aloca_canais[i][cont] ); 
+          printf("conf[aloca_canais[i][cont]][0]: %d", conf[aloca_canais[i][cont]][0]); 
+          printf("pacotes[conf[aloca_canais[i][cont]][0]]: %d",pacotes[conf[aloca_canais[i][cont]][0]]); 
+          pacotes[conf[aloca_canais[i][cont]][0]] += 1;  
+          //  if(pacotes[conf[aloca_canais[i][cont]][0]] > 0){
+          //   pacotes[conf[aloca_canais[i][cont]][0]] -= peso;
+          //   pacotes[conf[aloca_canais[i][cont]][1]] += peso;
+          //   }
+          // if(conf[aloca_canais[i][cont]][1] == no_raiz)
+          //     pacote_entregue += peso;
         }
        
         cont++;
@@ -812,6 +810,7 @@ int SCHEDULE(int **adj){
   free(conf); 
   free(matconf); 
   free(aloca_canais); 
+  free(pacotes); 
 
   return 0;
 
