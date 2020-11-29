@@ -539,16 +539,21 @@ tsch_schedule_print(void)
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
     int  i;
-
+    int index_aux1, index_aux2 ; 
      for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
-            continue;
-        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
-            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
-        }
+            continue; 
+        index_aux1 = aloca_canal[i][tempo]; 
+        printf("Index:%d \n", index_aux1); 
+        index_aux2 = mapa_graf_conf[index_aux1][0]; 
+        printf("Index2- mapa-graph-conf: %d \n",index_aux2); 
+        printf("pacotes na posição I1 e I2: %d \n", pacotes[index_aux2]);
+        // if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+        //     pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+        //     pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
+        // }
         // if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
-        //     (*pacote_entregue) += peso;
+        //      (*pacote_entregue) += peso;
     }
 }
 
