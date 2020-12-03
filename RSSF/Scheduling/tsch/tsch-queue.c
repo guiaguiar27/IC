@@ -615,14 +615,14 @@ int tsch_neighbour_maping_init_matrix(int **coordenadas){
 /*---------------------------------------------------------------------------*/  
 // função usada para ler a topologia e escrever em um arquivo  
 void tsch_queue_write_in_file(int n_origin, int n_destin){ 
-   FILE *fl; 
-  fl = fopen(endereco, "a");
-  if(fl == NULL){
+  FILE *file; 
+  file = fopen(endereco, "a");
+  if(file == NULL){
         printf("The file was not opened\n");
         return ; 
   } 
-  fprintf(fl, "%d %d\n",n_origin,n_destin);
-  fclose(fl);
+  fprintf(file, "%d %d\n",n_origin,n_destin);
+  fclose(file);
 } 
 /*---------------------------------------------------------------------------*/  
 
