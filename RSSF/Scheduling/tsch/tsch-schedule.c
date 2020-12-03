@@ -875,9 +875,9 @@ int SCHEDULE_AUX(int **adj){
   // auxiliar variables 
   //int pacote_entregue = 0,cont = 0, edge_selected, temp, , canal = 0 ; 
   
-    adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
-    LOG_PRINT("----- TSCH LOCK -----\n");
-    if(tsch_get_lock()){   
+  adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+  LOG_PRINT("----- TSCH LOCK -----\n");
+  if(tsch_get_lock()){   
       tamNo = MAX_NOS; 
       tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
@@ -931,8 +931,8 @@ int SCHEDULE_AUX(int **adj){
         printf("\n");
       }  
 
-      aloca_canais = (int**) malloc(16 * sizeof(int*));
-      for( x = 0; x < 16; x++){
+      aloca_canais = (int**) malloc(temp_canais * sizeof(int*));
+      for( x = 0; x < temp_canais; x++){
         aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
         for( y = 0; y < temp_canais; y++)
             aloca_canais[x][y] = -1;
@@ -943,6 +943,7 @@ int SCHEDULE_AUX(int **adj){
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
+    
     for(int z = 0; z < tamAresta; z++){
         for(i = 0; i < tamAresta; i++)
             printf("%d ", matching[z][i]);
@@ -950,6 +951,32 @@ int SCHEDULE_AUX(int **adj){
       }  
   
      
-  return 0; 
   }
+  return 0; 
+   
+  } 
+
+/*------------------------------------------------------------------------------------------------------------*/
+int teste_matrix(){  
+  uint16_t node;  
+   node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+  int **adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+  for(int i = 0 ; i < MAX_NOS ; i++){ 
+    adj[i] = (int*)malloc(MAX_NOS * sizeof(int)); 
+  }  
+  srand(node); 
+  for(int i = 0; i < MAX_NOS; i++){ 
+    for(int j = 0; j< MAX_NOS; j++){ 
+      adj[i][j] = rand()%MAX_NOS;
+    }
+  } 
+  for(int i = 0; i < MAX_NOS; i++){ 
+    for(int j = 0; j< MAX_NOS; j++){ 
+      printf("%d",adj[i][j]);
+    }
+  }
+  
+
+}
 /*------------------------------------------------------------------------------------------------------------*/
