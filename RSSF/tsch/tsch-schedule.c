@@ -250,12 +250,12 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else {
-        static int current_link_handle = 0;
+        //static int current_link_handle = 0;
         struct tsch_neighbor *n;
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        l->handle = current_link_handle++;
+        l->handle = count_lines();
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -869,5 +869,18 @@ void tsch_write_in_file(int n_origin, int n_destin){
   fclose(file);
 } 
 /*---------------------------------------------------------------------------*/
+int count_lines() 
+{ 
+    FILE *fp; 
+    int count = 1;    
+    char c;  
+    fp = fopen(endereco, "r"); 
+    if (fp == NULL) return 0; 
+    for (c = getc(fp); c != EOF; c = getc(fp)) 
+        if (c == '\n') 
+            count = count + 1; 
+    fclose(fp); 
+    return count; 
+}   
 
 /** @} */
