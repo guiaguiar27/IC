@@ -250,7 +250,6 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else {
-        //static int current_link_handle = 0;
         struct tsch_neighbor *n;
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l);
@@ -710,17 +709,17 @@ int SCHEDULE(int **adj){
 
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
     //verify matching
-    if(matching == NULL){  
-      matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
-      for(int i = 0; i < MAX_NOS  ; i++) {
-          matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
-      }
-      for(int i = 0 ; i < MAX_NOS ; i++){ 
-          for(int j = 0 ; j < MAX_NOS; j++){  
-              matching[i][j] = 0 ; 
-          }
-      }  
-    }
+    // if(matching == NULL){  
+    //   matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
+    //   for(int i = 0; i < MAX_NOS  ; i++) {
+    //       matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+    //   }
+    //   for(int i = 0 ; i < MAX_NOS ; i++){ 
+    //       for(int j = 0 ; j < MAX_NOS; j++){  
+    //           matching[i][j] = 0 ; 
+    //       }
+    //   }  
+    // }
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
         for(x = 0; x < tamNo; x++){
@@ -771,30 +770,24 @@ int SCHEDULE(int **adj){
           printf(" Aloca_canais[i][cont]: %d",aloca_canais[i][cont] ); 
           printf("conf[aloca_canais[i][cont]][0]: %d", conf[aloca_canais[i][cont]][0]); 
           printf("pacotes[conf[aloca_canais[i][cont]][0]]: %d",pacotes[conf[aloca_canais[i][cont]][0]]); 
-          //pacotes[conf[aloca_canais[i][cont]][0]] += 1;  
-          //  if(pacotes[conf[aloca_canais[i][cont]][0]] > 0){
-          //   pacotes[conf[aloca_canais[i][cont]][0]] -= peso;
-          //   pacotes[conf[aloca_canais[i][cont]][1]] += peso;
-          //   }
-          // if(conf[aloca_canais[i][cont]][1] == no_raiz)
-          //     pacote_entregue += peso;
+          
         }
        
         cont++;
         canal = 0;
 
         matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
-        if(matching == NULL){  
-          matching = (int **)malloc(MAX_NOS *sizeof(int*));
-          for(int i = 0; i < MAX_NOS ; i++){
-              matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
-          }
-          for(int i = 0 ; i < MAX_NOS ; i++){ 
-              for(int j = 0 ; j < MAX_NOS; j++){  
-                  matching[i][j] = 0 ; 
-              }
-          }  
-    }
+        // if(matching == NULL){  
+        //   matching = (int **)malloc(MAX_NOS *sizeof(int*));
+        //   for(int i = 0; i < MAX_NOS ; i++){
+        //       matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+        //   }
+        //   for(int i = 0 ; i < MAX_NOS ; i++){ 
+        //       for(int j = 0 ; j < MAX_NOS; j++){  
+        //           matching[i][j] = 0 ; 
+        //       }
+        //   }  
+        // }
     
     }
 
