@@ -583,8 +583,11 @@ int *alocaPacotes(int num_no, int **adj){
 
 
 /*-----------------------------------------------------------------------------------------------------*/
-int SCHEDULE(adj){       
-
+int SCHEDULE(int **adj){       
+    adj = (int**)malloc(MAX_NOS * sizeof(int*));    
+    for(int i = 0; i < MAX_NOS  ; i++) {
+        adj[i] = (int *)malloc( MAX_NOS * sizeof(int));
+    }
     int tamNo = MAX_NOS; 
     
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
@@ -598,8 +601,6 @@ int SCHEDULE(adj){
     int **aloca_canais,         //Slotframe
     x, y, canal = 0 ,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-   // char **nome_no,             //Nome dos nós no grafo da rede
-          //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
     int node_origin, node_destin ;  
     struct tsch_slotframe *sf = list_head(slotframe_list);
@@ -674,6 +675,7 @@ int SCHEDULE(adj){
     }
 
     matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+    //verify matching
     if(matching == NULL){  
       matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
       for(int i = 0; i < MAX_NOS  ; i++) {
@@ -947,52 +949,7 @@ int SCHEDULE_AUX(int **adj){
         printf("\n");
       }  
   
-    
-    // while(pacote_entregue < total_pacotes){
-    //       //Aloca os canais
-    //       for(x = 0; x < tamNo; x ++){
-    //           for(y = 0; y < tamNo; y++){
-    //               if(matching[x][y]){
-    //                   for(temp = 0; temp < tamAresta; temp++)
-    //                       if(conf[temp][0] == x && conf[temp][1] == y)
-    //                           break;
-    //                   edge_selected = temp;
-    //                   for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-    //                       if(canal == 16)
-    //                           break;
-    //                       aloca_canais[canal][cont] = edge_selected; 
-    //                       canal++;
-    //                   }
-    //               }
-    //               if(canal == 16)
-    //                   break;
-    //           }
-    //           if(canal == 16)
-    //               break;
-    //       }
-          
-    //       printf("\nCanais alocados  | |");
-    //       printf("\n                \\   /");
-    //       printf("\n                 \\ /\n\n");
-    //       for(x = 0; x < 16; x++){
-    //           for(y = 0; y < temp_canais; y++)
-    //               printf("%d  ", aloca_canais[x][y] + 1);
-    //           printf("\n");
-    //       }
-    //       printf("\n");
-
-    //       //Executa a primeira carga de transferência
-    //       executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes);
-    //       cont++;
-    //       canal = 0;
-          
-    //       matching =  geraMaching(pacotes, adj, matconf, conf,tamAresta, tamNo, raiz); 
-    //     }
-    
-
-
-    
-    } //close the tsch_lock     
+     
   return 0; 
   }
 /*------------------------------------------------------------------------------------------------------------*/
