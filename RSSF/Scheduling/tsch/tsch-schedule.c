@@ -583,10 +583,9 @@ int *alocaPacotes(int num_no, int **adj){
 
 
 /*-----------------------------------------------------------------------------------------------------*/
-int SCHEDULE(){       
+int SCHEDULE(adj){       
 
     int tamNo = MAX_NOS; 
-    int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
@@ -615,9 +614,7 @@ int SCHEDULE(){
         return 0  ; 
     } 
     // matriz  
-    for(int i = 0; i < MAX_NOS  ; i++) {
-        adj[i] = (int *)malloc( MAX_NOS * sizeof(int));
-    }
+   
     for(int i = 0 ; i < MAX_NOS ; i++){ 
         for(int j = 0 ; j < MAX_NOS; j++){  
             adj[i][j] = 0 ; 
