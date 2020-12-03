@@ -38,7 +38,8 @@
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
-#include "sys/node-id.h" 
+#include "sys/node-id.h"  
+#include <stdlib.h>
 
 
 #include "sys/log.h"
@@ -134,7 +135,10 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
   initialize_tsch_schedule();
-  
+  int **adj = (int**)malloc(MAX_NOS * sizeof(int*));    
+    for(int i = 0; i < MAX_NOS  ; i++) {
+        adj[i] = (int *)malloc( MAX_NOS * sizeof(int));
+    }
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
@@ -146,7 +150,7 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
-    SCHEDULE(); 
+    SCHEDULE(adj); 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
