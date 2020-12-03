@@ -46,7 +46,7 @@
 
 #include "net/mac/tsch/tsch-asn.h"
 #include "lib/list.h"
-#include "lib/ringbufindex.h" 
+#include "lib/ringbufindex.h"
 
 /********** Data types **********/
 
@@ -107,10 +107,6 @@ struct tsch_packet {
 
 /** \brief TSCH neighbor information */
 struct tsch_neighbor {
-  /* Neighbors are stored as a list: "next" must be the first field */
-  struct tsch_neighbor *next;
-  linkaddr_t addr; /* MAC address of the neighbor */
-  linkaddr_t addr_neighbor ;  
   uint8_t is_broadcast; /* is this neighbor a virtual neighbor used for broadcast (of data packets or EBs) */
   uint8_t is_time_source; /* is this neighbor a time source? */
   uint8_t backoff_exponent; /* CSMA backoff exponent */
@@ -156,16 +152,7 @@ struct input_packet {
   int len; /* Packet len */
   int16_t rssi; /* RSSI for this packet */
   uint8_t channel; /* Channel we received the packet on */
-}; 
-/** \brief Adjacence matrix for run the scheduel  */
+};
 
-/*
-struct Adjacency_matrix{        
-    int Nodes;  
-    int Edges; 
-    LIST_STRUCT(topology_list);    
-
-};  
- */ 
 #endif /* __TSCH_CONF_H__ */
 /** @} */

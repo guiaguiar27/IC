@@ -8,34 +8,6 @@
     * num_no: número de nós do grafo da rede
     * num_aresta: nº de arestas do grafo da rede
     */
-int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz){
-    /*
-    * x, y: índices de acesso à matriz
-    * no_atual: último nó folha usado para iniciar o matching
-    */
-    int x ;
-    int no_atual;
-    srand(time(NULL));
-    
-    //Seleciona o nó com maior carga pra ser transmitida
-    do{
-        no_atual = rand() % num_no;
-    }while(no_atual == raiz);
-    
-    for(x = 0; x < num_no; x++)
-        if(pacotes[x] > pacotes[no_atual] && x != raiz)
-            no_atual = x;
-
-    printf("\nno atual %d\n", no_atual);
-    
-    //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
-    for(x = 0; x < num_aresta; x++)
-        if(mapa_graf_conf[x][0] == no_atual)
-            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
-
-    printf("Caímos no pior caso\n");
-    return NULL;
-}
 
 
     /*
@@ -43,8 +15,35 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     *   graf_conf: matriz de ajacência do grafo de conflito
     *   tam: tamanho do grafo de conflito
     *   tam_rede: tamanho do grafo da rede
-    *   node: aresta selecionada para iniciar o matching
+    *   node: aresta selecionada para iniciar o matching 
+    * 
     */
+   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz){
+    /*
+    * x, y: índices de acesso à matriz
+    * no_atual: último nó folha usado para iniciar o matching
+    */
+    int x ; 
+    int no_atual; 
+    srand(time(NULL));
+    
+    //Seleciona o nó com maior carga pra ser transmitida
+    do{
+        no_atual = rand()%num_no;
+    }while(no_atual == raiz);
+    
+    for(x = 1; x < num_no; x++)
+        if(pacotes[x] > pacotes[no_atual] && x != raiz)
+            no_atual = x;
+    
+    //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
+    for(x = 0; x < num_aresta; x++)
+        if(mapa_graf_conf[x][0] == no_atual)
+            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
+
+    printf("Caímos no pior caso\n");
+    return NULL ;
+}
 int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int tam, int tam_rede, int node){
     
     /*
@@ -58,12 +57,14 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-    int x, y, vetor[tam][2], **resultado, maior_peso, cont = 1, flg = 1;
+    int x, y, vetor[tam][2], maior_peso, cont = 1, flg = 1;
 
     //Alocando e preenchendo com zeros a matriz do matching
-    resultado = (int**) malloc((tam_rede) * sizeof(int*));
+    int **resultado = (int**)malloc(tam_rede * sizeof(int*));
     for(x = 0; x < tam_rede; x++){
-        resultado[x] = (int*) malloc((tam_rede) * sizeof(int));
+        resultado[x] = (int*) malloc(tam_rede * sizeof(int));
+    } 
+    for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
     }
@@ -135,7 +136,7 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
     int noConf = 0;
 
     //Aloca a matriz
-    alocado = (int**) malloc((tam_aresta) * sizeof(int*));
+    alocado = (int**) malloc(tam_aresta * sizeof(int*));
     for(x = 0; x < tam_aresta; x++)
         alocado[x] = (int*) malloc(2 * sizeof(int));
     

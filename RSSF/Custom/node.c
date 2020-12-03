@@ -82,7 +82,7 @@ initialize_tsch_schedule()
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset);
+      slot_offset, channel_offset,0);
   for (i = 1 ; i <  node_number ; ++i) { 
 
     uint8_t link_options;
@@ -101,7 +101,7 @@ initialize_tsch_schedule()
     tsch_schedule_add_link(sf_common,
         link_options,
         LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset);
+        slot_offset, channel_offset,0);
   }
 }
 
@@ -135,7 +135,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
   initialize_tsch_schedule();
-  //int **adj = NULL; 
+  int **adj = NULL; 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
@@ -147,8 +147,8 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
-    //SCHEDULE(adj); 
-    if(node_id == 1) teste_matriz; 
+    SCHEDULE(adj); 
+    //if(node_id == 1) teste_matriz; 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */

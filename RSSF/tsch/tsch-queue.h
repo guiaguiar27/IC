@@ -72,6 +72,11 @@ struct tsch_neighbor *tsch_queue_get_nbr(const linkaddr_t *addr);
  */
 struct tsch_neighbor *tsch_queue_get_time_source(void);
 /**
+ * \brief Get the address of a neighbor.
+ * \return The link-layer address of the neighbor.
+ */
+linkaddr_t *tsch_queue_get_nbr_address(const struct tsch_neighbor *);
+/**
  * \brief Update TSCH time source
  * \param new_addr The address of the new TSCH time source
  */
@@ -92,11 +97,11 @@ struct tsch_packet *tsch_queue_add_packet(const linkaddr_t *addr, uint8_t max_tr
  */
 int tsch_queue_global_packet_count(void);
 /**
- * \brief Returns the number of packets currently a given neighbor queue
- * \param addr The link-layer address of the neighbor we are interested in
+ * \brief Returns the number of packets currently a given neighbor queue (by pointer)
+ * \param n The neighbor we are interested in
  * \return The number of packets in the neighbor's queue
  */
-int tsch_queue_packet_count(const linkaddr_t *addr);
+int tsch_queue_nbr_packet_count(const struct tsch_neighbor *n);
 /**
  * \brief Remove first packet from a neighbor queue. The packet is stored in a separate
  * dequeued packet list, for later processing.
@@ -178,10 +183,6 @@ void tsch_queue_update_all_backoff_windows(const linkaddr_t *dest_addr);
  * \brief Initialize TSCH queue module
  */
 void tsch_queue_init(void);
-void tsch_neighbour_maping(); 
-int tsch_neighbour_maping_init_matrix(int **coordenadas);
- 
-void print_matrix(int **Matriz); 
-void escreve_arq(int n_origin, int n_destin); 
+
 #endif /* __TSCH_QUEUE_H__ */
 /** @} */
