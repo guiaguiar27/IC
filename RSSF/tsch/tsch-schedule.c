@@ -285,10 +285,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               n->dedicated_tx_links_count++; 
               node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-              node_neighbor =  n->addr.u8[LINKADDR_SIZE - 1]
-                + (n->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
+                + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              tsch_queue_write_in_file(node, node_neighbor);   
+              tsch_write_in_file(node, node_neighbor);   
                           }
           }
         }
