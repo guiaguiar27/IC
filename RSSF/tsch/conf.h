@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> 
-
-#include <time.h>  
+#include "lib/random.h"
 
 int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz);
 

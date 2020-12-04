@@ -148,7 +148,7 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     LOG_PRINT("-----------------------------");     
-    LOG_PRINT("NO gerado: %d",random_rand() % SEND_INTERVAL);     
+    LOG_PRINT("NO gerado: %u",random_rand() % 10);     
     LOG_PRINT("-----------------------------\n");
        // SCHEDULE(adj); 
     //if(node_id == 1) teste_matriz; 

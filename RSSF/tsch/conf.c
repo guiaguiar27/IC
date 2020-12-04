@@ -24,12 +24,10 @@
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ; 
-    int no_atual; 
-    srand(time(NULL));
-    
+    unsigned short  no_atual; 
     //Seleciona o nó com maior carga pra ser transmitida
     do{
-        no_atual = rand()%num_no;
+        no_atual = random_rand() % num_no;
     }while(no_atual == raiz);
     
     for(x = 1; x < num_no; x++)
