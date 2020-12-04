@@ -697,7 +697,7 @@ int SCHEDULE(int **adj){
     
     }
     raiz = no_raiz;
-
+    LOG_PRINT(" Raiz %d",raiz);
     //Guarda o total de pacotes a serem enviados pela
     for(int z = 0; z < tamNo; z++) total_pacotes += pacotes[z];
     printf("\nMatriz de adjacencia do grafo de conflito\n");
