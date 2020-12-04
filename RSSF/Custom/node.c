@@ -147,8 +147,10 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
-    generate_random(node_id);
-   // SCHEDULE(adj); 
+    LOG_PRINT("-----------------------------");     
+    LOG_PRINT("NO gerado: %d",random_rand() % SEND_INTERVAL);     
+    LOG_PRINT("-----------------------------\n");
+       // SCHEDULE(adj); 
     //if(node_id == 1) teste_matriz; 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){

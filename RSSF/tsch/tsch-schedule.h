@@ -166,8 +166,7 @@ int *alocaPacotes(int num_no, int **adj);
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
 int tsch_num_nos();  
 void tsch_write_in_file(int n_origin, int n_destin);  
-int count_lines();  
-void generate_random(int node);    
+int count_lines();   
 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
