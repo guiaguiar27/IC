@@ -27,7 +27,8 @@
     unsigned short  no_atual; 
     //Seleciona o nó com maior carga pra ser transmitida
     do{
-        no_atual = random_rand() % num_no;
+        no_atual = random_rand() % num_no; 
+        printf("No sorteado: %u",no_atual);
     }while(no_atual == raiz);
     
     for(x = 1; x < num_no; x++)
