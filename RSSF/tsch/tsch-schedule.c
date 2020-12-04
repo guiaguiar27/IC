@@ -626,7 +626,7 @@ int SCHEDULE(int **adj){
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,i;                       //Variáveis temporárias
-    int **matching,             //Matching da rede
+    int **matching = NULL,             //Matching da rede
     pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz;                    //Variável temporária
@@ -707,19 +707,19 @@ int SCHEDULE(int **adj){
         printf("\n");
     }
 
-    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+    //matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
     //verify matching
-    // if(matching == NULL){  
-    //   matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
-    //   for(int i = 0; i < MAX_NOS  ; i++) {
-    //       matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
-    //   }
-    //   for(int i = 0 ; i < MAX_NOS ; i++){ 
-    //       for(int j = 0 ; j < MAX_NOS; j++){  
-    //           matching[i][j] = 0 ; 
-    //       }
-    //   }  
-    // }
+    if(matching == NULL){  
+      matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
+      for(int i = 0; i < MAX_NOS  ; i++) {
+          matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+      }
+      for(int i = 0 ; i < MAX_NOS ; i++){ 
+          for(int j = 0 ; j < MAX_NOS; j++){  
+              matching[i][j] = 0 ; 
+          }
+      }  
+    }
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
         for(x = 0; x < tamNo; x++){
@@ -764,7 +764,7 @@ int SCHEDULE(int **adj){
         printf("\n");
 
         //Executa a primeira carga de transferência
-         executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
+        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
         // funcao executa desemcapsulada 
         for(int i = 0 ; i < temp_canais; i++){ 
           printf(" Aloca_canais[i][cont]: %d",aloca_canais[i][cont] ); 
@@ -776,18 +776,19 @@ int SCHEDULE(int **adj){
         cont++;
         canal = 0;
 
-        matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
-        // if(matching == NULL){  
-        //   matching = (int **)malloc(MAX_NOS *sizeof(int*));
-        //   for(int i = 0; i < MAX_NOS ; i++){
-        //       matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
-        //   }
-        //   for(int i = 0 ; i < MAX_NOS ; i++){ 
-        //       for(int j = 0 ; j < MAX_NOS; j++){  
-        //           matching[i][j] = 0 ; 
-        //       }
-        //   }  
-        // }
+    //    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+        //if(matching == NULL){  
+         // matching = (int **)malloc(MAX_NOS *sizeof(int*));
+         // for(int i = 0; i < MAX_NOS ; i++){
+         //     matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+         /// }
+          for(int i = 0 ; i < MAX_NOS ; i++){ 
+              for(int j = 0 ; j < MAX_NOS; j++){  
+                  if(i == 2 && j = 3) matching[i][j] = 1; 
+                  else matching[i][j] = 0 ; 
+              }
+          }  
+        //}
     
     }
 
