@@ -874,6 +874,13 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}   
+}    
+void generate_random(int node){ 
+    srand(node); 
+    int no = random()%MAX_NOS; 
+    LOG_PRINT("-----------------------------");     
+    LOG_PRINT("NO gerado: %d",no);     
+    LOG_PRINT("-----------------------------\n");    
+}
 
 /** @} */
