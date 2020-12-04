@@ -596,7 +596,7 @@ int *alocaPacotes(int num_no, int **adj){
         //Percorre a linha da matriz para saber se o nó X está conectado à alguém
         for(y = 0; y < num_no; y++)
             //Se sim, adiciona um pacote
-            if(adj[x][y]){
+            if(adj[x][y] == 1){
                 qtd_pacotes = peso;
                 break;
             }
@@ -622,7 +622,8 @@ int SCHEDULE(int **adj){
         adj[i] = (int *)malloc( MAX_NOS * sizeof(int));
     }
     int tamNo = MAX_NOS; 
-    
+    int aux= 0 ; 
+    int aux1= 0 ; 
     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
     **matconf,                      //Nº de nós da rede
     tamAresta,i;                       //Variáveis temporárias
@@ -758,15 +759,23 @@ int SCHEDULE(int **adj){
         printf("\n                 \\ /\n\n");
         for(x = 0; x < 16; x++){
             for(y = 0; y < temp_canais; y++)
-                printf("%d  ", aloca_canais[x][y] + 1);
+                printf("%d  ", aloca_canais[x][y] + 1); 
+
             printf("\n");
         }
         printf("\n");
 
         //Executa a primeira carga de transferência
-        executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
+       // executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
         // funcao executa desemcapsulada 
-        for(int i = 0 ; i < temp_canais; i++){ 
+        for(int i = 0 ; i < temp_canais; i++){  
+          aux  = aloca_canais[i][cont]; 
+          aux1 = conf[aux][0];  
+          if( pacotes[aux1] >= 0){ 
+            pacotes[aux1] -= peso; 
+            pacote_entregue++; 
+          }  
+
           printf(" Aloca_canais[i][cont]: %d",aloca_canais[i][cont] ); 
           printf("conf[aloca_canais[i][cont]][0]: %d", conf[aloca_canais[i][cont]][0]); 
           printf("pacotes[conf[aloca_canais[i][cont]][0]]: %d",pacotes[conf[aloca_canais[i][cont]][0]]); 
@@ -784,7 +793,7 @@ int SCHEDULE(int **adj){
          /// }
           for(int i = 0 ; i < MAX_NOS ; i++){ 
               for(int j = 0 ; j < MAX_NOS; j++){  
-                  if(i == 2 && j = 3) matching[i][j] = 1; 
+                  if(i == 2 && j == 3) matching[i][j] = 1; 
                   else matching[i][j] = 0 ; 
               }
           }  
