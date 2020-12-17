@@ -527,6 +527,7 @@ tsch_queue_init(void)
   /* Add virtual EB and the broadcast neighbors */
   n_eb = tsch_queue_add_nbr(&tsch_eb_address);
   n_broadcast = tsch_queue_add_nbr(&tsch_broadcast_address);
-}
+} 
+//
 /*---------------------------------------------------------------------------*/
 /** @} */
