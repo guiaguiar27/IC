@@ -64,7 +64,7 @@ struct tsch_neighbor *tsch_queue_add_nbr(const linkaddr_t *addr);
  * \brief Get a TSCH neighbor
  * \param addr The link-layer address of the neighbor we are looking for
  * \return A pointer to the neighbor queue, NULL if not found
- */
+ */ 
 struct tsch_neighbor *tsch_queue_get_nbr(const linkaddr_t *addr);
 /**
  * \brief Get the TSCH time source (we currently assume there is only one)
@@ -179,9 +179,6 @@ void tsch_queue_update_all_backoff_windows(const linkaddr_t *dest_addr);
  */
 void tsch_queue_init(void);
 int tsch_neighbour_maping_init_matrix(int **coordenadas);
- /** 
-  * \brief Write the topology in a file 
-  */
-void tsch_queue_write_in_file(int n_origin, int n_destin); 
+
 #endif /* __TSCH_QUEUE_H__ */
 /** @} */
