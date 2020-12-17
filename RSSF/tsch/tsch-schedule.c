@@ -255,6 +255,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         list_add(slotframe->links_list, l);
         /* Initialize link */
         l->handle = count_lines();
+        LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -923,12 +924,13 @@ int SCHEDULE_AUX(int **adj){
       // change the number of edges 
       tamAresta = i; 
       
-
+      printf("\n .... ADJ ...... \n");
       for(int i = 1; i < MAX_NOS ; i++){ 
           for(int j = 1 ;j < MAX_NOS; j++)
                 printf("%d     ", adj[i][j]);
             printf("\n");
-      }
+      } 
+      printf("\n .......... \n");
 
       LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta); 
       pacotes = alocaPacotes(tamNo, adj); 
