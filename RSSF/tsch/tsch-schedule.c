@@ -880,6 +880,95 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}    
+}     
+int SCHEDULE_AUX(int **adj){ 
+  FILE *fl;      
+  int *pacotes, ** conf, **matconf, **matching,  **aloca_canais ;
+  //int no_atual;
+  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0 ;
+  // auxiliar variables 
+  //int pacote_entregue = 0,cont = 0, edge_selected, temp, , canal = 0 ; 
+  
+  adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
+  LOG_PRINT("----- TSCH LOCK -----\n");
+  if(tsch_get_lock()){   
+      tamNo = MAX_NOS; 
+      tamAresta = MAX_NOS;    
+      fl = fopen(endereco, "r"); 
+      if(fl == NULL){
+          printf("The file was not opened\n");
+          return 0  ; 
+      } 
+      for(int i = 0; i< MAX_NOS; i++) {
+          adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
+      } 
+      for(int i = 0 ; i < MAX_NOS ; i++){ 
+          for(int j = 0 ; j< MAX_NOS; j++){  
+              adj[i][j] = 0 ; 
+          }
+      }  
+      i = 0;
+      // read the topology 
+      while(!feof(fl)){      
+              fscanf(fl,"%d %d",&node_origin, &node_destin);   
+              printf(" %d-> %d\n",node_origin, node_destin);    
+              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
+                      adj[node_origin][node_destin] = 1;
+                      i++;
+                  } 
+              } 
+              if(feof(fl)) break ;
+          } 
+      // change the number of edges 
+      tamAresta = i; 
+      
+
+      for(int i = 1; i < MAX_NOS ; i++){ 
+          for(int j = 1 ;j < MAX_NOS; j++)
+                printf("%d     ", adj[i][j]);
+            printf("\n");
+      }
+
+      LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta); 
+      pacotes = alocaPacotes(tamNo, adj); 
+      for(int z = 1; z < tamNo; z++)
+            total_pacotes += pacotes[z];
+      conf = mapGraphConf(adj, tamNo, tamAresta); 
+      matconf = fazMatrizConf(conf, adj, tamAresta); 
+      
+      printf("\nMatriz de adjacencia do grafo de conflito\n");
+      // print the confitos matrix 
+      for(z = 0; z < tamAresta; z++){
+        for(i = 0; i < tamAresta; i++)
+            printf("%d ", matconf[z][i]);
+        printf("\n");
+      }  
+
+      aloca_canais = (int**) malloc(temp_canais * sizeof(int*));
+      for( x = 0; x < temp_canais; x++){
+        aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
+        for( y = 0; y < temp_canais; y++)
+            aloca_canais[x][y] = -1;
+      } 
+
+    raiz = no_raiz;  
+    LOG_PRINT(" raiz: %d", raiz);
+    // aloca pacotes 
+    for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
+    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
+    
+    for(int z = 0; z < tamAresta; z++){
+        for(i = 0; i < tamAresta; i++)
+            printf("%d ", matching[z][i]);
+        printf("\n");
+      }  
+  
+     
+  }
+  return 0; 
+   
+  } 
+
 
 /** @} */

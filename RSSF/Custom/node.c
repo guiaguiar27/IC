@@ -39,9 +39,6 @@
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
 #include "sys/node-id.h"  
-
-
-
 #include "sys/log.h"
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
@@ -151,7 +148,6 @@ PROCESS_THREAD(node_process, ev, data)
     //LOG_PRINT("NO gerado: %u",random_rand() % 10);     
     //LOG_PRINT("-----------------------------\n");
     SCHEDULE_aux(adj); 
-    //if(node_id == 1) teste_matriz; 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
