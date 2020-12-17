@@ -135,7 +135,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
   initialize_tsch_schedule();
- // int **adj = NULL; 
+  int **adj = NULL; 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
@@ -147,10 +147,10 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
-    LOG_PRINT("-----------------------------");     
-    LOG_PRINT("NO gerado: %u",random_rand() % 10);     
-    LOG_PRINT("-----------------------------\n");
-       // SCHEDULE(adj); 
+    //LOG_PRINT("-----------------------------");     
+    //LOG_PRINT("NO gerado: %u",random_rand() % 10);     
+    //LOG_PRINT("-----------------------------\n");
+    SCHEDULE_aux(adj); 
     //if(node_id == 1) teste_matriz; 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){

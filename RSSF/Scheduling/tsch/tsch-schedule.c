@@ -250,7 +250,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else { 
-       int static  current_link_handle = 0;
+       //int static  current_link_handle = 0;
         struct tsch_neighbor *n; 
         /* Add the link to the slotframe */
         list_add(slotframe->links_list, l); 
@@ -262,8 +262,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->timeslot = timeslot;
         l->channel_offset = channel_offset;
         l->data = NULL; 
-        l->handle = current_link_handle++ ; 
-        //l->handle = count_lines();  
+        //l->handle = current_link_handle++ ; 
+        l->handle = count_lines();  
         LOG_PRINT("----HANDLE: %u-----\n", l-> handle); 
         
         if(address == NULL) {
@@ -957,26 +957,5 @@ int SCHEDULE_AUX(int **adj){
   } 
 
 /*------------------------------------------------------------------------------------------------------------*/
-int teste_matrix(){  
-  uint16_t node;  
-   node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-  int **adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
-  for(int i = 0 ; i < MAX_NOS ; i++){ 
-    adj[i] = (int*)malloc(MAX_NOS * sizeof(int)); 
-  }  
-  srand(node); 
-  for(int i = 0; i < MAX_NOS; i++){ 
-    for(int j = 0; j< MAX_NOS; j++){ 
-      adj[i][j] = rand()%MAX_NOS;
-    }
-  } 
-  for(int i = 0; i < MAX_NOS; i++){ 
-    for(int j = 0; j< MAX_NOS; j++){ 
-      printf("%d",adj[i][j]);
-    }
-  }
-  
 
-}
 /*------------------------------------------------------------------------------------------------------------*/

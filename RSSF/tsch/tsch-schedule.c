@@ -741,16 +741,16 @@ int SCHEDULE(int **adj){
                             break;
                     edge_selected = temp;
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == 16)
+                        if(canal == temp_canais)
                             break;
                         aloca_canais[canal][cont] = edge_selected; 
                         canal++;
                     }
                 }
-                if(canal == 16)
+                if(canal == temp_canais)
                     break;
             }
-            if(canal == 16)
+            if(canal == temp_canais)
                 break;
         }
         
@@ -775,10 +775,6 @@ int SCHEDULE(int **adj){
             pacotes[aux1] -= peso; 
             pacote_entregue++; 
           }  
-
-          printf(" Aloca_canais[i][cont]: %d",aloca_canais[i][cont] ); 
-          printf("conf[aloca_canais[i][cont]][0]: %d", conf[aloca_canais[i][cont]][0]); 
-          printf("pacotes[conf[aloca_canais[i][cont]][0]]: %d",pacotes[conf[aloca_canais[i][cont]][0]]); 
           
         }
        
