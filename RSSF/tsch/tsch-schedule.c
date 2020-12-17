@@ -886,7 +886,7 @@ int count_lines()
 }     
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf, **matching,  **aloca_canais ;
+  int *pacotes, ** conf, **matconf,  **aloca_canais ; // **matching; 
   //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0 ;
   // auxiliar variables 
@@ -960,13 +960,13 @@ int SCHEDULE_AUX(int **adj){
     LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
-    matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
+    //matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
     
-    for(int z = 0; z < tamAresta; z++){
-        for(i = 0; i < tamAresta; i++)
-            printf("%d ", matching[z][i]);
-        printf("\n");
-      }  
+    // for(int z = 0; z < tamAresta; z++){
+    //     for(i = 0; i < tamAresta; i++)
+    //         printf("%d ", matching[z][i]);
+    //     printf("\n");
+    //   }  
   
      
   }
