@@ -960,13 +960,13 @@ int SCHEDULE_AUX(int **adj){
     LOG_PRINT(" raiz: %d", raiz);
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
-    //matching = geraMaching(pacotes, adj, matconf, conf, tamAresta, tamNo, raiz);  
+    matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
     
-    // for(int z = 0; z < tamAresta; z++){
-    //     for(i = 0; i < tamAresta; i++)
-    //         printf("%d ", matching[z][i]);
-    //     printf("\n");
-    //   }  
+    for(int z = 0; z < tamAresta; z++){
+        for(i = 0; i < tamAresta; i++)
+            printf("%d ", matching[z][i]);
+        printf("\n");
+      }  
   
      
   }
