@@ -80,7 +80,9 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
         if(graf_conf[node][x] != 0){
             vetor[x][0] = 1;
             vetor[x][1] = 0;
-        }
+            printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1])
+        } 
+    
     
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
     // while(cont){
