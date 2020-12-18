@@ -38,7 +38,7 @@
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
      for(x = 0; x < num_aresta; x++)
          if(mapa_graf_conf[x][0] == no_atual)
-            LOG_PRINT("-----------Achou o nó! -------\n");
+            printf("-----------Achou o nó! -------\n");
     //         return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
