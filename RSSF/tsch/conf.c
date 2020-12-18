@@ -83,32 +83,32 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
         }
     
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
-    while(cont){
-        //Pega a aresta com maior peso...
-        for(x = 0; x < tam; x++){
-            if(!vetor[x][0] && vetor[x][1]){
-                if(flg){
-                    maior_peso = x;
-                    flg = 0;
-                }
-                else
-                    if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
-                        maior_peso = x;
-            }
-        }
-        vetor[maior_peso][1] = 0;
-        //...e retira as que geram conflito com ela
-        for(x = 0; x < tam; x++)
-            if(graf_conf[maior_peso][x] != 0){
-                vetor[x][0] = 1;
-                vetor[x][1] = 0;
-            }
-        cont = 0;
-        for(x = 0; x < tam; x++)
-            if(vetor[x][1])
-                cont = 1;
-        flg = 1;
-    }
+    // while(cont){
+    //     //Pega a aresta com maior peso...
+    //     for(x = 0; x < tam; x++){
+    //         if(!vetor[x][0] && vetor[x][1]){
+    //             if(flg){
+    //                 maior_peso = x;
+    //                 flg = 0;
+    //             }
+    //             else
+    //                 if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
+    //                     maior_peso = x;
+    //         }
+    //     }
+    //     vetor[maior_peso][1] = 0;
+    //     //...e retira as que geram conflito com ela
+    //     for(x = 0; x < tam; x++)
+    //         if(graf_conf[maior_peso][x] != 0){
+    //             vetor[x][0] = 1;
+    //             vetor[x][1] = 0;
+    //         }
+    //     cont = 0;
+    //     for(x = 0; x < tam; x++)
+    //         if(vetor[x][1])
+    //             cont = 1;
+    //     flg = 1;
+    // }
     
     //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
     for(x = 0; x < tam; x++){
