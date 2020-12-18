@@ -57,7 +57,7 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-    int x, y, vetor[tam][2], maior_peso, cont = 1, flg = 1;
+    int x, y, vetor[tam][2] ; //, maior_peso, cont = 1, flg = 1;
 
     //Alocando e preenchendo com zeros a matriz do matching
     int **resultado = (int**)malloc(tam_rede * sizeof(int*));
@@ -111,11 +111,11 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     // }
     
     //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
-    for(x = 0; x < tam; x++){
-        if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
-            resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
-        }
-    }
+    // for(x = 0; x < tam; x++){
+    //     if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
+    //         resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
+    //     }
+    // }
 
     //printf("\nPassei por aqui\n");
     return resultado;
