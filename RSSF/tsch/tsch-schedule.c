@@ -56,8 +56,7 @@
 #include "sys/rtimer.h"
 #include <string.h> 
 #include <stdio.h> 
-#include <stdlib.h> 
-#include <stdio.h> 
+#include <stdlib.h>
 #include "conf.c"  
 #define temp_canais 16
 #define peso 1 
@@ -962,7 +961,18 @@ int SCHEDULE_AUX(int **adj){
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
-    if (matching == NULL) LOG_PRINT("NULL\n"); 
+    if (matching == NULL){ 
+      LOG_PRINT("NULL\n"); 
+      matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
+      for(int i = 0; i < MAX_NOS  ; i++) {
+          matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+      }
+      for(int i = 0 ; i < MAX_NOS ; i++){ 
+          for(int j = 0 ; j < MAX_NOS; j++){  
+              matching[i][j] = 0 ; 
+          }
+      }  
+    }
     else 
       for(int z = 0; z < tamAresta; z++){
           for(i = 0; i < tamAresta; i++)
