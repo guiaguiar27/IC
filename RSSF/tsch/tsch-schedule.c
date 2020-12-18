@@ -252,11 +252,11 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       } else {
         struct tsch_neighbor *n;
         /* Add the link to the slotframe */ 
-        static int count = 0 ;
+        //static int count = 0 ;
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        l->handle = count++ ; 
-        //l->handle = count_lines();
+        //l->handle = count++ ; 
+        l->handle = count_lines();
         LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
@@ -883,7 +883,8 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}     
+}      
+/*---------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
   int *pacotes, ** conf, **matconf,  **aloca_canais , **matching; 
