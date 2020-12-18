@@ -886,7 +886,7 @@ int count_lines()
 }     
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf,  **aloca_canais ; // **matching; 
+  int *pacotes, ** conf, **matconf,  **aloca_canais , **matching; 
   //int no_atual;
   int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0 ;
   // auxiliar variables 
@@ -961,13 +961,14 @@ int SCHEDULE_AUX(int **adj){
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
-    
-    for(int z = 0; z < tamAresta; z++){
-        for(i = 0; i < tamAresta; i++)
-            printf("%d ", matching[z][i]);
-        printf("\n");
-      }  
-  
+    if (matching == NULL) LOG_PRINT("NULL\n"); 
+    else 
+      for(int z = 0; z < tamAresta; z++){
+          for(i = 0; i < tamAresta; i++)
+              printf("%d ", matching[z][i]);
+          printf("\n");
+        }  
+      
      
   }
   return 0; 
