@@ -39,7 +39,7 @@
      for(x = 0; x < num_aresta; x++)
          if(mapa_graf_conf[x][0] == no_atual)
             printf("-----------Achou o nó! -------\n");
-            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
+            //return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
     return NULL ;
@@ -57,68 +57,67 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-    int x, y, vetor[tam][2] , maior_peso, cont = 1, flg = 1;
+     int x, y ; //, vetor[tam][2] , maior_peso, cont = 1, flg = 1;
 
     
     int **resultado = (int**)malloc(tam_rede * sizeof(int*));
     for(x = 0; x < tam_rede; x++){
-        resultado[x] = (int*) malloc(tam_rede * sizeof(int));
+        resultado[x] = (int*)malloc(tam_rede * sizeof(int));
     } 
     for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
-            if(x%2 == 0 )  resultado[x][y] = 1;
     }
 
-    //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
-    for(x = 0; x < tam; x++){
-        vetor[x][0] = 0;
-        vetor[x][1] = 1;
-    }
+    // //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
+    // for(x = 0; x < tam; x++){
+    //     vetor[x][0] = 0;
+    //     vetor[x][1] = 1;
+    // }
 
-    //Pesquisa os nós que geram conflito com o node
-    for(x = 0; x < tam; x++)
-        if(graf_conf[node][x] != 0){
-            vetor[x][0] = 1;
-            vetor[x][1] = 0;
-            printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1]);
-        } 
+    // //Pesquisa os nós que geram conflito com o node
+    // for(x = 0; x < tam; x++)
+    //     if(graf_conf[node][x] != 0){
+    //         vetor[x][0] = 1;
+    //         vetor[x][1] = 0;
+    //         printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1]);
+    //     } 
     
     
-    //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
-    while(cont){
-        //Pega a aresta com maior peso...
-        for(x = 0; x < tam; x++){
-            if(!vetor[x][0] && vetor[x][1]){
-                if(flg){
-                    maior_peso = x;
-                    flg = 0;
-                }
-                else
-                    if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
-                        maior_peso = x;
-            }
-        }
-        vetor[maior_peso][1] = 0;
-        //...e retira as que geram conflito com ela
-        for(x = 0; x < tam; x++)
-            if(graf_conf[maior_peso][x] != 0){
-                vetor[x][0] = 1;
-                vetor[x][1] = 0;
-            }
-        cont = 0;
-        for(x = 0; x < tam; x++)
-            if(vetor[x][1])
-                cont = 1;
-        flg = 1;
-    }
+    // //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
+    // while(cont){
+    //     //Pega a aresta com maior peso...
+    //     for(x = 0; x < tam; x++){
+    //         if(!vetor[x][0] && vetor[x][1]){
+    //             if(flg){
+    //                 maior_peso = x;
+    //                 flg = 0;
+    //             }
+    //             else
+    //                 if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
+    //                     maior_peso = x;
+    //         }
+    //     }
+    //     vetor[maior_peso][1] = 0;
+    //     //...e retira as que geram conflito com ela
+    //     for(x = 0; x < tam; x++)
+    //         if(graf_conf[maior_peso][x] != 0){
+    //             vetor[x][0] = 1;
+    //             vetor[x][1] = 0;
+    //         }
+    //     cont = 0;
+    //     for(x = 0; x < tam; x++)
+    //         if(vetor[x][1])
+    //             cont = 1;
+    //     flg = 1;
+    // }
     
-    //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
-    for(x = 0; x < tam; x++){
-        if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
-            resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
-        }
-    }
+    // //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
+    // for(x = 0; x < tam; x++){
+    //     if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
+    //         resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
+    //     }
+    // }
 
     //printf("\nPassei por aqui\n");
     return resultado;
