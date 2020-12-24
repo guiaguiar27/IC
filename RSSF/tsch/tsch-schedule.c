@@ -618,8 +618,8 @@ int *alocaPacotes(int num_no, int **adj){
 
 
 /*-----------------------------------------------------------------------------------------------------*/
-int SCHEDULE(int **adj){       
-    adj = (int**)malloc(MAX_NOS * sizeof(int*));    
+int SCHEDULE(){       
+    int **adj = (int**)malloc(MAX_NOS * sizeof(int*));    
     for(int i = 0; i < MAX_NOS  ; i++) {
         adj[i] = (int *)malloc( MAX_NOS * sizeof(int));
     }
@@ -652,25 +652,29 @@ int SCHEDULE(int **adj){
     } 
     // matriz  
    
+    i = 0; 
     for(int i = 0 ; i < MAX_NOS ; i++){ 
         for(int j = 0 ; j < MAX_NOS; j++){  
             adj[i][j] = 0 ; 
+            if(i%2 == 0 && j%2 != 0){ 
+              adj[i][j] = 1; 
+              i++ ; 
+            }   
         }
     }  
 
-    i = 0; 
     // get topology 
-    while(!feof(fl)){      
-        fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf(" %d-> %d\n",node_origin, node_destin);    
-        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-            if (adj[node_origin][node_destin] == 0){
-                adj[node_origin][node_destin] = 1;
-                i++;
-            } 
-        } 
-        if(feof(fl)) break ;
-    }
+    // while(!feof(fl)){      
+    //     fscanf(fl,"%d %d",&node_origin, &node_destin);   
+    //     printf(" %d-> %d\n",node_origin, node_destin);    
+    //     if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+    //         if (adj[node_origin][node_destin] == 0){
+    //             adj[node_origin][node_destin] = 1;
+    //             i++;
+    //         } 
+    //     } 
+    //     if(feof(fl)) break ;
+    // }
     tamAresta = i;
     // print adjacency matrix 
     for(int i = 0; i < MAX_NOS ; i++){ 
@@ -961,12 +965,13 @@ int SCHEDULE_AUX(int **adj){
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
-    if (matching == NULL){ 
-      LOG_PRINT("NULL\n");   }
+    if (matching == NULL) LOG_PRINT("NULL\n");    
  
-     return 0; 
+     
    
-  } 
+  }  
+  return 0; 
+} 
 
 
 /** @} */

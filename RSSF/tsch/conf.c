@@ -58,12 +58,12 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     * resultado: matriz de adjacência do matching
     */
      int x, y ; //, vetor[tam][2] , maior_peso, cont = 1, flg = 1;
-
+    int resultado[tam_rede][tam_rede];
     
-    int **resultado = (int**)malloc(tam_rede * sizeof(int*));
-    for(x = 0; x < tam_rede; x++){
-        resultado[x] = (int*)malloc(tam_rede * sizeof(int));
-    } 
+    // int **resultado = (int**)malloc(tam_rede * sizeof(int*));
+    // for(x = 0; x < tam_rede; x++){
+    //     resultado[x] = (int*)malloc(tam_rede * sizeof(int));
+    // } 
     for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
             resultado[x][y] = 0;
