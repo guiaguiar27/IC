@@ -650,18 +650,7 @@ int SCHEDULE(){
         printf("The file was not opened\n");
         return 0  ; 
     } 
-    // matriz  
-   
-    // i = 0; 
-    // for(int i = 0 ; i < MAX_NOS ; i++){ 
-    //     for(int j = 0 ; j < MAX_NOS; j++){  
-    //         adj[i][j] = 0 ; 
-    //         if(i%2 == 0 && j%2 != 0){ 
-    //           adj[i][j] = 1; 
-    //           i++ ; 
-    //         }   
-    //     }
-    // }  
+
 
     // get topology 
     while(!feof(fl)){      
@@ -890,12 +879,11 @@ int count_lines()
 /*---------------------------------------------------------------------------*/
 int SCHEDULE_AUX(int **adj){ 
   FILE *fl;      
-  int *pacotes, ** conf, **matconf,  **aloca_canais , **matching; 
-  //int no_atual;
-  int  tamAresta,tamNo,i,y,z,x,raiz,node_origin,node_destin,total_pacotes = 0 ;
-  // auxiliar variables 
-  //int pacote_entregue = 0,cont = 0, edge_selected, temp, , canal = 0 ; 
-  
+  int *pacotes, ** conf, **matconf,  **aloca_canais , **matching, 
+  tamAresta,tamNo,i,y, 
+  z,x,raiz,node_origin, 
+  node_destin,total_pacotes = 0, pacote_entregue = 0, edge_selected, temp;
+ 
   adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
   LOG_PRINT("----- TSCH LOCK -----\n");
   if(tsch_get_lock()){   
@@ -906,7 +894,7 @@ int SCHEDULE_AUX(int **adj){
           printf("The file was not opened\n");
           return 0  ; 
       } 
-      for(int i = 0; i< MAX_NOS; i++) {
+      for(int i = 0; i < MAX_NOS; i++) {
           adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
       } 
       for(int i = 0 ; i < MAX_NOS ; i++){ 
@@ -965,7 +953,37 @@ int SCHEDULE_AUX(int **adj){
     // aloca pacotes 
     for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
     matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
-    if (matching == NULL) LOG_PRINT("NULL\n");    
+    if (matching == NULL) LOG_PRINT("NULL\n"); 
+    while(pacote_entregue< total_pacotes){ 
+      printf("** Loop to matching ** \n"); 
+      for(x = 0; x < tamNo; x++){ 
+        for(y = 0 ; y < tamNo ; y++){ 
+          if(matching[x][y]){ 
+            for(temp = 0; temp < tamAresta ; temp++){ 
+              if(conf[temp][0] == x && conf[temp][1] == y) break;  
+
+            } 
+            edge_selected = temp;  
+            for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){ 
+              if (canal == temp_canais) break;  
+              aloca_canais[canal][temp] = edge_selected ;  
+              canal++; 
+            }
+          } 
+          if(canal == temp_canais)  break;
+        }
+        if(canal == temp_canais) break;
+      }  
+      printf("\nCanais alocados  | |");
+      printf("\n                \\   /");
+      printf("\n                 \\ /\n\n");
+      for(x = 0; x < 16; x++){
+        for(y = 0; y < temp_canais; y++)
+          printf("%d  ", aloca_canais[x][y] + 1); 
+
+        printf("\n");
+      }
+      printf("\n");     
  
      
    
