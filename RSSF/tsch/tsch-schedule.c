@@ -60,7 +60,7 @@
 #include "conf.c"  
 #define temp_canais 16
 #define peso 1 
-#define MAX_NOS 11
+#define MAX_NOS 1
 #define no_raiz 1 
 #define endereco "/home/user/contiki-ng/os/arvore.txt" 
 
@@ -652,29 +652,29 @@ int SCHEDULE(){
     } 
     // matriz  
    
-    i = 0; 
-    for(int i = 0 ; i < MAX_NOS ; i++){ 
-        for(int j = 0 ; j < MAX_NOS; j++){  
-            adj[i][j] = 0 ; 
-            if(i%2 == 0 && j%2 != 0){ 
-              adj[i][j] = 1; 
-              i++ ; 
-            }   
-        }
-    }  
+    // i = 0; 
+    // for(int i = 0 ; i < MAX_NOS ; i++){ 
+    //     for(int j = 0 ; j < MAX_NOS; j++){  
+    //         adj[i][j] = 0 ; 
+    //         if(i%2 == 0 && j%2 != 0){ 
+    //           adj[i][j] = 1; 
+    //           i++ ; 
+    //         }   
+    //     }
+    // }  
 
     // get topology 
-    // while(!feof(fl)){      
-    //     fscanf(fl,"%d %d",&node_origin, &node_destin);   
-    //     printf(" %d-> %d\n",node_origin, node_destin);    
-    //     if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-    //         if (adj[node_origin][node_destin] == 0){
-    //             adj[node_origin][node_destin] = 1;
-    //             i++;
-    //         } 
-    //     } 
-    //     if(feof(fl)) break ;
-    // }
+    while(!feof(fl)){      
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        printf(" %d-> %d\n",node_origin, node_destin);    
+        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+            if (adj[node_origin][node_destin] == 0){
+                adj[node_origin][node_destin] = 1;
+                i++;
+            } 
+        } 
+        if(feof(fl)) break ;
+    }
     tamAresta = i;
     // print adjacency matrix 
     for(int i = 0; i < MAX_NOS ; i++){ 

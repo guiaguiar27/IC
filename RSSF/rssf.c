@@ -228,6 +228,11 @@ int main(){
 
     printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot);
     
+    free(adj);  
+    free(conf); 
+    free(matconf); 
+    free(aloca_canais); 
+    free(pacotes); 
 
     return 0;
 }

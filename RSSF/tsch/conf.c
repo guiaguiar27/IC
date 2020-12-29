@@ -120,7 +120,7 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     // }
 
     //printf("\nPassei por aqui\n");
-    return resultado;
+    return (&resultado);
 }
 
 //Armazena as arestas de um grafo e os respectivos nós q o compõem
