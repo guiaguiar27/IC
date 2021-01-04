@@ -13,8 +13,8 @@
     /*
     *   mat_adj: matriz de adjacência do grafo da rede
     *   graf_conf: matriz de ajacência do grafo de conflito
-    *   tam: tamanho do grafo de conflito
-    *   tam_rede: tamanho do grafo da rede
+    *   num_arestas: tamanho do grafo de conflito
+    *   num_no: tamanho do grafo da rede
     *   node: aresta selecionada para iniciar o matching 
     * 
     */
@@ -39,12 +39,12 @@
      for(x = 0; x < num_aresta; x++)
          if(mapa_graf_conf[x][0] == no_atual)
             printf("-----------Achou o nó! -------\n");
-            //return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
+            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
     return NULL ;
 }
-int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int tam, int tam_rede, int node){
+int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int num_arestas, int num_no, int node){
     
     /*
     * x, y: usado para percorrer o vetor
@@ -57,36 +57,36 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-     int x, y ; //, vetor[tam][2] , maior_peso, cont = 1, flg = 1;
+     int x, y ; // , vetor[num_arestas][2] , maior_peso, cont = 1, flg = 1;
     
-     int **resultado = (int**)malloc(tam_rede * sizeof(int*));
-     for(x = 0; x < tam_rede; x++){
-         resultado[x] = (int*)malloc(tam_rede * sizeof(int));
+     int **resultado = (int**)malloc(num_no * sizeof(int*));
+     for(x = 0; x < num_no; x++){
+         resultado[x] = (int*)malloc(num_no * sizeof(int));
      } 
-    for(x = 0; x < tam_rede; x++){ 
-        for(y = 0; y < tam_rede; y++)
+    for(x = 0; x < num_no; x++){ 
+        for(y = 0; y < num_no; y++)
             resultado[x][y] = 0;
-    }
+    } 
+    printf(" tam_no: %d \n tam_aresta: %d",num_no, num_arestas);
 
     // //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
-    // for(x = 0; x < tam; x++){
+    // for(x = 0; x < num_arestas; x++){
     //     vetor[x][0] = 0;
     //     vetor[x][1] = 1;
     // }
 
     // //Pesquisa os nós que geram conflito com o node
-    // for(x = 0; x < tam; x++)
+    // for(x = 0; x < num_arestas; x++)
     //     if(graf_conf[node][x] != 0){
     //         vetor[x][0] = 1;
     //         vetor[x][1] = 0;
     //         printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1]);
     //     } 
-    
-    
+     
     // //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
     // while(cont){
     //     //Pega a aresta com maior peso...
-    //     for(x = 0; x < tam; x++){
+    //     for(x = 0; x < num_arestas; x++){
     //         if(!vetor[x][0] && vetor[x][1]){
     //             if(flg){
     //                 maior_peso = x;
@@ -98,34 +98,34 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     //         }
     //     }
     //     vetor[maior_peso][1] = 0;
-    //     //...e retira as que geram conflito com ela
-    //     for(x = 0; x < tam; x++)
+    //     // ...e retira as que geram conflito com ela
+    //     for(x = 0; x < num_arestas; x++)
     //         if(graf_conf[maior_peso][x] != 0){
     //             vetor[x][0] = 1;
     //             vetor[x][1] = 0;
     //         }
     //     cont = 0;
-    //     for(x = 0; x < tam; x++)
+    //     for(x = 0; x < num_arestas; x++)
     //         if(vetor[x][1])
     //             cont = 1;
     //     flg = 1;
     // }
     
     // //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
-    // for(x = 0; x < tam; x++){
+    // for(x = 0; x < num_arestas; x++){
     //     if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
     //         resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
     //     }
     // }
 
-    //printf("\nPassei por aqui\n");
+    // //printf("\nPassei por aqui\n");
     return resultado;
 }
 
 //Armazena as arestas de um grafo e os respectivos nós q o compõem
     /*
     * mat: matriz de adjacência da rede
-    * tam: nº de nós do grafo da rede
+    * num_arestas: nº de nós do grafo da rede
     */
 int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
     /*
@@ -164,7 +164,7 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
 //Gera a matriz de adjacência do grafo de conflito
    /*
    * mapConf: Matriz que mapeia os nós do grafo de conflito pros nós do grafo da rede
-   * tam: nº de arestas do grafo da rede
+   * num_arestas: nº de arestas do grafo da rede
    */
 int **fazMatrizConf(int **mapConf, int **graf_rede, int tam_arest){
     int **grafoconf, x, y, z, i;

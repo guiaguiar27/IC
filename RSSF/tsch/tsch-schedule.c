@@ -60,7 +60,7 @@
 #include "conf.c"  
 #define temp_canais 16
 #define peso 1 
-#define MAX_NOS 1
+#define MAX_NOS 5
 #define no_raiz 1 
 #define endereco "/home/user/contiki-ng/os/arvore.txt" 
 
@@ -883,7 +883,7 @@ int SCHEDULE_AUX(int **adj){
   tamAresta,tamNo,i,y, 
   z,x,raiz,node_origin, 
   node_destin,total_pacotes = 0, pacote_entregue = 0, 
-   edge_selected, temp, canal;
+   edge_selected, temp, canal = ;
  
   adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
   LOG_PRINT("----- TSCH LOCK -----\n");
