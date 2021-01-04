@@ -882,8 +882,9 @@ int SCHEDULE_AUX(int **adj){
   int *pacotes, ** conf, **matconf,  **aloca_canais , **matching, 
   tamAresta,tamNo,i,y, 
   z,x,raiz,node_origin, 
-  node_destin,total_pacotes = 0, pacote_entregue = 0, 
-   edge_selected, temp, canal = 0 ;
+  node_destin,  total_pacotes = 0 ; 
+  // , pacote_entregue = 0, 
+  //  edge_selected, temp, canal = 0 ;
  
   adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
   LOG_PRINT("----- TSCH LOCK -----\n");
