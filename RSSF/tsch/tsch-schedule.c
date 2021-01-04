@@ -907,12 +907,13 @@ int SCHEDULE_AUX(int **adj){
       i = 0;
       // read the topology 
       while(!feof(fl)){      
-              fscanf(fl,"%d %d",&node_origin, &node_destin);   
-              printf(" %d-> %d\n",node_origin, node_destin);    
+              fscanf(fl,"%d %d",&node_origin, &node_destin);       
               if(node_origin < MAX_NOS && node_destin < MAX_NOS){
                   if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
-                      adj[node_origin][node_destin] = 1;
-                      i++;
+                      adj[node_origin][node_destin] = 1; 
+                      printf("%d-> %d\n",node_origin, node_destin); 
+                      i++; 
+                      printf("Vertices count: %d\n", i);
                   } 
               } 
               if(feof(fl)) break ;
