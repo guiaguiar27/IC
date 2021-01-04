@@ -39,7 +39,7 @@
      for(x = 0; x < num_aresta; x++)
          if(mapa_graf_conf[x][0] == no_atual)
             printf("-----------Achou o nó! -------\n");
-            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
+            //return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
     return NULL ;
