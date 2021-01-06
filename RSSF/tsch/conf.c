@@ -58,23 +58,24 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     * resultado: matriz de adjacência do matching
     */
      int x, y ; // vetor[num_arestas][2], maior_peso, cont = 1, flg = 1;
-     int **vetor = (int**)malloc(num_arestas * sizeof(int*));  
-     for(x = 0 ; x < num_arestas; x++) vetor[x] = (int*)malloc(2 * sizeof(int));
+    //  int **vetor = (int**)malloc(num_arestas * sizeof(int*));  
+    //  for(x = 0 ; x < num_arestas; x++) vetor[x] = (int*)malloc(2 * sizeof(int));
+     
      int **resultado = (int**)malloc(num_no * sizeof(int*));
      for(x = 0; x < num_no; x++){
          resultado[x] = (int*)malloc(num_no * sizeof(int));
      } 
-    for(x = 0; x < num_no; x++){ 
-        for(y = 0; y < num_no; y++)
-            resultado[x][y] = 0;
-    } 
-    printf(" tam_no: %d \n tam_aresta: %d",num_no, num_arestas);
+    // for(x = 0; x < num_no; x++){ 
+    //     for(y = 0; y < num_no; y++)
+    //         resultado[x][y] = 0;
+    // } 
+    // printf(" tam_no: %d \n tam_aresta: %d",num_no, num_arestas);
 
-    //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
-    for(x = 0; x < num_arestas; x++){
-        vetor[x][0] = 0;
-        vetor[x][1] = 1;
-    }
+    // //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
+    // for(x = 0; x < num_arestas; x++){
+    //     vetor[x][0] = 0;
+    //     vetor[x][1] = 1;
+    // }
 
     // //Pesquisa os nós que geram conflito com o node
     // for(x = 0; x < num_arestas; x++)
