@@ -62,7 +62,7 @@
 #define peso 1 
 #define MAX_NOS 5
 #define no_raiz 1  
-#define timeslot 16
+#define Timeslot 16
 #define endereco "/home/user/contiki-ng/os/arvore.txt" 
 
 /* Log configuration */
@@ -946,7 +946,7 @@ int SCHEDULE_AUX(int **adj){
       }  
 
       aloca_canais = (int**) malloc(temp_canais * sizeof(int*));
-      for( x = 0; x < timeslot; x++){
+      for( x = 0; x < Timeslot; x++){
         aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
         for( y = 0; y < temp_canais; y++)
             aloca_canais[x][y] = -1;
