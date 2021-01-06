@@ -57,8 +57,9 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-     int x, y ,  vetor[num_arestas][2] //;  , maior_peso, cont = 1, flg = 1;
-    
+     int x, y ; // vetor[num_arestas][2], maior_peso, cont = 1, flg = 1;
+     int **vetor = (int**)malloc(num_arestas * sizeof(int*)));  
+     for(x = 0 ; x < vetor; x++) vetor[x] = (int*)malloc(2 * sizeof(int));
      int **resultado = (int**)malloc(num_no * sizeof(int*));
      for(x = 0; x < num_no; x++){
          resultado[x] = (int*)malloc(num_no * sizeof(int));
@@ -76,12 +77,12 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     }
 
     // //Pesquisa os nós que geram conflito com o node
-    for(x = 0; x < num_arestas; x++)
-        if(graf_conf[node][x] != 0){
-            vetor[x][0] = 1;
-            vetor[x][1] = 0;
-            printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1]);
-        } 
+    // for(x = 0; x < num_arestas; x++)
+    //     if(graf_conf[node][x] != 0){
+    //         vetor[x][0] = 1;
+    //         vetor[x][1] = 0;
+    //         printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1]);
+    //     } 
      
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
     // while(cont){
@@ -137,7 +138,7 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
     int noConf = 0;
 
     //Aloca a matriz
-    alocado = (int**) malloc(tam_aresta * sizeof(int*));
+    alocado = (int**)malloc(tam_aresta * sizeof(int*));
     for(x = 0; x < tam_aresta; x++)
         alocado[x] = (int*) malloc(2 * sizeof(int));
     
