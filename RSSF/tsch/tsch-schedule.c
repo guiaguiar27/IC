@@ -954,8 +954,7 @@ int SCHEDULE_AUX(int **adj){
 
       raiz = no_raiz;  
       LOG_PRINT(" raiz: %d", raiz);
-      // aloca pacotes 
-      for(int z = 1; z < tamNo; z++) total_pacotes += pacotes[z];   
+      // aloca pacotes   
       matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
       if (matching == NULL) LOG_PRINT("NULL\n"); 
     //   while(pacote_entregue< total_pacotes){ 
