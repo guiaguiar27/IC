@@ -890,7 +890,7 @@ int SCHEDULE_AUX(int **adj){
   adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
   LOG_PRINT("----- TSCH LOCK -----\n");
   if(tsch_get_lock()){   
-      tamNo = MAX_NOS; 
+      tamNo = MAX_NOS - 1 ; 
       tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
