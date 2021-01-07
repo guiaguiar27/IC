@@ -38,7 +38,7 @@
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
      for(x = 0; x < num_aresta; x++)
          if(mapa_graf_conf[x][0] == no_atual)
-            printf("-----------Achou o nó! -------\n");
+            printf("-----------Achou o no-------\n");
             return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
 
     printf("Caímos no pior caso\n");
@@ -58,8 +58,6 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     * resultado: matriz de adjacência do matching
     */
      int x, y, vetor[num_arestas][2] ; //,  maior_peso, cont = 1, flg = 1;
-    //  int **vetor = (int**)malloc(num_arestas * sizeof(int*));  
-    //  for(x = 0 ; x < num_arestas; x++) vetor[x] = (int*)malloc(2 * sizeof(int));
      
      int **resultado = (int**)malloc(num_no * sizeof(int*));
      for(x = 0; x < num_no; x++){
@@ -74,16 +72,23 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
     for(x = 0; x < num_arestas; x++){
         vetor[x][0] = 0;
-        vetor[x][1] = 1;
-    }
+        vetor[x][1] = 1; 
+    }   
+    // teste
+    printf("vetor\n");
+    for(x = 0; x < num_arestas ;x++){ 
+        printf("%d %d\n", vetor[x][0], vetor[x][1]);
+    } 
+    // teste
 
     //Pesquisa os nós que geram conflito com o node
     for(x = 0; x < num_arestas; x++)
-        if(graf_conf[node][x] != 0){
-            vetor[x][0] = 1;
-            vetor[x][1] = 0;
-            printf(" vetor0: %d vetor1: %d  ", vetor[x][0], vetor[x][1]);
-        } 
+        printf("graf_conf[node][x] = %d\n", graf_conf[node][x]);
+        // if(graf_conf[node][x] != 0){
+        //     vetor[x][0] = 1;
+        //     vetor[x][1] = 0;
+        // } 
+
      
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
     // while(cont){
