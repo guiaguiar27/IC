@@ -101,9 +101,9 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
                     maior_peso = x;
                     flg = 0;
                 }
-                // else
-                //     if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
-                //         maior_peso = x;
+                else
+                    if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
+                        maior_peso = x;
             }
         }
         vetor[maior_peso][1] = 0;
