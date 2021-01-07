@@ -24,13 +24,14 @@
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ; 
-    unsigned short  no_atual; 
+    unsigned short  aux_no_atual; 
     //Seleciona o nó com maior carga pra ser transmitida
     do{
-        no_atual = random_rand() % num_no; 
-        printf("No sorteado: %u \n",no_atual);
-    }while(no_atual == raiz);
-    
+        aux_no_atual = random_rand() % num_no; 
+        printf("No sorteado: %u \n",aux_no_atual);
+    }while(aux_no_atual == raiz); 
+    int no_atual = (int) aux_no_atual;   
+    printf("No sorteado (int): %d \n",no_atual);   
     for(x = 1; x < num_no; x++)
         if(pacotes[x] > pacotes[no_atual] && x != raiz)
             no_atual = x;
@@ -82,7 +83,7 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     // teste
 
     //Pesquisa os nós que geram conflito com o node 
-    printf("node sorted: %d", node);
+    printf("node sorted: %d\nß", node);
     for(x = 0; x < num_arestas; x++)
         printf("graf_conf[2][x] = %d\n", graf_conf[2][x]);
         // if(graf_conf[node][x] != 0){
