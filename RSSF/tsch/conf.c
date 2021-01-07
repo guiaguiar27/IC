@@ -65,11 +65,11 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
      for(x = 0; x < num_no; x++){
          resultado[x] = (int*)malloc(num_no * sizeof(int));
      } 
-    // for(x = 0; x < num_no; x++){ 
-    //     for(y = 0; y < num_no; y++)
-    //         resultado[x][y] = 0;
-    // } 
-    // printf(" tam_no: %d \n tam_aresta: %d",num_no, num_arestas);
+    for(x = 0; x < num_no; x++){ 
+        for(y = 0; y < num_no; y++)
+            resultado[x][y] = 0;
+    } 
+    printf(" tam_no: %d \n tam_aresta: %d",num_no, num_arestas);
 
     // //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
     // for(x = 0; x < num_arestas; x++){
