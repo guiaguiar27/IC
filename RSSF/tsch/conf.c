@@ -81,9 +81,10 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     } 
     // teste
 
-    //Pesquisa os nós que geram conflito com o node
+    //Pesquisa os nós que geram conflito com o node 
+    printf("node sorted: %d", node);
     for(x = 0; x < num_arestas; x++)
-        printf("graf_conf[node][x] = %d\n", graf_conf[node][x]);
+        printf("graf_conf[2][x] = %d\n", graf_conf[2][x]);
         // if(graf_conf[node][x] != 0){
         //     vetor[x][0] = 1;
         //     vetor[x][1] = 0;
