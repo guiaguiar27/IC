@@ -101,18 +101,18 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
                     maior_peso = x;
                     flg = 0;
                 }
-                else
-                    if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
-                        maior_peso = x;
+                // else
+                //     if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
+                //         maior_peso = x;
             }
         }
         vetor[maior_peso][1] = 0;
         // ...e retira as que geram conflito com ela
         for(x = 0; x < num_arestas; x++)
-            if(graf_conf[maior_peso][x] != 0){
-                vetor[x][0] = 1;
-                vetor[x][1] = 0;
-            }
+            // if(graf_conf[maior_peso][x] != 0){
+            //     vetor[x][0] = 1;
+            //     vetor[x][1] = 0;
+            // }
         cont = 0;
         for(x = 0; x < num_arestas; x++)
             if(vetor[x][1])
@@ -121,11 +121,11 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     }
     
     //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
-    for(x = 0; x < num_arestas; x++){
-        if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
-            resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
-        }
-    }
+    // for(x = 0; x < num_arestas; x++){
+    //     if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
+    //         resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
+    //     }
+    // }
 
     // //printf("\nPassei por aqui\n");
     return resultado;
