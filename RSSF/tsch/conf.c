@@ -120,12 +120,12 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
         flg = 1;
     }
     
-    //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
-    // for(x = 0; x < num_arestas; x++){
-    //     if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
-    //         resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
-    //     }
-    // }
+   // Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
+    for(x = 0; x < num_arestas; x++){
+        if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
+            resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
+        }
+    }
 
     // //printf("\nPassei por aqui\n");
     return resultado;
