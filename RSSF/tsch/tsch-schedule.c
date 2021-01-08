@@ -956,41 +956,42 @@ int SCHEDULE_AUX(int **adj){
       LOG_PRINT(" raiz: %d", raiz);
       // aloca pacotes   
       matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
-      if (matching == NULL) LOG_PRINT("NULL\n"); 
-      while(pacote_entregue < total_pacotes){ 
-        printf("** Loop to matching ** \n"); 
-        for(x = 0; x < tamNo; x++){ 
-          for(y = 0 ; y < tamNo ; y++){ 
-            if(matching[x][y]){ 
-              for(temp = 0; temp < tamAresta ; temp++){ 
-                if(conf[temp][0] == x && conf[temp][1] == y) break;  
-
-              } 
-              edge_selected = temp;  
-              for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){ 
-                if (canal == temp_canais) break;  
-                aloca_canais[canal][temp] = edge_selected ;  
-                canal++; 
-              }
-            } 
-            if(canal == temp_canais)  break;
-          }
-          if(canal == temp_canais) break;
-        }  
-        printf("\nCanais alocados  | |");
-        printf("\n                \\   /");
-        printf("\n                 \\ /\n\n");
-        for(x = 0; x < 16; x++){
-          for(y = 0; y < temp_canais; y++)
-            printf("%d  ", aloca_canais[x][y] + 1); 
-
-          printf("\n");
-        }
-        printf("\n");     
-  
+      if (matching == NULL) LOG_PRINT("NULL\n");  
       
+      else{ 
+        while(pacote_entregue < total_pacotes){ 
+          printf("** Loop to matching ** \n"); 
+          for(x = 0; x < tamNo; x++){ 
+            for(y = 0 ; y < tamNo ; y++){ 
+              if(matching[x][y]){ 
+                for(temp = 0; temp < tamAresta ; temp++){ 
+                  if(conf[temp][1] == x && conf[temp][0] == y) break;  
+
+                } 
+                edge_selected = temp;  
+                for(temp = 0; temp < pacotes[conf[edge_selected][1]]; temp++){ 
+                  if (canal == temp_canais) break;  
+                  aloca_canais[canal][temp] = edge_selected ;  
+                  canal++; 
+                }
+              } 
+              if(canal == temp_canais)  break;
+            }
+            if(canal == temp_canais) break;
+          }  
+          printf("\nCanais alocados  | |");
+          printf("\n                \\   /");
+          printf("\n                 \\ /\n\n");
+          for(x = 0; x < 16; x++){
+            for(y = 0; y < temp_canais; y++)
+              printf("%d  ", aloca_canais[x][y] + 1); 
+
+            printf("\n");
+          }
+          printf("\n");     
     
-    }  
+        }
+      }  
   
   }  
   return 0; 
