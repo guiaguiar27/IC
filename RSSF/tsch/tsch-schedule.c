@@ -965,11 +965,11 @@ int SCHEDULE_AUX(int **adj){
             for(y = 0 ; y < tamNo ; y++){ 
               if(matching[x][y]){ 
                 for(temp = 0; temp < tamAresta ; temp++){ 
-                  if(conf[temp][1] == x && conf[temp][0] == y) break;  
+                  if(conf[temp][0] == x && conf[temp][1] == y) break;  
 
                 } 
                 edge_selected = temp;  
-                for(temp = 0; temp < pacotes[conf[edge_selected][1]]; temp++){ 
+                for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){ 
                   if (canal == temp_canais) break;  
                   aloca_canais[canal][temp] = edge_selected ;  
                   canal++; 
@@ -996,6 +996,60 @@ int SCHEDULE_AUX(int **adj){
   }  
   return 0; 
 } 
+int SCHEDULE_static(){  
+  FILE *fl;      
+  int *pacotes, ** conf, **matconf,  **aloca_canais , **matching, 
+  tamAresta,tamNo,i,y, 
+  z,x,raiz,node_origin, 
+  node_destin,  total_pacotes = 0,   
+  pacote_entregue = 0, 
+  edge_selected, temp, canal = 0 ;
+   
+  // MAX_NOS its the max number of nodes 
+  tamNo = MAX_NOS - 1;  
+  int adj[tamNo][tamNo];  
+  if(tsch_get_lock()){    
+      tamAresta = MAX_NOS;    
+      fl = fopen(endereco, "r"); 
+      if(fl == NULL){
+          printf("The file was not opened\n");
+          return 0  ; 
+      }  
+ 
+      for(int i = 0 ; i < tamNo; i++){ 
+          for(int j = 0 ; j< tamNo; j++){  
+              adj[i][j] = 0 ; 
+          }
+      }  
+      i = 0;
+      // read the topology 
+      while(!feof(fl)){      
+              fscanf(fl,"%d %d",&node_origin, &node_destin);       
+              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
+                      adj[node_origin][node_destin] = 1; 
+                      printf("%d-> %d\n",node_origin, node_destin); 
+                      i++; 
+                      printf("Vertices count: %d\n", i);
+                  } 
+              } 
+              if(feof(fl)) break ;
+          } 
+      // change the number of edges 
+      tamAresta = i;  
+      printf("\n .... ADJ ...... \n");
+      for(int i = 1; i < tamNo ; i++){ 
+          for(int j = 1; j < tamNo; j++)
+                printf("%d     ", adj[i][j]);
+            printf("\n");
+      } 
+      printf("\n .......... \n");
+
+ 
+
+
+}  
+
 
 
 /** @} */
