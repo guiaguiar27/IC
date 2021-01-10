@@ -73,7 +73,7 @@
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
-MEMB(generic_2d_array_memb, struct generic_2d_array, MAX_MESH_SIZE_NODE); 
+MEMB(generic_2d_array_memb, struct generic_2d_array_element, MAX_MESH_SIZE_NODE); 
 
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
@@ -658,7 +658,7 @@ int count_lines()
 }      
 /*---------------------------------------------------------------------------*/
  
-void  SCHEDULE_static(){  
+void SCHEDULE_static(){  
   FILE *fl;      
   int i = 0 ;  
   struct adj *adj = memb_alloc(&adj);  
@@ -670,7 +670,7 @@ void  SCHEDULE_static(){
           return 0  ; 
       }   
     LIST_STRUCT_INIT(adj, network_graph); 
-    struct generic_2d_array *el = NULL;
+    struct generic_2d_array_element *el = NULL;
     for(int i = 0 ; i < MAX_NOS ;i++){ 
       for(int j = 0 ; j < MAX_NOS; j++){ 
         el = memb_alloc(&generic_2d_array_memb); 

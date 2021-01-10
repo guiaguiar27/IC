@@ -166,6 +166,6 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 int tsch_num_nos();  
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
-void  SCHEDULE_static(); 
+void SCHEDULE_static(); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

@@ -154,7 +154,7 @@ struct input_packet {
   uint8_t channel; /* Channel we received the packet on */
 };  
 
-struct generic_2d_array{ 
+struct generic_2d_array_element{ 
   int value ;  
   int colunm ;  
   int line ; 
