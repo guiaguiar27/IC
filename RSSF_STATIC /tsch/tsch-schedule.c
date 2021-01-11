@@ -705,7 +705,18 @@ void SCHEDULE_static(){
 
 
 } 
-}  
+}   
+int sort_node_to_create_link(int n){ 
+ 
+  unsigned short  random_node;    
+  int aux_n = n - 1 ;  
+  random_node = random_rand() % aux_n;
+  int final_sorted_node = (int) random_node;
+  
+  
+  return random_node; 
+ 
+ }
 
 
 

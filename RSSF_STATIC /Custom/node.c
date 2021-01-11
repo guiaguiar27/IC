@@ -71,20 +71,25 @@ initialize_tsch_schedule()
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset; 
-  int node_number = tsch_num_nos();
-
-  /* A "catch-all" cell at (0, 0) */
+  
+  //int node_number = tsch_num_nos();
+  // random the quantity of links  
+  unsigned short  total_links;
+  total_links = random_rand() % node_id; 
+  int num_links = (int)total_links;  
   slot_offset = 0;
   channel_offset = 0;
+
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
-  for (i = 1 ; i <  node_number ; ++i) { 
+  
+  for (i = 0 ; i <  num_links ; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr;  
-    uint16_t remote_id = i ; 
+    uint16_t remote_id = sort_node_to_create_link(node_id); 
     for(j = 0; j < sizeof(addr); j += 2) {
       addr.u8[j + 1] = remote_id & 0xff;
       addr.u8[j + 0] = remote_id >> 8;
@@ -130,9 +135,9 @@ PROCESS_THREAD(node_process, ev, data)
   static uint32_t seqnum;
   uip_ipaddr_t dst;
 
-  PROCESS_BEGIN();
-  initialize_tsch_schedule();
-  int **adj = NULL; 
+  PROCESS_BEGIN(); 
+  if(node_id > 1) 
+    initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
@@ -147,7 +152,7 @@ PROCESS_THREAD(node_process, ev, data)
     //LOG_PRINT("-----------------------------");     
     //LOG_PRINT("NO gerado: %u",random_rand() % 10);     
     //LOG_PRINT("-----------------------------\n");
-    SCHEDULE_aux(adj); 
+   // SCHEDULE_aux(adj); 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
