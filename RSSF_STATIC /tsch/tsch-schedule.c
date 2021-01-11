@@ -668,22 +668,23 @@ void SCHEDULE_static(){
       if(fl == NULL){
           printf("The file was not opened\n");
           return 0  ; 
-      }   
-    LIST_STRUCT_INIT(adj, network_graph); 
-    struct generic_2d_array_element *el = NULL;
-    for(int i = 0 ; i < MAX_NOS ;i++){ 
-      for(int j = 0 ; j < MAX_NOS; j++){ 
-        el = memb_alloc(&generic_2d_array_memb); 
-        el->colunm = j;  
-        el->line = i;  
-        el->value = 0 ;    
-        list_add(adj->network_graph, el); 
-      }
-    } 
+      }    
 
-    for(el = list_head(adj->network_graph); s != NULL; s = list_item_next(s)) {
-    printf("List element number %d\n", s->value);
-    } 
+    // LIST_STRUCT_INIT(adj, network_graph); 
+    // struct generic_2d_array_element *el = NULL;
+    // for(int i = 0 ; i < MAX_NOS ;i++){ 
+    //   for(int j = 0 ; j < MAX_NOS; j++){ 
+    //     el = memb_alloc(&generic_2d_array_memb); 
+    //     el->colunm = j;  
+    //     el->line = i;  
+    //     el->value = 0 ;    
+    //     list_add(adj->network_graph, el); 
+    //   }
+    // } 
+
+    // for(el = list_head(adj->network_graph); s != NULL; s = list_item_next(s)) {
+    // printf("List element number %d\n", s->value);
+    // } 
 
       // read the topology 
       // while(!feof(fl)){      
