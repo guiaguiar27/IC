@@ -161,7 +161,7 @@ struct generic_2d_array_element{
 };   
 struct ADJ{ 
   LIST_STRUCT(network_graph);
-}
+}; 
 
 
 #endif /* __TSCH_CONF_H__ */
