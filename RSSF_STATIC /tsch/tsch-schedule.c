@@ -679,7 +679,10 @@ void SCHEDULE_static(){
         list_add(adj->network_graph, el); 
         el->colunm = j;  
         el->line = i;  
-        el->value = 0 ;    
+        el->value = 0 ;     
+        printf("el->colunm: %d 
+        el->line: %d 
+        el->value: %d", el->colunm, el->line, el->value);
          
       }
     } 
@@ -703,7 +706,7 @@ void SCHEDULE_static(){
                   } 
                 if(feof(fl)) break ;
               } 
-              
+      el = memb_alloc(&generic_2d_array_memb);        
       for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
         printf("line %d , colum %d ", el->line, el->colunm);
         printf("List element value %d\n", el->value);
