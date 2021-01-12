@@ -691,15 +691,18 @@ void SCHEDULE_static(){
       while(!feof(fl)){      
               fscanf(fl,"%d %d",&node_origin, &node_destin);       
               if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-                  if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
+          
                       
-                      for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(s)) {
-                        if(el->line == node_origin && el->colunm == node_destin ) 
-                          el->value = 1 ; 
-                      }   
-                      printf("%d-> %d\n",node_origin, node_destin); 
-                      i++; 
-                      printf("Vertices count: %d\n", i);
+                      for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
+                      if (el->line == node_origin && el->colunm == node_destin ){
+                          if( el->value == 0 && node_origin != no_raiz) 
+                            el->value = 1 ; 
+                            printf("%d-> %d\n",node_origin, node_destin); 
+                            i++; 
+                            printf("Vertices count: %d\n", i);
+                          }   
+                         
+                      }
                   } 
               } 
               if(feof(fl)) break ;
