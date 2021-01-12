@@ -662,9 +662,9 @@ void SCHEDULE_static(){
   FILE *fl;      
   int i = 0 ;   
   int node_origin, node_destin;  
-  struct ADJ *adj = memb_alloc(&adj);  
+  struct ADJ *adj = memb_alloc(&adj_memb);  
   if(tsch_get_lock()){    
-     int  tamAresta = MAX_NOS;    
+     //int  tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
           printf("The file was not opened\n");
@@ -692,7 +692,6 @@ void SCHEDULE_static(){
               fscanf(fl,"%d %d",&node_origin, &node_destin);       
               if(node_origin < MAX_NOS && node_destin < MAX_NOS){
           
-                      
                       for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
                       if (el->line == node_origin && el->colunm == node_destin ){
                           if( el->value == 0 && node_origin != no_raiz) 
@@ -704,8 +703,9 @@ void SCHEDULE_static(){
                          
                       }
                   } 
+                if(feof(fl)) break ;
               } 
-              if(feof(fl)) break ;
+              
           }  
 
 
