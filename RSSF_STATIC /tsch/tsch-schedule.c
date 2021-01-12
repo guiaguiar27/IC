@@ -683,9 +683,7 @@ void SCHEDULE_static(){
       }
     } 
 
-    for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
-    printf("List element number %d\n", el->value);
-    } 
+     
 
       //read the topology 
       while(!feof(fl)){      
@@ -706,14 +704,17 @@ void SCHEDULE_static(){
                 if(feof(fl)) break ;
               } 
               
-          }  
+      for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
+        printf("List element value %d\n", el->value);
+      }    
+      }  
 
 
  
 
 
 } 
-}   
+   
 int sort_node_to_create_link(int n){ 
  
   unsigned short  random_node;    
