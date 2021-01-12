@@ -670,7 +670,7 @@ void SCHEDULE_static(){
           printf("The file was not opened\n");
           return ; 
       }    
-
+    struct generic_2d_array_elements *el_aux = memb_alloc(&generic_2d_array_memb);
     LIST_STRUCT_INIT(adj, network_graph); 
     for(int i = 0 ; i < MAX_NOS ;i++){ 
       for(int j = 0 ; j < MAX_NOS; j++){  
@@ -680,9 +680,7 @@ void SCHEDULE_static(){
         el->colunm = j;  
         el->line = i;  
         el->value = 0 ;     
-        printf("el->colunm: %d 
-        el->line: %d 
-        el->value: %d", el->colunm, el->line, el->value);
+        printf("el->colunm: %d el->line: %d  el->value: %d", el->colunm, el->line, el->value);
          
       }
     } 
@@ -694,10 +692,10 @@ void SCHEDULE_static(){
               fscanf(fl,"%d %d",&node_origin, &node_destin);       
               if(node_origin < MAX_NOS && node_destin < MAX_NOS){
           
-                      for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
-                      if (el->line == node_origin && el->colunm == node_destin ){
-                          if( el->value == 0 && node_origin != no_raiz) 
-                            el->value = 1 ; 
+                      for(el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+                      if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
+                          if(el_aux->value == 0 && node_origin != no_raiz) 
+                            el_aux->value = 1 ; 
                             printf("%d-> %d\n",node_origin, node_destin); 
                             i++; 
                           }   
@@ -705,11 +703,10 @@ void SCHEDULE_static(){
                       }
                   } 
                 if(feof(fl)) break ;
-              } 
-      el = memb_alloc(&generic_2d_array_memb);        
-      for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
-        printf("line %d , colum %d ", el->line, el->colunm);
-        printf("List element value %d\n", el->value);
+              }     
+      for(el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("line %d , colum %d ", el_aux->line, el_aux->colunm);
+        printf("List element value %d\n", el_aux->value);
       }    
       }  
 
