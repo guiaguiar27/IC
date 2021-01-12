@@ -155,9 +155,9 @@ struct input_packet {
 };  
 
 struct generic_2d_array_element{ 
-  int value ;  
-  int colunm ;  
-  int line ; 
+  uint16_t value ;  
+  uint16_t colunm ;  
+  uint16_t line ; 
 };   
 struct ADJ{ 
   LIST_STRUCT(network_graph);
