@@ -693,6 +693,7 @@ void SCHEDULE_static(){
                       if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
                           if(el_aux->value == 0 && node_origin != no_raiz) 
                             el_aux->value = 1 ; 
+                            printf("value: %u",el_aux->value);
                             printf("%d-> %d\n",node_origin, node_destin); 
                             i++; 
                           }   
@@ -702,7 +703,7 @@ void SCHEDULE_static(){
                 if(feof(fl)) break ;
               }     
       for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-        printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value);
+        printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->colunm, el_aux->line, el_aux->value);
       }    
        }  
 
