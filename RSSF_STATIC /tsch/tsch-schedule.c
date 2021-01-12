@@ -513,7 +513,7 @@ tsch_schedule_init(void)
   if(tsch_get_lock()) {
     memb_init(&link_memb);
     memb_init(&slotframe_memb); 
-    memn_init(&generic_2d_array_memb);  
+    memb_init(&generic_2d_array_memb);  
     memb_init(&adj_memb);
     list_init(slotframe_list);
     tsch_release_lock();
@@ -660,14 +660,15 @@ int count_lines()
  
 void SCHEDULE_static(){  
   FILE *fl;      
-  int i = 0 ;  
-  struct adj *adj = memb_alloc(&adj);  
+  int i = 0 ;   
+  int node_origin, node_destin;  
+  struct ADJ *adj = memb_alloc(&adj);  
   if(tsch_get_lock()){    
-      tamAresta = MAX_NOS;    
+     int  tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
           printf("The file was not opened\n");
-          return 0  ; 
+          return ; 
       }    
 
     LIST_STRUCT_INIT(adj, network_graph); 
