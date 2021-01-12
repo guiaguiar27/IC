@@ -660,8 +660,8 @@ int count_lines()
  
 void SCHEDULE_static(){  
   FILE *fl;      
-  int i = 0 ;   
-  int node_origin, node_destin;  
+  //int i = 0 ;   
+  //int node_origin, node_destin;  
   struct ADJ *adj = memb_alloc(&adj_memb);  
   if(tsch_get_lock()){    
      //int  tamAresta = MAX_NOS;    
@@ -670,7 +670,7 @@ void SCHEDULE_static(){
           printf("The file was not opened\n");
           return ; 
       }    
-    struct generic_2d_array_elements *el_aux = memb_alloc(&generic_2d_array_memb);
+    //struct generic_2d_array_element *el_aux = memb_alloc(&generic_2d_array_memb);
     LIST_STRUCT_INIT(adj, network_graph); 
     for(int i = 0 ; i < MAX_NOS ;i++){ 
       for(int j = 0 ; j < MAX_NOS; j++){  
@@ -685,30 +685,28 @@ void SCHEDULE_static(){
       }
     } 
 
-     
-
       //read the topology 
-      while(!feof(fl)){      
-              fscanf(fl,"%d %d",&node_origin, &node_destin);       
-              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+      // while(!feof(fl)){      
+      //         fscanf(fl,"%d %d",&node_origin, &node_destin);       
+      //         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
           
-                      for(el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-                      if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
-                          if(el_aux->value == 0 && node_origin != no_raiz) 
-                            el_aux->value = 1 ; 
-                            printf("%d-> %d\n",node_origin, node_destin); 
-                            i++; 
-                          }   
+      //                 for(el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+      //                 if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
+      //                     if(el_aux->value == 0 && node_origin != no_raiz) 
+      //                       el_aux->value = 1 ; 
+      //                       printf("%d-> %d\n",node_origin, node_destin); 
+      //                       i++; 
+      //                     }   
                          
-                      }
-                  } 
-                if(feof(fl)) break ;
-              }     
-      for(el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-        printf("line %d , colum %d ", el_aux->line, el_aux->colunm);
-        printf("List element value %d\n", el_aux->value);
-      }    
-      }  
+      //                 }
+      //             } 
+      //           if(feof(fl)) break ;
+      //         }     
+      // for(el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+      //   printf("line %d , colum %d ", el_aux->line, el_aux->colunm);
+      //   printf("List element value %d\n", el_aux->value);
+      // }    
+      // }  
 
 
  
