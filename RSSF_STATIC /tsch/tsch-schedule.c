@@ -672,14 +672,15 @@ void SCHEDULE_static(){
       }    
 
     LIST_STRUCT_INIT(adj, network_graph); 
-    struct generic_2d_array_element *el = NULL;
     for(int i = 0 ; i < MAX_NOS ;i++){ 
-      for(int j = 0 ; j < MAX_NOS; j++){ 
+      for(int j = 0 ; j < MAX_NOS; j++){  
+        struct generic_2d_array_element *el = NULL;
         el = memb_alloc(&generic_2d_array_memb); 
+        list_add(adj->network_graph, el); 
         el->colunm = j;  
         el->line = i;  
         el->value = 0 ;    
-        list_add(adj->network_graph, el); 
+         
       }
     } 
 
@@ -696,7 +697,6 @@ void SCHEDULE_static(){
                             el->value = 1 ; 
                             printf("%d-> %d\n",node_origin, node_destin); 
                             i++; 
-                            printf("Vertices count: %d\n", i);
                           }   
                          
                       }
@@ -705,6 +705,7 @@ void SCHEDULE_static(){
               } 
               
       for(el = list_head(adj->network_graph); el != NULL; el = list_item_next(el)) {
+        printf("line %d , colum %d ", el->line, el->colunm);
         printf("List element value %d\n", el->value);
       }    
       }  
@@ -714,7 +715,9 @@ void SCHEDULE_static(){
 
 
 } 
-   
+
+/*---------------------------------------------------------------------------*/
+  
 int sort_node_to_create_link(int n){ 
  
   unsigned short  random_node;    
