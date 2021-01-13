@@ -614,7 +614,7 @@ struct Pacotes *alocaPacotes(int num_no, struct ADJ *adj){
           struct generic_array_element *el = NULL;
           el = memb_alloc(&generic_array_memb);  
           list_add(pre_pacotes->list_packages_node, el); 
-          el->line = x;  
+          el->line = el_aux->line;  
           el->value = qtd_pacotes;
           //vetor[x] = qtd_pacotes;
           }
