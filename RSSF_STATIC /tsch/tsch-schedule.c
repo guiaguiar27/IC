@@ -622,7 +622,7 @@ struct Pacotes *alocaPacotes(int num_no, struct ADJ *adj){
           struct generic_array_element *el = NULL;
           el = memb_alloc(&generic_array_memb);  
           list_add(pre_pacotes->list_packages_node, el); 
-          el->line = x;  
+          el->line = el_aux->line;  
           el->value = 0 ;
         }
 
@@ -719,7 +719,10 @@ void SCHEDULE_static(){
       for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->colunm, el_aux->line, el_aux->value);
       }  
-      pacotes = alocaPacotes(numNo,adj); 
+      pacotes = alocaPacotes(numNo,adj);  
+      for(struct generic_2d_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
+      }
 
 
 
