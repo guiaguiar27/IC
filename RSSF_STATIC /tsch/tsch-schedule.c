@@ -601,13 +601,13 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 
 /*------------------------------------------------------------------------------------------------------------*/
 struct Pacotes *alocaPacotes(int num_no, struct ADJ *adj){
-  int  x, y, qtd_pacotes = 0; 
+  int qtd_pacotes = 0; 
     struct Pacotes *pre_pacotes = memb_alloc(&pacotes_memb);  
     LIST_STRUCT_INIT(pre_pacotes,list_packages_node); 
     
     //Percorre o vetor de pacotes
     for(struct generic_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)){  
-        if(adj->value == 1){
+        if(el_aux->value == 1){
                 qtd_pacotes = peso; 
             } 
         if(qtd_pacotes){ 
@@ -714,6 +714,8 @@ void SCHEDULE_static(){
                   } 
                 if(feof(fl)) break ;
               }     
+      tamAresta = i ;  
+      printf("TAmAresta: %d\n", tamAresta); 
       for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->colunm, el_aux->line, el_aux->value);
       }  
