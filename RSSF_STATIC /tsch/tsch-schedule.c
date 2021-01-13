@@ -669,10 +669,10 @@ int count_lines()
  
 void SCHEDULE_static(){  
   FILE *fl;      
-  int i = 0 ;   
-  int node_origin, node_destin;  
+  //int i = 0 ;   
+  //int node_origin, node_destin;  
   struct ADJ *adj = memb_alloc(&adj_memb);  
-  int  tamAresta = MAX_NOS;     
+  //int  tamAresta = MAX_NOS;     
   //int numNo = MAX_NOS - 1;   
 //  struct Pacotes *pacotes = NULL;  
 
@@ -697,29 +697,29 @@ void SCHEDULE_static(){
       }
     } 
 
-      //read the topology 
-      while(!feof(fl)){      
-              fscanf(fl,"%d %d",&node_origin, &node_destin);       
-              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+      // //read the topology 
+      // while(!feof(fl)){      
+      //         fscanf(fl,"%d %d",&node_origin, &node_destin);       
+      //         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
           
-                      for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-                      if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
-                          if(el_aux->value == 0 && node_origin != no_raiz) 
-                            el_aux->value = 1 ; 
-                            printf("value: %u",el_aux->value);
-                            printf("%d-> %d\n",node_origin, node_destin); 
-                            i++; 
-                          }   
+      //                 for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+      //                 if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
+      //                     if(el_aux->value == 0 && node_origin != no_raiz) 
+      //                       el_aux->value = 1 ; 
+      //                       printf("value: %u",el_aux->value);
+      //                       printf("%d-> %d\n",node_origin, node_destin); 
+      //                       i++; 
+      //                     }   
                          
-                      }
-                  } 
-                if(feof(fl)) break ;
-              }     
-      tamAresta = i ;  
-      printf("TAmAresta: %d\n", tamAresta); 
-      for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-        printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->line , el_aux->colunm, el_aux->value);
-      }  
+      //                 }
+      //             } 
+      //           if(feof(fl)) break ;
+      //         }     
+      // tamAresta = i ;  
+      // printf("TAmAresta: %d\n", tamAresta); 
+      // for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+      //   printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->line , el_aux->colunm, el_aux->value);
+      // }  
       // pacotes = alocaPacotes(numNo,adj);  
       // for(struct generic_2d_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
       //   printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
