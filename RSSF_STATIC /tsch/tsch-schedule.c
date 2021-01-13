@@ -74,10 +74,12 @@
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
 MEMB(generic_2d_array_memb, struct generic_2d_array_element, MAX_MESH_SIZE_NODE); 
+MEMB(generic_array_memb, struct generic_array_element, MAX_NOS); 
 
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
-MEMB(adj_memb, struct ADJ , 1); 
+MEMB(adj_memb, struct ADJ , 1);  
+MEMB(pacotes_memb, struct Pacotes , 1); 
 
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);
@@ -598,29 +600,36 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 }
 
 /*------------------------------------------------------------------------------------------------------------*/
-int *alocaPacotes(int num_no, int **adj){
-  int *vetor, x, y, qtd_pacotes = 0; 
-    vetor = (int*) malloc(num_no * sizeof(int));
-    //Percorre o vetor de pacotes
-    for(x = 0; x < num_no; x++){
-        //Percorre a linha da matriz para saber se o nó X está conectado à alguém
-        for(y = 0; y < num_no; y++)
-            //Se sim, adiciona um pacote
-            if(adj[x][y] == 1){
-                qtd_pacotes = peso;
-                break;
-            }
-
-        if(qtd_pacotes)
-            vetor[x] = qtd_pacotes;
-        else
-            vetor[x] = 0;
-
-        //Reseta o contador
-        qtd_pacotes = 0;
-    }
+struct Pacotes *alocaPacotes(int num_no, struct ADJ *adj){
+  int  x, y, qtd_pacotes = 0; 
+    struct Pacotes *pre_pacotes = memb_alloc(&pacotes_memb);  
+    LIST_STRUCT_INIT(pre_pacotes,list_packages_node); 
     
-    return vetor; 
+    //Percorre o vetor de pacotes
+    for(struct generic_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)){  
+        if(adj->value == 1){
+                qtd_pacotes = peso; 
+            } 
+        if(qtd_pacotes){ 
+          struct generic_array_element *el = NULL;
+          el = memb_alloc(&generic_array_memb);  
+          list_add(pre_pacotes->list_packages_node, el); 
+          el->line = x;  
+          el->value = qtd_pacotes;
+          //vetor[x] = qtd_pacotes;
+          }
+        else{ 
+          struct generic_array_element *el = NULL;
+          el = memb_alloc(&generic_array_memb);  
+          list_add(pre_pacotes->list_packages_node, el); 
+          el->line = x;  
+          el->value = 0 ;
+        }
+
+        qtd_pacotes = 0;
+      }  
+    
+    return pre_pacotes; 
     }  
 
 
@@ -663,8 +672,11 @@ void SCHEDULE_static(){
   int i = 0 ;   
   int node_origin, node_destin;  
   struct ADJ *adj = memb_alloc(&adj_memb);  
+  int  tamAresta = MAX_NOS;     
+  int numNo = MAX_NOS - 1;   
+  struct Pacotes *pacotes = NULL;  
+
   if(tsch_get_lock()){    
-     //int  tamAresta = MAX_NOS;    
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
           printf("The file was not opened\n");
@@ -704,8 +716,12 @@ void SCHEDULE_static(){
               }     
       for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->colunm, el_aux->line, el_aux->value);
-      }    
-       }  
+      }  
+      pacotes = alocaPacotes(numNo,adj); 
+
+
+
+      }  
 
 
  
