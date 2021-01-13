@@ -158,12 +158,12 @@ struct generic_2d_array_element{
   uint16_t value ;  
   uint16_t colunm ;  
   uint16_t line ; 
-  struct generic_2d_array_element *next; 
+  //struct generic_2d_array_element *next; 
 }; 
 struct generic_array_element{ 
   uint16_t value ;   
   uint16_t line ; 
-  struct generic_array_element *next; 
+  //struct generic_array_element *next; 
 };   
 struct ADJ{ 
   LIST_STRUCT(network_graph);
