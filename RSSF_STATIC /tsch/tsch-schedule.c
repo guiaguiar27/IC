@@ -671,7 +671,7 @@ void SCHEDULE_static(){
   FILE *fl;      
   int i = 0 ;   
   int node_origin, node_destin;  
-  struct ADJ *adj = memb_alloc(&adj);  
+  struct ADJ *adj = memb_alloc(&adj_memb);  
   int  tamAresta = MAX_NOS;     
   //int numNo = MAX_NOS - 1;   
 //  struct Pacotes *pacotes = NULL;  
@@ -691,7 +691,8 @@ void SCHEDULE_static(){
         el->colunm = j;  
         el->line = i;  
         el->value = 0 ;     
-        printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value);
+        printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value); 
+        memb_free(&generic_2d_array_memb, el);
          
       }
     } 
