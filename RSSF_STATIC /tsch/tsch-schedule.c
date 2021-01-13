@@ -674,7 +674,7 @@ void SCHEDULE_static(){
   struct ADJ *adj = memb_alloc(&adj_memb);  
   int  tamAresta = MAX_NOS;     
   int numNo = MAX_NOS - 1;   
-  struct Pacotes *pacotes = NULL;  
+//  struct Pacotes *pacotes = NULL;  
 
   if(tsch_get_lock()){    
       fl = fopen(endereco, "r"); 
@@ -719,10 +719,10 @@ void SCHEDULE_static(){
       for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->colunm, el_aux->line, el_aux->value);
       }  
-      pacotes = alocaPacotes(numNo,adj);  
-      for(struct generic_2d_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-        printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
-      }
+      // pacotes = alocaPacotes(numNo,adj);  
+      // for(struct generic_2d_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+      //   printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
+      // }
 
 
 
