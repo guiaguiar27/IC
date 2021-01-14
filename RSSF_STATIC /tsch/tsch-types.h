@@ -154,7 +154,7 @@ struct input_packet {
   uint8_t channel; /* Channel we received the packet on */
 };  
 
-struct generic_2d_array_element{ 
+struct generic_2dim_array_element{ 
   uint16_t value ;  
   uint16_t colunm ;  
   uint16_t line ; 
@@ -165,10 +165,10 @@ struct generic_array_element{
   uint16_t line ; 
   //struct generic_array_element *next; 
 };   
-struct 2d_Array{ 
+struct 2dim_Array{ 
   LIST_STRUCT(Internal_list);
 };  
-struct 1d_Array{ 
+struct 1dim_Array{ 
   LIST_STRUCT(list_packages_node);
 };
 
