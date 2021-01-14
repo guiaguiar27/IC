@@ -589,7 +589,8 @@ tsch_schedule_print(void)
 /*---------------------------------------------------------------------------*/
 
 
-int **mapGraphConf(struct matrix_generic *mat, int tam_no, int tam_aresta){
+struct matrix_generic *mapGraphConf(struct matrix_generic *adj, int tam_no, int tam_aresta){
+
     /*
     * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
     * x, y: índices da matriz
@@ -723,13 +724,13 @@ int count_lines()
  
 void SCHEDULE_static(){  
   FILE *fl;      
-  //int i = 0 ;   
-  //int node_origin, node_destin;  
+  int i = 0 ;   
+  int node_origin, node_destin;  
   struct matrix_generic *adj = memb_alloc(&adj_memb);   
   struct matrix_generic *conf = NULL; 
-  //int  tamAresta = MAX_NOS;     
+  int  tamAresta = MAX_NOS;     
   //int numNo = MAX_NOS - 1;   
-//  struct 1D_Array *pacotes = NULL;  
+ struct Array_generic *pacotes = NULL;  
 
   if(tsch_get_lock()){    
       fl = fopen(endereco, "r"); 
@@ -779,7 +780,10 @@ void SCHEDULE_static(){
       for(struct generic_2dim_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
       } 
-      conf = mapGraphConf(adj, tamNo, tamAresta); 
+      conf = mapGraphConf(adj, tamNo, tamAresta);  
+      for(struct generic_2dim_array_element *el_aux = list_head(conf->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
+      }
 
 
 

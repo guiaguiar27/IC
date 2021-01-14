@@ -168,6 +168,6 @@ void tsch_write_in_file(int n_origin, int n_destin);
 int count_lines();    
 void SCHEDULE_static();  
 int sort_node_to_create_link(int n);  
-struct matrix_generic *mapGraphConf(struct matrix_generic *mat, int tam_no, int tam_aresta);
+struct matrix_generic *mapGraphConf(struct matrix_generic *adj, int tam_no, int tam_aresta);
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
