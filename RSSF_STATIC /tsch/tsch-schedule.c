@@ -57,7 +57,9 @@
 #include <string.h> 
 #include <stdio.h> 
 #include <stdlib.h>
-#include "conf.c"  
+//#include "conf.c"   
+
+#include "lib/random.h"
 #define temp_canais 16
 #define peso 1 
 #define MAX_NOS 5
@@ -729,7 +731,7 @@ void SCHEDULE_static(){
   struct matrix_generic *adj = memb_alloc(&adj_memb);   
   struct matrix_generic *conf = NULL; 
   int  tamAresta = MAX_NOS;     
-  //int numNo = MAX_NOS - 1;   
+  int numNo = MAX_NOS - 1;   
  struct Array_generic *pacotes = NULL;  
 
   if(tsch_get_lock()){    
