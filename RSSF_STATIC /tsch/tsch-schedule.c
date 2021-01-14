@@ -782,7 +782,7 @@ void SCHEDULE_static(){
       for(struct generic_2dim_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
       } 
-      conf = mapGraphConf(adj, tamNo, tamAresta);  
+      conf = mapGraphConf(adj, numNo, tamAresta);  
       for(struct generic_2dim_array_element *el_aux = list_head(conf->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
         printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
       }
@@ -804,9 +804,14 @@ int sort_node_to_create_link(int n){
  
   unsigned short  random_node;    
   int aux_n = n - 1 ;  
+  int final_sorted_node; 
+
   random_node = random_rand() % aux_n;
-  int final_sorted_node = (int) random_node;
-  
+  while(final_sorted_node <= 1 ){ 
+    random_node = random_rand() % aux_n;
+    if (random_node > 1) break; 
+  } 
+  final_sorted_node = (int) random_node;
   
   return final_sorted_node; 
  
