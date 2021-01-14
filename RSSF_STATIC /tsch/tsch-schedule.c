@@ -73,14 +73,14 @@
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
-MEMB(generic_2dim_array_memb, struct generic_2dim_array_element, MAX_MESH_SIZE_NODE); 
+MEMB(matrix_memb, struct generic_2dim_array_element, MAX_MESH_SIZE_NODE); 
 MEMB(generic_array_memb, struct generic_array_element, MAX_NOS); 
 
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
-MEMB(adj_memb, struct 2dim_Array , 1);   
-MEMB(conf_memb, struct 2dim_Array , 1);   
-MEMB(pacotes_memb, struct 1dim_Array , 1); 
+MEMB(adj_memb, struct matrix_generic , 1);   
+MEMB(conf_memb, struct matrix_generic , 1);   
+MEMB(pacotes_memb, struct Array_generic , 1); 
 
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);
@@ -516,7 +516,7 @@ tsch_schedule_init(void)
   if(tsch_get_lock()) {
     memb_init(&link_memb);
     memb_init(&slotframe_memb); 
-    memb_init(&generic_2dim_array_memb);  
+    memb_init(&matrix_memb);  
     memb_init(&adj_memb); 
     memb_init(&conf_memb);
     list_init(slotframe_list);
@@ -589,13 +589,13 @@ tsch_schedule_print(void)
 /*---------------------------------------------------------------------------*/
 
 
-int **mapGraphConf(struct 2dim_Array *mat, int tam_no, int tam_aresta){
+int **mapGraphConf(struct matrix_generic *mat, int tam_no, int tam_aresta){
     /*
     * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
     * x, y: índices da matriz
     * noConf: representa o nó DO grafo de conflito
     */ 
-   struct 2dim_Array *alocado = memb_allloc(&conf_memb);  
+   struct matrix_generic *alocado = memb_allloc(&conf_memb);  
     int **alocado, x = 0 , y = 0 ;
     int noConf = 0;
 
@@ -653,9 +653,9 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 }
 
 /*------------------------------------------------------------------------------------------------------------*/
-struct 1dim_Array *alocaPacotes(int num_no, struct 2dim_Array *adj){
+struct Array_generic *alocaPacotes(int num_no, struct matrix_generic *adj){
   int qtd_pacotes = 0; 
-    struct 1dim_Array *pre_pacotes = memb_alloc(&pacotes_memb);  
+    struct Array_generic *pre_pacotes = memb_alloc(&pacotes_memb);  
     LIST_STRUCT_INIT(pre_pacotes,list_packages_node); 
     
 
@@ -725,8 +725,8 @@ void SCHEDULE_static(){
   FILE *fl;      
   //int i = 0 ;   
   //int node_origin, node_destin;  
-  struct 2dim_Array *adj = memb_alloc(&adj_memb);   
-  struct 2dim_Array *conf = NULL; 
+  struct matrix_generic *adj = memb_alloc(&adj_memb);   
+  struct matrix_generic *conf = NULL; 
   //int  tamAresta = MAX_NOS;     
   //int numNo = MAX_NOS - 1;   
 //  struct 1D_Array *pacotes = NULL;  
@@ -741,13 +741,13 @@ void SCHEDULE_static(){
     for(int i = 0 ; i < MAX_NOS ;i++){ 
       for(int j = 0 ; j < MAX_NOS; j++){  
         struct generic_2dim_array_element *el = NULL;
-        el = memb_alloc(&generic_2dim_array_memb); 
+        el = memb_alloc(&matrix_memb); 
         list_add(adj->Internal_list, el); 
         el->colunm = j;  
         el->line = i;  
         el->value = 0 ;     
         printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value); 
-        memb_free(&generic_2dim_array_memb, el);
+        memb_free(&matrix_memb, el);
          
       }
     } 

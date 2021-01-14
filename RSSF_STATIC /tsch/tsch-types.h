@@ -158,17 +158,17 @@ struct generic_2dim_array_element{
   uint16_t value ;  
   uint16_t colunm ;  
   uint16_t line ; 
-  //struct generic_2d_array_element *next; 
+  struct generic_2d_array_element *next; 
 }; 
 struct generic_array_element{ 
   uint16_t value ;   
   uint16_t line ; 
-  //struct generic_array_element *next; 
+  struct generic_array_element *next; 
 };   
-struct 2dim_Array{ 
+struct matrix_generic{ 
   LIST_STRUCT(Internal_list);
 };  
-struct 1dim_Array{ 
+struct Array_generic{ 
   LIST_STRUCT(list_packages_node);
 };
 

@@ -161,13 +161,13 @@ struct tsch_slotframe *tsch_schedule_slotframe_head(void);
  * \return The next slotframe if any, NULL otherwise
  */
 struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
-struct Pacotes *alocaPacotes(int num_no, struct 2dim_Array *adj);  
+struct Array_generic *alocaPacotes(int num_no, struct matrix_generic *adj);  
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes); 
 int tsch_num_nos();  
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
 void SCHEDULE_static();  
 int sort_node_to_create_link(int n);  
-struct 2dim_Array *mapGraphConf(struct 2dim_Array *mat, int tam_no, int tam_aresta);
+struct matrix_generic *mapGraphConf(struct 2dim_Array *mat, int tam_no, int tam_aresta);
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
