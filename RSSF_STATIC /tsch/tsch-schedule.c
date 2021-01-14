@@ -300,7 +300,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              tsch_write_in_file(node, node_neighbor);   
+              tsch_write_in_file(node_neighbor, node);   
                           }
           }
         }
