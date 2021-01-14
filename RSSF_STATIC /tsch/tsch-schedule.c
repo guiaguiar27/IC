@@ -807,7 +807,7 @@ int sort_node_to_create_link(int n){
   int final_sorted_node; 
 
   random_node = random_rand() % aux_n;
-  while(final_sorted_node <= 1 ){ 
+  while(random_node <= 1 ){ 
     random_node = random_rand() % aux_n;
     if (random_node > 1) break; 
   } 
