@@ -78,9 +78,9 @@ MEMB(generic_array_memb, struct generic_array_element, MAX_NOS);
 
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
-MEMB(adj_memb, struct 2D_Array , 1);   
-MEMB(conf_memb, struct 2D_Array , 1);   
-MEMB(pacotes_memb, struct 1D_Array , 1); 
+MEMB(adj_memb, struct 2d_Array , 1);   
+MEMB(conf_memb, struct 2d_Array , 1);   
+MEMB(pacotes_memb, struct 1d_Array , 1); 
 
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);
@@ -589,13 +589,13 @@ tsch_schedule_print(void)
 /*---------------------------------------------------------------------------*/
 
 
-int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
+int **mapGraphConf(struct 2d_Array *mat, int tam_no, int tam_aresta){
     /*
     * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
     * x, y: índices da matriz
     * noConf: representa o nó DO grafo de conflito
     */ 
-   struct 2D_Array *alocado = memb_allloc(&conf_memb);  
+   struct 2d_Array *alocado = memb_allloc(&conf_memb);  
     int **alocado, x = 0 , y = 0 ;
     int noConf = 0;
 
@@ -653,11 +653,12 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 }
 
 /*------------------------------------------------------------------------------------------------------------*/
-struct 1D_Array *alocaPacotes(int num_no, struct 2D_Array *adj){
+struct 1d_Array *alocaPacotes(int num_no, struct 2d_Array *adj){
   int qtd_pacotes = 0; 
-    struct 1D_Array *pre_pacotes = memb_alloc(&pacotes_memb);  
+    struct 1d_Array *pre_pacotes = memb_alloc(&pacotes_memb);  
     LIST_STRUCT_INIT(pre_pacotes,list_packages_node); 
     
+
     //Percorre o vetor de pacotes
     for(struct generic_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)){  
         if(el_aux->value == 1){
@@ -724,8 +725,8 @@ void SCHEDULE_static(){
   FILE *fl;      
   //int i = 0 ;   
   //int node_origin, node_destin;  
-  struct 2D_Array *adj = memb_alloc(&adj_memb);   
-  struct 2D_Array *conf = NULL; 
+  struct 2d_Array *adj = memb_alloc(&adj_memb);   
+  struct 2d_Array *conf = NULL; 
   //int  tamAresta = MAX_NOS;     
   //int numNo = MAX_NOS - 1;   
 //  struct 1D_Array *pacotes = NULL;  
