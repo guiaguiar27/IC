@@ -595,19 +595,19 @@ int **mapGraphConf(struct matrix_generic *mat, int tam_no, int tam_aresta){
     * x, y: índices da matriz
     * noConf: representa o nó DO grafo de conflito
     */ 
-   struct matrix_generic *alocado = memb_allloc(&conf_memb);  
-    int **alocado, x = 0 , y = 0 ;
+   struct matrix_generic *alocado = memb_alloc(&conf_memb);  
+    int  x = 0 , y = 0 ;
     int noConf = 0;
 
     //Aloca a matriz   
 
-    for(int x = 0 ; i < tam_aresta ;i++){ 
-      for(int j = 0 ; j < 2; j++){  
+    for(int x = 0 ; x < tam_aresta ;x++){ 
+      for(int y = 0 ; y < 2; y++){  
         struct generic_2dim_array_element *el = NULL;
         el = memb_alloc(&conf_memb); 
         list_add(alocado->Internal_list, el); 
-        el->colunm = j;  
-        el->line = i;  
+        el->colunm = y;  
+        el->line = x;  
         el->value = 0 ;     
         memb_free(&conf_memb, el);
          
@@ -639,7 +639,7 @@ int **mapGraphConf(struct matrix_generic *mat, int tam_no, int tam_aresta){
 /*---------------------------------------------------------------------------*/
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
-    int  i;
+    int i;
      for(i = 0; i < 16; i++){
         if(aloca_canal[i][tempo] == -1)
             continue; 
