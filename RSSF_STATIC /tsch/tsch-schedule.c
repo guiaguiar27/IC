@@ -78,8 +78,9 @@ MEMB(generic_array_memb, struct generic_array_element, MAX_NOS);
 
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
-MEMB(adj_memb, struct ADJ , 1);  
-MEMB(pacotes_memb, struct Pacotes , 1); 
+MEMB(adj_memb, struct 2D_Array , 1);   
+MEMB(conf_memb, struct 2D_Array , 1);   
+MEMB(pacotes_memb, struct 1D_Array , 1); 
 
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);
@@ -516,7 +517,8 @@ tsch_schedule_init(void)
     memb_init(&link_memb);
     memb_init(&slotframe_memb); 
     memb_init(&generic_2d_array_memb);  
-    memb_init(&adj_memb);
+    memb_init(&adj_memb); 
+    memb_init(&conf_memb);
     list_init(slotframe_list);
     tsch_release_lock();
     return 1;
@@ -582,6 +584,57 @@ tsch_schedule_print(void)
 
     LOG_PRINT("----- end slotframe list -----\n");
   }
+} 
+
+/*---------------------------------------------------------------------------*/
+
+
+int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
+    /*
+    * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
+    * x, y: índices da matriz
+    * noConf: representa o nó DO grafo de conflito
+    */ 
+   struct 2D_Array *alocado = memb_allloc(&conf_memb);  
+    int **alocado, x = 0 , y = 0 ;
+    int noConf = 0;
+
+    //Aloca a matriz   
+
+    for(int x = 0 ; i < tam_aresta ;i++){ 
+      for(int j = 0 ; j < 2; j++){  
+        struct generic_2d_array_element *el = NULL;
+        el = memb_alloc(&conf_memb); 
+        list_add(alocado->Internal_list, el); 
+        el->colunm = j;  
+        el->line = i;  
+        el->value = 0 ;     
+        memb_free(&conf_memb, el);
+         
+      }
+    }      
+    
+    //"Captura" as arestas e armazena
+    for(x = 1; x < tam_no; x++)
+        for(y = 1; y < tam_no; y++) 
+             for(struct generic_2d_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)){ 
+               if(el_aux->line == x && el_aux->colunm == y){ 
+                 if(el_aux->value != 0 ){
+                   for(struct generic_2d_array_element *el_alocado = list_head(alocado->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux))
+                      if(el_alocado->line == noConf && el_alocado->colunm == 0 ){ 
+                          el_alocado->value = x ;
+                      } 
+                      else if(el_alocado->line == noConf && el_alocado->colunm == 1 ){ 
+                          el_alocado->value = y; 
+                      }
+                      noConf++; 
+                }
+               }
+               
+             }
+            
+
+    return alocado;
 }
 /*---------------------------------------------------------------------------*/
 
@@ -600,13 +653,13 @@ void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_ent
 }
 
 /*------------------------------------------------------------------------------------------------------------*/
-struct Pacotes *alocaPacotes(int num_no, struct ADJ *adj){
+struct 1D_Array *alocaPacotes(int num_no, struct 2D_Array *adj){
   int qtd_pacotes = 0; 
-    struct Pacotes *pre_pacotes = memb_alloc(&pacotes_memb);  
+    struct 1D_Array *pre_pacotes = memb_alloc(&pacotes_memb);  
     LIST_STRUCT_INIT(pre_pacotes,list_packages_node); 
     
     //Percorre o vetor de pacotes
-    for(struct generic_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)){  
+    for(struct generic_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)){  
         if(el_aux->value == 1){
                 qtd_pacotes = peso; 
             } 
@@ -671,10 +724,11 @@ void SCHEDULE_static(){
   FILE *fl;      
   //int i = 0 ;   
   //int node_origin, node_destin;  
-  struct ADJ *adj = memb_alloc(&adj_memb);  
+  struct 2D_Array *adj = memb_alloc(&adj_memb);   
+  struct 2D_Array *conf = NULL; 
   //int  tamAresta = MAX_NOS;     
   //int numNo = MAX_NOS - 1;   
-//  struct Pacotes *pacotes = NULL;  
+//  struct 1D_Array *pacotes = NULL;  
 
   if(tsch_get_lock()){    
       fl = fopen(endereco, "r"); 
@@ -682,12 +736,12 @@ void SCHEDULE_static(){
           printf("The file was not opened\n");
           return ; 
       }    
-    LIST_STRUCT_INIT(adj, network_graph); 
+    LIST_STRUCT_INIT(adj, Internal_list); 
     for(int i = 0 ; i < MAX_NOS ;i++){ 
       for(int j = 0 ; j < MAX_NOS; j++){  
         struct generic_2d_array_element *el = NULL;
         el = memb_alloc(&generic_2d_array_memb); 
-        list_add(adj->network_graph, el); 
+        list_add(adj->Internal_list, el); 
         el->colunm = j;  
         el->line = i;  
         el->value = 0 ;     
@@ -698,32 +752,34 @@ void SCHEDULE_static(){
     } 
 
       // //read the topology 
-      // while(!feof(fl)){      
-      //         fscanf(fl,"%d %d",&node_origin, &node_destin);       
-      //         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+      while(!feof(fl)){      
+              fscanf(fl,"%d %d",&node_origin, &node_destin);       
+              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
           
-      //                 for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-      //                 if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
-      //                     if(el_aux->value == 0 && node_origin != no_raiz) 
-      //                       el_aux->value = 1 ; 
-      //                       printf("value: %u",el_aux->value);
-      //                       printf("%d-> %d\n",node_origin, node_destin); 
-      //                       i++; 
-      //                     }   
+                      for(struct generic_2d_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+                      if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
+                          if(el_aux->value == 0 && node_origin != no_raiz) 
+                            el_aux->value = 1 ; 
+                            printf("value: %u",el_aux->value);
+                            printf("%d-> %d\n",node_origin, node_destin); 
+                            i++; 
+                          }   
                          
-      //                 }
-      //             } 
-      //           if(feof(fl)) break ;
-      //         }     
-      // tamAresta = i ;  
-      // printf("TAmAresta: %d\n", tamAresta); 
-      // for(struct generic_2d_array_element *el_aux = list_head(adj->network_graph); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-      //   printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->line , el_aux->colunm, el_aux->value);
-      // }  
-      // pacotes = alocaPacotes(numNo,adj);  
-      // for(struct generic_2d_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-      //   printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
-      // }
+                      }
+                  } 
+                if(feof(fl)) break ;
+              }     
+      tamAresta = i ;  
+      printf("TAmAresta: %d\n", tamAresta); 
+      for(struct generic_2d_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->line , el_aux->colunm, el_aux->value);
+      }  
+      pacotes = alocaPacotes(numNo,adj);  
+      for(struct generic_2d_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
+      } 
+      conf = mapGraphConf(adj, tamNo, tamAresta); 
+
 
 
 

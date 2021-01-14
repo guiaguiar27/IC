@@ -165,10 +165,10 @@ struct generic_array_element{
   uint16_t line ; 
   //struct generic_array_element *next; 
 };   
-struct ADJ{ 
-  LIST_STRUCT(network_graph);
+struct 2D_Array{ 
+  LIST_STRUCT(Internal_list);
 };  
-struct Pacotes{ 
+struct 1D_Array{ 
   LIST_STRUCT(list_packages_node);
 };
 
