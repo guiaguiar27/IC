@@ -1198,8 +1198,8 @@ int SCHEDULE_static(){
               LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-              l-> timeslot = x; 
-              l-> channel_offset = y ;   
+              l-> timeslot = x+1; 
+              l-> channel_offset = y+1 ;   
               LOG_PRINT("----CHANGE-----\n"); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
