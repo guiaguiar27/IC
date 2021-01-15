@@ -44,7 +44,9 @@
 
 #include "network-graph.h"
 #include "contiki.h"
-#include "net/linkaddr.h"
+#include "net/linkaddr.h" 
+
+#define temp_canais 16
 
 /********** Functions *********/
 
