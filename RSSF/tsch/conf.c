@@ -14,14 +14,14 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ;  
-     unsigned short  no_atual; 
-    //srand(time(NULL));
+    int  no_atual; 
+    srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = random_rand() % num_no;   
+    no_atual = rand() % num_no;   
     printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz){ 
-        no_atual = random_rand() % num_no;
+        no_atual = rand() % num_no;
     }
     // do{
         
