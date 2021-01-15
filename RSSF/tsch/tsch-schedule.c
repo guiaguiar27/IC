@@ -1013,7 +1013,8 @@ int SCHEDULE_static(){
     int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
-    // inicia arquivo  
+    // inicia arquivo   
+    struct tsch_slotframe *sf = list_head(slotframe_list);
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
