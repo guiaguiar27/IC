@@ -42,6 +42,7 @@
 
 /********** Includes **********/
 
+#include "network-graph.h"
 #include "contiki.h"
 #include "net/linkaddr.h"
 
