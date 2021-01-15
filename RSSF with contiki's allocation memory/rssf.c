@@ -4,14 +4,14 @@
 #define temp_canais 23
 #define peso 1 
 #define no_raiz 1 
-#define endereco "/home/user/contiki-ng/os/arvore.txt" 
+#define endereco "teste3.txt" 
 
 
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
 int *alocaPacotes(int num_no); 
 void alocaPacotes2(int num_no, struct NetworkGraph *adj, int (*vetor)[num_no]);
 
-int rssf(){    
+int main(){    
     int tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
