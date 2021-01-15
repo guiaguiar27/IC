@@ -289,7 +289,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              tsch_write_in_file(node, node_neighbor);   
+              tsch_write_in_file(node_neighbor, node);   
                           }
           }
         }
@@ -1193,7 +1193,8 @@ int SCHEDULE_static(){
           l = memb_alloc(&link_memb); 
           l = list_head(sf->links_list);        
           while(l!= NULL){   
-            if(aloca_canais[x][y] + 1 == l->handle){
+            if(aloca_canais[x][y] + 1 == l->handle){ 
+              
               LOG_PRINT("---------------------------\n"); 
               LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
