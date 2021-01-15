@@ -3,7 +3,9 @@
 #include "conf.h"
 #define temp_canais 23
 #define peso 1 
-#define no_raiz 1
+#define no_raiz 1 
+#define endereco "/home/user/contiki-ng/os/arvore.txt" 
+
 
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
 int *alocaPacotes(int num_no); 
@@ -33,7 +35,7 @@ int rssf(){
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
-    fl = fopen("teste.txt", "r"); 
+    fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
         return 0  ; 
