@@ -46,7 +46,6 @@
 #include "contiki.h"
 #include "net/linkaddr.h" 
 
-#define temp_canais 16
 
 /********** Functions *********/
 
@@ -165,8 +164,8 @@ struct tsch_slotframe *tsch_schedule_slotframe_head(void);
  */
 struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
 int SCHEDULE();   
-void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]) ; 
-void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
+//void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]) ; 
+//void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
 int tsch_num_nos();  
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
