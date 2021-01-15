@@ -8,44 +8,51 @@
     * num_no: número de nós do grafo da rede
     * num_aresta: nº de arestas do grafo da rede
     */
-
-
-    /*
-    *   mat_adj: matriz de adjacência do grafo da rede
-    *   graf_conf: matriz de ajacência do grafo de conflito
-    *   num_arestas: tamanho do grafo de conflito
-    *   num_no: tamanho do grafo da rede
-    *   node: aresta selecionada para iniciar o matching 
-    * 
-    */
-   int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, int num_no, int num_aresta, int raiz){
+void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching){
     /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ; 
-    unsigned short  aux_no_atual; 
-    //Seleciona o nó com maior carga pra ser transmitida
-    do{
-        aux_no_atual = random_rand() % num_no; 
-        printf("No sorteado: %u \n",aux_no_atual);
-    }while(aux_no_atual == raiz); 
-    int no_atual = (int) aux_no_atual;   
-    printf("No sorteado (int): %d \n",no_atual);   
-    for(x = 1; x < num_no; x++)
-        if(pacotes[x] > pacotes[no_atual] && x != raiz)
-            no_atual = x;
+    int no_atual;
+    srand(time(NULL));
     
-    //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado
-     for(x = 0; x < num_aresta; x++)
-         if(mapa_graf_conf[x][0] == no_atual)
-            printf("-----------Achou o no-------\n");
-            return geraMaching(pacotes, matriz, graf_conf, mapa_graf_conf, num_aresta, num_no, x);
+    //Seleciona o nó com maior carga pra ser transmitida
+    no_atual = rand() % num_no;   
+    printf("sorted nó:%d\n",no_atual);
+    while(no_atual == raiz){ 
+        no_atual = rand() % num_no;
+    }
+    // do{
+        
+        
+    // }while(no_atual == raiz); 
+    // //printf("no atual:%d",no_atual);
+    for(x = 0; x < num_no; x++){
+        if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
+            no_atual = x; 
+    }
+    printf("Nó selecionado:%d \n", no_atual);
+    
+    //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado 
+    for(x = 0; x < num_aresta; x++)
+        if((*mapa_graf_conf)[x][0] == no_atual){
+            geraMaching(num_aresta, num_no, pacotes, graf_conf, mapa_graf_conf, x, matching);
+            return;
+        }
 
     printf("Caímos no pior caso\n");
-    return NULL ;
 }
-int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_conf, int num_arestas, int num_no, int node){
+
+
+    /*
+    *   mat_adj: matriz de adjacência do grafo da rede
+    *   graf_conf: matriz de ajacência do grafo de conflito
+    *   tam: tamanho do grafo de conflito
+    *   tam_rede: tamanho do grafo da rede
+    *   node: aresta selecionada para iniciar o matching
+    */
+void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_conf)[tam][tam], int (*mapa_graf_conf)[tam][2], int node, ng *resultado){
     
     /*
     * x, y: usado para percorrer o vetor
@@ -58,110 +65,92 @@ int **geraMaching(int *pacotes, int **mat_adj, int **graf_conf, int **mapa_graf_
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-     int x, y, vetor[num_arestas][2],  maior_peso, cont = 1, flg = 1;
-     
-     int **resultado = (int**)malloc(num_no * sizeof(int*));
-     for(x = 0; x < num_no; x++){
-         resultado[x] = (int*)malloc(num_no * sizeof(int));
-     } 
-    for(x = 0; x < num_no; x++){ 
-        for(y = 0; y < num_no; y++)
-            resultado[x][y] = 0;
-    } 
-    printf(" tam_no: %d \n tam_aresta: %d",num_no, num_arestas);
+    int x, y, vetor[tam][2], maior_peso = -1, cont = 1, flg = 1;
+
+    //Preenchendo com zeros a matriz do matching
+    for(x = 0; x < tam_rede; x++){ 
+        for(y = 0; y < tam_rede; y++)
+            resultado->mat_adj[x][y] = 0;
+    }
 
     //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
-    for(x = 0; x < num_arestas; x++){
+    for(x = 0; x < tam; x++){
         vetor[x][0] = 0;
-        vetor[x][1] = 1; 
-    }   
-    // teste
-    printf("vetor\n");
-    for(x = 0; x < num_arestas ;x++){ 
-        printf("%d %d\n", vetor[x][0], vetor[x][1]);
-    } 
-    // teste
+        vetor[x][1] = 1;
+    }
 
-    //Pesquisa os nós que geram conflito com o node 
-    printf("node sorted: %d\n", node);
-    for(x = 0; x < num_arestas; x++)
-        printf("graf_conf[2][x] = %d\n", graf_conf[2][x]);
-        // if(graf_conf[node][x] != 0){
-        //     vetor[x][0] = 1;
-        //     vetor[x][1] = 0;
-        // } 
+    //Pesquisa os nós que geram conflito com o node
+    for(x = 0; x < tam; x++)
+        if((*graf_conf)[node][x] != 0){
+            vetor[x][0] = 1;
+            vetor[x][1] = 0;
+        }
 
-     
+    vetor[node][0] = 0;
+    vetor[node][1] = 0;
+    
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
     while(cont){
-        //Pega a aresta com maior peso...
-        for(x = 0; x < num_arestas; x++){
+        //Escolhe a aresta com maior peso...
+        for(x = 0; x < tam; x++){
             if(!vetor[x][0] && vetor[x][1]){
                 if(flg){
                     maior_peso = x;
                     flg = 0;
                 }
-                // else
-                //     if(pacotes[mapa_graf_conf[x][0]] > pacotes[mapa_graf_conf[maior_peso][0]])
-                //         maior_peso = x;
+                else
+                    if((*pacotes)[(*mapa_graf_conf)[x][0]] > (*pacotes)[(*mapa_graf_conf)[maior_peso][0]])
+                        maior_peso = x;
             }
         }
-        vetor[maior_peso][1] = 0;
-        // ...e retira as que geram conflito com ela
-        for(x = 0; x < num_arestas; x++)
-            if(graf_conf[maior_peso][x] != 0){
-                 vetor[x][0] = 1;
-                 vetor[x][1] = 0;
-             }
+        //...e caso haja uma aresta com maior peso...
+        if(maior_peso != -1){
+            vetor[maior_peso][1] = 0;
+            //...retira as arestas que geram conflito com ela
+            for(x = 0; x < tam; x++)
+                if((*graf_conf)[maior_peso][x] != 0 && x != node){
+                    vetor[x][0] = 1;
+                    vetor[x][1] = 0;
+                }
+            maior_peso = -1;
+        }
         cont = 0;
-        for(x = 0; x < num_arestas; x++)
+        for(x = 0; x < tam; x++)
             if(vetor[x][1])
                 cont = 1;
         flg = 1;
     }
-    
-   // Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
-    
-  //   for(x = 0; x < num_arestas; x++){ 
-  //          printf("mapa_graf_conf[x][0] = %d\n",mapa_graf_conf[x][0]);
-    //     if(vetor[x][0] == 0 && pacotes[mapa_graf_conf[x][0]] > 0){
-    //         resultado[mapa_graf_conf[x][0]][mapa_graf_conf[x][1]] = 1;
-    //     }
-   // }
 
-    // //printf("\nPassei por aqui\n");
-    return resultado;
+    //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
+    for(x = 0; x < tam; x++){
+        if(vetor[x][0] == 0 && (*pacotes)[(*mapa_graf_conf)[x][0]] > 0){
+            resultado->mat_adj[(*mapa_graf_conf)[x][0]][(*mapa_graf_conf)[x][1]] = 1;
+        }
+    }
 }
 
 //Armazena as arestas de um grafo e os respectivos nós q o compõem
     /*
     * mat: matriz de adjacência da rede
-    * num_arestas: nº de nós do grafo da rede
+    * tam: nº de nós do grafo da rede
     */
-int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
+void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta][2]){
     /*
     * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
     * x, y: índices da matriz
     * noConf: representa o nó DO grafo de conflito
     */
-    int **alocado, x, y;
+    int x, y;
     int noConf = 0;
 
-    //Aloca a matriz
-    alocado = (int**)malloc(tam_aresta * sizeof(int*));
-    for(x = 0; x < tam_aresta; x++)
-        alocado[x] = (int*) malloc(2 * sizeof(int));
-    
     //"Captura" as arestas e armazena
-    for(x = 1; x < tam_no; x++)
-        for(y = 1; y < tam_no; y++)
-            if(mat[x][y] != 0){
-                alocado[noConf][0] = x;
-                alocado[noConf][1] = y;
+    for(x = 0; x < tam_no; x++)
+        for(y = 0; y < tam_no; y++)
+            if(mat->mat_adj[x][y] != 0){
+                (*alocado)[noConf][0] = x;
+                (*alocado)[noConf][1] = y;
                 noConf++;
             }
-
-    return alocado;
 }
     /*
     * matriz[noConf][0] = Posição do primeiro nó da aresta representada por noConf
@@ -175,17 +164,15 @@ int **mapGraphConf(int **mat, int tam_no, int tam_aresta){
 //Gera a matriz de adjacência do grafo de conflito
    /*
    * mapConf: Matriz que mapeia os nós do grafo de conflito pros nós do grafo da rede
-   * num_arestas: nº de arestas do grafo da rede
+   * tam: nº de arestas do grafo da rede
    */
-int **fazMatrizConf(int **mapConf, int **graf_rede, int tam_arest){
-    int **grafoconf, x, y, z, i;
+void fazMatrizConf(int tam_arest, int (*mapConf)[tam_arest][2], int (*grafoconf)[tam_arest][tam_arest]){
+    int x, y, z, i;
 
-    //Aloca e preenche a matriz de conflito
-    grafoconf = (int**) malloc(tam_arest * sizeof(int*));
+    //Preenche a matriz de conflito
     for(x = 0; x < tam_arest; x++){
-        grafoconf[x] = (int*) malloc(tam_arest * sizeof(int));
         for(y = 0; y < tam_arest; y++)
-            grafoconf[x][y] = 0;
+            (*grafoconf)[x][y] = 0;
     }
 
     //Percorre mapConf: se algum nó que compõe essa aresta...
@@ -193,31 +180,28 @@ int **fazMatrizConf(int **mapConf, int **graf_rede, int tam_arest){
     for(x = 0; x < tam_arest; x++)
         for(y = x; y < tam_arest; y++)
             for(z = 0; z < 2; z++){
-                if(mapConf[x][z] == mapConf[y][0]){
-                    grafoconf[x][y] = 1;
-                    grafoconf[y][x] = 1;
+                if((*mapConf)[x][z] == (*mapConf)[y][0]){
+                    (*grafoconf)[x][y] = 1;
+                    (*grafoconf)[y][x] = 1;
                     for(i = 0; i < tam_arest; i++)
-                        if(mapConf[i][0] == mapConf[y][1] || mapConf[i][1] == mapConf[y][1]){
-                            grafoconf[x][i] = 1;
-                            grafoconf[i][x] = 1;
+                        if((*mapConf)[i][0] == (*mapConf)[y][1] || (*mapConf)[i][1] == (*mapConf)[y][1]){
+                            (*grafoconf)[x][i] = 1;
+                            (*grafoconf)[i][x] = 1;
                         }
                 }
-                if(mapConf[x][z] == mapConf[y][1]){
-                    grafoconf[x][y] = 1;
-                    grafoconf[y][x] = 1;
+                if((*mapConf)[x][z] == (*mapConf)[y][1]){
+                    (*grafoconf)[x][y] = 1;
+                    (*grafoconf)[y][x] = 1;
                     for(i = 0; i < tam_arest; i++)
-                        if(mapConf[i][0] == mapConf[y][0] || mapConf[i][1] == mapConf[y][0]){
-                            grafoconf[x][i] = 1;
-                            grafoconf[i][x] = 1;
+                        if((*mapConf)[i][0] == (*mapConf)[y][0] || (*mapConf)[i][1] == (*mapConf)[y][0]){
+                            (*grafoconf)[x][i] = 1;
+                            (*grafoconf)[i][x] = 1;
                         }
                 }
             }
 
     for(x = 0; x < tam_arest; x++)
-        grafoconf[x][x] = 0;
-
-    return grafoconf;
-
+        (*grafoconf)[x][x] = 0;
 }
 
 

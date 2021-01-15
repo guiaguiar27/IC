@@ -675,7 +675,7 @@ struct Array_generic *alocaPacotes(int num_no, struct matrix_generic *adj){
           el->value = qtd_pacotes;
           //vetor[x] = qtd_pacotes;
           }
-        else{ 
+        else { 
           struct generic_array_element *el = NULL;
           el = memb_alloc(&generic_array_memb);  
           list_add(pre_pacotes->list_packages_node, el); 
@@ -748,7 +748,7 @@ void SCHEDULE_static(){
         list_add(adj->Internal_list, el); 
         el->colunm = j;  
         el->line = i;  
-        el->value = 0 ;     
+        el->value = 0;     
         printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value); 
         memb_free(&matrix_memb, el);
          
