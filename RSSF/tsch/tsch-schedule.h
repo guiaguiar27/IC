@@ -169,6 +169,6 @@ void tsch_write_in_file(int n_origin, int n_destin);
 int count_lines();    
 int SCHEDULE_AUX(int **adj); 
 int SCHEDULE_static(); 
-
+int sort_node_to_create_link(int n); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

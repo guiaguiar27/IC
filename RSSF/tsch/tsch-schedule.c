@@ -63,7 +63,9 @@
 #define MAX_NOS 5
 #define no_raiz 1  
 #define Timeslot 16
-#define endereco "/home/user/contiki-ng/os/arvore.txt" 
+#define endereco "/home/user/contiki-ng/os/arvore.txt"  
+
+#include "network-graph.h"
 
 /* Log configuration */
 #include "sys/log.h"
