@@ -57,7 +57,7 @@
 #include <string.h> 
 #include <stdio.h> 
 #include <stdlib.h>
-#include "conf.c"  
+#include "conf.h"  
 #define temp_canais 16
 #define peso 1 
 #define MAX_NOS 5
@@ -1198,7 +1198,26 @@ int SCHEDULE_static(){
  
 
 
-}  
+}   
+  
+int sort_node_to_create_link(int n){ 
+ 
+  unsigned short  random_node;    
+  int aux_n = n - 1 ;  
+  int final_sorted_node; 
+
+  random_node = random_rand() % aux_n;
+  while(random_node <= 1 ){ 
+    random_node = random_rand() % aux_n;
+    if (random_node > 1) break; 
+  } 
+  final_sorted_node = (int) random_node;
+  
+  return final_sorted_node; 
+ 
+ }
+
+
 
 
 
