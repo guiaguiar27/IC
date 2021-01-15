@@ -9,7 +9,7 @@ void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], in
 int *alocaPacotes(int num_no); 
 void alocaPacotes2(int num_no, struct NetworkGraph *adj, int (*vetor)[num_no]);
 
-int main(){    
+int rssf(){    
     int tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
@@ -33,7 +33,7 @@ int main(){
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
-    fl = fopen("teste 2.txt", "r"); 
+    fl = fopen("teste.txt", "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
         return 0  ; 
