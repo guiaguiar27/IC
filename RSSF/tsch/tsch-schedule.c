@@ -1211,6 +1211,7 @@ int SCHEDULE_static(){
       } 
       }
     
+      tsch_release_lock();
     }// free the lock tsch
     return 0;
 
