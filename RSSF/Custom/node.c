@@ -42,7 +42,7 @@
 #include "sys/log.h"
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
-#define MAX_NOS 10
+
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)
 
@@ -80,7 +80,7 @@ initialize_tsch_schedule()
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
-  for (i = 1 ; i <  node_number ; ++i) { 
+  for (i = 1 ; i < node_number ; ++i) { 
 
     uint8_t link_options;
     linkaddr_t addr;  
@@ -89,7 +89,8 @@ initialize_tsch_schedule()
       addr.u8[j + 1] = remote_id & 0xff;
       addr.u8[j + 0] = remote_id >> 8;
     } 
-    slot_offset = APP_UNICAST_TIMESLOT;
+    slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
+    printf("slotoffset choosed: %d",slot_offset);
     channel_offset = i;
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */
@@ -132,7 +133,6 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
   initialize_tsch_schedule();
-  int **adj = NULL; 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
@@ -147,7 +147,7 @@ PROCESS_THREAD(node_process, ev, data)
     //LOG_PRINT("-----------------------------");     
     //LOG_PRINT("NO gerado: %u",random_rand() % 10);     
     //LOG_PRINT("-----------------------------\n");
-    SCHEDULE_aux(adj); 
+   // SCHEDULE_static(); 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
