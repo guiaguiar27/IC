@@ -90,7 +90,7 @@ initialize_tsch_schedule()
       addr.u8[j + 0] = remote_id >> 8;
     } 
     slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
-    printf("slotoffset choosed: %d",slot_offset);
+    printf("slotoffset choosed: %d\n",slot_offset);
     channel_offset = i;
     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
      * backoff windows will not be reset correctly! */

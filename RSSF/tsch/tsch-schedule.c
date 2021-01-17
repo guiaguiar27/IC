@@ -60,7 +60,6 @@
 #include "conf.h"  
 #define peso 1 
 #define no_raiz 1  
-#define Timeslot 16
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
 
 
@@ -995,21 +994,15 @@ int count_lines()
 
 int SCHEDULE_static(){  
     int tamNo; 
-    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
-    
-    int tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
+    int tamAresta, z, i;                      
     int pacote_entregue = 0, 
-    total_pacotes = 0, 
-    raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária
-    int cont = 0;               //Time do slotframe
-    int aloca_canais[16][temp_canais],         //Slotframe
-    x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp;        //Variáveis temporárias
-   // char **nome_no,             //Nome dos nós no grafo da rede
-    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+    total_pacotes = 0, raiz,                     
+    flg = 1,                    
+    cont = 0;              
+    int aloca_canais[Timeslot][temp_canais],         
+    x, y, canal = 0,           
+    edge_selected, temp;        
     int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
@@ -1025,6 +1018,7 @@ int SCHEDULE_static(){
     } 
     // matriz  
     if(tsch_get_lock()){
+      
       for(int i = 0 ; i < MAX_NOS ; i++){ 
           for(int j = 0 ; j< MAX_NOS; j++){  
               adj.mat_adj[i][j] = 0 ; 
@@ -1072,7 +1066,7 @@ int SCHEDULE_static(){
       fazMatrizConf(tamAresta, &conf, &matconf);
 
       //Preenche o slotframe com -1
-      for(x = 0; x < 16; x++){
+      for(x = 0; x < Timeslot; x++){
           for(y = 0; y < temp_canais; y++)
               aloca_canais[x][y] = -1;
       }
@@ -1127,16 +1121,16 @@ int SCHEDULE_static(){
                               break;
                       edge_selected = temp;
                       for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                          if(canal == 16)
+                          if(canal == Timeslot)
                               break;
                           aloca_canais[canal][cont] = edge_selected; 
                           canal++;
                       }
                   }
-                  if(canal == 16)
+                  if(canal == Timeslot)
                       break;
               }
-              if(canal == 16)
+              if(canal == Timeslot)
                   break;
           }
           
@@ -1154,15 +1148,9 @@ int SCHEDULE_static(){
           executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
           cont++;
           canal = 0;
-          
           //mostram os pacotes contentes em cada nó da rede
           printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-          
-          /*for(z = 0; z < tamNo; z++){
-              printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
-          }
-          printf("\n");
-          */ 
+         
           DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
       
       }
@@ -1171,23 +1159,17 @@ int SCHEDULE_static(){
       printf("\n                \\   /");
       printf("\n                 \\ /\n\n");
       printf(" temp_canais =  %d\n",temp_canais);
-      for(x = 0 ; x < 16; x++){
+      for(x = 0 ; x < Timeslot; x++){
           for(y = 0; y < temp_canais; y++) 
               // linhas = tempo - coluna = canal  
               printf("%d  ", aloca_canais[x][y] + 1);  
               
           printf("\n"); 
       } 
-      
-      
-
-      //nome_arq_dot = criaGrafoConf(matconf, conf, nome_no, tamAresta);
-
-      printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot); 
-      
+        
       LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
       struct tsch_link *l =   NULL;  
-      for(x = 0 ; x < 16; x++){ 
+      for(x = 0 ; x < Timeslot; x++){ 
       for(y = 0 ; y < temp_canais;y++){ 
                 //coordenadas[i][j] = rand()%16  ; 
           l = memb_alloc(&link_memb); 
@@ -1210,6 +1192,7 @@ int SCHEDULE_static(){
             } 
       } 
       }
+      LOG_PRINT("ESCALONAMENTO CONCLUIDO\n");
     
       tsch_release_lock();
     }// free the lock tsch
