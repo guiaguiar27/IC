@@ -574,7 +574,7 @@ tsch_schedule_print(void)
 }
 /*---------------------------------------------------------------------------*/
 
-void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+void executa(int num_aresta, int num_no, int (*aloca_canal)[Timeslot][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
     for(i = 0; i < 16; i++){
@@ -1173,8 +1173,9 @@ int SCHEDULE_static(){
       for(y = 0 ; y < temp_canais;y++){ 
                 //coordenadas[i][j] = rand()%16  ; 
           l = memb_alloc(&link_memb); 
-          l = list_head(sf->links_list);        
-          while(l!= NULL){   
+          l = list_head(sf->links_list);   
+          if(l == NULL LOG_PRINT("NULL link in slotframe\n");      
+          while(l != NULL){   
             if(aloca_canais[x][y] + 1 == l->handle){ 
               
               LOG_PRINT("---------------------------\n"); 
