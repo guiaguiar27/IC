@@ -1167,40 +1167,37 @@ int SCHEDULE_static(){
           printf("\n"); 
       } 
         
-      LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-      struct tsch_link *l =   NULL;  
-      for(x = 0 ; x < Timeslot; x++){ 
-      for(y = 0 ; y < temp_canais;y++){ 
-                //coordenadas[i][j] = rand()%16  ; 
-          l = memb_alloc(&link_memb); 
-          l = list_head(sf->links_list);   
-          if(l == NULL LOG_PRINT("NULL link in slotframe\n");      
-          while(l != NULL){   
-            if(aloca_canais[x][y] + 1 == l->handle){ 
+      // LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+      // struct tsch_link *l =   NULL;  
+      // for(x = 0 ; x < Timeslot; x++){ 
+      // for(y = 0 ; y < temp_canais;y++){ 
+      //           //coordenadas[i][j] = rand()%16  ; 
+      //     l = memb_alloc(&link_memb); 
+      //     l = list_head(sf->links_list);   
+      //     if(l == NULL) LOG_PRINT("NULL link in slotframe\n");      
+      //     while(l != NULL){   
+      //       if(aloca_canais[x][y] + 1 == l->handle){ 
               
-              LOG_PRINT("---------------------------\n"); 
-              LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-              l-> timeslot = x+1; 
-              l-> channel_offset = y+1 ;   
-              LOG_PRINT("----CHANGE-----\n"); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-              LOG_PRINT("-----------------------------\n");     
-              } 
-            l = list_item_next(l);
-            } 
-      } 
-      }
+      //         LOG_PRINT("---------------------------\n"); 
+      //         LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+      //         LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+      //         LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+      //         l-> timeslot = x+1; 
+      //         l-> channel_offset = y+1 ;   
+      //         LOG_PRINT("----CHANGE-----\n"); 
+      //         LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+      //         LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+      //         LOG_PRINT("-----------------------------\n");     
+      //         } 
+      //       l = list_item_next(l);
+      //       } 
+      // } 
+      // }
       LOG_PRINT("ESCALONAMENTO CONCLUIDO\n");
     
       tsch_release_lock();
     }// free the lock tsch
     return 0;
-
- 
-
 
 }   
   
