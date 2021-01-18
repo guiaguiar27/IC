@@ -577,7 +577,7 @@ tsch_schedule_print(void)
 void executa(int num_aresta, int num_no, int (*aloca_canal)[Timeslot][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
-    for(i = 0; i < 16; i++){
+    for(i = 0; i < tem_canais; i++){
         if((*aloca_canal)[i][tempo] == -1)
             continue;
         if((*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] > 0){
@@ -1004,11 +1004,12 @@ int SCHEDULE_static(){
     x, y, canal = 0,           
     edge_selected, temp;        
     int node_origin, node_destin ; 
-    // alocando espaco para receber o endereco 
-    /*******************************************************************/ 
-    // inicia arquivo   
-    struct tsch_slotframe *sf = list_head(slotframe_list);
+    //struct tsch_slotframe *sf = list_head(slotframe_list);
     FILE *fl;  
+    
+    /*******************************************************************/ 
+    
+    // inicia arquivo   
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
@@ -1103,15 +1104,6 @@ int SCHEDULE_static(){
       DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
       while(pacote_entregue < total_pacotes){
           printf("\nMatching\n");
-          for(x = 0; x < tamNo; x++){
-              for(y = 0; y < tamNo; y++)
-                  printf("%d ", matching.mat_adj[x][y]);
-              printf("\n");
-          }
-          printf("\nPacotes:\n");
-          for(x = 1; x < tamNo ; x++)
-              printf("Nó %d: %d pacotes\n", x, pacotes[x]);
-
           //Aloca os canais
           for(x = 0; x < tamNo; x ++){
               for(y = 0; y < tamNo; y++){
@@ -1195,7 +1187,7 @@ int SCHEDULE_static(){
       // }
       LOG_PRINT("ESCALONAMENTO CONCLUIDO\n");
     
-      tsch_release_lock();
+     // tsch_release_lock();
     }// free the lock tsch
     return 0;
 
