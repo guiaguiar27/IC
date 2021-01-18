@@ -574,7 +574,6 @@ tsch_schedule_print(void)
 }
 /*---------------------------------------------------------------------------*/
 
-
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
@@ -995,23 +994,27 @@ int count_lines()
 
 int SCHEDULE_static(){  
     int tamNo; 
+    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
-    int tamAresta, z, i;                      
+    
+    int tamAresta,                  //Nº de arestas da rede
+    z, i;                       //Variáveis temporárias
     int pacote_entregue = 0, 
-    total_pacotes = 0, raiz,                     
-    flg = 1,                    
-    cont = 0;              
-    int aloca_canais[16][temp_canais],         
-    x, y, canal = 0,           
-    edge_selected, temp;        
+    total_pacotes = 0, 
+    raiz,                       //Nó raiz do grafo da rede
+    flg = 1;                    //Variável temporária
+    int cont = 0;               //Time do slotframe
+    int aloca_canais[16][temp_canais],         //Slotframe
+    x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+   // char **nome_no,             //Nome dos nós no grafo da rede
+    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int node_origin, node_destin ; 
-    struct tsch_slotframe *sf = list_head(slotframe_list);
-    
+    // alocando espaco para receber o endereco 
     /*******************************************************************/ 
-    
-    
+    // inicia arquivo  
     if(tsch_get_lock()){
-      FILE *fl;  
+    FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
@@ -1174,7 +1177,17 @@ int SCHEDULE_static(){
              
         printf("\n"); 
     } 
-        
+    /*  
+    for(y = 0 ; y < temp_canais; y++){ 
+        for(x = 0 ; x < 16 ; x++){ 
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n");
+         } 
+
+    } 
+    */ 
+    
       LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
       struct tsch_link *l =   NULL;  
       for(x = 0 ; x < Timeslot; x++){ 
