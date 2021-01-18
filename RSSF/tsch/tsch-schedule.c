@@ -1008,9 +1008,9 @@ int SCHEDULE_static(){
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
    // char **nome_no,             //Nome dos nós no grafo da rede
-    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
-    int node_origin, node_destin ; 
-    // alocando espaco para receber o endereco 
+   int node_origin, node_destin ; 
+    // alocando espaco para receber o endereco  
+    struct tsch_slotframe *sf = list_head(slotframe_list);
     /*******************************************************************/ 
     // inicia arquivo  
     if(tsch_get_lock()){
