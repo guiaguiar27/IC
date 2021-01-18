@@ -574,10 +574,11 @@ tsch_schedule_print(void)
 }
 /*---------------------------------------------------------------------------*/
 
-void executa(int num_aresta, int num_no, int (*aloca_canal)[Timeslot][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
-   int i;
 
-    for(i = 0; i < Timeslot; i++){
+void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+    int i;
+
+    for(i = 0; i < 16; i++){
         if((*aloca_canal)[i][tempo] == -1)
             continue;
         if((*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] > 0){
@@ -1000,19 +1001,18 @@ int SCHEDULE_static(){
     total_pacotes = 0, raiz,                     
     flg = 1,                    
     cont = 0;              
-    int aloca_canais[Timeslot][temp_canais],         
+    int aloca_canais[16][temp_canais],         
     x, y, canal = 0,           
     edge_selected, temp;        
     int node_origin, node_destin ; 
     struct tsch_slotframe *sf = list_head(slotframe_list);
-    FILE *fl;  
     
     /*******************************************************************/ 
     
     
     if(tsch_get_lock()){
-    FILE *fl;  
-    tamNo = MAX_NOS - 1 ;  
+      FILE *fl;  
+    tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
@@ -1021,8 +1021,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for(int i = 1 ; i < MAX_NOS ; i++){ 
-        for(int j = 1 ; j< MAX_NOS; j++){  
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -1043,8 +1043,8 @@ int SCHEDULE_static(){
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
-    for(int i = 1; i < MAX_NOS ; i++){ 
-        for(int j = 1 ;j < MAX_NOS; j++)
+    for(int i = 0; i < MAX_NOS ; i++){ 
+        for(int j = 0 ;j < MAX_NOS; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
@@ -1053,7 +1053,7 @@ int SCHEDULE_static(){
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 1; x <= tamNo ; x++)
+    for(x = 0; x < tamNo ; x++)
         printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
@@ -1105,8 +1105,8 @@ int SCHEDULE_static(){
     DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
-        for(x = 1; x <= tamNo; x++){
-            for(y = 1; y <= tamNo; y++)
+        for(x = 0; x < tamNo; x++){
+            for(y = 0; y < tamNo; y++)
                 printf("%d ", matching.mat_adj[x][y]);
             printf("\n");
         }
@@ -1115,31 +1115,31 @@ int SCHEDULE_static(){
             printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
         //Aloca os canais
-        for(x = 1; x <= tamNo; x ++){
-            for(y = 1; y <= tamNo; y++){
+        for(x = 0; x < tamNo; x ++){
+            for(y = 0; y < tamNo; y++){
                 if(matching.mat_adj[x][y]){
                     for(temp = 0; temp < tamAresta; temp++)
                         if(conf[temp][0] == x && conf[temp][1] == y)
                             break;
                     edge_selected = temp;
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == temp_canais)
+                        if(canal == 16)
                             break;
                         aloca_canais[canal][cont] = edge_selected; 
                         canal++;
                     }
                 }
-                if(canal == temp_canais)
+                if(canal == 16)
                     break;
             }
-            if(canal == temp_canais)
+            if(canal == 16)
                 break;
         }
         
         printf("\nCanais alocados  | |");
         printf("\n                \\   /");
         printf("\n                 \\ /\n\n");
-        for(x = 0; x < Timeslot; x++){
+        for(x = 0; x < 16; x++){
             for(y = 0; y < temp_canais; y++)
                 printf("%d  ", aloca_canais[x][y] + 1);
             printf("\n");
@@ -1167,13 +1167,13 @@ int SCHEDULE_static(){
     printf("\n                \\   /");
     printf("\n                 \\ /\n\n");
     printf(" temp_canais =  %d\n",temp_canais);
-    for(x = 0 ; x < Timeslot; x++){
+    for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) 
             // linhas = tempo - coluna = canal  
             printf("%d  ", aloca_canais[x][y] + 1);  
              
         printf("\n"); 
-    }
+    } 
         
       LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
       struct tsch_link *l =   NULL;  
