@@ -62,8 +62,8 @@
 #define no_raiz 1  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"   
 
-#define temp_canais 16 
-#define Timeslot 16
+#define temp_canais 5 
+#define Timeslot 5
 
 
 /* Log configuration */
@@ -579,7 +579,7 @@ tsch_schedule_print(void)
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
-    for(i = 0; i < 16; i++){
+    for(i = 0; i < Timeslot; i++){
         if((*aloca_canal)[i][tempo] == -1)
             continue;
         if((*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] > 0){
@@ -1006,7 +1006,7 @@ int SCHEDULE_static(){
     raiz,                       //Nó raiz do grafo da rede
     flg = 1;                    //Variável temporária
     int cont = 0;               //Time do slotframe
-    int aloca_canais[16][temp_canais],         //Slotframe
+    int aloca_canais[Timeslot][temp_canais],         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
    // char **nome_no,             //Nome dos nós no grafo da rede
@@ -1072,7 +1072,7 @@ int SCHEDULE_static(){
       fazMatrizConf(tamAresta, &conf, &matconf);
 
       //Preenche o slotframe com -1
-      for(x = 0; x < 16; x++){
+      for(x = 0; x < Timeslot; x++){
           for(y = 0; y < temp_canais; y++)
               aloca_canais[x][y] = -1;
       }
@@ -1108,16 +1108,7 @@ int SCHEDULE_static(){
       ng matching;
       DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
       while(pacote_entregue < total_pacotes){
-          printf("\nMatching\n");
-          for(x = 0; x < tamNo; x++){
-              for(y = 0; y < tamNo; y++)
-                  printf("%d ", matching.mat_adj[x][y]);
-              printf("\n");
-          }
-          printf("\nPacotes:\n");
-          for(x = 1; x < tamNo ; x++)
-              printf("Nó %d: %d pacotes\n", x, pacotes[x]);
-
+         
           //Aloca os canais
           for(x = 0; x < tamNo; x ++){
               for(y = 0; y < tamNo; y++){
@@ -1127,23 +1118,23 @@ int SCHEDULE_static(){
                               break;
                       edge_selected = temp;
                       for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                          if(canal == 16)
+                          if(canal == Timeslot)
                               break;
                           aloca_canais[canal][cont] = edge_selected; 
                           canal++;
                       }
                   }
-                  if(canal == 16)
+                  if(canal == Timeslot)
                       break;
               }
-              if(canal == 16)
+              if(canal == Timeslot)
                   break;
           }
           
           printf("\nCanais alocados  | |");
           printf("\n                \\   /");
           printf("\n                 \\ /\n\n");
-          for(x = 0; x < 16; x++){
+          for(x = 0; x < Timeslot; x++){
               for(y = 0; y < temp_canais; y++)
                   printf("%d  ", aloca_canais[x][y] + 1);
               printf("\n");
@@ -1151,7 +1142,7 @@ int SCHEDULE_static(){
           printf("\n");
 
           //Executa a primeira carga de transferência
-         // executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
+          executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
           cont++;
           canal = 0;
           
