@@ -1151,7 +1151,7 @@ int SCHEDULE_static(){
           printf("\n");
 
           //Executa a primeira carga de transferência
-          executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
+         // executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
           cont++;
           canal = 0;
           
