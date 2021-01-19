@@ -60,7 +60,10 @@
 #include "conf.h"  
 #define peso 1 
 #define no_raiz 1  
-#define endereco "/home/user/contiki-ng/os/arvore.txt"  
+#define endereco "/home/user/contiki-ng/os/arvore.txt"   
+
+#define temp_canais 16 
+#define Timeslot 16
 
 
 /* Log configuration */
@@ -573,7 +576,6 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
@@ -993,7 +995,7 @@ int count_lines()
 // }  
 
 int SCHEDULE_static(){  
-    int tamNo; 
+     int tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     
@@ -1008,12 +1010,10 @@ int SCHEDULE_static(){
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
    // char **nome_no,             //Nome dos nós no grafo da rede
-   int node_origin, node_destin ; 
-    // alocando espaco para receber o endereco  
-    struct tsch_slotframe *sf = list_head(slotframe_list);
+    int node_origin, node_destin ; 
+    // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-    if(tsch_get_lock()){
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
@@ -1188,36 +1188,11 @@ int SCHEDULE_static(){
     } 
     */ 
     
-      LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-      struct tsch_link *l =   NULL;  
-      for(x = 0 ; x < Timeslot; x++){ 
-      for(y = 0 ; y < temp_canais;y++){ 
-                //coordenadas[i][j] = rand()%16  ; 
-          l = memb_alloc(&link_memb); 
-          l = list_head(sf->links_list);   
-          if(l == NULL) LOG_PRINT("NULL link in slotframe\n");      
-          while(l != NULL){   
-            if(aloca_canais[x][y] + 1 == l->handle){ 
-              
-              LOG_PRINT("---------------------------\n"); 
-              LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-              l-> timeslot = x+1; 
-              l-> channel_offset = y+1 ;   
-              LOG_PRINT("----CHANGE-----\n"); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-              LOG_PRINT("-----------------------------\n");     
-              } 
-            l = list_item_next(l);
-            } 
-      } 
-      }
-      LOG_PRINT("ESCALONAMENTO CONCLUIDO\n");
-    
-     // tsch_release_lock();
-    }// free the lock tsch
+
+    //nome_arq_dot = criaGrafoConf(matconf, conf, nome_no, tamAresta);
+
+    printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot);
+
     return 0;
 
 }   
