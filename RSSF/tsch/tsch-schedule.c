@@ -1026,8 +1026,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for(int i = 0 ; i < 10 ; i++){ 
-        for(int j = 0 ; j< 10; j++){  
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -1037,7 +1037,7 @@ int SCHEDULE_static(){
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf(" %d-> %d\n",node_origin, node_destin);    
-        if(node_origin < 10 && node_destin < 10){
+        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++;
@@ -1150,7 +1150,7 @@ int SCHEDULE_static(){
             printf("\n");
         }
         printf("\n");
-
+        if (cont == temp_canais) cont = 0;
         //Executa a primeira carga de transferência
         executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
         cont++;
