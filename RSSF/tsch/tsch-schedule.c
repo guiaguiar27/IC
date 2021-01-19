@@ -62,7 +62,7 @@
 #define no_raiz 1  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"   
 
-#define temp_canais 5 
+#define temp_canais 16 
 #define Timeslot 5
 
 
@@ -1015,7 +1015,8 @@ int SCHEDULE_static(){
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-    FILE *fl;  
+    FILE *fl;   
+    if(tsch_get_lock()){
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
@@ -1188,7 +1189,7 @@ int SCHEDULE_static(){
 
     } 
     */ 
-    
+    }
 
     return 0;
 
