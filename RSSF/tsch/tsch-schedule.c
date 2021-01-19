@@ -1039,7 +1039,7 @@ int SCHEDULE_static(){
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf(" %d-> %d\n",node_origin, node_destin);    
-        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+        if(node_origin < 10 && node_destin < 10){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++;
