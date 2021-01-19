@@ -1207,7 +1207,7 @@ int SCHEDULE_static(){
      }
         LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
    
-      tsch_release_lock();   
+      // tsch_release_lock();   
     } 
 
 
