@@ -1009,8 +1009,6 @@ int SCHEDULE_static(){
     int aloca_canais[16][temp_canais],         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-   // char **nome_no,             //Nome dos nós no grafo da rede
-    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
@@ -1028,8 +1026,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for(int i = 0 ; i < MAX_NOS ; i++){ 
-        for(int j = 0 ; j< MAX_NOS; j++){  
+    for(int i = 0 ; i < 10 ; i++){ 
+        for(int j = 0 ; j< 10; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
