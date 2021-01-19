@@ -995,7 +995,7 @@ int count_lines()
 // }  
 
 int SCHEDULE_static(){  
-     int tamNo; 
+           int tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     
@@ -1006,197 +1006,190 @@ int SCHEDULE_static(){
     raiz,                       //Nó raiz do grafo da rede
     flg = 1;                    //Variável temporária
     int cont = 0;               //Time do slotframe
-    int aloca_canais[Timeslot][temp_canais],         //Slotframe
+    int aloca_canais[16][temp_canais],         //Slotframe
     x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
    // char **nome_no,             //Nome dos nós no grafo da rede
-    int node_origin, node_destin ;  
-    //struct tsch_slotframe *sf = list_head(slotframe_list);
+    char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
+    int node_origin, node_destin ; 
+    // alocando espaco para receber o endereco 
+    /*******************************************************************/ 
+    // inicia arquivo  
     FILE *fl;  
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
-    if(tsch_get_lock()) { 
+    fl = fopen(endereco, "r"); 
+    if(fl == NULL){
+        printf("The file was not opened\n");
+        return 0  ; 
+    } 
+    // matriz  
 
-        
-      fl = fopen(endereco, "r");  
-      if(fl == NULL){
-          printf("The file was not opened\n");
-          return 0  ; 
-      } 
-      // matriz  
+    for(int i = 0 ; i < MAX_NOS ; i++){ 
+        for(int j = 0 ; j< MAX_NOS; j++){  
+            adj.mat_adj[i][j] = 0 ; 
+        }
+    }  
 
-      for(int i = 0 ; i < MAX_NOS ; i++){ 
-          for(int j = 0 ; j< MAX_NOS; j++){  
-              adj.mat_adj[i][j] = 0 ; 
-          }
-      }  
+    i = 0;
+    printf("Enter here!\n");
+    while(!feof(fl)){      
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        printf(" %d-> %d\n",node_origin, node_destin);    
+        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+            if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+                adj.mat_adj[node_origin][node_destin] = 1;
+                i++;
+            }
+        }
+    }
+    tamAresta = i;
+    fclose(fl);
 
-      i = 0;
-      printf("Enter here!\n");
-      while(!feof(fl)){      
-          fscanf(fl,"%d %d",&node_origin, &node_destin);   
-          printf(" %d-> %d\n",node_origin, node_destin);    
-          if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-              if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
-                  adj.mat_adj[node_origin][node_destin] = 1;
-                  i++;
-              }
-          }
-      }
-      tamAresta = i;
-      fclose(fl);
-
-      printf("\nMatriz de adacência do grafo da rede:\n");
-      for(int i = 0; i < MAX_NOS ; i++){ 
-          for(int j = 0 ;j < MAX_NOS; j++)
-              printf("%d ", adj.mat_adj[i][j]);
-          printf("\n");
-      }
-      
-      int pacotes[tamNo];               //Pacotes por nó no grafo da rede
-      alocaPacotes2(tamNo, &adj, &pacotes);
-      printf("\nPacotes atribuidos!\n");
-      //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-      for(x = 0; x < tamNo ; x++)
-          printf("Nó %d: %d pacotes\n", x, pacotes[x]);
-
-
-      int conf[tamAresta][2];
-      mapGraphConf(&adj, tamNo, tamAresta, &conf);
-      printf("\nMapa da matriz de conflito gerada:\n"); 
-      for(x = 0; x < tamAresta ; x++)
-          printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
-      
-      //Gera a matriz de conflito
-      int matconf[tamAresta][tamAresta];
-      fazMatrizConf(tamAresta, &conf, &matconf);
-
-      //Preenche o slotframe com -1
-      for(x = 0; x < Timeslot; x++){
-          for(y = 0; y < temp_canais; y++)
-              aloca_canais[x][y] = -1;
-      }
-
-      //Busca pelo nó raiz da rede
-      for(z = 0; z < tamNo; z++){
-          for(i = 0; i < tamNo; i++)
-              if(adj.mat_adj[z][i] != 0){
-                  flg = 0;
-                  break;
-              }
-          if(flg)
-              break;
-          else
-              flg = 1;
-      }
-
-      //Por hora definimos ele manualmente
-      raiz = no_raiz;
-
-      //Guarda o total de pacotes a serem enviados pela
-      for(z = 0; z < tamNo; z++)
-          if(z != raiz)
-              total_pacotes += pacotes[z];
-
-      printf("\nMatriz de adjacencia do grafo de conflito\n");
-      for(z = 0; z < tamAresta; z++){
-          for(i = 0; i < tamAresta; i++)
-              printf("%d ", matconf[z][i]);
-          printf("\n");
-      }
-
-      ng matching;
-      DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
-      while(pacote_entregue < total_pacotes){
-         
-          //Aloca os canais
-          for(x = 0; x < tamNo; x ++){
-              for(y = 0; y < tamNo; y++){
-                  if(matching.mat_adj[x][y]){
-                      for(temp = 0; temp < tamAresta; temp++)
-                          if(conf[temp][0] == x && conf[temp][1] == y)
-                              break;
-                      edge_selected = temp;
-                      for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                          if(canal == Timeslot)
-                              break;
-                          aloca_canais[canal][cont] = edge_selected; 
-                          canal++;
-                      }
-                  }
-                  if(canal == Timeslot)
-                      break;
-              }
-              if(canal == Timeslot)
-                  break;
-          }
-          
-          printf("\nCanais alocados  | |");
-          printf("\n                \\   /");
-          printf("\n                 \\ /\n\n");
-          for(x = 0; x < Timeslot; x++){
-              for(y = 0; y < temp_canais; y++)
-                  printf("%d  ", aloca_canais[x][y] + 1);
-              printf("\n");
-          }
-          printf("\n");
-
-          //Executa a primeira carga de transferência
-          executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
-          cont++;
-          canal = 0;
-          
-          //mostram os pacotes contentes em cada nó da rede
-          printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-          
-          /*for(z = 0; z < tamNo; z++){
-              printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
-          }
-          printf("\n");
-          */ 
-          DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
-      
-      }
-
-      printf("\nCanais alocados  | |");
-      printf("\n                \\   /");
-      printf("\n                 \\ /\n\n");
-      printf(" temp_canais =  %d\n",temp_canais);
-      for(x = 0 ; x < 16; x++){
-          for(y = 0; y < temp_canais; y++) 
-              // linhas = tempo - coluna = canal  
-              printf("%d  ", aloca_canais[x][y] + 1);  
-              
-          printf("\n"); 
-      } 
-      // LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-      // struct tsch_link *l =   NULL;  
-      // for(x = 0 ; x<16; x++){ 
-      // for(y = 0 ; y < temp_canais;y++){ 
-      //           //coordenadas[i][j] = rand()%16  ; 
-      //     l = memb_alloc(&link_memb); 
-      //     l = list_head(sf->links_list);        
-      //     while(l!= NULL){   
-      //       if(aloca_canais[x][y] + 1 == l->handle){
-      //         LOG_PRINT("---------------------------\n"); 
-      //         LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-      //         LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-      //         LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-      //         l-> timeslot = x; 
-      //         l-> channel_offset = y ;   
-      //         LOG_PRINT("----CHANGE-----\n"); 
-      //         LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-      //         LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-      //         LOG_PRINT("-----------------------------\n");     
-      //         } 
-      //       l = list_item_next(l);
-      //       } 
-                
-      //   }
-      // }
+    printf("\nMatriz de adacência do grafo da rede:\n");
+    for(int i = 0; i < MAX_NOS ; i++){ 
+        for(int j = 0 ;j < MAX_NOS; j++)
+             printf("%d ", adj.mat_adj[i][j]);
+        printf("\n");
+    }
     
-    tsch_release_lock();
-    }    
+    int pacotes[tamNo];               //Pacotes por nó no grafo da rede
+    alocaPacotes2(tamNo, &adj, &pacotes);
+    printf("\nPacotes atribuidos!\n");
+    //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
+    for(x = 0; x < tamNo ; x++)
+        printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+
+
+    int conf[tamAresta][2];
+    mapGraphConf(&adj, tamNo, tamAresta, &conf);
+    printf("\nMapa da matriz de conflito gerada:\n"); 
+    for(x = 0; x < tamAresta ; x++)
+        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
+    
+    //Gera a matriz de conflito
+    int matconf[tamAresta][tamAresta];
+    fazMatrizConf(tamAresta, &conf, &matconf);
+
+    //Preenche o slotframe com -1
+    for(x = 0; x < 16; x++){
+        for(y = 0; y < temp_canais; y++)
+            aloca_canais[x][y] = -1;
+    }
+
+    //Busca pelo nó raiz da rede
+    for(z = 0; z < tamNo; z++){
+        for(i = 0; i < tamNo; i++)
+            if(adj.mat_adj[z][i] != 0){
+                flg = 0;
+                break;
+            }
+        if(flg)
+            break;
+        else
+            flg = 1;
+    }
+
+    //Por hora definimos ele manualmente
+    raiz = no_raiz;
+
+    //Guarda o total de pacotes a serem enviados pela
+    for(z = 0; z < tamNo; z++)
+        if(z != raiz)
+            total_pacotes += pacotes[z];
+
+    printf("\nMatriz de adjacencia do grafo de conflito\n");
+    for(z = 0; z < tamAresta; z++){
+        for(i = 0; i < tamAresta; i++)
+            printf("%d ", matconf[z][i]);
+        printf("\n");
+    }
+
+    ng matching;
+    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+    while(pacote_entregue < total_pacotes){
+        printf("\nMatching\n");
+        for(x = 0; x < tamNo; x++){
+            for(y = 0; y < tamNo; y++)
+                printf("%d ", matching.mat_adj[x][y]);
+            printf("\n");
+        }
+        printf("\nPacotes:\n");
+        for(x = 1; x < tamNo ; x++)
+            printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+
+        //Aloca os canais
+        for(x = 0; x < tamNo; x ++){
+            for(y = 0; y < tamNo; y++){
+                if(matching.mat_adj[x][y]){
+                    for(temp = 0; temp < tamAresta; temp++)
+                        if(conf[temp][0] == x && conf[temp][1] == y)
+                            break;
+                    edge_selected = temp;
+                    for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+                        if(canal == 16)
+                            break;
+                        aloca_canais[canal][cont] = edge_selected; 
+                        canal++;
+                    }
+                }
+                if(canal == 16)
+                    break;
+            }
+            if(canal == 16)
+                break;
+        }
+        
+        printf("\nCanais alocados  | |");
+        printf("\n                \\   /");
+        printf("\n                 \\ /\n\n");
+        for(x = 0; x < 16; x++){
+            for(y = 0; y < temp_canais; y++)
+                printf("%d  ", aloca_canais[x][y] + 1);
+            printf("\n");
+        }
+        printf("\n");
+
+        //Executa a primeira carga de transferência
+        executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
+        cont++;
+        canal = 0;
+        
+        //mostram os pacotes contentes em cada nó da rede
+        printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
+        
+        /*for(z = 0; z < tamNo; z++){
+            printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
+        }
+        printf("\n");
+        */ 
+        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+    
+    }
+
+    printf("\nCanais alocados  | |");
+    printf("\n                \\   /");
+    printf("\n                 \\ /\n\n");
+    printf(" temp_canais =  %d\n",temp_canais);
+    for(x = 0 ; x < 16; x++){
+        for(y = 0; y < temp_canais; y++) 
+            // linhas = tempo - coluna = canal  
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n"); 
+    } 
+    /*  
+    for(y = 0 ; y < temp_canais; y++){ 
+        for(x = 0 ; x < 16 ; x++){ 
+            printf("%d  ", aloca_canais[x][y] + 1);  
+             
+        printf("\n");
+         } 
+
+    } 
+    */ 
+    
+
     return 0;
 
 }   
