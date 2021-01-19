@@ -1016,8 +1016,9 @@ int SCHEDULE_static(){
     /*******************************************************************/ 
     // inicia arquivo  
     FILE *fl;    
+    if(tsch_get_lock()){ 
+
     struct tsch_slotframe *sf = list_head(slotframe_list);
-    if(tsch_get_lock()){
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
@@ -1186,7 +1187,6 @@ int SCHEDULE_static(){
     struct tsch_link *l =   NULL;  
     for(x = 0 ; x<16; x++){ 
     for(y = 0 ; y < temp_canais;y++){ 
-              //coordenadas[i][j] = rand()%16  ; 
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
@@ -1207,8 +1207,9 @@ int SCHEDULE_static(){
               
       }
      }
-       
-
+        LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+   
+      tsch_release_lock();   
     } 
 
 
