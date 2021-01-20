@@ -1106,8 +1106,10 @@ int SCHEDULE_static(){
         printf("\n");
     }
 
-    ng matching;
-    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+    //ng matching;
+    //DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
+    
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
         for(x = 0; x < tamNo; x++){
@@ -1223,33 +1225,27 @@ int teste_matriz(){
   }   
   for(int x = 0 ; x < MAX_NOS; x++){
         for(int y = 0; y < MAX_NOS; y++) 
-            // linhas = tempo - coluna = canal  
             printf("%d  ", adj[x][y]);  
         printf("\n"); 
     }
-
-   /********************************************************/
+ /********************************************************/
   int pacote[MAX_NOS];  
   for(int i = 0 ; i < MAX_NOS; i++){ 
     pacote[i] = i ;  
   }  
   for(int x = 0 ; x < MAX_NOS; x++){
-            printf("%d  ", pacotes[x]);  
-  }
-  
+            printf("%d  ", pacote[x]);  
+  }  
    /********************************************************/  
-  int arestas = MAX_NOS * 2 ; 
+  int arestas = MAX_NOS - 1 ; 
   int conf[arestas][2]; 
-
   for(int i = 0 ; i < arestas; i++){ 
     for(int j = 0; j < 2; j++){ 
       conf[i][j] = 1;
     } 
   }   
-
   for(int x = 0 ; x < arestas; x++){
-        for(int y = 0; y < 2; y++) 
-            // linhas = tempo - coluna = canal  
+        for(int y = 0; y < 2; y++)  
             printf("%d  ", conf[x][y]);  
         printf("\n"); 
     } 
@@ -1261,42 +1257,34 @@ int teste_matriz(){
     } 
   }    
    for(int x = 0 ; x < arestas; x++){
-        for(int y = 0; y < arestas; y++) 
-            // linhas = tempo - coluna = canal  
+        for(int y = 0; y < arestas; y++)   
             printf("%d  ", matconf[x][y]);  
         printf("\n"); 
-    } 
-     
-   
+    }   
    /********************************************************/
-  int aloca_canais[720][20]; 
-  for(int i = 0 ; i < 720; i++){ 
-    for(int j = 0 ; j < 20; j++){ 
+  int aloca_canais[20][23]; 
+  for(int i = 0 ; i < 20; i++){ 
+    for(int j = 0 ; j < 23; j++){ 
       aloca_canais[i][j] = i - j ;
     }
   }  
-  for(int x = 0 ; x < 720; x++){
-        for(int y = 0; y < 20; y++) 
-            // linhas = tempo - coluna = canal  
+  for(int x = 0 ; x < 20; x++){
+        for(int y = 0; y < 23; y++)  
             printf("%d  ", aloca_canais[x][y]);  
         printf("\n"); 
     } 
-   
    /********************************************************/
   int vetor[arestas][2];  
   for(int i = 0 ; i < arestas; i++){ 
     for(int j = 0; j < 2; j++){ 
       vetor[i][j] = 1;
     } 
-  }   
-
+  }  
   for(int x = 0 ; x < arestas; x++){
         for(int y = 0; y < 2; y++) 
-            // linhas = tempo - coluna = canal  
             printf("%d  ", vetor[x][y]);  
         printf("\n"); 
     } 
-
    /********************************************************/
   printf(" O contiki aguentou ");
   return 0 ; 
