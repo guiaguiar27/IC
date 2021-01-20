@@ -1244,7 +1244,6 @@ int teste_matriz(){
         for(int y = 0; y < arestas; y++) 
             // linhas = tempo - coluna = canal  
             printf("%d  ", matconf);  
-             
         printf("\n"); 
     } 
      
@@ -1254,7 +1253,13 @@ int teste_matriz(){
     for(int j = 0 ; j < 20; j++){ 
       aloca_canais[i][j] = i - j ;
     }
-  }
+  } 
+  int vetor[arestas][2];  
+  for(int i = 0 ; i < arestas; i++){ 
+    for(int j = 0; j < 2; j++){ 
+      vetor[i][j] = 1;
+    } 
+  }  
 
   printf(" O contiki aguentou ");
   return 0 ; 
