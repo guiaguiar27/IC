@@ -1111,10 +1111,6 @@ int SCHEDULE_static(){
     DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
     
     while(pacote_entregue < total_pacotes){
-        printf("\nMatching\n");
-        printf("\nPacotes:\n");
-        for(x = 1; x < tamNo ; x++)
-            printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
         //Aloca os canais
         for(x = 0; x < tamNo; x ++){
@@ -1138,14 +1134,10 @@ int SCHEDULE_static(){
                 break;
         }
         if(cont == Timeslot) cont = 0;
-        //Executa a primeira carga de transferência
         executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
         cont++;
         canal = 0;
         
-        // //mostram os pacotes contentes em cada nó da rede
-        // printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-         
         DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
     
     }
