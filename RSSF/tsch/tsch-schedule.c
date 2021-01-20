@@ -1114,7 +1114,7 @@ int SCHEDULE_static(){
         printf("\nMatching\n");
         for(x = 0; x < tamNo; x++){
             for(y = 0; y < tamNo; y++)
-                printf("%d ", matching.mat_adj[x][y]);
+                printf("%d ", adj.mat_adj[x][y]);
             printf("\n");
         }
         printf("\nPacotes:\n");
@@ -1124,7 +1124,7 @@ int SCHEDULE_static(){
         //Aloca os canais
         for(x = 0; x < tamNo; x ++){
             for(y = 0; y < tamNo; y++){
-                if(matching.mat_adj[x][y]){
+                if(adj.mat_adj[x][y]){
                     for(temp = 0; temp < tamAresta; temp++)
                         if(conf[temp][0] == x && conf[temp][1] == y)
                             break;
