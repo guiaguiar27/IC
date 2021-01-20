@@ -72,11 +72,15 @@
 #define LOG_LEVEL LOG_LEVEL_MAC
 
 /* Pre-allocated space for links */
-MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
+MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
+
+MEMB(Slot_memb, struct Slot, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
-MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
+MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
+MEMB(slotframe_result_memb, struct Slotframe_result , 1);
 /* List of slotframes (each slotframe holds its own list of links) */
-LIST(slotframe_list);
+LIST(slotframe_list); 
+
 
 /* Adds and returns a slotframe (NULL if failure) */
 struct tsch_slotframe *
@@ -508,8 +512,11 @@ tsch_schedule_init(void)
 {
   if(tsch_get_lock()) {
     memb_init(&link_memb);
-    memb_init(&slotframe_memb);
-    list_init(slotframe_list);
+    memb_init(&slotframe_memb); 
+    memb_init(&Slot_memb); 
+    memb_init(&slotframe_result_memb);
+    list_init(slotframe_list); 
+
     tsch_release_lock();
     return 1;
   } else {
@@ -1013,10 +1020,10 @@ int SCHEDULE_static(){
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-    FILE *fl;    
+    FILE *fl; 
+    struct tsch_slotframe *sf = list_head(slotframe_list);     
     if(tsch_get_lock()){ 
 
-    struct tsch_slotframe *sf = list_head(slotframe_list);
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
@@ -1186,7 +1193,25 @@ int SCHEDULE_static(){
 
     return 0;
 
-}   
+}    
+int teste_slot(){  
+
+  struct tsch_slotframe *al_canais = memb_alloc(&slotframe_result_memb);
+  LIST_STRUCT_INIT(al_canais, list); 
+    for(int i = 0 ; i < Channel ;i++){ 
+      for(int j = 0 ; j < Timeslot; j++){  
+        struct Slot *el = NULL;
+        el = memb_alloc(&Slot_memb); 
+        list_add(al_canais->list, el); 
+        el->channel = j;  
+        el->timeslot = i;  
+        el->value = 0;     
+        printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value);
+         
+      }
+    } 
+
+}
 int teste_matriz(){ 
   int adj[MAX_NOS][MAX_NOS] ;
   for(int i = 0 ; i < MAX_NOS; i++){ 
@@ -1261,7 +1286,8 @@ int teste_matriz(){
   return 0 ; 
 }
   
-int sort_node_to_create_link(int n){ 
+int sort_node_to_create_link(int n){  
+
  
   unsigned short  random_node;    
   int aux_n = n - 1 ;  

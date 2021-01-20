@@ -152,7 +152,15 @@ struct input_packet {
   int len; /* Packet len */
   int16_t rssi; /* RSSI for this packet */
   uint8_t channel; /* Channel we received the packet on */
-};
+}; 
+struct Slot{ 
+  int channel;  
+  int timeslot;  
+  int value;
+}; 
+struct Slotframe_result{ 
+  LIST_STRUCT(list);
+}; 
 
 #endif /* __TSCH_CONF_H__ */
 /** @} */

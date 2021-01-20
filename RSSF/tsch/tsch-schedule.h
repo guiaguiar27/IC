@@ -171,6 +171,7 @@ int count_lines();
 int SCHEDULE_AUX(int **adj); 
 int SCHEDULE_static(); 
 int sort_node_to_create_link(int n);  
-int teste_matriz(); 
+int teste_matriz();  
+int teste_slot(); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
