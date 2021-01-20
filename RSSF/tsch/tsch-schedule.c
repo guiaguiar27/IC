@@ -1105,18 +1105,13 @@ int SCHEDULE_static(){
             printf("%d ", matconf[z][i]);
         printf("\n");
     }
-
+    int vetor[tamAresta][2];
     //ng matching;
     //DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
-    //DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
+    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
     
     while(pacote_entregue < total_pacotes){
         printf("\nMatching\n");
-        for(x = 0; x < tamNo; x++){
-            for(y = 0; y < tamNo; y++)
-                printf("%d ", adj.mat_adj[x][y]);
-            printf("\n");
-        }
         printf("\nPacotes:\n");
         for(x = 1; x < tamNo ; x++)
             printf("Nó %d: %d pacotes\n", x, pacotes[x]);
@@ -1142,17 +1137,7 @@ int SCHEDULE_static(){
             if(canal == Channel)
                 break;
         }
-        
-        printf("\nCanais alocados  | |");
-        printf("\n                \\   /");
-        printf("\n                 \\ /\n\n");
-        for(x = 0; x < Channel; x++){
-            for(y = 0; y < Timeslot; y++)
-                printf("%d  ", aloca_canais[x][y] + 1);
-            printf("\n");
-        }
-        printf("\n");
-        if (cont == Timeslot) cont = 0;
+        if(cont == Timeslot) cont = 0;
         //Executa a primeira carga de transferência
         executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
         cont++;
@@ -1166,7 +1151,7 @@ int SCHEDULE_static(){
         }
         printf("\n");
         */ 
-        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
     
     }
 
