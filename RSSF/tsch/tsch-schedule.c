@@ -1173,9 +1173,8 @@ int SCHEDULE_static(){
     printf("\nCanais alocados  | |");
     printf("\n                \\   /");
     printf("\n                 \\ /\n\n");
-    printf(" temp_canais =  %d\n",temp_canais);
-    for(x = 0 ; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
+    for(x = 0 ; x < Channel; x++){
+        for(y = 0; y < Timeslot; y++) 
             // linhas = tempo - coluna = canal  
             printf("%d  ", aloca_canais[x][y] + 1);  
              
@@ -1185,8 +1184,8 @@ int SCHEDULE_static(){
     
     LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
     struct tsch_link *l =   NULL;  
-    for(x = 0 ; x<16; x++){ 
-    for(y = 0 ; y < temp_canais;y++){ 
+    for(x = 0 ; x< Channel; x++){ 
+    for(y = 0 ; y < Timeslot;y++){ 
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
