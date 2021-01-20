@@ -4,7 +4,7 @@
 #include "network-graph.h" 
 #include "lib/random.h" 
 
-void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[tam][2]); 
+void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[num_aresta][2]); 
 void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_conf)[tam][tam], int (*mapa_graf_conf)[tam][2], int node, ng *resultado, int (*vetor)[tam][2]);
 void selecao(int **conf, int pai, int tam);
 void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta][2]);

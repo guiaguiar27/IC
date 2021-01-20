@@ -1151,7 +1151,7 @@ int SCHEDULE_static(){
         }
         printf("\n");
         */ 
-        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
+        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
     
     }
 

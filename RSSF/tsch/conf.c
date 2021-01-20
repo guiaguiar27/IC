@@ -8,7 +8,7 @@
     * num_no: número de nós do grafo da rede
     * num_aresta: nº de arestas do grafo da rede
     */
-void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[tam][2]){
+void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[num_aresta][2]){
     /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
