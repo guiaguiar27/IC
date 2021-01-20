@@ -1106,8 +1106,8 @@ int SCHEDULE_static(){
         printf("\n");
     }
 
-    ng matching;
-    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+    //ng matching;
+    //DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
     //DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
     
     while(pacote_entregue < total_pacotes){
