@@ -1214,6 +1214,51 @@ int SCHEDULE_static(){
     return 0;
 
 }   
+int teste_matriz(){ 
+  int adj[MAX_NOS][MAX_NOS] 
+  for(int i = 0 ; i < MAX_NOS; i++){ 
+    for(int j = 0; j < MAX_NOS; j++){ 
+
+      adj[i][j] = 1;
+    } 
+  } 
+  int pacote[MAX_NOS];  
+  for(int i = 0 ; i < MAX_NOS; i++){ 
+    pacote[i] = i ;  
+  }  
+  int arestas = MAX_NOS * 2 ; 
+  int conf[arestas][2]; 
+
+  for(int i = 0 ; i < arestas; i++){ 
+    for(int j = 0; j < 2; j++){ 
+      conf[i][j] = 1;
+    } 
+  }  
+  int matconf[arestas][arestas]; 
+  for(int i = 0 ; i < arestas; i++){ 
+    for(int j = 0; j < arestas; j++){ 
+      matconf[i][j] = 1;
+    } 
+  }    
+   for(int x = 0 ; x < arestas; x++){
+        for(int y = 0; y < arestas; y++) 
+            // linhas = tempo - coluna = canal  
+            printf("%d  ", matconf);  
+             
+        printf("\n"); 
+    } 
+     
+   
+  int aloca_canais[720][20]; 
+  for(int i = 0 ; i < 720; i++){ 
+    for(int j = 0 ; j < 20; j++){ 
+      aloca_canais[i][j] = i - j ;
+    }
+  }
+
+  printf(" O contiki aguentou ");
+  return 0 ; 
+}
   
 int sort_node_to_create_link(int n){ 
  
