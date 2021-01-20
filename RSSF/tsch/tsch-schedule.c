@@ -1143,14 +1143,9 @@ int SCHEDULE_static(){
         cont++;
         canal = 0;
         
-        //mostram os pacotes contentes em cada nó da rede
-        printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-        
-        /*for(z = 0; z < tamNo; z++){
-            printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
-        }
-        printf("\n");
-        */ 
+        // //mostram os pacotes contentes em cada nó da rede
+        // printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
+         
         DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
     
     }
@@ -1179,8 +1174,8 @@ int SCHEDULE_static(){
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            l-> timeslot = x; 
-            l-> channel_offset = y ;   
+            l-> timeslot = y+1; 
+            l-> channel_offset = x+1 ;   
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
@@ -1191,9 +1186,9 @@ int SCHEDULE_static(){
               
       }
      }
-        LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+        LOG_PRINT("Escalonamento Concluido");
    
-      // tsch_release_lock();   
+      tsch_release_lock();   
     } 
 
 
