@@ -590,6 +590,7 @@ void executa(int num_aresta, int num_no, struct tsch_slotframe *slotframe, int t
                           slot = el_aux->handle;  
                           value_link = el_aux->value; 
                       } 
+        } 
         if(value_link == 0) 
           continue;  
         if((*pacotes)[(*mapa_graf_conf)[slot][0]] > 0){
@@ -1128,10 +1129,8 @@ int SCHEDULE_static(){
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
                         if(canal == 16)
                             break;  
-                        l = memb_alloc(&link_memb); 
-                        l = list_head(sf->links_list);        
-                        while(l!= NULL){   
-                          if(edge_selected == l->handle){
+                        for(struct tsch_link *l = list_head(sf->links_list); l != NULL; l = list_item_next(l)) {
+                            if(edge_selected == l->handle){
                             LOG_PRINT("---------------------------\n"); 
                             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
                             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
@@ -1143,9 +1142,8 @@ int SCHEDULE_static(){
                             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
                             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
                             LOG_PRINT("-----------------------------\n");     
-                            } 
-                          l = list_item_next(l);
-                          } 
+                            }  
+                        }   
 
                         aloca_canais[canal][cont] = edge_selected; 
                         canal++;
