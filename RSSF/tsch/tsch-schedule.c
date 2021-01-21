@@ -1041,7 +1041,7 @@ int SCHEDULE_static(){
     int  **aloca_canais = (int**) malloc(Channel * sizeof(int*));
     for(x = 0; x < Channel; x++){
          aloca_canais[x] = (int*) malloc(Timeslot * sizeof(int));
-
+    }
      
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
