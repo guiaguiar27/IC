@@ -1210,24 +1210,6 @@ int SCHEDULE_static(){
 
     return 0;
 
-}    
-int teste_slot(){  
-
-  struct tsch_slotframe *al_canais = memb_alloc(&slotframe_result_memb);
-  LIST_STRUCT_INIT(al_canais, list); 
-    for(int i = 0 ; i < Channel ;i++){ 
-      for(int j = 0 ; j < Timeslot; j++){  
-        struct Slot *el = NULL;
-        el = memb_alloc(&Slot_memb); 
-        list_add(al_canais->list, el); 
-        el->channel = j;  
-        el->timeslot = i;  
-        el->value = 0;     
-        printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value);
-         
-      }
-    } 
-
 }
 int teste_matriz(){ 
   int adj[MAX_NOS][MAX_NOS] ;
