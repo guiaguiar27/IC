@@ -1006,10 +1006,10 @@ int count_lines()
 // }  
 
 
-void executa2(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+void executa2(int num_aresta, int num_no, int (*aloca_canal)[Channel][Timeslot], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
-    for(i = 0; i < 16; i++){
+    for(i = 0; i < Channel; i++){
         if((*aloca_canal)[i][tempo] == -1)
             continue;
         if((*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] > 0){
@@ -1196,7 +1196,7 @@ int SCHEDULE_static(){
     } 
      
     
-    LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+    //LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
      
     // for(x = 0 ; x< Channel; x++){ 
     // for(y = 0 ; y < Timeslot;y++){ 
