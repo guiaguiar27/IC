@@ -75,7 +75,8 @@ struct tsch_link {
   uint8_t link_options;
   /* Type of link. NORMAL = 0. ADVERTISING = 1, and indicates
      the link may be used to send an Enhanced beacon. */
-  enum link_type link_type;
+  enum link_type link_type; 
+  int value ; 
   /* Any other data for upper layers */
   void *data;
 };
