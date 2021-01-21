@@ -1107,7 +1107,7 @@ int SCHEDULE_static(){
         aloca_canais[x] = (int*) malloc(Channel * sizeof(int));
          for(y = 0; y < Timeslot; y++)
              aloca_canais[x][y] = -1; 
-    
+      }
     //Busca pelo nó raiz da rede
     for(z = 0; z < tamNo; z++){
         for(i = 0; i < tamNo; i++)
