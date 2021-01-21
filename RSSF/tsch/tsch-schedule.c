@@ -583,11 +583,11 @@ void executa(int num_aresta, int num_no, **aloca_canal, int tempo, int (*mapa_gr
     for(i = 0; i < Channel; i++){
         if( aloca_canal[i][tempo] == -1)
             continue;
-        if((*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] > 0){
-            (*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] -= peso;
-            (*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][1]] += peso;
+        if((*pacotes)[(*mapa_graf_conf)[aloca_canal[i][tempo]][0]] > 0){
+            (*pacotes)[(*mapa_graf_conf)[aloca_canal[i][tempo]][0]] -= peso;
+            (*pacotes)[(*mapa_graf_conf)[aloca_canal[i][tempo]][1]] += peso;
         }
-        if((*mapa_graf_conf)[(*aloca_canal)[i][tempo]][1] == raiz)
+        if((*mapa_graf_conf)[aloca_canal[i][tempo]][1] == raiz)
             (*pacote_entregue) += peso;
     }
 } 
@@ -1311,8 +1311,8 @@ int test_slot(){
                             LOG_PRINT("-----------------------------\n");     
                             }  
                         }   
-} 
-return 0 ; 
+  } 
+  return 0 ; 
 }
   
 int sort_node_to_create_link(int n){ 
