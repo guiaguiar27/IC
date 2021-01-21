@@ -63,7 +63,7 @@
 #define endereco "/home/user/contiki-ng/os/arvore.txt"   
 
 #define Channel 20
-#define Timeslot 10
+#define Timeslot 100
 
 
 /* Log configuration */
@@ -1038,10 +1038,10 @@ int SCHEDULE_static(){
     if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
-     int **aloca_canais = (int**)malloc(Channel *sizeof(int*)) ; 
-      for(int i = 0; i < Timeslot ; i++) {
-         aloca_canais[i] = (int*)malloc( Timeslot * sizeof(int));
-    } 
+    int  **aloca_canais = (int**) malloc(Channel * sizeof(int*));
+    for(x = 0; x < Channel; x++){
+         aloca_canais[x] = (int*) malloc(Timeslot * sizeof(int));
+
      
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
@@ -1104,7 +1104,6 @@ int SCHEDULE_static(){
     //         aloca_canais[x][y] = -1;
     // }
     for(x = 0; x < Channel; x++){
-        aloca_canais[x] = (int*) malloc(Channel * sizeof(int));
          for(y = 0; y < Timeslot; y++)
              aloca_canais[x][y] = -1; 
       }
@@ -1187,8 +1186,8 @@ int SCHEDULE_static(){
     
     LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
     struct tsch_link *l =   NULL;  
-    for(x = 0 ; x< Channel; x++){ 
-    for(y = 0 ; y < Timeslot;y++){ 
+    for(x = 0 ; x < Channel; x++){ 
+    for(y = 0 ; y < Timeslot; y++){ 
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   

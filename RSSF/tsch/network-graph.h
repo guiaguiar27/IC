@@ -4,5 +4,5 @@
 #define MAX_NOS 5 
 
 typedef struct NetworkGraph {
-    char mat_adj[MAX_NOS][MAX_NOS];
+    unsigned char mat_adj[MAX_NOS][MAX_NOS];
 } ng;
