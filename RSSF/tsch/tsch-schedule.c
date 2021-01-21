@@ -74,10 +74,8 @@
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
 
-MEMB(Slot_memb, struct Slot, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
-MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
-MEMB(slotframe_result_memb, struct Slotframe_result , 1);
+MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list); 
 
@@ -267,7 +265,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
         l->timeslot = timeslot;
-        l->channel_offset = channel_offset;
+        l->channel_offset = channel_offset; 
+        l->value = 0 ; 
         l->data = NULL;
         if(address == NULL) {
           address = &linkaddr_null;
@@ -513,8 +512,6 @@ tsch_schedule_init(void)
   if(tsch_get_lock()) {
     memb_init(&link_memb);
     memb_init(&slotframe_memb); 
-    memb_init(&Slot_memb); 
-    memb_init(&slotframe_result_memb);
     list_init(slotframe_list); 
 
     tsch_release_lock();
@@ -583,17 +580,23 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void executa(int num_aresta, int num_no, int (*aloca_canal)[Channel][Timeslot], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+void executa(int num_aresta, int num_no, struct tsch_slotframe *slotframe, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
-
-    for(i = 0; i < Channel; i++){
-        if((*aloca_canal)[i][tempo] == -1)
-            continue;
-        if((*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] > 0){
-            (*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][0]] -= peso;
-            (*pacotes)[(*mapa_graf_conf)[(*aloca_canal)[i][tempo]][1]] += peso;
+    int slot, value_link ; 
+    for(i = 0; i < Channel; i++){ 
+        
+        for(struct tsch_link *el_aux = list_head(slotframe->links_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+                      if (el_aux->channel_offset == i && el_aux->timeslot == temp){
+                          slot = el_aux->handle;  
+                          value_link = el_aux->value; 
+                      } 
+        if(value_link == 0) 
+          continue;  
+        if((*pacotes)[(*mapa_graf_conf)[slot][0]] > 0){
+            (*pacotes)[(*mapa_graf_conf)[slot][0]] -= peso;
+            (*pacotes)[(*mapa_graf_conf)[slot][1]] += peso;
         }
-        if((*mapa_graf_conf)[(*aloca_canal)[i][tempo]][1] == raiz)
+        if((*mapa_graf_conf)[slot][1] == raiz)
             (*pacote_entregue) += peso;
     }
 }
@@ -1002,7 +1005,7 @@ int count_lines()
 // }  
 
 int SCHEDULE_static(){  
-           int tamNo; 
+    int tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     
@@ -1021,9 +1024,9 @@ int SCHEDULE_static(){
     /*******************************************************************/ 
     // inicia arquivo  
     FILE *fl; 
-    struct tsch_slotframe *sf = list_head(slotframe_list);     
+    struct tsch_slotframe *sf = list_head(slotframe_list);    
+    struct tsch_link *l =   NULL;   
     if(tsch_get_lock()){ 
-
     tamNo = MAX_NOS ;  
     tamAresta = MAX_NOS;    
     fl = fopen(endereco, "r"); 
@@ -1113,13 +1116,8 @@ int SCHEDULE_static(){
         printf("\n");
     }
     int vetor[tamAresta][2];
-    //ng matching;
-    //DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
     DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
-    
     while(pacote_entregue < total_pacotes){
-
-        //Aloca os canais
         for(x = 0; x < tamNo; x ++){
             for(y = 0; y < tamNo; y++){
                 if(adj.mat_adj[x][y]){
@@ -1129,7 +1127,26 @@ int SCHEDULE_static(){
                     edge_selected = temp;
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
                         if(canal == 16)
-                            break;
+                            break;  
+                        l = memb_alloc(&link_memb); 
+                        l = list_head(sf->links_list);        
+                        while(l!= NULL){   
+                          if(edge_selected == l->handle){
+                            LOG_PRINT("---------------------------\n"); 
+                            LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+                            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+                            l-> timeslot = cont; 
+                            l-> channel_offset = canal;   
+                            l->value = 1 ; 
+                            LOG_PRINT("----CHANGE-----\n"); 
+                            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                            LOG_PRINT("-----------------------------\n");     
+                            } 
+                          l = list_item_next(l);
+                          } 
+
                         aloca_canais[canal][cont] = edge_selected; 
                         canal++;
                     }
@@ -1162,29 +1179,29 @@ int SCHEDULE_static(){
      
     
     LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
-    struct tsch_link *l =   NULL;  
-    for(x = 0 ; x< Channel; x++){ 
-    for(y = 0 ; y < Timeslot;y++){ 
-        l = memb_alloc(&link_memb); 
-        l = list_head(sf->links_list);        
-        while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle){
-            LOG_PRINT("---------------------------\n"); 
-            LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            l-> timeslot = y+1; 
-            l-> channel_offset = x+1 ;   
-            LOG_PRINT("----CHANGE-----\n"); 
-            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            LOG_PRINT("-----------------------------\n");     
-            } 
-          l = list_item_next(l);
-          } 
+     
+    // for(x = 0 ; x< Channel; x++){ 
+    // for(y = 0 ; y < Timeslot;y++){ 
+    //     l = memb_alloc(&link_memb); 
+    //     l = list_head(sf->links_list);        
+    //     while(l!= NULL){   
+    //       if(aloca_canais[x][y] + 1 == l->handle){
+    //         LOG_PRINT("---------------------------\n"); 
+    //         LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+    //         LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+    //         LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+    //         l-> timeslot = y+1; 
+    //         l-> channel_offset = x+1 ;   
+    //         LOG_PRINT("----CHANGE-----\n"); 
+    //         LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+    //         LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+    //         LOG_PRINT("-----------------------------\n");     
+    //         } 
+    //       l = list_item_next(l);
+    //       } 
               
-      }
-     }
+    //   }
+    //  }
         LOG_PRINT("Escalonamento Concluido");
    
       tsch_release_lock();   
