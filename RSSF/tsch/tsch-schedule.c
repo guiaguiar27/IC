@@ -1297,6 +1297,27 @@ int teste_matriz(){
    /********************************************************/
   printf(" O contiki aguentou ");
   return 0 ; 
+} 
+int test_slot(){  
+  int temp = 0 ;   
+  struct tsch_slotframe *sf = list_head(slotframe_list);
+  for(temp = 0; temp < 40 ; temp++){ 
+
+                        for(struct tsch_link *l = list_head(sf->links_list); l != NULL; l = list_item_next(l)) {
+                            if(temp == l->handle){
+                            LOG_PRINT("---------------------------\n"); 
+                            LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+                            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+                            l-> timeslot = 4; 
+                            l-> channel_offset = 5;   
+                            l-> value = 1 ; 
+                            LOG_PRINT("----CHANGE-----\n"); 
+                            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                            LOG_PRINT("-----------------------------\n");     
+                            }  
+                        }   
 }
   
 int sort_node_to_create_link(int n){ 
