@@ -577,7 +577,7 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void executa(int num_aresta, int num_no, **aloca_canal, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+void executa(int num_aresta, int num_no,  int **aloca_canal, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
     for(i = 0; i < Channel; i++){
@@ -1165,7 +1165,7 @@ int SCHEDULE_static(){
         }
         if(cont == Timeslot) cont = 0;
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
-       // executa(tamAresta, tamNo, sf , cont, &conf, &pacote_entregue, raiz, &pacotes); 
+     // executa(tamAresta, tamNo, sf , cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
         canal = 0;
         
@@ -1291,29 +1291,29 @@ int teste_matriz(){
   printf(" O contiki aguentou ");
   return 0 ; 
 } 
-int test_slot(){  
-  int temp = 0 ;   
-  struct tsch_slotframe *sf = list_head(slotframe_list);
-  for(temp = 0; temp < 40 ; temp++){ 
+// int test_slot(){  
+//   int temp = 0 ;   
+//   struct tsch_slotframe *sf = list_head(slotframe_list);
+//   for(temp = 0; temp < 40 ; temp++){ 
 
-                        for(struct tsch_link *l = list_head(sf->links_list); l != NULL; l = list_item_next(l)) {
-                            if(temp == l->handle){
-                            LOG_PRINT("---------------------------\n"); 
-                            LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-                            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-                            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-                            l-> timeslot = 4; 
-                            l-> channel_offset = 5;   
-                            l-> value = 1 ; 
-                            LOG_PRINT("----CHANGE-----\n"); 
-                            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-                            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-                            LOG_PRINT("-----------------------------\n");     
-                            }  
-                        }   
-  } 
-  return 0 ; 
-}
+//                         for(struct tsch_link *l = list_head(sf->links_list); l != NULL; l = list_item_next(l)) {
+//                             if(temp == l->handle){
+//                             LOG_PRINT("---------------------------\n"); 
+//                             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+//                             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+//                             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+//                             l-> timeslot = 4; 
+//                             l-> channel_offset = 5;   
+//                             l-> value = 1 ; 
+//                             LOG_PRINT("----CHANGE-----\n"); 
+//                             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+//                             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+//                             LOG_PRINT("-----------------------------\n");     
+//                             }  
+//                         }   
+//   } 
+//   return 0 ; 
+// }
   
 int sort_node_to_create_link(int n){ 
  
