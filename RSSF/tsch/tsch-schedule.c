@@ -577,7 +577,7 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void executa(int num_aresta, int num_no, /*int (*aloca_canal)[Channel][Timeslot]*/ **aloca_canal, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+void executa(int num_aresta, int num_no, **aloca_canal, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
     for(i = 0; i < Channel; i++){
@@ -1311,6 +1311,8 @@ int test_slot(){
                             LOG_PRINT("-----------------------------\n");     
                             }  
                         }   
+} 
+return 0 ; 
 }
   
 int sort_node_to_create_link(int n){ 
