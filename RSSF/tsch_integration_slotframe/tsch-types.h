@@ -77,7 +77,9 @@ struct tsch_link {
      the link may be used to send an Enhanced beacon. */
   enum link_type link_type;
   /* Any other data for upper layers */
-  void *data;
+  void *data; 
+  /* to use in calaban  */ 
+  int value ;
 };
 
 /** \brief 802.15.4e slotframe (contains links) */
@@ -152,7 +154,7 @@ struct input_packet {
   int len; /* Packet len */
   int16_t rssi; /* RSSI for this packet */
   uint8_t channel; /* Channel we received the packet on */
-};
+}; 
 
 #endif /* __TSCH_CONF_H__ */
 /** @} */
