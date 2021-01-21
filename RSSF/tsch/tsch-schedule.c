@@ -586,7 +586,7 @@ void executa(int num_aresta, int num_no, struct tsch_slotframe *slotframe, int t
     for(i = 0; i < Channel; i++){ 
         
         for(struct tsch_link *el_aux = list_head(slotframe->links_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-                      if (el_aux->channel_offset == i && el_aux->timeslot == temp){
+                      if (el_aux->channel_offset == i && el_aux->timeslot == tempo){
                           slot = el_aux->handle;  
                           value_link = el_aux->value; 
                       } 
@@ -1158,7 +1158,7 @@ int SCHEDULE_static(){
                 break;
         }
         if(cont == Timeslot) cont = 0;
-        executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
+        executa(tamAresta, tamNo, sf , cont, &conf, &pacote_entregue, raiz, &pacotes);
         cont++;
         canal = 0;
         
