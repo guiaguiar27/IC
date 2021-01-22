@@ -4,9 +4,9 @@
 #include "network-graph.h" 
 #include "lib/random.h" 
 
-void DCFL(uint16_t num_aresta, uint16_t num_no, uint16_t (*pacotes)[num_no], uint16_t (*graf_conf)[num_aresta][num_aresta], uint16_t (*mapa_graf_conf)[num_aresta][2], uint16_t raiz, ng *matching, uint16_t (*vetor)[num_aresta][2]); 
-void geraMaching(uint16_t tam, uint16_t tam_rede, uint16_t (*pacotes)[tam_rede], uint16_t (*graf_conf)[tam][tam], uint16_t (*mapa_graf_conf)[tam][2], uint16_t node, ng *resultado, uint16_t (*vetor)[tam][2]);
-void selecao(uint16_t **conf, uint16_t pai, uint16_t tam);
-void mapGraphConf(ng *mat, uint16_t tam_no, uint16_t tam_aresta, uint16_t (*alocado)[tam_aresta][2]);
-void fazMatrizConf(uint16_t tam_arest, uint16_t (*mapConf)[tam_arest][2], uint16_t (*grafoconf)[tam_arest][tam_arest]);    //Tam é nº de arestas do grafo da rede
+void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[num_aresta][2]); 
+void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_conf)[tam][tam], int (*mapa_graf_conf)[tam][2], int node, ng *resultado, int (*vetor)[tam][2]);
+void selecao(int **conf, int pai, int tam);
+void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta][2]);
+void fazMatrizConf(int tam_arest, int (*mapConf)[tam_arest][2], int (*grafoconf)[tam_arest][tam_arest]);    //Tam é nº de arestas do grafo da rede
 

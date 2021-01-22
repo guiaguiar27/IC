@@ -159,7 +159,7 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer;
   static uint32_t seqnum;
   uip_ipaddr_t dst;
-
+  int counter_pack = 0 ; 
   PROCESS_BEGIN();
   initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
@@ -177,11 +177,13 @@ PROCESS_THREAD(node_process, ev, data)
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
-      seqnum++;
+      seqnum++;  
+      printf("Packages counts : %d",counter_pack);
       LOG_INFO("Send to ");
       LOG_INFO_6ADDR(&dst);
       LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
+      counter_pack++ ;
     }
     etimer_set(&periodic_timer, SEND_INTERVAL);
   }

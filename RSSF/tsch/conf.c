@@ -8,25 +8,31 @@
     * num_no: número de nós do grafo da rede
     * num_aresta: nº de arestas do grafo da rede
     */
-void DCFL(uint16_t num_aresta, uint16_t num_no, uint16_t (*pacotes)[num_no], uint16_t (*graf_conf)[num_aresta][num_aresta], uint16_t (*mapa_graf_conf)[num_aresta][2], uint16_t raiz, ng *matching, uint16_t (*vetor)[num_aresta][2]){
+void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[num_aresta][2]){
     /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
-    uint16_t x ; 
-    uint16_t no_atual;
+    int x ; 
+    int no_atual;
     srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
     no_atual = rand() % num_no;   
-    //printtf("sorted nó:%d\n",no_atual);
+    printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz){ 
         no_atual = rand() % num_no;
     }
+    // do{
+        
+        
+    // }while(no_atual == raiz); 
+    // //printf("no atual:%d",no_atual);
     for(x = 0; x < num_no; x++){
         if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
             no_atual = x; 
     }
+    printf("Nó selecionado:%d \n", no_atual);
     
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado 
     for(x = 0; x < num_aresta; x++)
@@ -46,7 +52,7 @@ void DCFL(uint16_t num_aresta, uint16_t num_no, uint16_t (*pacotes)[num_no], uin
     *   tam_rede: tamanho do grafo da rede
     *   node: aresta selecionada para iniciar o matching
     */
-void geraMaching(uint16_t tam, uint16_t tam_rede, uint16_t (*pacotes)[tam_rede], uint16_t (*graf_conf)[tam][tam], uint16_t (*mapa_graf_conf)[tam][2], uint16_t node, ng *resultado, uint16_t (*vetor)[tam][2]){
+void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_conf)[tam][tam], int (*mapa_graf_conf)[tam][2], int node, ng *resultado, int (*vetor)[tam][2]){
     
     /*
     * x, y: usado para percorrer o vetor
@@ -59,7 +65,7 @@ void geraMaching(uint16_t tam, uint16_t tam_rede, uint16_t (*pacotes)[tam_rede],
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-    uint16_t x, y, maior_peso = -1, cont = 1, flg = 1;
+    int x, y, maior_peso = -1, cont = 1, flg = 1;
 
     //Preenchendo com zeros a matriz do matching
     for(x = 0; x < tam_rede; x++){ 
@@ -128,14 +134,14 @@ void geraMaching(uint16_t tam, uint16_t tam_rede, uint16_t (*pacotes)[tam_rede],
     * mat: matriz de adjacência da rede
     * tam: nº de nós do grafo da rede
     */
-void mapGraphConf(ng *mat, uint16_t tam_no, uint16_t tam_aresta, uint16_t (*alocado)[tam_aresta][2]){
+void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta][2]){
     /*
     * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
     * x, y: índices da matriz
     * noConf: representa o nó DO grafo de conflito
     */
-    uint16_t x, y;
-    uint16_t noConf = 0;
+    int x, y;
+    int noConf = 0;
 
     //"Captura" as arestas e armazena
     for(x = 0; x < tam_no; x++)
@@ -160,8 +166,8 @@ void mapGraphConf(ng *mat, uint16_t tam_no, uint16_t tam_aresta, uint16_t (*aloc
    * mapConf: Matriz que mapeia os nós do grafo de conflito pros nós do grafo da rede
    * tam: nº de arestas do grafo da rede
    */
-void fazMatrizConf(uint16_t tam_arest, uint16_t (*mapConf)[tam_arest][2], uint16_t (*grafoconf)[tam_arest][tam_arest]){
-    uint16_t x, y, z, i;
+void fazMatrizConf(int tam_arest, int (*mapConf)[tam_arest][2], int (*grafoconf)[tam_arest][tam_arest]){
+    int x, y, z, i;
 
     //Preenche a matriz de conflito
     for(x = 0; x < tam_arest; x++){
