@@ -1204,19 +1204,18 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle){
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_INFO(" type: %s "print_link_type(l->link_type));
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);    
-
+            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot);  
+            LOG_INFO(" type: %s ",print_link_type(l->link_type)); 
+            LOG_PRINT("\n----CHANNEL: %u-----\n", l->channel_offset);    
             l-> timeslot = y+1; 
             l-> channel_offset = x+1 ;   
-            LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            LOG_PRINT("-----------------------------\n");     
+            LOG_PRINT("-----------------------------\n");
+                 
             } 
           l = list_item_next(l);
           } 
