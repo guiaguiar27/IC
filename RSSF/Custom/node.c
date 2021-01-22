@@ -62,7 +62,7 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 20 
 #define APP_CHANNEL_OFSETT 10  
-#define APP_MAX_SLOTFRAM_SIZE 21
+#define APP_MAX_SLOTFRAME_SIZE 21
 
 static void 
 
@@ -78,12 +78,12 @@ initialize_tsch_schedule()
   // random the quantity of links  
   slot_offset = 0;
   channel_offset = 0;
-  int num_link = 1 ; 
+  int num_links = 1 ; 
   tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0); 
-  if (node != 1) {
+  if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
       uint8_t link_options;
       linkaddr_t addr;   
