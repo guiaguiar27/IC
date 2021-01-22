@@ -1058,7 +1058,8 @@ int SCHEDULE_static(){
         }
     }  
 
-    i = 0;
+    i = 0; 
+    tamNo = 1 ;
     printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
@@ -1066,19 +1067,25 @@ int SCHEDULE_static(){
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
-                i++;
+                i++;   
+                // rajuste do tamanho dos nós
+                if(node_origin > node_destin)  if(node_origin > tamNo) tamNo = node_origin; 
+                else if (node_destin > tamNo) tamNo = node_destin; 
+                 
+                
             }
         }
     }
+    printf("Nos: %d\n Arestas: %d\n ", tamNo);
     tamAresta = i;
     fclose(fl);
 
-    printf("\nMatriz de adacência do grafo da rede:\n");
-    for(int i = 0; i < MAX_NOS ; i++){ 
-        for(int j = 0 ;j < MAX_NOS; j++)
-             printf("%d ", adj.mat_adj[i][j]);
-        printf("\n");
-    }
+    // printf("\nMatriz de adacência do grafo da rede:\n");
+    // for(int i = 0; i < tamNo ; i++){ 
+    //     for(int j = 0 ;j < tamNo; j++)
+    //          printf("%d ", adj.mat_adj[i][j]);
+    //     printf("\n");
+    // }
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
@@ -1210,7 +1217,7 @@ int SCHEDULE_static(){
               
       }
      }
-        LOG_PRINT("Escalonamento Concluido");
+        LOG_PRINT("Escalonamento Concluido\n");
    
       tsch_release_lock();   
     } 

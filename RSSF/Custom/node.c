@@ -61,14 +61,16 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 20 
-#define APP_CHANNEL_OFSETT 10 
+#define APP_CHANNEL_OFSETT 10  
+#define APP_MAX_SLOTFRAM_SIZE 21
 
 static void 
 
 initialize_tsch_schedule()
 {
-  int i, j; 
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  int i, j;  
+  // APP_SLOTFRAME_SIZE
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_MAX_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset; 
   
