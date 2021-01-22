@@ -581,7 +581,7 @@ void executa(int num_aresta, int num_no,  int **aloca_canal, int tempo, int (*ma
     int i;
 
     for(i = 0; i < Channel; i++){
-        if( aloca_canal[i][tempo] == -1)
+        if( aloca_canal[i][tempo] == 0)
             continue;
         if((*pacotes)[(*mapa_graf_conf)[aloca_canal[i][tempo]][0]] > 0){
             (*pacotes)[(*mapa_graf_conf)[aloca_canal[i][tempo]][0]] -= peso;
@@ -1017,20 +1017,20 @@ int count_lines()
 // }  
 
 int SCHEDULE_static(){  
-    int tamNo; 
+    uint16_t tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     
-    int tamAresta,                  //Nº de arestas da rede
+    uint16_t tamAresta,                  //Nº de arestas da rede
     z, i;                       //Variáveis temporárias
-    int pacote_entregue = 0, 
+    uint16_t pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz,                       //Nó raiz do grafo da rede
     flg = 1;                    //Variável temporária
-    int cont = 0;               //Time do slotframe
-    int x, y, canal = 0,            //Variáveis temporárias
+    uint16_t cont = 0;               //Time do slotframe
+    uint16_t x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ; 
+    uint16_t node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
@@ -1061,8 +1061,8 @@ int SCHEDULE_static(){
     i = 0;
     printf("Enter here!\n");
     while(!feof(fl)){      
-        fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf(" %d-> %d\n",node_origin, node_destin);    
+        fscanf(fl,"%u %u",&node_origin, &node_destin);   
+        printf(" %u-> %u\n",node_origin, node_destin);    
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
@@ -1085,14 +1085,14 @@ int SCHEDULE_static(){
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
     for(x = 0; x < tamNo ; x++)
-        printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+        printf("Nó %u: %u pacotes\n", x, pacotes[x]);
 
 
     int conf[tamAresta][2];
     mapGraphConf(&adj, tamNo, tamAresta, &conf);
     printf("\nMapa da matriz de conflito gerada:\n"); 
     for(x = 0; x < tamAresta ; x++)
-        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
+        printf("Nó %u: %u -> %u\n", x, conf[x][0], conf[x][1]);
     
     //Gera a matriz de conflito
     int matconf[tamAresta][tamAresta];
@@ -1105,7 +1105,7 @@ int SCHEDULE_static(){
     // }
     for(x = 0; x < Channel; x++){
          for(y = 0; y < Timeslot; y++)
-             aloca_canais[x][y] = -1; 
+             aloca_canais[x][y] = 0; 
       }
     //Busca pelo nó raiz da rede
     for(z = 0; z < tamNo; z++){
@@ -1131,7 +1131,7 @@ int SCHEDULE_static(){
     printf("\nMatriz de adjacencia do grafo de conflito\n");
     for(z = 0; z < tamAresta; z++){
         for(i = 0; i < tamAresta; i++)
-            printf("%d ", matconf[z][i]);
+            printf("%u ", matconf[z][i]);
         printf("\n");
     } 
 
@@ -1162,7 +1162,7 @@ int SCHEDULE_static(){
             if(canal == Channel)
                 break;
         }
-        if(cont == Timeslot) cont = 0;
+       // if(cont == Timeslot) cont = 0;
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
      // executa(tamAresta, tamNo, sf , cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
@@ -1178,7 +1178,7 @@ int SCHEDULE_static(){
     for(x = 0 ; x < Channel; x++){
         for(y = 0; y < Timeslot; y++) 
             // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
+            printf("%u  ", aloca_canais[x][y] );  
              
         printf("\n"); 
     } 
@@ -1191,7 +1191,7 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle){
+          if(aloca_canais[x][y]  == l->handle){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
@@ -1208,7 +1208,7 @@ int SCHEDULE_static(){
               
       }
      }
-        LOG_PRINT("Escalonamento Concluido");
+        LOG_PRINT("\n Escalonamento Concluido\n ");
    
       tsch_release_lock();   
     } 
