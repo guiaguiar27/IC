@@ -910,7 +910,7 @@ int SCHEDULE_static(){
     uint16_t cont = 0;               //Time do slotframe
     uint16_t x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    uint16_t node_origin, node_destin ; 
+    int  node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
@@ -941,8 +941,8 @@ int SCHEDULE_static(){
     i = 0;
     printf("Enter here!\n");
     while(!feof(fl)){      
-        fscanf(fl,"%u %u",&node_origin, &node_destin);   
-        printf(" %u -> %u\n",node_origin, node_destin);    
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        printf(" %d -> %d\n",node_origin, node_destin);    
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
