@@ -1084,15 +1084,15 @@ int SCHEDULE_static(){
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 0; x < tamNo ; x++)
-        printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+    // for(x = 0; x < tamNo ; x++)
+    //     printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
     int conf[tamAresta][2];
     mapGraphConf(&adj, tamNo, tamAresta, &conf);
-    printf("\nMapa da matriz de conflito gerada:\n"); 
-    for(x = 0; x < tamAresta ; x++)
-        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
+    // printf("\nMapa da matriz de conflito gerada:\n"); 
+    // for(x = 0; x < tamAresta ; x++)
+    //     printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
     
     //Gera a matriz de conflito
     int matconf[tamAresta][tamAresta];
@@ -1128,12 +1128,12 @@ int SCHEDULE_static(){
         if(z != raiz)
             total_pacotes += pacotes[z];
 
-    printf("\nMatriz de adjacencia do grafo de conflito\n");
-    for(z = 0; z < tamAresta; z++){
-        for(i = 0; i < tamAresta; i++)
-            printf("%d ", matconf[z][i]);
-        printf("\n");
-    } 
+    // printf("\nMatriz de adjacencia do grafo de conflito\n");
+    // for(z = 0; z < tamAresta; z++){
+    //     for(i = 0; i < tamAresta; i++)
+    //         printf("%d ", matconf[z][i]);
+    //     printf("\n");
+    // } 
 
     // otimizar a criação de matrizes 
     int vetor[tamAresta][2];

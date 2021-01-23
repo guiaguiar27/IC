@@ -19,7 +19,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     
     //Seleciona o nó com maior carga pra ser transmitida
     no_atual = rand() % num_no;   
-    printf("sorted nó:%d\n",no_atual);
+    //printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz){ 
         no_atual = rand() % num_no;
     }
@@ -32,7 +32,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
         if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
             no_atual = x; 
     }
-    printf("Nó selecionado:%d \n", no_atual);
+   // printf("Nó selecionado:%d \n", no_atual);
     
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado 
     for(x = 0; x < num_aresta; x++)
