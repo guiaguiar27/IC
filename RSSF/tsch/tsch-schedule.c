@@ -1069,14 +1069,7 @@ int SCHEDULE_static(){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++;   
                 // rajuste do tamanho dos nós
-                if(node_origin > node_destin){ 
-                   if(node_origin > tamNo)  
-                    tamNo = node_origin;
-                }  
-                else{ 
-                  if (node_destin > tamNo)  
-                    tamNo = node_destin; 
-                } 
+                
                  
                 
             }
