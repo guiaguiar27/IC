@@ -60,7 +60,7 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
-#define APP_UNICAST_TIMESLOT 20 
+#define APP_UNICAST_TIMESLOT 26 
 #define APP_CHANNEL_OFSETT 10  
 #define APP_MAX_SLOTFRAME_SIZE 21
 

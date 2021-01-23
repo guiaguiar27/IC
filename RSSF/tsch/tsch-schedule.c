@@ -886,7 +886,7 @@ void tsch_write_in_file(int n_origin, int n_destin){
 int count_lines() 
 { 
     FILE *fp; 
-    int count = 1;    
+    int count = 0;    
     char c;  
     fp = fopen(endereco, "r"); 
     if (fp == NULL) return 0; 
@@ -1058,8 +1058,7 @@ int SCHEDULE_static(){
         }
     }  
 
-    i = 0; 
-    tamNo = 1 ;
+    i = 0;
     printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
@@ -1067,24 +1066,19 @@ int SCHEDULE_static(){
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
-                i++;   
-                // rajuste do tamanho dos nós
-                
-                 
-                
+                i++;
             }
         }
     }
-    printf("Nos: %d\n Arestas: %d\n ", tamNo);
     tamAresta = i;
     fclose(fl);
 
-    // printf("\nMatriz de adacência do grafo da rede:\n");
-    // for(int i = 0; i < tamNo ; i++){ 
-    //     for(int j = 0 ;j < tamNo; j++)
-    //          printf("%d ", adj.mat_adj[i][j]);
-    //     printf("\n");
-    // }
+    printf("\nMatriz de adacência do grafo da rede:\n");
+    for(int i = 0; i < MAX_NOS ; i++){ 
+        for(int j = 0 ;j < MAX_NOS; j++)
+             printf("%d ", adj.mat_adj[i][j]);
+        printf("\n");
+    }
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
@@ -1197,25 +1191,24 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+          if(aloca_canais[x][y] + 1 == l->handle){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot);  
-            LOG_INFO(" type: %s ",print_link_type(l->link_type)); 
-            LOG_PRINT("\n----CHANNEL: %u-----\n", l->channel_offset);    
+            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
             l-> timeslot = y+1; 
             l-> channel_offset = x+1 ;   
+            LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            LOG_PRINT("-----------------------------\n");
-                 
+            LOG_PRINT("-----------------------------\n");     
             } 
           l = list_item_next(l);
           } 
               
       }
      }
-        LOG_PRINT("Escalonamento Concluido\n");
+        LOG_PRINT("Escalonamento Concluido");
    
       tsch_release_lock();   
     } 
