@@ -41,7 +41,7 @@
 #include "sys/node-id.h"  
 #include "sys/log.h"
 #include "sys/energest.h" 
-#include "simple-energest.h"
+//#include "simple-energest.h"
 
 
 #define LOG_MODULE "App"
@@ -65,7 +65,7 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 26 
 #define APP_CHANNEL_OFSETT 10  
-#define APP_MAX_SLOTFRAME_SIZE 21
+//#define APP_MAX_SLOTFRAME_SIZE 21
 
 static void 
 
@@ -73,7 +73,7 @@ initialize_tsch_schedule()
 {
   int i, j;  
   // APP_SLOTFRAME_SIZE
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_MAX_SLOTFRAME_SIZE);
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
   uint16_t channel_offset; 
   
@@ -179,7 +179,7 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     SCHEDULE_static();  
-    simple_energest_step();
+    //simple_energest_step(); 
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */

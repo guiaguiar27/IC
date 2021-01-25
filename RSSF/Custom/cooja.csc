@@ -178,7 +178,19 @@
     <height>160</height>
     <location_x>400</location_x>
     <location_y>0</location_y>
-  </plugin>
+  </plugin> 
+  <plugin>
+  org.contikios.cooja.plugins.ScriptRunner
+  <plugin_config>
+    <scriptfile>[CONFIG_DIR]/test.js</scriptfile>
+    <active>true</active>
+  </plugin_config>
+  <width>457</width>
+  <z>4</z>
+  <height>427</height>
+ <location_x>3</location_x>
+ <location_y>404</location_y>
+</plugin>
   <plugin>
     org.contikios.cooja.plugins.Visualizer
     <plugin_config>
