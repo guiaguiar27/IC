@@ -40,11 +40,14 @@
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
+#include "sys/energest.h" 
+#include "simple-energest.h"
+
+
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
 #define UDP_PORT	8765
-#define SEND_INTERVAL		  (60 * CLOCK_SECOND)
-
+#define SEND_INTERVAL		  (60 * CLOCK_SECOND) 
 PROCESS(node_process, "TSCH Schedule Node");
 AUTOSTART_PROCESSES(&node_process);
 
@@ -175,7 +178,8 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
-    SCHEDULE_static(); 
+    SCHEDULE_static();  
+    simple_energest_step();
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
