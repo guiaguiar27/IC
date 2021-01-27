@@ -921,7 +921,10 @@ void  count_packages( )
 
 
 int SCHEDULE_static(){  
-    int tamNo; 
+    int tamNo;  
+    uint16_t slotframe = 0;
+    uint16_t channel_offset = 0;
+    uint16_t timeslot = 0;
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     
@@ -1105,7 +1108,14 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            LOG_PRINT("-----------------------------\n");     
+            LOG_PRINT("-----------------------------\n");   
+            
+            #if TSCH_WITH_LINK_SELECTOR
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe);
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot);
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
+            #endif
+   
             } 
           l = list_item_next(l);
           } 
@@ -1218,7 +1228,8 @@ int sort_node_to_create_link(int n){
   uint16_t timeslot = 0xffff;
 
   if (packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME){ 
-    timeslot = 1; 
+    timeslot = 1;  
+    LOG_INFO("\nCALLBACK FUNCTION ACTIVE\n");
   }
 
 #if TSCH_WITH_LINK_SELECTOR

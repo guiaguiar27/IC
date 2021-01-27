@@ -363,7 +363,7 @@
 /* A custom feature allowing upper layers to assign packets to
  * a specific slotframe and link */
 #ifdef TSCH_CONF_WITH_LINK_SELECTOR 
-#define TSCH_WITH_LINK_SELECTOR 1 
+#define TSCH_WITH_LINK_SELECTOR TSCH_CONF_WITH_LINK_SELECTOR
 #else /* TSCH_CONF_WITH_LINK_SELECTOR */
 #define TSCH_WITH_LINK_SELECTOR (BUILD_WITH_ORCHESTRA)
 #endif /* TSCH_CONF_WITH_LINK_SELECTOR */

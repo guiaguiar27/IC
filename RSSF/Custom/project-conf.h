@@ -51,7 +51,10 @@
 /*******************************************************/
 
 /* Disable the 6TiSCH minimal schedule */
-#define TSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL 0
+#define TSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL 0  
+
+/* packet selector*/
+
 
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
 #define APP_SLOTFRAME_SIZE 17
