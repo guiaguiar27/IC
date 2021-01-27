@@ -1205,11 +1205,11 @@ int SCHEDULE_static(){
             slotframe = sf->handle;  
             timeslot = l->timeslot;  
             channel_offset = l->channel_offset;
-            #if TSCH_LINK_SELECTOR   
+            #if TSCH_WITH_LINK_SELECTOR   
               LOG_PRINT("--------------LINK SELECTOR---------------\n"); 
-               packetbuf_set_attr(PACKET_ATTR_TSCH_SLOTFRAME, slotframe); 
-               packetbuf_set_attr(PACKET_ATTR_TSCH_SLOTFRAME, timeslot); 
-               packetbuf_set_attr(PACKET_ATTR_TSCH_SLOTFRAME, channel_offset);
+               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
+               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
+               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
             #endif
             } 
           l = list_item_next(l);
@@ -1223,7 +1223,7 @@ int SCHEDULE_static(){
     } 
 
 
-    return 0;
+    return 1;
 
 }   
 int teste_matriz(){ 
