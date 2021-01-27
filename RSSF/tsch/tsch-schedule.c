@@ -923,10 +923,10 @@ void  count_packages( )
 
 int SCHEDULE_static(){  
     int tamNo;  
-    uint16_t slotframe = 0;
-    uint16_t channel_offset = 0;
-    uint16_t timeslot = 0;
-    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+    // uint16_t slotframe = 0;
+    // uint16_t channel_offset = 0;
+    // uint16_t timeslot = 0;
+    // //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     
     int tamAresta,                  //Nº de arestas da rede
@@ -1112,15 +1112,15 @@ int SCHEDULE_static(){
             LOG_PRINT("-----------------------------\n");   
             
             // implementing a callback function 
-            slotframe = sf->handle;  
-            timeslot = l->timeslot;  
-            channel_offset = l->channel_offset; 
-            #if TSCH_WITH_LINK_SELECTOR 
-              LOG_PRINT("Callback inside schedule\n");   
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe);
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot);
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
-            #endif
+            // slotframe = sf->handle;  
+            // timeslot = l->timeslot;  
+            // channel_offset = l->channel_offset; 
+            // #if TSCH_WITH_LINK_SELECTOR 
+            //   LOG_PRINT("Callback inside schedule\n");   
+            //   packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe);
+            //   packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot);
+            //   packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
+            // #endif
    
             } 
           l = list_item_next(l);
@@ -1229,14 +1229,22 @@ int sort_node_to_create_link(int n){
   return final_sorted_node; 
  
  } 
- int my_callback_packet_ready(void) {
+
+int my_callback_packet_ready(void) {
   const uint16_t slotframe = 0;
   const uint16_t channel_offset = 0;
   uint16_t timeslot = 0xffff;
 
-  if (packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME){ 
-    timeslot = 1;  
-    LOG_INFO("\nCALLBACK FUNCTION ACTIVE\n");
+  if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_BEACONFRAME) {
+     /* EB packet */
+     timeslot = 0;
+  } else if (packetbuf_attr(PACKETBUF_ATTR_NETWORK_ID) == UIP_PROTO_ICMP6
+     && (packetbuf_attr(PACKETBUF_ATTR_CHANNEL) >> 8) == ICMP6_RPL) {
+     /* RPL packet */
+     timeslot = 3;
+  } else {
+     /* data packet */
+     timeslot = 4;
   }
 
 #if TSCH_WITH_LINK_SELECTOR
@@ -1247,8 +1255,6 @@ int sort_node_to_create_link(int n){
 
   return 1;
 }
-
-
 
 
 
