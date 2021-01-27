@@ -902,6 +902,7 @@ void  count_packages( )
 { 
   FILE *file;  
   int count = 1 ; 
+  char c ;  
   file = fopen(endereco_pack, "r+");
   if(file == NULL){
         printf("The file was not opened\n");
@@ -1110,7 +1111,12 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");   
             
-            #if TSCH_WITH_LINK_SELECTOR
+            // implementing a callback function 
+            slotframe = sf->handle;  
+            timeslot = l->timeslot;  
+            channel_offset = l->channel_offset; 
+            #if TSCH_WITH_LINK_SELECTOR 
+              LOG_PRINT("Callback inside schedule\n");   
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe);
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot);
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
@@ -1130,7 +1136,8 @@ int SCHEDULE_static(){
 
     return 0;
 
-}   
+}    
+// function to test 
 int teste_matriz(){ 
   int adj[MAX_NOS][MAX_NOS] ;
   for(int i = 0 ; i < MAX_NOS; i++){ 
