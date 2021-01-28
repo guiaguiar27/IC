@@ -63,9 +63,8 @@ AUTOSTART_PROCESSES(&node_process);
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
-#define APP_UNICAST_TIMESLOT 26 
-#define APP_CHANNEL_OFSETT 10  
-//#define APP_MAX_SLOTFRAME_SIZE 21
+#define APP_UNICAST_TIMESLOT 16 
+#define APP_CHANNEL_OFSETT 16
 
 static void 
 
@@ -77,8 +76,6 @@ initialize_tsch_schedule()
   uint16_t slot_offset;
   uint16_t channel_offset; 
   
-  //int node_number = tsch_num_nos();
-  // random the quantity of links  
   slot_offset = 0;
   channel_offset = 0;
   int num_links = 1 ; 
@@ -86,6 +83,8 @@ initialize_tsch_schedule()
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0); 
+  
+  
   if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
       uint8_t link_options;
@@ -173,6 +172,7 @@ PROCESS_THREAD(node_process, ev, data)
   
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
+    //NETSTACK_MAC.on(); 
   }
 
   /* Main loop */ 

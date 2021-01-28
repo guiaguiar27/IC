@@ -994,11 +994,6 @@ int SCHEDULE_static(){
     int matconf[tamAresta][tamAresta];
     fazMatrizConf(tamAresta, &conf, &matconf);
 
-    //Preenche o slotframe com -1
-    // for(x = 0; x < Channel; x++){
-    //     for(y = 0; y < Timeslot; y++)
-    //         aloca_canais[x][y] = -1;
-    // }
     for(x = 0; x < Channel; x++){
          for(y = 0; y < Timeslot; y++)
              aloca_canais[x][y] = -1; 
