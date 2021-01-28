@@ -904,7 +904,7 @@ int count_packs(){
     fp = fopen(endereco_pack, "r+"); 
     if (fp == NULL) return 0 ;  
     count = 1 ;  
-    fprint(fp, "%d", count);
+    fprintf(fp, "%d", count);
     for (c = getc(fp); c != EOF; c = getc(fp)) 
         if (c == '\n') 
             count = count + 1;  
@@ -1037,7 +1037,7 @@ int SCHEDULE_static(){
     int tamNo; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
-    uint16_t timeslot, slotframe, channel_offset; 
+    //uint16_t timeslot, slotframe, channel_offset; 
     int tamAresta,                  //Nº de arestas da rede
     z, i;                       //Variáveis temporárias
     int pacote_entregue = 0, 
@@ -1219,14 +1219,14 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");       
-            slotframe = sf->handle;  
-            timeslot = l->timeslot;  
-            channel_offset = l->channel_offset;
             #if TSCH_WITH_LINK_SELECTOR   
+              slotframe = sf->handle;  
+              timeslot = l->timeslot;  
+              channel_offset = l->channel_offset;
               LOG_PRINT("--------------LINK SELECTOR---------------\n"); 
-               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
-               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
-               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
             #endif
             } 
           l = list_item_next(l);
