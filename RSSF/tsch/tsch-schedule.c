@@ -900,11 +900,11 @@ int count_lines()
 int count_packs(){  
     FILE *fp; 
     int count = 0;    
-    char c;  
+    //char c;  
     fp = fopen(endereco_pack, "w+"); 
     if (fp == NULL) return 0 ;  
     count = 1 ;  
-    fscan(fp,"%d",&count); 
+    fscanf(fp,"%d",&count); 
     count = count+1 ; 
     fprintf(fp, "%d", count);
     fclose(fp); 
