@@ -914,124 +914,6 @@ int count_packs(){
 
 }  
 /*---------------------------------------------------------------------------*/
-// int SCHEDULE_AUX(int **adj){ 
-//   FILE *fl;      
-//   int *pacotes, ** conf, **matconf,  **aloca_canais , **matching, 
-//   tamAresta,tamNo,i,y, 
-//   z,x,raiz,node_origin, 
-//   node_destin,  total_pacotes = 0  
-//    , pacote_entregue = 0, 
-//     edge_selected, temp, canal = 0 ;
- 
-//   adj = (int**)malloc(MAX_NOS * sizeof(int*)); 
-//   LOG_PRINT("----- TSCH LOCK -----\n");
-//   if(tsch_get_lock()){   
-//       tamNo = MAX_NOS - 1 ; 
-//       tamAresta = MAX_NOS;    
-//       fl = fopen(endereco, "r"); 
-//       if(fl == NULL){
-//           printf("The file was not opened\n");
-//           return 0  ; 
-//       } 
-//       for(int i = 0; i < MAX_NOS; i++) {
-//           adj[i] = (int *)malloc(MAX_NOS * sizeof(int));
-//       } 
-//       for(int i = 0 ; i < MAX_NOS ; i++){ 
-//           for(int j = 0 ; j< MAX_NOS; j++){  
-//               adj[i][j] = 0 ; 
-//           }
-//       }  
-//       i = 0;
-//       // read the topology 
-//       while(!feof(fl)){      
-//               fscanf(fl,"%d %d",&node_origin, &node_destin);       
-//               if(node_origin < MAX_NOS && node_destin < MAX_NOS){
-//                   if (adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
-//                       adj[node_origin][node_destin] = 1; 
-//                       printf("%d-> %d\n",node_origin, node_destin); 
-//                       i++; 
-//                       printf("Vertices count: %d\n", i);
-//                   } 
-//               } 
-//               if(feof(fl)) break ;
-//           } 
-//       // change the number of edges 
-//       tamAresta = i; 
-      
-//       printf("\n .... ADJ ...... \n");
-//       for(int i = 1; i < MAX_NOS ; i++){ 
-//           for(int j = 1 ;j < MAX_NOS; j++)
-//                 printf("%d     ", adj[i][j]);
-//             printf("\n");
-//       } 
-//       printf("\n .......... \n");
-
-//       LOG_PRINT(" NOS : %d ARESTAS: %d \n",tamNo, tamAresta); 
-//       pacotes = alocaPacotes(tamNo, adj); 
-//       for(int z = 1; z < tamNo; z++)
-//             total_pacotes += pacotes[z];
-//       conf = mapGraphConf(adj, tamNo, tamAresta); 
-//       matconf = fazMatrizConf(conf, adj, tamAresta); 
-      
-//       printf("\nMatriz de adjacencia do grafo de conflito\n");
-//       // print the confitos matrix 
-//       for(z = 0; z < tamAresta; z++){
-//         for(i = 0; i < tamAresta; i++)
-//             printf("%d ", matconf[z][i]);
-//         printf("\n");
-//       }  
-
-//       aloca_canais = (int**) malloc(temp_canais * sizeof(int*));
-//       for( x = 0; x < Timeslot; x++){
-//         aloca_canais[x] = (int*)malloc(temp_canais * sizeof(int));
-//         for( y = 0; y < temp_canais; y++)
-//             aloca_canais[x][y] = -1;
-//       } 
-
-//       raiz = no_raiz;  
-//       LOG_PRINT(" raiz: %d", raiz);
-//       // aloca pacotes   
-//       matching =  DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz);  
-//       if (matching == NULL) LOG_PRINT("NULL\n");  
-      
-//       else{ 
-//         while(pacote_entregue < total_pacotes){ 
-//           printf("** Loop to matching ** \n"); 
-//           for(x = 0; x < tamNo; x++){ 
-//             for(y = 0 ; y < tamNo ; y++){ 
-//               if(matching[x][y]){ 
-//                 for(temp = 0; temp < tamAresta ; temp++){ 
-//                   if(conf[temp][0] == x && conf[temp][1] == y) break;  
-
-//                 } 
-//                 edge_selected = temp;  
-//                 for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){ 
-//                   if (canal == temp_canais) break;  
-//                   aloca_canais[canal][temp] = edge_selected ;  
-//                   canal++; 
-//                 }
-//               } 
-//               if(canal == temp_canais)  break;
-//             }
-//             if(canal == temp_canais) break;
-//           }  
-//           printf("\nCanais alocados  | |");
-//           printf("\n                \\   /");
-//           printf("\n                 \\ /\n\n");
-//           for(x = 0; x < 16; x++){
-//             for(y = 0; y < temp_canais; y++)
-//               printf("%d  ", aloca_canais[x][y] + 1); 
-
-//             printf("\n");
-//           }
-//           printf("\n");     
-    
-//         }
-//       }  
-  
-//   }  
-//   return 0; 
-// }  
 
 int SCHEDULE_static(){  
     int tamNo; 
@@ -1042,8 +924,7 @@ int SCHEDULE_static(){
     z, i;                       //Variáveis temporárias
     int pacote_entregue = 0, 
     total_pacotes = 0, 
-    raiz,                       //Nó raiz do grafo da rede
-    flg = 1;                    //Variável temporária
+    raiz ;                  
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
@@ -1055,13 +936,13 @@ int SCHEDULE_static(){
     if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
-    int  **aloca_canais = (int**) malloc(Channel * sizeof(int*));
+    int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
     for(x = 0; x < Channel; x++){
-         aloca_canais[x] = (int*) malloc(Timeslot * sizeof(int));
+         aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
 
      }
     tamNo = MAX_NOS ;  
-    tamAresta = MAX_NOS;    
+    tamAresta = 0 ;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
@@ -1079,8 +960,8 @@ int SCHEDULE_static(){
     printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf(" %d-> %d\n",node_origin, node_destin);    
-        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+        printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
+        if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++;
@@ -1125,18 +1006,7 @@ int SCHEDULE_static(){
              aloca_canais[x][y] = -1; 
       }
     //Busca pelo nó raiz da rede
-    for(z = 0; z < tamNo; z++){
-        for(i = 0; i < tamNo; i++)
-            if(adj.mat_adj[z][i] != 0){
-                flg = 0;
-                break;
-            }
-        if(flg)
-            break;
-        else
-            flg = 1;
-    }
-
+    
     //Por hora definimos ele manualmente
     raiz = no_raiz;
 
@@ -1145,12 +1015,7 @@ int SCHEDULE_static(){
         if(z != raiz)
             total_pacotes += pacotes[z];
 
-    printf("\nMatriz de adjacencia do grafo de conflito\n");
-    for(z = 0; z < tamAresta; z++){
-        for(i = 0; i < tamAresta; i++)
-            printf("%d ", matconf[z][i]);
-        printf("\n");
-    } 
+     
 
     // otimizar a criação de matrizes 
     int vetor[tamAresta][2];
@@ -1158,7 +1023,6 @@ int SCHEDULE_static(){
     
     while(pacote_entregue < total_pacotes){
 
-        //Aloca os canais
         for(x = 0; x < tamNo; x ++){
             for(y = 0; y < tamNo; y++){
                 if(adj.mat_adj[x][y]){
@@ -1181,7 +1045,6 @@ int SCHEDULE_static(){
         }
         if(cont == Timeslot) cont = 0;
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
-     // executa(tamAresta, tamNo, sf , cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
         canal = 0;
         
@@ -1219,6 +1082,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");       
+            
             #if TSCH_WITH_LINK_SELECTOR   
               slotframe = sf->handle;  
               timeslot = l->timeslot;  
