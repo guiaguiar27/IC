@@ -1144,6 +1144,7 @@ send_packet(mac_callback_t sent, void *ptr)
              tsch_packet_seqno, tsch_queue_nbr_packet_count(n),
              TSCH_QUEUE_NUM_PER_NEIGHBOR, tsch_queue_global_packet_count(),
              QUEUEBUF_NUM, p->header_len, queuebuf_datalen(p->qb));
+    count_packs();
     }
   }
   if(ret != MAC_TX_DEFERRED) {

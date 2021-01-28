@@ -60,7 +60,8 @@
 #include "conf.h"  
 #define peso 1 
 #define no_raiz 1  
-#define endereco "/home/user/contiki-ng/os/arvore.txt"   
+#define endereco "/home/user/contiki-ng/os/arvore.txt"  
+#define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
 
 #define Channel 16
 #define Timeslot 16
@@ -895,7 +896,23 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}      
+}     
+int count_packs(){  
+    FILE *fp; 
+    int count = 0;    
+    char c;  
+    fp = fopen(endereco_pack, "r+"); 
+    if (fp == NULL) return 0 ;  
+    count = 1 ;  
+    fprint(fp, "%d", count);
+    for (c = getc(fp); c != EOF; c = getc(fp)) 
+        if (c == '\n') 
+            count = count + 1;  
+            fprintf(fp, "%d", count);
+    fclose(fp); 
+    return count; 
+
+}  
 /*---------------------------------------------------------------------------*/
 // int SCHEDULE_AUX(int **adj){ 
 //   FILE *fl;      
