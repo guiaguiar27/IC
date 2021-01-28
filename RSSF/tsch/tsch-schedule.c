@@ -901,14 +901,12 @@ int count_packs(){
     FILE *fp; 
     int count = 0;    
     char c;  
-    fp = fopen(endereco_pack, "r+"); 
+    fp = fopen(endereco_pack, "w+"); 
     if (fp == NULL) return 0 ;  
     count = 1 ;  
+    fscan(fp,"%d",&count); 
+    count = count+1 ; 
     fprintf(fp, "%d", count);
-    for (c = getc(fp); c != EOF; c = getc(fp)) 
-        if (c == '\n') 
-            count = count + 1;  
-            fprintf(fp, "%d", count);
     fclose(fp); 
     return count; 
 
