@@ -171,8 +171,8 @@ PROCESS_THREAD(node_process, ev, data)
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
   if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();
-    //NETSTACK_MAC.on(); 
+    //NETSTACK_ROUTING.root_start();
+    NETSTACK_MAC.on(); 
   }
 
   /* Main loop */ 
