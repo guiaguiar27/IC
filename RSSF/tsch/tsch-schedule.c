@@ -1083,7 +1083,7 @@ int SCHEDULE_static(){
               LOG_PRINT("--------------LINK SELECTOR---------------\n"); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
+              (PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
             #endif
             } 
           l = list_item_next(l);

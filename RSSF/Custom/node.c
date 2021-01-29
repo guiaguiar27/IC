@@ -184,7 +184,6 @@ PROCESS_THREAD(node_process, ev, data)
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
       seqnum++;  
-      printf("Packages counts : %d",counter_pack);
       LOG_INFO("Send to ");
       LOG_INFO_6ADDR(&dst);
       LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
