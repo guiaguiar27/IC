@@ -36,7 +36,8 @@
 
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h"
-#include "net/mac/tsch/tsch.h"
+#include "net/mac/tsch/tsch.h" 
+#include "net/nbr-table.h"
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
@@ -171,10 +172,11 @@ PROCESS_THREAD(node_process, ev, data)
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
   if(node_id == 1) {  /* Running on the root? */
-    //NETSTACK_ROUTING.root_start();
+    NETSTACK_ROUTING.root_start();
     NETSTACK_MAC.on(); 
   }
-
+  LOG_PRINT("NBR TABLE\n"); 
+  print_table();
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
