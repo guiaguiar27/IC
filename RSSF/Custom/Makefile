@@ -5,8 +5,6 @@ PLATFORMS_ONLY = cooja
 
 CONTIKI=../../.. 
 
-CONTIKI_WITH_RPL = 0
-
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
 
