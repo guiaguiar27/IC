@@ -3,14 +3,14 @@ all: $(CONTIKI_PROJECT)
 
 PLATFORMS_ONLY = cooja
 
-CONTIKI=../../.. 
+CONTIKI=../../..
 
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
 
 MAKE_MAC = MAKE_MAC_TSCH 
-# adcionado 
-MAKE_NET = MAKE_NET_IPV6 
+# adcionado
+MAKE_NET = MAKE_NET_IPV6
 include $(CONTIKI)/Makefile.dir-variables
 MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell
 
