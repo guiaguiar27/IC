@@ -57,7 +57,7 @@
 
 // conf with ipv6 
 #define NETSTACK_CONF_WITH_IPV6  1
-//#define UIP_CONF_IPV6_RPL 0
+#define ROUTING_CONF_RPL_LITE 1 
 
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
 #define APP_SLOTFRAME_SIZE 17

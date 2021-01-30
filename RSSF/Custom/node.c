@@ -163,8 +163,9 @@ PROCESS_THREAD(node_process, ev, data)
   static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   static uint32_t seqnum;
-  uip_ipaddr_t dst;
-  int counter_pack = 0 ; 
+  uip_ipaddr_t dst;   
+  // to identify neighbors 
+  //uip_ds6_nbr_t *nbr = NULL ;  
   PROCESS_BEGIN();
   initialize_tsch_schedule();
   /* Initialization; `rx_packet` is the function for packet reception */
@@ -174,22 +175,25 @@ PROCESS_THREAD(node_process, ev, data)
   if(node_id == 1) {  /* Running on the root? */
     NETSTACK_ROUTING.root_start();
     NETSTACK_MAC.on(); 
-  }
+  } 
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     //SCHEDULE_static();  
     //simple_energest_step(); 
-    if(NETSTACK_ROUTING.node_is_reachable()
-       && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
-      /* Send network uptime timestamp to the network root node */
-      seqnum++;  
-      LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
-      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
-      counter_pack++ ;
-    }
+    //NETSTACK_ROUTING.get_root_ipaddr(&dst); 
+    //nbr = uip_ds6_nbr_lookup(const uip_ipaddr_t *ipaddr);  
+
+    // if(NETSTACK_ROUTING.node_is_reachable()
+    //    && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
+    //   /* Send network uptime timestamp to the network root node */
+    //   seqnum++;  
+    //   LOG_INFO("Send to ");
+    //   LOG_INFO_6ADDR(&dst);
+    //   LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+    //   simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
+    
+    // }
     etimer_set(&periodic_timer, SEND_INTERVAL);
   }
 
