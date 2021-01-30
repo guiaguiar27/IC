@@ -55,9 +55,9 @@
 //#define TSCH_CONF_WITH_LINK_SELECTOR 1
 //#define TSCH_CALLBACK_PACKET_READY my_callback_packet_ready
 
-/* packet selector*/
+// conf with ipv6 
 #define NETSTACK_CONF_WITH_IPV6  1
-#define UIP_CONF_IPV6_RPL 0
+//#define UIP_CONF_IPV6_RPL 0
 
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
 #define APP_SLOTFRAME_SIZE 17

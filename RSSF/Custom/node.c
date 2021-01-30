@@ -175,8 +175,6 @@ PROCESS_THREAD(node_process, ev, data)
     NETSTACK_ROUTING.root_start();
     NETSTACK_MAC.on(); 
   }
-  LOG_PRINT("NBR TABLE\n"); 
-  print_table();
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 

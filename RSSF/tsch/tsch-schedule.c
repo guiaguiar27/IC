@@ -1173,7 +1173,7 @@ int teste_matriz(){
   printf(" O contiki aguentou ");
   return 1 ; 
 } 
-  
+void verify_topology(link)
 int sort_node_to_create_link(int n){ 
  
   unsigned short  random_node;    
