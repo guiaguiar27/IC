@@ -151,8 +151,7 @@ rx_packet(struct simple_udp_connection *c,
     LOG_INFO("Received from ");
     LOG_INFO_6ADDR(sender_addr);
     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
-    
-    // pode limpar o arquivo aqui  
+   
 
   }
 } 
