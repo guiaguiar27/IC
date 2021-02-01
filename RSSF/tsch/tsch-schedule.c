@@ -1191,8 +1191,8 @@ int sort_node_to_create_link(int n){
  
  } 
 void tsch_print_neighbors(uint16_t node_id){  
-  const linkaddr_t *addr = NULL;   
-  for(j = 0; j < sizeof(addr); j += 2) {
+   linkaddr_t *addr = NULL;   
+  for(int j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = node_id & 0xff;
         addr.u8[j + 0] = node_id >> 8;
   }  
