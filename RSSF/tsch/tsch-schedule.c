@@ -1194,7 +1194,7 @@ void tsch_print_neighbors(const linkaddr_t *addr){
   const struct link_stats *stats = NULL;    
   uint8_t cont = 1 ; 
   const linkaddr_t *aux_addr;  
-  stats = ink_stats_from_lladdr(addr);  
+  stats = link_stats_from_lladdr(addr);  
   LOG_PRINT("neighbor of "); 
   LOG_INFO_LLADDR(addr);  
   LOG_PRINT("\n");
