@@ -89,7 +89,7 @@ initialize_tsch_schedule()
   if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
       uint8_t link_options;
-      const linkaddr_t addr;   
+       linkaddr_t addr;   
 
       // node 2 and 3, sending to node 1 
       uint16_t remote_id = 1; 
@@ -97,7 +97,7 @@ initialize_tsch_schedule()
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
       } 
-      tsch_print_neighbors(addr);  
+      tsch_print_neighbors(&addr);  
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
@@ -113,7 +113,7 @@ initialize_tsch_schedule()
       for (i = 0 ; i <  num_links ; ++i) { 
 
       uint8_t link_options;
-      const linkaddr_t addr;  
+       linkaddr_t addr;  
       uint16_t remote_id = sort_node_to_create_link(node_id); 
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
