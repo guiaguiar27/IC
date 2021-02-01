@@ -1190,7 +1190,12 @@ int sort_node_to_create_link(int n){
   return final_sorted_node; 
  
  } 
-void tsch_print_neighbors(const linkaddr_t *addr){  
+void tsch_print_neighbors(uint16_t node_id){  
+  const linkaddr_t *addr = NULL;   
+  for(j = 0; j < sizeof(addr); j += 2) {
+        addr.u8[j + 1] = node_id & 0xff;
+        addr.u8[j + 0] = node_id >> 8;
+  }  
   const struct link_stats *stats = NULL;    
   uint8_t cont = 1 ; 
   const linkaddr_t *aux_addr;  
@@ -1201,7 +1206,7 @@ void tsch_print_neighbors(const linkaddr_t *addr){
 
   do{ 
     aux_addr = link_stats_get_lladdr(stats);  
-    LOG_PRINT("addr neighbor %u:", cont);
+    LOG_PRINT(" Neighbor %u Addr:", cont);
     LOG_INFO_LLADDR(aux_addr); 
     LOG_PRINT("\n"); 
     cont++ ; 
