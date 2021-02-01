@@ -173,7 +173,7 @@ int SCHEDULE_static();
 int sort_node_to_create_link(int n);  
 int teste_matriz();   
 int count_packs(); 
-void tsch_print_neighbors(uint16_t node_id); 
+void tsch_print_neighbors(); 
 //int test_slot(); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

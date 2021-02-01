@@ -97,7 +97,7 @@ initialize_tsch_schedule()
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
       } 
-      tsch_print_neighbors(node_id);  
+      tsch_print_neighbors();  
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
@@ -119,7 +119,7 @@ initialize_tsch_schedule()
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
       }  
-      tsch_print_neighbors(node_id); 
+      tsch_print_neighbors(); 
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
