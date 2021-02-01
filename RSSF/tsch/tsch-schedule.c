@@ -1190,9 +1190,8 @@ int sort_node_to_create_link(int n){
   return final_sorted_node; 
  
  } 
-void tsch_print_neighbors(){  
-  //linkaddr_t *addr = NULL;   
-  //linkaddr_copy(addr,&linkaddr_node_addr); 
+void tsch_print_neighbors(){   
+   
   const struct link_stats *stats = NULL;    
   uint8_t cont = 1 ; 
   const linkaddr_t *aux_addr;  
