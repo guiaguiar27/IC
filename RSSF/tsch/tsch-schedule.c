@@ -47,13 +47,14 @@
 #include "contiki.h"
 #include "dev/leds.h"
 #include "lib/memb.h"
-#include "net/nbr-table.h"
+#include "net/nbr-table.h" 
 #include "net/packetbuf.h"
 #include "net/queuebuf.h"
 #include "net/mac/tsch/tsch.h"
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
-#include "sys/rtimer.h"
+#include "sys/rtimer.h" 
+#include "net/link-stats.h"
 #include <string.h> 
 #include <stdio.h> 
 #include <stdlib.h>
@@ -1188,6 +1189,25 @@ int sort_node_to_create_link(int n){
   
   return final_sorted_node; 
  
+ } 
+void tsch_print_neighbors(const linkaddr_t *addr){  
+  const struct link_stats *stats = NULL;    
+  uint8_t cont = 1 ; 
+  const linkaddr_t *aux_addr;  
+  stats = ink_stats_from_lladdr(addr);  
+  LOG_PRINT("neighbor of "); 
+  LOG_INFO_LLADDR(addr);  
+  LOG_PRINT("\n");
+
+  do{ 
+    aux_addr = link_stats_get_lladdr(stats);  
+    LOG_PRINT("addr neighbor %u:", cont);
+    LOG_INFO_LLADDR(aux_addr); 
+    LOG_PRINT("\n"); 
+    cont++ ; 
+  }
+  while(aux_addr != NULL);
+
  }
 
 
