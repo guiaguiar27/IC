@@ -118,7 +118,8 @@ initialize_tsch_schedule()
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
-      } 
+      }  
+      tsch_print_neighbors(&addr); 
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
