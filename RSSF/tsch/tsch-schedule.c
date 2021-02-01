@@ -1191,14 +1191,14 @@ int sort_node_to_create_link(int n){
  
  } 
 void tsch_print_neighbors(){  
-  const linkaddr_t *addr = NULL;   
-  linkaddr_copy(&addr,linkaddr_node_addr); 
+  //linkaddr_t *addr = NULL;   
+  //linkaddr_copy(addr,&linkaddr_node_addr); 
   const struct link_stats *stats = NULL;    
   uint8_t cont = 1 ; 
   const linkaddr_t *aux_addr;  
-  stats = link_stats_from_lladdr(addr);  
+  stats = link_stats_from_lladdr(&linkaddr_node_addr);  
   LOG_PRINT("neighbor of "); 
-  LOG_INFO_LLADDR(addr);  
+  LOG_INFO_LLADDR(&linkaddr_node_addr);  
   LOG_PRINT("\n");
 
   do{ 
