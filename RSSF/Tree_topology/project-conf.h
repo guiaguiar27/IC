@@ -60,7 +60,7 @@
 /*******************************************************/
 
 #define NETSTACK_CONF_WITH_IPV6  1   
-#define UIP_CONF_IPV6_RPL 0
+//#define UIP_CONF_IPV6_RPL 0
 // messages to enable ND 
 #define UIP_CONF_ND6_SEND_NS 1  
 #define UIP_CONF_ND6_SEND_NA 1  

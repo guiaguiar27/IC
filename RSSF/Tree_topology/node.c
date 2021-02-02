@@ -175,9 +175,9 @@ PROCESS_THREAD(node_process, ev, data)
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-  // if(node_id == 1) {  /* Running on the root? */
-  //   NETSTACK_ROUTING.root_start(); 
-  // }   
+   if(node_id == 1) {  /* Running on the root? */
+     NETSTACK_ROUTING.root_start(); 
+   }   
   //NETSTACK_ROUTING.init(); 
   NETSTACK_MAC.init();
   NETSTACK_MAC.on();
@@ -186,19 +186,19 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     SCHEDULE_static();  
-   // NETSTACK_ROUTING.get_root_ipaddr(&dst); 
+    NETSTACK_ROUTING.get_root_ipaddr(&dst); 
     //nbr = uip_ds6_nbr_lookup(const uip_ipaddr_t *ipaddr);  
 
-  //   if(NETSTACK_ROUTING.node_is_reachable()
-  //      && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
-  //     /* Send network uptime timestamp to the network root node */
-  //     seqnum++;  
-  //     LOG_INFO("Send to ");
-  //     LOG_INFO_6ADDR(&dst);
-  //     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-  //     simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
+    if(NETSTACK_ROUTING.node_is_reachable()
+       && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
+      /* Send network uptime timestamp to the network root node */
+      seqnum++;  
+      LOG_INFO("Send to ");
+      LOG_INFO_6ADDR(&dst);
+      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
     
-  //   }
+    }
     etimer_set(&periodic_timer, SEND_INTERVAL);
    }
 
