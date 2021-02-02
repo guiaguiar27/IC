@@ -324,7 +324,7 @@ uip_ds6_route_t *
 uip_ds6_route_add(const uip_ipaddr_t *ipaddr, uint8_t length,
                   const uip_ipaddr_t *nexthop)
 {
-#if (UIP_MAX_ROUTES != 0)
+//#if (UIP_MAX_ROUTES != 0)
   uip_ds6_route_t *r;
   struct uip_ds6_route_neighbor_route *nbrr;
 
@@ -762,13 +762,23 @@ void look_above_table(){
   }
 }
 /*---------------------------------------------------------------------------*/
-void look_above_nbr_table(){ 
-  LOG_PRINT("look_above_nbr_table\n");  
-   struct uip_ds6_route_neighbor_route *route = list_head(nbr_routes->route_list);    
-   if(route == NULL) LOG_PRINT("Route null\n");
-   while(route != NULL){ 
-     route = list_item_next(route); 
-      LOG_INFO_6ADDR(route->route->ipaddr);  
+void look_above_nbr_table(){   
+  LOG_PRINT("\nlook_above_nbr_table\n");
+  nbr_table_item_t *item = nbr_table_head(nbr_routes);  
+  // em um item vai guardar a head  da tabela  
+  static nbr_table_key_t *key_collect = NULL ; 
+  if(item == NULL) LOG_PRINT("item null\n"); 
+
+  while(item != NULL){ 
+    key_collect =  key_from_item(nbr_routes, item);  
+    LOG_INFO_LLADDR(&key_collect->lladdr); 
+    LOG_PRINT("\n"); 
+
+    item = nbr_table_next(nbr_routes, item); 
+  } 
+  // com a key podemos acessar o ipaddr  e assim visualizar a tabela 
+
+
    }
   
 }
