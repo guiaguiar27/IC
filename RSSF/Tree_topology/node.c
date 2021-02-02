@@ -35,7 +35,7 @@
  */
 
 #include "contiki.h"
-#include "net/ipv6/simple-udp.h" 
+//#include "net/ipv6/simple-udp.h" 
 #include "net/ipv6/uip-ds6-route.h" 
 #include "net/mac/tsch/tsch.h" 
 #include "net/nbr-table.h"
@@ -138,54 +138,54 @@ initialize_tsch_schedule()
   
 }
 
-// static void
-// rx_packet(struct simple_udp_connection *c,
-//           const uip_ipaddr_t *sender_addr,
-//           uint16_t sender_port,
-//           const uip_ipaddr_t *receiver_addr,
-//           uint16_t receiver_port,
-//           const uint8_t *data,
-//           uint16_t datalen)
-// {
-//   uint32_t seqnum;
+static void
+rx_packet(struct simple_udp_connection *c,
+          const uip_ipaddr_t *sender_addr,
+          uint16_t sender_port,
+          const uip_ipaddr_t *receiver_addr,
+          uint16_t receiver_port,
+          const uint8_t *data,
+          uint16_t datalen)
+{
+  uint32_t seqnum;
 
-//   if(datalen >= sizeof(seqnum)) {
-//     memcpy(&seqnum, data, sizeof(seqnum));
+  if(datalen >= sizeof(seqnum)) {
+    memcpy(&seqnum, data, sizeof(seqnum));
 
-//     LOG_INFO("Received from ");
-//     LOG_INFO_6ADDR(sender_addr);
-//     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
+    LOG_INFO("Received from ");
+    LOG_INFO_6ADDR(sender_addr);
+    LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
    
 
-//   }
-// } 
+  }
+} 
 
 
 PROCESS_THREAD(node_process, ev, data)
 {
- // static struct simple_udp_connection udp_conn;
+ static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   //static uint32_t seqnum;
- // uip_ipaddr_t dst;   
+// uip_ipaddr_t dst;   
   //uip_ds6_nbr_t *nbr = NULL ;  
   PROCESS_BEGIN();
   initialize_tsch_schedule(); 
   look_above_table();
   /* Initialization; `rx_packet` is the function for packet reception */
-  //simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
+  simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
   // if(node_id == 1) {  /* Running on the root? */
   //   NETSTACK_ROUTING.root_start(); 
   // }   
   //NETSTACK_ROUTING.init(); 
+  NETSTACK_MAC.init();
   NETSTACK_MAC.on();
 
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     SCHEDULE_static();  
-   // simple_energest_step(); 
    // NETSTACK_ROUTING.get_root_ipaddr(&dst); 
     //nbr = uip_ds6_nbr_lookup(const uip_ipaddr_t *ipaddr);  
 
@@ -199,7 +199,7 @@ PROCESS_THREAD(node_process, ev, data)
   //     simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
     
   //   }
-  //   etimer_set(&periodic_timer, SEND_INTERVAL);
+    etimer_set(&periodic_timer, SEND_INTERVAL);
    }
 
   PROCESS_END();
