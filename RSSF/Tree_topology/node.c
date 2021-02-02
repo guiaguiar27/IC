@@ -165,8 +165,8 @@ PROCESS_THREAD(node_process, ev, data)
 {
  static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
-  //static uint32_t seqnum;
-// uip_ipaddr_t dst;   
+  static uint32_t seqnum;
+ uip_ipaddr_t dst;   
   //uip_ds6_nbr_t *nbr = NULL ;  
   PROCESS_BEGIN();
   initialize_tsch_schedule(); 
