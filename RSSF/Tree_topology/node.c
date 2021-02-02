@@ -163,23 +163,23 @@ rx_packet(struct simple_udp_connection *c,
 
 PROCESS_THREAD(node_process, ev, data)
 {
-  static struct simple_udp_connection udp_conn;
-  static struct etimer periodic_timer;
-  static uint32_t seqnum;
-  uip_ipaddr_t dst;   
+ // static struct simple_udp_connection udp_conn;
+  //static struct etimer periodic_timer;
+  //static uint32_t seqnum;
+ // uip_ipaddr_t dst;   
   //uip_ds6_nbr_t *nbr = NULL ;  
   PROCESS_BEGIN();
   initialize_tsch_schedule(); 
   look_above_table();
   /* Initialization; `rx_packet` is the function for packet reception */
-  simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
-  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
+  //simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
+  //etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-  if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start(); 
-  }   
-  NETSTACK_ROUTING.init(); 
-  //NETSTACK_MAC.on();
+  // if(node_id == 1) {  /* Running on the root? */
+  //   NETSTACK_ROUTING.root_start(); 
+  // }   
+  //NETSTACK_ROUTING.init(); 
+  NETSTACK_MAC.on();
 
   /* Main loop */ 
   while(1) { 
@@ -189,18 +189,18 @@ PROCESS_THREAD(node_process, ev, data)
    // NETSTACK_ROUTING.get_root_ipaddr(&dst); 
     //nbr = uip_ds6_nbr_lookup(const uip_ipaddr_t *ipaddr);  
 
-    if(NETSTACK_ROUTING.node_is_reachable()
-       && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
-      /* Send network uptime timestamp to the network root node */
-      seqnum++;  
-      LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
-      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
+  //   if(NETSTACK_ROUTING.node_is_reachable()
+  //      && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
+  //     /* Send network uptime timestamp to the network root node */
+  //     seqnum++;  
+  //     LOG_INFO("Send to ");
+  //     LOG_INFO_6ADDR(&dst);
+  //     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+  //     simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
     
-    }
-    etimer_set(&periodic_timer, SEND_INTERVAL);
-  }
+  //   }
+  //   etimer_set(&periodic_timer, SEND_INTERVAL);
+  // }
 
   PROCESS_END();
 }
