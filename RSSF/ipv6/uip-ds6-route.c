@@ -762,4 +762,15 @@ void look_above_table(){
   }
 }
 /*---------------------------------------------------------------------------*/
+void look_above_nbr_table(){ 
+  LOG_PRINT("look_above_nbr_table");  
+   struct uip_ds6_route_neighbor_route *route = list_head(nbr_routes->route_list);    
+   while(route != NULL){ 
+     route = list_item_next(route); 
+      LOG_INFO_6ADDR(route->route->ipaddr);  
+   }
+  
+}
+/*---------------------------------------------------------------------------*/
+
 /** @} */
