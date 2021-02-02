@@ -749,13 +749,15 @@ uip_ds6_defrt_periodic(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void look_above_table(){ 
+void look_above_table(){  
+  LOG_PRINT("ENTROU\n");
   uip_ds6_route_t *routes = uip_ds6_route_head();
   uip_ipaddr_t *ipaddr = NULL; 
   while(routes != NULL){  
     // print ipaddr   
     uip_ipaddr_copy(ipaddr, &routes->ipaddr); 
     LOG_INFO_6ADDR(ipaddr); 
+    LOG_PRINT("\n"); 
     routes = uip_ds6_route_next(routes);  
   }
 }
