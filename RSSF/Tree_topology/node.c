@@ -138,27 +138,27 @@ initialize_tsch_schedule()
   
 }
 
-static void
-rx_packet(struct simple_udp_connection *c,
-          const uip_ipaddr_t *sender_addr,
-          uint16_t sender_port,
-          const uip_ipaddr_t *receiver_addr,
-          uint16_t receiver_port,
-          const uint8_t *data,
-          uint16_t datalen)
-{
-  uint32_t seqnum;
+// static void
+// rx_packet(struct simple_udp_connection *c,
+//           const uip_ipaddr_t *sender_addr,
+//           uint16_t sender_port,
+//           const uip_ipaddr_t *receiver_addr,
+//           uint16_t receiver_port,
+//           const uint8_t *data,
+//           uint16_t datalen)
+// {
+//   uint32_t seqnum;
 
-  if(datalen >= sizeof(seqnum)) {
-    memcpy(&seqnum, data, sizeof(seqnum));
+//   if(datalen >= sizeof(seqnum)) {
+//     memcpy(&seqnum, data, sizeof(seqnum));
 
-    LOG_INFO("Received from ");
-    LOG_INFO_6ADDR(sender_addr);
-    LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
+//     LOG_INFO("Received from ");
+//     LOG_INFO_6ADDR(sender_addr);
+//     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
    
 
-  }
-} 
+//   }
+// } 
 
 
 PROCESS_THREAD(node_process, ev, data)
@@ -200,7 +200,7 @@ PROCESS_THREAD(node_process, ev, data)
     
   //   }
   //   etimer_set(&periodic_timer, SEND_INTERVAL);
-  // }
+   }
 
   PROCESS_END();
 }
