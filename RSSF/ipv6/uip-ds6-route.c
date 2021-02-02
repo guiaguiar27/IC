@@ -754,7 +754,7 @@ void look_above_table(){
   uip_ipaddr_t *ipaddr = NULL; 
   while(routes != NULL){  
     // print ipaddr   
-    uip_ipaddr_cmp(ipaddr, routes->ipaddr); 
+    uip_ipaddr_copy(ipaddr, &routes->ipaddr); 
     LOG_INFO_6ADDR(ipaddr); 
     routes = uip_ds6_route_next(routes);  
   }
