@@ -61,10 +61,10 @@
 
 //#define NETSTACK_CONF_WITH_IPV6  1   
 //#define UIP_CONF_IPV6_RPL 0
-// messages to enable ND 
-#define UIP_CONF_ND6_SEND_NS 1  
-#define UIP_CONF_ND6_SEND_NA 1  
-#define UIP_CONF_ND6_SEND_RA 1 
+// // messages to enable ND 
+// #define UIP_CONF_ND6_SEND_NS 1  
+// #define UIP_CONF_ND6_SEND_NA 1  
+// #define UIP_CONF_ND6_SEND_RA 1 
 
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
 #define APP_SLOTFRAME_SIZE 17

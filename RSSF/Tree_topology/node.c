@@ -71,7 +71,8 @@ AUTOSTART_PROCESSES(&node_process);
 static void 
 
 initialize_tsch_schedule()
-{
+{ 
+  look_above_nbr_table(); 
   int i, j;  
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
@@ -186,9 +187,8 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     //SCHEDULE_static();  
-    NETSTACK_ROUTING.get_root_ipaddr(&dst); 
     //nbr = uip_ds6_nbr_lookup(const uip_ipaddr_t *ipaddr);  
-
+    
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
