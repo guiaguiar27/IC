@@ -180,8 +180,8 @@ PROCESS_THREAD(node_process, ev, data)
      NETSTACK_ROUTING.root_start(); 
    }   
   //NETSTACK_ROUTING.init(); 
-  NETSTACK_MAC.init();
-  NETSTACK_MAC.on();
+ // NETSTACK_MAC.init();
+ // NETSTACK_MAC.on();
 
   /* Main loop */ 
   while(1) { 
