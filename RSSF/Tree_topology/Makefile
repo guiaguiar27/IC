@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = node
 all: $(CONTIKI_PROJECT)
 
-PLATFORMS_ONLY = cooja
+PLATFORMS_ONLY = z1
 
 CONTIKI=../../..
 
