@@ -195,7 +195,7 @@ PROCESS_THREAD(node_process, ev, data)
            to_seconds(ENERGEST_GET_TOTAL_TIME()
                       - energest_type_time(ENERGEST_TYPE_TRANSMIT)
                       - energest_type_time(ENERGEST_TYPE_LISTEN)));
-    }
+    
     
     
     if(NETSTACK_ROUTING.node_is_reachable()
