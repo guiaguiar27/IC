@@ -41,7 +41,6 @@
 #include "sys/node-id.h"  
 #include "sys/log.h"
 #include "sys/energest.h"  
-#include "powertrace/powertrace.h"
 
 
 #define LOG_MODULE "App"
@@ -66,8 +65,14 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_UNICAST_TIMESLOT 16 
 #define APP_CHANNEL_OFSETT 16
 
-static void 
 
+static unsigned long
+to_seconds(uint64_t time)
+{
+  return (unsigned long)(time / ENERGEST_SECOND);
+}
+
+static void 
 initialize_tsch_schedule()
 { 
   int i, j;  
@@ -172,10 +177,27 @@ PROCESS_THREAD(node_process, ev, data)
    }    
   /* Main loop */ 
   while(1) { 
-    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
+
     SCHEDULE_static();    
-    printf("\nTicks per second: %u\n", RTIMER_SECOND); 
-    powertrace_start(CLOCK_SECOND * 10);
+    
+    energest_flush();
+
+    printf("\nEnergest:\n");
+    printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
+           to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
+           to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
+           to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
+           to_seconds(ENERGEST_GET_TOTAL_TIME()));
+    printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
+           to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
+           to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
+           to_seconds(ENERGEST_GET_TOTAL_TIME()
+                      - energest_type_time(ENERGEST_TYPE_TRANSMIT)
+                      - energest_type_time(ENERGEST_TYPE_LISTEN)));
+    }
+    
+    
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
