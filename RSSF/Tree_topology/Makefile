@@ -11,7 +11,8 @@ MAKE_WITH_SECURITY ?= 0
 MAKE_MAC = MAKE_MAC_TSCH
 
 include $(CONTIKI)/Makefile.dir-variables
-MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell
+MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell 
+APP += powertrace
 
 ifeq ($(MAKE_WITH_SECURITY),1)
 CFLAGS += -DWITH_SECURITY=1

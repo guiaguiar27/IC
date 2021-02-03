@@ -40,7 +40,8 @@
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
-#include "sys/energest.h" 
+#include "sys/energest.h"  
+#include "powertrace.h"
 
 
 #define LOG_MODULE "App"
@@ -173,7 +174,8 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
     SCHEDULE_static();    
-    printf("Ticks per second: %u\n", RTIMER_SECOND);
+    printf("\nTicks per second: %u\n", RTIMER_SECOND); 
+    powertrace_start(CLOCK_SECOND * 10);
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
       /* Send network uptime timestamp to the network root node */
