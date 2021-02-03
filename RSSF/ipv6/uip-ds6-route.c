@@ -762,7 +762,7 @@ void look_above_table(){
   }
 }
 /*---------------------------------------------------------------------------*/
-void look_above_nbr_table(){   
+void look_nbrs(){   
   LOG_PRINT("\nlook_above_nbr_table\n");
   nbr_table_item_t *item = nbr_table_head(nbr_routes);  
   // em um item vai guardar a head  da tabela  

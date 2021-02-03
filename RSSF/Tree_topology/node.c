@@ -38,7 +38,7 @@
 #include "net/ipv6/simple-udp.h" 
 #include "net/ipv6/uip-ds6-route.h" 
 #include "net/mac/tsch/tsch.h" 
-#include "net/nbr-table.h"
+//#include "net/nbr-table.h"
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
@@ -72,7 +72,7 @@ static void
 
 initialize_tsch_schedule()
 { 
-  look_above_nbr_table(); 
+  look_nbrs(); 
   int i, j;  
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
@@ -91,15 +91,12 @@ initialize_tsch_schedule()
   if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
       uint8_t link_options;
-       linkaddr_t addr;   
-
-      // node 2 and 3, sending to node 1 
+      linkaddr_t addr;   
       uint16_t remote_id = 1; 
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
       } 
-      //tsch_print_neighbors();  
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
@@ -115,13 +112,12 @@ initialize_tsch_schedule()
       for (i = 0 ; i <  num_links ; ++i) { 
 
       uint8_t link_options;
-       linkaddr_t addr;  
+      linkaddr_t addr;  
       uint16_t remote_id = sort_node_to_create_link(node_id); 
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
       }  
-      //tsch_print_neighbors(); 
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
