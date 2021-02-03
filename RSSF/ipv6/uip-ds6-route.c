@@ -44,7 +44,7 @@
 
 #include "lib/list.h"
 #include "lib/memb.h"
-#include "net/nbr-table.h"
+#include "net/nbr-table.c"
 
 /* Log configuration */
 #include "sys/log.h"
