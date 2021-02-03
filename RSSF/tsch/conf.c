@@ -20,10 +20,9 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     //Seleciona o nó com maior carga pra ser transmitida
     no_atual = rand() % num_no;   
     printf("sorted nó:%d\n",no_atual);
-    while(no_atual == raiz){ 
+    while(no_atual == raiz && no_atual <= num_no){ 
         no_atual = rand() % num_no;
     }
-    // do{
     for(x = 0; x < num_no; x++){
         if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
             no_atual = x; 

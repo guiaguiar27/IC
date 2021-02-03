@@ -920,7 +920,7 @@ int SCHEDULE_static(){
     ng adj;
     //uint16_t timeslot, slotframe, channel_offset; 
     int tamAresta,                  //Nº de arestas da rede
-    z, i;                       //Variáveis temporárias
+    z, i,j ;                       //Variáveis temporárias
     int pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz ;                  
@@ -949,8 +949,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for(int i = 0 ; i < MAX_NOS ; i++){ 
-        for(int j = 0 ; j< MAX_NOS; j++){  
+    for( i = 0 ; i < MAX_NOS ; i++){ 
+        for( j = 0 ; j< MAX_NOS; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -971,8 +971,8 @@ int SCHEDULE_static(){
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
-    for(int i = 0; i < MAX_NOS ; i++){ 
-        for(int j = 0 ;j < MAX_NOS; j++)
+    for(i = 0; i < MAX_NOS ; i++){ 
+        for( j = 0 ;j < MAX_NOS; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
@@ -1101,79 +1101,8 @@ int SCHEDULE_static(){
     return 1;
 
 }   
-int teste_matriz(){ 
-  int adj[MAX_NOS][MAX_NOS] ;
-  for(int i = 0 ; i < MAX_NOS; i++){ 
-    for(int j = 0; j < MAX_NOS; j++){ 
-      adj[i][j] = 1;
-    } 
-  }   
-  for(int x = 0 ; x < MAX_NOS; x++){
-        for(int y = 0; y < MAX_NOS; y++) 
-            printf("%d  ", adj[x][y]);  
-        printf("\n"); 
-    }
- /********************************************************/
-  int pacote[MAX_NOS];  
-  for(int i = 0 ; i < MAX_NOS; i++){ 
-    pacote[i] = i ;  
-  }  
-  for(int x = 0 ; x < MAX_NOS; x++){
-            printf("%d  ", pacote[x]);  
-  }  
-   /********************************************************/  
-  int arestas = MAX_NOS - 1 ; 
-  int conf[arestas][2]; 
-  for(int i = 0 ; i < arestas; i++){ 
-    for(int j = 0; j < 2; j++){ 
-      conf[i][j] = 1;
-    } 
-  }   
-  for(int x = 0 ; x < arestas; x++){
-        for(int y = 0; y < 2; y++)  
-            printf("%d  ", conf[x][y]);  
-        printf("\n"); 
-    } 
-   /********************************************************/  
-  int matconf[arestas][arestas]; 
-  for(int i = 0 ; i < arestas; i++){ 
-    for(int j = 0; j < arestas; j++){ 
-      matconf[i][j] = 1;
-    } 
-  }    
-   for(int x = 0 ; x < arestas; x++){
-        for(int y = 0; y < arestas; y++)   
-            printf("%d  ", matconf[x][y]);  
-        printf("\n"); 
-    }   
-   /********************************************************/
-  int aloca_canais[20][23]; 
-  for(int i = 0 ; i < 20; i++){ 
-    for(int j = 0 ; j < 23; j++){ 
-      aloca_canais[i][j] = i - j ;
-    }
-  }  
-  for(int x = 0 ; x < 20; x++){
-        for(int y = 0; y < 23; y++)  
-            printf("%d  ", aloca_canais[x][y]);  
-        printf("\n"); 
-    } 
-   /********************************************************/
-  int vetor[arestas][2];  
-  for(int i = 0 ; i < arestas; i++){ 
-    for(int j = 0; j < 2; j++){ 
-      vetor[i][j] = 1;
-    } 
-  }  
-  for(int x = 0 ; x < arestas; x++){
-        for(int y = 0; y < 2; y++) 
-            printf("%d  ", vetor[x][y]);  
-        printf("\n"); 
-    } 
-   /********************************************************/
-  printf(" O contiki aguentou ");
-  return 1 ; 
-} 
+
+
 int sort_node_to_create_link(int n){ 
  
   unsigned short  random_node;    
