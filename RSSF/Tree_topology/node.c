@@ -36,14 +36,11 @@
 
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h" 
-//#include "net/ipv6/uip-ds6-route.h" 
 #include "net/mac/tsch/tsch.h" 
-#include "net/nbr-table.h"
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
 #include "sys/energest.h" 
-//#include "simple-energest.h"
 
 
 #define LOG_MODULE "App"
@@ -72,7 +69,6 @@ static void
 
 initialize_tsch_schedule()
 { 
-  look_nbrs(); 
   int i, j;  
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
@@ -173,9 +169,6 @@ PROCESS_THREAD(node_process, ev, data)
    if(node_id == 1) {  /* Running on the root? */
      NETSTACK_ROUTING.root_start(); 
    }    
- // NETSTACK_MAC.init();
- // NETSTACK_MAC.on();
-
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer)); 
