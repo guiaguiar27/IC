@@ -67,7 +67,9 @@
 // #define UIP_CONF_ND6_SEND_RA 1 
 
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
-#define APP_SLOTFRAME_SIZE 17
+#define APP_SLOTFRAME_SIZE 17 
+/*energest to power measure*/ 
+#define ENERGEST_CONF_ON 1
 
 #if WITH_SECURITY
 

@@ -34,14 +34,14 @@
  * \author Atis Elsts <atis.elsts@edi.lv>
  */
 
-#include "contiki.h"
+#include "contiki.h" 
 #include "net/ipv6/simple-udp.h" 
 #include "net/mac/tsch/tsch.h" 
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
 #include "sys/energest.h"  
-#include "powertrace.h"
+#include "powertrace/powertrace.h"
 
 
 #define LOG_MODULE "App"
