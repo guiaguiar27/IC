@@ -152,7 +152,7 @@ rx_packet(struct simple_udp_connection *c,
     memcpy(&seqnum, data, sizeof(seqnum));
 
     LOG_INFO("Received from ");
-    LOG_INFO_6ADDR(sender_addr);
+    //LOG_INFO_6ADDR(sender_addr);
     LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
    
 
