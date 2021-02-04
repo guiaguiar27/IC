@@ -15,14 +15,15 @@ PROCESS(coffee_test_process, "Coffee test process");
    /* step 1 */
     char message[32];
     char buf[100];   
-    struct cfs_dir *dirp ;  
-    strcpy(&dirp->state,endereco_teste); 
+    struct cfs_dir *dirp = NULL ;  
+    strcpy(dirp->state,endereco_teste); 
         
     strcpy(message,"#1.hello world.");
     strcpy(buf,message); 
 
     printf("step 1: %s\n", buf );  
-    int dir_write = cfs_opendir(dirp, arquivo);
+    int dir_write = cfs_opendir(dirp, arquivo); 
+    if(dir_write != -1 ) printf("Open dir\n");
     int fd_write = cfs_open(arquivo, CFS_WRITE | CFS_APPEND);
     if(fd_write != -1) {
         int n = cfs_write(fd_write, message, sizeof(message));
