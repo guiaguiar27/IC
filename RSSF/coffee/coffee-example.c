@@ -45,6 +45,7 @@ PROCESS(coffee_test_process, "Coffee test process");
     if(fd_read != -1) {
         cfs_read(fd_read, buf, sizeof(message));
         printf("%s\n", buf); 
+    }
     else {
         printf("ERROR: could not write to memory in step 2.\n");
     }
