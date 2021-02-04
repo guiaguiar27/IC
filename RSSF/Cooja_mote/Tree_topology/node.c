@@ -74,7 +74,7 @@ to_seconds(uint64_t time)
   return (unsigned long)(time / ENERGEST_SECOND);
 }
 
-static linkaddr_t *initialize_tsch_schedule()
+const linkaddr_t *initialize_tsch_schedule()
 { 
   int i, j;  
   // APP_SLOTFRAME_SIZE
@@ -86,9 +86,9 @@ static linkaddr_t *initialize_tsch_schedule()
   channel_offset = 0;
   int num_links = 1 ;    
   uint16_t remote_id = 1; 
-  linkaddr_t addr; 
+  linkaddr_t *addr; 
 
-  if(noede_id == 1){  
+  if(node_id == 1){  
     
      for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
@@ -169,7 +169,7 @@ PROCESS_THREAD(node_process, ev, data)
 {
   static struct etimer periodic_timer;
   PROCESS_BEGIN(); 
-  static linkaddr_t *dest_addr = initialize_tsch_schedule(); 
+  const linkaddr_t *dest_addr = initialize_tsch_schedule(); 
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL); 
   int count = 0 ; 
   nullnet_buf = (uint8_t *)&count;
