@@ -2,7 +2,8 @@
 #include "contiki.h"  
 #include <stdio.h>  
 #include "sys/log.h"   
- #include "os/storage/cfs/cfs.h"
+ #include "os/storage/cfs/cfs.h" 
+ #define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
 
 PROCESS(coffee_test_process, "Coffee test process");
  AUTOSTART_PROCESSES(&coffee_test_process);
@@ -18,9 +19,9 @@ PROCESS(coffee_test_process, "Coffee test process");
    strcpy(message,"#1.hello world.");
    strcpy(buf,message);
    printf("step 1: %s\n", buf ); 
-   fd_write = cfs_open(filename, CFS_WRITE);
+   int fd_write = cfs_open(endereco_pack, CFS_WRITE);
    if(fd_write != -1) {
-   n = cfs_write(fd_write, message, sizeof(message));
+   int n = cfs_write(fd_write, message, sizeof(message));
    cfs_close(fd_write);
    printf("step 2: successfully written to cfs. wrote %i bytes\n", n);
    }  
