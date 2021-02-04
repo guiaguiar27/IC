@@ -27,7 +27,6 @@ PROCESS(coffee_test_process, "Coffee test process");
    printf("ERROR: could not write to memory in step 2.\n");
     }
      
-   /* End Step 1. We will add more code below this comment later */    
         
    PROCESS_END();
  }
