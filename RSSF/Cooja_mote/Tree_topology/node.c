@@ -74,7 +74,7 @@ to_seconds(uint64_t time)
   return (unsigned long)(time / ENERGEST_SECOND);
 }
 
-const linkaddr_t *initialize_tsch_schedule()
+int initialize_tsch_schedule()
 { 
   int i, j;  
   // APP_SLOTFRAME_SIZE
@@ -86,7 +86,7 @@ const linkaddr_t *initialize_tsch_schedule()
   channel_offset = 0;
   int num_links = 1 ;    
   uint16_t remote_id = 1; 
-  linkaddr_t *addr; 
+  linkaddr_t addr; 
 
   if(node_id == 1){  
     
@@ -98,7 +98,7 @@ const linkaddr_t *initialize_tsch_schedule()
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0); 
-    return (&addr) ; 
+    return remote_id ; 
   }
   
   
@@ -121,7 +121,7 @@ const linkaddr_t *initialize_tsch_schedule()
           link_options,
           LINK_TYPE_NORMAL, &addr,
           slot_offset, channel_offset,0); 
-          return (&addr) ;
+          return remote_id ;
     
     }
     else{  
@@ -144,7 +144,7 @@ const linkaddr_t *initialize_tsch_schedule()
           LINK_TYPE_NORMAL, &addr,
           slot_offset, channel_offset,0);
       }
-      return (&addr);
+      return remote_id;
     } 
   }
   
@@ -169,7 +169,12 @@ PROCESS_THREAD(node_process, ev, data)
 {
   static struct etimer periodic_timer;
   PROCESS_BEGIN(); 
-  const linkaddr_t *dest_addr = initialize_tsch_schedule(); 
+  const linkaddr_t dest_addr ;  
+  int remote_id = initialize_tsch_schedule(); 
+  for(j = 0; j < sizeof(dest_addr); j += 2) {
+        addr.u8[j + 1] = remote_id & 0xff;
+        addr.u8[j + 0] = remote_id >> 8;
+      }   
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL); 
   int count = 0 ; 
   nullnet_buf = (uint8_t *)&count;
@@ -180,7 +185,7 @@ PROCESS_THREAD(node_process, ev, data)
   
        
   /* Main loop */  
-  if(!linkaddr_cmp(dest_addr, &linkaddr_node_addr)) {
+  if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
     etimer_set(&periodic_timer, SEND_INTERVAL);
     
     while(1) { 
@@ -208,10 +213,10 @@ PROCESS_THREAD(node_process, ev, data)
     
         PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
         LOG_INFO("Sending %u to ", count);
-        LOG_INFO_LLADDR(dest_addr);
+        LOG_INFO_LLADDR(&dest_addr);
         LOG_INFO_("\n");
 
-        NETSTACK_NETWORK.output(dest_addr);
+        NETSTACK_NETWORK.output(&dest_addr);
         count++;
         etimer_reset(&periodic_timer);
       
