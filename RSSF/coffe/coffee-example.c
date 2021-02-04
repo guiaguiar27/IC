@@ -2,7 +2,7 @@
 #include "contiki.h"  
 #include <stdio.h>  
 #include "sys/log.h"   
- #include "cfs/cfs.h"
+ #include "os/storage/cfs/cfs.h"
 
 PROCESS(coffee_test_process, "Coffee test process");
  AUTOSTART_PROCESSES(&coffee_test_process);
