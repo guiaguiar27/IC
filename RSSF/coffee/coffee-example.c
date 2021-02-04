@@ -3,7 +3,7 @@
 #include <stdio.h>  
 #include "sys/log.h"   
 #include "os/storage/cfs/cfs.h"  
-#define arquivo "teste.txt"
+//#define arquivo "teste.txt"
 PROCESS(coffee_test_process, "Coffee test process");
  AUTOSTART_PROCESSES(&coffee_test_process);
  
@@ -13,7 +13,8 @@ PROCESS(coffee_test_process, "Coffee test process");
      
    /* step 1 */
     char message[32];
-    char buf[100];   
+    char buf[100];    
+    char *arquivo = " msg file"; 
     // struct cfs_dir *dirp = NULL ;  
     // strcpy(dirp->state,endereco_teste); 
         
