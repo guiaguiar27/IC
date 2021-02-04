@@ -84,11 +84,12 @@ static linkaddr_t *initialize_tsch_schedule()
   
   slot_offset = 0;
   channel_offset = 0;
-  int num_links = 1 ;   
-
+  int num_links = 1 ;    
+  uint16_t remote_id = 1; 
+  linkaddr_t addr; 
 
   if(noede_id == 1){  
-    linkaddr_t addr; 
+    
      for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
@@ -97,15 +98,15 @@ static linkaddr_t *initialize_tsch_schedule()
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0); 
-    return addr ; 
+    return (&addr) ; 
   }
   
   
   else if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
       uint8_t link_options;
-      linkaddr_t addr;   
-      uint16_t remote_id = 1; 
+       
+      remote_id = 1; 
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
@@ -119,14 +120,15 @@ static linkaddr_t *initialize_tsch_schedule()
       tsch_schedule_add_link(sf_common,
           link_options,
           LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0);
+          slot_offset, channel_offset,0); 
+          return (&addr) ;
     
     }
     else{  
       for (i = 0 ; i <  num_links ; ++i) { 
       uint8_t link_options;
-      linkaddr_t addr;  
-      uint16_t remote_id = sort_node_to_create_link(node_id); 
+      
+      remote_id = sort_node_to_create_link(node_id); 
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
@@ -142,7 +144,7 @@ static linkaddr_t *initialize_tsch_schedule()
           LINK_TYPE_NORMAL, &addr,
           slot_offset, channel_offset,0);
       }
-
+      return (&addr);
     } 
   }
   
@@ -178,7 +180,7 @@ PROCESS_THREAD(node_process, ev, data)
   
        
   /* Main loop */  
-  if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
+  if(!linkaddr_cmp(dest_addr, &linkaddr_node_addr)) {
     etimer_set(&periodic_timer, SEND_INTERVAL);
     
     while(1) { 
@@ -206,10 +208,10 @@ PROCESS_THREAD(node_process, ev, data)
     
         PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
         LOG_INFO("Sending %u to ", count);
-        LOG_INFO_LLADDR(&dest_addr);
+        LOG_INFO_LLADDR(dest_addr);
         LOG_INFO_("\n");
 
-        NETSTACK_NETWORK.output(&dest_addr);
+        NETSTACK_NETWORK.output(dest_addr);
         count++;
         etimer_reset(&periodic_timer);
       
