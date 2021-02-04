@@ -69,7 +69,11 @@
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
 #define APP_SLOTFRAME_SIZE 17 
 /*energest to power measure*/ 
-#define ENERGEST_CONF_ON 1
+#define ENERGEST_CONF_ON 1 
+/* Reducing the memory usage*/
+#define UIP_CONF_BUFFER_SIZE 200
+#define NBR_TABLE_CONF_MAX_NEIGHBORS 12 
+#define QUEUEBUF_CONF_NUM 4  
 
 #if WITH_SECURITY
 

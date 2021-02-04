@@ -26,10 +26,6 @@ PROCESS(coffee_test_process, "Coffee test process");
     
     char buf[100];    
     char *arquivo = " "; 
-        
-    strcpy(buf,message); 
-
-    printf("step 1: %s\n", buf );  
     int fd_write = cfs_open(arquivo, CFS_WRITE | CFS_APPEND);
     if(fd_write != -1) {
         int n = cfs_write(fd_write, message, sizeof(message));

@@ -749,7 +749,7 @@ uip_ds6_defrt_periodic(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void look_above_table(){  
+void look_above_table(void ){  
   LOG_PRINT("ENTROU\n");
   uip_ds6_route_t *routes = uip_ds6_route_head();
   uip_ipaddr_t *ipaddr = NULL; 
@@ -762,7 +762,7 @@ void look_above_table(){
   }
 }
 /*---------------------------------------------------------------------------*/
-void look_nbrs(){   
+void look_nbrs(void ){   
   LOG_PRINT("\nlook_above_nbr_table\n");
   nbr_table_item_t *item = nbr_table_head(nbr_routes);  
   // em um item vai guardar a head  da tabela  

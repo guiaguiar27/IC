@@ -179,7 +179,7 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
 
-    SCHEDULE_static();    
+   // SCHEDULE_static();    
     
     energest_flush();
 

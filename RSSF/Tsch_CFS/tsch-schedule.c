@@ -256,11 +256,11 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
       } else {
         struct tsch_neighbor *n;
         /* Add the link to the slotframe */ 
-        //static int count = 0 ;
+        static int count = 0 ;
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        //l->handle = count++ ; 
-        l->handle = count_lines();
+        l->handle = count++ ; 
+        //l->handle = count_lines();
         LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
@@ -295,7 +295,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              tsch_write_in_file(node, node_neighbor);   
+              //tsch_write_in_file(node, node_neighbor);   
                           }
           }
         }
