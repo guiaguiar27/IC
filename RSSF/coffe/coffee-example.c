@@ -3,7 +3,7 @@
 #include <stdio.h>  
 #include "sys/log.h"   
  #include "os/storage/cfs/cfs.h" 
- #define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
+ #define endereco_teste  "/home/user/contiki-ng/os/teste.txt"
 
 PROCESS(coffee_test_process, "Coffee test process");
  AUTOSTART_PROCESSES(&coffee_test_process);
@@ -17,9 +17,10 @@ PROCESS(coffee_test_process, "Coffee test process");
    char buf[100];
      
    strcpy(message,"#1.hello world.");
-   strcpy(buf,message);
+   strcpy(buf,message); 
+
    printf("step 1: %s\n", buf ); 
-   int fd_write = cfs_open(endereco_pack, CFS_WRITE);
+   int fd_write = cfs_open(endereco_teste, CFS_WRITE | CFS_APPEND);
    if(fd_write != -1) {
    int n = cfs_write(fd_write, message, sizeof(message));
    cfs_close(fd_write);
