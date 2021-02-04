@@ -71,9 +71,9 @@
 /*energest to power measure*/ 
 #define ENERGEST_CONF_ON 1 
 /* Reducing the memory usage*/
-#define UIP_CONF_BUFFER_SIZE 200
-#define NBR_TABLE_CONF_MAX_NEIGHBORS 12 
-#define QUEUEBUF_CONF_NUM 4  
+//#define UIP_CONF_BUFFER_SIZE 200
+//#define NBR_TABLE_CONF_MAX_NEIGHBORS 12 
+//#define QUEUEBUF_CONF_NUM 4  
 
 #if WITH_SECURITY
 

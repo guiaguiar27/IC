@@ -166,12 +166,10 @@ int SCHEDULE();
 //void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]) ; 
 //void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
 int tsch_num_nos();  
-void tsch_write_in_file(int n_origin, int n_destin);  
-int count_lines();    
+   
 int SCHEDULE_AUX(int **adj); 
 int SCHEDULE_static(); 
 int sort_node_to_create_link(int n);     
-int count_packs(); 
 void tsch_print_neighbors(); 
 //int test_slot(); 
 #endif /* __TSCH_SCHEDULE_H__ */

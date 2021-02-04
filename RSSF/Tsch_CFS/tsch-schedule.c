@@ -875,44 +875,7 @@ int tsch_num_nos(){
   return i; 
 }  
 /*---------------------------------------------------------------------------*/
-void tsch_write_in_file(int n_origin, int n_destin){ 
-  FILE *file; 
-  file = fopen(endereco, "a");
-  if(file == NULL){
-        printf("The file was not opened\n");
-        return ; 
-  } 
-  fprintf(file, "%d %d\n",n_origin,n_destin);
-  fclose(file);
-} 
-/*---------------------------------------------------------------------------*/
-int count_lines() 
-{ 
-    FILE *fp; 
-    int count = 0;    
-    char c;  
-    fp = fopen(endereco, "r"); 
-    if (fp == NULL) return 0; 
-    for (c = getc(fp); c != EOF; c = getc(fp)) 
-        if (c == '\n') 
-            count = count + 1; 
-    fclose(fp); 
-    return count; 
-}     
-int count_packs(){  
-    FILE *fp; 
-    int count = 0;    
-    //char c;  
-    fp = fopen(endereco_pack, "w+"); 
-    if (fp == NULL) return 0 ;  
-    count = 1 ;  
-    fscanf(fp,"%d",&count); 
-    count = count+1 ; 
-    fprintf(fp, "%d", count);
-    fclose(fp); 
-    return count; 
-
-}  
+  
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
@@ -928,11 +891,11 @@ int SCHEDULE_static(){
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ; 
+    //int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-    FILE *fl;    
+    //FILE *fl;    
     if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
@@ -942,12 +905,12 @@ int SCHEDULE_static(){
 
      }
     tamNo = MAX_NOS ;  
-    tamAresta = 0 ;    
-    fl = fopen(endereco, "r"); 
-    if(fl == NULL){
-        printf("The file was not opened\n");
-        return 0  ; 
-    } 
+    tamAresta = MAX_NOS - 1  ;    
+    // fl = fopen(endereco, "r"); 
+    // if(fl == NULL){
+    //     printf("The file was not opened\n");
+    //     return 0  ; 
+    // } 
     // matriz  
 
     for( i = 0 ; i < MAX_NOS ; i++){ 
@@ -958,18 +921,18 @@ int SCHEDULE_static(){
 
     i = 0;
     printf("Enter here!\n");
-    while(!feof(fl)){      
-        fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
-        if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
-            if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
-                adj.mat_adj[node_origin][node_destin] = 1;
-                i++;
-            }
-        }
-    }
+    // while(!feof(fl)){      
+    //     fscanf(fl,"%d %d",&node_origin, &node_destin);   
+    //     printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
+    //     if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
+    //         if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+    //             adj.mat_adj[node_origin][node_destin] = 1;
+    //             i++;
+    //         }
+    //     }
+    // }
     tamAresta = i;
-    fclose(fl);
+    //fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
     for(i = 0; i < MAX_NOS ; i++){ 
