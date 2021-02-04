@@ -16,7 +16,16 @@ PROCESS(coffee_test_process, "Coffee test process");
      
    strcpy(message,"#1.hello world.");
    strcpy(buf,message);
-   printf("step 1: %s\n", buf );
+   printf("step 1: %s\n", buf ); 
+   fd_write = cfs_open(filename, CFS_WRITE);
+   if(fd_write != -1) {
+   n = cfs_write(fd_write, message, sizeof(message));
+   cfs_close(fd_write);
+   printf("step 2: successfully written to cfs. wrote %i bytes\n", n);
+   }  
+   else {
+   printf("ERROR: could not write to memory in step 2.\n");
+    }
      
    /* End Step 1. We will add more code below this comment later */    
         
