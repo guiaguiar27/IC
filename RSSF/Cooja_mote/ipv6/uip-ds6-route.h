@@ -173,7 +173,7 @@ typedef struct uip_ds6_route {
   /* Each route entry belongs to a specific neighbor. That neighbor
      holds a list of all routing entries that go through it. The
      routes field point to the uip_ds6_route_neighbor_routes that
-     belong to the neighbor table entry that this routing table entry
+     belong to the nry that this routing table entryeighbor table ent
      uses. */
   struct uip_ds6_route_neighbor_routes *neighbor_routes;
   uip_ipaddr_t ipaddr;
