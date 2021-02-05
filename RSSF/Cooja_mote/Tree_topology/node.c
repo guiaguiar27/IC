@@ -42,7 +42,8 @@
 #include "sys/log.h"
 #include "sys/energest.h"   
 #include "net/netstack.h"
-#include "net/nullnet/nullnet.h"
+#include "net/nullnet/nullnet.h" 
+#include "sys/energest.h"  
 
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
@@ -180,13 +181,7 @@ PROCESS_THREAD(node_process, ev, data)
   PROCESS_BEGIN();
   int remote_id = initialize_tsch_schedule();   
    
-  const uip_ipaddr_t dst;  
-  int j = 0 ; 
-  for(j = 0; j < sizeof(dest); j += 2) {
-        dest.u8[j + 1] = remote_id & 0xff;
-        dest.u8[j + 0] = remote_id >> 8;
-      }  
-     
+  const uip_ipaddr_t dest;  
   printf(" Remote_id: %d", remote_id);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
