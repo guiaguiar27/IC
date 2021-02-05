@@ -177,16 +177,24 @@ PROCESS_THREAD(node_process, ev, data)
   static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   static uint32_t seqnum;
-  uip_ipaddr_t dst;   
+  
   PROCESS_BEGIN();
-  int remote_id = initialize_tsch_schedule(); 
+  int remote_id = initialize_tsch_schedule();   
+  linkaddr_t addr ;  
+  int j = 0 ; 
+  for(j = 0; j < sizeof(addr); j += 2) {
+        addr.u8[j + 1] = remote_id & 0xff;
+        addr.u8[j + 0] = remote_id >> 8;
+      }  
+  uip_ipaddr_t dst = (const uip_ipaddr_t *) addr;   
+  printf(" Remote_id: %d", remote_id);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-   if(node_id == 1) {  /* Running on the root? */
-     NETSTACK_ROUTING.root_start(); 
-   }    
+  //  if(node_id == 1) {  /* Running on the root? */
+  //    NETSTACK_ROUTING.root_start(); 
+  //  }    
   /* Main loop */ 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
@@ -210,8 +218,7 @@ PROCESS_THREAD(node_process, ev, data)
     
     
     
-    if(NETSTACK_ROUTING.node_is_reachable()
-       && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
+    if(dest){
       /* Send network uptime timestamp to the network root node */
       seqnum++;  
       LOG_INFO("Send to ");
