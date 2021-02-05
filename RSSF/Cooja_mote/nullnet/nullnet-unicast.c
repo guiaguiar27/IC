@@ -51,7 +51,10 @@
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "App"
-#define LOG_LEVEL LOG_LEVEL_INFO
+#define LOG_LEVEL LOG_LEVEL_INFO 
+#define APP_SLOTFRAME_HANDLE 1
+#define APP_UNICAST_TIMESLOT 16 
+#define APP_CHANNEL_OFSETT 16
 
 /* Configuration */
 #define SEND_INTERVAL (8 * CLOCK_SECOND)
@@ -167,8 +170,8 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
 #endif /* MAC_CONF_WITH_TSCH */
   static linkaddr_t dest_addr;  
-  int remote_node = initialize_tsch_schedule();  
-  for(int j = 0; j < sizeof(addr); j += 2) {
+  int remote_id = initialize_tsch_schedule();  
+  for(int j = 0; j < sizeof(dest_addr); j += 2) {
         dest_addr.u8[j + 1] = remote_id & 0xff;
         dest_addr.u8[j + 0] = remote_id >> 8;
     }   
