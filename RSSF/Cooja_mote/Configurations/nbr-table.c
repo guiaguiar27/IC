@@ -62,7 +62,10 @@ const linkaddr_t *NBR_TABLE_FIND_REMOVABLE(nbr_table_reason_t reason, void *data
 
 
 /* List of link-layer addresses of the neighbors, used as key in the tables */
-
+typedef struct nbr_table_key {
+  struct nbr_table_key *next;
+  linkaddr_t lladdr;
+} nbr_table_key_t;
 
 /* For each neighbor, a map of the tables that use the neighbor.
  * As we are using uint8_t, we have a maximum of 8 tables in the system */
