@@ -45,7 +45,10 @@
 #else /* NBR_TABLE_CONF_MAX_NEIGHBORS */
 #define NBR_TABLE_MAX_NEIGHBORS 8
 #endif /* NBR_TABLE_CONF_MAX_NEIGHBORS */
-
+typedef struct nbr_table_key {
+  struct nbr_table_key *next;
+  linkaddr_t lladdr;
+} nbr_table_key_t;
 /* An item in a neighbor table */
 typedef void nbr_table_item_t;
 
