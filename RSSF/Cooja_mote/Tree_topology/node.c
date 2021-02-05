@@ -147,7 +147,7 @@ int initialize_tsch_schedule()
       return remote_id;
     } 
   }
-  
+ return 0 ;    
 } 
 
 /*---------------------------------------------------------------------------*/
@@ -224,6 +224,6 @@ PROCESS_THREAD(node_process, ev, data)
       }
       etimer_set(&periodic_timer, SEND_INTERVAL);
     
-  }
+  } 
   PROCESS_END();
 }
