@@ -196,30 +196,13 @@ PROCESS_THREAD(node_process, ev, data)
 
    // SCHEDULE_static();    
     
-    energest_flush();
-
-    printf("\nEnergest:\n");
-    printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
-           to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
-           to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
-           to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
-           to_seconds(ENERGEST_GET_TOTAL_TIME()));
-    printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
-           to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
-           to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
-           to_seconds(ENERGEST_GET_TOTAL_TIME()
-                      - energest_type_time(ENERGEST_TYPE_TRANSMIT)
-                      - energest_type_time(ENERGEST_TYPE_LISTEN)));
-    
-    
-    
     if(remote_id > 0){
       /* Send network uptime timestamp to the network root node */
       seqnum++;  
       LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
+      LOG_INFO_6ADDR(&dest);
       LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dest); 
     
     }
     etimer_set(&periodic_timer, SEND_INTERVAL);
