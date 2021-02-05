@@ -44,7 +44,6 @@
 #include "net/netstack.h"
 #include "net/nullnet/nullnet.h"
 
-static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
 #define UDP_PORT	8765
@@ -180,13 +179,14 @@ PROCESS_THREAD(node_process, ev, data)
   
   PROCESS_BEGIN();
   int remote_id = initialize_tsch_schedule();   
-  linkaddr_t addr ;  
+   
+  const uip_ipaddr_t dst;  
   int j = 0 ; 
-  for(j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
+  for(j = 0; j < sizeof(dest); j += 2) {
+        dest.u8[j + 1] = remote_id & 0xff;
+        dest.u8[j + 0] = remote_id >> 8;
       }  
-  uip_ipaddr_t dst = (const uip_ipaddr_t *) addr;   
+     
   printf(" Remote_id: %d", remote_id);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -218,7 +218,7 @@ PROCESS_THREAD(node_process, ev, data)
     
     
     
-    if(dest){
+    if(remote_id > 0){
       /* Send network uptime timestamp to the network root node */
       seqnum++;  
       LOG_INFO("Send to ");
