@@ -181,23 +181,20 @@ PROCESS_THREAD(node_process, ev, data)
   PROCESS_BEGIN();
   int remote_id = initialize_tsch_schedule();   
    
-  const uip_ipaddr_t dest;  
-  printf(" Remote_id: %d", remote_id);
+  const uip_ipaddr_t dest; 
+  look_nbrs();  
+  printf(" Remote_id: %d\n", remote_id);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-  //  if(node_id == 1) {  /* Running on the root? */
-  //    NETSTACK_ROUTING.root_start(); 
-  //  }    
-  /* Main loop */ 
+
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
 
    // SCHEDULE_static();    
     
     if(remote_id > 0){
-      /* Send network uptime timestamp to the network root node */
       seqnum++;  
       LOG_INFO("Send to ");
       LOG_INFO_6ADDR(&dest);
