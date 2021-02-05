@@ -10,7 +10,8 @@ MAKE_WITH_SECURITY ?= 0
 
 MAKE_MAC = MAKE_MAC_TSCH
 #A NET layer that does nothing. Packets are relayed up/down the stack, unmodified.
-MAKE_NET = MAKE_NET_NULLNET
+MAKE_NET = MAKE_NET_IPV6
+MAKE_ROUTING = MAKE_ROUTING_NULLROUTING
 
 include $(CONTIKI)/Makefile.dir-variables
 MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell

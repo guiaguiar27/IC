@@ -68,11 +68,7 @@ AUTOSTART_PROCESSES(&node_process);
 #define APP_CHANNEL_OFSETT 16
 
 
-static unsigned long
-to_seconds(uint64_t time)
-{
-  return (unsigned long)(time / ENERGEST_SECOND);
-}
+
 
 int initialize_tsch_schedule()
 { 
@@ -151,79 +147,82 @@ int initialize_tsch_schedule()
 } 
 
 /*---------------------------------------------------------------------------*/
-void input_callback(const void *data, uint16_t len,
-  const linkaddr_t *src, const linkaddr_t *dest)
+
+
+static void
+rx_packet(struct simple_udp_connection *c,
+          const uip_ipaddr_t *sender_addr,
+          uint16_t sender_port,
+          const uip_ipaddr_t *receiver_addr,
+          uint16_t receiver_port,
+          const uint8_t *data,
+          uint16_t datalen)
 {
-  if(len == sizeof(unsigned)) {
-    unsigned count;
-    memcpy(&count, data, sizeof(count));
-    LOG_INFO("Received %u from ", count);
-    LOG_INFO_LLADDR(src);
-    LOG_INFO_("\n");
+  uint32_t seqnum;
+
+  if(datalen >= sizeof(seqnum)) {
+    memcpy(&seqnum, data, sizeof(seqnum));
+
+    LOG_INFO("Received from ");
+    LOG_INFO_6ADDR(sender_addr);
+    LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum); 
+   
+
   }
 } 
-/*---------------------------------------------------------------------------*/
 
 
 PROCESS_THREAD(node_process, ev, data)
 {
+  static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
-  PROCESS_BEGIN(); 
-   linkaddr_t dest_addr ;   
-  int j = 0 ; 
+  static uint32_t seqnum;
+  uip_ipaddr_t dst;   
+  PROCESS_BEGIN();
   int remote_id = initialize_tsch_schedule(); 
-  for(j = 0; j < sizeof(dest_addr); j += 2) {
-        dest_addr.u8[j + 1] = remote_id & 0xff;
-        dest_addr.u8[j + 0] = remote_id >> 8;
-      }   
-  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL); 
-  int count = 0 ; 
-  nullnet_buf = (uint8_t *)&count;
-  nullnet_len = sizeof(count);
-  nullnet_set_input_callback(input_callback);
-
-  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+  /* Initialization; `rx_packet` is the function for packet reception */
+  simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
+  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-       
-  /* Main loop */  
-  if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
+   if(node_id == 1) {  /* Running on the root? */
+     NETSTACK_ROUTING.root_start(); 
+   }    
+  /* Main loop */ 
+  while(1) { 
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
+
+   // SCHEDULE_static();    
+    
+    energest_flush();
+
+    printf("\nEnergest:\n");
+    printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
+           to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
+           to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
+           to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
+           to_seconds(ENERGEST_GET_TOTAL_TIME()));
+    printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
+           to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
+           to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
+           to_seconds(ENERGEST_GET_TOTAL_TIME()
+                      - energest_type_time(ENERGEST_TYPE_TRANSMIT)
+                      - energest_type_time(ENERGEST_TYPE_LISTEN)));
+    
+    
+    
+    if(NETSTACK_ROUTING.node_is_reachable()
+       && NETSTACK_ROUTING.get_root_ipaddr(&dst)){
+      /* Send network uptime timestamp to the network root node */
+      seqnum++;  
+      LOG_INFO("Send to ");
+      LOG_INFO_6ADDR(&dst);
+      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst); 
+    
+    }
     etimer_set(&periodic_timer, SEND_INTERVAL);
-    
-    while(1) { 
-      PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
+   }
 
-    // SCHEDULE_static();    
-      
-      energest_flush();
-
-      printf("\nEnergest:\n");
-      printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
-            to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
-            to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
-            to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
-            to_seconds(ENERGEST_GET_TOTAL_TIME()));
-      printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
-            to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
-            to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
-            to_seconds(ENERGEST_GET_TOTAL_TIME()
-                        - energest_type_time(ENERGEST_TYPE_TRANSMIT)
-                        - energest_type_time(ENERGEST_TYPE_LISTEN)));
-      
-      
-      
-    
-        PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-        LOG_INFO("Sending %u to ", count);
-        LOG_INFO_LLADDR(&dest_addr);
-        LOG_INFO_("\n");
-
-        NETSTACK_NETWORK.output(&dest_addr);
-        count++;
-        etimer_reset(&periodic_timer);
-      
-      }
-      etimer_set(&periodic_timer, SEND_INTERVAL);
-    
-  } 
   PROCESS_END();
 }
+
