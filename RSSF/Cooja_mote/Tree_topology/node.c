@@ -34,7 +34,8 @@
  * \author Atis Elsts <atis.elsts@edi.lv>
  */
 
-#include "contiki.h" 
+#include "contiki.h"  
+#include "net/ipv6/uip-ds6-route.h"
 #include "net/ipv6/simple-udp.h" 
 #include "net/mac/tsch/tsch.h" 
 #include "lib/random.h"
