@@ -40,9 +40,9 @@ Remember: Keep the original file, in some case of error
 #else /* NETSTACK_CONF_H */
 
 /* Default network config */
-#define CSMA_CONF_SEND_SOFT_ACK 1
-#define CSMA_CONF_ACK_WAIT_TIME                RTIMER_SECOND / 500
-#define CSMA_CONF_AFTER_ACK_DETECTED_WAIT_TIME 0
+#define TSCH_CONF_SEND_SOFT_ACK 1
+#define TSCH_CONF_ACK_WAIT_TIME                RTIMER_SECOND / 500
+#define TSCH_CONF_AFTER_ACK_DETECTED_WAIT_TIME 0
 
 #endif /* NETSTACK_CONF_H */
 
