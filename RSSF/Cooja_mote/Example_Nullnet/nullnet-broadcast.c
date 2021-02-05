@@ -32,7 +32,7 @@
 
 /**
  * \file
- *         NullNet unicast example
+ *         NullNet broadcast example
  * \author
 *         Simon Duquennoy <simon.duquennoy@ri.se>
  *
@@ -41,7 +41,6 @@
 #include "contiki.h"
 #include "net/netstack.h"
 #include "net/nullnet/nullnet.h"
-
 #include <string.h>
 #include <stdio.h> /* For printf() */
 
@@ -52,7 +51,6 @@
 
 /* Configuration */
 #define SEND_INTERVAL (8 * CLOCK_SECOND)
-static linkaddr_t dest_addr =         {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 
 #if MAC_CONF_WITH_TSCH
 #include "net/mac/tsch/tsch.h"
@@ -60,7 +58,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #endif /* MAC_CONF_WITH_TSCH */
 
 /*---------------------------------------------------------------------------*/
-PROCESS(nullnet_example_process, "NullNet unicast example");
+PROCESS(nullnet_example_process, "NullNet broadcast example");
 AUTOSTART_PROCESSES(&nullnet_example_process);
 
 /*---------------------------------------------------------------------------*/
@@ -92,18 +90,19 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
   nullnet_len = sizeof(count);
   nullnet_set_input_callback(input_callback);
 
-  if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
-    etimer_set(&periodic_timer, SEND_INTERVAL);
-    while(1) {
-      PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-      LOG_INFO("Sending %u to ", count);
-      LOG_INFO_LLADDR(&dest_addr);
-      LOG_INFO_("\n");
+  etimer_set(&periodic_timer, SEND_INTERVAL);
+  while(1) {
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+    LOG_INFO("Sending %u to ", count);
+    LOG_INFO_LLADDR(NULL);
+    LOG_INFO_("\n");
+    
+    memcpy(nullnet_buf, &count, sizeof(count));
+    nullnet_len = sizeof(count);
 
-      NETSTACK_NETWORK.output(&dest_addr);
-      count++;
-      etimer_reset(&periodic_timer);
-    }
+    NETSTACK_NETWORK.output(NULL);
+    count++;
+    etimer_reset(&periodic_timer);
   }
 
   PROCESS_END();
