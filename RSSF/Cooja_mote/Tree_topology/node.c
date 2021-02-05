@@ -169,11 +169,12 @@ PROCESS_THREAD(node_process, ev, data)
 {
   static struct etimer periodic_timer;
   PROCESS_BEGIN(); 
-  const linkaddr_t dest_addr ;  
+   linkaddr_t dest_addr ;   
+  int j = 0 ; 
   int remote_id = initialize_tsch_schedule(); 
   for(j = 0; j < sizeof(dest_addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
+        dest_addr.u8[j + 1] = remote_id & 0xff;
+        dest_addr.u8[j + 0] = remote_id >> 8;
       }   
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL); 
   int count = 0 ; 
