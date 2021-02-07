@@ -37,7 +37,7 @@
 #include "contiki.h"  
 #include "net/ipv6/uip-ds6-route.h"
 #include "net/ipv6/simple-udp.h"  
-#include "net/nbr-table.h"
+#include "net/nbr-table.c"
 #include "net/mac/tsch/tsch.h"   
 #include "lib/random.h"
 #include "sys/node-id.h"  
