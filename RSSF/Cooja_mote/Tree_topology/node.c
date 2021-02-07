@@ -36,8 +36,9 @@
 
 #include "contiki.h"  
 #include "net/ipv6/uip-ds6-route.h"
-#include "net/ipv6/simple-udp.h" 
-#include "net/mac/tsch/tsch.h" 
+#include "net/ipv6/simple-udp.h"  
+#include "net/nbr-table.h"
+#include "net/mac/tsch/tsch.h"   
 #include "lib/random.h"
 #include "sys/node-id.h"  
 #include "sys/log.h"
@@ -183,7 +184,7 @@ PROCESS_THREAD(node_process, ev, data)
   int remote_id = initialize_tsch_schedule();   
    
   const uip_ipaddr_t dest; 
-  look_nbrs();  
+  //look_nbrs();  
   printf(" Remote_id: %d\n", remote_id);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -192,7 +193,8 @@ PROCESS_THREAD(node_process, ev, data)
 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
-
+    // print table
+    print_table();
    // SCHEDULE_static();    
     
     if(remote_id > 0){
