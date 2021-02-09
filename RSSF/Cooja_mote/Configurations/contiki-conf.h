@@ -142,7 +142,7 @@ typedef unsigned long clock_time_t;
 #endif /* CONTIKI_CONF_H_ */ 
 
 
-/*  To implement IPV6 
+//   To implement IPV6 
 #if NETSTACK_CONF_WITH_IPV6
 
 #define NULLRDC_CONF_802154_AUTOACK  1
@@ -157,5 +157,4 @@ typedef unsigned long clock_time_t;
 #define NETSTACK_CONF_RDC           nullrdc_driver
 #define NETSTACK_CONF_RADIO         cooja_radio_driver
 #define NETSTACK_CONF_FRAMER        framer_802154
-
-*/
+#endif
