@@ -650,9 +650,7 @@ int count_lines()
 
 int SCHEDULE_static(){  
     int tamNo = MAX_NOS ; 
-    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
-    
     int tamAresta = MAX_NOS,                  //Nº de arestas da rede
     z, i = 0;                       //Variáveis temporárias
     int pacote_entregue = 0, 
