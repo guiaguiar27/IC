@@ -762,18 +762,16 @@ void look_above_table(void ){
   }
 }
 /*---------------------------------------------------------------------------*/
-void look_nbrs(void ){   
+void look_nbrs(void){   
   LOG_PRINT("\n_______ENTROU____\n");
   nbr_table_item_t *item = nbr_table_head(nbr_routes);  
-  // em um item vai guardar a head  da tabela  
-  static nbr_table_key_t *key_collect = NULL ; 
-  
+  linkaddr_t *link_return ;  
   if(item == NULL)  
     LOG_PRINT("___NULL___\n"); 
 
-  while(item != NULL){ 
-    key_collect =  key_from_item(nbr_routes, item);  
-    LOG_INFO_LLADDR(&key_collect->lladdr); 
+  while(item != NULL){  
+    link_return = nbr_table_get_lladdr(nbr_routes,item)
+    LOG_INFO_LLADDR(link_return); 
     LOG_PRINT("\n"); 
 
     item = nbr_table_next(nbr_routes, item); 

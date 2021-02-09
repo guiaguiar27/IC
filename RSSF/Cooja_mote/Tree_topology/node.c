@@ -195,8 +195,8 @@ PROCESS_THREAD(node_process, ev, data)
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
     // print table
     //print_table();
-    look_nbrs(void );  
-    
+    look_nbrs();  
+
    // SCHEDULE_static();    
     
     if(remote_id > 0){
