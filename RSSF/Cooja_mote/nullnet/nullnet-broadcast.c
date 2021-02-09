@@ -72,18 +72,20 @@ void input_callback(const void *data, uint16_t len,
     LOG_INFO("Received %u from ", count);
     LOG_INFO_LLADDR(src);
     LOG_INFO_("\n");  
+    LOG_INFO("num: %d\n",num); 
     linkaddr_t addr ; 
     for(int i = 0 ; i < 8 ; i++){ 
        for(int j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = i & 0xff;
         addr.u8[j + 0] = i >> 8;
       } 
-      if((linkaddr_cmp(&addr, &src)){ 
+      if(linkaddr_cmp(&addr, src)){ 
         list_neighbor[num] = i ;  
         num++; 
         break;
       }
-    }
+    } 
+
   }
 }
 /*---------------------------------------------------------------------------*/
