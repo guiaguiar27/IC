@@ -763,7 +763,7 @@ void look_above_table(void ){
 }
 /*---------------------------------------------------------------------------*/
 void look_nbrs(void){   
-  LOG_PRINT("\n_______ENTROU____\n");
+  LOG_PRINT("_____ENTROU____\n");
   nbr_table_item_t *item = nbr_table_head(nbr_routes);  
   linkaddr_t *link_return ;  
   link_return = nbr_table_get_lladdr(nbr_routes,item);
@@ -776,7 +776,7 @@ void look_nbrs(void){
     LOG_PRINT("\n"); 
 
     item = nbr_table_next(nbr_routes, item); 
-    link_return = nbr_table_get_lladdr(nbr_routes,item)
+    link_return = nbr_table_get_lladdr(nbr_routes,item); 
   } 
   // com a key podemos acessar o ipaddr  e assim visualizar a tabela 
 
