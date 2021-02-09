@@ -47,7 +47,7 @@
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "App"
-#define LOG_LEVEL LOG_LEVEL_INFO
+#define LOG_LEVEL LOG_LEVEL_INFO 
 
 /* Configuration */
 #define SEND_INTERVAL (8 * CLOCK_SECOND)
@@ -56,7 +56,8 @@
 #include "net/mac/tsch/tsch.h"
 static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 #endif /* MAC_CONF_WITH_TSCH */
-
+uint16_t list_neighbor[8]; 
+static uint16_t num = 0 ; 
 /*---------------------------------------------------------------------------*/
 PROCESS(nullnet_example_process, "NullNet broadcast example");
 AUTOSTART_PROCESSES(&nullnet_example_process);
@@ -64,13 +65,25 @@ AUTOSTART_PROCESSES(&nullnet_example_process);
 /*---------------------------------------------------------------------------*/
 void input_callback(const void *data, uint16_t len,
   const linkaddr_t *src, const linkaddr_t *dest)
-{
+{ 
   if(len == sizeof(unsigned)) {
     unsigned count;
     memcpy(&count, data, sizeof(count));
     LOG_INFO("Received %u from ", count);
     LOG_INFO_LLADDR(src);
-    LOG_INFO_("\n");
+    LOG_INFO_("\n");  
+    linkaddr_t addr ; 
+    for(int i = 0 ; i < 8 ; i++){ 
+       for(j = 0; j < sizeof(addr); j += 2) {
+        addr.u8[j + 1] = i & 0xff;
+        addr.u8[j + 0] = i >> 8;
+      } 
+      if((!linkaddr_cmp(&addr, &src) { 
+        list_neighbor[num] = i ;  
+        num++; 
+        break;
+      }
+    }
   }
 }
 /*---------------------------------------------------------------------------*/
@@ -91,6 +104,13 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
   nullnet_set_input_callback(input_callback);
 
   etimer_set(&periodic_timer, SEND_INTERVAL);
+  
+  LOG_INFO("____list_nbr___\n");
+  LOG_INFO("[ ");
+  for(int i = 0 ; i < 8 ; i++){ 
+    LOG_INFO("%d - ", list_neighbor[i]);
+  } 
+  LOG_INFO(" ]");
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     LOG_INFO("Sending %u to ", count);
