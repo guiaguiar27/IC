@@ -80,6 +80,7 @@ void input_callback(const void *data, uint16_t len,
         addr.u8[j + 0] = i >> 8;
       } 
       if(linkaddr_cmp(&addr, src)){ 
+        LOG_PRINT("Match!\n"); 
         list_neighbor[num] = i ;  
         num++; 
         break;
@@ -107,14 +108,13 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
 
   etimer_set(&periodic_timer, SEND_INTERVAL);
   
-  LOG_INFO("____list_nbr___\n");
-  LOG_INFO("[ ");
-  for(int i = 0 ; i < 8 ; i++){ 
-    LOG_INFO("%d - ", list_neighbor[i]);
-  } 
-  LOG_INFO(" ]");
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+
+    LOG_INFO("____list_nbr___\n");
+    for(int i = 0 ; i < 8 ; i++){ 
+      LOG_INFO("%d\n", list_neighbor[i]);
+    } 
     LOG_INFO("Sending %u to ", count);
     LOG_INFO_LLADDR(NULL);
     LOG_INFO_("\n");
