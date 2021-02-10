@@ -67,7 +67,8 @@
 #define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 16 
-#define APP_CHANNEL_OFSETT 16
+#define APP_CHANNEL_OFSETT 16 
+#define APP_SLOTFRAME_SIZe 17 
 
 
 
@@ -920,7 +921,7 @@ int initialize_tsch_schedule()
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);
   int i, j;  
   // APP_SLOTFRAME_SIZE
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZe);
   uint16_t slot_offset;
   uint16_t channel_offset; 
   
