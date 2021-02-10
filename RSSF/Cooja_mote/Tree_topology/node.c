@@ -185,13 +185,14 @@ PROCESS_THREAD(node_process, ev, data)
    
   const uip_ipaddr_t dest; 
   //look_nbrs();  
-  printf(" Remote_id: %d\n", remote_id);
+  printf("Remote_id: %d\n", remote_id);
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
-  if(node_id == 1 ){ 
-    NETSTACK_ROUTING.root_start();  
-  }
+  
+  // if(node_id == 1 ){ 
+  //   NETSTACK_ROUTING.root_start();  
+  // }
 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
