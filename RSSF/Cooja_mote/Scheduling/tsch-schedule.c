@@ -63,7 +63,12 @@
 #define endereco "/home/user/contiki-ng/os/arvore.txt"   
 
 #define Channel 16
-#define Timeslot 16
+#define Timeslot 16  
+#define APP_SLOTFRAME_HANDLE 1
+/* Put all unicast cells on the same timeslot (for demonstration purposes only) */
+#define APP_UNICAST_TIMESLOT 16 
+#define APP_CHANNEL_OFSETT 16
+
 
 
 /* Log configuration */
@@ -910,7 +915,9 @@ int sort_node_to_create_link(int n){
  }
 
 int initialize_tsch_schedule()
-{ 
+{  
+  uint16_t node_id = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);
   int i, j;  
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
