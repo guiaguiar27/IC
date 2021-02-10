@@ -61,7 +61,8 @@
 #define SEND_INTERVAL (8 * CLOCK_SECOND)
 //static linkaddr_t dest_addr =         {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 
-#if MAC_CONF_WITH_TSCH
+#if MAC_CONF_WITH_TSCH 
+LOG_PRINT("Conf with tsch!\n");
 #include "net/mac/tsch/tsch.h"
 static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 #endif /* MAC_CONF_WITH_TSCH */
