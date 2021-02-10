@@ -56,8 +56,7 @@
 #include "net/mac/tsch/tsch.h"
 static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 #endif /* MAC_CONF_WITH_TSCH */
-uint16_t list_neighbor[8]; 
-static uint16_t num = 0 ; 
+
 /*---------------------------------------------------------------------------*/
 PROCESS(nullnet_example_process, "NullNet broadcast example");
 AUTOSTART_PROCESSES(&nullnet_example_process);
@@ -73,20 +72,7 @@ void input_callback(const void *data, uint16_t len,
     LOG_INFO_LLADDR(src);
     LOG_INFO_("\n");  
     LOG_INFO("num: %d\n",num); 
-    linkaddr_t addr ; 
-    for(int i = 0 ; i < 8 ; i++){ 
-       for(int j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = i & 0xff;
-        addr.u8[j + 0] = i >> 8;
-      } 
-      if(linkaddr_cmp(&addr, src)){ 
-        LOG_PRINT("Match!\n"); 
-        list_neighbor[num] = i ;  
-        num++; 
-        break;
-      }
-    } 
-
+    
   }
 }
 /*---------------------------------------------------------------------------*/
@@ -111,10 +97,7 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
-    LOG_INFO("____list_nbr___\n");
-    for(int i = 0 ; i < 8 ; i++){ 
-      LOG_INFO("%d\n", list_neighbor[i]);
-    } 
+     
     LOG_INFO("Sending %u to ", count);
     LOG_INFO_LLADDR(NULL);
     LOG_INFO_("\n");
