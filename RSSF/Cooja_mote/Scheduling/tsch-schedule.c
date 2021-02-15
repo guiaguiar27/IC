@@ -1007,7 +1007,7 @@ int count_nodes()
 } 
 void tsch_compute_node_id(){ 
   FILE *file;  
-  node = 1 ; 
+  int node = 1 ; 
   file = fopen(endereco, "a");
   if(file == NULL){
         printf("The file was not opened\n");
