@@ -39,7 +39,8 @@
 #include "net/ipv6/uip-ds6-route.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
-#include "sys/node-id.h"
+#include "sys/node-id.h"  
+#include "net/nullnet/nullnet.h"  
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
@@ -126,7 +127,7 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
   PROCESS_BEGIN();
 
 
-tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+//tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
 /* MAC_CONF_WITH_TSCH */
   static linkaddr_t dest_addr;  
   int remote_id = initialize_tsch_schedule();  
