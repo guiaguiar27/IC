@@ -46,9 +46,8 @@
 
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)
-
-PROCESS(nullnet_example_process, "NullNet unicast example");
-AUTOSTART_PROCESSES(&nullnet_example_process);
+PROCESS(node_process, "TSCH Schedule Node"); 
+AUTOSTART_PROCESSES(&node_process);
 
 /*
  * Note! This is not an example how to design a *good* schedule for TSCH,
@@ -116,8 +115,7 @@ void input_callback(const void *data, uint16_t len,
     LOG_INFO_("\n");
   }
 }  
-
-PROCESS_THREAD(nullnet_example_process, ev, data)
+PROCESS_THREAD(node_process, ev, data)
 {
   static struct etimer periodic_timer;
  
