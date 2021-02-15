@@ -541,7 +541,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, 1,node_id);
+      0, 0, 1, 1);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
@@ -1005,14 +1005,15 @@ int count_nodes()
     fclose(fp); 
     return count; 
 } 
-void tsch_compute_node_id(int node){ 
-  FILE *file; 
+void tsch_compute_node_id(){ 
+  FILE *file;  
+  node = 1 ; 
   file = fopen(endereco, "a");
   if(file == NULL){
         printf("The file was not opened\n");
         return ; 
   } 
-  fprintf(file, "%d\n",node);
+  fprintf(file, "%d\n",node );
   fclose(file);
 } 
 

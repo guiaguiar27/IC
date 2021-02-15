@@ -124,7 +124,8 @@ PROCESS_THREAD(node_process, ev, data)
 
 
 //tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
-/* MAC_CONF_WITH_TSCH */
+/* MAC_CONF_WITH_TSCH */ 
+  tsch_compute_node_id(); 
   static linkaddr_t dest_addr;  
   int remote_id = initialize_tsch_schedule();  
   for(int j = 0; j < sizeof(dest_addr); j += 2) {
