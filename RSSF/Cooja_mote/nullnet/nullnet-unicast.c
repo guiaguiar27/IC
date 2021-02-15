@@ -60,12 +60,8 @@
 /* Configuration */
 #define SEND_INTERVAL (8 * CLOCK_SECOND)
 //static linkaddr_t dest_addr =         {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
-
-#if MAC_CONF_WITH_TSCH 
-LOG_PRINT("Conf with tsch!\n");
 #include "net/mac/tsch/tsch.h"
 static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
-#endif /* MAC_CONF_WITH_TSCH */
 
 /*---------------------------------------------------------------------------*/
 PROCESS(nullnet_example_process, "NullNet unicast example");
@@ -92,9 +88,9 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
 
   PROCESS_BEGIN();
 
-#if MAC_CONF_WITH_TSCH
-  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
-#endif /* MAC_CONF_WITH_TSCH */
+
+tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+/* MAC_CONF_WITH_TSCH */
   static linkaddr_t dest_addr;  
   int remote_id = initialize_tsch_schedule();  
   for(int j = 0; j < sizeof(dest_addr); j += 2) {
