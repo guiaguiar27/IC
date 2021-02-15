@@ -61,6 +61,7 @@
 #define peso 1 
 #define no_raiz 1  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"   
+#define end_node "/home/user/contiki-ng/os/node_id.txt"   
 
 #define Channel 16
 #define Timeslot 16  
@@ -231,10 +232,10 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
+                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove, int node)
 {
   struct tsch_link *l = NULL; 
-  uint16_t node_neighbor, node;
+  uint16_t node_neighbor;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -293,8 +294,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
             n->tx_links_count++;
             if(!(l->link_options & LINK_OPTION_SHARED)) {
               n->dedicated_tx_links_count++; 
-              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+             
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
@@ -541,7 +541,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, 1);
+      0, 0, 1,node_id);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
@@ -916,9 +916,8 @@ int sort_node_to_create_link(int n){
  }
 
 int initialize_tsch_schedule()
-{  
-  uint16_t node_id = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);
+{ 
+  int node = count_nodes(); 
   int i, j;  
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZe);
@@ -931,7 +930,7 @@ int initialize_tsch_schedule()
   uint16_t remote_id = 1; 
   linkaddr_t addr; 
 
-  if(node_id == 1){  
+  if(node == 1){  
     
      for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
@@ -940,13 +939,13 @@ int initialize_tsch_schedule()
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset,0); 
+      slot_offset, channel_offset,0, node ); 
     return remote_id ; 
   }
   
   
-  else if (node_id != 1) {
-    if (node_id == 2 || node_id == 3){ 
+  else if (node != 1) {
+    if (node == 2 || node == 3){ 
       uint8_t link_options;
        
       remote_id = 1; 
@@ -958,12 +957,12 @@ int initialize_tsch_schedule()
       channel_offset = random_rand() % APP_CHANNEL_OFSETT;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
       * backoff windows will not be reset correctly! */
-      link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+      link_options = remote_id == node ? LINK_OPTION_RX : LINK_OPTION_TX;
 
       tsch_schedule_add_link(sf_common,
           link_options,
           LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0); 
+          slot_offset, channel_offset,0,node); 
           return remote_id ;
     
     }
@@ -971,7 +970,7 @@ int initialize_tsch_schedule()
       for (i = 0 ; i <  num_links ; ++i) { 
       uint8_t link_options;
       
-      remote_id = sort_node_to_create_link(node_id); 
+      remote_id = sort_node_to_create_link(node); 
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
@@ -980,12 +979,12 @@ int initialize_tsch_schedule()
       channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
       * backoff windows will not be reset correctly! */
-      link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+      link_options = remote_id == node ? LINK_OPTION_RX : LINK_OPTION_TX;
 
       tsch_schedule_add_link(sf_common,
           link_options,
           LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0);
+          slot_offset, channel_offset,0,node);
       }
       return remote_id;
     } 
@@ -993,7 +992,29 @@ int initialize_tsch_schedule()
  return 0 ;    
 } 
 
-
+int count_nodes() 
+{ 
+    FILE *fp; 
+    int count = 1;    
+    char c;  
+    fp = fopen(end_node, "r"); 
+    if (fp == NULL) return 0; 
+    for (c = getc(fp); c != EOF; c = getc(fp)) 
+        if (c == '\n') 
+            count = count + 1; 
+    fclose(fp); 
+    return count; 
+} 
+void tsch_compute_node_id(int node){ 
+  FILE *file; 
+  file = fopen(endereco, "a");
+  if(file == NULL){
+        printf("The file was not opened\n");
+        return ; 
+  } 
+  fprintf(file, "%d\n",node);
+  fclose(file);
+} 
 
 
 /** @} */

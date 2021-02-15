@@ -141,7 +141,7 @@ PROCESS_THREAD(node_process, ev, data)
   if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
     etimer_set(&periodic_timer, SEND_INTERVAL);
     while(1) { 
-
+      SCHEDULE_static(); 
       PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
       LOG_INFO("Sending to ");
       LOG_INFO_LLADDR(&dest_addr);
