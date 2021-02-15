@@ -61,104 +61,98 @@ AUTOSTART_PROCESSES(&node_process);
  */
 
 /* Put all cells on the same slotframe */
-#define APP_SLOTFRAME_HANDLE 1
+//#define APP_SLOTFRAME_HANDLE 1
 /* Put all unicast cells on the same timeslot (for demonstration purposes only) */
-#define APP_UNICAST_TIMESLOT 1
+//#define APP_UNICAST_TIMESLOT 1
 
-static void
-initialize_tsch_schedule(void)
+// static void
+// initialize_tsch_schedule(void)
+// {
+//   int i, j;
+//   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+//   uint16_t slot_offset;
+//   uint16_t channel_offset;
+
+//   /* A "catch-all" cell at (0, 0) */
+//   slot_offset = 0;
+//   channel_offset = 0;
+//   tsch_schedule_add_link(sf_common,
+//       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+//       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+//       slot_offset, channel_offset, 1);
+
+//   for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
+//     uint8_t link_options;
+//     linkaddr_t addr;
+//     uint16_t remote_id = i + 1;
+
+//     for(j = 0; j < sizeof(addr); j += 2) {
+//       addr.u8[j + 1] = remote_id & 0xff;
+//       addr.u8[j + 0] = remote_id >> 8;
+//     }
+
+//     /* Add a unicast cell for each potential neighbor (in Cooja) */
+//     /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
+//     slot_offset = APP_UNICAST_TIMESLOT;
+//     channel_offset = i;
+//     /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+//      * backoff windows will not be reset correctly! */
+//     link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+
+//     tsch_schedule_add_link(sf_common,
+//         link_options,
+//         LINK_TYPE_NORMAL, &addr,
+//         slot_offset, channel_offset, 1);
+//   }
+// } 
+
+void input_callback(const void *data, uint16_t len,
+  const linkaddr_t *src, const linkaddr_t *dest)
 {
-  int i, j;
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-  uint16_t slot_offset;
-  uint16_t channel_offset;
-
-  /* A "catch-all" cell at (0, 0) */
-  slot_offset = 0;
-  channel_offset = 0;
-  tsch_schedule_add_link(sf_common,
-      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset, 1);
-
-  for (i = 0; i < TSCH_SCHEDULE_MAX_LINKS - 1; ++i) {
-    uint8_t link_options;
-    linkaddr_t addr;
-    uint16_t remote_id = i + 1;
-
-    for(j = 0; j < sizeof(addr); j += 2) {
-      addr.u8[j + 1] = remote_id & 0xff;
-      addr.u8[j + 0] = remote_id >> 8;
-    }
-
-    /* Add a unicast cell for each potential neighbor (in Cooja) */
-    /* Use the same slot offset; the right link will be dynamically selected at runtime based on queue sizes */
-    slot_offset = APP_UNICAST_TIMESLOT;
-    channel_offset = i;
-    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-     * backoff windows will not be reset correctly! */
-    link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-
-    tsch_schedule_add_link(sf_common,
-        link_options,
-        LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset, 1);
+  if(len == sizeof(unsigned)){
+    unsigned count;
+    memcpy(&count, data, sizeof(count));
+    LOG_INFO("Received %u from ", count);
+    LOG_INFO_LLADDR(src);
+    LOG_INFO_("\n");
   }
-}
+}  
 
-static void
-rx_packet(struct simple_udp_connection *c,
-          const uip_ipaddr_t *sender_addr,
-          uint16_t sender_port,
-          const uip_ipaddr_t *receiver_addr,
-          uint16_t receiver_port,
-          const uint8_t *data,
-          uint16_t datalen)
+PROCESS_THREAD(nullnet_example_process, ev, data)
 {
-  uint32_t seqnum;
-
-  if(datalen >= sizeof(seqnum)) {
-    memcpy(&seqnum, data, sizeof(seqnum));
-
-    LOG_INFO("Received from ");
-    LOG_INFO_6ADDR(sender_addr);
-    LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-  }
-}
-
-PROCESS_THREAD(node_process, ev, data)
-{
-  static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
-  static uint32_t seqnum;
-  uip_ipaddr_t dst;
+  static unsigned count = 0;
 
   PROCESS_BEGIN();
 
-  initialize_tsch_schedule();
 
-  /* Initialization; `rx_packet` is the function for packet reception */
-  simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
-  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
+tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+/* MAC_CONF_WITH_TSCH */
+  static linkaddr_t dest_addr;  
+  int remote_id = initialize_tsch_schedule();  
+  for(int j = 0; j < sizeof(dest_addr); j += 2) {
+        dest_addr.u8[j + 1] = remote_id & 0xff;
+        dest_addr.u8[j + 0] = remote_id >> 8;
+    }   
+  
+  /* Initialize NullNet */
+  nullnet_buf = (uint8_t *)&count;
+  nullnet_len = sizeof(count);
+  nullnet_set_input_callback(input_callback);
 
-  if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();
-  }
-
-  /* Main loop */
-  while(1) {
-    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    look_nbrs();  
-    if(NETSTACK_ROUTING.node_is_reachable()
-       && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
-      /* Send network uptime timestamp to the network root node */
-      seqnum++;
-      LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
-      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
-    }
+  if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
     etimer_set(&periodic_timer, SEND_INTERVAL);
+    while(1) { 
+
+      PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+      LOG_INFO("Sending %u to ", count);
+      LOG_INFO_LLADDR(&dest_addr);
+      LOG_INFO_("\n");
+
+      NETSTACK_NETWORK.output(&dest_addr);
+      count++;
+      etimer_reset(&periodic_timer);
+    }
   }
 
   PROCESS_END();
