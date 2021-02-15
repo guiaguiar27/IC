@@ -120,7 +120,7 @@ void input_callback(const void *data, uint16_t len,
 PROCESS_THREAD(nullnet_example_process, ev, data)
 {
   static struct etimer periodic_timer;
-  static unsigned count = 0;
+ 
 
   PROCESS_BEGIN();
 
@@ -135,8 +135,9 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
     }   
   
   /* Initialize NullNet */
-  nullnet_buf = (uint8_t *)&count;
-  nullnet_len = sizeof(count);
+  uint8_t payload[64] = { 0 };
+  nullnet_buf = payload; /* Point NullNet buffer to 'payload' */
+  nullnet_len = 2; /* Tell NullNet that the payload length is two bytes */
   nullnet_set_input_callback(input_callback);
 
   if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
