@@ -49,8 +49,8 @@
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)
 
-PROCESS(node_process, "TSCH Schedule Node");
-AUTOSTART_PROCESSES(&node_process);
+PROCESS(nullnet_example_process, "NullNet unicast example");
+AUTOSTART_PROCESSES(&nullnet_example_process);
 
 /*
  * Note! This is not an example how to design a *good* schedule for TSCH,
