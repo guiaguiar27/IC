@@ -54,7 +54,8 @@
 #define TSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL 0
 
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
-#define APP_SLOTFRAME_SIZE 17
+#define APP_SLOTFRAME_SIZE 17 
+#define MAC_CONF_WITH_TSCH 1 
 
 #if WITH_SECURITY
 
