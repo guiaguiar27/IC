@@ -143,12 +143,11 @@ PROCESS_THREAD(node_process, ev, data)
     while(1) { 
 
       PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-      LOG_INFO("Sending %u to ", count);
+      LOG_INFO("Sending to ");
       LOG_INFO_LLADDR(&dest_addr);
       LOG_INFO_("\n");
 
       NETSTACK_NETWORK.output(&dest_addr);
-      count++;
       etimer_reset(&periodic_timer);
     }
   }
