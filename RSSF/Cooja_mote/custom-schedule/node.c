@@ -41,6 +41,9 @@
 #include "sys/node-id.h" 
 #include "sys/energest.h"    
 #include "net/ipv6/uip-ds6-nbr.h" 
+
+#include <string.h>
+#include <stdlib.h>
 #include <stddef.h>
 
 #include "sys/log.h"
@@ -179,8 +182,8 @@ PROCESS_THREAD(node_process, ev, data)
   for(nbr = uip_ds6_nbr_head();
   nbr != NULL;
   nbr = uip_ds6_nbr_next(nbr)) {
-  
-    LOG_INFO_6ADDR(nbr->ipaddr); 
+      if (nbr!= NULL )LOG_INFO("1\n ");
+     //PRINT6ADDR(nbr->ipaddr);
   
   /* Do stuff */
   } 
