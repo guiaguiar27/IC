@@ -232,10 +232,10 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove, int node)
+                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
 {
   struct tsch_link *l = NULL; 
-  uint16_t node_neighbor;
+  uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -296,7 +296,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
               n->dedicated_tx_links_count++; 
              
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
-                + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+                + (l->addr.u8[LINKADDR_SIZE - 2] << 8);   
+              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);
               
               tsch_write_in_file(node, node_neighbor);   
                           }
@@ -541,7 +543,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, 1, 1);
+      0, 0, 1);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
@@ -939,7 +941,7 @@ int initialize_tsch_schedule()
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset,0, node ); 
+      slot_offset, channel_offset,0); 
     return remote_id ; 
   }
   
@@ -962,7 +964,7 @@ int initialize_tsch_schedule()
       tsch_schedule_add_link(sf_common,
           link_options,
           LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0,node); 
+          slot_offset, channel_offset,0); 
           return remote_id ;
     
     }
@@ -984,7 +986,7 @@ int initialize_tsch_schedule()
       tsch_schedule_add_link(sf_common,
           link_options,
           LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0,node);
+          slot_offset, channel_offset,0);
       }
       return remote_id;
     } 
@@ -992,7 +994,7 @@ int initialize_tsch_schedule()
  return 0 ;    
 } 
 
-int count_nodes() 
+//int count_nodes() 
 { 
     FILE *fp; 
     int count = 1;    
@@ -1005,10 +1007,10 @@ int count_nodes()
     fclose(fp); 
     return count; 
 } 
-void tsch_compute_node_id(){ 
+//void tsch_compute_node_id(){ 
   FILE *file;  
   int node = 1 ; 
-  file = fopen(endereco, "a");
+  file = fopen(end_node, "a");
   if(file == NULL){
         printf("The file was not opened\n");
         return ; 
