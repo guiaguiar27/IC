@@ -1108,7 +1108,7 @@ int sort_node_to_create_link(int n){
   unsigned short  random_node;    
   int aux_n = n - 1 ;  
   int final_sorted_node; 
-
+ 
   random_node = random_rand() % aux_n;
   while(random_node <= 1 ){ 
     random_node = random_rand() % aux_n;

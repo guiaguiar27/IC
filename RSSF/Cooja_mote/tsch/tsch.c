@@ -705,8 +705,10 @@ tsch_associate(const struct input_packet *input_eb, rtimer_clock_t timestamp)
     struct tsch_neighbor *n;
 
     /* Add coordinator to list of neighbors, lock the entry */
-    n = tsch_queue_add_nbr((linkaddr_t *)&frame.src_addr);
-
+    n = tsch_queue_add_nbr((linkaddr_t *)&frame.src_addr); 
+    LOG_INFO("_____________\n");
+    LOG_INFO_LLADDR((linkaddr_t *)&frame.src_addr);
+    LOG_INFO("\n_____________\n");
     if(n != NULL) {
       tsch_queue_update_time_source((linkaddr_t *)&frame.src_addr);
 
