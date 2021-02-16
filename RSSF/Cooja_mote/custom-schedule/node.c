@@ -180,7 +180,7 @@ PROCESS_THREAD(node_process, ev, data)
   nbr != NULL;
   nbr = uip_ds6_nbr_next(nbr)) {
   
-    PRINT6ADDR(nbr->ipaddr); 
+    LOG_INFO_6ADDR(nbr->ipaddr); 
   
   /* Do stuff */
   } 
