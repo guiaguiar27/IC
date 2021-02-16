@@ -182,9 +182,11 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer;
   static uint32_t seqnum;
   
-  PROCESS_BEGIN();
+  PROCESS_BEGIN(); 
+
   int remote_id = initialize_tsch_schedule();   
-   
+  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+ 
   const uip_ipaddr_t dest; 
   //look_nbrs();  
   printf("Remote_id: %d\n", remote_id);
@@ -196,7 +198,6 @@ PROCESS_THREAD(node_process, ev, data)
   //   NETSTACK_ROUTING.root_start();  
   // } 
 
-tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
