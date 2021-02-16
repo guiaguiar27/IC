@@ -177,17 +177,7 @@ PROCESS_THREAD(node_process, ev, data)
   initialize_tsch_schedule();
   
   // testing nbr_table
-  static uip_ds6_nbr_t *nbr; 
-  LOG_INFO("NBR_TABLE\n");
-  for(nbr = uip_ds6_nbr_head();
-  nbr != NULL;
-  nbr = uip_ds6_nbr_next(nbr)) {
-      if (nbr != NULL )LOG_INFO("NULL\n ");
-      uip_ipaddr_t addr = (uip_ipaddr_t ) nbr->ipaddr; 
-      LOG_INFO_6ADDR(&addr); 
   
-  /* Do stuff */
-  } 
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -199,6 +189,16 @@ PROCESS_THREAD(node_process, ev, data)
 
   /* Main loop */
   while(1) {
+    static uip_ds6_nbr_t *nbr;  
+    LOG_INFO("___NBR_TABLE____\n");
+    for(nbr = uip_ds6_nbr_head();
+    nbr != NULL;
+    nbr = uip_ds6_nbr_next(nbr)) {
+      if (nbr != NULL )LOG_INFO("NULL\n ");
+      uip_ipaddr_t addr = (uip_ipaddr_t ) nbr->ipaddr; 
+      LOG_INFO_6ADDR(&addr); 
+    } 
+     
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) { 
