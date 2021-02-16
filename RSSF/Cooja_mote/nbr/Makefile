@@ -1,22 +1,6 @@
-CONTIKI_PROJECT = nbr
-all: $(CONTIKI_PROJECT)
+CONTIKI = ../..
 
-PLATFORMS_ONLY = z1
+all: nbr
 
-CONTIKI=../../..
-
-# force Security from command line
-MAKE_WITH_SECURITY ?= 0
-
-MAKE_MAC = MAKE_MAC_TSCH
-#A NET layer that does nothing. Packets are relayed up/down the stack, unmodified.
-MAKE_NET = MAKE_NET_IPV6
-
-include $(CONTIKI)/Makefile.dir-variables
-MODULES += $(CONTIKI_NG_SERVICES_DIR)/shell
-
-ifeq ($(MAKE_WITH_SECURITY),1)
-CFLAGS += -DWITH_SECURITY=1
-endif
-
+CONTIKI_WITH_RIME = 1
 include $(CONTIKI)/Makefile.include
