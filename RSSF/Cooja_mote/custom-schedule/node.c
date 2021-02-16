@@ -176,14 +176,14 @@ PROCESS_THREAD(node_process, ev, data)
 
   initialize_tsch_schedule();
   
-  // testing rpl neighbors 
+  // testing nbr_table
   static uip_ds6_nbr_t *nbr; 
   LOG_INFO("NBR_TABLE\n");
   for(nbr = uip_ds6_nbr_head();
   nbr != NULL;
   nbr = uip_ds6_nbr_next(nbr)) {
-      if (nbr!= NULL )LOG_INFO("1\n ");
-     //PRINT6ADDR(nbr->ipaddr);
+      if (nbr != NULL )LOG_INFO("NULL\n ");
+      PRINT6ADDR(nbr->ipaddr);
   
   /* Do stuff */
   } 
