@@ -40,7 +40,8 @@
 #include "lib/random.h"
 #include "sys/node-id.h" 
 #include "/net/routing/rpl-lite/rpl-neighbor.h" 
-#include "sys/energest.h"   
+#include "sys/energest.h"    
+#include "net/ipv6/uip-ds6-nbr.h"
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
@@ -173,8 +174,12 @@ PROCESS_THREAD(node_process, ev, data)
   initialize_tsch_schedule();
   
   // testing rpl neighbors 
-  const char *str = "teste"; 
-  rpl_neighbor_print_list(str);  
+  static uip_ds6_nbr_t *nbr; 
+  for(nbr = uip_ds6_nbr_head();
+  nbr != NULL;
+  nbr = uip_ds6_nbr_next(nbr)) {
+  /* Do stuff */
+  } 
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
