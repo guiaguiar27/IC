@@ -80,8 +80,10 @@
  */
 #ifdef TSCH_CONF_EB_PERIOD
 #define TSCH_EB_PERIOD TSCH_CONF_EB_PERIOD
-#else
-#define TSCH_EB_PERIOD (16 * CLOCK_SECOND)
+#else 
+// ****************modifiquei auqi ******************************
+// original é 16  
+#define TSCH_EB_PERIOD (4 * CLOCK_SECOND)
 #endif
 
 /* Max Period between two consecutive EBs.
