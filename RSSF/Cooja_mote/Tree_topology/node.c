@@ -43,9 +43,8 @@
 #include "sys/node-id.h"  
 #include "sys/log.h"
 #include "sys/energest.h"   
-#include "net/netstack.h"
-#include "net/nullnet/nullnet.h" 
-#include "sys/energest.h"  
+#include "net/netstack.h"   
+#include "/net/routing/rpl-lite/rpl-neighbor.h"
 
 #define LOG_MODULE "App"
 #define LOG_LEVEL LOG_LEVEL_INFO
@@ -73,7 +72,8 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 
 int initialize_tsch_schedule()
-{ 
+{   
+  LOG_PRINT("Initialize tsch schedule\n");
   int i, j;  
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
@@ -181,6 +181,8 @@ PROCESS_THREAD(node_process, ev, data)
   static uint32_t seqnum;
   
   PROCESS_BEGIN(); 
+  const char *str = "teste"; 
+  rpl_neighbor_print_list(str);  
 
   int remote_id = initialize_tsch_schedule();   
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
@@ -188,13 +190,14 @@ PROCESS_THREAD(node_process, ev, data)
   const uip_ipaddr_t dest; 
   //look_nbrs();  
   printf("Remote_id: %d\n", remote_id);
-  /* Initialization; `rx_packet` is the function for packet reception */
+  /* Initialization; `rx_packet` is the function for packet reception */ 
+
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
   
-  // if(node_id == 1 ){ 
-  //   NETSTACK_ROUTING.root_start();  
-  // } 
+   if(node_id == 1 ){ 
+     NETSTACK_ROUTING.root_start();  
+   } 
 
 
   while(1) { 
