@@ -38,7 +38,9 @@
 #include "net/ipv6/simple-udp.h"
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
-#include "sys/node-id.h"
+#include "sys/node-id.h" 
+#include "/net/routing/rpl-lite/rpl-neighbor.h" 
+#include "sys/energest.h"   
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
@@ -169,6 +171,10 @@ PROCESS_THREAD(node_process, ev, data)
   PROCESS_BEGIN();
 
   initialize_tsch_schedule();
+  
+  // testing rpl neighbors 
+  const char *str = "teste"; 
+  rpl_neighbor_print_list(str);  
 
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
