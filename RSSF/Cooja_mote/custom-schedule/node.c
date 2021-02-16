@@ -175,9 +175,13 @@ PROCESS_THREAD(node_process, ev, data)
   
   // testing rpl neighbors 
   static uip_ds6_nbr_t *nbr; 
+  LOG_INFO("NBR_TABLE\n");
   for(nbr = uip_ds6_nbr_head();
   nbr != NULL;
   nbr = uip_ds6_nbr_next(nbr)) {
+  
+    PRINT6ADDR(nbr->ipaddr); 
+  
   /* Do stuff */
   } 
 
