@@ -39,9 +39,9 @@
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
 #include "sys/node-id.h" 
-#include "/net/routing/rpl-lite/rpl-neighbor.h" 
 #include "sys/energest.h"    
-#include "net/ipv6/uip-ds6-nbr.h"
+#include "net/ipv6/uip-ds6-nbr.h" 
+#include <stddef.h>
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
