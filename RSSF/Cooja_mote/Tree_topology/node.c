@@ -194,13 +194,15 @@ PROCESS_THREAD(node_process, ev, data)
   
   // if(node_id == 1 ){ 
   //   NETSTACK_ROUTING.root_start();  
-  // }
+  // } 
+
+tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
 
   while(1) { 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));  
-    // print table
+    
     //print_table();
-    look_nbrs();  
+    //look_nbrs();  
 
    // SCHEDULE_static();    
     
