@@ -183,7 +183,8 @@ PROCESS_THREAD(node_process, ev, data)
   nbr != NULL;
   nbr = uip_ds6_nbr_next(nbr)) {
       if (nbr != NULL )LOG_INFO("NULL\n ");
-      PRINT6ADDR(nbr->ipaddr);
+      uip_ipaddr_t addr = (uip_ipaddr_t ) nbr->ipaddr; 
+      LOG_INFO_6ADDR(&addr); 
   
   /* Do stuff */
   } 
