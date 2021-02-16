@@ -37,7 +37,7 @@
 #include "contiki.h"  
 #include "net/ipv6/uip-ds6-route.h"
 #include "net/ipv6/simple-udp.h"  
-#include "net/nbr-table.c"
+#include "net/nbr-table.c"  
 #include "net/mac/tsch/tsch.h"   
 #include "lib/random.h"
 #include "sys/node-id.h"  
@@ -54,8 +54,6 @@
 PROCESS(node_process, "TSCH Schedule Node"); 
 AUTOSTART_PROCESSES(&node_process);
 static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}; 
-
-tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
 /*
  * Note! This is not an example how to design a *good* schedule for TSCH,
  * nor this is the right place for complete beginners in TSCH.
