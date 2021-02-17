@@ -1106,15 +1106,29 @@ int sort_node_to_create_link(int n){
  }  
 #if NBR_TSCH
 void tsch_print_neighbors(int nbr){   
+  static int  count = 0 ;  
+  int *nbr_aux = list_head(nbr_list); 
+  int flag = 0 ;  
+
+  while(nbr_aux != NULL){ 
+    if(*nbr_aux == nbr){ 
+      flag = 1 ; 
+      break ; 
+    }  
+    nbr = list_item_next(nbr);
+  }   
+  
+  if(flag == 1)
     list_add(nbr_list, &nbr);   
  }  
 
 void show_nbr(){  
    LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
    int *nbr = list_head(nbr_list); 
-   while(nbr != NULL){ 
+   while(nbr != NULL){  
+
      LOG_INFO("%d\n",nbr); 
-     nbr = list_item_next(nbr_list); 
+     nbr = list_item_next(nbr); 
    } 
  } 
  #endif 
