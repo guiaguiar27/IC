@@ -187,18 +187,16 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */
   while(1) {
     
-    static uip_ds6_nbr_t *nbr;  
-    LOG_INFO("___NBR_TABLE____\n");
-    for(nbr = uip_ds6_nbr_head();
-    nbr != NULL;
-    nbr = uip_ds6_nbr_next(nbr)) {
-      uip_ipaddr_t addr = (uip_ipaddr_t ) nbr->ipaddr; 
-      LOG_INFO_6ADDR(&addr); 
-    } 
+    nbr_table_item_t *item = nbr_table_head(nbr_routes);
+    while(item != NULL) {
+    linkaddr_t *addr = nbr_table_get_lladdr(nbr_routes, item);
+    LOG_INFO_6ADDR(addr);
+    item = nbr_table_next(nbr_routes, item);
+  } 
 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(tsch_is_associated) { 
-     
+
      //SCHEDULE_static();
       /* Send network uptime timestamp to the network root node */
       seqnum++;
