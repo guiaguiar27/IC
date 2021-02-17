@@ -140,6 +140,7 @@ tsch_timesync_update(struct tsch_neighbor *n, uint16_t time_delta_asn, int32_t d
   }
   min_drift_seen = MIN(drift_correction, min_drift_seen);
   max_drift_seen = MAX(drift_correction, max_drift_seen);
+
 }
 /*---------------------------------------------------------------------------*/
 /* Error-accumulation free compensation algorithm */

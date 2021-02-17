@@ -54,7 +54,19 @@
 #include "net/mac/framer/frame802154.h"
 #include "sys/process.h"
 #include "sys/rtimer.h"
-#include <string.h>
+#include <string.h> 
+#include <stdio.h> 
+#include <stdlib.h>
+//#include "conf.c"   
+
+#include "lib/random.h"
+#define temp_canais 16
+#define peso 1 
+#define MAX_NOS 5
+#define no_raiz 1  
+#define Timeslot 16 
+#define MAX_MESH_SIZE_NODE 25  
+#define endereco "/home/user/contiki-ng/os/arvore.txt" 
 
 /* Log configuration */
 #include "sys/log.h"
@@ -62,9 +74,16 @@
 #define LOG_LEVEL LOG_LEVEL_MAC
 
 /* Pre-allocated space for links */
-MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
+MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS); 
+MEMB(matrix_memb, struct generic_2dim_array_element, MAX_MESH_SIZE_NODE); 
+MEMB(generic_array_memb, struct generic_array_element, MAX_NOS); 
+
 /* Pre-allocated space for slotframes */
-MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
+MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES); 
+MEMB(adj_memb, struct matrix_generic , 1);   
+MEMB(conf_memb, struct matrix_generic , 1);   
+MEMB(pacotes_memb, struct Array_generic , 1); 
+
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);
 
@@ -217,7 +236,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
                        uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
 {
-  struct tsch_link *l = NULL;
+  struct tsch_link *l = NULL; 
+  uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -240,12 +260,14 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_ERR("! add_link memb_alloc failed\n");
         tsch_release_lock();
       } else {
-        static int current_link_handle = 0;
         struct tsch_neighbor *n;
-        /* Add the link to the slotframe */
+        /* Add the link to the slotframe */ 
+        //static int count = 0 ;
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        l->handle = current_link_handle++;
+        //l->handle = count++ ; 
+        l->handle = count_lines();
+        LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -272,8 +294,14 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
           if(n != NULL) {
             n->tx_links_count++;
             if(!(l->link_options & LINK_OPTION_SHARED)) {
-              n->dedicated_tx_links_count++;
-            }
+              n->dedicated_tx_links_count++; 
+              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
+                + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              
+              tsch_write_in_file(node_neighbor, node);   
+                          }
           }
         }
       }
@@ -489,7 +517,10 @@ tsch_schedule_init(void)
 {
   if(tsch_get_lock()) {
     memb_init(&link_memb);
-    memb_init(&slotframe_memb);
+    memb_init(&slotframe_memb); 
+    memb_init(&matrix_memb);  
+    memb_init(&adj_memb); 
+    memb_init(&conf_memb);
     list_init(slotframe_list);
     tsch_release_lock();
     return 1;
@@ -555,6 +586,237 @@ tsch_schedule_print(void)
 
     LOG_PRINT("----- end slotframe list -----\n");
   }
+} 
+
+/*---------------------------------------------------------------------------*/
+
+
+struct matrix_generic *mapGraphConf(struct matrix_generic *adj, int tam_no, int tam_aresta){
+
+    /*
+    * alocado: matriz de duas posições que informa os nós de cada aresta da matriz de conflito
+    * x, y: índices da matriz
+    * noConf: representa o nó DO grafo de conflito
+    */ 
+   struct matrix_generic *alocado = memb_alloc(&conf_memb);  
+    int  x = 0 , y = 0 ;
+    int noConf = 0;
+
+    //Aloca a matriz   
+
+    for(int x = 0 ; x < tam_aresta ;x++){ 
+      for(int y = 0 ; y < 2; y++){  
+        struct generic_2dim_array_element *el = NULL;
+        el = memb_alloc(&conf_memb); 
+        list_add(alocado->Internal_list, el); 
+        el->colunm = y;  
+        el->line = x;  
+        el->value = 0 ;     
+        memb_free(&conf_memb, el);
+         
+      }
+    }      
+    
+    //"Captura" as arestas e armazena
+    for(x = 1; x < tam_no; x++)
+        for(y = 1; y < tam_no; y++) 
+             for(struct generic_2dim_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)){ 
+               if(el_aux->line == x && el_aux->colunm == y){ 
+                 if(el_aux->value != 0 ){
+                   for(struct generic_2dim_array_element *el_alocado = list_head(alocado->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux))
+                      if(el_alocado->line == noConf && el_alocado->colunm == 0 ){ 
+                          el_alocado->value = x ;
+                      } 
+                      else if(el_alocado->line == noConf && el_alocado->colunm == 1 ){ 
+                          el_alocado->value = y; 
+                      }
+                      noConf++; 
+                }
+               }
+               
+             }
+            
+
+    return alocado;
 }
 /*---------------------------------------------------------------------------*/
+
+void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes){
+    int i;
+     for(i = 0; i < 16; i++){
+        if(aloca_canal[i][tempo] == -1)
+            continue; 
+        if(pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] > 0){
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][0]] -= peso;
+            pacotes[mapa_graf_conf[aloca_canal[i][tempo]][1]] += peso;
+        }
+        if(mapa_graf_conf[aloca_canal[i][tempo]][1] == raiz)
+             (*pacote_entregue) += peso;
+    }
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+struct Array_generic *alocaPacotes(int num_no, struct matrix_generic *adj){
+  int qtd_pacotes = 0; 
+    struct Array_generic *pre_pacotes = memb_alloc(&pacotes_memb);  
+    LIST_STRUCT_INIT(pre_pacotes,list_packages_node); 
+    
+
+    //Percorre o vetor de pacotes
+    for(struct generic_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)){  
+        if(el_aux->value == 1){
+                qtd_pacotes = peso; 
+            } 
+        if(qtd_pacotes){ 
+          struct generic_array_element *el = NULL;
+          el = memb_alloc(&generic_array_memb);  
+          list_add(pre_pacotes->list_packages_node, el); 
+          el->line = el_aux->line;  
+          el->value = qtd_pacotes;
+          //vetor[x] = qtd_pacotes;
+          }
+        else { 
+          struct generic_array_element *el = NULL;
+          el = memb_alloc(&generic_array_memb);  
+          list_add(pre_pacotes->list_packages_node, el); 
+          el->line = el_aux->line;  
+          el->value = 0 ;
+        }
+
+        qtd_pacotes = 0;
+      }  
+    
+    return pre_pacotes; 
+    }  
+
+
+
+/*-----------------------------------------------------------------------------------------------------*/
+ // Return the number of nodes defined for this network     
+int tsch_num_nos(){ 
+  int i = MAX_NOS; 
+  return i; 
+}  
+/*---------------------------------------------------------------------------*/
+void tsch_write_in_file(int n_origin, int n_destin){ 
+  FILE *file; 
+  file = fopen(endereco, "a");
+  if(file == NULL){
+        printf("The file was not opened\n");
+        return ; 
+  } 
+  fprintf(file, "%d %d\n",n_origin,n_destin);
+  fclose(file);
+} 
+/*---------------------------------------------------------------------------*/
+int count_lines() 
+{ 
+    FILE *fp; 
+    int count = 1;    
+    char c;  
+    fp = fopen(endereco, "r"); 
+    if (fp == NULL) return 0; 
+    for (c = getc(fp); c != EOF; c = getc(fp)) 
+        if (c == '\n') 
+            count = count + 1; 
+    fclose(fp); 
+    return count+1; 
+}      
+/*---------------------------------------------------------------------------*/
+ 
+void SCHEDULE_static(){  
+  FILE *fl;      
+  int i = 0 ;   
+  int node_origin, node_destin;  
+  struct matrix_generic *adj = memb_alloc(&adj_memb);   
+  struct matrix_generic *conf = NULL; 
+  int  tamAresta = MAX_NOS;     
+  int numNo = MAX_NOS - 1;   
+ struct Array_generic *pacotes = NULL;  
+
+  if(tsch_get_lock()){    
+      fl = fopen(endereco, "r"); 
+      if(fl == NULL){
+          printf("The file was not opened\n");
+          return ; 
+      }    
+    LIST_STRUCT_INIT(adj, Internal_list); 
+    for(int i = 0 ; i < MAX_NOS ;i++){ 
+      for(int j = 0 ; j < MAX_NOS; j++){  
+        struct generic_2dim_array_element *el = NULL;
+        el = memb_alloc(&matrix_memb); 
+        list_add(adj->Internal_list, el); 
+        el->colunm = j;  
+        el->line = i;  
+        el->value = 0;     
+        printf("el->line: %u el->colunm: %u el->value: %u\n", el->colunm, el->line, el->value); 
+        memb_free(&matrix_memb, el);
+         
+      }
+    } 
+
+      // //read the topology 
+      while(!feof(fl)){      
+              fscanf(fl,"%d %d",&node_origin, &node_destin);       
+              if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+          
+                      for(struct generic_2dim_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+                      if (el_aux->line == node_origin && el_aux->colunm == node_destin ){
+                          if(el_aux->value == 0 && node_origin != no_raiz) 
+                            el_aux->value = 1 ; 
+                            printf("value: %u",el_aux->value);
+                            printf("%d-> %d\n",node_origin, node_destin); 
+                            i++; 
+                          }   
+                         
+                      }
+                  } 
+                if(feof(fl)) break ;
+              }     
+      tamAresta = i ;  
+      printf("TAmAresta: %d\n", tamAresta); 
+      for(struct generic_2dim_array_element *el_aux = list_head(adj->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->colunm: %u el->value: %u\n", el_aux->line , el_aux->colunm, el_aux->value);
+      }  
+      pacotes = alocaPacotes(numNo,adj);  
+      for(struct generic_2dim_array_element *el_aux = list_head(pacotes->list_packages_node); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
+      } 
+      conf = mapGraphConf(adj, numNo, tamAresta);  
+      for(struct generic_2dim_array_element *el_aux = list_head(conf->Internal_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
+        printf("el->line: %u el->value: %u\n",el_aux->line, el_aux->value);
+      }
+
+
+
+
+      }  
+
+
+ 
+
+
+} 
+
+/*---------------------------------------------------------------------------*/
+  
+int sort_node_to_create_link(int n){ 
+ 
+  unsigned short  random_node;    
+  int aux_n = n - 1 ;  
+  int final_sorted_node; 
+
+  random_node = random_rand() % aux_n;
+  while(random_node <= 1 ){ 
+    random_node = random_rand() % aux_n;
+    if (random_node > 1) break; 
+  } 
+  final_sorted_node = (int) random_node;
+  
+  return final_sorted_node; 
+ 
+ }
+
+
+
 /** @} */

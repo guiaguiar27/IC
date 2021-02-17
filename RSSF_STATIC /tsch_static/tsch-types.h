@@ -152,7 +152,26 @@ struct input_packet {
   int len; /* Packet len */
   int16_t rssi; /* RSSI for this packet */
   uint8_t channel; /* Channel we received the packet on */
+};  
+
+struct generic_2dim_array_element{ 
+  uint16_t value ;  
+  uint16_t colunm ;  
+  uint16_t line ; 
+  struct generic_2d_array_element *next; 
+}; 
+struct generic_array_element{ 
+  uint16_t value ;   
+  uint16_t line ; 
+  struct generic_array_element *next; 
+};   
+struct matrix_generic{ 
+  LIST_STRUCT(Internal_list);
+};  
+struct Array_generic{ 
+  LIST_STRUCT(list_packages_node);
 };
+
 
 #endif /* __TSCH_CONF_H__ */
 /** @} */
