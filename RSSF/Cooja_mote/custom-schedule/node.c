@@ -42,9 +42,6 @@
 #include "sys/energest.h"    
 #include "net/ipv6/uip-ds6-nbr.h" 
 
-#include <string.h>
-#include <stdlib.h>
-#include <stddef.h>
 
 #include "sys/log.h"
 #define LOG_MODULE "App"
@@ -68,7 +65,6 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
-/* Put all unicast cells on the same timeslot (for demonstration purposes only) */
 #define APP_UNICAST_TIMESLOT 16 
 #define APP_CHANNEL_OFSETT 16 
 
@@ -174,9 +170,6 @@ PROCESS_THREAD(node_process, ev, data)
   PROCESS_BEGIN();
 
   initialize_tsch_schedule();
-  
-  // testing nbr_table
-  
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
@@ -193,6 +186,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   /* Main loop */
   while(1) {
+    
     static uip_ds6_nbr_t *nbr;  
     LOG_INFO("___NBR_TABLE____\n");
     for(nbr = uip_ds6_nbr_head();
