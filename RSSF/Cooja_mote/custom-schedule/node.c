@@ -54,7 +54,8 @@
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)
 
 PROCESS(node_process, "TSCH Schedule Node");
-AUTOSTART_PROCESSES(&node_process);
+AUTOSTART_PROCESSES(&node_process); 
+static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 
 /*
  * Note! This is not an example how to design a *good* schedule for TSCH,
@@ -86,8 +87,7 @@ initialize_tsch_schedule(void)
   int num_links = 1 ;    
   uint16_t remote_id = 1; 
   linkaddr_t addr; 
-
-  if(node_id == 1){  
+  
     
      for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
@@ -97,8 +97,7 @@ initialize_tsch_schedule(void)
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
-  }
-  
+    
   
   else if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
@@ -179,13 +178,15 @@ PROCESS_THREAD(node_process, ev, data)
   // testing nbr_table
   
 
+  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);
 
-  if(node_id == 1) {  /* Running on the root? */
-    NETSTACK_ROUTING.root_start();
-  }
+
+  // if(node_id == 1) {  /* Running on the root? */
+  //   NETSTACK_ROUTING.root_start();
+  // }
 
   /* Main loop */
   while(1) {
@@ -194,11 +195,10 @@ PROCESS_THREAD(node_process, ev, data)
     for(nbr = uip_ds6_nbr_head();
     nbr != NULL;
     nbr = uip_ds6_nbr_next(nbr)) {
-      if (nbr != NULL )LOG_INFO("NULL\n ");
       uip_ipaddr_t addr = (uip_ipaddr_t ) nbr->ipaddr; 
       LOG_INFO_6ADDR(&addr); 
     } 
-     
+
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(NETSTACK_ROUTING.node_is_reachable()
        && NETSTACK_ROUTING.get_root_ipaddr(&dst)) { 

@@ -593,27 +593,6 @@ void executa(int num_aresta, int num_no,  int **aloca_canal, int tempo, int (*ma
             (*pacote_entregue) += peso;
     }
 } 
-// void executa(int num_aresta, int num_no, struct tsch_slotframe *slotframe, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
-//     int i;
-//     int slot, value_link ; 
-//     for(i = 0; i < Channel; i++){ 
-        
-//         for(struct tsch_link *el_aux = list_head(slotframe->links_list); el_aux != NULL; el_aux = list_item_next(el_aux)) {
-//                       if (el_aux->channel_offset == i && el_aux->timeslot == tempo){
-//                           slot = el_aux->handle;  
-//                           value_link = el_aux->value; 
-//                       } 
-//         } 
-//         if(value_link == 0) 
-//           continue;  
-//         if((*pacotes)[(*mapa_graf_conf)[slot][0]] > 0){
-//             (*pacotes)[(*mapa_graf_conf)[slot][0]] -= peso;
-//             (*pacotes)[(*mapa_graf_conf)[slot][1]] += peso;
-//         }
-//         if((*mapa_graf_conf)[slot][1] == raiz)
-//             (*pacote_entregue) += peso;
-//     }
-// }
 /*------------------------------------------------------------------------------------------------------------*/
 void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;

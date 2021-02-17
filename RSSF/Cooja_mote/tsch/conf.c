@@ -23,6 +23,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     while(no_atual == raiz && no_atual <= num_no){ 
         no_atual = rand() % num_no;
     }
+    
     for(x = 0; x < num_no; x++){
         if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
             no_atual = x; 
