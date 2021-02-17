@@ -66,7 +66,8 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 #define APP_UNICAST_TIMESLOT 16 
-#define APP_CHANNEL_OFSETT 16 
+#define APP_CHANNEL_OFSETT 16  
+
 
 static void
 initialize_tsch_schedule(void)
