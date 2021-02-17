@@ -1104,6 +1104,7 @@ int sort_node_to_create_link(int n){
   return final_sorted_node; 
  
  }  
+ 
 #if NBR_TSCH
 void tsch_print_neighbors(int nbr){   
   static int  count = 0 ;  
@@ -1117,7 +1118,7 @@ void tsch_print_neighbors(int nbr){
     }  
     nbr = list_item_next(nbr);
   }   
-  
+
   if(flag == 1)
     list_add(nbr_list, &nbr);   
  }  
