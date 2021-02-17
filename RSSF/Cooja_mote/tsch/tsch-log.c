@@ -88,6 +88,7 @@ tsch_log_process_pending(void)
              log->burst_count, log->link->timeslot + log->burst_count, log->channel_offset,
              log->channel); 
              if(log->link->link_options == LINK_TYPE_ADVERTISING){ 
+               // tem que pegar do rx  
                LOG_INFO("\n"); 
                LOG_LLADDR(log->link->addr);
              } 
