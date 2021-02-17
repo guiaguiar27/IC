@@ -99,7 +99,7 @@ initialize_tsch_schedule(void)
       slot_offset, channel_offset,0);
     
   
-  else if (node_id != 1) {
+  if (node_id != 1) {
     if (node_id == 2 || node_id == 3){ 
       uint8_t link_options;
        
@@ -188,8 +188,8 @@ PROCESS_THREAD(node_process, ev, data)
   //   NETSTACK_ROUTING.root_start();
   // } 
   // ativa os protocolos da camda de rede 
-  
-  NETSTACK_MAC.on()
+
+  NETSTACK_MAC.on(); 
 
   /* Main loop */
   while(1) {
