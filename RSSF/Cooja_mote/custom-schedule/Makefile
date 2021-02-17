@@ -8,8 +8,8 @@ CONTIKI=../../..
 # force Security from command line
 MAKE_WITH_SECURITY ?= 0
 
-MAKE_MAC = MAKE_MAC_TSCH 
-MAKE_NET = MAKE_NET_IPV6 
+MAKE_MAC = MAKE_MAC_TSCH
+MAKE_NET = MAKE_NET_IPV6
 MAKE_ROUTING = MAKE_ROUTING_NULLROUTING
 
 include $(CONTIKI)/Makefile.dir-variables
