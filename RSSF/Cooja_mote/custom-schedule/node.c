@@ -186,14 +186,16 @@ PROCESS_THREAD(node_process, ev, data)
 
   /* Main loop */
   while(1) {
-    
+    LOG_INFO(" TABLE \n");
     nbr_table_item_t *item = nbr_table_head(nbr_routes);
-    while(item != NULL) {
-    linkaddr_t *addr = nbr_table_get_lladdr(nbr_routes, item);
-    LOG_INFO_6ADDR(addr);
-    item = nbr_table_next(nbr_routes, item);
+    while(item != NULL) { 
+      LOG_INFO(" ENTROU\n");
+      linkaddr_t *addr = nbr_table_get_lladdr(nbr_routes, item);
+      LOG_INFO_LLADDR(addr);
+      item = nbr_table_next(nbr_routes, item);
   } 
-
+    int num = uip_ds6_route_num_routes(); 
+    LOG_INFO("Numero routes%d ",num);
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     if(tsch_is_associated) { 
 
