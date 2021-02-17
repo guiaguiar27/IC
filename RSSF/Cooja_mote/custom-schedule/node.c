@@ -197,6 +197,7 @@ PROCESS_THREAD(node_process, ev, data)
     int num = uip_ds6_route_num_routes(); 
     LOG_INFO("Numero routes%d ",num);
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+    
     if(tsch_is_associated) { 
 
      //SCHEDULE_static();
