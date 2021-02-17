@@ -117,7 +117,7 @@ tsch_log_process_pending(void)
         } else {
           printf("\n");
         } 
-        if(log->rx.is_unicast){ 
+        if(log->rx.is_unicast != 0 ){ 
           printf("\n--------------------------------\n");
           log_lladdr_compact(&log->rx.src);
           printf("->");
