@@ -55,7 +55,8 @@
 #define NETSTACK_CONF_WITH_IPV6  1    
 #define UIP_CONF_ND6_SEND_NS 1  
 #define UIP_CONF_ND6_SEND_NA 1  
-#define UIP_CONF_ND6_SEND_RA 1  
+#define UIP_CONF_ND6_SEND_RA 1   
+#define UIP_CONF_MAX_ROUTES 10
 
 /*******************************************************/
 /******************* Configure TSCH ********************/
