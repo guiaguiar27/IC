@@ -149,7 +149,10 @@ typedef unsigned long clock_time_t;
 #define NULLRDC_CONF_SEND_802154_ACK 1
 #define NULLRDC_CONF_ACK_WAIT_TIME                RTIMER_SECOND / 500
 #define NULLRDC_CONF_AFTER_ACK_DETECTED_WAIT_TIME 0
-
+//Removes (undefines) a name previously created with #define.
+#undef UIP_CONF_IPV6_RPL
+#define UIP_CONF_IPV6_RPL 0
+#define RPL_BORDER_ROUTER 0
 
 // Network setup for IPv6 *
 #define NETSTACK_CONF_NETWORK       sicslowpan_driver
