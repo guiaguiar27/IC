@@ -78,7 +78,10 @@ MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 /* Pre-allocated space for slotframes */
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
-LIST(slotframe_list);
+LIST(slotframe_list);  
+#if NBR_TSCH
+LIST(nbr_list); 
+#endif  
 
 /* Adds and returns a slotframe (NULL if failure) */
 struct tsch_slotframe *
@@ -512,7 +515,10 @@ tsch_schedule_init(void)
   if(tsch_get_lock()) {
     memb_init(&link_memb);
     memb_init(&slotframe_memb);
-    list_init(slotframe_list);
+    list_init(slotframe_list);  
+    #if NBR_TSCH
+    list_inti(nbr_list); 
+    #endif 
     tsch_release_lock();
     return 1;
   } else {
@@ -1097,27 +1103,22 @@ int sort_node_to_create_link(int n){
   
   return final_sorted_node; 
  
+ }  
+#if NBR_TSCH
+void tsch_print_neighbors(int nbr){   
+    list_add(nbr_list, nbr);   
+ }  
+
+void show_nbr(){  
+   LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
+   int *nbr = list_head(nbr_list); 
+   while(nbr != NULL){ 
+     LOG_INFO("%d\n",nbr); 
+     nbr = list_item_next(nbr_list); 
+   } 
  } 
-void tsch_print_neighbors(){   
-   
-  const struct link_stats *stats = NULL;    
-  uint8_t cont = 1 ; 
-  const linkaddr_t *aux_addr;  
-  stats = link_stats_from_lladdr(&linkaddr_node_addr);  
-  LOG_PRINT("neighbor of "); 
-  LOG_INFO_LLADDR(&linkaddr_node_addr);  
-  LOG_PRINT("\n");
+ #endif 
 
-  do{ 
-    aux_addr = link_stats_get_lladdr(stats);  
-    LOG_PRINT(" Neighbor %u Addr:", cont);
-    LOG_INFO_LLADDR(aux_addr); 
-    LOG_PRINT("\n"); 
-    cont++ ; 
-  }
-  while(aux_addr != NULL);
-
- }
 
 
 

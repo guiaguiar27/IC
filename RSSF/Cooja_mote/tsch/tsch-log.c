@@ -116,14 +116,23 @@ tsch_log_process_pending(void)
           printf(", dr %3d\n", log->rx.drift);
         } else {
           printf("\n");
-        } 
-        if(log->rx.is_unicast != 0 ){ 
+        }  
+
+        #if NBR_TSCH
+        if(log->rx.is_unicast != 0 ){  
+
+          int src;  
           printf("\n--------------------------------\n");
           log_lladdr_compact(&log->rx.src);
           printf("->");
-          log_lladdr_compact(&linkaddr_node_addr; 
-          printf("\n--------------------------------\n");
-        }
+          log_lladdr_compact(&linkaddr_node_addr); 
+          printf("\n--------------------------------\n"); 
+          src = log->rx.src.u8[LINKADDR_SIZE - 1]
+                + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8);  
+          tsch_print_neighbors(src);
+        } 
+        #endif  
+
         break;
       case tsch_log_message:
         printf("%s\n", log->message);

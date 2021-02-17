@@ -172,7 +172,12 @@ int SCHEDULE_AUX(int **adj);
 int SCHEDULE_static(); 
 int sort_node_to_create_link(int n);     
 int count_packs(); 
-void tsch_print_neighbors(); 
-//int test_slot(); 
+void tsch_print_neighbors();  
+
+#if NBR_TSCH
+void tsch_print_neighbors(int nbr);
+void show_nbr(); 
+ #endif 
+
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

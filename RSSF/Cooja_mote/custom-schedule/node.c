@@ -66,10 +66,11 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 #define APP_UNICAST_TIMESLOT 16 
-#define APP_CHANNEL_OFSETT 16  
+#define APP_CHANNEL_OFSETT 16   
 
-static void init_broad(void){ 
-  LOG_PRINT("Initialize tsch schedule\n");
+#if NBR_TSCH 
+static void init_broad(void){  
+
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
@@ -83,7 +84,9 @@ static void init_broad(void){
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
     
-}
+} 
+#endif  
+
 static void
 initialize_tsch_schedule(void)
 {
@@ -183,8 +186,10 @@ PROCESS_THREAD(node_process, ev, data)
   static uint32_t seqnum;
   uip_ipaddr_t dst;
 
-  PROCESS_BEGIN();
-  init_broad();
+  PROCESS_BEGIN(); 
+  #if NBR_TSCH 
+  init_broad(); 
+  #endif 
   if(node_id == 19) initialize_tsch_schedule();
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
@@ -200,6 +205,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   NETSTACK_MAC.on(); 
 
+
   /* Main loop */
   while(1) {
     LOG_INFO(" TABLE \n");
@@ -209,9 +215,14 @@ PROCESS_THREAD(node_process, ev, data)
       linkaddr_t *addr = nbr_table_get_lladdr(nbr_routes, item);
       LOG_INFO_LLADDR(addr);
       item = nbr_table_next(nbr_routes, item);
-  } 
+    } 
     int num = uip_ds6_route_num_routes(); 
     LOG_INFO("Numero routes%d ",num);
+    
+    #if NBR_TSCH  
+      show_nbr(); 
+    #endif 
+    
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     
     if(tsch_is_associated) { 

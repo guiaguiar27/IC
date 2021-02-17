@@ -74,7 +74,9 @@
 /* Enable security */
 #define LLSEC802154_CONF_ENABLED 1
 
-#endif /* WITH_SECURITY */
+#endif /* WITH_SECURITY */ 
+
+#define NBR_TSCH 1 
 
 /*******************************************************/
 /************* Other system configuration **************/
