@@ -197,8 +197,7 @@ PROCESS_THREAD(node_process, ev, data)
     } 
 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    if(NETSTACK_ROUTING.node_is_reachable()
-       && NETSTACK_ROUTING.get_root_ipaddr(&dst)) { 
+    if(tsch_is_associated) { 
      
      //SCHEDULE_static();
       /* Send network uptime timestamp to the network root node */
