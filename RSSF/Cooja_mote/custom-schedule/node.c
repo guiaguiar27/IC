@@ -68,7 +68,22 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #define APP_UNICAST_TIMESLOT 16 
 #define APP_CHANNEL_OFSETT 16  
 
-
+static void init_broad(void){ 
+  LOG_PRINT("Initialize tsch schedule\n");
+  // APP_SLOTFRAME_SIZE
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  uint16_t slot_offset;
+  uint16_t channel_offset; 
+  
+  slot_offset = 0;
+  channel_offset = 0;
+  
+    tsch_schedule_add_link(sf_common,
+      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset,0);
+    
+}
 static void
 initialize_tsch_schedule(void)
 {
@@ -169,8 +184,8 @@ PROCESS_THREAD(node_process, ev, data)
   uip_ipaddr_t dst;
 
   PROCESS_BEGIN();
-
-  initialize_tsch_schedule();
+  init_broad();
+  if(node_id == 19) initialize_tsch_schedule();
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */

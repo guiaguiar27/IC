@@ -87,11 +87,7 @@ tsch_log_process_pending(void)
              log->link->slotframe_handle, sf ? sf->size.val : 0,
              log->burst_count, log->link->timeslot + log->burst_count, log->channel_offset,
              log->channel); 
-             if(log->link->link_options == LINK_TYPE_ADVERTISING){ 
-               // tem que pegar do rx  
-               LOG_INFO("\n"); 
-               LOG_LLADDR(log->link->addr);
-             } 
+              
     }
     switch(log->type) {
       case tsch_log_tx:
@@ -120,6 +116,13 @@ tsch_log_process_pending(void)
           printf(", dr %3d\n", log->rx.drift);
         } else {
           printf("\n");
+        } 
+        if(log->rx.is_unicast){ 
+          printf("\n--------------------------------\n");
+          log_lladdr_compact(&log->rx.src);
+          printf("->");
+          log_lladdr_compact(&linkaddr_node_addr; 
+          printf("\n--------------------------------\n");
         }
         break;
       case tsch_log_message:
