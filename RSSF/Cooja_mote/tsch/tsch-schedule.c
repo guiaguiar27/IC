@@ -517,7 +517,7 @@ tsch_schedule_init(void)
     memb_init(&slotframe_memb);
     list_init(slotframe_list);  
     #if NBR_TSCH
-    list_inti(nbr_list); 
+    list_init(nbr_list); 
     #endif 
     tsch_release_lock();
     return 1;
@@ -1106,7 +1106,7 @@ int sort_node_to_create_link(int n){
  }  
 #if NBR_TSCH
 void tsch_print_neighbors(int nbr){   
-    list_add(nbr_list, nbr);   
+    list_add(nbr_list, &nbr);   
  }  
 
 void show_nbr(){  
