@@ -92,7 +92,10 @@ static void init_broad(void){
 
 int initialize_tsch_schedule(void){
 
-  LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
+ 
+  if(tsch_is_associated){ 
+    LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
+ 
   tsch_schedule_remove_all_slotframes(); 
   
   int i, j; 
@@ -113,7 +116,7 @@ int initialize_tsch_schedule(void){
     //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
     //   slot_offset, channel_offset,0);
     
-    if(tsch_is_associated){
+    
     if (node_id != 1) {
       
       for (i = 0 ; i <  num_links ; ++i) { 
@@ -145,7 +148,8 @@ int initialize_tsch_schedule(void){
             LINK_TYPE_NORMAL, &addr,
             slot_offset, channel_offset,0);
         } 
-    }
+    } 
+    else LOG_PRINT("Not associated\n");
     return remote_id;
     } 
       
@@ -208,7 +212,11 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) {
     
     #if NBR_TSCH  
-      show_nbr();     
+      show_nbr();   
+
+
+      // adapatação sem contar com o tempo 
+      LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag);    
       if(verify == 0){ 
         verify = change_slotframe(&flag);
         if(verify == 1 && flag == 1){  
@@ -216,6 +224,7 @@ PROCESS_THREAD(node_process, ev, data)
           LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag); 
           int aux_id = initialize_tsch_schedule();  
           LOG_INFO("%d \n",aux_id); 
+      
       }
       }
        
