@@ -79,9 +79,9 @@ MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
 MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list);  
-#if NBR_TSCH
-LIST(nbr_list);  
-int NBRlist[MAX_NEIGHBORS]; 
+
+#if NBR_TSCH 
+  int NBRlist[MAX_NEIGHBORS]; 
 #endif  
 
 /* Adds and returns a slotframe (NULL if failure) */
@@ -517,9 +517,11 @@ tsch_schedule_init(void)
     memb_init(&link_memb);
     memb_init(&slotframe_memb);
     list_init(slotframe_list);  
+    
     #if NBR_TSCH
-    list_init(nbr_list); 
+      list_init_nbr(); 
     #endif 
+    
     tsch_release_lock();
     return 1;
   } else {
@@ -1099,74 +1101,64 @@ int sort_node_to_create_link(int n){
     return 0; 
  }  
 
-#if NBR_TSCH
-void tsch_print_neighbors(int nbr){
-    LOG_PRINT("_NBR_!\n");
-    int *nbr_aux = list_head(nbr_list); 
-    int flag = 0 ;  
-
-    while(nbr_aux != NULL){ 
-      if(*nbr_aux == nbr){ 
-        flag = 1 ; 
-        break ;  
-        LOG_PRINT("Already Computed!\n");
-      }  
-      nbr_aux = list_item_next(nbr_aux);
-    }   
-
-    if(flag == 0){ 
-      LOG_PRINT("nbr computed!\n");
-      list_add(nbr_list, &nbr);   
-    }
-
-}
-
-void show_nbr(){   
-  LOG_INFO("\n____TABLE____ \n");
-   int *nbr = list_head(nbr_list); 
-   while(nbr != NULL){  
-     LOG_INFO("%d\n",nbr); 
-     nbr = list_item_next(nbr); 
-   } 
- } 
- #endif  
-
-
-//  #if NBR_TSCH
-// void tsch_print_neighbors(int nbr){   
-// static int count = 0 ;
-//   LOG_PRINT("Counter :%d\n",count);
-//   NBRlist[count] = nbr; 
-  
-//   if (nbr< 0){     
+// #if NBR_TSCH
+// void tsch_print_neighbors(int nbr){
+//     LOG_PRINT("_NBR_!\n");
 //     int *nbr_aux = list_head(nbr_list); 
 //     int flag = 0 ;  
 
 //     while(nbr_aux != NULL){ 
 //       if(*nbr_aux == nbr){ 
 //         flag = 1 ; 
-//         break ; 
+//         break ;  
+//         LOG_PRINT("Already Computed!\n");
 //       }  
 //       nbr_aux = list_item_next(nbr_aux);
 //     }   
 
-//     if(flag == 0) 
-
+//     if(flag == 0){ 
+//       LOG_PRINT("nbr computed!\n");
 //       list_add(nbr_list, &nbr);   
-//   }  
+//     }
 
 // }
 
-// void show_nbr(){  
-//    LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
-//    for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d",NBRlist[i]);
+// void show_nbr(){   
+//   LOG_INFO("\n____TABLE____ \n");
 //    int *nbr = list_head(nbr_list); 
 //    while(nbr != NULL){  
 //      LOG_INFO("%d\n",nbr); 
 //      nbr = list_item_next(nbr); 
 //    } 
 //  } 
-//  #endif 
+//  #endif  
+
+
+#if NBR_TSCH 
+  // inicia 
+  void list_init_nbr(void){ 
+      for(int i = 0 ; i < MAX_NEIGHBORS;i++) NBRlist[i] = 0;
+  } 
+  // preenche 
+  void tsch_print_neighbors(int nbr){   
+    int count = 0 ;
+    LOG_PRINT("Counter :%d\n",count);
+    
+    for(count = 0; count < MAX_NEIGHBORS ; cont++ ){ 
+        if(NBRlist[count] == 0 ){ 
+          NBRlist[count] = nbr; 
+          break; 
+        }   
+    }
+
+  }
+  // imprime
+  void show_nbr(){  
+    LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
+    for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d",NBRlist[i]);
+    
+ } 
+ #endif 
 
 
 

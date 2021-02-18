@@ -176,7 +176,8 @@ void tsch_print_neighbors();
 
 #if NBR_TSCH
 void tsch_print_neighbors(int nbr);
-void show_nbr(); 
+void show_nbr(void);  
+void list_init_nbr(void);
  #endif 
 
 #endif /* __TSCH_SCHEDULE_H__ */
