@@ -40,7 +40,8 @@
 #include "lib/random.h"
 #include "sys/node-id.h" 
 #include "sys/energest.h"    
-#include "net/ipv6/uip-ds6-nbr.h" 
+#include "net/ipv6/uip-ds6-nbr.h"  
+#include "deployment.h"
 
 
 #include "sys/log.h"
@@ -184,12 +185,13 @@ PROCESS_THREAD(node_process, ev, data)
   #endif  
 
     int aux_id = initialize_tsch_schedule(); 
-     for(j = 0; j < sizeof(addr_dest); j += 2) {
+     for(int j = 0; j < sizeof(addr_dest); j += 2) {
         addr_dest.u8[j + 1] = aux_id & 0xff;
         addr_dest.u8[j + 0] = aux_id >> 8;
       } 
-    }   
-    dst = (uip_ipaddr_t) addr_dest; 
+      
+    deployment_iid_from_id (&dst, aux_id)
+    //dst = (uip_ipaddr_t) addr_dest; 
     
 
 
