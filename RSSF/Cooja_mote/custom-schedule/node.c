@@ -142,9 +142,10 @@ linkaddr_t *initialize_tsch_schedule(void){
           LINK_TYPE_NORMAL, addr,
           slot_offset, channel_offset,0);
       }
+    return addr;
     } 
-    return addr;  
-  }
+      
+  
 
   
 
@@ -173,7 +174,7 @@ PROCESS_THREAD(node_process, ev, data)
   static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   static uint32_t seqnum;
-  uip_ipaddr_t *dst; 
+  uip_ipaddr_t dst; 
   linkaddr_t *addr; 
 
   PROCESS_BEGIN(); 
@@ -182,7 +183,7 @@ PROCESS_THREAD(node_process, ev, data)
   #endif  
 
     addr = initialize_tsch_schedule(); 
-    dst = (linkaddr_t *) addr; 
+    *dst = (uip_ipaddr_t *) addr; 
     
 
 
