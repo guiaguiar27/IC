@@ -216,7 +216,10 @@ PROCESS_THREAD(node_process, ev, data)
       verify = change_slotframe(&flag); 
       if(verify == 1 && flag == 1){ 
         LOG_INFO("Ha vizinhos -> cria link \n"); 
-        int aux_id = initialize_tsch_schedule(); 
+        int aux_id = initialize_tsch_schedule();  
+        LOG_INFO("%d \n",aux_id); 
+        
+
       }
       // mudanca  
     #endif 
