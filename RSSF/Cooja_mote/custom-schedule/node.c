@@ -69,6 +69,8 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #define APP_UNICAST_TIMESLOT 16 
 #define APP_CHANNEL_OFSETT 16   
 
+
+
 #if NBR_TSCH 
 static void init_broad(void){  
 
@@ -106,43 +108,44 @@ int initialize_tsch_schedule(void){
   uint16_t remote_id = 1; 
   linkaddr_t addr; 
   
-    tsch_schedule_add_link(sf_common,
-      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset,0);
+    // tsch_schedule_add_link(sf_common,
+    //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+    //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+    //   slot_offset, channel_offset,0);
     
-  
-  if (node_id != 1) {
-    
-    for (i = 0 ; i <  num_links ; ++i) { 
-     
-      #if NBR_TSCH 
-      remote_id = sort_node_to_create_link(node_id);  
-      #else  
-      remote_id = random_rand() % node_id ; 
-      #endif 
-      if(remote_id == 0){ 
-        LOG_INFO("There are no neighbors\n"); 
-        return 0 ;
-      } 
+    if(tsch_is_associated){
+    if (node_id != 1) {
+      
+      for (i = 0 ; i <  num_links ; ++i) { 
+      
+        #if NBR_TSCH 
+        remote_id = sort_node_to_create_link(node_id);  
+        #else  
+        remote_id = random_rand() % node_id ; 
+        #endif 
+        if(remote_id == 0){ 
+          LOG_INFO("There are no neighbors\n"); 
+          return 0 ;
+        } 
 
-    
-     for(j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
-      } 
-    }  
-      slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
-      channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
-      /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-      * backoff windows will not be reset correctly! */
-      link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+      
+      for(j = 0; j < sizeof(addr); j += 2) {
+          addr.u8[j + 1] = remote_id & 0xff;
+          addr.u8[j + 0] = remote_id >> 8;
+        } 
+      }  
+        slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
+        channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
+        /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+        * backoff windows will not be reset correctly! */
+        link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
 
-      tsch_schedule_add_link(sf_common,
-          link_options,
-          LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0);
-      }
+        tsch_schedule_add_link(sf_common,
+            link_options,
+            LINK_TYPE_NORMAL, &addr,
+            slot_offset, channel_offset,0);
+        } 
+    }
     return remote_id;
     } 
       
@@ -176,7 +179,7 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer; 
   static uint32_t seqnum;
   uip_ipaddr_t dst;   
-  int flag = 0, verify = 0  ; 
+  int flag = 0, verify = 0 ; 
 
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
@@ -190,23 +193,16 @@ PROCESS_THREAD(node_process, ev, data)
     
   #endif  
 
-    
-
-
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
   // para mudar o slotframe;  
-
-
    if(node_id == 1) {  /* Running on the root? */
      NETSTACK_ROUTING.root_start();
    } 
   // ativa os protocolos da camda de rede 
-
   NETSTACK_MAC.on(); 
-
 
   /* Main loop */
   while(1) {
