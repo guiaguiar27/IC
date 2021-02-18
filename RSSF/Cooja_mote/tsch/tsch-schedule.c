@@ -1139,7 +1139,8 @@ int sort_node_to_create_link(int n){
   void list_init_nbr(void){ 
       for(int i = 0 ; i < MAX_NEIGHBORS;i++) NBRlist[i] = 0;
   } 
-  // preenche 
+  // preenche  
+  // implementei ontem 
   void tsch_print_neighbors(int nbr){   
     int count = 0 ;
     LOG_PRINT("Counter :%d\n",count);
