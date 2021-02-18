@@ -127,8 +127,8 @@ linkaddr_t *initialize_tsch_schedule(void){
 
     
      for(j = 0; j < sizeof(*addr); j += 2) {
-        *addr.u8[j + 1] = remote_id & 0xff;
-        *addr.u8[j + 0] = remote_id >> 8;
+        addr->u8[j + 1] = remote_id & 0xff;
+        addr->u8[j + 0] = remote_id >> 8;
       } 
       }  
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
@@ -139,11 +139,11 @@ linkaddr_t *initialize_tsch_schedule(void){
 
       tsch_schedule_add_link(sf_common,
           link_options,
-          LINK_TYPE_NORMAL, &addr,
+          LINK_TYPE_NORMAL, addr,
           slot_offset, channel_offset,0);
       }
     } 
-    return &(addr);  
+    return addr;  
   }
 
   
