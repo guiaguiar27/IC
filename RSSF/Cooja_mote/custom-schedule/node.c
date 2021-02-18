@@ -48,8 +48,7 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 #define UDP_PORT	8765
-#define SEND_INTERVAL		  (60 * CLOCK_SECOND)  
-#define CHANGE (10 *  CLOCK_SECOND)
+#define SEND_INTERVAL		  (60 * CLOCK_SECOND) 
 
 
 PROCESS(node_process, "TSCH Schedule Node");
@@ -174,17 +173,16 @@ rx_packet(struct simple_udp_connection *c,
 PROCESS_THREAD(node_process, ev, data)
 {
   static struct simple_udp_connection udp_conn;
-  static struct etimer periodic_timer;  
-  struct timer  timer_to_change; 
+  static struct etimer periodic_timer; 
   static uint32_t seqnum;
-  uip_ipaddr_t dst;  
+  uip_ipaddr_t dst;   
+  int flag = 0, verify = 0  ; 
 
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
     init_broad(); 
   #else  
-  linkaddr_t addr_dest;
-    int aux_id = initialize_tsch_schedule(); 
+  linkaddr_t addr_dest; 
      for(int j = 0; j < sizeof(addr_dest); j += 2) {
         addr_dest.u8[j + 1] = aux_id & 0xff;
         addr_dest.u8[j + 0] = aux_id >> 8;
@@ -200,8 +198,6 @@ PROCESS_THREAD(node_process, ev, data)
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
   // para mudar o slotframe;  
-  timer_set(&timer_to_change, CHANGE);
-  
 
 
    if(node_id == 1) {  /* Running on the root? */
@@ -216,9 +212,14 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) {
     
     #if NBR_TSCH  
-      show_nbr(); 
+      show_nbr();   
+      verify = change_slotframe(&flag); 
+      if(verify == 1 && flag == 1){ 
+        LOG_INFO("Ha vizinhos -> cria link \n"); 
+        int aux_id = initialize_tsch_schedule(); 
+      }
+      // mudanca  
     #endif 
-    if(timer_expired(&timer_to_change)) LOG_PRINT("\n______ TROCOU_____\n");
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     
     if(tsch_is_associated) { 

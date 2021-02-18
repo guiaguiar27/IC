@@ -1128,7 +1128,21 @@ int sort_node_to_create_link(int n){
     LOG_INFO("Lista de vizinhos que mandaram mensagem:\n");
     for(int i = 0 ; i < MAX_NEIGHBORS; i++) LOG_INFO("%d\n",NBRlist[i]);
     
- } 
+  } 
+  int change_slotframe(int *flag){  
+    static int counter = 0;
+    
+    for(int i = 0 ; i < MAX_NEIGHBORS; i++)  
+      counter += NBRlist[i]; 
+    
+    if (counter > 0){ 
+      flag = 1 ; 
+      return 1 ; 
+      
+    }   
+    
+    else return 0 ; 
+  } 
  #endif 
 
 
