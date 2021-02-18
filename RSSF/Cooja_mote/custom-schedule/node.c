@@ -104,13 +104,8 @@ linkaddr_t *initialize_tsch_schedule(void){
   channel_offset = 0;
   int num_links = 1 ;    
   uint16_t remote_id = 1; 
-  linkaddr_t addr; 
+  linkaddr_t *addr; 
   
-    
-     for(j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
-      } 
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
@@ -128,10 +123,13 @@ linkaddr_t *initialize_tsch_schedule(void){
       if(remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
         return NULL ;
-      }
-      for(j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
+      } 
+
+    
+     for(j = 0; j < sizeof(*addr); j += 2) {
+        *addr.u8[j + 1] = remote_id & 0xff;
+        *addr.u8[j + 0] = remote_id >> 8;
+      } 
       }  
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
@@ -145,9 +143,8 @@ linkaddr_t *initialize_tsch_schedule(void){
           slot_offset, channel_offset,0);
       }
     } 
-    return *(addr);  
-     
-  } 
+    return &(addr);  
+  }
 
   
 
