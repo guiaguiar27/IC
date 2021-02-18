@@ -88,7 +88,7 @@ static void init_broad(void){
 } 
 #endif  
 
-linkaddr_t *initialize_tsch_schedule(void){
+int initialize_tsch_schedule(void){
 
   LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes");
   tsch_schedule_remove_all_slotframes(); 
@@ -104,7 +104,7 @@ linkaddr_t *initialize_tsch_schedule(void){
   channel_offset = 0;
   int num_links = 1 ;    
   uint16_t remote_id = 1; 
-  linkaddr_t *addr; 
+  linkaddr_t addr; 
   
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
@@ -114,7 +114,8 @@ linkaddr_t *initialize_tsch_schedule(void){
   
   if (node_id != 1) {
     
-      for (i = 0 ; i <  num_links ; ++i) { 
+    for (i = 0 ; i <  num_links ; ++i) { 
+     
       #if NBR_TSCH 
       remote_id = sort_node_to_create_link(node_id);  
       #else  
@@ -122,15 +123,15 @@ linkaddr_t *initialize_tsch_schedule(void){
       #endif 
       if(remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
-        return NULL ;
+        return 0 ;
       } 
 
     
-     for(j = 0; j < sizeof(*addr); j += 2) {
-        (*addr)->u8[j + 1] = remote_id & 0xff;
-        (*addr)->u8[j + 0] = remote_id >> 8;
+     for(j = 0; j < sizeof(addr); j += 2) {
+        addr.u8[j + 1] = remote_id & 0xff;
+        addr.u8[j + 0] = remote_id >> 8;
       } 
-      }  
+    }  
       slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
       channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
       /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
@@ -139,10 +140,10 @@ linkaddr_t *initialize_tsch_schedule(void){
 
       tsch_schedule_add_link(sf_common,
           link_options,
-          LINK_TYPE_NORMAL, addr,
+          LINK_TYPE_NORMAL, &addr,
           slot_offset, channel_offset,0);
       }
-    return addr;
+    return remote_id;
     } 
       
   
@@ -174,16 +175,21 @@ PROCESS_THREAD(node_process, ev, data)
   static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   static uint32_t seqnum;
-  uip_ipaddr_t *dst; 
-  linkaddr_t *addr; 
+  uip_ipaddr_t dst; 
+  linkaddr_t addr_dest; 
 
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
   init_broad(); 
   #endif  
 
-    addr = initialize_tsch_schedule(); 
-    dst = (uip_ipaddr_t *) addr; 
+    int aux_id = initialize_tsch_schedule(); 
+     for(j = 0; j < sizeof(addr_dest); j += 2) {
+        addr_dest.u8[j + 1] = aux_id & 0xff;
+        addr_dest.u8[j + 0] = aux_id >> 8;
+      } 
+    }   
+    dst = (uip_ipaddr_t) addr_dest; 
     
 
 
@@ -216,9 +222,9 @@ PROCESS_THREAD(node_process, ev, data)
       /* Send network uptime timestamp to the network root node */
       seqnum++;
       LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(dst);
+      LOG_INFO_6ADDR(&dst);
       LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), dst);
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
     }
     etimer_set(&periodic_timer, SEND_INTERVAL);
   }
