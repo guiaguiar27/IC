@@ -1124,12 +1124,14 @@ int sort_node_to_create_link(int n){
   }
   // imprime
   void show_nbr(){   
-
+    
     LOG_INFO("Lista de vizinhos que mandaram mensagem:\n");
     for(int i = 0 ; i < MAX_NEIGHBORS; i++) LOG_INFO("%d\n",NBRlist[i]);
     
   } 
-  int change_slotframe(int *flag){  
+  int change_slotframe(int *flag){   
+    // verifica se tem algum nó na lista  
+    // soma da > 0 
     static int counter = 0;
     
     for(int i = 0 ; i < MAX_NEIGHBORS; i++)  
