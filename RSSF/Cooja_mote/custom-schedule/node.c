@@ -96,59 +96,59 @@ int initialize_tsch_schedule(void){
   if(tsch_is_associated){ 
     LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
  
-  tsch_schedule_remove_all_slotframes(); 
-  
-  int i, j; 
-  // APP_SLOTFRAME_SIZE
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-  uint16_t slot_offset;
-  uint16_t channel_offset;  
-  uint8_t link_options;
-  
-  slot_offset = 0;
-  channel_offset = 0;
-  int num_links = 1 ;    
-  uint16_t remote_id = 1; 
-  linkaddr_t addr; 
-  
-    // tsch_schedule_add_link(sf_common,
-    //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-    //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-    //   slot_offset, channel_offset,0);
+    tsch_schedule_remove_all_slotframes(); 
     
+    int i, j; 
+    // APP_SLOTFRAME_SIZE
+    struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+    uint16_t slot_offset;
+    uint16_t channel_offset;  
+    uint8_t link_options;
     
-    if (node_id != 1) {
+    slot_offset = 0;
+    channel_offset = 0;
+    int num_links = 1 ;    
+    uint16_t remote_id = 1; 
+    linkaddr_t addr; 
+    
+      // tsch_schedule_add_link(sf_common,
+      //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+      //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      //   slot_offset, channel_offset,0);
       
-      for (i = 0 ; i <  num_links ; ++i) { 
       
-        #if NBR_TSCH 
-        remote_id = sort_node_to_create_link(node_id);  
-        #else  
-        remote_id = random_rand() % node_id ; 
-        #endif 
-        if(remote_id == 0){ 
-          LOG_INFO("There are no neighbors\n"); 
-          return 0 ;
-        } 
+      if (node_id != 1) {
+        
+        for (i = 0 ; i <  num_links ; ++i) { 
+        
+          #if NBR_TSCH 
+          remote_id = sort_node_to_create_link(node_id);  
+          #else  
+          remote_id = random_rand() % node_id ; 
+          #endif 
+          if(remote_id == 0){ 
+            LOG_INFO("There are no neighbors\n"); 
+            return 0 ;
+          } 
 
-      
-      for(j = 0; j < sizeof(addr); j += 2) {
-          addr.u8[j + 1] = remote_id & 0xff;
-          addr.u8[j + 0] = remote_id >> 8;
-        } 
-      }  
-        slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
-        channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
-        /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-        * backoff windows will not be reset correctly! */
-        link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-
-        tsch_schedule_add_link(sf_common,
-            link_options,
-            LINK_TYPE_NORMAL, &addr,
-            slot_offset, channel_offset,0);
+        
+        for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = remote_id & 0xff;
+            addr.u8[j + 0] = remote_id >> 8;
+          } 
         }  
-        return remote_id;
+          slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
+          channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
+          /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+          * backoff windows will not be reset correctly! */
+          link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+
+          tsch_schedule_add_link(sf_common,
+              link_options,
+              LINK_TYPE_NORMAL, &addr,
+              slot_offset, channel_offset,0);
+          }  
+          return remote_id;
     } 
     else LOG_PRINT("Not associated\n");
     return 0 ;     
@@ -234,6 +234,8 @@ PROCESS_THREAD(node_process, ev, data)
       if(flag >= 1) SCHEDULE_static(); 
       // mudanca  
     #endif 
+    verify_packs();
+
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     
     if(tsch_is_associated) { 
