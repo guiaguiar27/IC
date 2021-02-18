@@ -176,22 +176,22 @@ PROCESS_THREAD(node_process, ev, data)
   static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   static uint32_t seqnum;
-  uip_ipaddr_t dst; 
-  linkaddr_t addr_dest; 
+  uip_ipaddr_t dst;  
 
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
-  init_broad(); 
-  #endif  
-
+    init_broad(); 
+  #else  
+  linkaddr_t addr_dest;
     int aux_id = initialize_tsch_schedule(); 
      for(int j = 0; j < sizeof(addr_dest); j += 2) {
         addr_dest.u8[j + 1] = aux_id & 0xff;
         addr_dest.u8[j + 0] = aux_id >> 8;
       } 
-      
-    deployment_iid_from_id(&dst, aux_id); 
-    //dst = (uip_ipaddr_t) addr_dest; 
+      //dst = (uip_ipaddr_t) addr_dest; 
+    
+  #endif  
+
     
 
 
