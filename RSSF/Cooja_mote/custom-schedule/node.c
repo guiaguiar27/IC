@@ -187,7 +187,6 @@ PROCESS_THREAD(node_process, ev, data)
         addr_dest.u8[j + 1] = aux_id & 0xff;
         addr_dest.u8[j + 0] = aux_id >> 8;
       } 
-      //dst = (uip_ipaddr_t) addr_dest; 
     
   #endif  
 
