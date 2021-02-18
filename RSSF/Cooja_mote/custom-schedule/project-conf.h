@@ -76,7 +76,7 @@
 
 #endif /* WITH_SECURITY */ 
 
-#define NBR_TSCH 1 
+#define NBR_TSCH 0 
 
 /*******************************************************/
 /************* Other system configuration **************/

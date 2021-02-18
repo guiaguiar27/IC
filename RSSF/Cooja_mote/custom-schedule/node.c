@@ -88,9 +88,7 @@ static void init_broad(void){
 } 
 #endif  
 
-const *linkaddr_t 
-initialize_tsch_schedule(void)
-{
+linkaddr_t *initialize_tsch_schedule(void){
 
   LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes");
   tsch_schedule_remove_all_slotframes(); 
@@ -99,7 +97,8 @@ initialize_tsch_schedule(void)
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
-  uint16_t channel_offset; 
+  uint16_t channel_offset;  
+  uint8_t link_options;
   
   slot_offset = 0;
   channel_offset = 0;
@@ -121,9 +120,11 @@ initialize_tsch_schedule(void)
   if (node_id != 1) {
     
       for (i = 0 ; i <  num_links ; ++i) { 
-      uint8_t link_options;
-      
+      #if NBR_TSCH 
       remote_id = sort_node_to_create_link(node_id);  
+      #else  
+      remote_id = random_rand() % node_id ; 
+      #endif 
       if(remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
         return NULL ;
@@ -181,11 +182,11 @@ PROCESS_THREAD(node_process, ev, data)
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
   init_broad(); 
-  #endif 
-  if(node_id == 19){ 
+  #endif  
+
     addr = initialize_tsch_schedule(); 
-    dest = (linkaddr_t *) addr; 
-  }  
+    dst = (linkaddr_t *) addr; 
+    
 
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
@@ -217,9 +218,9 @@ PROCESS_THREAD(node_process, ev, data)
       /* Send network uptime timestamp to the network root node */
       seqnum++;
       LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
+      LOG_INFO_6ADDR(dst);
       LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), dst);
     }
     etimer_set(&periodic_timer, SEND_INTERVAL);
   }
