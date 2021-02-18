@@ -147,10 +147,11 @@ int initialize_tsch_schedule(void){
             link_options,
             LINK_TYPE_NORMAL, &addr,
             slot_offset, channel_offset,0);
-        } 
+        }  
+        return remote_id;
     } 
     else LOG_PRINT("Not associated\n");
-    return remote_id;
+    return 0 ;     
     } 
       
   
