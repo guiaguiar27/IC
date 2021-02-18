@@ -190,7 +190,7 @@ PROCESS_THREAD(node_process, ev, data)
         addr_dest.u8[j + 0] = aux_id >> 8;
       } 
       
-    deployment_iid_from_id (&dst, aux_id)
+    deployment_iid_from_id(&dst, aux_id); 
     //dst = (uip_ipaddr_t) addr_dest; 
     
 

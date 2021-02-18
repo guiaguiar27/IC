@@ -68,15 +68,17 @@
 /* Size of the application-specific schedule; a number relatively prime to the hopseq length */
 #define APP_SLOTFRAME_SIZE 17
 
+#define NBR_TSCH 0 
+#define BUILD_WITH_DEPLOYMENT 1
+#define ENERGEST_CONF_ON 1
 #if WITH_SECURITY
 
-#define ENERGEST_CONF_ON 1 
+ 
 /* Enable security */
 #define LLSEC802154_CONF_ENABLED 1
 
 #endif /* WITH_SECURITY */ 
 
-#define NBR_TSCH 0 
 
 /*******************************************************/
 /************* Other system configuration **************/
