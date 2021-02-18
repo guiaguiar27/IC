@@ -81,7 +81,7 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 LIST(slotframe_list);  
 #if NBR_TSCH
 LIST(nbr_list);  
-int NBRlist[MAX_NOS]
+int NBRlist[MAX_NEIGHBORS]; 
 #endif  
 
 /* Adds and returns a slotframe (NULL if failure) */
@@ -1090,26 +1090,21 @@ int SCHEDULE_static(){
 
 
 int sort_node_to_create_link(int n){ 
- 
-  unsigned short  random_node;    
-  int aux_n = n - 1 ;  
-  int final_sorted_node; 
- 
-  random_node = random_rand() % aux_n;
-  while(random_node <= 1 ){ 
-    random_node = random_rand() % aux_n;
-    if (random_node > 1) break; 
-  } 
-  final_sorted_node = (int) random_node;
   
-  return final_sorted_node; 
- 
+  for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
+    if(n > i && i != 0){ 
+      return i; 
+    }  
+  } 
+    return 0; 
  }  
 
 #if NBR_TSCH
 void tsch_print_neighbors(int nbr){   
 static int count = 0 ;
+  LOG_PRINT("Counter :%d\n",count);
   NBRlist[count] = nbr; 
+  
   if (nbr< 0){     
     int *nbr_aux = list_head(nbr_list); 
     int flag = 0 ;  
@@ -1131,7 +1126,7 @@ static int count = 0 ;
 
 void show_nbr(){  
    LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
-   for(int i = 0 ; i < MAX_NOS;i++) LOG_INFO("%d",NBRlist[i]);
+   for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d",NBRlist[i]);
    int *nbr = list_head(nbr_list); 
    while(nbr != NULL){  
      LOG_INFO("%d\n",nbr); 

@@ -48,7 +48,8 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 #define UDP_PORT	8765
-#define SEND_INTERVAL		  (60 * CLOCK_SECOND)
+#define SEND_INTERVAL		  (60 * CLOCK_SECOND) 
+#define 
 
 PROCESS(node_process, "TSCH Schedule Node");
 AUTOSTART_PROCESSES(&node_process); 
@@ -90,8 +91,11 @@ static void init_broad(void){
 static void
 initialize_tsch_schedule(void)
 {
-  LOG_PRINT("Initialize tsch schedule\n");
-  int i, j;  
+
+  LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes");
+  tsch_schedule_remove_all_slotframes(); 
+  
+  int i, j; 
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset;
@@ -115,31 +119,15 @@ initialize_tsch_schedule(void)
     
   
   if (node_id != 1) {
-    if (node_id == 2 || node_id == 3){ 
-      uint8_t link_options;
-       
-      remote_id = 1; 
-      for(j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
-      } 
-      slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
-      channel_offset = random_rand() % APP_CHANNEL_OFSETT;
-      /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-      * backoff windows will not be reset correctly! */
-      link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-
-      tsch_schedule_add_link(sf_common,
-          link_options,
-          LINK_TYPE_NORMAL, &addr,
-          slot_offset, channel_offset,0);
     
-    }
-    else{  
       for (i = 0 ; i <  num_links ; ++i) { 
       uint8_t link_options;
       
-      remote_id = sort_node_to_create_link(node_id); 
+      remote_id = sort_node_to_create_link(node_id);  
+      if(remote_id == 0){ 
+        LOG_INFO("There are no neighbors\n"); 
+        return 
+      }
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
         addr.u8[j + 0] = remote_id >> 8;
