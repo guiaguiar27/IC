@@ -214,8 +214,9 @@ PROCESS_THREAD(node_process, ev, data)
     #if NBR_TSCH  
       show_nbr();   
       verify = change_slotframe(&flag); 
-      if(verify == 1 && flag == 1){ 
-        LOG_INFO("Ha vizinhos -> cria link \n"); 
+      if(verify == 1 && flag == 1){  
+        
+        LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag); 
         int aux_id = initialize_tsch_schedule();  
         LOG_INFO("%d \n",aux_id); 
         
@@ -227,7 +228,7 @@ PROCESS_THREAD(node_process, ev, data)
     
     if(tsch_is_associated) { 
 
-     //SCHEDULE_static();
+     SCHEDULE_static();
       /* Send network uptime timestamp to the network root node */
       seqnum++;
       LOG_INFO("Send to ");

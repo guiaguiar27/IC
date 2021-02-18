@@ -1095,9 +1095,9 @@ int sort_node_to_create_link(int n){
   for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
 
     if(n > NBRlist[i] && NBRlist[i] != 0){ 
-      return i; 
+      return NBRlist[i]; 
     }  
-  } 
+    } 
     return 0; 
  } 
 
