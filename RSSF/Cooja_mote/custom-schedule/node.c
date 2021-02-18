@@ -88,7 +88,7 @@ static void init_broad(void){
 } 
 #endif  
 
-static void
+const *linkaddr_t 
 initialize_tsch_schedule(void)
 {
 
@@ -126,7 +126,7 @@ initialize_tsch_schedule(void)
       remote_id = sort_node_to_create_link(node_id);  
       if(remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
-        return ;
+        return NULL ;
       }
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
@@ -144,6 +144,8 @@ initialize_tsch_schedule(void)
           slot_offset, channel_offset,0);
       }
     } 
+    return *(addr);  
+     
   } 
 
   
@@ -173,13 +175,18 @@ PROCESS_THREAD(node_process, ev, data)
   static struct simple_udp_connection udp_conn;
   static struct etimer periodic_timer;
   static uint32_t seqnum;
-  uip_ipaddr_t dst;
+  uip_ipaddr_t *dst; 
+  linkaddr_t *addr; 
 
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
   init_broad(); 
   #endif 
-  if(node_id == 19) initialize_tsch_schedule();
+  if(node_id == 19){ 
+    addr = initialize_tsch_schedule(); 
+    dest = (linkaddr_t *) addr; 
+  }  
+
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
@@ -197,16 +204,6 @@ PROCESS_THREAD(node_process, ev, data)
 
   /* Main loop */
   while(1) {
-    LOG_INFO(" TABLE \n");
-    nbr_table_item_t *item = nbr_table_head(nbr_routes);
-    while(item != NULL) { 
-      LOG_INFO(" ENTROU\n");
-      linkaddr_t *addr = nbr_table_get_lladdr(nbr_routes, item);
-      LOG_INFO_LLADDR(addr);
-      item = nbr_table_next(nbr_routes, item);
-    } 
-    int num = uip_ds6_route_num_routes(); 
-    LOG_INFO("Numero routes%d ",num);
     
     #if NBR_TSCH  
       show_nbr(); 
