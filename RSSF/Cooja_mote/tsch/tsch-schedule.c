@@ -1143,10 +1143,11 @@ int sort_node_to_create_link(int n){
   // implementei ontem 
   void tsch_print_neighbors(int nbr){   
     int count = 0 ;
-    LOG_PRINT("Counter :%d\n",count);
     
     for(count = 0; count < MAX_NEIGHBORS ; count++ ){ 
-        if(NBRlist[count] == 0 ){ 
+        if(NBRlist[count] == nbr) return ; 
+        
+        if(NBRlist[count] == 0 ){  
           NBRlist[count] = nbr; 
           break; 
         }   
@@ -1156,7 +1157,7 @@ int sort_node_to_create_link(int n){
   // imprime
   void show_nbr(){  
     LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
-    for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d",NBRlist[i]);
+    for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d\n",NBRlist[i]);
     
  } 
  #endif 
