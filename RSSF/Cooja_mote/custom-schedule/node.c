@@ -49,7 +49,7 @@
 
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND)  
-#define CHANGE 20 
+#define CHANGE (120 *  CLOCK_SECOND)
 
 
 PROCESS(node_process, "TSCH Schedule Node");
@@ -174,8 +174,8 @@ rx_packet(struct simple_udp_connection *c,
 PROCESS_THREAD(node_process, ev, data)
 {
   static struct simple_udp_connection udp_conn;
-  static struct etimer periodic_timer; 
-  struct stimer t; 
+  static struct etimer periodic_timer;  
+  static struct etimer timer_to_change; 
   static uint32_t seqnum;
   uip_ipaddr_t dst;  
 
@@ -199,8 +199,9 @@ PROCESS_THREAD(node_process, ev, data)
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
-  // para mudar o slotframe; 
-  stimer_set(&t, CHANGE);
+  // para mudar o slotframe;  
+  etimer_set(&time_to_change, CHANGE);
+  
 
 
    if(node_id == 1) {  /* Running on the root? */
@@ -217,7 +218,7 @@ PROCESS_THREAD(node_process, ev, data)
     #if NBR_TSCH  
       show_nbr(); 
     #endif 
-    if(stimer_expired(&t)) LOG_PRINT("______ TROCOU_____");
+    if(etimer_expired(&time_to_change)) LOG_PRINT("\n______ TROCOU_____\n");
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     
     if(tsch_is_associated) { 
