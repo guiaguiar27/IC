@@ -1100,40 +1100,73 @@ int sort_node_to_create_link(int n){
  }  
 
 #if NBR_TSCH
-void tsch_print_neighbors(int nbr){   
-static int count = 0 ;
-  LOG_PRINT("Counter :%d\n",count);
-  NBRlist[count] = nbr; 
-  
-  if (nbr< 0){     
+void tsch_print_neighbors(int nbr){
+    LOG_PRINT("_NBR_!\n");
     int *nbr_aux = list_head(nbr_list); 
     int flag = 0 ;  
 
     while(nbr_aux != NULL){ 
       if(*nbr_aux == nbr){ 
         flag = 1 ; 
-        break ; 
+        break ;  
+        LOG_PRINT("Already Computed!\n");
       }  
       nbr_aux = list_item_next(nbr_aux);
     }   
 
-    if(flag == 0) 
-
+    if(flag == 0){ 
+      LOG_PRINT("nbr computed!\n");
       list_add(nbr_list, &nbr);   
-  }  
+    }
 
- )  
+}
 
-void show_nbr(){  
-   LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
-   for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d",NBRlist[i]);
+void show_nbr(){   
+  LOG_INFO("\n____TABLE____ \n");
    int *nbr = list_head(nbr_list); 
    while(nbr != NULL){  
      LOG_INFO("%d\n",nbr); 
      nbr = list_item_next(nbr); 
    } 
  } 
- #endif 
+ #endif  
+
+
+//  #if NBR_TSCH
+// void tsch_print_neighbors(int nbr){   
+// static int count = 0 ;
+//   LOG_PRINT("Counter :%d\n",count);
+//   NBRlist[count] = nbr; 
+  
+//   if (nbr< 0){     
+//     int *nbr_aux = list_head(nbr_list); 
+//     int flag = 0 ;  
+
+//     while(nbr_aux != NULL){ 
+//       if(*nbr_aux == nbr){ 
+//         flag = 1 ; 
+//         break ; 
+//       }  
+//       nbr_aux = list_item_next(nbr_aux);
+//     }   
+
+//     if(flag == 0) 
+
+//       list_add(nbr_list, &nbr);   
+//   }  
+
+// }
+
+// void show_nbr(){  
+//    LOG_INFO("Lista de vizinhos que receberam a mensagem:\n");
+//    for(int i = 0 ; i < MAX_NEIGHBORS;i++) LOG_INFO("%d",NBRlist[i]);
+//    int *nbr = list_head(nbr_list); 
+//    while(nbr != NULL){  
+//      LOG_INFO("%d\n",nbr); 
+//      nbr = list_item_next(nbr); 
+//    } 
+//  } 
+//  #endif 
 
 
 

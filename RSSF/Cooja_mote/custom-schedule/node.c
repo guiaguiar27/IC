@@ -49,7 +49,7 @@
 
 #define UDP_PORT	8765
 #define SEND_INTERVAL		  (60 * CLOCK_SECOND) 
-#define 
+
 
 PROCESS(node_process, "TSCH Schedule Node");
 AUTOSTART_PROCESSES(&node_process); 
@@ -126,7 +126,7 @@ initialize_tsch_schedule(void)
       remote_id = sort_node_to_create_link(node_id);  
       if(remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
-        return 
+        return ;
       }
       for(j = 0; j < sizeof(addr); j += 2) {
         addr.u8[j + 1] = remote_id & 0xff;
@@ -145,7 +145,8 @@ initialize_tsch_schedule(void)
       }
     } 
   } 
-  }
+
+  
 
 static void
 rx_packet(struct simple_udp_connection *c,
