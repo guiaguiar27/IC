@@ -1093,7 +1093,8 @@ int SCHEDULE_static(){
 
 int sort_node_to_create_link(int n){  
   for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
-    if(n > i && i != 0){ 
+
+    if(n > NBRlist[i] && NBRlist[i] != 0){ 
       return i; 
     }  
   } 
@@ -1124,7 +1125,7 @@ int sort_node_to_create_link(int n){
   }
   // imprime
   void show_nbr(){   
-    
+
     LOG_INFO("Lista de vizinhos que mandaram mensagem:\n");
     for(int i = 0 ; i < MAX_NEIGHBORS; i++) LOG_INFO("%d\n",NBRlist[i]);
     
