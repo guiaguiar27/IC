@@ -1145,7 +1145,7 @@ int sort_node_to_create_link(int n){
     int count = 0 ;
     LOG_PRINT("Counter :%d\n",count);
     
-    for(count = 0; count < MAX_NEIGHBORS ; cont++ ){ 
+    for(count = 0; count < MAX_NEIGHBORS ; count++ ){ 
         if(NBRlist[count] == 0 ){ 
           NBRlist[count] = nbr; 
           break; 
