@@ -1136,7 +1136,7 @@ int sort_node_to_create_link(int n){
       counter += NBRlist[i]; 
     
     if (counter > 0){ 
-      *flag = 1 ; 
+      *flag += 1 ; 
       return 1 ; 
       
     }   
