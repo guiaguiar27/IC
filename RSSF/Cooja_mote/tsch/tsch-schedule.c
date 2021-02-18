@@ -1046,7 +1046,7 @@ int SCHEDULE_static(){
     } 
      
     
-    LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+    LOG_PRINT("SLOTFRAME HANDLE: %u\n",sf->handle);
     struct tsch_link *l =   NULL;  
     for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){ 
@@ -1080,7 +1080,7 @@ int SCHEDULE_static(){
               
       }
      }
-        LOG_PRINT("Escalonamento Concluido");
+        LOG_PRINT("Escalonamento Concluido\n");
    
       tsch_release_lock();   
     } 
