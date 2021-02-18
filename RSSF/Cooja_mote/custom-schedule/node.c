@@ -41,7 +41,7 @@
 #include "sys/node-id.h" 
 #include "sys/energest.h"    
 #include "net/ipv6/uip-ds6-nbr.h"  
-#include "deployment.h"
+#include "services/deployment/deployment.h"
 
 
 #include "sys/log.h"
