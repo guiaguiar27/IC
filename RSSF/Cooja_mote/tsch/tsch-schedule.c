@@ -969,8 +969,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for( i = 0 ; i < MAX_NOS ; i++){ 
-        for( j = 0 ; j< MAX_NOS; j++){  
+    for( i = 0 ; i < tamNo; i++){ 
+        for( j = 0 ; j< tamNo; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -983,16 +983,19 @@ int SCHEDULE_static(){
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
-                i++;
+                i++; 
+                 
             }
         }
     }
-    tamAresta = i;
+    tamAresta = i; 
+    tamNo = tamAresta;  
+    printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
-    for(i = 0; i < MAX_NOS ; i++){ 
-        for( j = 0 ;j < MAX_NOS; j++)
+    for(i = 0; i < tamNo; i++){ 
+        for( j = 0 ;j < tamNo ; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
