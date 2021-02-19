@@ -119,7 +119,7 @@ tsch_log_process_pending(void)
         }  
 
         #if NBR_TSCH
-        if(log->rx.is_unicast == 0 ){  
+        if(log->rx.is_unicast == 0){  
 
           int src;  
           printf("\n--------------------------------\n");

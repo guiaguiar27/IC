@@ -1109,25 +1109,23 @@ int sort_node_to_create_link(int n){
    fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
-        return 0  ; 
+        return   ; 
     }
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf(" %d - %d-> %d\n", node_origin, node_destin);    
+        printf("%d ->  %d\n", node_origin, node_destin);    
         
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
-            // for(int j = 0; j < sizeof(addr_dst); j += 2) {
-            //   addr_dst.u8[j + 1] = node_destin & 0xff;
-            //   addr_dst.u8[j + 0] = node_destin >> 8;
-            // } 
-            for(int j = 0; j < sizeof(addr_srct); j += 2) {
+            
+            for(int j = 0; j < sizeof(addr_src); j += 2) {
               addr_src.u8[j + 1] = node_origin & 0xff;
               addr_src.u8[j + 0] = node_origin >> 8;
-            }   
+            }    
+
             struct tsch_neighbor *dst = tsch_queue_get_nbr(&addr_src);
             int a_packet_count = dst ? ringbufindex_elements(&dst->tx_ringbuf) : 0; 
             LOG_INFO_LLADDR(&addr_src);
-            LOG_INFO(" - Pacotes: %d ", a_packet_count);
+            LOG_INFO("| Pacotes: %d \n", a_packet_count);
     
         }
     } 
@@ -1163,6 +1161,7 @@ int sort_node_to_create_link(int n){
     for(int i = 0 ; i < MAX_NEIGHBORS; i++) LOG_INFO("%d\n",NBRlist[i]);
     
   } 
+  
   int change_slotframe(int *flag){   
     // verifica se tem algum nó na lista  
     // soma da > 0 

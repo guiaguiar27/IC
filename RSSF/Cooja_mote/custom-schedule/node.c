@@ -111,12 +111,6 @@ int initialize_tsch_schedule(void){
     uint16_t remote_id = 1; 
     linkaddr_t addr; 
     
-      // tsch_schedule_add_link(sf_common,
-      //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      //   slot_offset, channel_offset,0);
-      
-      
       if (node_id != 1) {
         
         for (i = 0 ; i <  num_links ; ++i) { 
@@ -184,10 +178,10 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer; 
   static uint32_t seqnum;
   uip_ipaddr_t dst;   
-  int flag = 0, verify = 0 ; 
-
+  
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
+    int flag = 0, verify = 0 ; 
     init_broad(); 
   #else  
   linkaddr_t addr_dest; 
@@ -209,13 +203,12 @@ PROCESS_THREAD(node_process, ev, data)
   // ativa os protocolos da camda de rede 
   NETSTACK_MAC.on(); 
 
+
   /* Main loop */
   while(1) {
     
     #if NBR_TSCH  
       show_nbr();   
-
-
       // adapatação sem contar com o tempo 
       LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag);    
       if(verify == 0){ 
@@ -224,17 +217,15 @@ PROCESS_THREAD(node_process, ev, data)
         
           LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag); 
           int aux_id = initialize_tsch_schedule();  
-          LOG_INFO("%d \n",aux_id); 
+          LOG_INFO("%d \n",aux_id);  
+          
       
       }
       }
-       
-       
-
-      if(flag >= 1) SCHEDULE_static(); 
+      if(flag == 1) SCHEDULE_static(); 
       // mudanca  
     #endif 
-    verify_packs();
+    //verify_packs();
 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     
