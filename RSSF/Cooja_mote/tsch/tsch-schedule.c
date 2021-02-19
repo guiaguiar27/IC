@@ -1168,7 +1168,7 @@ int sort_node_to_create_link(int n){
     
   } 
 
-  int change_slotframe(int *flag){   
+  int change_slotframe(){   
     // verifica se tem algum nó na lista  
     // soma da > 0 
     static int counter = 0;

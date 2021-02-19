@@ -70,7 +70,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #define APP_CHANNEL_OFSETT 16   
 
 
-int flag = 0, verify = 0 ;  
+int  verify = 0 ;  
 
 #if NBR_TSCH 
 static void init_broad(void){  
@@ -109,7 +109,7 @@ int initialize_tsch_schedule(void){
     slot_offset = 0;
     channel_offset = 0;
     int num_links = 1 ;    
-    uint16_t remote_id = 1; 
+    uint16_t remote_id = 0; 
     linkaddr_t addr;  
 
 
@@ -216,19 +216,19 @@ PROCESS_THREAD(node_process, ev, data)
     #if NBR_TSCH  
       show_nbr();   
       // adapatação sem contar com o tempo 
-      LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag);    
+      LOG_INFO("Verify: %d \n", verify);    
       if(verify == 0){ 
         verify = change_slotframe(&flag); 
-        if(verify == 1 && flag == 1){  
+        if(verify == ){  
         
-          LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag); 
+          LOG_INFO("Verify: %d - ", verify); 
           int aux_id = initialize_tsch_schedule();  
           LOG_INFO("%d \n",aux_id);  
           
       
       }
       }
-      if(flag == 1) SCHEDULE_static(); 
+      if(aux_id > 0 ) SCHEDULE_static(); 
       // mudanca  
     #endif 
     //verify_packs();
