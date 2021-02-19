@@ -94,7 +94,7 @@ static void init_broad(void){
 int initialize_tsch_schedule(void){
 
  
-  if(tsch_is_associated){ 
+ 
     LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
  
     tsch_schedule_remove_all_slotframes(); 
@@ -110,8 +110,15 @@ int initialize_tsch_schedule(void){
     channel_offset = 0;
     int num_links = 1 ;    
     uint16_t remote_id = 1; 
-    linkaddr_t addr; 
+    linkaddr_t addr;  
+
+
+    tsch_schedule_add_link(sf_common,
+      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset,0);
     
+
       if (node_id != 1) {
         
         for (i = 0 ; i <  num_links ; ++i) { 
@@ -145,9 +152,7 @@ int initialize_tsch_schedule(void){
           }  
           return remote_id;
     } 
-    else LOG_PRINT("Not associated\n");
-    return 0 ;     
-    } 
+     
       
   
 
