@@ -70,6 +70,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #define APP_CHANNEL_OFSETT 16   
 
 
+int flag = 0, verify = 0 ;  
 
 #if NBR_TSCH 
 static void init_broad(void){  
@@ -181,7 +182,7 @@ PROCESS_THREAD(node_process, ev, data)
   
   PROCESS_BEGIN(); 
   #if NBR_TSCH 
-    int flag = 0, verify = 0 ; 
+   
     init_broad(); 
   #else  
   linkaddr_t addr_dest; 
@@ -212,7 +213,7 @@ PROCESS_THREAD(node_process, ev, data)
       // adapatação sem contar com o tempo 
       LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag);    
       if(verify == 0){ 
-        verify = change_slotframe(&flag);
+        verify = change_slotframe(&flag); 
         if(verify == 1 && flag == 1){  
         
           LOG_INFO("Verify: %d - FLAG:%d  \n", verify, flag); 

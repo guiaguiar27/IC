@@ -1090,17 +1090,6 @@ int SCHEDULE_static(){
 
 }   
 
-
-int sort_node_to_create_link(int n){  
-  for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
-
-    if(n > NBRlist[i] && NBRlist[i] != 0){ 
-      return NBRlist[i]; 
-    }  
-    } 
-    return 0; 
- } 
-
  void verify_packs(){  
    FILE *fl;  
    linkaddr_t addr_src ;
@@ -1135,7 +1124,20 @@ int sort_node_to_create_link(int n){
 
 
 #if NBR_TSCH 
-  // inicia 
+  // inicia  
+
+
+int sort_node_to_create_link(int n){  
+  for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
+
+    if(n > NBRlist[i] && NBRlist[i] != 0){ 
+      return NBRlist[i]; 
+    }  
+    } 
+    return 0; 
+ } 
+
+
   void list_init_nbr(void){ 
       for(int i = 0 ; i < MAX_NEIGHBORS;i++) NBRlist[i] = 0;
   } 
@@ -1161,7 +1163,7 @@ int sort_node_to_create_link(int n){
     for(int i = 0 ; i < MAX_NEIGHBORS; i++) LOG_INFO("%d\n",NBRlist[i]);
     
   } 
-  
+
   int change_slotframe(int *flag){   
     // verifica se tem algum nó na lista  
     // soma da > 0 
@@ -1173,10 +1175,11 @@ int sort_node_to_create_link(int n){
     if (counter > 0){ 
       *flag = 1 ; 
       return 1 ; 
-      
     }   
-    
-    else return 0 ; 
+    else{  
+      *flag = 0 ;
+      return 0 ; 
+    }  
   } 
  #endif 
 
