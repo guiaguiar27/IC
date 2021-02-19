@@ -988,8 +988,7 @@ int SCHEDULE_static(){
             }
         }
     }
-    tamAresta = i; 
-    tamNo = tamAresta;  
+    tamAresta = i;   
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
