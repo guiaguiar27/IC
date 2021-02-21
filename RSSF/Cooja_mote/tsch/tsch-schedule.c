@@ -947,11 +947,15 @@ int SCHEDULE_static(){
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ; 
-    // alocando espaco para receber o endereco 
+    int node_origin, node_destin ;  
+    const linkaddr_t *dest;  
+    linkaddr addr_dst ; 
+    uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     /*******************************************************************/ 
     // inicia arquivo  
-    FILE *fl;    
+    FILE *fl;     
+
     if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
@@ -976,14 +980,26 @@ int SCHEDULE_static(){
     }  
 
     i = 0;
-    printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
-                i++; 
+                i++;    
+                
+                if(node_origin == node){
+                   
+                  for(int j = 0; j < sizeof(addr_dst); j += 2) {
+                  addr_dst.u8[j + 1] = node_destin & 0xff;
+                  addr_dst.u8[j + 0] = node_destin >> 8;
+                  }   
+
+                  linkaddr_copy(dest, &addr_dst);
+                  dest = packetbuf_addr(PACKETBUF_ADDR_RECEIVER);     
+              }
+
+
                  
             }
         }
@@ -992,7 +1008,6 @@ int SCHEDULE_static(){
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
-    printf("\nMatriz de adacência do grafo da rede:\n");
     for(i = 0; i < tamNo; i++){ 
         for( j = 0 ;j < tamNo ; j++)
              printf("%d ", adj.mat_adj[i][j]);
@@ -1003,7 +1018,7 @@ int SCHEDULE_static(){
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 0; x < tamNo ; x++)
+    for(x = 1; x <= tamNo ; x++)
         printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
@@ -1102,8 +1117,12 @@ int SCHEDULE_static(){
             #if TSCH_WITH_LINK_SELECTOR   
               slotframe = sf->handle;  
               timeslot = l->timeslot;  
-              channel_offset = l->channel_offset;
-              LOG_PRINT("--------------LINK SELECTOR---------------\n"); 
+              channel_offset = l->channel_offset; 
+                
+               
+
+              LOG_PRINT("--------------LINK SELECTOR---------------\n");  
+
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
