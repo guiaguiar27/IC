@@ -948,10 +948,14 @@ int SCHEDULE_static(){
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;  
-    const linkaddr_t *dest;  
-    linkaddr addr_dst ; 
-    uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+    
+    #if TSCH_WITH_LINK_SELECTOR   
+      uint16_t slotframe,  timeslot,  channel_offset; 
+      const linkaddr_t *dest;    
+      linkaddr_t addr_dst ; 
+      uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+    #endif
     /*******************************************************************/ 
     // inicia arquivo  
     FILE *fl;     
@@ -988,16 +992,18 @@ int SCHEDULE_static(){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++;    
                 
-                if(node_origin == node){
-                   
-                  for(int j = 0; j < sizeof(addr_dst); j += 2) {
-                  addr_dst.u8[j + 1] = node_destin & 0xff;
-                  addr_dst.u8[j + 0] = node_destin >> 8;
-                  }   
+              #if TSCH_WITH_LINK_SELECTOR
+                  if(node_origin == node){
+                    
+                    for(int j = 0; j < sizeof(addr_dst); j += 2) {
+                    addr_dst.u8[j + 1] = node_destin & 0xff;
+                    addr_dst.u8[j + 0] = node_destin >> 8;
+                    }   
 
-                  linkaddr_copy(dest, &addr_dst);
-                  dest = packetbuf_addr(PACKETBUF_ADDR_RECEIVER);     
-              }
+                    linkaddr_copy(dest, &addr_dst);
+                    dest = packetbuf_addr(PACKETBUF_ADDR_RECEIVER);     
+                  } 
+              #endif 
 
 
                  
@@ -1008,11 +1014,7 @@ int SCHEDULE_static(){
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
-    for(i = 0; i < tamNo; i++){ 
-        for( j = 0 ;j < tamNo ; j++)
-             printf("%d ", adj.mat_adj[i][j]);
-        printf("\n");
-    }
+    
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
@@ -1036,17 +1038,13 @@ int SCHEDULE_static(){
          for(y = 0; y < Timeslot; y++)
              aloca_canais[x][y] = -1; 
       }
-    //Busca pelo nó raiz da rede
-    
-    //Por hora definimos ele manualmente
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
     for(z = 0; z < tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z];
-
-     
+ 
 
     // otimizar a criação de matrizes 
     int vetor[tamAresta][2];
