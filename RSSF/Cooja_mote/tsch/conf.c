@@ -15,13 +15,12 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     */
     int x ; 
     int no_atual;
-    srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = rand() % num_no;   
+    no_atual = random_rand() % num_no;   
     printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz && no_atual <= num_no){ 
-        no_atual = rand() % num_no;
+        no_atual = random_rand() % num_no;
     }
     
     for(x = 0; x < num_no; x++){
@@ -176,6 +175,7 @@ void fazMatrizConf(int tam_arest, int (*mapConf)[tam_arest][2], int (*grafoconf)
         for(y = x; y < tam_arest; y++)
             for(z = 0; z < 2; z++){
                 if((*mapConf)[x][z] == (*mapConf)[y][0]){
+                    // 
                     (*grafoconf)[x][y] = 1;
                     (*grafoconf)[y][x] = 1;
                     for(i = 0; i < tam_arest; i++)
