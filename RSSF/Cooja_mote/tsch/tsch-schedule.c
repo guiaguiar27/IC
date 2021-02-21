@@ -950,11 +950,7 @@ int SCHEDULE_static(){
     int node_origin, node_destin ;  
     
     #if TSCH_WITH_LINK_SELECTOR   
-      uint16_t slotframe,  timeslot,  channel_offset; 
-      const linkaddr_t *dest;    
-      linkaddr_t addr_dst ; 
-      uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+      uint16_t slotframe,  timeslot,  channel_offset;   
     #endif
     /*******************************************************************/ 
     // inicia arquivo  
@@ -991,21 +987,7 @@ int SCHEDULE_static(){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++;    
-                
-              #if TSCH_WITH_LINK_SELECTOR
-                  if(node_origin == node){
-                    
-                    for(int j = 0; j < sizeof(addr_dst); j += 2) {
-                    addr_dst.u8[j + 1] = node_destin & 0xff;
-                    addr_dst.u8[j + 0] = node_destin >> 8;
-                    }   
-
-                    linkaddr_copy(dest, &addr_dst);
-                    dest = packetbuf_addr(PACKETBUF_ADDR_RECEIVER);     
-                  } 
-              #endif 
-
-
+              
                  
             }
         }
