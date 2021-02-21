@@ -9,6 +9,7 @@ serverID = 1;
 nodeCount = 18;
 
 totalPRR = 0;
+
 t_total = 0;
 
 throughput = 0;
