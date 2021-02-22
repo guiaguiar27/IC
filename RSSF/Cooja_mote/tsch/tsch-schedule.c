@@ -231,7 +231,7 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
+                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove, uint8_t dup)
 {
   struct tsch_link *l = NULL; 
   uint16_t node_neighbor, node;
@@ -262,8 +262,11 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         //static int count = 0 ;
         list_add(slotframe->links_list, l);
         /* Initialize link */
-        //l->handle = count++ ; 
-        l->handle = count_lines();
+        //l->handle = count++ ;  
+        if(dup == 1 )
+          l->handle = count_lines(); 
+        else  
+          l->handle = -1 ; 
         LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
@@ -297,8 +300,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-              
-              tsch_write_in_file(node, node_neighbor);   
+              if(dup == 1){
+              tsch_write_in_file(node, node_neighbor); 
+              }   
                           }
           }
         }
@@ -546,7 +550,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, 1);
+      0, 0, 1,0);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
@@ -952,10 +956,8 @@ int SCHEDULE_static(){
     uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     linkaddr_t dest ; 
-  
-    #if TSCH_WITH_LINK_SELECTOR   
-      uint16_t slotframe,  timeslot,  channel_offset;   
-    #endif
+   
+    uint16_t slotframe,  timeslot,  channel_offset;   
     /*******************************************************************/ 
     // inicia arquivo  
     FILE *fl;     
@@ -1100,7 +1102,7 @@ int SCHEDULE_static(){
             tsch_schedule_add_link(sf,
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &dest,
-              y+1, x+1, 0);   
+              y+1, x+1, 0,0);   
            tsch_get_lock();
 
 
@@ -1122,11 +1124,10 @@ int SCHEDULE_static(){
              
 
 
-            
-            #if TSCH_WITH_LINK_SELECTOR   
-              slotframe = sf->handle;  
-              timeslot = l->timeslot;  
-              channel_offset = l->channel_offset; 
+             
+            slotframe = sf->handle;  
+            timeslot = l->timeslot;  
+            channel_offset = l->channel_offset; 
                 
                
 
@@ -1135,7 +1136,7 @@ int SCHEDULE_static(){
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
-            #endif
+            
             }  
 
           l = list_item_next(l);
