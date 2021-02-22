@@ -949,7 +949,7 @@ int SCHEDULE_static(){
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;   
-    uint16_t node =  = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+    uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     linkaddr_t dest ; 
   
@@ -977,7 +977,7 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for( i = 0 ; i < tamNo; i++){ 
+    for(int  i = 0 ; i < tamNo; i++){ 
         for( j = 0 ; j< tamNo; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
@@ -985,7 +985,7 @@ int SCHEDULE_static(){
 
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
+        printf("handle: %d - %d-> %d\n",tamAresta, node_origin, node_destin);    
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
@@ -1093,11 +1093,16 @@ int SCHEDULE_static(){
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
             if(counter_changes == 1 ){ 
               // já foi modificado 
-              // deve se adcionar um novo link   
+              // deve se adcionar um novo link    
+              // aumenta a largura de banda 
+            LOG_PRINT("---------------------------\n"); 
+            tsch_release_lock();   
             tsch_schedule_add_link(sf,
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &dest,
-              y+1, x+1, 0); 
+              y+1, x+1, 0);   
+           tsch_get_lock();
+
 
     
             } 

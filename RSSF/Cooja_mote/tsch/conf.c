@@ -35,7 +35,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
             return;
         }
 
-    printf("Caímos no pior caso\n");
+    printf("Nodo nao apto\n");
 }
 
 
