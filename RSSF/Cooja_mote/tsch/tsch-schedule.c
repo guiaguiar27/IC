@@ -1093,19 +1093,21 @@ int SCHEDULE_static(){
         l = list_head(sf->links_list);        
         while(l!= NULL){   
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+            
             if(counter_changes == 1 ){ 
               // já foi modificado 
               // deve se adcionar um novo link    
               // aumenta a largura de banda 
             LOG_PRINT("---------------------------\n"); 
+            LOG_PRINT("----HANDLE: %u-----\n", l->handle);    
+            LOG_PRINT("----TIMESLOT: %u-----\n", x+1); 
+            LOG_PRINT("----CHANNEL: %u-----\n", y+1);   
             tsch_release_lock();   
             tsch_schedule_add_link(sf,
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &dest,
               y+1, x+1, 0,0);   
            tsch_get_lock();
-
-
     
             } 
             else { 
