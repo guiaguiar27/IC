@@ -935,20 +935,24 @@ int count_packs(){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
-    int tamNo; 
+    int tamNo;  
+    int counter_changes = 0 ; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     //uint16_t timeslot, slotframe, channel_offset; 
     int tamAresta,                  //Nº de arestas da rede
-    z, i,j ;                       //Variáveis temporárias
+    z,j ;                       //Variáveis temporárias
     int pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz ;                  
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ;  
-    
+    int node_origin, node_destin ;   
+    uint16_t node =  = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+    linkaddr_t dest ; 
+  
     #if TSCH_WITH_LINK_SELECTOR   
       uint16_t slotframe,  timeslot,  channel_offset;   
     #endif
@@ -979,20 +983,24 @@ int SCHEDULE_static(){
         }
     }  
 
-    i = 0;
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
-                i++;    
+                tamAresta++;     
+                if(node_origin == node){ 
+                     for(int j = 0; j < sizeof(dest); j += 2) {
+                      dest.u8[j + 1] = node_destin & 0xff;
+                      dest.u8[j + 0] = node_destin >> 8;
+                }    
+                }
               
                  
             }
         }
     }
-    tamAresta = i;   
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
@@ -1083,6 +1091,17 @@ int SCHEDULE_static(){
         l = list_head(sf->links_list);        
         while(l!= NULL){   
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+            if(counter_changes == 1 ){ 
+              // já foi modificado 
+              // deve se adcionar um novo link   
+            tsch_schedule_add_link(sf,
+              LINK_OPTION_TX,
+              LINK_TYPE_NORMAL, &dest,
+              y+1, x+1, 0); 
+
+    
+            } 
+            else { 
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
@@ -1092,7 +1111,12 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            LOG_PRINT("-----------------------------\n");       
+            LOG_PRINT("-----------------------------\n");     
+            counter_changes = 1 ; 
+            }
+             
+
+
             
             #if TSCH_WITH_LINK_SELECTOR   
               slotframe = sf->handle;  
@@ -1107,7 +1131,8 @@ int SCHEDULE_static(){
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
             #endif
-            } 
+            }  
+
           l = list_item_next(l);
           } 
               
