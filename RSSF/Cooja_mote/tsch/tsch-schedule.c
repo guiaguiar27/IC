@@ -954,7 +954,7 @@ int SCHEDULE_static(){
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;   
    // uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+     //           + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     //linkaddr_t dest ; 
     #if TSCH_WITH_LINK_SELECTOR
       uint16_t slotframe,  timeslot,  channel_offset;   
@@ -998,7 +998,7 @@ int SCHEDULE_static(){
                //       dest.u8[j + 1] = node_destin & 0xff;
                //       dest.u8[j + 0] = node_destin >> 8;
                // }    
-                }
+                //}
               
                  
             }
