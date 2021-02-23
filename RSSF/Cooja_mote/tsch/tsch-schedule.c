@@ -1225,6 +1225,31 @@ int sort_node_to_create_link(int n){
   } 
  #endif 
 
+int my_callback_packet_ready(void) {
+  const uint16_t slotframe = 0;
+  const uint16_t channel_offset = 0;
+  uint16_t timeslot = 0xffff;
+
+  if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_BEACONFRAME) {
+     /* EB packet */
+     timeslot = 0;
+  } else if (packetbuf_attr(PACKETBUF_ATTR_NETWORK_ID) == UIP_PROTO_ICMP6
+     && (packetbuf_attr(PACKETBUF_ATTR_CHANNEL) >> 8) == ICMP6_RPL) {
+     /* RPL packet */
+     timeslot = 2;
+  } else {
+     /* data packet */
+     timeslot = 1;
+  }
+
+#if TSCH_WITH_LINK_SELECTOR
+  packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe);
+  packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot);
+  packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
+#endif
+
+  return 1;
+}
 
 
 

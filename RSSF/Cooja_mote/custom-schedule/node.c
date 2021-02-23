@@ -120,10 +120,10 @@ int initialize_tsch_schedule(void){
     linkaddr_t addr;  
 
 
-    tsch_schedule_add_link(sf_common,
-      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset,0,0);
+    // tsch_schedule_add_link(sf_common,
+    //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+    //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+    //   slot_offset, channel_offset,0,0);
     
 
       if (node_id != 1) {
