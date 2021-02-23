@@ -956,8 +956,9 @@ int SCHEDULE_static(){
     uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
     linkaddr_t dest ; 
-   
-    uint16_t slotframe,  timeslot,  channel_offset;   
+    #if TSCH_WITH_LINK_SELECTOR
+      uint16_t slotframe,  timeslot,  channel_offset;   
+    #endif
     /*******************************************************************/ 
     // inicia arquivo  
     FILE *fl;     
@@ -1107,7 +1108,20 @@ int SCHEDULE_static(){
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &dest,
               x+1, y+1, 0,0);   
-           tsch_get_lock();
+           tsch_get_lock(); 
+           #if TSCH_WITH_LINK_SELECTOR
+            slotframe = sf->handle;  
+            timeslot = y+1 ;  
+            channel_offset = x+1 ; 
+                
+               
+
+              LOG_PRINT("--------------LINK SELECTOR---------------\n");  
+
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
+              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
+            #endif 
     
             } 
             else { 
@@ -1122,11 +1136,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");     
             counter_changes = 1 ; 
-            }
-             
-
-
-             
+            #if TSCH_WITH_LINK_SELECTOR
             slotframe = sf->handle;  
             timeslot = l->timeslot;  
             channel_offset = l->channel_offset; 
@@ -1138,8 +1148,10 @@ int SCHEDULE_static(){
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
               packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
-            
-            }  
+            #endif             
+            } 
+
+            }
 
           l = list_item_next(l);
           } 
