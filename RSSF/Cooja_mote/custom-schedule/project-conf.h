@@ -70,7 +70,6 @@
 
 #define NBR_TSCH 1
 #define ENERGEST_CONF_ON 1 
-#define TSCH_CONF_WITH_LINK_SELECTOR 0
 #if WITH_SECURITY
 
  

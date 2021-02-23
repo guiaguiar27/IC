@@ -239,7 +239,6 @@ PROCESS_THREAD(node_process, ev, data)
       // mudanca  
     #endif 
 
-    
     energest_flush();
 
     printf("\nEnergest:\n");
@@ -254,6 +253,7 @@ PROCESS_THREAD(node_process, ev, data)
            to_seconds(ENERGEST_GET_TOTAL_TIME()
                       - energest_type_time(ENERGEST_TYPE_TRANSMIT)
                       - energest_type_time(ENERGEST_TYPE_LISTEN)));
+    
      
     //verify_packs();
 

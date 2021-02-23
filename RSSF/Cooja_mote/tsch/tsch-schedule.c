@@ -953,9 +953,9 @@ int SCHEDULE_static(){
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;   
-    uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+   // uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-    linkaddr_t dest ; 
+    //linkaddr_t dest ; 
     #if TSCH_WITH_LINK_SELECTOR
       uint16_t slotframe,  timeslot,  channel_offset;   
     #endif
@@ -993,11 +993,11 @@ int SCHEDULE_static(){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 tamAresta++;     
-                if(node_origin == node){ 
-                     for(int j = 0; j < sizeof(dest); j += 2) {
-                      dest.u8[j + 1] = node_destin & 0xff;
-                      dest.u8[j + 0] = node_destin >> 8;
-                }    
+               // if(node_origin == node){ 
+               //      for(int j = 0; j < sizeof(dest); j += 2) {
+               //       dest.u8[j + 1] = node_destin & 0xff;
+               //       dest.u8[j + 0] = node_destin >> 8;
+               // }    
                 }
               
                  
@@ -1103,25 +1103,13 @@ int SCHEDULE_static(){
             LOG_PRINT("----HANDLE: %u-----\n", l->handle);    
             LOG_PRINT("----TIMESLOT: %u-----\n", x+1); 
             LOG_PRINT("----CHANNEL: %u-----\n", y+1);   
-            tsch_release_lock();   
-            tsch_schedule_add_link(sf,
-              LINK_OPTION_TX,
-              LINK_TYPE_NORMAL, &dest,
-              x+1, y+1, 0,0);   
-           tsch_get_lock(); 
-           #if TSCH_WITH_LINK_SELECTOR
-            slotframe = sf->handle;  
-            timeslot = y+1 ;  
-            channel_offset = x+1 ; 
-                
-               
-
-              LOG_PRINT("--------------LINK SELECTOR---------------\n");  
-
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_SLOTFRAME, slotframe); 
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_TIMESLOT, timeslot); 
-              packetbuf_set_attr(PACKETBUF_ATTR_TSCH_CHANNEL_OFFSET, channel_offset);
-            #endif 
+          //   tsch_release_lock();   
+          //   tsch_schedule_add_link(sf,
+          //     LINK_OPTION_TX,
+          //     LINK_TYPE_NORMAL, &dest,
+          //     x+1, y+1, 0,0);   
+          //  tsch_get_lock(); 
+         
     
             } 
             else { 
@@ -1136,6 +1124,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");     
             counter_changes = 1 ; 
+            
             #if TSCH_WITH_LINK_SELECTOR
             slotframe = sf->handle;  
             timeslot = l->timeslot;  
