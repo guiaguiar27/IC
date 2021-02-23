@@ -182,7 +182,5 @@ int change_slotframe();
 void verify_packs();
  #endif  
 
- int my_callback_packet_ready(void);
-
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

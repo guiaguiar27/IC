@@ -70,8 +70,7 @@
 
 #define NBR_TSCH 1
 #define ENERGEST_CONF_ON 1 
-#define TSCH_CONF_WITH_LINK_SELECTOR 1
-#define TSCH_CALLBACK_PACKET_READY my_callback_packet_ready
+#define TSCH_CONF_WITH_LINK_SELECTOR 0
 #if WITH_SECURITY
 
  
