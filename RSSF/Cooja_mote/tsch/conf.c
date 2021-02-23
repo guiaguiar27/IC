@@ -60,7 +60,8 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
     * resultado: matriz de adjacência do matching
     */
     int x, y, maior_peso = -1, cont = 1, flg = 1;
-	//node = 5 ; 
+	//node = 5 ;  
+    printf("nó sorteado:%d\n", node);
     //Preenchendo com zeros a matriz do matching
     for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
@@ -79,12 +80,15 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
             (*vetor)[x][0] = 1;
             (*vetor)[x][1] = 0;
         }
-
+    if(node <= tam) { 
+        printf("Node maior que o vetor\n"); 
+        return ;  
+    } 
     (*vetor)[node][0] = 0;
     (*vetor)[node][1] = 0;
     
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
-    while(cont){
+    while(cont){    
         //Escolhe a aresta com maior peso...
         for(x = 0; x < tam; x++){
             if(!(*vetor)[x][0] && (*vetor)[x][1]){

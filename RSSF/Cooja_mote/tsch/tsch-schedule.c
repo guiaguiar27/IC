@@ -1106,7 +1106,7 @@ int SCHEDULE_static(){
             tsch_schedule_add_link(sf,
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &dest,
-              y+1, x+1, 0,0);   
+              x+1, y+1, 0,0);   
            tsch_get_lock();
     
             } 
