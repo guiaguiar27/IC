@@ -896,16 +896,17 @@ int tsch_num_nos(){
 }  
 /*---------------------------------------------------------------------------*/
 void tsch_write_in_file(int n_origin, int n_destin){ 
-  FILE *file; 
+  FILE *file;  
+  int node_origin, node_destin ; 
   file = fopen(endereco, "w+");
   if(file == NULL){
         printf("The file was not opened\n");
         return ; 
   }   
-  while(!feof(fl)){      
+  while(!feof(file)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         if(node_origin == n_origin && node_destin == n_destin){
-          return 
+          return ; 
         } 
     } 
 
