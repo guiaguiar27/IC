@@ -1081,8 +1081,6 @@ int SCHEDULE_static(){
         printf("\n"); 
     }  
 
-    1 2 3
-    1 
     
     LOG_PRINT("SLOTFRAME HANDLE: %u\n",sf->handle);
     struct tsch_link *l =   NULL;  
