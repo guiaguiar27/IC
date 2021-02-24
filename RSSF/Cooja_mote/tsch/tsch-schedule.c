@@ -231,7 +231,7 @@ print_link_type(uint16_t link_type)
 struct tsch_link *
 tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint8_t link_options, enum link_type link_type, const linkaddr_t *address,
-                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove, uint8_t dup)
+                       uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
 {
   struct tsch_link *l = NULL; 
   uint16_t node_neighbor, node;
@@ -263,11 +263,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         list_add(slotframe->links_list, l);
         /* Initialize link */
         //l->handle = count++ ;  
-        if(dup == 1 )
-          l->handle = count_lines(); 
-        else  
-          l->handle = - 1; 
-        LOG_PRINT("Handle : %d\n ", l->handle);
+        l->handle = count_lines();
+        LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -300,9 +297,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
               node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-              if(dup == 1){
+              
               tsch_write_in_file(node, node_neighbor); 
-              }   
+                 
                           }
           }
         }
@@ -939,7 +936,7 @@ int count_packs(){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
-    int tamNo;  
+    int tamNo = MAX_NOS;  
     int counter_changes = 0 ; 
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
@@ -970,8 +967,7 @@ int SCHEDULE_static(){
     for(x = 0; x < Channel; x++){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
 
-     }
-    tamNo = MAX_NOS ;  
+    } 
     tamAresta = 0 ;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
@@ -980,8 +976,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for(int  i = 0 ; i < tamNo; i++){ 
-        for( j = 0 ; j< tamNo; j++){  
+    for(int  i = 0 ; i < MAX_NOS; i++){ 
+        for( j = 0 ; j< MAX_NOS; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
