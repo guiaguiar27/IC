@@ -547,7 +547,7 @@ tsch_schedule_create_minimal(void)
   tsch_schedule_add_link(sf_min,
       (LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING),
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      0, 0, 1,0);
+      0, 0, 1);
 }
 /*---------------------------------------------------------------------------*/
 struct tsch_slotframe *
@@ -1105,7 +1105,7 @@ int SCHEDULE_static(){
              tsch_schedule_add_link(sf,
                LINK_OPTION_TX,
                LINK_TYPE_NORMAL, &dest,
-               x+1, y+1, 0,0);   
+               x+1, y+1, 0);   
             tsch_get_lock(); 
          
     
