@@ -904,7 +904,7 @@ void tsch_write_in_file(int n_origin, int n_destin){
         return ; 
   }   
   while(!feof(file)){      
-        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        fscanf(file,"%d %d",&node_origin, &node_destin);   
         if(node_origin == n_origin && node_destin == n_destin){
           return ; 
         } 
