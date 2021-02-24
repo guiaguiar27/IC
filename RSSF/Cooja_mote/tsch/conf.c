@@ -142,8 +142,8 @@ void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta
     int noConf = 0;
 
     //"Captura" as arestas e armazena
-    for(x = 0; x < tam_no; x++)
-        for(y = 0; y < tam_no; y++)
+    for(x = 1; x <= tam_no; x++)
+        for(y = 1; y <= tam_no; y++)
             if(mat->mat_adj[x][y] != 0){
                 (*alocado)[noConf][0] = x;
                 (*alocado)[noConf][1] = y;
