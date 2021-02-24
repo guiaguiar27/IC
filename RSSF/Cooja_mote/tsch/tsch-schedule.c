@@ -1208,7 +1208,7 @@ int sort_node_to_create_link(int n){
     for(int i = 0 ; i < MAX_NEIGHBORS; i++)  
       counter += NBRlist[i]; 
     
-    if (counter > 1) return 1 ; 
+    if (counter > 0) return 1 ; 
     
     else return 0 ;  
   } 
