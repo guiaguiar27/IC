@@ -897,11 +897,18 @@ int tsch_num_nos(){
 /*---------------------------------------------------------------------------*/
 void tsch_write_in_file(int n_origin, int n_destin){ 
   FILE *file; 
-  file = fopen(endereco, "a");
+  file = fopen(endereco, "w+");
   if(file == NULL){
         printf("The file was not opened\n");
         return ; 
-  } 
+  }   
+  while(!feof(fl)){      
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        if(node_origin == n_origin && node_destin == n_destin){
+          return 
+        } 
+    } 
+
   fprintf(file, "%d %d\n",n_origin,n_destin);
   fclose(file);
 } 
@@ -909,13 +916,16 @@ void tsch_write_in_file(int n_origin, int n_destin){
 int count_lines() 
 { 
     FILE *fp; 
-    int count = 0;    
+    int count = 0; 
     char c;  
     fp = fopen(endereco, "r"); 
     if (fp == NULL) return 0; 
-    for (c = getc(fp); c != EOF; c = getc(fp)) 
+    for (c = getc(fp); c != EOF; c = getc(fp)){  
         if (c == '\n') 
-            count = count + 1; 
+            count = count + 1;
+    } 
+
+       
     fclose(fp); 
     return count; 
 }     
@@ -950,9 +960,9 @@ int SCHEDULE_static(){
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;   
-    uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-               + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-    linkaddr_t dest ; 
+     uint16_t node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+     linkaddr_t dest ; 
     #if TSCH_WITH_LINK_SELECTOR
       uint16_t slotframe,  timeslot,  channel_offset;   
     #endif
