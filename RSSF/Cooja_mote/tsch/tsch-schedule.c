@@ -960,7 +960,7 @@ int SCHEDULE_static(){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
 
      }
-    tamNo = MAX_NOS ;  
+    tamNo = MAX_NOS  -  1;  
     tamAresta = 0 ;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
@@ -980,7 +980,7 @@ int SCHEDULE_static(){
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
-        if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
+        if(node_origin < MAX_NOS && node_destin <MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++; 
