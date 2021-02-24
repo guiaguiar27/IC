@@ -17,10 +17,10 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     int no_atual;
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = random_rand() % num_no;   
+    no_atual = rand() % num_no;   
     printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz && no_atual <= num_no){ 
-        no_atual = random_rand() % num_no;
+        no_atual = rand() % num_no;
     }
     
     for(x = 0; x < num_no; x++){
@@ -80,10 +80,10 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
             (*vetor)[x][0] = 1;
             (*vetor)[x][1] = 0;
         }
-    if(node <= tam) { 
-        printf("Node maior que o vetor\n"); 
-        return ;  
-    } 
+    // if(node <= tam) { 
+    //     printf("Node maior que o vetor\n"); 
+    //     return ;  
+    // } 
     (*vetor)[node][0] = 0;
     (*vetor)[node][1] = 0;
     

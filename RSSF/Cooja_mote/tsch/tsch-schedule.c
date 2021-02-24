@@ -266,8 +266,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         if(dup == 1 )
           l->handle = count_lines(); 
         else  
-          l->handle = -1 ; 
-        LOG_PRINT("Handle : %u\n ", l->handle);
+          l->handle = - 1; 
+        LOG_PRINT("Handle : %d\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
