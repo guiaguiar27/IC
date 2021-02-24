@@ -15,12 +15,13 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     */
     int x ; 
     int no_atual;
+    srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = random_rand() % num_no;   
+    no_atual = rand() % num_no;   
     printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz && no_atual <= num_no){ 
-        no_atual = random_rand() % num_no;
+        no_atual = rand() % num_no;
     }
     
     for(x = 0; x < num_no; x++){
@@ -35,7 +36,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
             return;
         }
 
-    printf("Nodo nao apto\n");
+    printf("Caímos no pior caso\n");
 }
 
 
@@ -60,8 +61,7 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
     * resultado: matriz de adjacência do matching
     */
     int x, y, maior_peso = -1, cont = 1, flg = 1;
-	//node = 5 ;  
-    printf("nó sorteado:%d\n", node);
+	//node = 5 ; 
     //Preenchendo com zeros a matriz do matching
     for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
@@ -80,15 +80,12 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
             (*vetor)[x][0] = 1;
             (*vetor)[x][1] = 0;
         }
-    if(node <= tam) { 
-        printf("Node maior que o vetor\n"); 
-        return ;  
-    } 
+
     (*vetor)[node][0] = 0;
     (*vetor)[node][1] = 0;
     
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
-    while(cont){    
+    while(cont){
         //Escolhe a aresta com maior peso...
         for(x = 0; x < tam; x++){
             if(!(*vetor)[x][0] && (*vetor)[x][1]){
@@ -142,8 +139,8 @@ void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta
     int noConf = 0;
 
     //"Captura" as arestas e armazena
-    for(x = 1; x <= tam_no; x++)
-        for(y = 1; y <= tam_no; y++)
+    for(x = 0; x < tam_no; x++)
+        for(y = 0; y < tam_no; y++)
             if(mat->mat_adj[x][y] != 0){
                 (*alocado)[noConf][0] = x;
                 (*alocado)[noConf][1] = y;
@@ -179,7 +176,6 @@ void fazMatrizConf(int tam_arest, int (*mapConf)[tam_arest][2], int (*grafoconf)
         for(y = x; y < tam_arest; y++)
             for(z = 0; z < 2; z++){
                 if((*mapConf)[x][z] == (*mapConf)[y][0]){
-                    // 
                     (*grafoconf)[x][y] = 1;
                     (*grafoconf)[y][x] = 1;
                     for(i = 0; i < tam_arest; i++)

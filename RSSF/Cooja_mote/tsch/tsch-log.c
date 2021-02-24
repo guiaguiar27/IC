@@ -122,11 +122,11 @@ tsch_log_process_pending(void)
         if(log->rx.is_unicast == 0){  
 
           int src;  
-          printf("--------------------------------\n");
+          printf("\n--------------------------------\n");
           log_lladdr_compact(&log->rx.src);
           printf("->");
           log_lladdr_compact(&linkaddr_node_addr); 
-          printf("\n--------------------------------"); 
+          printf("\n--------------------------------\n"); 
           src = log->rx.src.u8[LINKADDR_SIZE - 1]
                 + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8);  
           tsch_print_neighbors(src);

@@ -58,7 +58,7 @@ struct tsch_link {
   /* Links are stored as a list: "next" must be the first field */
   struct tsch_link *next;
   /* Unique identifier */
-  uint8_t  handle;
+  uint16_t handle;
   /* MAC address of neighbor */
   linkaddr_t addr;
   /* Slotframe identifier */

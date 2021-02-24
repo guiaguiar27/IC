@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_NOS 18 
+#define MAX_NOS 18
 #define MAX_NEIGHBORS 5 
 
 typedef struct NetworkGraph {
