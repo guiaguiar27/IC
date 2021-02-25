@@ -119,7 +119,6 @@ tsch_log_process_pending(void)
           printf(", dr %d", log->rx.drift);
         }
         printf(", edr %d\n", log->rx.estimated_drift);
-        break; 
         if(log->rx.is_unicast == 0){  
 
           int src;  
@@ -131,7 +130,9 @@ tsch_log_process_pending(void)
           src = log->rx.src.u8[LINKADDR_SIZE - 1]
                 + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8);  
           tsch_print_neighbors(src);
-        } 
+        }
+        break; 
+        
       case tsch_log_message:
         printf("%s\n", log->message);
         break;
