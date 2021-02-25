@@ -592,7 +592,8 @@ int SCHEDULE_static(){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
 
      }
-    tamNo = MAX_NOS  -  1;  
+    tamNo = MAX_NOS ; 
+    tamNo = tamNo -1 ;   
     tamAresta = 0 ;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
@@ -679,7 +680,7 @@ int SCHEDULE_static(){
                             break;
                     edge_selected = temp;
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == Channel)
+                        if(canal == Channel || canal > 2)
                             break;    
                         aloca_canais[canal][cont] = edge_selected; 
                         canal++;
@@ -812,20 +813,6 @@ int sort_node_to_create_link(int n){
   } 
 #endif 
  
- void teste(){ 
-
-    int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
-    for(int x = 0; x < Channel; x++){
-         aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
-     } 
-    for(int x = 0 ; x < Channel ; x++){ 
-      for(int y = 0 ; y < Timeslot; y++){ 
-        printf("%d ",aloca_canais[x][y]);
-       } 
-       printf("\n");
-    } 
-
- }
 
 
 

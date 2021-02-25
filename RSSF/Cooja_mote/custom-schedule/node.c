@@ -241,7 +241,6 @@ PROCESS_THREAD(node_process, ev, data)
       if(aux_id > 0 ) SCHEDULE_static(); 
       // mudanca  
     #endif  
-    teste();
 
     // energest_flush();
 

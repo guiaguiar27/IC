@@ -5,5 +5,5 @@
 #define MAX_NEIGHBORS 5 
 
 typedef struct NetworkGraph {
-    unsigned char mat_adj[MAX_NOS-1][MAX_NOS-1];
+    unsigned char mat_adj[MAX_NOS][MAX_NOS];
 } ng;
