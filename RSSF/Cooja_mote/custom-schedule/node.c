@@ -36,7 +36,8 @@
 
 #include "contiki.h"
 #include "net/ipv6/simple-udp.h"
-#include "net/mac/tsch/tsch.h"
+#include "net/mac/tsch/tsch.h" 
+#include "net/mac/tsch/tsch-schedule.h"
 #include "lib/random.h"
 #include "sys/node-id.h" 
 #include "sys/energest.h"    
