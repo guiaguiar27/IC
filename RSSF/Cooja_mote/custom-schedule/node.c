@@ -42,6 +42,7 @@
 #include "sys/node-id.h" 
 #include "sys/energest.h"    
 #include "net/ipv6/uip-ds6-nbr.h"  
+#include "net/routing/routing.h" 
 
 
 #include "sys/log.h"
