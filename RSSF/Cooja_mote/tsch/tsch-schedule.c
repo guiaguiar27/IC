@@ -609,10 +609,9 @@ int SCHEDULE_static(){
     }  
 
     i = 0;
-    printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
+        //printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
         if(node_origin < MAX_NOS && node_destin <MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
@@ -622,29 +621,24 @@ int SCHEDULE_static(){
         }
     }
     tamAresta = i;   
-    printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
+    //printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
-    printf("\nMatriz de adacência do grafo da rede:\n");
-    for(i = 0; i < tamNo; i++){ 
-        for( j = 0 ;j < tamNo ; j++)
-             printf("%d ", adj.mat_adj[i][j]);
-        printf("\n");
-    }
+    //printf("\nMatriz de adacência do grafo da rede:\n");
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
-    printf("\nPacotes atribuidos!\n");
+    //printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 0; x < tamNo ; x++)
-        printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+    //for(x = 0; x < tamNo ; x++)
+    //    printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
     int conf[tamAresta][2];
     mapGraphConf(&adj, tamNo, tamAresta, &conf);
-    printf("\nMapa da matriz de conflito gerada:\n"); 
-    for(x = 0; x < tamAresta ; x++)
-        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
+    //printf("\nMapa da matriz de conflito gerada:\n"); 
+    //for(x = 0; x < tamAresta ; x++)
+    //    printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
     
     //Gera a matriz de conflito
     int matconf[tamAresta][tamAresta];
@@ -701,15 +695,13 @@ int SCHEDULE_static(){
     
     }
 
-    printf("\nCanais alocados  | |");
-    printf("\n                \\   /");
-    printf("\n                 \\ /\n\n");
+    LOG_PRINT("\nCanais alocados \n");
     for(x = 0 ; x < Channel; x++){
         for(y = 0; y < Timeslot; y++) 
             // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
+            LOG_PRINT("%d  ", aloca_canais[x][y] + 1);  
              
-        printf("\n"); 
+        LOG_PRINT("\n"); 
     } 
      
     
@@ -726,7 +718,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
             l-> timeslot = y+1; 
-            l-> channel_offset = x+1 ;   
+            l-> channel_offset += x+1 ;   
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
