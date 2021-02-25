@@ -211,9 +211,9 @@ PROCESS_THREAD(node_process, ev, data)
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
   etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
   // para mudar o slotframe;  
-   if(node_id == 1) {  /* Running on the root? */
-     NETSTACK_ROUTING.root_start();
-   } 
+  //  if(node_id == 1) {  /* Running on the root? */
+  //    NETSTACK_ROUTING.root_start();
+  //  } 
   // ativa os protocolos da camda de rede 
   NETSTACK_MAC.on(); 
 

@@ -84,9 +84,9 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list); 
 
-#if NBR_TSCH 
+//#if NBR_TSCH 
   int NBRlist[MAX_NEIGHBORS]; 
-#endif  
+//#endif  
 
 
 /* Adds and returns a slotframe (NULL if failure) */
@@ -431,9 +431,9 @@ tsch_schedule_init(void)
     memb_init(&slotframe_memb);
     list_init(slotframe_list); 
      
-    #if NBR_TSCH
+   // #if NBR_TSCH
       list_init_nbr(); 
-    #endif
+   // #endif
     tsch_release_lock();
     return 1;
   } else {
@@ -740,7 +740,7 @@ int SCHEDULE_static(){
 } 
 
 
-#if NBR_TSCH 
+//#if NBR_TSCH 
   // inicia  
 
 
@@ -793,7 +793,7 @@ int sort_node_to_create_link(int n){
     
     else return 0 ;  
   } 
- #endif 
+ //#endif 
 
 
 
