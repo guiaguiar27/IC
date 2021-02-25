@@ -43,7 +43,7 @@
 #include "sys/energest.h"    
 #include "net/ipv6/uip-ds6-nbr.h"  
 #include "net/routing/routing.h" 
- 
+
 
 
 #include "sys/log.h"
@@ -240,7 +240,8 @@ PROCESS_THREAD(node_process, ev, data)
       }
       if(aux_id > 0 ) SCHEDULE_static(); 
       // mudanca  
-    #endif 
+    #endif  
+    teste();
 
     // energest_flush();
 

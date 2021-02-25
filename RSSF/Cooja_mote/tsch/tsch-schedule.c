@@ -84,9 +84,9 @@ MEMB(slotframe_memb, struct tsch_slotframe, TSCH_SCHEDULE_MAX_SLOTFRAMES);
 /* List of slotframes (each slotframe holds its own list of links) */
 LIST(slotframe_list); 
 
-//#if NBR_TSCH 
+#if NBR_TSCH 
   int NBRlist[MAX_NEIGHBORS]; 
-//#endif  
+#endif  
 
 
 /* Adds and returns a slotframe (NULL if failure) */
@@ -431,9 +431,9 @@ tsch_schedule_init(void)
     memb_init(&slotframe_memb);
     list_init(slotframe_list); 
      
-   // #if NBR_TSCH
+    #if NBR_TSCH
       list_init_nbr(); 
-   // #endif
+   #endif
     tsch_release_lock();
     return 1;
   } else {
@@ -586,6 +586,7 @@ int SCHEDULE_static(){
     if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
+    
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
     for(x = 0; x < Channel; x++){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
@@ -756,7 +757,7 @@ int SCHEDULE_static(){
 } 
 
 
-//#if NBR_TSCH 
+#if NBR_TSCH 
   // inicia  
 
 
@@ -809,8 +810,22 @@ int sort_node_to_create_link(int n){
     
     else return 0 ;  
   } 
- //#endif 
+#endif 
+ 
+ void teste(){ 
 
+    int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
+    for(int x = 0; x < Channel; x++){
+         aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
+     } 
+    for(int x = 0 ; x < Channel ; x++){ 
+      for(int y = 0 ; y < Timeslot; y++){ 
+        printf("%d ",aloca_canais[x][y]);
+       } 
+       printf("\n");
+    } 
+
+ }
 
 
 

@@ -173,15 +173,15 @@ int tsch_num_nos();
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
 int SCHEDULE_static(); 
-int sort_node_to_create_link(int n);     
 
-//#if NBR_TSCH
+#if NBR_TSCH
+int sort_node_to_create_link(int n);     
 void tsch_print_neighbors(int nbr);
 void show_nbr(void);  
 void list_init_nbr(void); 
 int change_slotframe();  
 void verify_packs();
-// #endif 
+ #endif 
 
 
 
