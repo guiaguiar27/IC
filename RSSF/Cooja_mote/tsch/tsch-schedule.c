@@ -65,7 +65,8 @@
 #define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
 
 #define Channel 16
-#define Timeslot 16
+#define Timeslot 16 
+#define Max_channel_link 2 
 
 
 /* Log configuration */
@@ -1065,7 +1066,7 @@ int SCHEDULE_static(){
                         l = list_item_next(l);
                     } 
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                            if(canal == Channel)
+                            if(canal == Channel || canal == Max_channel_link)
                               break;    
                             l->timeslot = cont;  
                             l->channel_offset = canal ;
