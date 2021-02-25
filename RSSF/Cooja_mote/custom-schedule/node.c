@@ -74,93 +74,106 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 int  verify = 0, aux_id  ;  
 
+void teste(){ 
+  int  **aloca_canais = (int**)malloc(12 * sizeof(int*));
+    for(int x = 0; x < 12; x++){
+         aloca_canais[x] = (int*)malloc(16 * sizeof(int)); 
+    }
+    for(int x = 0; x < 12; x++){
+     for(int x = 0; x < 16; x++){ 
+       aloca_canais[x][y] = 1 ; 
+       printf("%d",aloca_canais[x][y]);
+     } 
 
+          
+    
+}
 // static unsigned long
 // to_seconds(uint64_t time)
 // {
 //   return (unsigned long)(time / ENERGEST_SECOND);
 // }
 
-#if NBR_TSCH 
-static void init_broad(void){  
+// #if NBR_TSCH 
+// static void init_broad(void){  
 
-  // APP_SLOTFRAME_SIZE
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-  uint16_t slot_offset;
-  uint16_t channel_offset; 
+//   // APP_SLOTFRAME_SIZE
+//   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+//   uint16_t slot_offset;
+//   uint16_t channel_offset; 
   
-  slot_offset = 0;
-  channel_offset = 0;
+//   slot_offset = 0;
+//   channel_offset = 0;
   
-    tsch_schedule_add_link(sf_common,
-      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset);
+//     tsch_schedule_add_link(sf_common,
+//       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+//       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+//       slot_offset, channel_offset);
     
-} 
-#endif  
+// } 
+// #endif  
 
-int initialize_tsch_schedule(void){
+// int initialize_tsch_schedule(void){
 
  
  
-    LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
+//     LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
  
-    tsch_schedule_remove_all_slotframes(); 
+//     tsch_schedule_remove_all_slotframes(); 
     
-    int i, j; 
-    // APP_SLOTFRAME_SIZE
-    struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-    uint16_t slot_offset;
-    uint16_t channel_offset;  
-    uint8_t link_options;
+//     int i, j; 
+//     // APP_SLOTFRAME_SIZE
+//     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+//     uint16_t slot_offset;
+//     uint16_t channel_offset;  
+//     uint8_t link_options;
     
-    slot_offset = 0;
-    channel_offset = 0;
-    int num_links = 1 ;    
-    uint16_t remote_id = 0; 
-    linkaddr_t addr;  
+//     slot_offset = 0;
+//     channel_offset = 0;
+//     int num_links = 1 ;    
+//     uint16_t remote_id = 0; 
+//     linkaddr_t addr;  
 
 
-    // tsch_schedule_add_link(sf_common,
-    //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-    //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-    //   slot_offset, channel_offset,0);
+//     // tsch_schedule_add_link(sf_common,
+//     //   LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+//     //   LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+//     //   slot_offset, channel_offset,0);
     
 
-      if (node_id != 1) {
+//       if (node_id != 1) {
         
-        for (i = 0 ; i <  num_links ; ++i) { 
+//         for (i = 0 ; i <  num_links ; ++i) { 
         
-          #if NBR_TSCH 
-          remote_id = sort_node_to_create_link(node_id);  
-          #else  
-          remote_id = random_rand() % node_id ; 
-          #endif 
-          if(remote_id == 0){ 
-            LOG_INFO("There are no neighbors\n"); 
-            return 0 ;
-          } 
+//           #if NBR_TSCH 
+//           remote_id = sort_node_to_create_link(node_id);  
+//           #else  
+//           remote_id = random_rand() % node_id ; 
+//           #endif 
+//           if(remote_id == 0){ 
+//             LOG_INFO("There are no neighbors\n"); 
+//             return 0 ;
+//           } 
 
         
-        for(j = 0; j < sizeof(addr); j += 2) {
-            addr.u8[j + 1] = remote_id & 0xff;
-            addr.u8[j + 0] = remote_id >> 8;
-          } 
-        }  
-          slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
-          channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
-          /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-          * backoff windows will not be reset correctly! */
-          link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+//         for(j = 0; j < sizeof(addr); j += 2) {
+//             addr.u8[j + 1] = remote_id & 0xff;
+//             addr.u8[j + 0] = remote_id >> 8;
+//           } 
+//         }  
+//           slot_offset = random_rand() % APP_UNICAST_TIMESLOT;
+//           channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
+//           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+//           * backoff windows will not be reset correctly! */
+//           link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
 
-          tsch_schedule_add_link(sf_common,
-              link_options,
-              LINK_TYPE_NORMAL, &addr,
-              slot_offset, channel_offset);
-          }  
-          return remote_id;
-    } 
+//           tsch_schedule_add_link(sf_common,
+//               link_options,
+//               LINK_TYPE_NORMAL, &addr,
+//               slot_offset, channel_offset);
+//           }  
+//           return remote_id;
+//     } 
      
       
   
@@ -194,18 +207,18 @@ PROCESS_THREAD(node_process, ev, data)
   static uint32_t seqnum;
   uip_ipaddr_t dst;   
   
-  PROCESS_BEGIN(); 
-  #if NBR_TSCH 
+  // PROCESS_BEGIN(); 
+  // #if NBR_TSCH 
    
-    init_broad(); 
-  #else  
-  linkaddr_t addr_dest; 
-     for(int j = 0; j < sizeof(addr_dest); j += 2) {
-        addr_dest.u8[j + 1] = aux_id & 0xff;
-        addr_dest.u8[j + 0] = aux_id >> 8;
-      } 
+  //   init_broad(); 
+  // #else  
+  // linkaddr_t addr_dest; 
+  //    for(int j = 0; j < sizeof(addr_dest); j += 2) {
+  //       addr_dest.u8[j + 1] = aux_id & 0xff;
+  //       addr_dest.u8[j + 0] = aux_id >> 8;
+  //     } 
     
-  #endif  
+  // #endif  
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
@@ -222,24 +235,24 @@ PROCESS_THREAD(node_process, ev, data)
   /* Main loop */
   while(1) {
     
-    #if NBR_TSCH  
-      show_nbr();   
-      // adapatação sem contar com o tempo 
-      LOG_INFO("Verify: %d \n", verify);    
-      if(verify == 0){ 
-        verify = change_slotframe(); 
-        if(verify == 1){  
+    //#if NBR_TSCH  
+    //   show_nbr();   
+    //   // adapatação sem contar com o tempo 
+    //   LOG_INFO("Verify: %d \n", verify);    
+    //   if(verify == 0){ 
+    //     verify = change_slotframe(); 
+    //     if(verify == 1){  
         
-          LOG_INFO("Verify: %d - ", verify); 
-          aux_id = initialize_tsch_schedule();  
-          LOG_INFO("%d \n",aux_id);  
+    //       LOG_INFO("Verify: %d - ", verify); 
+    //       aux_id = initialize_tsch_schedule();  
+    //       LOG_INFO("%d \n",aux_id);  
           
-      
-      }
-      }
-      if(aux_id > 0 ) SCHEDULE_static(); 
-      // mudanca  
-    #endif 
+      teste();
+    //   }
+    //   }
+    //   if(aux_id > 0 ) SCHEDULE_static(); 
+    //   // mudanca  
+    // #endif 
 
     // energest_flush();
 
