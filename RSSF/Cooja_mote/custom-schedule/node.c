@@ -94,7 +94,7 @@ static void init_broad(void){
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-      slot_offset, channel_offset,0);
+      slot_offset, channel_offset);
     
 } 
 #endif  
@@ -156,7 +156,7 @@ int initialize_tsch_schedule(void){
           tsch_schedule_add_link(sf_common,
               link_options,
               LINK_TYPE_NORMAL, &addr,
-              slot_offset, channel_offset,0);
+              slot_offset, channel_offset);
           }  
           return remote_id;
     } 
