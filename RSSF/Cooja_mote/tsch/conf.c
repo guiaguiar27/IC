@@ -15,13 +15,13 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     */
     int x ; 
     int no_atual;
-    srand(time(NULL));
+    //srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = rand() % num_no;   
+    no_atual = random_rand() % num_no;   
     printf("sorted nó:%d\n",no_atual);
     while(no_atual == raiz && no_atual <= num_no){ 
-        no_atual = rand() % num_no;
+        no_atual = random_rand() % num_no;
     }
     
     for(x = 0; x < num_no; x++){
