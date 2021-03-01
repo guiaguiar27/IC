@@ -119,11 +119,15 @@ int initialize_tsch_schedule(void){
     uint16_t remote_id = 0; 
     linkaddr_t addr;  
 
-
-     tsch_schedule_add_link(sf_common,
-       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-       slot_offset, channel_offset,0);
+    // remove all links before
+    struct tsch_link *l;
+    while((l = list_head(sf_common->links_list))) {
+      tsch_schedule_remove_link(sf_common, l);
+    }
+    //  tsch_schedule_add_link(sf_common,
+    //    LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+    //    LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+    //    slot_offset, channel_offset,0);
     
 
       if (node_id != 1) {
