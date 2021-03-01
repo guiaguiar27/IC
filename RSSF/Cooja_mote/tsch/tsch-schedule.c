@@ -68,7 +68,9 @@
 #define Timeslot 16   
 
 
-
+uint16_t Spackets = 0 ; 
+uint16_t Rpackets = 0 ; 
+uint16_t flag_schedule = 0 ;  
 
 /* Log configuration */
 #include "sys/log.h"
@@ -525,8 +527,6 @@ tsch_schedule_init(void)
     #endif 
     
 
-    uint16_t Spackets = 0 ; 
-    uint16_t Rpackets = 0 ; 
     tsch_release_lock();
     return 1;
   } else {
@@ -923,15 +923,17 @@ int count_lines()
     fclose(fp); 
     return count; 
 }     
-void count_packs(int i){  
-  if(i == 1 ){ 
-    // sent  
-    LOG_INFO("Total sent packets: %u",Spackets);
-    Spackets++;  
-  } 
-  if(i == 0){ 
-    LOG_INFO("Total received packets: %u",Rpackets);
-    Rpackets++;
+void count_packs(int i){   
+  if(flag_schedule){  
+    if(i == 1 ){ 
+      // sent  
+      LOG_INFO("Total sent packets: %u",Spackets);
+      Spackets++;  
+    } 
+    if(i == 0){ 
+      LOG_INFO("Total received packets: %u",Rpackets);
+      Rpackets++;
+    } 
   }
 }  
 /*---------------------------------------------------------------------------*/
@@ -1105,7 +1107,8 @@ int SCHEDULE_static(){
      
     
       
-      LOG_PRINT("Escalonamento Concluido\n");
+      LOG_PRINT("Escalonamento Concluido\n"); 
+      flag_schedule = 1 ; 
       tsch_release_lock();   
     } 
     return 1;
