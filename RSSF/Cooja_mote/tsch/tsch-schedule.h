@@ -172,7 +172,7 @@ int count_lines();
 int SCHEDULE_AUX(int **adj); 
 int SCHEDULE_static(); 
 int sort_node_to_create_link(int n);     
-int count_packs(); 
+int count_packs(int n); 
 void tsch_print_neighbors();  
 
 #if NBR_TSCH

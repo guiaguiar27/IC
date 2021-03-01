@@ -923,7 +923,7 @@ int count_lines()
     fclose(fp); 
     return count; 
 }     
-int count_packs(int i){  
+void count_packs(int i){  
   if(i == 1 ){ 
     // sent  
     LOG_INFO("Total sent packets: %u",Spackets);
