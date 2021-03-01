@@ -1147,9 +1147,8 @@ send_packet(mac_callback_t sent, void *ptr)
              TSCH_QUEUE_NUM_PER_NEIGHBOR, tsch_queue_global_packet_count(),
              QUEUEBUF_NUM, p->header_len, queuebuf_datalen(p->qb));
     // function to count how much packs are sending 
-      LOG_INFO("Total sent packets: %u",Spackets);
-      Spackets++;  
-   
+    count_packs(); 
+
     }
   }
   if(ret != MAC_TX_DEFERRED) {

@@ -46,8 +46,6 @@
 #include "net/linkaddr.h" 
 
 
-uint16_t Spackets = 0 ; 
-uint16_t Rpackets = 0 ; 
 
 /********** Functions *********/
 

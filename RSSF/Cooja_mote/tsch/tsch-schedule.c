@@ -69,6 +69,7 @@
 
 
 
+
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
@@ -523,6 +524,9 @@ tsch_schedule_init(void)
       list_init_nbr(); 
     #endif 
     
+
+    uint16_t Spackets = 0 ; 
+    uint16_t Rpackets = 0 ; 
     tsch_release_lock();
     return 1;
   } else {
@@ -919,19 +923,16 @@ int count_lines()
     fclose(fp); 
     return count; 
 }     
-int count_packs(){  
-    FILE *fp; 
-    int count = 0;    
-    //char c;  
-    fp = fopen(endereco_pack, "w+"); 
-    if (fp == NULL) return 0 ;  
-    count = 1 ;  
-    fscanf(fp,"%d",&count); 
-    count = count+1 ; 
-    fprintf(fp, "%d", count);
-    fclose(fp); 
-    return count; 
-
+int count_packs(int i){  
+  if(i == 1 ){ 
+    // sent  
+    LOG_INFO("Total sent packets: %u",Spackets);
+    Spackets++;  
+  } 
+  if(i == 0){ 
+    LOG_INFO("Total received packets: %u",Rpackets);
+    Rpackets++;
+  }
 }  
 /*---------------------------------------------------------------------------*/
 
