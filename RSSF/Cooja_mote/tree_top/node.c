@@ -121,8 +121,10 @@ int initialize_tsch_schedule(void){
 
     // remove all links before
     struct tsch_link *l;
-    while((l = list_head(sf_common->links_list))) {
-      tsch_schedule_remove_link(sf_common, l);
+    while((l = list_head(sf_common->links_list))) { 
+      if(l-> link_options == LINK_OPTION_TX){
+        tsch_schedule_remove_link(sf_common, l); 
+      }
     }
     //  tsch_schedule_add_link(sf_common,
     //    LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
