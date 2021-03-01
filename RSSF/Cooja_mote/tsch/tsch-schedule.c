@@ -1060,19 +1060,28 @@ int SCHEDULE_static(){
                               break;    
                             aloca_canais[canal][cont] = edge_selected;  
                             while(l!= NULL){  
-                              if(edge_selected + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && verify == 0){ 
+                              if(edge_selected + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){ 
+                                if(verify == 0){ 
                                 LOG_PRINT("---------------------------\n"); 
                                 LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
                                 LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
                                 LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
                                 l->timeslot = cont; 
-                                l->channel_offset = canal;   
+                                l-> channel_offset = canal;   
                                 LOG_PRINT("----CHANGE-----\n"); 
                                 LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-                                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                                LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);  
                                 LOG_PRINT("-----------------------------\n");       
+                                verify = 1 ;   
+                                }  
+                                else {
+                                LOG_PRINT("----EXTRA-ALLOCATION-----\n");   
+                                LOG_PRINT("----TIMESLOT: %u-----\n",cont); 
+                                LOG_PRINT("----CHANNEL: %u-----\n", canal);  
+                                LOG_PRINT("-----------------------------\n");       
+                                  
+                                }
                                 
-                              verify = 1 ; 
                               }
                               l = list_item_next(l);
                           } 

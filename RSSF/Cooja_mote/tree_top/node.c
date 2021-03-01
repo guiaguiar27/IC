@@ -140,7 +140,7 @@ int initialize_tsch_schedule(void){
           remote_id = sort_node_to_create_link(node_id);  
           #else  
           remote_id = random_rand() % node_id ; 
-          #endif 
+          #endif  
           if(remote_id == 0){ 
             LOG_INFO("There are no neighbors\n"); 
             return 0 ;
@@ -241,7 +241,8 @@ PROCESS_THREAD(node_process, ev, data)
       
       }
       }
-      if(aux_id > 0 ) SCHEDULE_static(); 
+      if(aux_id >= 1 ) SCHEDULE_static();  
+      
       // mudanca  
     #endif 
 
