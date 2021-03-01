@@ -65,7 +65,8 @@
 #define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
 
 #define Channel 16
-#define Timeslot 16 
+#define Timeslot 16   
+
 
 
 /* Log configuration */
