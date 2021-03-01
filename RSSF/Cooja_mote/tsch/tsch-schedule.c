@@ -928,11 +928,11 @@ void count_packs(int i){
   if(flag_schedule){  
     if(i == 1 ){ 
       // sent  
-      LOG_INFO("Total sent packets: %u",Spackets);
+      LOG_INFO("Total sent packets: %u\n",Spackets);
       Spackets++;  
     } 
     if(i == 0){ 
-      LOG_INFO("Total received packets: %u",Rpackets);
+      LOG_INFO("Total received packets: %u\n",Rpackets);
       Rpackets++;
     } 
   }
@@ -1076,7 +1076,7 @@ int SCHEDULE_static(){
                               }
                               l = list_item_next(l);
                           } 
-                            canal++;
+                            canal++;  
                     }
                     
                 }
