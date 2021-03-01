@@ -922,7 +922,8 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}     
+}      
+
 void count_packs(int i){   
   if(flag_schedule){  
     if(i == 1 ){ 
