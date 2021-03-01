@@ -231,10 +231,11 @@ PROCESS_THREAD(node_process, ev, data)
         verify = change_slotframe(); 
         if(verify == 1){  
         
-          LOG_INFO("Verify: %d - ", verify); 
-          aux_id = initialize_tsch_schedule();  
+          LOG_INFO("Verify: %d - ", verify);  
+          if(node_id > 1){
+            aux_id = initialize_tsch_schedule();  
           LOG_INFO("%d \n",aux_id);  
-          
+          }
       
       }
       }

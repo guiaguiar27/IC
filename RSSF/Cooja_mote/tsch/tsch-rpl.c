@@ -46,10 +46,7 @@
 
 #include "net/routing/routing.h"
 #include "net/mac/tsch/tsch.h"
-#include "net/mac/tsch/tsch-private.h"
-#include "net/mac/tsch/tsch-schedule.h"
-#include "net/mac/tsch/tsch-log.h"
-#include "net/mac/tsch/tsch-rpl.h"
+#include "net/link-stats.h"
 
 #if ROUTING_CONF_RPL_LITE
 #include "net/routing/rpl-lite/rpl.h"
@@ -83,6 +80,11 @@ tsch_rpl_callback_joining_network(void)
 void
 tsch_rpl_callback_leaving_network(void)
 {
+  /* Forget past link statistics. If we are leaving a TSCH
+  network, there are changes we've been out of sync in the recent past, and
+  as a result have irrelevant link statistices. */
+  link_stats_reset();
+  /* RPL local repair */
   NETSTACK_ROUTING.local_repair("TSCH leaving");
 }
 /*---------------------------------------------------------------------------*/
@@ -126,13 +128,20 @@ tsch_rpl_callback_new_dio_interval(clock_time_t dio_interval)
 void
 tsch_rpl_callback_parent_switch(rpl_parent_t *old, rpl_parent_t *new)
 {
-  /* Map the TSCH time source on the RPL preferred parent (but stick to the
-   * current time source if there is no preferred aarent) */
-  if(tsch_is_associated == 1 && new != NULL) {
+  /* Map the TSCH time source on the RPL preferred parent */
+  if(tsch_is_associated == 1) {
     tsch_queue_update_time_source(
       (const linkaddr_t *)uip_ds6_nbr_lladdr_from_ipaddr(
         rpl_parent_get_ipaddr(new)));
   }
+}
+/*---------------------------------------------------------------------------*/
+/* Check RPL has joined DODAG.
+ * To use, set #define TSCH_RPL_CHECK_DODAG_JOINED tsch_rpl_check_dodag_joined */
+int
+tsch_rpl_check_dodag_joined(void)
+{
+  return NETSTACK_ROUTING.node_has_joined();
 }
 #endif /* UIP_CONF_IPV6_RPL */
 /** @} */
