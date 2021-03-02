@@ -99,12 +99,10 @@ static void init_broad(void){
 #endif  
 
 int initialize_tsch_schedule(void){
-
- 
  
     LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
  
-  //tsch_schedule_remove_all_slotframes(); 
+  tsch_schedule_remove_all_slotframes(); 
     
     int i, j; 
     // APP_SLOTFRAME_SIZE
