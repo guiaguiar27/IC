@@ -925,9 +925,9 @@ int count_lines()
 }      
 
 void count_packs(int i){  
-  uint8_t  node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
-  if(node == 1 ) flag_schedule = 1;     
+  //uint8_t  node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+  //              + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
+  //if(node == 1 ) flag_schedule = 1;     
   if(flag_schedule){   
     if(i == 1 ){ 
       // sent  
