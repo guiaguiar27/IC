@@ -70,7 +70,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #define APP_CHANNEL_OFSETT 16   
 
 
-int  verify = 0, aux_id  ;  
+int  aux_id  ;  
 
 
 // static unsigned long
@@ -132,7 +132,7 @@ int initialize_tsch_schedule(void){
             addr.u8[j + 1] = remote_id & 0xff;
             addr.u8[j + 0] = remote_id >> 8;
           } 
-        }  
+          
           slot_offset = 1 ; //random_rand() % APP_UNICAST_TIMESLOT;
           channel_offset = 2; //random_rand() % APP_CHANNEL_OFSETT ;
           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
@@ -145,7 +145,8 @@ int initialize_tsch_schedule(void){
               slot_offset, channel_offset,0);
         }  
           return remote_id;
-    } 
+      
+    }
      
       
   
