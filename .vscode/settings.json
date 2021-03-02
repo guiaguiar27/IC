@@ -1,6 +1,7 @@
 {
     "python.pythonPath": "/Users/Macbook/opt/anaconda3/bin/python",
     "files.associations": {
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "energest.h": "c"
     }
 }

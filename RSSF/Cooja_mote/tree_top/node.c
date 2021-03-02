@@ -92,7 +92,7 @@ static void init_broad(void){
   
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
     
 } 
@@ -122,7 +122,7 @@ int initialize_tsch_schedule(void){
     
       tsch_schedule_add_link(sf_common,
         LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-        LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+        LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
         slot_offset, channel_offset,0);
     
 
@@ -150,10 +150,8 @@ int initialize_tsch_schedule(void){
           channel_offset = 2; //random_rand() % APP_CHANNEL_OFSETT ;
           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
           * backoff windows will not be reset correctly! */
-          //link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-          link_options = LINK_OPTION_SHARED;  
           tsch_schedule_add_link(sf_common,
-              link_options,
+              LINK_OPTION_RX | LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &addr,
               slot_offset, channel_offset,0);
           }  
@@ -235,7 +233,7 @@ PROCESS_THREAD(node_process, ev, data)
       
       }
       }
-      if(aux_id >= 1 ) SCHEDULE_static();  
+     // if(aux_id >= 1 ) SCHEDULE_static();  
       
       // mudanca  
     #endif 
