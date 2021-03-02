@@ -196,9 +196,9 @@
 02:07.292	ID:10	[INFO: TSCH Sched] Total sent packets: 9 
 
 
-====================== LARGURA DE BANDA   
+===========LARGURA DE BANDA ===========  
 NODOS :  
-14 — 2 canais 
-18 — 1 canal 
-15 — 1 canal
+14 — 2 canais(extras) 
+18 — 1 canal (extra)
+15 — 1 canal(extras)
 
