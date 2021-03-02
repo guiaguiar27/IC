@@ -706,9 +706,8 @@ tsch_associate(const struct input_packet *input_eb, rtimer_clock_t timestamp)
 
     /* Add coordinator to list of neighbors, lock the entry */
     n = tsch_queue_add_nbr((linkaddr_t *)&frame.src_addr); 
-    LOG_INFO("_____________\n");
     LOG_INFO_LLADDR((linkaddr_t *)&frame.src_addr);
-    LOG_INFO("\n_____________\n");
+
     if(n != NULL) {
       tsch_queue_update_time_source((linkaddr_t *)&frame.src_addr);
 
@@ -1147,7 +1146,7 @@ send_packet(mac_callback_t sent, void *ptr)
              TSCH_QUEUE_NUM_PER_NEIGHBOR, tsch_queue_global_packet_count(),
              QUEUEBUF_NUM, p->header_len, queuebuf_datalen(p->qb));
     // function to count how much packs are sending  
-    if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME)
+    if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  addr != tsch_broadcast_address)
       count_packs(1); 
 
     }
@@ -1189,7 +1188,7 @@ packet_input(void)
       LOG_INFO_(" with seqno %u\n", packetbuf_attr(PACKETBUF_ATTR_MAC_SEQNO));  
       if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME)
         count_packs(0);  
-        
+
 #if TSCH_WITH_SIXTOP
       sixtop_input();
 #endif /* TSCH_WITH_SIXTOP */
