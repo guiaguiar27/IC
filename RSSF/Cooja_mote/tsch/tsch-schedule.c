@@ -1044,7 +1044,8 @@ int SCHEDULE_static(){
     // otimizar a criação de matrizes 
     int vetor[tamAresta][2];
     DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
-    struct tsch_link *l =   NULL;  
+    struct tsch_link *l =   NULL;   
+    l = memb_alloc(&link_memb); 
     while(pacote_entregue < total_pacotes){
 
         for(x = 0; x < tamNo; x ++){
@@ -1054,7 +1055,7 @@ int SCHEDULE_static(){
                         if(conf[temp][0] == x && conf[temp][1] == y)
                             break;  
 
-                    l = memb_alloc(&link_memb); 
+                    
                     l = list_head(sf->links_list);
                     edge_selected = temp;
                     
