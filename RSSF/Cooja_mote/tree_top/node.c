@@ -121,15 +121,11 @@ int initialize_tsch_schedule(void){
 
     // remove all links before
     struct tsch_link *l;
-    while((l = list_head(sf_common->links_list))) { 
-      if(l-> link_options == LINK_OPTION_TX){
-        tsch_schedule_remove_link(sf_common, l); 
-      }
-    }
-    //  tsch_schedule_add_link(sf_common,
-    //    LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-    //    LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
-    //    slot_offset, channel_offset,0);
+    
+      tsch_schedule_add_link(sf_common,
+        LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+        LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+        slot_offset, channel_offset,0);
     
 
       if (node_id != 1) {
@@ -156,8 +152,8 @@ int initialize_tsch_schedule(void){
           channel_offset = 2; //random_rand() % APP_CHANNEL_OFSETT ;
           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
           * backoff windows will not be reset correctly! */
-          link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
-
+          //link_options = remote_id == node_id ? LINK_OPTION_RX : LINK_OPTION_TX;
+          link_options = LINK_OPTION_SHARED;  
           tsch_schedule_add_link(sf_common,
               link_options,
               LINK_TYPE_NORMAL, &addr,

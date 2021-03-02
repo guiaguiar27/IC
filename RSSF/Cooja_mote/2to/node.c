@@ -86,7 +86,6 @@ int initialize_tsch_schedule(void){
  
     LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
  
-    tsch_schedule_remove_all_slotframes(); 
     
     int i, j; 
     // APP_SLOTFRAME_SIZE
@@ -137,7 +136,7 @@ int initialize_tsch_schedule(void){
           channel_offset = 2; //random_rand() % APP_CHANNEL_OFSETT ;
           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
           * backoff windows will not be reset correctly! */
-          link_options = LINK_OPTION_TX;
+          link_options = LINK_OPTION_RX;
 
           tsch_schedule_add_link(sf_common,
               link_options,

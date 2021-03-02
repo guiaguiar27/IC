@@ -925,7 +925,7 @@ int count_lines()
 }      
 
 void count_packs(int i){   
-  //if(flag_schedule){  
+  if(flag_schedule){  
     if(i == 1 ){ 
       // sent  
       LOG_INFO("Total sent packets: %u\n",Spackets);
@@ -935,7 +935,7 @@ void count_packs(int i){
       LOG_INFO("Total received packets: %u\n",Rpackets);
       Rpackets++;
     } 
-  //}
+  }
 }  
 /*---------------------------------------------------------------------------*/
 
