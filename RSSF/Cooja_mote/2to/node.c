@@ -179,7 +179,7 @@ PROCESS_THREAD(node_process, ev, data)
   static struct etimer periodic_timer; 
   static uint32_t seqnum;
   uip_ipaddr_t dst;   
-  
+   PROCESS_BEGIN(); 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -230,5 +230,5 @@ PROCESS_THREAD(node_process, ev, data)
     etimer_set(&periodic_timer, SEND_INTERVAL);
   }
 
-  PROCESS_END();
+  PROCESS_END(); 
 }
