@@ -111,7 +111,6 @@ int initialize_tsch_schedule(void){
     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
     uint16_t slot_offset;
     uint16_t channel_offset;  
-    uint8_t link_options;
     
     slot_offset = 0;
     channel_offset = 0;
