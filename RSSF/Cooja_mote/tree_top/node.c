@@ -104,7 +104,7 @@ int initialize_tsch_schedule(void){
  
     LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
  
-    tsch_schedule_remove_all_slotframes(); 
+  //tsch_schedule_remove_all_slotframes(); 
     
     int i, j; 
     // APP_SLOTFRAME_SIZE
@@ -119,8 +119,6 @@ int initialize_tsch_schedule(void){
     uint16_t remote_id = 0; 
     linkaddr_t addr;  
 
-    // remove all links before
-    struct tsch_link *l;
     
       tsch_schedule_add_link(sf_common,
         LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
