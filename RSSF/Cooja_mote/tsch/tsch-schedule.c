@@ -68,9 +68,11 @@
 #define Timeslot 16   
 
 
-uint16_t Spackets = 0 ; 
-uint16_t Rpackets = 0 ; 
-uint16_t flag_schedule = 0 ;  
+//uint16_t Spackets = 0 ; 
+//uint16_t Rpackets = 0 ; 
+uint16_t flag_schedule = 0 ;   
+uint8_t Packets_sent[MAX_NOS]; 
+uint8_t Packets_received[MAX_NOS];
 
 /* Log configuration */
 #include "sys/log.h"
@@ -924,25 +926,32 @@ int count_lines()
     return count; 
 }      
 
-void count_packs(int i){  
-  uint8_t  node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
+void count_packs(int i, linkaddr_t *address ){  
+  uint8_t  node_src = address.u8[LINKADDR_SIZE - 1]
+                + (address.u8[LINKADDR_SIZE - 2] << 8);   
+  uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+              + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
   if(node == 1 ){ 
     if(change_slotframe())
       flag_schedule = 1; 
     else  
       flag_schedule = 0;
-  }      
-  if(flag_schedule){   
-    if(i == 1 ){ 
-      // sent  
-      LOG_INFO("Total sent packets: %u\n",Spackets);
-      Spackets++;  
-    } 
-    if(i == 0){ 
-      LOG_INFO("Total received packets: %u\n",Rpackets);
-      Rpackets++;
-    } 
+  }       
+  
+  if(flag_schedule){     
+    Packets_sent[node_src] += 1 ;  
+    Packets_received[node] += 1 ;  
+    for(int i = 1 ; i <= MAX_NOS; i++){ 
+      LOG_INFO("Node %u Total sent packets: %u - Total received packets: %u",i,Packets_sent[i], Packets_sent[i]);
+    }
+    // if(i == 1 ){ 
+    //   // sent  
+    //   Spackets++;  
+    // } 
+    // if(i == 0){ 
+    //   LOG_INFO("Total received packets: %u\n",Rpackets);
+    //   Rpackets++;
+    // } 
   }
 }  
 /*---------------------------------------------------------------------------*/
