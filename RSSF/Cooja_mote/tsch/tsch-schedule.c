@@ -1049,7 +1049,7 @@ int SCHEDULE_static(){
     // otimizar a criação de matrizes 
     int vetor[tamAresta][2];
     DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
-    struct tsch_link *l =   NULL;  
+    
     while(pacote_entregue < total_pacotes){
 
         for(x = 0; x < tamNo; x ++){
@@ -1098,39 +1098,39 @@ int SCHEDULE_static(){
       
   LOG_PRINT("Escalonamento Concluido\n");  
 
-                   
-  for(x = 0 ; x < Channel; x++){ 
+ struct tsch_link *l =   NULL;  
+    for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){ 
-       l = memb_alloc(&link_memb); 
-       l = list_head(sf->links_list);
-      while(l!= NULL){  
-        if(edge_selected + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){ 
-          if(verify == 0){ 
+        l = memb_alloc(&link_memb); 
+        l = list_head(sf->links_list);        
+        while(l!= NULL){   
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            l->timeslot = y+1 ; 
-            l-> channel_offset = x+1;   
+            if(verify == 0 ){
+            l-> timeslot = y+1; 
+            l-> channel_offset = x+1 ;   
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);  
+            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");       
-            verify = 1 ;   
-            }  
-            else {
-              LOG_PRINT("----EXTRA-ALLOCATION-----\n");   
-              LOG_PRINT("----TIMESLOT: %u-----\n",y+1); 
-              LOG_PRINT("----CHANNEL: %u-----\n", x+1);  
-              LOG_PRINT("-----------------------------\n");       
-                                    
+            verify = 1 ; 
+            } 
+            else { 
+            LOG_PRINT("----EXTRA-----\n"); 
+            LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
+            LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
+            LOG_PRINT("-----------------------------\n");
             }
-                                
-          }
+          
+            } 
           l = list_item_next(l);
           } 
-      } 
-    }       
+              
+      }
+     }
 
       flag_schedule = 1 ; 
       tsch_release_lock();   
