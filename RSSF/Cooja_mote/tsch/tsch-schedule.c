@@ -926,9 +926,9 @@ int count_lines()
     return count; 
 }      
 
-void count_packs(int i, linkaddr_t *address ){  
-  uint8_t  node_src = address.u8[LINKADDR_SIZE - 1]
-                + (address.u8[LINKADDR_SIZE - 2] << 8);   
+void count_packs(int i, const linkaddr_t *address ){  
+  uint8_t  node_src = (*address).u8[LINKADDR_SIZE - 1]
+                + ((*address).u8[LINKADDR_SIZE - 2] << 8);   
   uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
   if(node == 1 ){ 
@@ -937,7 +937,7 @@ void count_packs(int i, linkaddr_t *address ){
     else  
       flag_schedule = 0;
   }       
-  
+
   if(flag_schedule){     
     Packets_sent[node_src] += 1 ;  
     Packets_received[node] += 1 ;  
