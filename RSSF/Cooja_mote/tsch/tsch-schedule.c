@@ -942,7 +942,7 @@ void count_packs(int i, const linkaddr_t *address ){
     Packets_sent[node_src] += 1 ;  
     Packets_received[node] += 1 ;  
     for(int i = 1 ; i <= MAX_NOS; i++){ 
-      LOG_INFO("Node %u Total sent packets: %u - Total received packets: %u",i,Packets_sent[i], Packets_sent[i]);
+      LOG_INFO("%u %u %u\n",i,Packets_sent[i], Packets_received[i]);
     }
     // if(i == 1 ){ 
     //   // sent  
