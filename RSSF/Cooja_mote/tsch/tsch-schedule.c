@@ -925,8 +925,17 @@ int count_lines()
     fclose(fp); 
     return count; 
 }      
-
-void count_packs(int i, const linkaddr_t *address ){  
+void count_sent_packs(){ 
+    uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+              + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);
+    Packets_sent[node] += 1 ;    
+    LOG_INFO("list of packets sent\n"); 
+    for(int i = 1 ; i <= MAX_NOS; i++) 
+          LOG_INFO("%u %u \n",i,Packets_sent[i]); 
+}
+void count_packs( const linkaddr_t *address ){  
+  // receive and sent  
+  LOG_INFO("list of packets\n");
   uint8_t  node_src = (*address).u8[LINKADDR_SIZE - 1]
                 + ((*address).u8[LINKADDR_SIZE - 2] << 8);   
   uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
@@ -944,14 +953,6 @@ void count_packs(int i, const linkaddr_t *address ){
     for(int i = 1 ; i <= MAX_NOS; i++){ 
       LOG_INFO("%u %u %u\n",i,Packets_sent[i], Packets_received[i]);
     }
-    // if(i == 1 ){ 
-    //   // sent  
-    //   Spackets++;  
-    // } 
-    // if(i == 0){ 
-    //   LOG_INFO("Total received packets: %u\n",Rpackets);
-    //   Rpackets++;
-    // } 
   }
 }  
 /*---------------------------------------------------------------------------*/
@@ -1109,7 +1110,7 @@ int SCHEDULE_static(){
 
  struct tsch_link *l =   NULL;  
     for(x = 0 ; x < Channel; x++){ 
-    for(y = 0 ; y < Timeslot; y++){ 
+    for(y = 0 ; y < Timeslot; y++){   
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
@@ -1147,7 +1148,25 @@ int SCHEDULE_static(){
     return 1;
 }   
 
+// int find_neighbor_to_Rx(uint8_t node){ 
+//     uint8_t node_origin, node_destin; 
+//     FILE *fl;    
+//     if(tsch_get_lock()){ 
+   
+//     fl = fopen(endereco, "r"); 
+//     if(fl == NULL){
+//         printf("The file was not opened\n");
+//         return 0  ; 
+//     }  
 
+//     while(!feof(fl)){      
+//         fscanf(fl,"%d %d",&node_origin, &node_destin);   
+//         if(node_destin == node){
+            
+//             return node_origin;  
+//     }
+//     fclose(fl); 
+// }
 
 #if NBR_TSCH 
   // inicia  

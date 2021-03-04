@@ -1146,8 +1146,8 @@ send_packet(mac_callback_t sent, void *ptr)
              TSCH_QUEUE_NUM_PER_NEIGHBOR, tsch_queue_global_packet_count(),
              QUEUEBUF_NUM, p->header_len, queuebuf_datalen(p->qb));
     // function to count how much packs are sending  
-  //  if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  !linkaddr_cmp(addr,&tsch_broadcast_address))
-  //    count_packs(1); 
+   if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  !linkaddr_cmp(addr,&tsch_broadcast_address))
+     count_sent_packs(); 
 
     }
   }
