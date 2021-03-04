@@ -68,10 +68,10 @@
 #define Timeslot 16   
 
 
-//uint16_t Spackets = 0 ; 
 //uint16_t Rpackets = 0 ; 
 uint16_t flag_schedule = 0 ;   
 uint8_t Packets_sent[MAX_NOS]; 
+uint8_t STpacks = 0 ;  
 uint8_t Packets_received[MAX_NOS];
 
 /* Log configuration */
@@ -927,11 +927,12 @@ int count_lines()
 }      
 void count_sent_packs(){ 
     uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-              + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);
-    Packets_sent[node] += 1 ;    
-    LOG_INFO("list of packets sent\n"); 
-    for(int i = 1 ; i <= MAX_NOS; i++) 
-          LOG_INFO("%u %u \n",i,Packets_sent[i]); 
+              + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
+    if(flag_schedule = 1){ 
+      STpacks +=1 ; 
+    }
+    LOG_INFO("Packets sent\n");
+    LOG_INFO("%u %u \n",node, STpacks); 
 }
 void count_packs( const linkaddr_t *address ){  
   // receive and sent  
