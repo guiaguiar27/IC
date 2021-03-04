@@ -172,7 +172,7 @@ int count_lines();
 int SCHEDULE_AUX(int **adj); 
 int SCHEDULE_static(); 
 int sort_node_to_create_link(int n);     
-void count_packs(int n, const linkaddr_t *address);  
+void count_packs( const linkaddr_t *address);  
 void count_sent_packs(); 
 void tsch_print_neighbors();  
 

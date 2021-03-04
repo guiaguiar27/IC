@@ -1187,7 +1187,7 @@ packet_input(void)
       LOG_INFO_LLADDR(packetbuf_addr(PACKETBUF_ADDR_SENDER));
       LOG_INFO_(" with seqno %u\n", packetbuf_attr(PACKETBUF_ATTR_MAC_SEQNO));  
       if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME)
-        count_packs(0,packetbuf_addr(PACKETBUF_ADDR_SENDER));  
+        count_packs(packetbuf_addr(PACKETBUF_ADDR_SENDER));  
 
 #if TSCH_WITH_SIXTOP
       sixtop_input();
