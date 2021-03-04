@@ -932,7 +932,7 @@ void count_sent_packs(){
       STpacks +=1 ; 
     }
    
-    LOG_INFO("%u %u \n",node, STpacks); 
+    LOG_INFO("Node/Packets: %u %u \n",node, STpacks); 
 }
 void count_packs( const linkaddr_t *address ){  
   // receive and sent  
