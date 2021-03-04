@@ -67,7 +67,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
 #define APP_UNICAST_TIMESLOT 16 
-#define APP_CHANNEL_OFSETT 16   
+#define APP_CHANNEL_OFSETT 8   
 
 
 int  verify = 0, aux_id  ;  
@@ -84,12 +84,8 @@ static void init_broad(void){
 
   // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-  uint16_t slot_offset;
-  uint16_t channel_offset; 
-  
-  slot_offset = 0;
-  channel_offset = 0;
-  
+  uint16_t slot_offset = 0;
+  uint16_t channel_offset = 0; 
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
@@ -100,28 +96,23 @@ static void init_broad(void){
 
 int initialize_tsch_schedule(void){
  
-    LOG_PRINT("Initialize tsch schedule\nRemoving all old slotframes\n");
- 
-  tsch_schedule_remove_all_slotframes(); 
-    
+    LOG_PRINT("Initialize tsch schedule\n"); 
+    tsch_schedule_remove_all_slotframes(); 
     int i, j; 
     // APP_SLOTFRAME_SIZE
     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
-    uint16_t slot_offset;
-    uint16_t channel_offset;  
-    
-    slot_offset = 0;
-    channel_offset = 0;
-    int num_links = 1 ;    
+    uint16_t slot_offset = 0 ;
+    uint16_t channel_offset = 0 ;  
+    uint8_t num_links = 1 ;    
     uint16_t remote_id = 0; 
     linkaddr_t addr;  
 
-    
-      tsch_schedule_add_link(sf_common,
-        LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+    if(node_id == 1 ){
+      tsch_schedule_add_link(sf_common, LINK_OPTION_SHARED,
         LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
         slot_offset, channel_offset,0);
     
+    } 
 
       if (node_id != 1) {
         
@@ -150,7 +141,7 @@ int initialize_tsch_schedule(void){
           tsch_schedule_add_link(sf_common,
               LINK_OPTION_RX | LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &addr,
-              slot_offset, channel_offset,0);
+              slot_offset, channel_offset,1);
           }  
           return remote_id;
     } 
@@ -191,13 +182,7 @@ PROCESS_THREAD(node_process, ev, data)
   #if NBR_TSCH 
    
     init_broad(); 
-  #else  
-  linkaddr_t addr_dest; 
-     for(int j = 0; j < sizeof(addr_dest); j += 2) {
-        addr_dest.u8[j + 1] = aux_id & 0xff;
-        addr_dest.u8[j + 0] = aux_id >> 8;
-      } 
-    
+  
   #endif  
 
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
@@ -221,34 +206,31 @@ PROCESS_THREAD(node_process, ev, data)
       LOG_INFO("Verify: %d \n", verify);    
       if(verify == 0){ 
         verify = change_slotframe(); 
-        if(verify == 1){  
-        
-          LOG_INFO("Verify: %d - ", verify); 
-          aux_id = initialize_tsch_schedule();  
-          LOG_INFO("%d \n",aux_id);  
+        if(verify == 1){   
+          aux_id = initialize_tsch_schedule();
           
       
       }
       }
-     // if(aux_id >= 1 ) SCHEDULE_static();  
+     if(aux_id >= 1 ) SCHEDULE_static();  
       
       // mudanca  
     #endif 
 
-    // energest_flush();
+    //  energest_flush();
 
-    // printf("\nEnergest:\n");
-    // printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
-    //        to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
-    //        to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
-    //        to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
-    //        to_seconds(ENERGEST_GET_TOTAL_TIME()));
-    // printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
-    //        to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
-    //        to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
-    //        to_seconds(ENERGEST_GET_TOTAL_TIME()
-    //                   - energest_type_time(ENERGEST_TYPE_TRANSMIT)
-    //                   - energest_type_time(ENERGEST_TYPE_LISTEN)));
+    //  printf("\nEnergest:\n");
+    //  printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
+    //         to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
+    //         to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
+    //         to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
+    //         to_seconds(ENERGEST_GET_TOTAL_TIME()));
+    //  printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
+    //         to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
+    //         to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
+    //         to_seconds(ENERGEST_GET_TOTAL_TIME()
+    //                    - energest_type_time(ENERGEST_TYPE_TRANSMIT)
+    //                    - energest_type_time(ENERGEST_TYPE_LISTEN)));
     
      
     //verify_packs();
