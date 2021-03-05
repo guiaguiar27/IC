@@ -79,6 +79,12 @@ int  aux_id  ;
 //   return (unsigned long)(time / ENERGEST_SECOND);
 // }
 
+ 
+struct latency_structure{ // Structure to save the time when the message was send
+
+   rtimer_clock_t timestamp;// Time when the message was send
+
+}; 
 
 int initialize_tsch_schedule(void){
 
@@ -151,34 +157,35 @@ int initialize_tsch_schedule(void){
   
 
   
-
-static void
-rx_packet(struct simple_udp_connection *c,
-          const uip_ipaddr_t *sender_addr,
-          uint16_t sender_port,
-          const uip_ipaddr_t *receiver_addr,
-          uint16_t receiver_port,
-          const uint8_t *data,
-          uint16_t datalen)
+broadcast_recv(struct broadcast_conn *c, const linkaddr_t *from)
 {
-  uint32_t seqnum;
+  struct latency_structure msg;
+  rtimer_clock_t latency;
 
-  if(datalen >= sizeof(seqnum)) {
-    memcpy(&seqnum, data, sizeof(seqnum));
+  packetbuf_copyto( &msg ); // Copy the message from the packet buffer to the structure called msg
 
-    LOG_INFO("Received from ");
-    LOG_INFO_6ADDR(sender_addr);
-    LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-  }
+#if TIMESYNCH_CONF_ENABLED
+  latency = timesynch_time() - msg.timestamp;
+#else
+  latency = 0;
+#endif
+
+  printf("broadcast message received from %d.%d with latency %lu ms\n",
+         from->u8[0], from->u8[1], (1000L * latency) / RTIMER_ARCH_SECOND );
 }
+static const struct broadcast_callbacks broadcast_call = {broadcast_recv};
+static struct broadcast_conn broadcast; 
 
 PROCESS_THREAD(node_process, ev, data)
-{
-  static struct simple_udp_connection udp_conn;
+{ 
+  struct latency_struct *msg ;  
   static struct etimer periodic_timer; 
-  static uint32_t seqnum;
-  uip_ipaddr_t dst;   
-   PROCESS_BEGIN(); 
+  
+  PROCESS_EXITHANDLER(broadcast_close(&broadcast);)
+
+  PROCESS_BEGIN();   
+
+  broadcast_open(&broadcast, 129, &broadcast_call);
   tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
   /* Initialization; `rx_packet` is the function for packet reception */
   simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
@@ -195,7 +202,11 @@ PROCESS_THREAD(node_process, ev, data)
   while(1) { 
     aux_id = initialize_tsch_schedule();  
     LOG_INFO("%d \n",aux_id);  
-    
+    #if TIMESYNCH_CONF_ENABLED
+      msg->timestamp = timesynch_time();  
+    #else
+      msg->timestamp = 0;
+    #endif
    
     // energest_flush();
 
@@ -216,16 +227,11 @@ PROCESS_THREAD(node_process, ev, data)
     //verify_packs();
 
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    
-    if(tsch_is_associated) { 
-
-      /* Send network uptime timestamp to the network root node */
-      seqnum++;
-      LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
-      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
-    }
+     // Do not send the normal/original 'hello' message. Instead, send a message with the timestamp.
+    packetbuf_copyfrom(msg,  sizeof(*msg) ); // This message msg includes the timestamp
+    //packetbuf_copyfrom("Hello", 6);
+    broadcast_send(&broadcast);
+    printf("broadcast message sent\n");
     etimer_set(&periodic_timer, SEND_INTERVAL);
   }
 
