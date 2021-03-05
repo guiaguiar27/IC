@@ -909,7 +909,7 @@ int SCHEDULE_static(){
                 while(!feof(fl)){      
                   fscanf(fl,"%d %d",&node_origin, &node_destin);    
                   if(node_origin == node && node_destin == nbr){
-                    fprintf(fl, "%d %d (%d %d)\n",node_origin,node_destin l->timeslot, l->channel_offset);
+                    fprintf(fl, "%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
                   }
                 } 
                 fclose(fl);
@@ -952,7 +952,7 @@ int SCHEDULE_static(){
         printf("The file was not opened\n");
         return ; 
     }  
-    struct tsch_link s*l = NULL ; 
+    struct tsch_link *l = NULL ; 
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         count++;  
