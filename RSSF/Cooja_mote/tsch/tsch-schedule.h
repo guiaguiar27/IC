@@ -166,23 +166,30 @@ struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
 int SCHEDULE();   
 //void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]) ; 
 //void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
+/** 
+ * \brief aux in link creation  
+ */
 int tsch_num_nos();  
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
-int SCHEDULE_AUX(int **adj); 
+int sort_node_to_create_link(int n);    
+void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe);   
+
+/** 
+ * \brief schedule
+ */
 int SCHEDULE_static(); 
-int sort_node_to_create_link(int n);     
 void count_packs( const linkaddr_t *address);  
 void count_sent_packs(); 
-void tsch_print_neighbors();  
+
 
 #if NBR_TSCH
-void tsch_print_neighbors(int nbr);
-void show_nbr(void);  
-void list_init_nbr(void); 
-int change_slotframe();  
-void verify_packs();
- #endif 
+    void tsch_print_neighbors(int nbr);
+    void show_nbr(void);  
+    void list_init_nbr(void); 
+    int change_slotframe();  
+    void verify_packs();
+#endif 
 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

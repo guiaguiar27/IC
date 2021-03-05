@@ -156,7 +156,7 @@ int initialize_tsch_schedule(void){
       
   
 
-  
+static void 
 broadcast_recv(struct broadcast_conn *c, const linkaddr_t *from)
 {
   struct latency_structure msg;
@@ -172,7 +172,8 @@ broadcast_recv(struct broadcast_conn *c, const linkaddr_t *from)
 
   printf("broadcast message received from %d.%d with latency %lu ms\n",
          from->u8[0], from->u8[1], (1000L * latency) / RTIMER_ARCH_SECOND );
-}
+} 
+
 static const struct broadcast_callbacks broadcast_call = {broadcast_recv};
 static struct broadcast_conn broadcast; 
 

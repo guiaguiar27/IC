@@ -121,7 +121,7 @@ int initialize_tsch_schedule(void){
           #if NBR_TSCH 
           remote_id = sort_node_to_create_link(node_id);  
           #else  
-          remote_id = random_rand() % node_id ; 
+          remote_id = random_rand() % node_id ;                         
           #endif  
           if(remote_id == 0){ 
             LOG_INFO("There are no neighbors\n"); 
@@ -139,7 +139,7 @@ int initialize_tsch_schedule(void){
           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
           * backoff windows will not be reset correctly! */
           tsch_schedule_add_link(sf_common,
-              LINK_OPTION_RX | LINK_OPTION_TX,
+              LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &addr,
               slot_offset, channel_offset,1);
           }  
