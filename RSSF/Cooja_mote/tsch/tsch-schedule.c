@@ -943,7 +943,7 @@ int SCHEDULE_static(){
  void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe){ 
    if(node == MAX_NOS - 1) return ; 
 
-    uint8_t node_origin, node_destin, count = 0 ;  
+    int node_origin, node_destin, count = 0 ;  
     FILE *fl;
     if(tsch_get_lock()){ 
     linkaddr_t addr ; 
