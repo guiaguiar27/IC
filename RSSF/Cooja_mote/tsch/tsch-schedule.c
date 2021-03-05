@@ -909,7 +909,7 @@ int SCHEDULE_static(){
                 while(!feof(fl)){      
                   fscanf(fl,"%d %d",&node_origin, &node_destin);    
                   if(node_origin == node && node_destin == nbr){
-                    fprintf(fl, "(%d %d)", l->timeslot, l->slotframe);
+                    fprintf(fl, "(%d %d)", l->timeslot, l->channel_offset);
                   }
                 } 
                 fclose(fl);
@@ -950,7 +950,7 @@ int SCHEDULE_static(){
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
-        return 0  ; 
+        return ; 
     }  
     struct tsch_link *l = NULL ; 
     while(!feof(fl)){      
@@ -970,14 +970,16 @@ int SCHEDULE_static(){
             tsch_schedule_add_link(slotframe,
                 LINK_OPTION_RX,
                 LINK_TYPE_NORMAL, &addr,
-                l->slot_offset, l->channel_offset,0);
+                l->timeslot, l->channel_offset,0);
         }  
 
 
 
     } 
-    fclose(fl);  
-}
+    fclose(fl);   
+    } 
+ }
+
 
 #if NBR_TSCH 
   // inicia  
