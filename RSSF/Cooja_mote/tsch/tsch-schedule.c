@@ -896,7 +896,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
             if(verify == 0 ){ 
-              if(l->link_options & LINK_OPTION_TX){
+              if(l->link_options ==  LINK_OPTION_TX){
                 l-> timeslot = y+1 ; 
                 l-> channel_offset = x+1 ;   
                 node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
@@ -906,7 +906,7 @@ int SCHEDULE_static(){
                 fl = fopen(endereco_T_CH, "w+"); 
                 if(fl == NULL) 
                   break;    
-                fprintf(fl,"%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
+                fprintf(fl,"%d %d (%u %u)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
                 fclose(fl);
 
 
