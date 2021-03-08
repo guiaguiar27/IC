@@ -926,7 +926,7 @@ int SCHEDULE_static(){
                 if(fl == NULL) 
                   break;   
                 while(!feof(fl)){      
-                  fscanf(fl,"%d %d (%d %d )",&node_origin, &node_destin, aux_t, aux_c);    
+                  fscanf(fl,"%d %d (%d %d )",&node_origin, &node_destin, &aux_t, &aux_c);    
                   if(node_origin == nbr && node_destin == node){
                     l->timeslot = aux_t; 
                     l->channel_offset = aux_c;
