@@ -699,7 +699,9 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}      
+}       
+
+/*---------------------------------------------------------------------------*/
 void count_sent_packs(){ 
     uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
@@ -708,7 +710,9 @@ void count_sent_packs(){
     }
    
     LOG_INFO("Node/Packets: %u %u \n",node, STpacks); 
-}
+} 
+
+/*---------------------------------------------------------------------------*/
 void count_packs( const linkaddr_t *address ){  
   // receive and sent  
   LOG_INFO("list of packets\n");
@@ -730,7 +734,8 @@ void count_packs( const linkaddr_t *address ){
       LOG_INFO("%u %u %u\n",i,Packets_sent[i], Packets_received[i]);
     }
   }
-}  
+}   
+
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
@@ -748,7 +753,7 @@ int SCHEDULE_static(){
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;//, aux_t , aux_c  ;  
-   // uint8_t node, nbr ; 
+    //uint8_t node, nbr ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
@@ -897,8 +902,8 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
             if(verify == 0 ){ 
             //   if(l->link_options ==  LINK_OPTION_TX){
-            //     l-> timeslot = y+1 ; 
-            //     l-> channel_offset = x+1 ;   
+                 l-> timeslot = y+1 ; 
+                 l-> channel_offset = x+1 ;   
             //     node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
             //         + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
             //     node_destin = l->addr.u8[LINKADDR_SIZE - 1]
@@ -958,7 +963,10 @@ int SCHEDULE_static(){
       tsch_release_lock();   
     } 
     return 1;
-}   
+}    
+
+
+/*---------------------------------------------------------------------------*/
 
  void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe){ 
    if(node == MAX_NOS - 1) return ; 
@@ -996,6 +1004,7 @@ int SCHEDULE_static(){
  }
 
 
+/*---------------------------------------------------------------------------*/
 #if NBR_TSCH 
   // inicia  
 
@@ -1003,22 +1012,22 @@ int SCHEDULE_static(){
 int sort_node_to_create_link(int n){  
   for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
 
-    if(n > NBRlist[i] && NBRlist[i] != 0){ 
+    if(n > NBRlist[i] && NBRlist[i] != 0)
       return NBRlist[i]; 
-    }  
+      
     } 
     return 0; 
  } 
 
+/*---------------------------------------------------------------------------*/
 
   void list_init_nbr(void){ 
       for(int i = 0 ; i < MAX_NEIGHBORS;i++) NBRlist[i] = 0;
   } 
-  // preenche  
-  // implementei ontem 
+  
+/*---------------------------------------------------------------------------*/
   void tsch_print_neighbors(int nbr){   
     int count = 0 ;
-    
     for(count = 0; count < MAX_NEIGHBORS ; count++ ){ 
         if(NBRlist[count] == nbr) return ; 
         
@@ -1028,7 +1037,9 @@ int sort_node_to_create_link(int n){
         }   
     }
 
-  }
+  } 
+
+/*---------------------------------------------------------------------------*/
   // imprime
   void show_nbr(){   
 
@@ -1037,6 +1048,7 @@ int sort_node_to_create_link(int n){
     
   } 
 
+/*---------------------------------------------------------------------------*/
   int change_slotframe(){   
     // verifica se tem algum nó na lista  
     // soma da > 0 
@@ -1048,7 +1060,9 @@ int sort_node_to_create_link(int n){
     if (counter > 0) return 1 ; 
     
     else return 0 ;  
-  } 
+  }  
+
+/*---------------------------------------------------------------------------*/
  #endif 
 
 
