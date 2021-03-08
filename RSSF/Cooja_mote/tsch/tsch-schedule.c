@@ -62,7 +62,7 @@
 #define peso 1 
 #define no_raiz 1  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
-#define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
+#define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
 
 #define Channel 16
 #define Timeslot 16   
@@ -899,18 +899,43 @@ int SCHEDULE_static(){
               if(l->link_options & LINK_OPTION_TX){
                 l-> timeslot = y+1 ; 
                 l-> channel_offset = x+1 ;   
+                node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+                    + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
+                node_destin =  l->addr.u8[LINKADDR_SIZE - 1]
+                    + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+                fl = fopen(endereco_T_CH, "w+"); 
+                if(fl == NULL) 
+                  break;    
+
+                fprintf(fl, "%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
+                fclose(fl);
+
+
+                } 
+                
+              }  
+
+
+              else if(l->link_options & LINK_OPTION_RX){ 
+                int aux_t , aux_c ;  
                 node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
                     + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
                 nbr =  l->addr.u8[LINKADDR_SIZE - 1]
                     + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-                fl = fopen(endereco, "w+"); 
+                fl = fopen(endereco_T_CH, "r"); 
                 if(fl == NULL) 
                   break;   
                 while(!feof(fl)){      
-                  fscanf(fl,"%d %d",&node_origin, &node_destin);    
-                  if(node_origin == node && node_destin == nbr){
-                    fprintf(fl, "%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
-                  }
+                  fscanf(fl,"%d %d (%d %d )",&node_origin, &node_destin, aux_t, aux_c);    
+                  if(node_origin == nbr && node_destin == node){
+                    l->timeslot = aux_t; 
+                    l->channel_offset = aux_c;
+                    LOG_PRINT("----CHANGE-RX----\n"); 
+                    LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                    LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                    LOG_PRINT("-----------------------------\n");  
+                  } 
+
                 } 
                 fclose(fl);
               }
@@ -944,7 +969,8 @@ int SCHEDULE_static(){
    if(node == MAX_NOS - 1) return ; 
 
     int node_origin, node_destin, count = 0 ;  
-    FILE *fl;
+    FILE *fl; 
+    uint8_t timeslot, channel_offset ; 
     if(tsch_get_lock()){ 
     linkaddr_t addr ; 
     fl = fopen(endereco, "r"); 
@@ -962,15 +988,18 @@ int SCHEDULE_static(){
 
            for(int j = 0; j < sizeof(addr); j += 2) {
             addr.u8[j + 1] = node_origin & 0xff;
-            addr.u8[j + 0] = node_origin >> 8;
-            }  
-
-            l = tsch_schedule_get_link_by_handle(count);   
-           
+            addr.u8[j + 0] = node_origin >> 8; 
+            l = tsch_schedule_get_link_by_handle(count); 
+            
             tsch_schedule_add_link(slotframe,
                 LINK_OPTION_RX,
                 LINK_TYPE_NORMAL, &addr,
                 l->timeslot, l->channel_offset,0);
+            }  
+
+              
+           
+            
         }  
 
 
