@@ -747,7 +747,7 @@ int SCHEDULE_static(){
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ;  
+    int node_origin, node_destin, aux_t , aux_c  ;  
     uint8_t node, nbr ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
@@ -907,7 +907,7 @@ int SCHEDULE_static(){
                 if(fl == NULL) 
                   break;    
 
-                fprintf(fl, "%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
+                fprintf(fl,"%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
                 fclose(fl);
 
 
@@ -917,7 +917,7 @@ int SCHEDULE_static(){
 
 
               else if(l->link_options & LINK_OPTION_RX){ 
-                int aux_t , aux_c ;  
+                 
                 node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
                     + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
                 nbr =  l->addr.u8[LINKADDR_SIZE - 1]
@@ -957,7 +957,6 @@ int SCHEDULE_static(){
       } 
               
       }
-     }
 
       flag_schedule = 1 ; 
       tsch_release_lock();   
@@ -970,7 +969,6 @@ int SCHEDULE_static(){
 
     int node_origin, node_destin, count = 0 ;  
     FILE *fl; 
-    uint8_t timeslot, channel_offset ; 
     if(tsch_get_lock()){ 
     linkaddr_t addr ; 
     fl = fopen(endereco, "r"); 
@@ -989,21 +987,13 @@ int SCHEDULE_static(){
            for(int j = 0; j < sizeof(addr); j += 2) {
             addr.u8[j + 1] = node_origin & 0xff;
             addr.u8[j + 0] = node_origin >> 8; 
+            }
             l = tsch_schedule_get_link_by_handle(count); 
-            
             tsch_schedule_add_link(slotframe,
                 LINK_OPTION_RX,
                 LINK_TYPE_NORMAL, &addr,
                 l->timeslot, l->channel_offset,0);
-            }  
-
-              
-           
-            
         }  
-
-
-
     } 
     fclose(fl);   
     } 
