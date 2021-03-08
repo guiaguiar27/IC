@@ -895,22 +895,22 @@ int SCHEDULE_static(){
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            if(verify == 0 ){ 
-              if(l->link_options ==  LINK_OPTION_TX){
-                l-> timeslot = y+1 ; 
-                l-> channel_offset = x+1 ;   
-                node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-                    + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-                node_destin =  l->addr.u8[LINKADDR_SIZE - 1]
-                    + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-                fl = fopen(endereco_T_CH, "w+"); 
-                if(fl == NULL) 
-                  break;    
-                fprintf(fl,"%d %d (%u %u)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
-                fclose(fl);
+            // if(verify == 0 ){ 
+            //   if(l->link_options ==  LINK_OPTION_TX){
+            //     l-> timeslot = y+1 ; 
+            //     l-> channel_offset = x+1 ;   
+            //     node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+            //         + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
+            //     node_destin = l->addr.u8[LINKADDR_SIZE - 1]
+            //         + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+            //     fl = fopen(endereco_T_CH, "w+"); 
+            //     if(fl == NULL) 
+            //       break;    
+            //     fprintf(fl,"%d %d %u %u \n",node_origin,node_destin,l->timeslot, l->channel_offset);
+            //     fclose(fl);
 
 
-                } 
+            //     } 
                 
               }  
               // else if(l->link_options & LINK_OPTION_RX){ 
