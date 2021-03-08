@@ -895,7 +895,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            // if(verify == 0 ){ 
+            if(verify == 0 ){ 
             //   if(l->link_options ==  LINK_OPTION_TX){
             //     l-> timeslot = y+1 ; 
             //     l-> channel_offset = x+1 ;   
