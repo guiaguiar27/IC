@@ -748,7 +748,7 @@ int SCHEDULE_static(){
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;//, aux_t , aux_c  ;  
-    uint8_t node, nbr ; 
+   // uint8_t node, nbr ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
