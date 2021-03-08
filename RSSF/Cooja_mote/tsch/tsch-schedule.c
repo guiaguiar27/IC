@@ -644,7 +644,7 @@ void executa(int num_aresta, int num_no,  int **aloca_canal, int tempo, int (*ma
     } 
     fclose(fl);
  }
-
+/*------------------------------------------------------------------------------------------------------------*/
 void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;
     //Percorre o vetor de pacotes
@@ -900,8 +900,8 @@ int SCHEDULE_static(){
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            if(verify == 0 ){ 
-            //   if(l->link_options ==  LINK_OPTION_TX){
+            if(verify == 0 ){  
+            if(l->link_options & LINK_OPTION_TX){
                  l-> timeslot = y+1 ; 
                  l-> channel_offset = x+1 ;   
             //     node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
@@ -915,7 +915,7 @@ int SCHEDULE_static(){
             //     fclose(fl);
 
 
-            //     } 
+                } 
                 
               }  
               // else if(l->link_options & LINK_OPTION_RX){ 
