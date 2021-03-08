@@ -747,7 +747,7 @@ int SCHEDULE_static(){
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin, aux_t , aux_c  ;  
+    int node_origin, node_destin ;//, aux_t , aux_c  ;  
     uint8_t node, nbr ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
@@ -906,7 +906,6 @@ int SCHEDULE_static(){
                 fl = fopen(endereco_T_CH, "w+"); 
                 if(fl == NULL) 
                   break;    
-
                 fprintf(fl,"%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
                 fclose(fl);
 
@@ -914,31 +913,28 @@ int SCHEDULE_static(){
                 } 
                 
               }  
+              // else if(l->link_options & LINK_OPTION_RX){ 
+              //   node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+              //       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
+              //   nbr =  l->addr.u8[LINKADDR_SIZE - 1]
+              //       + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              //   fl = fopen(endereco_T_CH, "r"); 
+              //   if(fl == NULL) 
+              //     break;   
+              //   while(!feof(fl)){      
+              //     fscanf(fl,"%d %d (%d %d )",&node_origin, &node_destin, &aux_t, &aux_c);    
+              //     if(node_origin == nbr && node_destin == node){
+              //       l->timeslot = aux_t; 
+              //       l->channel_offset = aux_c;
+              //       LOG_PRINT("----CHANGE-RX----\n"); 
+              //       LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+              //       LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+              //       LOG_PRINT("-----------------------------\n");  
+              //     } 
 
-
-              else if(l->link_options & LINK_OPTION_RX){ 
-                 
-                node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-                    + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-                nbr =  l->addr.u8[LINKADDR_SIZE - 1]
-                    + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-                fl = fopen(endereco_T_CH, "r"); 
-                if(fl == NULL) 
-                  break;   
-                while(!feof(fl)){      
-                  fscanf(fl,"%d %d (%d %d )",&node_origin, &node_destin, &aux_t, &aux_c);    
-                  if(node_origin == nbr && node_destin == node){
-                    l->timeslot = aux_t; 
-                    l->channel_offset = aux_c;
-                    LOG_PRINT("----CHANGE-RX----\n"); 
-                    LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-                    LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-                    LOG_PRINT("-----------------------------\n");  
-                  } 
-
-                } 
-                fclose(fl);
-              }
+              //   } 
+              //   fclose(fl);
+              // }
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
