@@ -758,7 +758,7 @@ int SCHEDULE_static(){
     /*******************************************************************/ 
     // inicia arquivo  
     FILE *fl;    
-    if(tsch_get_lock()){ 
+//    if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
@@ -901,8 +901,10 @@ int SCHEDULE_static(){
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            if(verify == 0 ){   
-            teste_options(l); 
+            if(verify == 0 ){  
+            if(l->link_options & LINK_OPTION_TX) 
+              LOG_PRINT("TX WORKED\n");   
+ 
             l-> timeslot = y+1 ; 
             l-> channel_offset = x+1 ;   
             
@@ -959,8 +961,8 @@ int SCHEDULE_static(){
       }
 
       flag_schedule = 1 ; 
-      tsch_release_lock();   
-    } 
+    //   tsch_release_lock();   
+    // } 
     return 1;
 }     
  
