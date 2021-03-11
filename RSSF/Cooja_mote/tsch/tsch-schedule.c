@@ -1119,7 +1119,7 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && l->aux_options = 2 ){
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && l->aux_options = 2){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
@@ -1153,9 +1153,12 @@ int SCHEDULE_static(){
     return 1;
 }   
 
-// int find_neighbor_to_Rx(uint8_t node){ 
+// int find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common){ 
 //     uint8_t node_origin, node_destin; 
-//     FILE *fl;    
+//     FILE *fl;     
+//     int count = 0 ;  
+    
+//     struct tsch_link *l = NULL;  
 //     if(tsch_get_lock()){ 
    
 //     fl = fopen(endereco, "r"); 
@@ -1164,11 +1167,18 @@ int SCHEDULE_static(){
 //         return 0  ; 
 //     }  
 
-//     while(!feof(fl)){      
+//     while(!feof(fl)){       
 //         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-//         if(node_destin == node){
-            
-//             return node_origin;  
+//         count ++; 
+//        l =  tsch_schedule_get_link_by_handle(count);
+        
+//         if(node_destin == node){ 
+//           tsch_schedule_add_link(sf_common,
+//               LINK_OPTION_RX,
+//               LINK_TYPE_NORMAL, &addr,
+//               l->timeslot, l->channel_offset,0);
+//           }  
+//             // cria link  
 //     }
 //     fclose(fl); 
 // }

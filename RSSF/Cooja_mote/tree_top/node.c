@@ -141,7 +141,7 @@ int initialize_tsch_schedule(void){
           tsch_schedule_add_link(sf_common,
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &addr,
-              slot_offset, channel_offset,1);
+              slot_offset, channel_offset,0);
           }  
           return remote_id;
     } 
