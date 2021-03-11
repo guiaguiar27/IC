@@ -758,8 +758,8 @@ int SCHEDULE_static(){
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-    FILE *fl;    
-//    if(tsch_get_lock()){ 
+  FILE *fl;    
+  if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
@@ -962,8 +962,8 @@ int SCHEDULE_static(){
       }
 
       flag_schedule = 1 ; 
-    //   tsch_release_lock();   
-    // } 
+      tsch_release_lock();   
+    } 
     return 1;
 }   
 /*---------------------------------------------------------------------------*/
