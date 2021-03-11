@@ -890,10 +890,6 @@ int SCHEDULE_static(){
     
  
 
-      flag_schedule = 1 ; 
-      tsch_release_lock();   
-    }  
-
  struct tsch_link *l =   NULL;  
     for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){   
@@ -906,11 +902,9 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             if(verify == 0 ){   
-
-            if(l->link_options & LINK_OPTION_TX){
-                LOG_PRINT("------------LINK_OPTION_TX---------------\n"); 
-                 l-> timeslot = y+1 ; 
-                 l-> channel_offset = x+1 ;   
+            teste_options(l); 
+            l-> timeslot = y+1 ; 
+            l-> channel_offset = x+1 ;   
             
             //     node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
             //         + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
@@ -922,8 +916,7 @@ int SCHEDULE_static(){
             //     fprintf(fl,"%d %d %u %u \n",node_origin,node_destin,l->timeslot, l->channel_offset);
             //     fclose(fl);
 
-              }                 
-              }  
+            }  
               // else if(l->link_options & LINK_OPTION_RX){ 
               //   node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               //       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
@@ -965,10 +958,22 @@ int SCHEDULE_static(){
               
       }
 
+      flag_schedule = 1 ; 
+      tsch_release_lock();   
+    } 
     return 1;
 }     
  
+void teste_options(struct tsch_link *l){  
 
+  tsch_release_lock(); 
+  //{
+  if(l->link_options & LINK_OPTION_TX) 
+    LOG_PRINT("TX WORKED\n");   
+  // }
+  tsch_get_lock(); 
+
+}
 /*---------------------------------------------------------------------------*/
 
  void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe){ 

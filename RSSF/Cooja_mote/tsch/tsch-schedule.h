@@ -191,5 +191,6 @@ void count_sent_packs();
     void verify_packs();
 #endif 
 
+void teste_options(struct tsch_link *l); 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */
