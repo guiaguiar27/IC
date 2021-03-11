@@ -62,7 +62,7 @@
 #define peso 1 
 #define no_raiz 1  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
-#define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
+#define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
 
 #define Channel 16
 #define Timeslot 16   
@@ -291,8 +291,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_INFO_("\n");
         /* Release the lock before we update the neighbor (will take the lock) */
         tsch_release_lock();
-        if(l->link_options & LINK_OPTION_TX){ 
-          l->aux_options = 1; 
+        if(l->link_options & LINK_OPTION_RX){ 
+          l->aux_options = 1;  
+          l->handle = -2; 
 
         }
         if(l->link_options & LINK_OPTION_TX) {
@@ -1119,20 +1120,41 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && l->aux_options = 2){
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            if(verify == 0 ){
-            l-> timeslot = y+1; 
-            l-> channel_offset = x+1 ;   
-            LOG_PRINT("----CHANGE-----\n"); 
-            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            LOG_PRINT("-----------------------------\n");       
-            verify = 1 ; 
-            } 
+            if(verify == 0 ){  
+              // indica que é de TX 
+              if(l->aux_options == 2){ 
+                
+
+              l-> timeslot = y+1; 
+              l-> channel_offset = x+1 ;   
+              
+              
+              LOG_PRINT("----CHANGE-----\n"); 
+              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+              LOG_PRINT("-----------------------------\n");       
+              
+              
+              node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
+              node_destin =  l->addr.u8[LINKADDR_SIZE - 1]
+                      + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              
+              fl = fopen(endereco_T_CH, "w+"); 
+              if(fl == NULL) 
+                break;    
+
+              fprintf(fl, "%d %d (%d %d)\n",node_origin,node_destin,l->timeslot, l->channel_offset);
+              fclose(fl);
+              
+              verify = 1 ;  
+              }  
+            }
             else { 
             LOG_PRINT("----EXTRA-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
