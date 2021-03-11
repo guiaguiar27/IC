@@ -896,14 +896,17 @@ int SCHEDULE_static(){
         l = list_head(sf->links_list);        
         while(l!= NULL){   
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+            if(verify == 0 ){   
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
-            if(verify == 0 ){  
+            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+
+            tsch_release_lock();
             if(l->link_options & LINK_OPTION_TX){
                  l-> timeslot = y+1 ; 
                  l-> channel_offset = x+1 ;   
+            tsch_get_lock(); 
             //     node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
             //         + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
             //     node_destin = l->addr.u8[LINKADDR_SIZE - 1]
