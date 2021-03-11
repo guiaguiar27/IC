@@ -273,7 +273,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
 
         l->handle = count_lines(); 
 
-        LOG_PRINT("Handle : %u\n ", l->handle);
+        LOG_PRINT("Handle : %d\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -294,7 +294,11 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_INFO_("\n");
         /* Release the lock before we update the neighbor (will take the lock) */
         tsch_release_lock();
-        if(l->link_options & LINK_OPTION_RX) l->aux_options = 2; 
+
+        if(l->link_options & LINK_OPTION_RX){ 
+          l->aux_options = 2; 
+          l->handle = -2; 
+        }  
         if(l->link_options & LINK_OPTION_TX) { 
           l->aux_options = 1;
           n = tsch_queue_add_nbr(&l->addr);
@@ -897,15 +901,12 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && l->aux_options == 1){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             if(verify == 0 ){  
-            if(l->aux_options == 1) 
-              LOG_PRINT("TX WORKED\n");   
- 
             l-> timeslot = y+1 ; 
             l-> channel_offset = x+1 ;   
             
