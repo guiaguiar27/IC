@@ -890,6 +890,10 @@ int SCHEDULE_static(){
     
  
 
+      flag_schedule = 1 ; 
+      tsch_release_lock();   
+    }  
+
  struct tsch_link *l =   NULL;  
     for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){   
@@ -902,8 +906,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             if(verify == 0 ){   
-            tsch_release_lock();
-            
+
             if(l->link_options & LINK_OPTION_TX){
                 LOG_PRINT("------------LINK_OPTION_TX---------------\n"); 
                  l-> timeslot = y+1 ; 
@@ -962,12 +965,9 @@ int SCHEDULE_static(){
               
       }
 
-      flag_schedule = 1 ; 
-      tsch_release_lock();   
-    } 
     return 1;
 }     
-
+ 
 
 /*---------------------------------------------------------------------------*/
 
