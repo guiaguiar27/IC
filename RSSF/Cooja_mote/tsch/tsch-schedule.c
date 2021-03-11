@@ -62,7 +62,7 @@
 #define peso 1 
 #define no_raiz 1  
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
-#define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
+#define endereco_pack  "/home/user/contiki-ng/os/packets.txt"
 
 #define Channel 16
 #define Timeslot 16   
@@ -72,8 +72,7 @@
 uint16_t flag_schedule = 0 ;   
 uint8_t Packets_sent[MAX_NOS]; 
 uint8_t STpacks = 0 ;  
-uint8_t Packets_received[MAX_NOS]; 
-uint8_t Parents[MAX_NOS];
+uint8_t Packets_received[MAX_NOS];
 
 /* Log configuration */
 #include "sys/log.h"
@@ -270,10 +269,8 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         list_add(slotframe->links_list, l);
         /* Initialize link */
         //l->handle = count++ ; 
-
-        l->handle = count_lines(); 
-
-        LOG_PRINT("Handle : %d\n ", l->handle);
+        l->handle = count_lines();
+        LOG_PRINT("Handle : %u\n ", l->handle);
         l->link_options = link_options;
         l->link_type = link_type;
         l->slotframe_handle = slotframe->handle;
@@ -294,13 +291,12 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_INFO_("\n");
         /* Release the lock before we update the neighbor (will take the lock) */
         tsch_release_lock();
+        if(l->link_options & LINK_OPTION_TX){ 
+          l->aux_options = 1; 
 
-        if(l->link_options & LINK_OPTION_RX){ 
+        }
+        if(l->link_options & LINK_OPTION_TX) {
           l->aux_options = 2; 
-          l->handle = -2; 
-        }  
-        if(l->link_options & LINK_OPTION_TX) { 
-          l->aux_options = 1;
           n = tsch_queue_add_nbr(&l->addr);
           /* We have a tx link to this neighbor, update counters */
           if(n != NULL) {
@@ -649,7 +645,7 @@ void executa(int num_aresta, int num_no,  int **aloca_canal, int tempo, int (*ma
     } 
     fclose(fl);
  }
-/*------------------------------------------------------------------------------------------------------------*/
+
 void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;
     //Percorre o vetor de pacotes
@@ -673,6 +669,234 @@ void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]){
     
 }   
 
+
+/*-----------------------------------------------------------------------------------------------------*/
+// int SCHEDULE(){       
+//     int **adj = (int**)malloc(MAX_NOS * sizeof(int*));    
+//     for(int i = 0; i < MAX_NOS  ; i++) {
+//         adj[i] = (int *)malloc( MAX_NOS * sizeof(int));
+//     }
+//     int tamNo = MAX_NOS; 
+//     int aux= 0 ; 
+//     int aux1= 0 ; 
+//     int **conf ,                     //mapa do grafo de conflito pro grafo da rede
+//     **matconf,                      //Nº de nós da rede
+//     tamAresta,i;                       //Variáveis temporárias
+//     int **matching = NULL,             //Matching da rede
+//     pacote_entregue = 0, 
+//     total_pacotes = 0, 
+//     raiz;                    //Variável temporária
+//     int cont = 0;               //Time do slotframe
+//     int **aloca_canais,         //Slotframe
+//     x, y, canal = 0 ,            //Variáveis temporárias
+//     edge_selected, temp;        //Variáveis temporárias
+//     int *pacotes;               //Pacotes por nó no grafo da rede
+//     int node_origin, node_destin ;  
+//     struct tsch_slotframe *sf = list_head(slotframe_list);
+//     // alocando espaco para receber o endereco 
+//     /*******************************************************************/ 
+//     // inicia arquivo  
+//     FILE *fl;  
+//     tamAresta = MAX_NOS;    
+//     fl = fopen(endereco, "r");
+//     if(fl == NULL){
+//         printf("The file was not opened\n");
+//         return 0  ; 
+//     } 
+
+
+//     // get topology 
+//     while(!feof(fl)){      
+//         fscanf(fl,"%d %d",&node_origin, &node_destin);   
+//         printf(" %d-> %d\n",node_origin, node_destin);    
+//         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+//             if (adj[node_origin][node_destin] == 0){
+//                 adj[node_origin][node_destin] = 1;
+//                 i++;
+//             } 
+//         } 
+//         if(feof(fl)) break ;
+//     }
+//     tamAresta = i;
+//     // print adjacency matrix 
+//     for(int i = 0; i < MAX_NOS ; i++){ 
+//         for(int j = 0 ;j < MAX_NOS; j++)
+//              printf("%d ", adj[i][j]);
+//         printf("\n");
+//     }
+     
+//     pacotes = alocaPacotes(tamNo, adj);
+//     printf("Pacotes atribuidos!\n");
+//     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
+
+//     conf = mapGraphConf(adj, tamNo, tamAresta); 
+//     printf("Matriz de conflito gerada"); 
+    
+    
+//     //Gera a matriz de conflito
+//     matconf = fazMatrizConf(conf, adj, tamAresta);
+
+//     //Aloca o slotframe e o preenche com -1
+//     aloca_canais = (int**) malloc(temp_canais * sizeof(int*));
+//     for(x = 0; x < temp_canais; x++){
+//         aloca_canais[x] = (int*) malloc(temp_canais * sizeof(int));
+//         for(y = 0; y < temp_canais; y++)
+//             aloca_canais[x][y] = -1;
+    
+//     }
+//     raiz = no_raiz;
+//     LOG_PRINT(" Raiz %d",raiz);
+//     //Guarda o total de pacotes a serem enviados pela
+//     for(int z = 0; z < tamNo; z++) total_pacotes += pacotes[z];
+//     printf("\nMatriz de adjacencia do grafo de conflito\n");
+    
+//     for(int z = 0; z < tamAresta; z++){
+//         for(i = 0; i < tamAresta; i++)
+//             printf("%d ", matconf[z][i]);
+//         printf("\n");
+//     }
+
+//     //matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+//     //verify matching
+//     if(matching == NULL){  
+//       matching = (int **)malloc(MAX_NOS *sizeof(int*)); 
+//       for(int i = 0; i < MAX_NOS  ; i++) {
+//           matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+//       }
+//       for(int i = 0 ; i < MAX_NOS ; i++){ 
+//           for(int j = 0 ; j < MAX_NOS; j++){  
+//               matching[i][j] = 0 ; 
+//           }
+//       }  
+//     }
+//     while(pacote_entregue < total_pacotes){
+//         printf("\nMatching\n");
+//         for(x = 0; x < tamNo; x++){
+//             for(y = 0; y < tamNo; y++)
+//                 printf("%d ", matching[x][y]);
+//             printf("\n");
+//         }
+//         printf("\nPacotes:\n");
+//         for(x = 1; x < tamNo ; x++)
+//             printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+
+//         //Aloca os canais
+//         for(x = 0; x < tamNo; x ++){
+//             for(y = 0; y < tamNo; y++){
+//                 if(matching[x][y]){
+//                     for(temp = 0; temp < tamAresta; temp++)
+//                         if(conf[temp][0] == x && conf[temp][1] == y)
+//                             break;
+//                     edge_selected = temp;
+//                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+//                         if(canal == temp_canais)
+//                             break;
+//                         aloca_canais[canal][cont] = edge_selected; 
+//                         canal++;
+//                     }
+//                 }
+//                 if(canal == temp_canais)
+//                     break;
+//             }
+//             if(canal == temp_canais)
+//                 break;
+//         }
+        
+//         printf("\nCanais alocados  | |");
+//         printf("\n                \\   /");
+//         printf("\n                 \\ /\n\n");
+//         for(x = 0; x < 16; x++){
+//             for(y = 0; y < temp_canais; y++)
+//                 printf("%d  ", aloca_canais[x][y] + 1); 
+
+//             printf("\n");
+//         }
+//         printf("\n");
+
+//         //Executa a primeira carga de transferência
+//        // executa(aloca_canais, cont, conf, &pacote_entregue, raiz, pacotes); 
+//         // funcao executa desemcapsulada 
+//         for(int i = 0 ; i < temp_canais; i++){  
+//           aux  = aloca_canais[i][cont]; 
+//           aux1 = conf[aux][0];  
+//           if( pacotes[aux1] >= 0){ 
+//             pacotes[aux1] -= peso; 
+//             pacote_entregue++; 
+//           }  
+          
+//         }
+       
+//         cont++;
+//         canal = 0;
+
+//     //    matching = DCFL(pacotes, adj, matconf, conf, tamNo, tamAresta, raiz); 
+//         //if(matching == NULL){  
+//          // matching = (int **)malloc(MAX_NOS *sizeof(int*));
+//          // for(int i = 0; i < MAX_NOS ; i++){
+//          //     matching[i] = (int *)malloc( MAX_NOS * sizeof(int));
+//          /// }
+//           for(int i = 0 ; i < MAX_NOS ; i++){ 
+//               for(int j = 0 ; j < MAX_NOS; j++){  
+//                   if(i == 2 && j == 3) matching[i][j] = 1; 
+//                   else matching[i][j] = 0 ; 
+//               }
+//           }  
+//         //}
+    
+//     }
+
+//     printf("\nCanais alocados  | |");
+//     printf("\n                \\   /");
+//     printf("\n                 \\ /\n\n");
+//     printf(" temp_canais =  %d\n",temp_canais);
+//     canal = 0 ;
+    
+//     for(x = 0 ; x < 16; x++){
+//         for(y = 0; y < temp_canais; y++) 
+//             // linhas = tempo - coluna = canal  
+//             printf("%d  ", aloca_canais[x][y] + 1);  
+             
+//         printf("\n"); 
+//     } 
+    
+//     LOG_PRINT("SLOTFRAME HANDLE: %u",sf->handle);
+//     struct tsch_link *l =   NULL;  
+//     for(x = 0 ; x<16; x++){ 
+//     for(y = 0 ; y < temp_canais;y++){ 
+//               //coordenadas[i][j] = rand()%16  ; 
+//         l = memb_alloc(&link_memb); 
+//         l = list_head(sf->links_list);        
+//         while(l!= NULL){   
+//           if(aloca_canais[x][y] + 1 == l->handle){
+//             LOG_PRINT("---------------------------\n"); 
+//             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+//             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+//             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+//             l-> timeslot = x; 
+//             l-> channel_offset = y ;   
+//             LOG_PRINT("----CHANGE-----\n"); 
+//             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+//             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+//             LOG_PRINT("-----------------------------\n");     
+//             } 
+//           l = list_item_next(l);
+//           } 
+              
+//       }
+//      }
+        
+    
+//   free(adj);  
+//   free(conf); 
+//   free(matconf); 
+//   free(aloca_canais); 
+//   free(pacotes); 
+
+//   return 0;
+
+
+
+//     }   
 /*------------------------------------------------------------------------------------------------------------*/
 
  // Return the number of nodes defined for this network     
@@ -704,9 +928,7 @@ int count_lines()
             count = count + 1; 
     fclose(fp); 
     return count; 
-}       
-
-/*---------------------------------------------------------------------------*/
+}      
 void count_sent_packs(){ 
     uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
@@ -715,9 +937,7 @@ void count_sent_packs(){
     }
    
     LOG_INFO("Node/Packets: %u %u \n",node, STpacks); 
-} 
-
-/*---------------------------------------------------------------------------*/
+}
 void count_packs( const linkaddr_t *address ){  
   // receive and sent  
   LOG_INFO("list of packets\n");
@@ -739,8 +959,7 @@ void count_packs( const linkaddr_t *address ){
       LOG_INFO("%u %u %u\n",i,Packets_sent[i], Packets_received[i]);
     }
   }
-}   
-
+}  
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
@@ -757,13 +976,12 @@ int SCHEDULE_static(){
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ;//, aux_t , aux_c  ;  
-    //uint8_t node, nbr ; 
+    int node_origin, node_destin ; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-  FILE *fl;    
-  if(tsch_get_lock()){ 
+    FILE *fl;    
+    if(tsch_get_lock()){ 
 
     struct tsch_slotframe *sf = list_head(slotframe_list); 
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
@@ -793,7 +1011,6 @@ int SCHEDULE_static(){
         printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
-                
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++; 
                  
@@ -893,7 +1110,8 @@ int SCHEDULE_static(){
     } 
      
     
- 
+      
+  LOG_PRINT("Escalonamento Concluido\n");  
 
  struct tsch_link *l =   NULL;  
     for(x = 0 ; x < Channel; x++){ 
@@ -901,111 +1119,60 @@ int SCHEDULE_static(){
         l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && l->aux_options == 1){
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL && l->aux_options = 2 ){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-            if(verify == 0 ){  
-            l-> timeslot = y+1 ; 
+            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+            if(verify == 0 ){
+            l-> timeslot = y+1; 
             l-> channel_offset = x+1 ;   
-            
-            //     node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-            //         + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-            //     node_destin = l->addr.u8[LINKADDR_SIZE - 1]
-            //         + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-            //     fl = fopen(endereco_T_CH, "w+"); 
-            //     if(fl == NULL) 
-            //       break;    
-            //     fprintf(fl,"%d %d %u %u \n",node_origin,node_destin,l->timeslot, l->channel_offset);
-            //     fclose(fl);
-
-            }  
-              // else if(l->link_options & LINK_OPTION_RX){ 
-              //   node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-              //       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-              //   nbr =  l->addr.u8[LINKADDR_SIZE - 1]
-              //       + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
-              //   fl = fopen(endereco_T_CH, "r"); 
-              //   if(fl == NULL) 
-              //     break;   
-              //   while(!feof(fl)){      
-              //     fscanf(fl,"%d %d (%d %d )",&node_origin, &node_destin, &aux_t, &aux_c);    
-              //     if(node_origin == nbr && node_destin == node){
-              //       l->timeslot = aux_t; 
-              //       l->channel_offset = aux_c;
-              //       LOG_PRINT("----CHANGE-RX----\n"); 
-              //       LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              //       LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-              //       LOG_PRINT("-----------------------------\n");  
-              //     } 
-
-              //   } 
-              //   fclose(fl);
-              // }
             LOG_PRINT("----CHANGE-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             LOG_PRINT("-----------------------------\n");       
             verify = 1 ; 
             } 
-          else { 
+            else { 
             LOG_PRINT("----EXTRA-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
             LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
             LOG_PRINT("-----------------------------\n");
-          }
+            }
           
-        } 
-        l = list_item_next(l);
-      } 
+            } 
+          l = list_item_next(l);
+          } 
               
       }
+     }
 
       flag_schedule = 1 ; 
       tsch_release_lock();   
     } 
     return 1;
 }   
-/*---------------------------------------------------------------------------*/
 
- void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe){ 
-   if(node == MAX_NOS - 1) return ; 
+// int find_neighbor_to_Rx(uint8_t node){ 
+//     uint8_t node_origin, node_destin; 
+//     FILE *fl;    
+//     if(tsch_get_lock()){ 
+   
+//     fl = fopen(endereco, "r"); 
+//     if(fl == NULL){
+//         printf("The file was not opened\n");
+//         return 0  ; 
+//     }  
 
-    int node_origin, node_destin, count = 0 ;  
-    FILE *fl; 
-    if(tsch_get_lock()){ 
-    linkaddr_t addr ; 
-    fl = fopen(endereco, "r"); 
-    if(fl == NULL){
-        printf("The file was not opened\n");
-        return ; 
-    }  
-    struct tsch_link *l = NULL ; 
-    while(!feof(fl)){      
-        fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        count++;  
+//     while(!feof(fl)){      
+//         fscanf(fl,"%d %d",&node_origin, &node_destin);   
+//         if(node_destin == node){
+            
+//             return node_origin;  
+//     }
+//     fclose(fl); 
+// }
 
-        if(node_destin == node){
-            Parents[count] = node_origin;   
-
-           for(int j = 0; j < sizeof(addr); j += 2) {
-            addr.u8[j + 1] = node_origin & 0xff;
-            addr.u8[j + 0] = node_origin >> 8; 
-            }
-            l = tsch_schedule_get_link_by_handle(count); 
-            tsch_schedule_add_link(slotframe,
-                LINK_OPTION_RX,
-                LINK_TYPE_NORMAL, &addr,
-                l->timeslot, l->channel_offset,0);
-        }  
-    } 
-    fclose(fl);   
-    } 
- }
-
-
-/*---------------------------------------------------------------------------*/
 #if NBR_TSCH 
   // inicia  
 
@@ -1013,22 +1180,22 @@ int SCHEDULE_static(){
 int sort_node_to_create_link(int n){  
   for(int i = 0 ; i < MAX_NEIGHBORS ; i++){  
 
-    if(n > NBRlist[i] && NBRlist[i] != 0)
+    if(n > NBRlist[i] && NBRlist[i] != 0){ 
       return NBRlist[i]; 
-      
+    }  
     } 
     return 0; 
  } 
 
-/*---------------------------------------------------------------------------*/
 
   void list_init_nbr(void){ 
       for(int i = 0 ; i < MAX_NEIGHBORS;i++) NBRlist[i] = 0;
   } 
-  
-/*---------------------------------------------------------------------------*/
+  // preenche  
+  // implementei ontem 
   void tsch_print_neighbors(int nbr){   
     int count = 0 ;
+    
     for(count = 0; count < MAX_NEIGHBORS ; count++ ){ 
         if(NBRlist[count] == nbr) return ; 
         
@@ -1038,9 +1205,7 @@ int sort_node_to_create_link(int n){
         }   
     }
 
-  } 
-
-/*---------------------------------------------------------------------------*/
+  }
   // imprime
   void show_nbr(){   
 
@@ -1049,7 +1214,6 @@ int sort_node_to_create_link(int n){
     
   } 
 
-/*---------------------------------------------------------------------------*/
   int change_slotframe(){   
     // verifica se tem algum nó na lista  
     // soma da > 0 
@@ -1061,9 +1225,7 @@ int sort_node_to_create_link(int n){
     if (counter > 0) return 1 ; 
     
     else return 0 ;  
-  }  
-
-/*---------------------------------------------------------------------------*/
+  } 
  #endif 
 
 
