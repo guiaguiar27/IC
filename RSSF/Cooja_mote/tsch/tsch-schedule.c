@@ -902,7 +902,10 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             if(verify == 0 ){   
-            //if(l->link_options & LINK_OPTION_TX){
+            tsch_release_lock();
+            
+            if(l->link_options & LINK_OPTION_TX){
+                LOG_PRINT("------------LINK_OPTION_TX---------------\n"); 
                  l-> timeslot = y+1 ; 
                  l-> channel_offset = x+1 ;   
             
@@ -916,7 +919,7 @@ int SCHEDULE_static(){
             //     fprintf(fl,"%d %d %u %u \n",node_origin,node_destin,l->timeslot, l->channel_offset);
             //     fclose(fl);
 
-               // }                 
+              }                 
               }  
               // else if(l->link_options & LINK_OPTION_RX){ 
               //   node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
@@ -963,7 +966,7 @@ int SCHEDULE_static(){
       tsch_release_lock();   
     } 
     return 1;
-}    
+}     
 
 
 /*---------------------------------------------------------------------------*/
