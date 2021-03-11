@@ -57,8 +57,9 @@ enum link_type { LINK_TYPE_NORMAL, LINK_TYPE_ADVERTISING, LINK_TYPE_ADVERTISING_
 struct tsch_link {
   /* Links are stored as a list: "next" must be the first field */
   struct tsch_link *next;
-  /* Unique identifier */
-  uint16_t handle;
+  /* Unique identifier */ 
+  /* To links RX-only, this parameter will be assigned  -2 */
+  int handle;
   /* MAC address of neighbor */
   linkaddr_t addr;
   /* Slotframe identifier */
@@ -72,9 +73,12 @@ struct tsch_link {
   uint16_t channel_offset;
   /* A bit string that defines
    * b0 = Transmit, b1 = Receive, b2 = Shared, b3 = Timekeeping, b4 = reserved */
-  uint8_t link_options;
+  uint8_t link_options;   
+
+  /* Same purpose of link_option, but the comparation is fully in integer, comparing bits with tsch locked get some bugs*/
+  uint8_t aux_options; 
   /* Type of link. NORMAL = 0. ADVERTISING = 1, and indicates
-     the link may be used to send an Enhanced beacon. */
+     the link may be used to send an Enhanced beacon. */ 
   enum link_type link_type; 
   int value ; 
   /* Any other data for upper layers */

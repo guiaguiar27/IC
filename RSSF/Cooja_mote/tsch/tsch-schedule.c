@@ -294,8 +294,9 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         LOG_INFO_("\n");
         /* Release the lock before we update the neighbor (will take the lock) */
         tsch_release_lock();
-
-        if(l->link_options & LINK_OPTION_TX) {
+        if(l->link_options & LINK_OPTION_RX) l->aux_option = 2; 
+        if(l->link_options & LINK_OPTION_TX) { 
+          l->aux_option = 1;
           n = tsch_queue_add_nbr(&l->addr);
           /* We have a tx link to this neighbor, update counters */
           if(n != NULL) {
@@ -902,7 +903,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
             if(verify == 0 ){  
-            if(l->link_options & LINK_OPTION_TX) 
+            if(l->aux_options == 1) 
               LOG_PRINT("TX WORKED\n");   
  
             l-> timeslot = y+1 ; 
@@ -964,18 +965,7 @@ int SCHEDULE_static(){
     //   tsch_release_lock();   
     // } 
     return 1;
-}     
- 
-void teste_options(struct tsch_link *l){  
-
-  tsch_release_lock(); 
-  //{
-  if(l->link_options & LINK_OPTION_TX) 
-    LOG_PRINT("TX WORKED\n");   
-  // }
-  tsch_get_lock(); 
-
-}
+}   
 /*---------------------------------------------------------------------------*/
 
  void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe){ 
