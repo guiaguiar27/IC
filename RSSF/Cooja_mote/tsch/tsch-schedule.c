@@ -1126,7 +1126,7 @@ int SCHEDULE_static(){
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
+            LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);   
             if(verify == 0 ){  
               // indica que é de TX 
             if(l->aux_options == 2){ 
@@ -1139,7 +1139,7 @@ int SCHEDULE_static(){
               LOG_PRINT("----CHANGE-Tx----\n"); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-              LOG_PRINT("-----------------------------\n");       
+              LOG_PRINT("-----------------------------\n\n");       
               
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
                       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
@@ -1178,7 +1178,7 @@ int SCHEDULE_static(){
                   LOG_PRINT("----CHANGE-Rx----\n"); 
                   LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
                   LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-                  LOG_PRINT("-----------------------------\n");       
+                  LOG_PRINT("-----------------------------\n\n");       
               
                 
                 } 
@@ -1194,7 +1194,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----EXTRA-----\n"); 
             LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
             LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
-            LOG_PRINT("-----------------------------\n");
+            LOG_PRINT("-----------------------------\n\n");
             }
           
             } 
