@@ -240,7 +240,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                        uint16_t timeslot, uint16_t channel_offset, uint8_t do_remove)
 {
   struct tsch_link *l = NULL; 
-  uint16_t node_neighbor, node;
+  //uint16_t node_neighbor, node;
   if(slotframe != NULL) {
     /* We currently support only one link per timeslot in a given slotframe. */
 
@@ -304,12 +304,12 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
             n->tx_links_count++;
             if(!(l->link_options & LINK_OPTION_SHARED)) {
               n->dedicated_tx_links_count++; 
-              node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
-                + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
-              node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
-                + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+              // node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+              //   + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);  
+              // node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
+              //   + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              tsch_write_in_file(node, node_neighbor);   
+             // tsch_write_in_file(node, node_neighbor);   
                           }
           }
         }
@@ -1211,9 +1211,9 @@ int SCHEDULE_static(){
     return 1;
 }   
 
-void find_neighbor_to_Rx(uint8_t node, int handle){ 
-    struct tsch_link *l = NULL; 
-    struct tsch_slotframe *sf_common = tsch_schedule_get_slotframe_by_handle(handle); 
+void find_neighbor_to_Rx(uint8_t node, int handle){  
+    struct tsch_slotframe *sf_common =  list_head(slotframe_list); 
+    struct tsch_link *l =  list_head(sf_common->links_list); 
     linkaddr_t addr;    
     int node_origin, node_destin, count = 0 ;
     FILE *fl;  
@@ -1230,21 +1230,27 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
 
       while(!feof(fl)){       
           fscanf(fl,"%d %d",&node_origin, &node_destin);   
-          count ++; 
-          l =  tsch_schedule_get_link_by_handle(count);
           
-          if(node_destin == node){  
-            LOG_PRINT("Match - %u <- %d\n",node,node_origin);
-            for(int j = 0; j < sizeof(addr); j += 2) {
-              addr.u8[j + 1] = node_origin & 0xff;
-              addr.u8[j + 0] = node_origin >> 8;
-            } 
-            tsch_schedule_add_link(sf_common,
+          if(node_destin == node){
+            while(l != NULL) {
+              if(l->handle == count){
+              LOG_PRINT("Match - %u <- %d\n",node,node_origin);
+              for(int j = 0; j < sizeof(addr); j += 2) {
+                addr.u8[j + 1] = node_origin & 0xff;
+                addr.u8[j + 0] = node_origin >> 8;
+              } 
+              tsch_schedule_add_link(sf_common,
                 LINK_OPTION_RX,
                 LINK_TYPE_NORMAL, &addr,
                 l->timeslot, l->channel_offset,0);
-            }  
-              // cria link  
+              } 
+            l = list_item_next(l);
+            }
+          } 
+          count ++; 
+          
+        
+             
       }
       fclose(fl); 
   } 
