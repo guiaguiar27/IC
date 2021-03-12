@@ -1216,35 +1216,36 @@ int SCHEDULE_static(){
     return 1;
 }   
 
-// int find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common){ 
-//     uint8_t node_origin, node_destin; 
-//     FILE *fl;     
-//     int count = 0 ;  
-    
-//     struct tsch_link *l = NULL;  
-//     if(tsch_get_lock()){ 
+int find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common){ 
+    int node_origin, node_destin; 
+    FILE *fl;     
+    int count = 0 ;  
+    LOG_PRINT("Finding neighbor to Rx\n");
+    struct tsch_link *l = NULL;  
+    if(tsch_get_lock()){ 
    
-//     fl = fopen(endereco, "r"); 
-//     if(fl == NULL){
-//         printf("The file was not opened\n");
-//         return 0  ; 
-//     }  
+    fl = fopen(endereco, "r"); 
+    if(fl == NULL){
+        LOG_PRINT("The file was not opened\n");
+        return 0  ; 
+    }  
 
-//     while(!feof(fl)){       
-//         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-//         count ++; 
-//        l =  tsch_schedule_get_link_by_handle(count);
+    while(!feof(fl)){       
+        fscanf(fl,"%d %d",&node_origin, &node_destin);   
+        count ++; 
+        l =  tsch_schedule_get_link_by_handle(count);
         
-//         if(node_destin == node){ 
-//           tsch_schedule_add_link(sf_common,
-//               LINK_OPTION_RX,
-//               LINK_TYPE_NORMAL, &addr,
-//               l->timeslot, l->channel_offset,0);
-//           }  
-//             // cria link  
-//     }
-//     fclose(fl); 
-// }
+        if(node_destin == node){  
+          LOG_PRINT("Match - %u <- %d\n",node,node_origin);
+          tsch_schedule_add_link(sf_common,
+              LINK_OPTION_RX,
+              LINK_TYPE_NORMAL, &addr,
+              l->timeslot, l->channel_offset,0);
+          }  
+            // cria link  
+    }
+    fclose(fl); 
+}
 
 #if NBR_TSCH 
   // inicia  

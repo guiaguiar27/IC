@@ -172,8 +172,8 @@ int SCHEDULE();
 int tsch_num_nos();  
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
-int sort_node_to_create_link(int n);    
-void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *slotframe);   
+int sort_node_to_create_link(int n);     
+int find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common); 
 
 /** 
  * \brief schedule
