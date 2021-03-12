@@ -1216,10 +1216,10 @@ int SCHEDULE_static(){
     return 1;
 }   
 
-int find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common){ 
+void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common){ 
     int node_origin, node_destin; 
-    FILE *fl;      
-    linkaddr_t addr = NULL;  
+    FILE *fl;  
+    linkaddr_t addr;  
     int count = 0 ;  
     LOG_PRINT("Finding neighbor to Rx\n");
     struct tsch_link *l = NULL;  
