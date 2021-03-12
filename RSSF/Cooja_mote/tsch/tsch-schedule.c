@@ -1230,7 +1230,7 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
 
       while(!feof(fl)){       
           fscanf(fl,"%d %d",&node_origin, &node_destin);   
-          
+          LOG_PRINT("%d %d",node_origin, node_destin);
           if(node_destin == node){
             while(l != NULL) {
               if(l->handle == count){
