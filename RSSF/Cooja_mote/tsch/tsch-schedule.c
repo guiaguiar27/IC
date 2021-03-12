@@ -977,7 +977,9 @@ int SCHEDULE_static(){
     int cont = 0;               //Time do slotframe
     int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ; 
+    int node_origin, node_destin ;   
+    int aux_timeslot, aux_channel_offset ; 
+    int nbr;
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
@@ -1127,7 +1129,7 @@ int SCHEDULE_static(){
             LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset);   
             if(verify == 0 ){  
               // indica que é de TX 
-              if(l->aux_options == 2){ 
+            if(l->aux_options == 2){ 
                 
 
               l-> timeslot = y+1; 
@@ -1145,7 +1147,7 @@ int SCHEDULE_static(){
               node_destin =  l->addr.u8[LINKADDR_SIZE - 1]
                       + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
-              fl = fopen(endereco_T_CH, "w+"); 
+              fl = fopen(endereco_T_CH, "a"); 
               if(fl == NULL) 
                 break;    
 
@@ -1153,7 +1155,45 @@ int SCHEDULE_static(){
               fclose(fl);
               
               verify = 1 ;  
+              } 
+              else if(l->aux_options == 1){ 
+                
+              
+              LOG_PRINT("----CHANGE-Tx----\n"); 
+              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+              LOG_PRINT("-----------------------------\n");       
+              
+              
+              node_destin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
+              
+              fl = fopen(endereco_T_CH, "r"); 
+              
+              if(fl == NULL) 
+                break;    
+              while(!feof(fl)){
+                
+                fscanf(fl, "%d %d (%d %d)\n",node_origin,nbr,aux_timeslot, aux_channel_offset); 
+                
+                if(node_destin == nbr){   
+
+                  l->timeslot = aux_timeslot; 
+                  l->channel_offset = aux_channel_offset;  
+                  LOG_PRINT("----CHANGE-Rx----\n"); 
+                  LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                  LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                  LOG_PRINT("-----------------------------\n");       
+              
+                
+                } 
+              }
+              fclose(fl);
+              
+              verify = 1 ;  
               }  
+
+
             }
             else { 
             LOG_PRINT("----EXTRA-----\n"); 
@@ -1164,7 +1204,8 @@ int SCHEDULE_static(){
           
             } 
           l = list_item_next(l);
-          } 
+          }  
+
               
       }
      }
