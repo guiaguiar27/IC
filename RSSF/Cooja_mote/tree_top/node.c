@@ -88,7 +88,7 @@ static void init_broad(void){
   uint16_t channel_offset = 0; 
     tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
-      LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
     
 } 

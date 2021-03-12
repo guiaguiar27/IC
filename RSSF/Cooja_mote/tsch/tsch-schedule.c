@@ -1136,11 +1136,10 @@ int SCHEDULE_static(){
               l-> channel_offset = x+1 ;   
               
               
-              LOG_PRINT("----CHANGE-----\n"); 
+              LOG_PRINT("----CHANGE-Tx----\n"); 
               LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
               LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
               LOG_PRINT("-----------------------------\n");       
-              
               
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
                       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
@@ -1159,10 +1158,6 @@ int SCHEDULE_static(){
               else if(l->aux_options == 1){ 
                 
               
-              LOG_PRINT("----CHANGE-Tx----\n"); 
-              LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-              LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-              LOG_PRINT("-----------------------------\n");       
               
               
               node_destin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
@@ -1228,7 +1223,7 @@ void find_neighbor_to_Rx(uint8_t node, struct tsch_slotframe *sf_common){
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
           LOG_PRINT("The file was not opened\n");
-          return 0  ; 
+          return  ; 
       }  
 
       while(!feof(fl)){       
