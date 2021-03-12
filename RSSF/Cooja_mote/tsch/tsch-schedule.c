@@ -1174,7 +1174,7 @@ int SCHEDULE_static(){
                 break;    
               while(!feof(fl)){
                 
-                fscanf(fl, "%d %d (%d %d)\n",node_origin,nbr,aux_timeslot, aux_channel_offset); 
+                fscanf(fl, "%d %d (%d %d)",&node_origin,&nbr,&aux_timeslot, &aux_channel_offset); 
                 
                 if(node_destin == nbr){   
 
