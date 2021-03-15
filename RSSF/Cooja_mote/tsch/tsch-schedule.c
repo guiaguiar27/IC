@@ -1237,7 +1237,7 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
               tsch_schedule_add_link(sf_common,
                 LINK_OPTION_RX,
                 LINK_TYPE_NORMAL, &addr,
-                l->timeslot, l->channel_offset,0);
+                0, 0,0);
           }  
       }
       fclose(fl);   
