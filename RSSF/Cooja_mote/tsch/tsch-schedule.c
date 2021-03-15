@@ -1213,13 +1213,10 @@ int SCHEDULE_static(){
 
 void find_neighbor_to_Rx(uint8_t node, int handle){  
     struct tsch_slotframe *sf_common =  list_head(slotframe_list); 
-    struct tsch_link *l =  list_head(sf_common->links_list); 
     linkaddr_t addr;    
-    int node_origin, node_destin, count = 0 ;
+    int node_origin, node_destin;
     FILE *fl;  
      
-    
-    if(tsch_get_lock()){ 
     LOG_PRINT("Finding neighbor to Rx\n");
     
       fl = fopen(endereco, "r"); 
@@ -1232,8 +1229,6 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
           fscanf(fl,"%d %d",&node_origin, &node_destin);   
           LOG_PRINT("%d %d",node_origin, node_destin);
           if(node_destin == node){
-            while(l != NULL) {
-              if(l->handle == count){
               LOG_PRINT("Match - %u <- %d\n",node,node_origin);
               for(int j = 0; j < sizeof(addr); j += 2) {
                 addr.u8[j + 1] = node_origin & 0xff;
@@ -1243,18 +1238,9 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
                 LINK_OPTION_RX,
                 LINK_TYPE_NORMAL, &addr,
                 l->timeslot, l->channel_offset,0);
-              } 
-            l = list_item_next(l);
-            }
-          } 
-          count ++; 
-          
-        
-             
+          }  
       }
-      fclose(fl); 
-  } 
-  tsch_release_lock();  
+      fclose(fl);   
 }
 
 #if NBR_TSCH 
