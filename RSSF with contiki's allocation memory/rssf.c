@@ -4,7 +4,7 @@
 #define temp_canais 23
 #define peso 1 
 #define no_raiz 1 
-#define endereco "teste3.txt" 
+#define endereco "teste.txt" 
 
 
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
