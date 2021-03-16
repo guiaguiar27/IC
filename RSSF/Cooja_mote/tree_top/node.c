@@ -107,12 +107,12 @@ int initialize_tsch_schedule(void){
     uint16_t remote_id = 0; 
     linkaddr_t addr;  
 
-    if(node_id == 1 ){
-      tsch_schedule_add_link(sf_common, LINK_OPTION_SHARED,
-        LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
-        slot_offset, channel_offset,0);
+    // if(node_id == 1 ){
+    //   tsch_schedule_add_link(sf_common, LINK_OPTION_SHARED,
+    //     LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
+    //     slot_offset, channel_offset,0);
     
-    } 
+    // } 
 
       if (node_id != 1) {
         
