@@ -173,14 +173,15 @@ int tsch_num_nos();
 void tsch_write_in_file(int n_origin, int n_destin);  
 int count_lines();    
 int sort_node_to_create_link(int n);     
-void find_neighbor_to_Rx(uint8_t node, int handle); 
+void find_neighbor_to_Rx(uint8_t node, int handle);  
 
 /** 
  * \brief schedule
  */
 int SCHEDULE_static(); 
 void count_packs( const linkaddr_t *address);  
-void count_sent_packs(); 
+void count_sent_packs();  
+void  rx_schedule_intern(struct tsch_link *l);
 
 
 #if NBR_TSCH

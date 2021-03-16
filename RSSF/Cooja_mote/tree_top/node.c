@@ -145,7 +145,7 @@ int initialize_tsch_schedule(void){
           
           
           } 
-
+          find_neighbor_to_Rx(node_id,1); 
           return remote_id;
     } 
      
@@ -217,7 +217,7 @@ PROCESS_THREAD(node_process, ev, data)
       } 
 
      if(aux_id >= 1 ){ 
-       find_neighbor_to_Rx(node_id,1); 
+       
        SCHEDULE_static(); 
 
      }   
