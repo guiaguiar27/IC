@@ -713,7 +713,7 @@ void count_sent_packs(){
     LOG_INFO("Node/Packets: %u %u \n",node, STpacks); 
 }
 void count_packs( const linkaddr_t *address ){  
-  // receive and sent  
+  // receive only  
   LOG_INFO("list of packets\n");
   uint8_t  node_src = (*address).u8[LINKADDR_SIZE - 1]
                 + ((*address).u8[LINKADDR_SIZE - 2] << 8);   

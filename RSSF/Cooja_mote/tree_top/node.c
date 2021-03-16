@@ -82,11 +82,11 @@ int  verify = 0, aux_id  ;
 #if NBR_TSCH 
 static void init_broad(void){  
 
-  // APP_SLOTFRAME_SIZE
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset = 0;
   uint16_t channel_offset = 0; 
-    tsch_schedule_add_link(sf_common,
+  
+  tsch_schedule_add_link(sf_common,
       LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
@@ -134,8 +134,8 @@ int initialize_tsch_schedule(void){
             addr.u8[j + 0] = remote_id >> 8;
           } 
         }  
-          slot_offset = 1 ; //random_rand() % APP_UNICAST_TIMESLOT;
-          channel_offset = 2; //random_rand() % APP_CHANNEL_OFSETT ;
+          slot_offset =  random_rand() % APP_UNICAST_TIMESLOT;
+          channel_offset = random_rand() % APP_CHANNEL_OFSETT ;
           /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
           * backoff windows will not be reset correctly! */
           tsch_schedule_add_link(sf_common,
@@ -145,15 +145,10 @@ int initialize_tsch_schedule(void){
           
           
           } 
-          find_neighbor_to_Rx(node_id,1); 
           return remote_id;
     } 
      
-      
-  
-
-  
-
+    
 static void
 rx_packet(struct simple_udp_connection *c,
           const uip_ipaddr_t *sender_addr,
@@ -181,81 +176,74 @@ PROCESS_THREAD(node_process, ev, data)
   static uint32_t seqnum;
   uip_ipaddr_t dst;   
   
-  PROCESS_BEGIN(); 
-  #if NBR_TSCH 
-   
-    init_broad(); 
-  
-  #endif  
-
-  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
-  /* Initialization; `rx_packet` is the function for packet reception */
-  simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
-  etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
-  // para mudar o slotframe;  
-   if(node_id == 1) {  /* Running on the root? */
-     NETSTACK_ROUTING.root_start();
-   } 
-  // ativa os protocolos da camda de rede 
-  NETSTACK_MAC.on(); 
-
-
-  /* Main loop */
-  while(1) {
+  PROCESS_BEGIN();  
     
-    #if NBR_TSCH  
-      show_nbr();   
-      // adapatação sem contar com o tempo 
-      LOG_INFO("Verify: %d \n", verify);    
-      if(verify == 0){ 
-        verify = change_slotframe(); 
-        if(verify == 1){   
-          aux_id = initialize_tsch_schedule();
-          
+    #if NBR_TSCH 
+      init_broad(); 
+    #endif  
+
+    tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+    /* Initialization; `rx_packet` is the function for packet reception */
+    simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
+    etimer_set(&periodic_timer, random_rand() % SEND_INTERVAL);  
+    // para mudar o slotframe;  
+    if(node_id == 1) {  /* Running on the root? */
+      NETSTACK_ROUTING.root_start();
+    } 
+    // ativa os protocolos da camda de rede 
+    NETSTACK_MAC.on(); 
+
+
+    /* Main loop */
+    while(1) {
       
-      }
-      } 
+      #if NBR_TSCH  
+        show_nbr();   
+        // adapatação sem contar com o tempo 
+        LOG_INFO("Verify: %d \n", verify);    
+        if(verify == 0){ 
+          verify = change_slotframe(); 
+          if(verify == 1){   
+            aux_id = initialize_tsch_schedule(); 
+            if(node_id == 1) aux_id = 1 ; 
+            
+        
+        }
+        } 
 
-     if(aux_id >= 1 ){ 
-       
-       SCHEDULE_static(); 
+      if(aux_id >= 1 ){ 
+        find_neighbor_to_Rx(node_id,1); 
+        SCHEDULE_static(); 
+      }  
+      #endif 
 
-     }   
-      
-      // mudanca  
-    #endif 
+      //  energest_flush();
 
-    //  energest_flush();
+      //  printf("\nEnergest:\n");
+      //  printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
+      //         to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
+      //         to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
+      //         to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
+      //         to_seconds(ENERGEST_GET_TOTAL_TIME()));
+      //  printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
+      //         to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
+      //         to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
+      //         to_seconds(ENERGEST_GET_TOTAL_TIME()
+      //                    - energest_type_time(ENERGEST_TYPE_TRANSMIT)
+      //                    - energest_type_time(ENERGEST_TYPE_LISTEN)));
 
-    //  printf("\nEnergest:\n");
-    //  printf(" CPU          %4lus LPM      %4lus DEEP LPM %4lus  Total time %lus\n",
-    //         to_seconds(energest_type_time(ENERGEST_TYPE_CPU)),
-    //         to_seconds(energest_type_time(ENERGEST_TYPE_LPM)),
-    //         to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM)),
-    //         to_seconds(ENERGEST_GET_TOTAL_TIME()));
-    //  printf(" Radio LISTEN %4lus TRANSMIT %4lus OFF      %4lus\n",
-    //         to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN)),
-    //         to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT)),
-    //         to_seconds(ENERGEST_GET_TOTAL_TIME()
-    //                    - energest_type_time(ENERGEST_TYPE_TRANSMIT)
-    //                    - energest_type_time(ENERGEST_TYPE_LISTEN)));
-    
-     
-    //verify_packs();
+      PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+        if(tsch_is_associated) { 
 
-    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    
-    if(tsch_is_associated) { 
-
-      /* Send network uptime timestamp to the network root node */
-      seqnum++;
-      LOG_INFO("Send to ");
-      LOG_INFO_6ADDR(&dst);
-      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
+          /* Send network uptime timestamp to the network root node */
+          seqnum++;
+          LOG_INFO("Send to ");
+          LOG_INFO_6ADDR(&dst);
+          LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+          simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
+        }
+        etimer_set(&periodic_timer, SEND_INTERVAL);
     }
-    etimer_set(&periodic_timer, SEND_INTERVAL);
-  }
 
   PROCESS_END();
 }
