@@ -534,7 +534,7 @@ tsch_tx_process_pending(void)
     LOG_INFO_(", seqno %u, status %d, tx %d\n",
       packetbuf_attr(PACKETBUF_ATTR_MAC_SEQNO), p->ret, p->transmissions);
     /* Call packet_sent callback */ 
-    if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  !linkaddr_cmp(addr,&tsch_broadcast_address))
+    if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  !linkaddr_cmp(packetbuf_addr(PACKETBUF_ADDR_RECEIVER),&tsch_broadcast_address))
       count_sent_packs(); 
     mac_call_sent_callback(p->sent, p->ptr, p->ret, p->transmissions);
     /* Free packet queuebuf */
