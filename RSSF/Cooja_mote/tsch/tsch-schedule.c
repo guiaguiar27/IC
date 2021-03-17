@@ -719,12 +719,12 @@ void count_packs( const linkaddr_t *address ){
                 + ((*address).u8[LINKADDR_SIZE - 2] << 8);   
   uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-  if(node == 1 ){ 
-    if(change_slotframe())
-      flag_schedule = 1; 
-    else  
-      flag_schedule = 0;
-  }       
+  // if(node == 1 ){ 
+  //   if(change_slotframe())
+  //     flag_schedule = 1; 
+  //   else  
+  //     flag_schedule = 0;
+  // }       
 
   if(flag_schedule){     
     Packets_sent[node_src] += 1 ;  
