@@ -892,9 +892,11 @@ int SCHEDULE_static(){
     
       
     struct tsch_link *l =   NULL;  
+    l = memb_alloc(&link_memb); 
+    
     for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){   
-        l = memb_alloc(&link_memb); 
+        //l = memb_alloc(&link_memb); 
         l = list_head(sf->links_list);        
         while(l!= NULL){   
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
@@ -935,18 +937,21 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
             LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
             LOG_PRINT("-----------------------------\n\n");
-          }
-        } 
-        if(l->aux_options == 1  && l->link_type == LINK_TYPE_NORMAL){ 
-              rx_schedule_intern(l); 
-              verify = 1 ;  
-        }  
-        
+          } 
+        } // 1st if 
         l = list_item_next(l);
-      }  
+      } // while      
+    } // internal for 
+  } // external for 
 
-              
-    }
+  // to Rx 
+  l = list_head(sf->links_list); 
+  while(l!= NULL){  
+    if(l->aux_options == 1  && l->link_type == LINK_TYPE_NORMAL)
+      rx_schedule_intern(l);
+        
+      l = list_item_next(l);
+
   }
 
   flag_schedule = 1 ; 
