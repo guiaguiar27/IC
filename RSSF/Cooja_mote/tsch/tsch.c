@@ -530,10 +530,12 @@ tsch_tx_process_pending(void)
     /* Put packet into packetbuf for packet_sent callback */
     queuebuf_to_packetbuf(p->qb);
     LOG_INFO("packet sent to ");
-    LOG_INFO_LLADDR(packetbuf_addr(PACKETBUF_ADDR_RECEIVER));
+    LOG_INFO_LLADDR(packetbuf_addr(PACKETBUF_ADDR_RECEIVER)); 
     LOG_INFO_(", seqno %u, status %d, tx %d\n",
       packetbuf_attr(PACKETBUF_ATTR_MAC_SEQNO), p->ret, p->transmissions);
-    /* Call packet_sent callback */
+    /* Call packet_sent callback */ 
+    if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  !linkaddr_cmp(addr,&tsch_broadcast_address))
+      count_sent_packs(); 
     mac_call_sent_callback(p->sent, p->ptr, p->ret, p->transmissions);
     /* Free packet queuebuf */
     tsch_queue_free_packet(p);
@@ -1146,8 +1148,7 @@ send_packet(mac_callback_t sent, void *ptr)
              TSCH_QUEUE_NUM_PER_NEIGHBOR, tsch_queue_global_packet_count(),
              QUEUEBUF_NUM, p->header_len, queuebuf_datalen(p->qb));
     // function to count how much packs are sending  
-   if(packetbuf_attr(PACKETBUF_ATTR_FRAME_TYPE) == FRAME802154_DATAFRAME &&  !linkaddr_cmp(addr,&tsch_broadcast_address))
-     count_sent_packs(); 
+   
 
     }
   }

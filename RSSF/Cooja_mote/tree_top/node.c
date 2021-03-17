@@ -99,7 +99,7 @@ int initialize_tsch_schedule(void){
     // create only one link per node 
     LOG_PRINT("Initialize tsch schedule\n"); 
     struct tsch_slotframe *sf_common;  
-    int i, j; 
+    int  j; 
     // APP_SLOTFRAME_SIZE
     uint16_t slot_offset = 0 ;
     uint16_t channel_offset = 0 ;  
