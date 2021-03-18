@@ -764,7 +764,7 @@ int SCHEDULE_static(){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
 
      }
-    tamNo = MAX_NOS  -  1;  
+    tamNo = MAX_NOS;  
     tamAresta = 0 ;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
@@ -784,7 +784,7 @@ int SCHEDULE_static(){
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
-        if(node_origin < MAX_NOS && node_destin < MAX_NOS){
+        if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++; 
@@ -837,13 +837,12 @@ int SCHEDULE_static(){
 
     
     // otimizar a criação de matrizes 
-    // int vetor[tamAresta][2]; 
-    // for(x = 0 ; x < tamAresta; x++) 
-    //   for(y = 0; y < 2; y++ ) 
-    //     vetor[x][y] = 0 ; 
+    int vetor[tamAresta][2]; 
+    for(x = 0 ; x < tamAresta; x++) 
+      for(y = 0; y < 2; y++ ) 
+        vetor[x][y] = 0 ; 
 
-    // DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
-    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
+    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
     
     while(pacote_entregue < total_pacotes){
 
@@ -872,11 +871,10 @@ int SCHEDULE_static(){
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
         canal = 0; 
-        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
-        // for(x = 0 ; x < tamAresta; x++) 
-        //   for(y = 0; y < 2; y++ ) 
-        //     vetor[x][y] = 0 ; 
-        // DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
+        for(x = 0 ; x < tamAresta; x++) 
+          for(y = 0; y < 2; y++ ) 
+            vetor[x][y] = 0 ; 
+        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
     
     }
 
