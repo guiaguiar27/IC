@@ -837,12 +837,13 @@ int SCHEDULE_static(){
 
     
     // otimizar a criação de matrizes 
-    int vetor[tamAresta][2]; 
-    for(x = 0 ; x < tamAresta; x++) 
-      for(y = 0; y < 2; y++ ) 
-        vetor[x][y] = 0 ; 
+    // int vetor[tamAresta][2]; 
+    // for(x = 0 ; x < tamAresta; x++) 
+    //   for(y = 0; y < 2; y++ ) 
+    //     vetor[x][y] = 0 ; 
 
-    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
+    // DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj, &vetor);
+    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
     
     while(pacote_entregue < total_pacotes){
 
@@ -870,11 +871,12 @@ int SCHEDULE_static(){
         if(cont == Timeslot) cont = 0;
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
-        canal = 0;
-        for(x = 0 ; x < tamAresta; x++) 
-          for(y = 0; y < 2; y++ ) 
-            vetor[x][y] = 0 ; 
-        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
+        canal = 0; 
+        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj);
+        // for(x = 0 ; x < tamAresta; x++) 
+        //   for(y = 0; y < 2; y++ ) 
+        //     vetor[x][y] = 0 ; 
+        // DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
     
     }
 

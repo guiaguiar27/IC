@@ -3,7 +3,7 @@
 #include "conf.h"
 #define temp_canais 23
 #define peso 1 
-#define MAX_NOS 14
+#define MAX_NOS 50
 #define no_raiz 1
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
@@ -30,7 +30,8 @@ int main(){
    // char **nome_no,             //Nome dos nós no grafo da rede
     char *nome_arq_dot = "\0";       //Nom do arquivo contendo o grafo de conflito (não usado)
     int *pacotes;               //Pacotes por nó no grafo da rede
-    int node_origin, node_destin ; 
+    int node_origin, node_destin ;  
+    int ma_ts = 0  , maxBD; 
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
@@ -161,9 +162,9 @@ int main(){
                             break;
                     edge_selected = temp;
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == 16)
+                        if(canal == 4)
                             break;
-                        aloca_canais[canal][cont] = edge_selected; 
+                        aloca_canais[canal][cont] = edge_selected;  
                         canal++;
                     }
                 }
@@ -179,8 +180,10 @@ int main(){
         printf("\n                 \\ /\n\n");
         for(x = 0; x < 16; x++){
             for(y = 0; y < temp_canais; y++)
-                printf("%d  ", aloca_canais[x][y] + 1);
-            printf("\n");
+                printf("%d  ", aloca_canais[x][y] + 1); 
+                
+            printf("\n"); 
+            
         }
         printf("\n");
 
@@ -206,13 +209,15 @@ int main(){
     printf("\n                 \\ /\n\n");
     printf(" temp_canais =  %d\n",temp_canais);
     for(x = 0 ; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
+        for(y = 0; y < temp_canais; y++) {
             // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
-             
+            printf("%d  ", aloca_canais[x][y] + 1); 
+            if(x == 0 && aloca_canais[x][y] != -1 ) ma_ts += 1 ; 
+        }  
         printf("\n"); 
-    } 
-    /*  
+    }  
+    printf("Timeslot:%d", ma_ts); 
+    /*   
     for(y = 0 ; y < temp_canais; y++){ 
         for(x = 0 ; x < 16 ; x++){ 
             printf("%d  ", aloca_canais[x][y] + 1);  

@@ -8,32 +8,30 @@
     * num_no: número de nós do grafo da rede
     * num_aresta: nº de arestas do grafo da rede
     */
-void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching, int (*vetor)[num_aresta][2]){
-    /* 
+void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[num_aresta][num_aresta], int (*mapa_graf_conf)[num_aresta][2], int raiz, ng *matching){
+    /*
     * x, y: índices de acesso à matriz
     * no_atual: último nó folha usado para iniciar o matching
     */
     int x ; 
     int no_atual;
-    //srand(time(NULL));
+    srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = random_rand() % num_no;   
-    printf("sorted nó:%d\n",no_atual); 
-
-    while(no_atual == raiz && no_atual > num_no){ 
-        no_atual = random_rand() % num_no;
-    }
+    no_atual = rand() % num_no;   
+    printf("sorted nó:%d\n",no_atual);
+    while(no_atual == raiz){ 
+        no_atual = rand() % num_no;
+    } 
     
     for(x = 0; x < num_no; x++){
         if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
             no_atual = x; 
     }
-    
     //Encontra qual nó do grafo de conflitos representa a aresta do nó folha selecionado 
     for(x = 0; x < num_aresta; x++)
         if((*mapa_graf_conf)[x][0] == no_atual){
-            geraMaching(num_aresta, num_no, pacotes, graf_conf, mapa_graf_conf, x, matching, vetor );
+            geraMaching(num_aresta, num_no, pacotes, graf_conf, mapa_graf_conf, x, matching);
             return;
         }
 
@@ -48,7 +46,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     *   tam_rede: tamanho do grafo da rede
     *   node: aresta selecionada para iniciar o matching
     */
-void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_conf)[tam][tam], int (*mapa_graf_conf)[tam][2], int node, ng *resultado, int (*vetor)[tam][2]){
+void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_conf)[tam][tam], int (*mapa_graf_conf)[tam][2], int node, ng *resultado){
     
     /*
     * x, y: usado para percorrer o vetor
@@ -61,8 +59,8 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
     *         ser "olhada" novamente.
     * resultado: matriz de adjacência do matching
     */
-    int x, y, maior_peso = -1, cont = 1, flg = 1;
-	//node = 5 ; 
+    int x, y, vetor[tam][2], maior_peso = -1, cont = 1, flg = 1;
+
     //Preenchendo com zeros a matriz do matching
     for(x = 0; x < tam_rede; x++){ 
         for(y = 0; y < tam_rede; y++)
@@ -71,25 +69,25 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
 
     //Preenchendo com 0's e 1's o vetor que informa quais nós da matriz de conflito geram conflito com o node
     for(x = 0; x < tam; x++){
-        (*vetor)[x][0] = 0;
-        (*vetor)[x][1] = 1;
+        vetor[x][0] = 0;
+        vetor[x][1] = 1;
     }
 
     //Pesquisa os nós que geram conflito com o node
     for(x = 0; x < tam; x++)
         if((*graf_conf)[node][x] != 0){
-            (*vetor)[x][0] = 1;
-            (*vetor)[x][1] = 0;
+            vetor[x][0] = 1;
+            vetor[x][1] = 0;
         }
 
-    (*vetor)[node][0] = 0;
-    (*vetor)[node][1] = 0;
+    vetor[node][0] = 0;
+    vetor[node][1] = 0;
     
     //Pesquisa quais outras arestas do grafo de conflito podem ser transimtidos com o node
     while(cont){
         //Escolhe a aresta com maior peso...
         for(x = 0; x < tam; x++){
-            if(!(*vetor)[x][0] && (*vetor)[x][1]){
+            if(!vetor[x][0] && vetor[x][1]){
                 if(flg){
                     maior_peso = x;
                     flg = 0;
@@ -101,25 +99,25 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
         }
         //...e caso haja uma aresta com maior peso...
         if(maior_peso != -1){
-            (*vetor)[maior_peso][1] = 0;
+            vetor[maior_peso][1] = 0;
             //...retira as arestas que geram conflito com ela
-            for(x = 0; x < tam; x++)    
+            for(x = 0; x < tam; x++)
                 if((*graf_conf)[maior_peso][x] != 0 && x != node){
-                    (*vetor)[x][0] = 1;
-                    (*vetor)[x][1] = 0;
+                    vetor[x][0] = 1;
+                    vetor[x][1] = 0;
                 }
             maior_peso = -1;
         }
         cont = 0;
         for(x = 0; x < tam; x++)
-            if((*vetor)[x][1])
+            if(vetor[x][1])
                 cont = 1;
         flg = 1;
     }
 
     //Preenche a matriz de adjacência com as arestas que podem transmitir ao mesmo tempo
     for(x = 0; x < tam; x++){
-        if((*vetor)[x][0] == 0 && (*pacotes)[(*mapa_graf_conf)[x][0]] > 0){
+        if(vetor[x][0] == 0 && (*pacotes)[(*mapa_graf_conf)[x][0]] > 0){
             resultado->mat_adj[(*mapa_graf_conf)[x][0]][(*mapa_graf_conf)[x][1]] = 1;
         }
     }
