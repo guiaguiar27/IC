@@ -992,7 +992,9 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
     linkaddr_t addr;    
     int node_origin, node_destin;
     FILE *fl;  
-     
+    uint8_t flag = 0 ;  
+    struct tsch_link *l = NULL; 
+    l = memb_alloc(&link_memb); 
     LOG_PRINT("Finding neighbor to Rx\n");
     
       fl = fopen(endereco, "r"); 
@@ -1010,11 +1012,16 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
                 addr.u8[j + 1] = node_origin & 0xff;
                 addr.u8[j + 0] = node_origin >> 8;
               }  
-
-              tsch_schedule_add_link(sf_common,
-                LINK_OPTION_RX,
-                LINK_TYPE_NORMAL, &addr,
-                0, 0,0); 
+              l = list_head(sf_common->links_list); 
+              while(l!= NULL){ 
+                if(linkaddr_cmp(&addr,&l->addr)) flag = 1 ; 
+                l = list_item_next(l);
+              } 
+              if(flag == 0)
+                tsch_schedule_add_link(sf_common,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addr,
+                  0, 0,0); 
           }  
       }
       fclose(fl);   
