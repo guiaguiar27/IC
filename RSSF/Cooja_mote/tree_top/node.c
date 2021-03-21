@@ -98,7 +98,7 @@ int initialize_tsch_schedule(void){
 
     // create only one link per node 
     LOG_PRINT("Initialize tsch schedule\n"); 
-    tsch_schedule_remove_all_slotframes(); 
+    //tsch_schedule_remove_all_slotframes(); 
     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
     int  j; 
     // APP_SLOTFRAME_SIZE
