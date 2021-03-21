@@ -64,9 +64,6 @@
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
 #define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
 
-#define Channel 16
-#define Timeslot 16   
-
 
 //uint16_t Rpackets = 0 ; 
 uint16_t flag_schedule = 0 ;   
