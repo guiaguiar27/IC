@@ -66,7 +66,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
-#define APP_UNICAST_TIMESLOT 16 
+#define APP_UNICAST_TIMESLOT 4
 #define APP_CHANNEL_OFSETT 8   
 
 
@@ -95,17 +95,22 @@ static void init_broad(void){
 #endif  
 
 int initialize_tsch_schedule(void){
-
-    // create only one link per node 
-    LOG_PRINT("Initialize tsch schedule\n"); 
-    tsch_schedule_remove_all_slotframes(); 
-    struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
-    int  j; 
-    // APP_SLOTFRAME_SIZE
-    uint16_t slot_offset = 0 ;
-    uint16_t channel_offset = 0 ;  
+    
     uint16_t remote_id = 0; 
-    linkaddr_t addr;  
+
+
+    if (node_id != 1) {
+    // create only one link per node 
+      LOG_PRINT("Initialize tsch schedule\n"); 
+      tsch_schedule_remove_all_slotframes(); 
+      LOG_PRINT("Remove all slotframes");
+      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
+      int  j; 
+    // APP_SLOTFRAME_SIZE
+      uint16_t slot_offset = 0 ;
+      uint16_t channel_offset = 0 ;  
+     
+      linkaddr_t addr;  
 
     // if(node_id == 1 ){
     //   tsch_schedule_add_link(sf_common, LINK_OPTION_SHARED,
@@ -113,7 +118,7 @@ int initialize_tsch_schedule(void){
     //     slot_offset, channel_offset,0);
     
     // }
-    if (node_id != 1) {
+    
       #if NBR_TSCH 
         remote_id = sort_node_to_create_link(node_id);  
       #else  
