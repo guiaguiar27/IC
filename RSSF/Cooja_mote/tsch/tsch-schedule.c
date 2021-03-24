@@ -780,9 +780,9 @@ int SCHEDULE_static(){
     printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);    
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
-            if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
+            if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){ 
+                printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);   
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++; 
                  
