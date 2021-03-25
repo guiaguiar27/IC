@@ -1,0 +1,2544 @@
+Starting COOJA logger
+247000 4 [INFO: TSCH      ] scanning on channel 20
+247000 4 [INFO: TSCH      ] starting as node
+247000 4 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+247000 4 [INFO: Main      ] - Routing: RPL Classic
+247000 4 [INFO: Main      ] - Net: sicslowpan
+247000 4 [INFO: Main      ] - MAC: TSCH
+247000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+247000 4 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+247000 4 [INFO: Main      ] Node ID: 4
+247000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+247000 4 [INFO: RPL       ] rpl-classic started
+247000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+247000 4 [INFO: TSCH Sched] add_slotframe 1 17
+247000 4 [PRI : TSCH Sched] Handle : 0
+247000 4  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+247000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+247000 4 [INFO: TSCH Sched] 0
+247000 4 [INFO: TSCH Sched] 0
+247000 4 [INFO: App       ] Verify: 0 
+247000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+247000 4 [PRI : TSCH Sched] -1053703228 -1053676736
+247000 4 Energest:
+247000 4  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+247000 4  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+613000 1 [INFO: TSCH      ] scanning on channel 25
+613000 1 [INFO: TSCH      ] starting as node
+613000 1 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+613000 1 [INFO: Main      ] - Routing: RPL Classic
+613000 1 [INFO: Main      ] - Net: sicslowpan
+613000 1 [INFO: Main      ] - MAC: TSCH
+613000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+613000 1 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+613000 1 [INFO: Main      ] Node ID: 1
+613000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+613000 1 [INFO: RPL       ] rpl-classic started
+613000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+613000 1 [INFO: TSCH Sched] add_slotframe 1 17
+613000 1 [PRI : TSCH Sched] Handle : 0
+613000 1  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+613000 1 [INFO: RPL       ] Node set to be a DAG root with DAG ID fd00::201:1:1:1
+613000 1 [INFO: RPL       ] Scheduling DIO timer 2975 ticks in future (Interval)
+613000 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+613000 1 [INFO: RPL       ] root_set_prefix: created a new RPL dag
+613000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+613000 1 [INFO: TSCH Sched] 0
+613000 1 [INFO: TSCH Sched] 0
+613000 1 [INFO: App       ] Verify: 0 
+613000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+613000 1 [PRI : TSCH Sched] -1053703228 -1053676736
+613000 1 Energest:
+613000 1  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+613000 1  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+623000 1 [INFO: TSCH      ] starting as coordinator, PAN ID abcd, asn-0.0
+713000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+721000 2 [INFO: TSCH      ] scanning on channel 20
+721000 2 [INFO: TSCH      ] starting as node
+721000 2 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+721000 2 [INFO: Main      ] - Routing: RPL Classic
+721000 2 [INFO: Main      ] - Net: sicslowpan
+721000 2 [INFO: Main      ] - MAC: TSCH
+721000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+721000 2 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+721000 2 [INFO: Main      ] Node ID: 2
+721000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+721000 2 [INFO: RPL       ] rpl-classic started
+721000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+721000 2 [INFO: TSCH Sched] add_slotframe 1 17
+721000 2 [PRI : TSCH Sched] Handle : 0
+721000 2  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+721000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+721000 2 [INFO: TSCH Sched] 0
+721000 2 [INFO: TSCH Sched] 0
+721000 2 [INFO: App       ] Verify: 0 
+721000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+721000 2 [PRI : TSCH Sched] -1053703228 -1053676736
+721000 2 Energest:
+721000 2  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+721000 2  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+791000 3 [INFO: TSCH      ] scanning on channel 20
+791000 3 [INFO: TSCH      ] starting as node
+791000 3 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+791000 3 [INFO: Main      ] - Routing: RPL Classic
+791000 3 [INFO: Main      ] - Net: sicslowpan
+791000 3 [INFO: Main      ] - MAC: TSCH
+791000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+791000 3 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+791000 3 [INFO: Main      ] Node ID: 3
+791000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+791000 3 [INFO: RPL       ] rpl-classic started
+791000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+791000 3 [INFO: TSCH Sched] add_slotframe 1 17
+791000 3 [PRI : TSCH Sched] Handle : 0
+791000 3  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+791000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+791000 3 [INFO: TSCH Sched] 0
+791000 3 [INFO: TSCH Sched] 0
+791000 3 [INFO: App       ] Verify: 0 
+791000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+791000 3 [PRI : TSCH Sched] -1053703228 -1053676736
+791000 3 Energest:
+791000 3  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+791000 3  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+796240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 62, status 0, tx 1
+796240 1 [INFO: TSCH-LOG  ] {asn 00.00000011 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  62, st 0  1
+1257000 4 [INFO: TSCH      ] scanning on channel 20
+1721000 2 [INFO: RPL       ] Sending a DIS to ff02::1a
+1721000 2 [WARN: TSCH      ] Cannot compute max payload size: not associated
+1721000 2 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+1731000 2 [INFO: TSCH      ] scanning on channel 26
+1801000 3 [INFO: TSCH      ] scanning on channel 15
+2267000 4 [INFO: TSCH      ] scanning on channel 26
+2741000 2 [INFO: TSCH      ] scanning on channel 15
+2791000 3 [INFO: RPL       ] Sending a DIS to ff02::1a
+2791000 3 [WARN: TSCH      ] Cannot compute max payload size: not associated
+2791000 3 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+2811000 3 [INFO: TSCH      ] scanning on channel 15
+3277000 4 [INFO: TSCH      ] scanning on channel 20
+3588000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+3588000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 117, queue 1/64 1/64, len 14 94
+3688128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 63, status 0, tx 1
+3688128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+3688128 1 [INFO: TSCH-LOG  ] {asn 00.00000132 link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  63, st 0  1
+3751000 2 [INFO: TSCH      ] scanning on channel 20
+3821000 3 [INFO: TSCH      ] scanning on channel 25
+4130000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+4196240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 64, status 0, tx 1
+4196240 1 [INFO: TSCH-LOG  ] {asn 00.00000165 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  64, st 0  1
+4287000 4 [INFO: TSCH      ] scanning on channel 20
+4710000 1 [INFO: RPL       ] Scheduling DIO timer 6370 ticks in future (Interval)
+4761000 2 [INFO: TSCH      ] scanning on channel 20
+4831000 3 [INFO: TSCH      ] scanning on channel 26
+5267000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+5267000 3 [INFO: TSCH Sched] 0
+5267000 3 [INFO: TSCH Sched] 0
+5267000 3 [INFO: App       ] Verify: 0 
+5267000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+5267000 3 [PRI : TSCH Sched] -1053703132 -1053711496
+5267000 3 Energest:
+5267000 3  CPU             4s LPM         0s DEEP LPM    0s  Total time 4s
+5267000 3  Radio LISTEN    4s TRANSMIT    0s OFF         0s
+5297000 4 [INFO: TSCH      ] scanning on channel 15
+5771000 2 [INFO: TSCH      ] scanning on channel 25
+5841000 3 [INFO: TSCH      ] scanning on channel 15
+6307000 4 [INFO: TSCH      ] scanning on channel 25
+6781000 2 [INFO: TSCH      ] scanning on channel 20
+6851000 3 [INFO: TSCH      ] scanning on channel 25
+7317000 4 [INFO: TSCH      ] scanning on channel 25
+7791000 2 [INFO: TSCH      ] scanning on channel 26
+7861000 3 [INFO: TSCH      ] scanning on channel 26
+8027000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+8106240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 65, status 0, tx 1
+8106240 1 [INFO: TSCH-LOG  ] {asn 00.000002ec link  1  17   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  65, st 0  1
+8247000 4 [INFO: RPL       ] Sending a DIS to ff02::1a
+8247000 4 [WARN: TSCH      ] Cannot compute max payload size: not associated
+8247000 4 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+8327000 4 [INFO: TSCH      ] scanning on channel 15
+8801000 2 [INFO: TSCH      ] scanning on channel 20
+8871000 3 [INFO: TSCH      ] scanning on channel 26
+9337000 4 [INFO: TSCH      ] scanning on channel 20
+9811000 2 [INFO: TSCH      ] scanning on channel 20
+9881000 3 [INFO: TSCH      ] scanning on channel 25
+10347000 4 [INFO: TSCH      ] scanning on channel 20
+10821000 2 [INFO: TSCH      ] scanning on channel 25
+10891000 3 [INFO: TSCH      ] scanning on channel 26
+11080000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+11080000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 117, queue 1/64 1/64, len 14 94
+11168128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 66, status 0, tx 1
+11168128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+11168128 1 [INFO: TSCH-LOG  ] {asn 00.0000041e link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  66, st 0  1
+11357000 4 [INFO: TSCH      ] scanning on channel 20
+11831000 2 [INFO: TSCH      ] scanning on channel 15
+11901000 3 [INFO: TSCH      ] scanning on channel 20
+12367000 4 [INFO: TSCH      ] scanning on channel 26
+12841000 2 [INFO: TSCH      ] scanning on channel 15
+12903000 1 [INFO: RPL       ] Scheduling DIO timer 14624 ticks in future (Interval)
+12911000 3 [INFO: TSCH      ] scanning on channel 15
+13377000 4 [INFO: TSCH      ] scanning on channel 20
+13851000 2 [INFO: TSCH      ] scanning on channel 26
+13921000 3 [INFO: TSCH      ] scanning on channel 26
+14387000 4 [INFO: TSCH      ] scanning on channel 15
+14405000 1 [INFO: App       ] app generate packet seqnum=1 node_id=1
+14405000 1 [INFO: RPL       ] Updating RPL option
+14405000 1 [WARN: IPv6 Route] No route found
+14405000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 1
+14405000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+14405000 1 [INFO: TSCH Sched] 0
+14405000 1 [INFO: TSCH Sched] 0
+14405000 1 [INFO: App       ] Verify: 0 
+14405000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+14405000 1 [PRI : TSCH Sched] -1053703132 15650
+14405000 1 Energest:
+14405000 1  CPU            13s LPM         0s DEEP LPM    0s  Total time 13s
+14405000 1  Radio LISTEN    0s TRANSMIT    0s OFF        13s
+14861000 2 [INFO: TSCH      ] scanning on channel 25
+14931000 3 [INFO: TSCH      ] scanning on channel 25
+15067000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+15076240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 67, status 0, tx 1
+15076240 1 [INFO: TSCH-LOG  ] {asn 00.000005a5 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  67, st 0  1
+15081000 2 [INFO: TSCH      ] scan: received packet (35 bytes) on channel 25
+15081000 2 [INFO: TSCH      ] parse_eb: no schedule
+15081000 2 0001.0001.0001.0001[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0001.0001.0001.0001
+15081000 2 [INFO: TSCH      ] association done (1), sec 0, PAN ID abcd, asn-0.5a5, jp 1, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0001.0001.0001.0001
+15267000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+15267000 3 [INFO: TSCH Sched] 0
+15267000 3 [INFO: TSCH Sched] 0
+15267000 3 [INFO: App       ] Verify: 0 
+15267000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+15267000 3 [PRI : TSCH Sched] -1053703132 -1053711496
+15267000 3 Energest:
+15267000 3  CPU            14s LPM         0s DEEP LPM    0s  Total time 14s
+15267000 3  Radio LISTEN   14s TRANSMIT    0s OFF         0s
+15397000 4 [INFO: TSCH      ] scanning on channel 20
+15941000 3 [INFO: TSCH      ] scanning on channel 20
+16407000 4 [INFO: TSCH      ] scanning on channel 25
+16951000 3 [INFO: TSCH      ] scanning on channel 15
+17417000 4 [INFO: TSCH      ] scanning on channel 15
+17961000 3 [INFO: TSCH      ] scanning on channel 25
+18427000 4 [INFO: TSCH      ] scanning on channel 26
+18853000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 178, queue 1/64 1/64, len 21 21
+18853000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+18971000 3 [INFO: TSCH      ] scanning on channel 26
+18987432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 178
+18987432 1 [INFO: TSCH Sched] list of packets
+18987432 1 [WARN: 6LoWPAN   ] input: empty packet
+18987432 1 [INFO: TSCH-LOG  ] {asn 00.0000072c link  1  17   0  0  0 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq 178, edr   0
+18987432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 178, status 0, tx 1
+18987432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+18987432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+18987432 2 [INFO: TSCH-LOG  ] {asn 00.0000072c link  1  17   0  0  0 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 178, st 0  1, dr   0
+19437000 4 [INFO: TSCH      ] scanning on channel 15
+19981000 3 [INFO: TSCH      ] scanning on channel 15
+20447000 4 [INFO: TSCH      ] scanning on channel 15
+20991000 3 [INFO: TSCH      ] scanning on channel 25
+21457000 4 [INFO: TSCH      ] scanning on channel 15
+22001000 3 [INFO: TSCH      ] scanning on channel 25
+22467000 4 [INFO: TSCH      ] scanning on channel 26
+22911000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 179, queue 1/64 1/64, len 21 21
+22911000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+23011000 3 [INFO: TSCH      ] scanning on channel 20
+23067432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 179
+23067432 1 [INFO: TSCH Sched] list of packets
+23067432 1 [WARN: 6LoWPAN   ] input: empty packet
+23067432 1 [INFO: TSCH-LOG  ] {asn 00.000008c4 link  1  17   0  0  0 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq 179, edr   0
+23067432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 179, status 0, tx 1
+23067432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+23067432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+23067432 2 [INFO: TSCH-LOG  ] {asn 00.000008c4 link  1  17   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+23067432 2 [INFO: TSCH-LOG  ] {asn 00.000008c4 link  1  17   0  0  0 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 179, st 0  1, dr   0
+23477000 4 [INFO: TSCH      ] scanning on channel 15
+24021000 3 [INFO: TSCH      ] scanning on channel 20
+24405000 1 [INFO: App       ] app generate packet seqnum=2 node_id=1
+24405000 1 [INFO: RPL       ] Updating RPL option
+24405000 1 [WARN: IPv6 Route] No route found
+24405000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 2
+24405000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+24405000 1 [INFO: TSCH Sched] 0
+24405000 1 [INFO: TSCH Sched] 0
+24405000 1 [INFO: App       ] Verify: 0 
+24405000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+24405000 1 [PRI : TSCH Sched] -1053703132 15650
+24405000 1 Energest:
+24405000 1  CPU            23s LPM         0s DEEP LPM    0s  Total time 23s
+24405000 1  Radio LISTEN    0s TRANSMIT    0s OFF        23s
+24487000 4 [INFO: TSCH      ] scanning on channel 20
+25031000 3 [INFO: TSCH      ] scanning on channel 25
+25267000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+25267000 3 [INFO: TSCH Sched] 0
+25267000 3 [INFO: TSCH Sched] 0
+25267000 3 [INFO: App       ] Verify: 0 
+25267000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+25267000 3 [PRI : TSCH Sched] -1053703132 -1053711496
+25267000 3 Energest:
+25267000 3  CPU            24s LPM         0s DEEP LPM    0s  Total time 24s
+25267000 3  Radio LISTEN   24s TRANSMIT    0s OFF         0s
+25497000 4 [INFO: TSCH      ] scanning on channel 20
+26041000 3 [INFO: TSCH      ] scanning on channel 25
+26507000 4 [INFO: TSCH      ] scanning on channel 26
+26690000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 180, queue 1/64 1/64, len 21 21
+26690000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+26807432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 180
+26807432 1 [INFO: TSCH Sched] list of packets
+26807432 1 [WARN: 6LoWPAN   ] input: empty packet
+26807432 1 [INFO: TSCH-LOG  ] {asn 00.00000a3a link  1  17   0  0  0 ch 26} uc-1-0 rx LL-0002->LL-0001, len  21, seq 180, edr   0
+26807432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 180, status 0, tx 1
+26807432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+26807432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+26807432 2 [INFO: TSCH-LOG  ] {asn 00.00000a3a link  1  17   0  0  0 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq 180, st 0  1, dr   0
+27051000 3 [INFO: TSCH      ] scanning on channel 15
+27517000 4 [INFO: TSCH      ] scanning on channel 15
+27527000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+27527000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 117, queue 1/64 1/64, len 14 94
+27658128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 68, status 0, tx 1
+27658128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+27658128 1 [INFO: TSCH-LOG  ] {asn 00.00000a8f link  1  17   0  0  0 ch 20} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  68, st 0  1
+27658128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+27658128 2 [INFO: TSCH Sched] list of packets
+27658128 2 [INFO: RPL       ] Received a DIO from fe80::201:1:1:1
+27658128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+27658128 2 [INFO: RPL       ] Copying prefix information
+27658128 2 [INFO: RPL       ] New instance detected (ID=30): Joining...
+27658128 2 [INFO: RPL       ] Neighbor added to neighbor cache fe80::201:1:1:1, 0001.0001.0001.0001
+27658128 2 [INFO: RPL       ] rpl_set_preferred_parent fe80::201:1:1:1 used to be NULL
+27658128 2 [INFO: RPL       ] Joined DAG with instance ID 30, rank 310, DAG ID fd00::201:1:1:1
+27658128 2 [INFO: RPL       ] Scheduling DIO timer 2880 ticks in future (Interval)
+27658128 2 [INFO: RPL       ] Reset MRHOF
+27658128 2 [INFO: TSCH-LOG  ] {asn 00.00000a8f link  1  17   0  0  0 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+27658128 2 [INFO: TSCH-LOG  ] {asn 00.00000a8f link  1  17   0  0  0 ch 20} bc-1-0 rx LL-0001->LL-NULL, len  94, seq   0, edr   0, dr   0
+27658128 2 --------------------------------
+27658128 2 LL-0001->LL-0002
+27658128 2 --------------------------------
+28061000 3 [INFO: TSCH      ] scanning on channel 25
+28108000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+28166240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 69, status 0, tx 1
+28166240 1 [INFO: TSCH-LOG  ] {asn 00.00000ac2 link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  69, st 0  1
+28166240 2 [INFO: TSCH-LOG  ] {asn 00.00000ac2 link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0001->LL-NULL, len  35, seq   0, edr   0, dr   0
+28166240 2 --------------------------------
+28166240 2 LL-0001->LL-0002
+28166240 2 --------------------------------
+28527000 4 [INFO: TSCH      ] scanning on channel 20
+29071000 3 [INFO: TSCH      ] scanning on channel 25
+29288000 1 [INFO: RPL       ] Scheduling DIO timer 27178 ticks in future (Interval)
+29537000 4 [INFO: TSCH      ] scanning on channel 20
+30081000 3 [INFO: TSCH      ] scanning on channel 20
+30116000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+30206240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 154, status 0, tx 1
+30206240 2 [INFO: TSCH-LOG  ] {asn 00.00000b8e link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 154, st 0  1
+30206240 1 [INFO: TSCH-LOG  ] {asn 00.00000b8e link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 180, edr   0
+30206240 1 --------------------------------
+30206240 1 LL-0002->LL-0001
+30206240 1 --------------------------------
+30538000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 310
+30538000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 180, queue 1/64 1/64, len 14 94
+30547000 4 [INFO: TSCH      ] scanning on channel 15
+30548128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 155, status 0, tx 1
+30548128 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+30548128 2 [INFO: TSCH-LOG  ] {asn 00.00000bb0 link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 155, st 0  1
+30548128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+30548128 1 [INFO: TSCH Sched] list of packets
+30548128 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+30548128 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+30548128 1 [INFO: RPL       ] Copying prefix information
+30548128 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+30548128 1 [INFO: RPL       ] Neighbor added to neighbor cache fe80::202:2:2:2, 0002.0002.0002.0002
+30548128 1 [INFO: TSCH-LOG  ] {asn 00.00000bb0 link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 180, edr   0
+30548128 1 --------------------------------
+30548128 1 LL-0002->LL-0001
+30548128 1 --------------------------------
+31091000 3 [INFO: TSCH      ] scanning on channel 15
+31557000 4 [INFO: TSCH      ] scanning on channel 25
+31755000 2 [INFO: RPL       ] Scheduling DIO timer 8072 ticks in future (Interval)
+31840000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 181, queue 1/64 1/64, len 21 21
+31840000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+31907432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 181
+31907432 1 [INFO: TSCH Sched] list of packets
+31907432 1 [WARN: 6LoWPAN   ] input: empty packet
+31907432 1 [INFO: TSCH-LOG  ] {asn 00.00000c38 link  1  17   0  0  0 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq 181, edr   0
+31907432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 181, status 0, tx 1
+31907432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+31907432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+31907432 2 [INFO: TSCH-LOG  ] {asn 00.00000c38 link  1  17   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+31907432 2 [INFO: TSCH-LOG  ] {asn 00.00000c38 link  1  17   0  0  0 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 181, st 0  1, dr   0
+31951000 2 [INFO: RPL       ] handle_dao_timer - sending DAO
+31951000 2 [INFO: RPL       ] Sending a DAO with sequence number 241, lifetime 30, prefix fd00::202:2:2:2 to fe80::201:1:1:1 , parent fe80::201:1:1:1
+31951000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 182, queue 1/64 1/64, len 21 74
+32079128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 182
+32079128 1 [INFO: TSCH Sched] list of packets
+32079128 1 [INFO: RPL       ] Received a DAO from fe80::202:2:2:2
+32079128 1 [INFO: RPL       ] DAO lifetime: 30, prefix length: 128 prefix: fd00::202:2:2:2
+32079128 1 [WARN: IPv6 Route] No route found
+32079128 1 [INFO: RPL       ] Adding DAO route
+32079128 1 [WARN: IPv6 Route] No route found
+32079128 1 [INFO: RPL       ] Added a route to fd00::202:2:2:2/128 via fe80::202:2:2:2
+32079128 1 [INFO: TSCH-LOG  ] {asn 00.00000c49 link  1  17   0  0  0 ch 25} uc-1-0 rx LL-0002->LL-0001, len  74, seq 182, edr   0
+32079128 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 182, status 0, tx 1
+32079128 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+32079128 2 [INFO: TSCH-LOG  ] {asn 00.00000c49 link  1  17   0  0  0 ch 25} uc-1-0 tx LL-0002->LL-0001, len  74, seq 182, st 0  1, dr   0
+32101000 3 [INFO: TSCH      ] scanning on channel 15
+32567000 4 [INFO: TSCH      ] scanning on channel 25
+33111000 3 [INFO: TSCH      ] scanning on channel 25
+33570000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+33577000 4 [INFO: TSCH      ] scanning on channel 20
+33606240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 156, status 0, tx 1
+33606240 2 [INFO: TSCH-LOG  ] {asn 00.00000ce2 link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 156, st 0  1
+33606240 1 [INFO: TSCH-LOG  ] {asn 00.00000ce2 link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 182, edr   0
+33606240 1 --------------------------------
+33606240 1 LL-0002->LL-0001
+33606240 1 --------------------------------
+34121000 3 [INFO: TSCH      ] scanning on channel 20
+34405000 1 [INFO: App       ] app generate packet seqnum=3 node_id=1
+34405000 1 [INFO: RPL       ] Updating RPL option
+34405000 1 [WARN: IPv6 Route] No route found
+34405000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 3
+34405000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+34405000 1 [INFO: TSCH Sched] 2
+34405000 1 [INFO: TSCH Sched] 0
+34405000 1 [INFO: App       ] Verify: 0 
+34405000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+34405000 1 [PRI : TSCH Sched] -1053703132 15650
+34405000 1 Enter here!
+34405000 1 Numero de ns : 4 | Numero de arestas: 0
+34405000 1 Matriz de adacncia do grafo da rede:
+34405000 1 0 0 0 0 
+34405000 1 0 0 0 0 
+34405000 1 0 0 0 0 
+34405000 1 0 0 0 0 
+34405000 1 Pacotes atribuidos!
+34405000 1 N 0: 0 pacotes
+34405000 1 N 1: 0 pacotes
+34405000 1 N 2: 0 pacotes
+34405000 1 N 3: 0 pacotes
+34405000 1 Mapa da matriz de conflito gerada:
+34405000 1 sorted n:0
+34405000 1 Camos no pior caso
+34405000 1 Canais alocados  | |
+34405000 1                 \   /
+34405000 1                  \ /
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+34405000 1 [PRI : TSCH Sched] Escalonamento Concluido
+34405000 1 Energest:
+34405000 1  CPU            33s LPM         0s DEEP LPM    0s  Total time 33s
+34405000 1  Radio LISTEN    0s TRANSMIT    0s OFF        33s
+34587000 4 [INFO: TSCH      ] scanning on channel 25
+35131000 3 [INFO: TSCH      ] scanning on channel 15
+35267000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+35267000 3 [INFO: TSCH Sched] 0
+35267000 3 [INFO: TSCH Sched] 0
+35267000 3 [INFO: App       ] Verify: 0 
+35267000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+35267000 3 [PRI : TSCH Sched] -1053703132 -1053711496
+35267000 3 Energest:
+35267000 3  CPU            34s LPM         0s DEEP LPM    0s  Total time 34s
+35267000 3  Radio LISTEN   34s TRANSMIT    0s OFF         0s
+35597000 4 [INFO: TSCH      ] scanning on channel 26
+35864000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 183, queue 1/64 1/64, len 21 21
+35864000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+35987432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 183
+35987432 1 [INFO: TSCH Sched] list of packets
+35987432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=1 
+35987432 1 [INFO: TSCH Sched] id=2 Tx=1 Rx=0 
+35987432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+35987432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+35987432 1 [WARN: 6LoWPAN   ] input: empty packet
+35987432 1 [INFO: TSCH-LOG  ] {asn 00.00000dd0 link  1  17   0  0  0 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq 183, edr   0
+35987432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 183, status 0, tx 1
+35987432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+35987432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+35987432 2 [INFO: TSCH-LOG  ] {asn 00.00000dd0 link  1  17   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+35987432 2 [INFO: TSCH-LOG  ] {asn 00.00000dd0 link  1  17   0  0  0 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 183, st 0  1, dr   0
+36141000 3 [INFO: TSCH      ] scanning on channel 26
+36607000 4 [INFO: TSCH      ] scanning on channel 26
+37151000 3 [INFO: TSCH      ] scanning on channel 20
+37617000 4 [INFO: TSCH      ] scanning on channel 15
+38161000 3 [INFO: TSCH      ] scanning on channel 26
+38627000 4 [INFO: TSCH      ] scanning on channel 26
+39171000 3 [INFO: TSCH      ] scanning on channel 26
+39637000 4 [INFO: TSCH      ] scanning on channel 20
+39648000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 184, queue 1/64 1/64, len 21 21
+39648000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+39727432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 184
+39727432 1 [INFO: TSCH Sched] list of packets
+39727432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=2 
+39727432 1 [INFO: TSCH Sched] id=2 Tx=2 Rx=0 
+39727432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+39727432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+39727432 1 [WARN: 6LoWPAN   ] input: empty packet
+39727432 1 [INFO: TSCH-LOG  ] {asn 00.00000f46 link  1  17   0  0  0 ch 26} uc-1-0 rx LL-0002->LL-0001, len  21, seq 184, edr   0
+39727432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 184, status 0, tx 1
+39727432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+39727432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+39727432 2 [INFO: TSCH-LOG  ] {asn 00.00000f46 link  1  17   0  0  0 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq 184, st 0  1, dr   0
+39827000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 294
+39827000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 184, queue 1/64 1/64, len 14 94
+39898128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 157, status 0, tx 1
+39898128 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+39898128 2 [INFO: TSCH-LOG  ] {asn 00.00000f57 link  1  17   0  0  0 ch 20} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 157, st 0  1
+39898128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+39898128 1 [INFO: TSCH Sched] list of packets
+39898128 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=3 
+39898128 1 [INFO: TSCH Sched] id=2 Tx=3 Rx=0 
+39898128 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+39898128 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+39898128 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+39898128 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+39898128 1 [INFO: RPL       ] Copying prefix information
+39898128 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+39898128 1 [INFO: TSCH-LOG  ] {asn 00.00000f57 link  1  17   0  0  0 ch 20} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 184, edr   0
+39898128 1 --------------------------------
+39898128 1 LL-0002->LL-0001
+39898128 1 --------------------------------
+39948000 2 [INFO: RPL       ] Scheduling DIO timer 10631 ticks in future (Interval)
+40181000 3 [INFO: TSCH      ] scanning on channel 26
+40183000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+40236240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 70, status 0, tx 1
+40236240 1 [INFO: TSCH-LOG  ] {asn 00.00000f79 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  70, st 0  1
+40236240 2 [INFO: TSCH-LOG  ] {asn 00.00000f79 link  1  17   0  0  0 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+40236240 2 [INFO: TSCH-LOG  ] {asn 00.00000f79 link  1  17   0  0  0 ch 25} bc-0-0 rx LL-0001->LL-NULL, len  35, seq   0, edr   0, dr   0
+40236240 2 --------------------------------
+40236240 2 LL-0001->LL-0002
+40236240 2 --------------------------------
+40647000 4 [INFO: TSCH      ] scanning on channel 25
+41191000 3 [INFO: TSCH      ] scanning on channel 20
+41650000 2 [INFO: App       ] app generate packet seqnum=1 node_id=2
+41650000 2 [INFO: RPL       ] Updating RPL option
+41650000 2 [WARN: IPv6 Route] No route found
+41650000 2 [WARN: IPv6 Route] No route found
+41650000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 185, queue 1/64 1/64, len 21 43
+41651000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+41651000 2 [INFO: TSCH Sched] 1
+41651000 2 [INFO: TSCH Sched] 0
+41651000 2 [INFO: App       ] Verify: 0 
+41651000 2 [PRI : App       ] Initialize tsch schedule
+41651000 2 [INFO: TSCH Sched] remove_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+41651000 2 [INFO: TSCH Sched] remove slotframe 1 17
+41651000 2 [PRI : App       ] Remove all slotframes[INFO: TSCH Sched] add_slotframe 1 17
+41651000 2 [PRI : TSCH Sched] Handle : 0
+41651000 2  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+41651000 2 [PRI : TSCH Sched] Handle : 0
+41651000 2  [INFO: TSCH Sched] add_link sf=1 opt=Tx type=NORMAL ts=14 ch=0 addr=0001.0001.0001.0001
+41651000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+41651000 2 [PRI : TSCH Sched] 2 1
+41651000 2 [PRI : TSCH Sched] 2 1
+41651000 2 Enter here!
+41651000 2 handle: 0 - 2-> 1
+41651000 2 Numero de ns : 4 | Numero de arestas: 1
+41651000 2 Matriz de adacncia do grafo da rede:
+41651000 2 0 0 0 0 
+41651000 2 0 0 0 0 
+41651000 2 0 1 0 0 
+41651000 2 0 0 0 0 
+41651000 2 Pacotes atribuidos!
+41651000 2 N 0: 0 pacotes
+41651000 2 N 1: 0 pacotes
+41651000 2 N 2: 1 pacotes
+41651000 2 N 3: 0 pacotes
+41651000 2 Mapa da matriz de conflito gerada:
+41651000 2 N 0: 2 -> 1
+41651000 2 sorted n:0
+41651000 2 sorted n:1
+41651000 2 Camos no pior caso
+41651000 2 Canais alocados  | |
+41651000 2                 \   /
+41651000 2                  \ /
+41651000 2 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+41651000 2 [PRI : TSCH Sched] ----CHANGE-Tx----
+41651000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+41651000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+41651000 2 [PRI : TSCH Sched] -----------------------------
+41651000 2 [PRI : TSCH Sched] Escalonamento Concluido
+41651000 2 Energest:
+41651000 2  CPU            40s LPM         0s DEEP LPM    0s  Total time 40s
+41651000 2  Radio LISTEN   14s TRANSMIT    0s OFF        26s
+41657000 4 [INFO: TSCH      ] scanning on channel 25
+41688000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+41763000 2 [INFO: TSCH-LOG  ] {asn 00.00001012 link-NULL} !skipped slot 0 0 1
+41788392 2 [INFO: TSCH-LOG  ] {asn 00.00001014 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  1
+41936240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 158, status 0, tx 1
+41936240 2 [INFO: TSCH-LOG  ] {asn 00.00001023 link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 158, st 0  1
+41936240 1 [INFO: TSCH-LOG  ] {asn 00.00001023 link  1  17   0  0  0 ch 20} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 184, edr   0
+41936240 1 --------------------------------
+41936240 1 LL-0002->LL-0001
+41936240 1 --------------------------------
+41941000 3 [INFO: TSCH      ] scan: received packet (35 bytes) on channel 20
+41941000 3 [INFO: TSCH      ] parse_eb: no schedule
+41941000 3 0002.0002.0002.0002[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0002.0002.0002.0002
+41941000 3 [INFO: TSCH      ] association done (1), sec 0, PAN ID abcd, asn-0.1023, jp 2, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0002.0002.0002.0002
+41958392 2 [INFO: TSCH-LOG  ] {asn 00.00001025 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  2
+42128392 2 [INFO: TSCH-LOG  ] {asn 00.00001036 link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  3
+42298392 2 [INFO: TSCH-LOG  ] {asn 00.00001047 link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  4
+42468392 2 [INFO: TSCH-LOG  ] {asn 00.00001058 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  5
+42638392 2 [INFO: TSCH-LOG  ] {asn 00.00001069 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  6
+42667000 4 [INFO: TSCH      ] scanning on channel 26
+42808392 2 [INFO: TSCH-LOG  ] {asn 00.0000107a link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  7
+42978392 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 185, status 2, tx 8
+42978392 2 [INFO: TSCH Sched] Tx_try= 1 Tx_Success=0
+42978392 2 [INFO: TSCH-LOG  ] {asn 00.0000108b link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq 185, st 2  8
+43677000 4 [INFO: TSCH      ] scanning on channel 20
+43793000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+43793000 4 [INFO: TSCH Sched] 0
+43793000 4 [INFO: TSCH Sched] 0
+43793000 4 [INFO: App       ] Verify: 0 
+43793000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+43793000 4 [PRI : TSCH Sched] 2 1
+43793000 4 [PRI : TSCH Sched] 2 1
+43793000 4 Energest:
+43793000 4  CPU            43s LPM         0s DEEP LPM    0s  Total time 43s
+43793000 4  Radio LISTEN   43s TRANSMIT    0s OFF         0s
+43902000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 186, queue 1/64 1/64, len 21 21
+43902000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+43997688 2 [INFO: TSCH-LOG  ] {asn 00.000010f1 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq 186, st 2  1
+44167688 2 [INFO: TSCH-LOG  ] {asn 00.00001102 link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq 186, st 2  2
+44337688 2 [INFO: TSCH-LOG  ] {asn 00.00001113 link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 186, st 2  3
+44405000 1 [INFO: App       ] app generate packet seqnum=4 node_id=1
+44405000 1 [INFO: RPL       ] Updating RPL option
+44405000 1 [WARN: IPv6 Route] No route found
+44405000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 4
+44405000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+44405000 1 [INFO: TSCH Sched] 2
+44405000 1 [INFO: TSCH Sched] 0
+44405000 1 [INFO: App       ] Verify: 1 
+44405000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+44405000 1 [PRI : TSCH Sched] 2 1
+44405000 1 [PRI : TSCH Sched] Match - 1 <- 2
+44405000 1 [PRI : TSCH Sched] Handle : 1
+44405000 1  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0002.0002.0002.0002
+44405000 1 [PRI : TSCH Sched] 2 1
+44405000 1 [PRI : TSCH Sched] Match - 1 <- 2
+44405000 1 Enter here!
+44405000 1 handle: 0 - 2-> 1
+44405000 1 Numero de ns : 4 | Numero de arestas: 1
+44405000 1 Matriz de adacncia do grafo da rede:
+44405000 1 0 0 0 0 
+44405000 1 0 0 0 0 
+44405000 1 0 1 0 0 
+44405000 1 0 0 0 0 
+44405000 1 Pacotes atribuidos!
+44405000 1 N 0: 0 pacotes
+44405000 1 N 1: 0 pacotes
+44405000 1 N 2: 1 pacotes
+44405000 1 N 3: 0 pacotes
+44405000 1 Mapa da matriz de conflito gerada:
+44405000 1 N 0: 2 -> 1
+44405000 1 sorted n:3
+44405000 1 sorted n:1
+44405000 1 Camos no pior caso
+44405000 1 Canais alocados  | |
+44405000 1                 \   /
+44405000 1                  \ /
+44405000 1 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+44405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44405000 1 [PRI : TSCH Sched] -----------------------------
+44405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+44405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44405000 1 [PRI : TSCH Sched] -----------------------------
+44405000 1 [PRI : TSCH Sched] Escalonamento Concluido
+44405000 1 Energest:
+44405000 1  CPU            43s LPM         0s DEEP LPM    0s  Total time 43s
+44405000 1  Radio LISTEN    0s TRANSMIT    0s OFF        42s
+44507432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 186
+44507432 1 [INFO: TSCH Sched] list of packets
+44507432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=4 
+44507432 1 [INFO: TSCH Sched] id=2 Tx=4 Rx=0 
+44507432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+44507432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+44507432 1 [WARN: 6LoWPAN   ] input: empty packet
+44507432 1 [INFO: TSCH-LOG  ] {asn 00.00001124 link  1  17   0  2  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq 186, edr   0
+44507432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 186, status 0, tx 4
+44507432 2 [INFO: TSCH Sched] Tx_try= 2 Tx_Success=0
+44507432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-4
+44507432 2 [INFO: TSCH-LOG  ] {asn 00.00001124 link  1  17   0  2  1 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+44507432 2 [INFO: TSCH-LOG  ] {asn 00.00001124 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq 186, st 0  4, dr   0
+44687000 4 [INFO: TSCH      ] scanning on channel 15
+45267000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+45267000 3 [INFO: TSCH Sched] 0
+45267000 3 [INFO: TSCH Sched] 0
+45267000 3 [INFO: App       ] Verify: 0 
+45267000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+45267000 3 [PRI : TSCH Sched] 2 1
+45267000 3 [PRI : TSCH Sched] 2 1
+45267000 3 Energest:
+45267000 3  CPU            44s LPM         0s DEEP LPM    0s  Total time 44s
+45267000 3  Radio LISTEN   41s TRANSMIT    0s OFF         3s
+45697000 4 [INFO: TSCH      ] scanning on channel 26
+45747000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 36, queue 1/64 1/64, len 21 21
+45747000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+45847000 4 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 26
+45847000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+45847000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+45847432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 36
+45847432 2 [INFO: TSCH Sched] list of packets
+45847432 2 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+45847432 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=1 
+45847432 2 [INFO: TSCH Sched] id=3 Tx=1 Rx=0 
+45847432 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+45847432 2 [WARN: 6LoWPAN   ] input: empty packet
+45847432 2 [INFO: TSCH-LOG  ] {asn 00.000011aa link  1  17   0  0  0 ch 26} uc-1-0 rx LL-0003->LL-0002, len  21, seq  36, edr   0
+45847432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 36, status 0, tx 1
+45847432 3 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+45847432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+45847432 3 [INFO: TSCH-LOG  ] {asn 00.000011aa link  1  17   0  0  0 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq  36, st 0  1, dr   0
+46707000 4 [INFO: TSCH      ] scanning on channel 20
+47717000 4 [INFO: TSCH      ] scanning on channel 15
+48277000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 187, queue 1/64 1/64, len 21 21
+48277000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+48417432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 187
+48417432 1 [INFO: TSCH Sched] list of packets
+48417432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=5 
+48417432 1 [INFO: TSCH Sched] id=2 Tx=5 Rx=0 
+48417432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+48417432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+48417432 1 [WARN: 6LoWPAN   ] input: empty packet
+48417432 1 [INFO: TSCH-LOG  ] {asn 00.000012ab link  1  17   0  2  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq 187, edr   0
+48417432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 187, status 0, tx 1
+48417432 2 [INFO: TSCH Sched] Tx_try= 3 Tx_Success=0
+48417432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+48417432 2 [INFO: TSCH-LOG  ] {asn 00.000012ab link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 187, st 0  1, dr   0
+48727000 4 [INFO: TSCH      ] scanning on channel 20
+49678000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 37, queue 1/64 1/64, len 21 21
+49678000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+49737000 4 [INFO: TSCH      ] scanning on channel 20
+49757432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 37
+49757432 2 [INFO: TSCH Sched] list of packets
+49757432 2 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+49757432 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=2 
+49757432 2 [INFO: TSCH Sched] id=3 Tx=2 Rx=0 
+49757432 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+49757432 2 [WARN: 6LoWPAN   ] input: empty packet
+49757432 2 [INFO: TSCH-LOG  ] {asn 00.00001331 link  1  17   0  0  0 ch 25} uc-1-0 rx LL-0003->LL-0002, len  21, seq  37, edr   0
+49757432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 37, status 0, tx 1
+49757432 3 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+49757432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+49757432 3 [INFO: TSCH-LOG  ] {asn 00.00001331 link  1  17   0  0  0 ch 25} uc-1-0 tx LL-0003->LL-0002, len  21, seq  37, st 0  1, dr   0
+50579000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 511
+50579000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 187, queue 1/64 1/64, len 14 94
+50608128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 159, status 0, tx 1
+50608128 2 [INFO: TSCH Sched] Tx_try= 4 Tx_Success=0
+50608128 2 [INFO: TSCH-LOG  ] {asn 00.00001386 link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 159, st 0  1
+50608128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+50608128 1 [INFO: TSCH Sched] list of packets
+50608128 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=6 
+50608128 1 [INFO: TSCH Sched] id=2 Tx=6 Rx=0 
+50608128 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+50608128 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+50608128 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+50608128 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+50608128 1 [INFO: RPL       ] Copying prefix information
+50608128 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+50608128 1 [INFO: TSCH-LOG  ] {asn 00.00001386 link  1  17   0  0  0 ch 26} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 187, edr   0
+50608128 1 --------------------------------
+50608128 1 LL-0002->LL-0001
+50608128 1 --------------------------------
+50608128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+50608128 3 [INFO: TSCH Sched] list of packets
+50608128 3 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+50608128 3 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+50608128 3 [INFO: RPL       ] Copying prefix information
+50608128 3 [INFO: RPL       ] New instance detected (ID=30): Joining...
+50608128 3 [INFO: RPL       ] Neighbor added to neighbor cache fe80::202:2:2:2, 0002.0002.0002.0002
+50608128 3 [INFO: RPL       ] rpl_set_preferred_parent fe80::202:2:2:2 used to be NULL
+50608128 3 [INFO: RPL       ] Joined DAG with instance ID 30, rank 711, DAG ID fd00::201:1:1:1
+50608128 3 [INFO: RPL       ] Scheduling DIO timer 3911 ticks in future (Interval)
+50608128 3 [INFO: RPL       ] Reset MRHOF
+50608128 3 [INFO: TSCH-LOG  ] {asn 00.00001386 link  1  17   0  0  0 ch 26} drift 0 ppm (min/max delta seen: 0/0)
+50608128 3 [INFO: TSCH-LOG  ] {asn 00.00001386 link  1  17   0  0  0 ch 26} bc-1-0 rx LL-0002->LL-NULL, len  94, seq   0, edr   0, dr   0
+50608128 3 --------------------------------
+50608128 3 LL-0002->LL-0003
+50608128 3 --------------------------------
+50747000 4 [INFO: TSCH      ] scanning on channel 20
+51651000 2 [INFO: App       ] app generate packet seqnum=2 node_id=2
+51651000 2 [INFO: RPL       ] Updating RPL option
+51651000 2 [WARN: IPv6 Route] No route found
+51651000 2 [WARN: IPv6 Route] No route found
+51651000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 188, queue 1/64 1/64, len 21 43
+51652000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+51652000 2 [INFO: TSCH Sched] 1
+51652000 2 [INFO: TSCH Sched] 0
+51652000 2 [INFO: App       ] Verify: 1 
+51652000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+51652000 2 [PRI : TSCH Sched] 2 1
+51652000 2 [PRI : TSCH Sched] 2 1
+51652000 2 Enter here!
+51652000 2 handle: 0 - 2-> 1
+51652000 2 Numero de ns : 4 | Numero de arestas: 1
+51652000 2 Matriz de adacncia do grafo da rede:
+51652000 2 0 0 0 0 
+51652000 2 0 0 0 0 
+51652000 2 0 1 0 0 
+51652000 2 0 0 0 0 
+51652000 2 Pacotes atribuidos!
+51652000 2 N 0: 0 pacotes
+51652000 2 N 1: 0 pacotes
+51652000 2 N 2: 1 pacotes
+51652000 2 N 3: 0 pacotes
+51652000 2 Mapa da matriz de conflito gerada:
+51652000 2 N 0: 2 -> 1
+51652000 2 sorted n:2
+51652000 2 sorted n:3
+51652000 2 Camos no pior caso
+51652000 2 Canais alocados  | |
+51652000 2                 \   /
+51652000 2                  \ /
+51652000 2 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+51652000 2 [PRI : TSCH Sched] ----CHANGE-Tx----
+51652000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+51652000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+51652000 2 [PRI : TSCH Sched] -----------------------------
+51652000 2 [PRI : TSCH Sched] Escalonamento Concluido
+51652000 2 Energest:
+51652000 2  CPU            50s LPM         0s DEEP LPM    0s  Total time 50s
+51652000 2  Radio LISTEN   14s TRANSMIT    0s OFF        35s
+51757000 4 [INFO: TSCH      ] scanning on channel 20
+51818136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 188
+51818136 1 [INFO: TSCH Sched] list of packets
+51818136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=7 
+51818136 1 [INFO: TSCH Sched] id=2 Tx=7 Rx=0 
+51818136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+51818136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+51818136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 2
+51818136 1 [INFO: TSCH-LOG  ] {asn 00.000013ff link  1  17   0  2  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  43, seq 188, edr   0
+51818136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 188, status 0, tx 1
+51818136 2 [INFO: TSCH Sched] Tx_try= 5 Tx_Success=0
+51818136 2 [INFO: TSCH-LOG  ] {asn 00.000013ff link  1  17   0  2  1 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+51818136 2 [INFO: TSCH-LOG  ] {asn 00.000013ff link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq 188, st 0  1, dr   0
+52400000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+52476240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 71, status 0, tx 1
+52476240 1 [INFO: TSCH-LOG  ] {asn 00.00001441 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  71, st 0  1
+52476240 2 [INFO: TSCH-LOG  ] {asn 00.00001441 link  1  17   0  0  0 ch 25} bc-0-0 rx LL-0001->LL-NULL, len  35, seq  37, edr   0, dr   0
+52476240 2 --------------------------------
+52476240 2 LL-0001->LL-0002
+52476240 2 --------------------------------
+52752000 3 [INFO: RPL       ] handle_dao_timer - sending DAO
+52752000 3 [INFO: RPL       ] Sending a DAO with sequence number 241, lifetime 30, prefix fd00::203:3:3:3 to fe80::202:2:2:2 , parent fe80::202:2:2:2
+52752000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 38, queue 1/64 1/64, len 21 74
+52767000 4 [INFO: TSCH      ] scanning on channel 26
+52819128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 38
+52819128 2 [INFO: TSCH Sched] list of packets
+52819128 2 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+52819128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=3 
+52819128 2 [INFO: TSCH Sched] id=3 Tx=3 Rx=0 
+52819128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+52819128 2 [INFO: RPL       ] Received a DAO from fe80::203:3:3:3
+52819128 2 [INFO: RPL       ] DAO lifetime: 30, prefix length: 128 prefix: fd00::203:3:3:3
+52819128 2 [WARN: IPv6 Route] No route found
+52819128 2 [INFO: RPL       ] Adding DAO route
+52819128 2 [INFO: RPL       ] Neighbor added to neighbor cache fe80::203:3:3:3, 0003.0003.0003.0003
+52819128 2 [WARN: IPv6 Route] No route found
+52819128 2 [INFO: RPL       ] Added a route to fd00::203:3:3:3/128 via fe80::203:3:3:3
+52819128 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 189, queue 1/64 1/64, len 21 74
+52819128 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 38, status 0, tx 1
+52819128 3 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+52819128 3 [INFO: TSCH-LOG  ] {asn 00.00001463 link  1  17   0  0  0 ch 20} uc-1-0 tx LL-0003->LL-0002, len  74, seq  38, st 0  1, dr   0
+52820128 2 [INFO: TSCH-LOG  ] {asn 00.00001463 link  1  17   0  0  0 ch 20} uc-1-0 rx LL-0003->LL-0002, len  74, seq  38, edr   0
+52839128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 189
+52839128 1 [INFO: TSCH Sched] list of packets
+52839128 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=8 
+52839128 1 [INFO: TSCH Sched] id=2 Tx=8 Rx=0 
+52839128 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+52839128 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+52839128 1 [INFO: RPL       ] Received a DAO from fe80::202:2:2:2
+52839128 1 [INFO: RPL       ] DAO lifetime: 30, prefix length: 128 prefix: fd00::203:3:3:3
+52839128 1 [WARN: IPv6 Route] No route found
+52839128 1 [INFO: RPL       ] Adding DAO route
+52839128 1 [WARN: IPv6 Route] No route found
+52839128 1 [INFO: RPL       ] Added a route to fd00::203:3:3:3/128 via fe80::202:2:2:2
+52839128 1 [INFO: TSCH-LOG  ] {asn 00.00001465 link  1  17   0  2  1 ch 26} uc-1-0 rx LL-0002->LL-0001, len  74, seq 189, edr   0
+52839128 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 189, status 0, tx 1
+52839128 2 [INFO: TSCH Sched] Tx_try= 6 Tx_Success=0
+52839128 2 [INFO: TSCH-LOG  ] {asn 00.00001465 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  74, seq 189, st 0  1, dr   0
+53462000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+53496240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 94, status 0, tx 1
+53496240 3 [INFO: TSCH-LOG  ] {asn 00.000014a7 link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0003->LL-NULL, len  35, seq  94, st 0  1
+53496240 2 [INFO: TSCH-LOG  ] {asn 00.000014a7 link  1  17   0  0  0 ch 20} bc-0-0 rx LL-0003->LL-NULL, len  35, seq  38, edr   0
+53496240 2 --------------------------------
+53496240 2 LL-0003->LL-0002
+53496240 2 --------------------------------
+53777000 4 [INFO: TSCH      ] scanning on channel 20
+53793000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+53793000 4 [INFO: TSCH Sched] 0
+53793000 4 [INFO: TSCH Sched] 0
+53793000 4 [INFO: App       ] Verify: 0 
+53793000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+53793000 4 [PRI : TSCH Sched] 2 1
+53793000 4 [PRI : TSCH Sched] 2 1
+53793000 4 Energest:
+53793000 4  CPU            53s LPM         0s DEEP LPM    0s  Total time 53s
+53793000 4  Radio LISTEN   53s TRANSMIT    0s OFF         0s
+54405000 1 [INFO: App       ] app generate packet seqnum=5 node_id=1
+54405000 1 [INFO: RPL       ] Updating RPL option
+54405000 1 [WARN: IPv6 Route] No route found
+54405000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 5
+54405000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+54405000 1 [INFO: TSCH Sched] 2
+54405000 1 [INFO: TSCH Sched] 0
+54405000 1 [INFO: App       ] Verify: 1 
+54405000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+54405000 1 [PRI : TSCH Sched] 2 1
+54405000 1 [PRI : TSCH Sched] Match - 1 <- 2
+54405000 1 [PRI : TSCH Sched] 2 1
+54405000 1 [PRI : TSCH Sched] Match - 1 <- 2
+54405000 1 Enter here!
+54405000 1 handle: 0 - 2-> 1
+54405000 1 Numero de ns : 4 | Numero de arestas: 1
+54405000 1 Matriz de adacncia do grafo da rede:
+54405000 1 0 0 0 0 
+54405000 1 0 0 0 0 
+54405000 1 0 1 0 0 
+54405000 1 0 0 0 0 
+54405000 1 Pacotes atribuidos!
+54405000 1 N 0: 0 pacotes
+54405000 1 N 1: 0 pacotes
+54405000 1 N 2: 1 pacotes
+54405000 1 N 3: 0 pacotes
+54405000 1 Mapa da matriz de conflito gerada:
+54405000 1 N 0: 2 -> 1
+54405000 1 sorted n:2
+54405000 1 sorted n:2
+54405000 1 Canais alocados  | |
+54405000 1                 \   /
+54405000 1                  \ /
+54405000 1 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+54405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54405000 1 [PRI : TSCH Sched] -----------------------------
+54405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+54405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54405000 1 [PRI : TSCH Sched] -----------------------------
+54405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+54405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54405000 1 [PRI : TSCH Sched] -----------------------------
+54405000 1 [PRI : TSCH Sched] Escalonamento Concluido
+54405000 1 Energest:
+54405000 1  CPU            53s LPM         0s DEEP LPM    0s  Total time 53s
+54405000 1  Radio LISTEN    1s TRANSMIT    0s OFF        52s
+54519000 3 [INFO: RPL       ] Sending a multicast-DIO with rank 693
+54519000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 38, queue 1/64 1/64, len 14 94
+54688128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 95, status 0, tx 1
+54688128 3 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+54688128 3 [INFO: TSCH-LOG  ] {asn 00.0000151e link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0003->LL-NULL, len  94, seq  95, st 0  1
+54688128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+54688128 2 [INFO: TSCH Sched] list of packets
+54688128 2 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+54688128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=4 
+54688128 2 [INFO: TSCH Sched] id=3 Tx=4 Rx=0 
+54688128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+54688128 2 [INFO: RPL       ] Received a DIO from fe80::203:3:3:3
+54688128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+54688128 2 [INFO: RPL       ] Copying prefix information
+54688128 2 [INFO: RPL       ] Prefix set - will announce this in DIOs
+54688128 2 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+54688128 2 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+54688128 2 [INFO: RPL       ] New candidate parent with rank 693: fe80::203:3:3:3
+54688128 2 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 462, min_rank 290, parent rank 693, link metric 384
+54688128 2 [INFO: TSCH-LOG  ] {asn 00.0000151e link  1  17   0  0  0 ch 26} bc-1-0 rx LL-0003->LL-NULL, len  94, seq  38, edr   0
+54688128 2 --------------------------------
+54688128 2 LL-0003->LL-0002
+54688128 2 --------------------------------
+54705000 3 [INFO: RPL       ] Scheduling DIO timer 7285 ticks in future (Interval)
+54787000 4 [INFO: TSCH      ] scanning on channel 15
+55267000 3 [INFO: App       ] app generate packet seqnum=1 node_id=3
+55267000 3 [INFO: RPL       ] Updating RPL option
+55267000 3 [WARN: IPv6 Route] No route found
+55267000 3 [WARN: IPv6 Route] No route found
+55267000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 39, queue 1/64 1/64, len 21 51
+55268000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+55268000 3 [INFO: TSCH Sched] 2
+55268000 3 [INFO: TSCH Sched] 0
+55268000 3 [INFO: App       ] Verify: 0 
+55268000 3 [PRI : App       ] Initialize tsch schedule
+55268000 3 [INFO: TSCH Sched] remove_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+55268000 3 [INFO: TSCH Sched] remove slotframe 1 17
+55268000 3 [PRI : App       ] Remove all slotframes[INFO: TSCH Sched] add_slotframe 1 17
+55268000 3 [PRI : TSCH Sched] Handle : 1
+55268000 3  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+55268000 3 [PRI : TSCH Sched] Handle : 1
+55268000 3  [INFO: TSCH Sched] add_link sf=1 opt=Tx type=NORMAL ts=7 ch=0 addr=0002.0002.0002.0002
+55268000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+55268000 3 [PRI : TSCH Sched] 2 1
+55268000 3 [PRI : TSCH Sched] 3 2
+55268000 3 [PRI : TSCH Sched] 3 2
+55268000 3 Enter here!
+55268000 3 handle: 0 - 2-> 1
+55268000 3 handle: 1 - 3-> 2
+55268000 3 Numero de ns : 4 | Numero de arestas: 2
+55268000 3 Matriz de adacncia do grafo da rede:
+55268000 3 0 0 0 0 
+55268000 3 0 0 0 0 
+55268000 3 0 1 0 0 
+55268000 3 0 0 1 0 
+55268000 3 Pacotes atribuidos!
+55268000 3 N 0: 0 pacotes
+55268000 3 N 1: 0 pacotes
+55268000 3 N 2: 1 pacotes
+55268000 3 N 3: 1 pacotes
+55268000 3 Mapa da matriz de conflito gerada:
+55268000 3 N 0: 2 -> 1
+55268000 3 N 1: 3 -> 2
+55268000 3 sorted n:0
+55268000 3 sorted n:1
+55268000 3 Camos no pior caso
+55268000 3 sorted n:3
+55268000 3 sorted n:0
+55268000 3 sorted n:2
+55268000 3 Canais alocados  | |
+55268000 3                 \   /
+55268000 3                  \ /
+55268000 3 1  0  2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+55268000 3 [PRI : TSCH Sched] ----CHANGE-Tx----
+55268000 3 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+55268000 3 [PRI : TSCH Sched] ----CHANNEL: 1-----
+55268000 3 [PRI : TSCH Sched] -----------------------------
+55268000 3 [PRI : TSCH Sched] Escalonamento Concluido
+55268000 3 Energest:
+55268000 3  CPU            54s LPM         0s DEEP LPM    0s  Total time 54s
+55268000 3  Radio LISTEN   41s TRANSMIT    0s OFF        13s
+55363000 3 [INFO: TSCH-LOG  ] {asn 00.00001562 link-NULL} !skipped slot 0 0 1
+55377000 4 [INFO: TSCH      ] scan: received packet (51 bytes) on channel 15
+55377000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+55377000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+55378648 3 [INFO: TSCH-LOG  ] {asn 00.00001563 link  1  17   0  1  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  1
+55548648 3 [INFO: TSCH-LOG  ] {asn 00.00001574 link  1  17   0  1  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  2
+55718648 3 [INFO: TSCH-LOG  ] {asn 00.00001585 link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  3
+55797000 4 [INFO: TSCH      ] scanning on channel 25
+55888648 3 [INFO: TSCH-LOG  ] {asn 00.00001596 link  1  17   0  1  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  4
+56058648 3 [INFO: TSCH-LOG  ] {asn 00.000015a7 link  1  17   0  1  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  5
+56198000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+56216240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 160, status 0, tx 1
+56216240 2 [INFO: TSCH-LOG  ] {asn 00.000015b7 link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 160, st 0  1
+56216240 1 [INFO: TSCH-LOG  ] {asn 00.000015b7 link  1  17   0  0  0 ch 20} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 189, edr   0
+56216240 1 --------------------------------
+56216240 1 LL-0002->LL-0001
+56216240 1 --------------------------------
+56216240 3 [INFO: TSCH-LOG  ] {asn 00.000015b7 link  1  17   0  0  0 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+56216240 3 [INFO: TSCH-LOG  ] {asn 00.000015b7 link  1  17   0  0  0 ch 20} bc-0-0 rx LL-0002->LL-NULL, len  35, seq   0, edr   0, dr   0
+56216240 3 --------------------------------
+56216240 3 LL-0002->LL-0003
+56216240 3 --------------------------------
+56227000 4 [INFO: TSCH      ] scan: received packet (51 bytes) on channel 25
+56227000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+56227000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+56228648 3 [INFO: TSCH-LOG  ] {asn 00.000015b8 link  1  17   0  1  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  6
+56333000 2 [INFO: RPL       ] Scheduling DIO timer 27001 ticks in future (Interval)
+56398648 3 [INFO: TSCH-LOG  ] {asn 00.000015c9 link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  7
+56466000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+56466000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 117, queue 1/64 1/64, len 14 94
+56547000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 190, queue 1/64 1/64, len 21 21
+56547000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+56558128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 72, status 0, tx 1
+56558128 1 [INFO: TSCH Sched] Tx_try= 1 Tx_Success=0
+56558128 1 [INFO: TSCH-LOG  ] {asn 00.000015d9 link  1  17   0  0  0 ch 25} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  72, st 0  1
+56558128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+56558128 2 [INFO: TSCH Sched] list of packets
+56558128 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+56558128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=5 
+56558128 2 [INFO: TSCH Sched] id=3 Tx=4 Rx=0 
+56558128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+56558128 2 [INFO: RPL       ] Received a DIO from fe80::201:1:1:1
+56558128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+56558128 2 [INFO: RPL       ] Copying prefix information
+56558128 2 [INFO: RPL       ] Prefix set - will announce this in DIOs
+56558128 2 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+56558128 2 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+56558128 2 [INFO: RPL       ] Received consistent DIO
+56558128 2 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 462, min_rank 290, parent rank 128, link metric 334
+56558128 2 [INFO: TSCH-LOG  ] {asn 00.000015d9 link  1  17   0  0  0 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+56558128 2 [INFO: TSCH-LOG  ] {asn 00.000015d9 link  1  17   0  0  0 ch 25} bc-1-0 rx LL-0001->LL-NULL, len  94, seq  38, edr   0, dr   0
+56558128 2 --------------------------------
+56558128 2 LL-0001->LL-0002
+56558128 2 --------------------------------
+56568648 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 39, status 2, tx 8
+56568648 3 [INFO: TSCH Sched] Tx_try= 1 Tx_Success=0
+56568648 3 [INFO: TSCH-LOG  ] {asn 00.000015da link  1  17   0  1  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  51, seq  39, st 2  8
+56577432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 190
+56577432 1 [INFO: TSCH Sched] list of packets
+56577432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=9 
+56577432 1 [INFO: TSCH Sched] id=2 Tx=9 Rx=0 
+56577432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+56577432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+56577432 1 [WARN: 6LoWPAN   ] input: empty packet
+56577432 1 [INFO: TSCH-LOG  ] {asn 00.000015db link  1  17   0  2  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq 190, edr   0
+56577432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 190, status 0, tx 1
+56577432 2 [INFO: TSCH Sched] Tx_try= 7 Tx_Success=0
+56577432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+56577432 2 [INFO: TSCH-LOG  ] {asn 00.000015db link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq 190, st 0  1, dr   0
+56772000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+56807000 4 [INFO: TSCH      ] scanning on channel 26
+56896240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 96, status 0, tx 1
+56896240 3 [INFO: TSCH-LOG  ] {asn 00.000015fb link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0003->LL-NULL, len  35, seq  96, st 0  1
+56896240 2 [INFO: TSCH-LOG  ] {asn 00.000015fb link  1  17   0  0  0 ch 20} bc-0-0 rx LL-0003->LL-NULL, len  35, seq  38, edr   0
+56896240 2 --------------------------------
+56896240 2 LL-0003->LL-0002
+56896240 2 --------------------------------
+57134000 3 [INFO: RPL       ] probing 2  last tx 0 min ago
+57134000 3 [INFO: RPL       ] Sending unicast-DIO with rank 930 to fe80::202:2:2:2
+57134000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 40, queue 1/64 1/64, len 21 100
+57250216 3 [INFO: TSCH-LOG  ] {asn 00.0000161e link  1  17   0  1  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  1
+57420216 3 [INFO: TSCH-LOG  ] {asn 00.0000162f link  1  17   0  1  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  2
+57590216 3 [INFO: TSCH-LOG  ] {asn 00.00001640 link  1  17   0  1  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  3
+57758320 4 [INFO: TSCH      ] scan: received packet (100 bytes) on channel 26
+57758320 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+57758320 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+57760216 3 [INFO: TSCH-LOG  ] {asn 00.00001651 link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  4
+57817000 4 [INFO: TSCH      ] scanning on channel 15
+57930216 3 [INFO: TSCH-LOG  ] {asn 00.00001662 link  1  17   0  1  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  5
+58098320 4 [INFO: TSCH      ] scan: received packet (100 bytes) on channel 15
+58098320 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+58098320 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+58100216 3 [INFO: TSCH-LOG  ] {asn 00.00001673 link  1  17   0  1  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  6
+58270216 3 [INFO: TSCH-LOG  ] {asn 00.00001684 link  1  17   0  1  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  7
+58440216 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 40, status 2, tx 8
+58440216 3 [INFO: TSCH Sched] Tx_try= 2 Tx_Success=0
+58440216 3 [INFO: TSCH-LOG  ] {asn 00.00001695 link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len 100, seq  40, st 2  8
+58827000 4 [INFO: TSCH      ] scanning on channel 25
+59837000 4 [INFO: TSCH      ] scanning on channel 26
+59984000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 41, queue 1/64 1/64, len 21 21
+59984000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+60137688 3 [INFO: TSCH-LOG  ] {asn 00.0000173f link  1  17   0  1  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  1
+60247000 4 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60247000 4 [INFO: Energest  ] Total time  :   60000000
+60247000 4 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60247000 4 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60247000 4 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60247000 4 [INFO: Energest  ] Radio Tx    :          0/  60000000 (0 permil)
+60247000 4 [INFO: Energest  ] Radio Rx    :   60000000/  60000000 (69 permil)
+60247000 4 [INFO: Energest  ] Radio total :   60000000/  60000000 (69 permil)
+60307688 3 [INFO: TSCH-LOG  ] {asn 00.00001750 link  1  17   0  1  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  2
+60424000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 191, queue 1/64 1/64, len 21 21
+60424000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+60477000 4 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 26
+60477000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+60477000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+60477688 3 [INFO: TSCH-LOG  ] {asn 00.00001761 link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  3
+60487432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 191
+60487432 1 [INFO: TSCH Sched] list of packets
+60487432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=10 
+60487432 1 [INFO: TSCH Sched] id=2 Tx=10 Rx=0 
+60487432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+60487432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+60487432 1 [WARN: 6LoWPAN   ] input: empty packet
+60487432 1 [INFO: TSCH-LOG  ] {asn 00.00001762 link  1  17   0  2  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq 191, edr   0
+60487432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 191, status 0, tx 1
+60487432 2 [INFO: TSCH Sched] Tx_try= 8 Tx_Success=0
+60487432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+60487432 2 [INFO: TSCH-LOG  ] {asn 00.00001762 link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq 191, st 0  1, dr   0
+60613000 1 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60613000 1 [INFO: Energest  ] Total time  :   60000000
+60613000 1 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60613000 1 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60613000 1 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60613000 1 [INFO: Energest  ] Radio Tx    :      26944/  60000000 (0 permil)
+60613000 1 [INFO: Energest  ] Radio Rx    :    1476440/  60000000 (24 permil)
+60613000 1 [INFO: Energest  ] Radio total :    1503384/  60000000 (25 permil)
+60647688 3 [INFO: TSCH-LOG  ] {asn 00.00001772 link  1  17   0  1  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  4
+60721000 2 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60721000 2 [INFO: Energest  ] Total time  :   60000000
+60721000 2 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60721000 2 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60721000 2 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60721000 2 [INFO: Energest  ] Radio Tx    :      40992/  60000000 (0 permil)
+60721000 2 [INFO: Energest  ] Radio Rx    :   15137108/  60000000 (37 permil)
+60721000 2 [INFO: Energest  ] Radio total :   15178100/  60000000 (38 permil)
+60791000 3 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60791000 3 [INFO: Energest  ] Total time  :   60000000
+60791000 3 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60791000 3 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60791000 3 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60791000 3 [INFO: Energest  ] Radio Tx    :      50304/  60000000 (0 permil)
+60791000 3 [INFO: Energest  ] Radio Rx    :   41480780/  60000000 (47 permil)
+60791000 3 [INFO: Energest  ] Radio total :   41531084/  60000000 (47 permil)
+60817688 3 [INFO: TSCH-LOG  ] {asn 00.00001783 link  1  17   0  1  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  5
+60847000 4 [INFO: TSCH      ] scanning on channel 25
+60987000 4 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 25
+60987000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+60987000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+60987688 3 [INFO: TSCH-LOG  ] {asn 00.00001794 link  1  17   0  1  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  6
+61157688 3 [INFO: TSCH-LOG  ] {asn 00.000017a5 link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  7
+61327688 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 41, status 2, tx 8
+61327688 3 [INFO: TSCH Sched] Tx_try= 3 Tx_Success=0
+61327688 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 2-8
+61327688 3 [WARN: TSCH      ] not able to re-synchronize, received no EB from other neighbors
+61327688 3 [INFO: TSCH-LOG  ] {asn 00.000017b6 link  1  17   0  1  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  21, seq  41, st 2  8
+61652000 2 [INFO: App       ] app generate packet seqnum=3 node_id=2
+61652000 2 [INFO: RPL       ] Updating RPL option
+61652000 2 [WARN: IPv6 Route] No route found
+61652000 2 [WARN: IPv6 Route] No route found
+61652000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 192, queue 1/64 1/64, len 21 43
+61653000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+61653000 2 [INFO: TSCH Sched] 1
+61653000 2 [INFO: TSCH Sched] 3
+61653000 2 [INFO: App       ] Verify: 1 
+61653000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+61653000 2 [PRI : TSCH Sched] 2 1
+61653000 2 [PRI : TSCH Sched] 3 2
+61653000 2 [PRI : TSCH Sched] Match - 2 <- 3
+61657020 2 [PRI : TSCH Sched] Handle : 2
+61657020 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0003.0003.0003.0003
+61657020 2 [PRI : TSCH Sched] 3 2
+61657020 2 [PRI : TSCH Sched] Match - 2 <- 3
+61657020 2 Enter here!
+61657020 2 handle: 0 - 2-> 1
+61657020 2 handle: 1 - 3-> 2
+61657020 2 Numero de ns : 4 | Numero de arestas: 2
+61657020 2 Matriz de adacncia do grafo da rede:
+61657020 2 0 0 0 0 
+61657020 2 0 0 0 0 
+61657020 2 0 1 0 0 
+61657020 2 0 0 1 0 
+61657020 2 Pacotes atribuidos!
+61657020 2 N 0: 0 pacotes
+61657020 2 N 1: 0 pacotes
+61657020 2 N 2: 1 pacotes
+61657020 2 N 3: 1 pacotes
+61657020 2 Mapa da matriz de conflito gerada:
+61657020 2 N 0: 2 -> 1
+61657020 2 N 1: 3 -> 2
+61657020 2 sorted n:2
+61657020 2 sorted n:0
+61657020 2 sorted n:0
+61657020 2 sorted n:1
+61657020 2 Camos no pior caso
+61657020 2 Canais alocados  | |
+61657020 2                 \   /
+61657020 2                  \ /
+61657020 2 1  2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+61657020 2 [PRI : TSCH Sched] ----CHANGE-Tx----
+61657020 2 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+61657020 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+61657020 2 [PRI : TSCH Sched] -----------------------------
+61657020 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+61657020 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+61657020 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+61657020 2 [PRI : TSCH Sched] -----------------------------
+61657020 2 [PRI : TSCH Sched] Escalonamento Concluido
+61657020 2 Energest:
+61657020 2  CPU            60s LPM         0s DEEP LPM    0s  Total time 60s
+61657020 2  Radio LISTEN   15s TRANSMIT    0s OFF        45s
+61657020 2 [INFO: TSCH-LOG  ] {asn 00.000017d9 link  1  17   0  4  0 ch 20} !get lock delay 4020
+61678136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 192
+61678136 1 [INFO: TSCH Sched] list of packets
+61678136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=11 
+61678136 1 [INFO: TSCH Sched] id=2 Tx=11 Rx=0 
+61678136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+61678136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+61678136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 3
+61678136 1 [INFO: TSCH-LOG  ] {asn 00.000017d9 link  1  17   0  2  1 ch 26} uc-1-0 rx LL-0002->LL-0001, len  43, seq 192, edr   0
+61678136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 192, status 0, tx 1
+61678136 2 [INFO: TSCH Sched] Tx_try= 9 Tx_Success=0
+61678136 2 [INFO: TSCH-LOG  ] {asn 00.000017d9 link  1  17   0  4  1 ch 26} drift 0 ppm (min/max delta seen: 0/0)
+61678136 2 [INFO: TSCH-LOG  ] {asn 00.000017d9 link  1  17   0  4  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq 192, st 0  1, dr   0
+61857000 4 [INFO: TSCH      ] scanning on channel 15
+61990000 3 [INFO: RPL       ] Sending a multicast-DIO with rank 1336
+61990000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 41, queue 1/64 1/64, len 14 94
+61998128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 97, status 0, tx 1
+61998128 3 [INFO: TSCH Sched] Tx_try= 4 Tx_Success=0
+61998128 3 [INFO: TSCH-LOG  ] {asn 00.000017f9 link  1  17   0  0  0 ch 25} bc-1-0 tx LL-0003->LL-NULL, len  94, seq  97, st 0  1
+61998128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+61998128 2 [INFO: TSCH Sched] list of packets
+61998128 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+61998128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=6 
+61998128 2 [INFO: TSCH Sched] id=3 Tx=5 Rx=0 
+61998128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+61998128 2 [INFO: RPL       ] Received a DIO from fe80::203:3:3:3
+61998128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+61998128 2 [INFO: RPL       ] Copying prefix information
+61998128 2 [INFO: RPL       ] Prefix set - will announce this in DIOs
+61998128 2 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+61998128 2 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+61998128 2 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 405, min_rank 290, parent rank 1336, link metric 384
+61998128 2 [WARN: RPL       ] Unacceptable rank 1336 (Current min 290, MaxRankInc 896)
+61998128 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+61998128 2 [WARN: RPL       ] The candidate parent is rejected
+61998128 2 [INFO: TSCH-LOG  ] {asn 00.000017f9 link  1  17   0  0  0 ch 25} bc-1-0 rx LL-0003->LL-NULL, len  94, seq  38, edr   0
+61998128 2 --------------------------------
+61998128 2 LL-0003->LL-0002
+61998128 2 --------------------------------
+62057000 1 [INFO: RPL       ] Scheduling DIO timer 61635 ticks in future (Interval)
+62114000 2 [INFO: RPL       ] handle_dao_timer - sending DAO
+62114000 2 [INFO: RPL       ] Sending a DAO with sequence number 243, lifetime 30, prefix fd00::202:2:2:2 to fe80::201:1:1:1 , parent fe80::201:1:1:1
+62114000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 193, queue 1/64 1/64, len 21 74
+62209384 2 [INFO: TSCH-LOG  ] {asn 00.0000180e link  1  17   0  4  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  1
+62379384 2 [INFO: TSCH-LOG  ] {asn 00.0000181f link  1  17   0  4  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  2
+62549384 2 [INFO: TSCH-LOG  ] {asn 00.00001830 link  1  17   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  3
+62719384 2 [INFO: TSCH-LOG  ] {asn 00.00001841 link  1  17   0  4  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  4
+62721000 2 [WARN: RPL       ] Unacceptable rank 1336 (Current min 290, MaxRankInc 896)
+62721000 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+62867000 4 [INFO: TSCH      ] scanning on channel 15
+62889384 2 [INFO: TSCH-LOG  ] {asn 00.00001852 link  1  17   0  4  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  5
+62898000 3 [INFO: RPL       ] Scheduling DIO timer 14473 ticks in future (Interval)
+63059384 2 [INFO: TSCH-LOG  ] {asn 00.00001863 link  1  17   0  4  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  6
+63229384 2 [INFO: TSCH-LOG  ] {asn 00.00001874 link  1  17   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  7
+63399384 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 193, status 2, tx 8
+63399384 2 [INFO: TSCH Sched] Tx_try= 10 Tx_Success=0
+63399384 2 [INFO: TSCH-LOG  ] {asn 00.00001885 link  1  17   0  4  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  74, seq 193, st 2  8
+63793000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+63793000 4 [INFO: TSCH Sched] 0
+63793000 4 [INFO: TSCH Sched] 0
+63793000 4 [INFO: App       ] Verify: 0 
+63793000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+63793000 4 [PRI : TSCH Sched] 2 1
+63793000 4 [PRI : TSCH Sched] 3 2
+63793000 4 [PRI : TSCH Sched] 3 2
+63793000 4 Energest:
+63793000 4  CPU            63s LPM         0s DEEP LPM    0s  Total time 63s
+63793000 4  Radio LISTEN   63s TRANSMIT    0s OFF         0s
+63877000 4 [INFO: TSCH      ] scanning on channel 26
+64405000 1 [INFO: App       ] app generate packet seqnum=6 node_id=1
+64405000 1 [INFO: RPL       ] Updating RPL option
+64405000 1 [WARN: IPv6 Route] No route found
+64405000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 6
+64405000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+64405000 1 [INFO: TSCH Sched] 2
+64405000 1 [INFO: TSCH Sched] 0
+64405000 1 [INFO: App       ] Verify: 1 
+64405000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+64405000 1 [PRI : TSCH Sched] 2 1
+64405000 1 [PRI : TSCH Sched] Match - 1 <- 2
+64405000 1 [PRI : TSCH Sched] 3 2
+64405000 1 [PRI : TSCH Sched] 3 2
+64405000 1 Enter here!
+64405000 1 handle: 0 - 2-> 1
+64405000 1 handle: 1 - 3-> 2
+64405000 1 Numero de ns : 4 | Numero de arestas: 2
+64405000 1 Matriz de adacncia do grafo da rede:
+64405000 1 0 0 0 0 
+64405000 1 0 0 0 0 
+64405000 1 0 1 0 0 
+64405000 1 0 0 1 0 
+64405000 1 Pacotes atribuidos!
+64405000 1 N 0: 0 pacotes
+64405000 1 N 1: 0 pacotes
+64405000 1 N 2: 1 pacotes
+64405000 1 N 3: 1 pacotes
+64405000 1 Mapa da matriz de conflito gerada:
+64405000 1 N 0: 2 -> 1
+64405000 1 N 1: 3 -> 2
+64405000 1 sorted n:1
+64405000 1 sorted n:1
+64405000 1 Camos no pior caso
+64405000 1 sorted n:1
+64405000 1 Camos no pior caso
+64405000 1 sorted n:2
+64405000 1 sorted n:3
+64405000 1 sorted n:3
+64405000 1 Canais alocados  | |
+64405000 1                 \   /
+64405000 1                  \ /
+64405000 1 1  0  0  2  1  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+64405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64405000 1 [PRI : TSCH Sched] -----------------------------
+64405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64405000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+64405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64405000 1 [PRI : TSCH Sched] -----------------------------
+64405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64405000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+64405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64405000 1 [PRI : TSCH Sched] -----------------------------
+64405000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64405000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+64405000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64405000 1 [PRI : TSCH Sched] -----------------------------
+64405000 1 [PRI : TSCH Sched] Escalonamento Concluido
+64405000 1 Energest:
+64405000 1  CPU            63s LPM         0s DEEP LPM    0s  Total time 63s
+64405000 1  Radio LISTEN    1s TRANSMIT    0s OFF        62s
+64507000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+64537000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+64546240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 73, status 0, tx 1
+64546240 1 [INFO: TSCH-LOG  ] {asn 00.000018f8 link  1  17   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  73, st 0  1
+64546240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 98, status 0, tx 1
+64546240 3 [INFO: TSCH-LOG  ] {asn 00.000018f8 link  1  17   0  0  0 ch 15} bc-0-0 tx LL-0003->LL-NULL, len  35, seq  98, st 0  1
+64887000 4 [INFO: TSCH      ] scanning on channel 15
+65087000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 42, queue 1/64 1/64, len 21 21
+65087000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+65237432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 42
+65237432 2 [INFO: TSCH Sched] list of packets
+65237432 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+65237432 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=7 
+65237432 2 [INFO: TSCH Sched] id=3 Tx=6 Rx=0 
+65237432 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+65237432 2 [WARN: 6LoWPAN   ] input: empty packet
+65237432 2 [INFO: TSCH-LOG  ] {asn 00.0000193d link  1  17   0  1  1 ch 26} uc-1-0 rx LL-0003->LL-0002, len  21, seq  42, edr   0
+65237432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 42, status 0, tx 1
+65237432 3 [INFO: TSCH Sched] Tx_try= 5 Tx_Success=0
+65237432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+65237432 3 [INFO: TSCH-LOG  ] {asn 00.0000193d link  1  17   0  1  1 ch 26} drift 0 ppm (min/max delta seen: 0/0)
+65237432 3 [INFO: TSCH-LOG  ] {asn 00.0000193d link  1  17   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq  42, st 0  1, dr   0
+65268000 3 [INFO: App       ] app generate packet seqnum=2 node_id=3
+65268000 3 [INFO: RPL       ] Updating RPL option
+65268000 3 [WARN: IPv6 Route] No route found
+65268000 3 [WARN: IPv6 Route] No route found
+65268000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 43, queue 1/64 1/64, len 21 51
+65269000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+65269000 3 [INFO: TSCH Sched] 2
+65269000 3 [INFO: TSCH Sched] 0
+65269000 3 [INFO: App       ] Verify: 1 
+65269000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+65269000 3 [PRI : TSCH Sched] 2 1
+65269000 3 [PRI : TSCH Sched] 3 2
+65269000 3 [PRI : TSCH Sched] 3 2
+65269000 3 Enter here!
+65269000 3 handle: 0 - 2-> 1
+65269000 3 handle: 1 - 3-> 2
+65269000 3 Numero de ns : 4 | Numero de arestas: 2
+65269000 3 Matriz de adacncia do grafo da rede:
+65269000 3 0 0 0 0 
+65269000 3 0 0 0 0 
+65269000 3 0 1 0 0 
+65269000 3 0 0 1 0 
+65269000 3 Pacotes atribuidos!
+65269000 3 N 0: 0 pacotes
+65269000 3 N 1: 0 pacotes
+65269000 3 N 2: 1 pacotes
+65269000 3 N 3: 1 pacotes
+65269000 3 Mapa da matriz de conflito gerada:
+65269000 3 N 0: 2 -> 1
+65269000 3 N 1: 3 -> 2
+65269000 3 sorted n:3
+65269000 3 sorted n:0
+65269000 3 sorted n:3
+65269000 3 Canais alocados  | |
+65269000 3                 \   /
+65269000 3                  \ /
+65269000 3 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+65269000 3 [PRI : TSCH Sched] ----CHANGE-Tx----
+65269000 3 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+65269000 3 [PRI : TSCH Sched] ----CHANNEL: 1-----
+65269000 3 [PRI : TSCH Sched] -----------------------------
+65269000 3 [PRI : TSCH Sched] Escalonamento Concluido
+65269000 3 Energest:
+65269000 3  CPU            64s LPM         0s DEEP LPM    0s  Total time 64s
+65269000 3  Radio LISTEN   41s TRANSMIT    0s OFF        22s
+65417000 4 [INFO: TSCH      ] scan: received packet (51 bytes) on channel 15
+65417000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+65417000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+65418648 3 [INFO: TSCH-LOG  ] {asn 00.0000194f link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  1
+65588648 3 [INFO: TSCH-LOG  ] {asn 00.00001960 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  2
+65758648 3 [INFO: TSCH-LOG  ] {asn 00.00001971 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  3
+65897000 4 [INFO: TSCH      ] scanning on channel 20
+65927000 4 [INFO: TSCH      ] scan: received packet (51 bytes) on channel 20
+65927000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+65927000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+65928648 3 [INFO: TSCH-LOG  ] {asn 00.00001982 link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  4
+66098648 3 [INFO: TSCH-LOG  ] {asn 00.00001993 link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  5
+66268648 3 [INFO: TSCH-LOG  ] {asn 00.000019a4 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  6
+66438648 3 [INFO: TSCH-LOG  ] {asn 00.000019b5 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  7
+66607000 4 [INFO: TSCH      ] scan: received packet (51 bytes) on channel 20
+66607000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+66607000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+66608648 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 43, status 2, tx 8
+66608648 3 [INFO: TSCH Sched] Tx_try= 6 Tx_Success=0
+66608648 3 [INFO: TSCH-LOG  ] {asn 00.000019c6 link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  51, seq  43, st 2  8
+66907000 4 [INFO: TSCH      ] scanning on channel 26
+67917000 4 [INFO: TSCH      ] scanning on channel 25
+68247000 4 [INFO: RPL       ] Sending a DIS to ff02::1a
+68247000 4 [WARN: TSCH      ] Cannot compute max payload size: not associated
+68247000 4 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+68838000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 44, queue 1/64 1/64, len 21 21
+68838000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+68927000 4 [INFO: TSCH      ] scanning on channel 25
+68987000 4 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 25
+68987000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+68987000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+68987688 3 [INFO: TSCH-LOG  ] {asn 00.00001ab4 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  1
+69157688 3 [INFO: TSCH-LOG  ] {asn 00.00001ac5 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  2
+69327688 3 [INFO: TSCH-LOG  ] {asn 00.00001ad6 link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  3
+69497688 3 [INFO: TSCH-LOG  ] {asn 00.00001ae7 link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  4
+69667000 4 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 25
+69667000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+69667000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+69667688 3 [INFO: TSCH-LOG  ] {asn 00.00001af8 link  1  17   0  2  1 ch 25} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  5
+69837688 3 [INFO: TSCH-LOG  ] {asn 00.00001b09 link  1  17   0  2  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  6
+69937000 4 [INFO: TSCH      ] scanning on channel 15
+70007688 3 [INFO: TSCH-LOG  ] {asn 00.00001b1a link  1  17   0  2  1 ch 20} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  7
+70177000 4 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 15
+70177000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+70177000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/0002.0002.0002.0002
+70177688 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 44, status 2, tx 8
+70177688 3 [INFO: TSCH Sched] Tx_try= 7 Tx_Success=0
+70177688 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 2-8
+70177688 3 [WARN: TSCH      ] not able to re-synchronize, received no EB from other neighbors
+70177688 3 [INFO: TSCH-LOG  ] {asn 00.00001b2b link  1  17   0  2  1 ch 15} uc-1-0 tx LL-0003->LL-0002, len  21, seq  44, st 2  8
+70791000 3 [INFO: RPL       ] rpl_set_preferred_parent NULL used to be fe80::202:2:2:2
+70791000 3 [INFO: TSCH Queue] update time source: 0002.0002.0002.0002 -> (NULL LL addr)
+70791000 3 [ERR : RPL       ] No parents found in any DAG
+70791000 3 [INFO: RPL       ] Starting a local instance repair
+70791000 3 [INFO: RPL       ] Nullifying parents (minimum rank 0)
+70791000 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+70791000 3 [INFO: RPL       ] Scheduling DIO timer 2778 ticks in future (Interval)
+70791000 3 [INFO: RPL       ] Sending a DIS to ff02::1a
+70791000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 44, queue 1/64 1/64, len 14 24
+70835888 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 99, status 0, tx 1
+70835888 3 [INFO: TSCH Sched] Tx_try= 8 Tx_Success=0
+70835888 3 [INFO: TSCH-LOG  ] {asn 00.00001b6d link  1  17   0  0  0 ch 25} bc-1-0 tx LL-0003->LL-NULL, len  24, seq  99, st 0  1
+70835888 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+70835888 2 [INFO: TSCH Sched] list of packets
+70835888 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+70835888 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=8 
+70835888 2 [INFO: TSCH Sched] id=3 Tx=7 Rx=0 
+70835888 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+70835888 2 [INFO: RPL       ] Received a DIS from fe80::203:3:3:3
+70835888 2 [INFO: RPL       ] Scheduling DIO timer 2455 ticks in future (Interval)
+70835888 2 [INFO: TSCH-LOG  ] {asn 00.00001b6d link  1  17   0  0  0 ch 25} bc-1-0 rx LL-0003->LL-NULL, len  24, seq  42, edr   0
+70835888 2 --------------------------------
+70835888 2 LL-0003->LL-0002
+70835888 2 --------------------------------
+70942000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+70947000 4 [INFO: TSCH      ] scanning on channel 20
+71006240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 161, status 0, tx 1
+71006240 2 [INFO: TSCH-LOG  ] {asn 00.00001b7e link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 161, st 0  1
+71006240 1 [INFO: TSCH-LOG  ] {asn 00.00001b7e link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 192, edr   0
+71006240 1 --------------------------------
+71006240 1 LL-0002->LL-0001
+71006240 1 --------------------------------
+71006240 3 [INFO: TSCH-LOG  ] {asn 00.00001b7e link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0002->LL-NULL, len  35, seq   0, edr   0
+71006240 3 --------------------------------
+71006240 3 LL-0002->LL-0003
+71006240 3 --------------------------------
+71653000 2 [INFO: App       ] app generate packet seqnum=4 node_id=2
+71653000 2 [INFO: RPL       ] Updating RPL option
+71653000 2 [WARN: IPv6 Route] No route found
+71653000 2 [WARN: IPv6 Route] No route found
+71653000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 194, queue 1/64 1/64, len 21 43
+71654000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+71654000 2 [INFO: TSCH Sched] 1
+71654000 2 [INFO: TSCH Sched] 3
+71654000 2 [INFO: App       ] Verify: 1 
+71654000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+71654000 2 [PRI : TSCH Sched] 2 1
+71654000 2 [PRI : TSCH Sched] 3 2
+71654000 2 [PRI : TSCH Sched] Match - 2 <- 3
+71654000 2 [PRI : TSCH Sched] 3 2
+71654000 2 [PRI : TSCH Sched] Match - 2 <- 3
+71654000 2 Enter here!
+71654000 2 handle: 0 - 2-> 1
+71654000 2 handle: 1 - 3-> 2
+71654000 2 Numero de ns : 4 | Numero de arestas: 2
+71654000 2 Matriz de adacncia do grafo da rede:
+71654000 2 0 0 0 0 
+71654000 2 0 0 0 0 
+71654000 2 0 1 0 0 
+71654000 2 0 0 1 0 
+71654000 2 Pacotes atribuidos!
+71654000 2 N 0: 0 pacotes
+71654000 2 N 1: 0 pacotes
+71654000 2 N 2: 1 pacotes
+71654000 2 N 3: 1 pacotes
+71654000 2 Mapa da matriz de conflito gerada:
+71654000 2 N 0: 2 -> 1
+71654000 2 N 1: 3 -> 2
+71654000 2 sorted n:3
+71654000 2 sorted n:0
+71654000 2 sorted n:3
+71654000 2 Canais alocados  | |
+71654000 2                 \   /
+71654000 2                  \ /
+71654000 2 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+71654000 2 [PRI : TSCH Sched] ----CHANGE-Tx----
+71654000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+71654000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+71654000 2 [PRI : TSCH Sched] -----------------------------
+71654000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+71654000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+71654000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+71654000 2 [PRI : TSCH Sched] -----------------------------
+71654000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+71654000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+71654000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+71654000 2 [PRI : TSCH Sched] -----------------------------
+71654000 2 [PRI : TSCH Sched] Escalonamento Concluido
+71654000 2 Energest:
+71654000 2  CPU            70s LPM         0s DEEP LPM    0s  Total time 70s
+71654000 2  Radio LISTEN   15s TRANSMIT    0s OFF        55s
+71718392 2 [INFO: TSCH-LOG  ] {asn 00.00001bc5 link  1  17   0  3  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  1
+71888392 2 [INFO: TSCH-LOG  ] {asn 00.00001bd6 link  1  17   0  3  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  2
+71957000 4 [INFO: TSCH      ] scanning on channel 26
+72058392 2 [INFO: TSCH-LOG  ] {asn 00.00001be7 link  1  17   0  3  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  3
+72228392 2 [INFO: TSCH-LOG  ] {asn 00.00001bf8 link  1  17   0  3  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  4
+72398392 2 [INFO: TSCH-LOG  ] {asn 00.00001c09 link  1  17   0  3  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  5
+72568392 2 [INFO: TSCH-LOG  ] {asn 00.00001c1a link  1  17   0  3  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  6
+72738392 2 [INFO: TSCH-LOG  ] {asn 00.00001c2b link  1  17   0  3  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  7
+72908392 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 194, status 2, tx 8
+72908392 2 [INFO: TSCH Sched] Tx_try= 11 Tx_Success=0
+72908392 2 [INFO: TSCH-LOG  ] {asn 00.00001c3c link  1  17   0  3  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq 194, st 2  8
+72967000 4 [INFO: TSCH      ] scanning on channel 15
+73290000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 633
+73290000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 194, queue 1/64 1/64, len 14 94
+73388128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 162, status 0, tx 1
+73388128 2 [INFO: TSCH Sched] Tx_try= 12 Tx_Success=0
+73388128 2 [INFO: TSCH-LOG  ] {asn 00.00001c6c link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 162, st 0  1
+73388128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+73388128 1 [INFO: TSCH Sched] list of packets
+73388128 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=12 
+73388128 1 [INFO: TSCH Sched] id=2 Tx=12 Rx=0 
+73388128 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+73388128 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+73388128 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+73388128 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+73388128 1 [INFO: RPL       ] Copying prefix information
+73388128 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+73388128 1 [INFO: TSCH-LOG  ] {asn 00.00001c6c link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 192, edr   0
+73388128 1 --------------------------------
+73388128 1 LL-0002->LL-0001
+73388128 1 --------------------------------
+73388128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+73388128 3 [INFO: TSCH Sched] list of packets
+73388128 3 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+73388128 3 [INFO: TSCH Sched] id=2 Tx=1 Rx=0 
+73388128 3 [INFO: TSCH Sched] id=3 Tx=0 Rx=1 
+73388128 3 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+73388128 3 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+73388128 3 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+73388128 3 [INFO: RPL       ] Copying prefix information
+73388128 3 [INFO: RPL       ] Prefix set - will announce this in DIOs
+73388128 3 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+73388128 3 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+73388128 3 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 65535, min_rank 693, parent rank 633, link metric 1097
+73388128 3 [WARN: RPL       ] Unacceptable rank 633 (Current min 693, MaxRankInc 896)
+73388128 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+73388128 3 [WARN: RPL       ] The candidate parent is rejected
+73388128 3 [INFO: TSCH-LOG  ] {asn 00.00001c6c link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0002->LL-NULL, len  94, seq   0, edr   0
+73388128 3 --------------------------------
+73388128 3 LL-0002->LL-0003
+73388128 3 --------------------------------
+73569000 3 [INFO: RPL       ] Sending a multicast-DIO with rank 65535
+73569000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 44, queue 1/64 1/64, len 14 94
+73728128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 100, status 0, tx 1
+73728128 3 [INFO: TSCH Sched] Tx_try= 9 Tx_Success=0
+73728128 3 [INFO: TSCH-LOG  ] {asn 00.00001c8e link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0003->LL-NULL, len  94, seq 100, st 0  1
+73728128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+73728128 2 [INFO: TSCH Sched] list of packets
+73728128 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+73728128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=9 
+73728128 2 [INFO: TSCH Sched] id=3 Tx=8 Rx=0 
+73728128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+73728128 2 [INFO: RPL       ] Received a DIO from fe80::203:3:3:3
+73728128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+73728128 2 [INFO: RPL       ] Copying prefix information
+73728128 2 [INFO: RPL       ] Prefix set - will announce this in DIOs
+73728128 2 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+73728128 2 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+73728128 2 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 838, min_rank 290, parent rank 65535, link metric 384
+73728128 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+73728128 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+73728128 2 [WARN: RPL       ] The candidate parent is rejected
+73728128 2 [INFO: TSCH-LOG  ] {asn 00.00001c8e link  1  17   0  0  0 ch 26} bc-1-0 rx LL-0003->LL-NULL, len  94, seq  42, edr   0
+73728128 2 --------------------------------
+73728128 2 LL-0003->LL-0002
+73728128 2 --------------------------------
+73791000 3 [WARN: RPL       ] Unacceptable rank 633 (Current min 693, MaxRankInc 896)
+73791000 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+73793000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+73793000 4 [INFO: TSCH Sched] 0
+73793000 4 [INFO: TSCH Sched] 0
+73793000 4 [INFO: App       ] Verify: 0 
+73793000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+73793000 4 [PRI : TSCH Sched] 2 1
+73793000 4 [PRI : TSCH Sched] 3 2
+73793000 4 [PRI : TSCH Sched] 3 2
+73793000 4 Energest:
+73793000 4  CPU            73s LPM         0s DEEP LPM    0s  Total time 73s
+73793000 4  Radio LISTEN   73s TRANSMIT    0s OFF         0s
+73977000 4 [INFO: TSCH      ] scanning on channel 15
+74407020 1 [INFO: App       ] app generate packet seqnum=7 node_id=1
+74407020 1 [INFO: RPL       ] Updating RPL option
+74407020 1 [WARN: IPv6 Route] No route found
+74407020 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 7
+74407020 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+74407020 1 [INFO: TSCH Sched] 2
+74407020 1 [INFO: TSCH Sched] 0
+74407020 1 [INFO: App       ] Verify: 1 
+74407020 1 [PRI : TSCH Sched] Finding neighbor to Rx
+74407020 1 [PRI : TSCH Sched] 2 1
+74407020 1 [PRI : TSCH Sched] Match - 1 <- 2
+74407020 1 [PRI : TSCH Sched] 3 2
+74407020 1 [PRI : TSCH Sched] 3 2
+74407020 1 Enter here!
+74407020 1 handle: 0 - 2-> 1
+74407020 1 handle: 1 - 3-> 2
+74407020 1 Numero de ns : 4 | Numero de arestas: 2
+74407020 1 Matriz de adacncia do grafo da rede:
+74407020 1 0 0 0 0 
+74407020 1 0 0 0 0 
+74407020 1 0 1 0 0 
+74407020 1 0 0 1 0 
+74407020 1 Pacotes atribuidos!
+74407020 1 N 0: 0 pacotes
+74407020 1 N 1: 0 pacotes
+74407020 1 N 2: 1 pacotes
+74407020 1 N 3: 1 pacotes
+74407020 1 Mapa da matriz de conflito gerada:
+74407020 1 N 0: 2 -> 1
+74407020 1 N 1: 3 -> 2
+74407020 1 sorted n:3
+74407020 1 sorted n:2
+74407020 1 sorted n:1
+74407020 1 Camos no pior caso
+74407020 1 Canais alocados  | |
+74407020 1                 \   /
+74407020 1                  \ /
+74407020 1 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74407020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74407020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+74407020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74407020 1 [PRI : TSCH Sched] -----------------------------
+74407020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74407020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+74407020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74407020 1 [PRI : TSCH Sched] -----------------------------
+74407020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74407020 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+74407020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74407020 1 [PRI : TSCH Sched] -----------------------------
+74407020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74407020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74407020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74407020 1 [PRI : TSCH Sched] -----------------------------
+74407020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74407020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74407020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74407020 1 [PRI : TSCH Sched] -----------------------------
+74407020 1 [PRI : TSCH Sched] Escalonamento Concluido
+74407020 1 Energest:
+74407020 1  CPU            73s LPM         0s DEEP LPM    0s  Total time 73s
+74407020 1  Radio LISTEN    1s TRANSMIT    0s OFF        71s
+74721000 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+74721000 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+74812000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+74888000 3 [INFO: RPL       ] Scheduling DIO timer 7938 ticks in future (Interval)
+74916240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 163, status 0, tx 1
+74916240 2 [INFO: TSCH-LOG  ] {asn 00.00001d05 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 163, st 0  1
+74916240 1 [INFO: TSCH-LOG  ] {asn 00.00001d05 link  1  17   0  0  0 ch 25} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 192, edr   0
+74916240 1 --------------------------------
+74916240 1 LL-0002->LL-0001
+74916240 1 --------------------------------
+74916240 3 [INFO: TSCH-LOG  ] {asn 00.00001d05 link  1  17   0  0  0 ch 25} bc-0-0 rx LL-0002->LL-NULL, len  35, seq   0, edr   0
+74916240 3 --------------------------------
+74916240 3 LL-0002->LL-0003
+74916240 3 --------------------------------
+74932000 2 [INFO: RPL       ] Scheduling DIO timer 6572 ticks in future (Interval)
+74987000 4 [INFO: TSCH      ] scanning on channel 15
+75269000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+75269000 3 [INFO: TSCH Sched] 2
+75269000 3 [INFO: TSCH Sched] 0
+75269000 3 [INFO: App       ] Verify: 1 
+75269000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+75269000 3 [PRI : TSCH Sched] 2 1
+75269000 3 [PRI : TSCH Sched] 3 2
+75269000 3 [PRI : TSCH Sched] 3 2
+75269000 3 Enter here!
+75269000 3 handle: 0 - 2-> 1
+75269000 3 handle: 1 - 3-> 2
+75269000 3 Numero de ns : 4 | Numero de arestas: 2
+75269000 3 Matriz de adacncia do grafo da rede:
+75269000 3 0 0 0 0 
+75269000 3 0 0 0 0 
+75269000 3 0 1 0 0 
+75269000 3 0 0 1 0 
+75269000 3 Pacotes atribuidos!
+75269000 3 N 0: 0 pacotes
+75269000 3 N 1: 0 pacotes
+75269000 3 N 2: 1 pacotes
+75269000 3 N 3: 1 pacotes
+75269000 3 Mapa da matriz de conflito gerada:
+75269000 3 N 0: 2 -> 1
+75269000 3 N 1: 3 -> 2
+75269000 3 sorted n:2
+75269000 3 sorted n:1
+75269000 3 Camos no pior caso
+75269000 3 sorted n:3
+75269000 3 sorted n:0
+75269000 3 sorted n:0
+75269000 3 Camos no pior caso
+75269000 3 Canais alocados  | |
+75269000 3                 \   /
+75269000 3                  \ /
+75269000 3 1  0  2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+75269000 3 [PRI : TSCH Sched] ----CHANGE-Tx----
+75269000 3 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+75269000 3 [PRI : TSCH Sched] ----CHANNEL: 1-----
+75269000 3 [PRI : TSCH Sched] -----------------------------
+75269000 3 [PRI : TSCH Sched] Escalonamento Concluido
+75269000 3 Energest:
+75269000 3  CPU            74s LPM         0s DEEP LPM    0s  Total time 74s
+75269000 3  Radio LISTEN   41s TRANSMIT    0s OFF        32s
+75997000 4 [INFO: TSCH      ] scanning on channel 15
+77007000 4 [INFO: TSCH      ] scanning on channel 15
+78017000 4 [INFO: TSCH      ] scanning on channel 26
+78284000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+78316240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 74, status 0, tx 1
+78316240 1 [INFO: TSCH-LOG  ] {asn 00.00001e59 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  74, st 0  1
+78316240 2 [INFO: TSCH-LOG  ] {asn 00.00001e59 link  1  17   0  0  0 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+78316240 2 [INFO: TSCH-LOG  ] {asn 00.00001e59 link  1  17   0  0  0 ch 25} bc-0-0 rx LL-0001->LL-NULL, len  35, seq  42, edr   0, dr   0
+78316240 2 --------------------------------
+78316240 2 LL-0001->LL-0002
+78316240 2 --------------------------------
+78712000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+78826240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 164, status 0, tx 1
+78826240 2 [INFO: TSCH-LOG  ] {asn 00.00001e8c link  1  17   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 164, st 0  1
+78826240 1 [INFO: TSCH-LOG  ] {asn 00.00001e8c link  1  17   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 192, edr   0
+78826240 1 --------------------------------
+78826240 1 LL-0002->LL-0001
+78826240 1 --------------------------------
+78826240 3 [INFO: TSCH-LOG  ] {asn 00.00001e8c link  1  17   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq   0, edr   0
+78826240 3 --------------------------------
+78826240 3 LL-0002->LL-0003
+78826240 3 --------------------------------
+79027000 4 [INFO: TSCH      ] scanning on channel 20
+80037000 4 [INFO: TSCH      ] scanning on channel 26
+81047000 4 [INFO: TSCH      ] scanning on channel 15
+81504000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 838
+81504000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 194, queue 1/64 1/64, len 14 94
+81548128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 165, status 0, tx 1
+81548128 2 [INFO: TSCH Sched] Tx_try= 13 Tx_Success=0
+81548128 2 [INFO: TSCH-LOG  ] {asn 00.00001f9c link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 165, st 0  1
+81548128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+81548128 1 [INFO: TSCH Sched] list of packets
+81548128 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=13 
+81548128 1 [INFO: TSCH Sched] id=2 Tx=13 Rx=0 
+81548128 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+81548128 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+81548128 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+81548128 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+81548128 1 [INFO: RPL       ] Copying prefix information
+81548128 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+81548128 1 [INFO: TSCH-LOG  ] {asn 00.00001f9c link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 192, edr   0
+81548128 1 --------------------------------
+81548128 1 LL-0002->LL-0001
+81548128 1 --------------------------------
+81548128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+81548128 3 [INFO: TSCH Sched] list of packets
+81548128 3 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+81548128 3 [INFO: TSCH Sched] id=2 Tx=2 Rx=0 
+81548128 3 [INFO: TSCH Sched] id=3 Tx=0 Rx=2 
+81548128 3 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+81548128 3 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+81548128 3 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+81548128 3 [INFO: RPL       ] Copying prefix information
+81548128 3 [INFO: RPL       ] Prefix set - will announce this in DIOs
+81548128 3 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+81548128 3 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+81548128 3 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 65535, min_rank 693, parent rank 838, link metric 1097
+81548128 3 [WARN: RPL       ] Unacceptable rank 838 (Current min 693, MaxRankInc 896)
+81548128 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+81548128 3 [WARN: RPL       ] The candidate parent is rejected
+81548128 3 [INFO: TSCH-LOG  ] {asn 00.00001f9c link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0002->LL-NULL, len  94, seq   0, edr   0
+81548128 3 --------------------------------
+81548128 3 LL-0002->LL-0003
+81548128 3 --------------------------------
+81654000 2 [INFO: App       ] app generate packet seqnum=5 node_id=2
+81654000 2 [INFO: RPL       ] Updating RPL option
+81654000 2 [WARN: IPv6 Route] No route found
+81654000 2 [WARN: IPv6 Route] No route found
+81654000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 195, queue 1/64 1/64, len 21 43
+81655000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+81655000 2 [INFO: TSCH Sched] 1
+81655000 2 [INFO: TSCH Sched] 3
+81655000 2 [INFO: App       ] Verify: 1 
+81655000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+81655000 2 [PRI : TSCH Sched] 2 1
+81655000 2 [PRI : TSCH Sched] 3 2
+81655000 2 [PRI : TSCH Sched] Match - 2 <- 3
+81655000 2 [PRI : TSCH Sched] 3 2
+81655000 2 [PRI : TSCH Sched] Match - 2 <- 3
+81655000 2 Enter here!
+81655000 2 handle: 0 - 2-> 1
+81655000 2 handle: 1 - 3-> 2
+81655000 2 Numero de ns : 4 | Numero de arestas: 2
+81655000 2 Matriz de adacncia do grafo da rede:
+81655000 2 0 0 0 0 
+81655000 2 0 0 0 0 
+81655000 2 0 1 0 0 
+81655000 2 0 0 1 0 
+81655000 2 Pacotes atribuidos!
+81655000 2 N 0: 0 pacotes
+81655000 2 N 1: 0 pacotes
+81655000 2 N 2: 1 pacotes
+81655000 2 N 3: 1 pacotes
+81655000 2 Mapa da matriz de conflito gerada:
+81655000 2 N 0: 2 -> 1
+81655000 2 N 1: 3 -> 2
+81655000 2 sorted n:1
+81655000 2 sorted n:2
+81655000 2 sorted n:1
+81655000 2 Camos no pior caso
+81655000 2 sorted n:1
+81655000 2 Camos no pior caso
+81655000 2 sorted n:1
+81655000 2 Camos no pior caso
+81655000 2 sorted n:3
+81655000 2 sorted n:1
+81655000 2 Camos no pior caso
+81655000 2 Canais alocados  | |
+81655000 2                 \   /
+81655000 2                  \ /
+81655000 2 1  2  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+81655000 2 [PRI : TSCH Sched] ----CHANGE-Tx----
+81655000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+81655000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+81655000 2 [PRI : TSCH Sched] -----------------------------
+81655000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+81655000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+81655000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+81655000 2 [PRI : TSCH Sched] -----------------------------
+81655000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+81655000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+81655000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+81655000 2 [PRI : TSCH Sched] -----------------------------
+81655000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+81655000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+81655000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+81655000 2 [PRI : TSCH Sched] -----------------------------
+81655000 2 [PRI : TSCH Sched] Escalonamento Concluido
+81655000 2 Energest:
+81655000 2  CPU            80s LPM         0s DEEP LPM    0s  Total time 80s
+81655000 2  Radio LISTEN   15s TRANSMIT    0s OFF        64s
+81748136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 195
+81748136 1 [INFO: TSCH Sched] list of packets
+81748136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=14 
+81748136 1 [INFO: TSCH Sched] id=2 Tx=14 Rx=0 
+81748136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+81748136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+81748136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 5
+81748136 1 [INFO: TSCH-LOG  ] {asn 00.00001fb0 link  1  17   0  3  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  43, seq 195, edr   0
+81748136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 195, status 0, tx 1
+81748136 2 [INFO: TSCH Sched] Tx_try= 14 Tx_Success=0
+81748136 2 [INFO: TSCH-LOG  ] {asn 00.00001fb0 link  1  17   0  3  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq 195, st 0  1, dr   0
+81791000 3 [WARN: RPL       ] Unacceptable rank 838 (Current min 693, MaxRankInc 896)
+81791000 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+82057000 4 [INFO: TSCH      ] scanning on channel 15
+82826000 3 [INFO: RPL       ] Sending a multicast-DIO with rank 65535
+82826000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 44, queue 1/64 1/64, len 14 94
+82908128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 101, status 0, tx 1
+82908128 3 [INFO: TSCH Sched] Tx_try= 10 Tx_Success=0
+82908128 3 [INFO: TSCH-LOG  ] {asn 00.00002024 link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0003->LL-NULL, len  94, seq 101, st 0  1
+82908128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+82908128 2 [INFO: TSCH Sched] list of packets
+82908128 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+82908128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=10 
+82908128 2 [INFO: TSCH Sched] id=3 Tx=9 Rx=0 
+82908128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+82908128 2 [INFO: RPL       ] Received a DIO from fe80::203:3:3:3
+82908128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+82908128 2 [INFO: RPL       ] Copying prefix information
+82908128 2 [INFO: RPL       ] Prefix set - will announce this in DIOs
+82908128 2 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+82908128 2 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+82908128 2 [INFO: RPL       ] Received consistent DIO
+82908128 2 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 779, min_rank 290, parent rank 65535, link metric 384
+82908128 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+82908128 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+82908128 2 [WARN: RPL       ] The candidate parent is rejected
+82908128 2 [INFO: TSCH-LOG  ] {asn 00.00002024 link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0003->LL-NULL, len  94, seq  42, edr   0
+82908128 2 --------------------------------
+82908128 2 LL-0003->LL-0002
+82908128 2 --------------------------------
+82908128 4 [INFO: TSCH      ] scan: received packet (94 bytes) on channel 15
+82908128 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 41 e9
+82908128 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0003.0003.0003.0003 to 0xabcd/ffff.0000.0000.0000
+83067000 4 [INFO: TSCH      ] scanning on channel 26
+83081000 3 [INFO: RPL       ] Scheduling DIO timer 11367 ticks in future (Interval)
+83125000 2 [INFO: RPL       ] Scheduling DIO timer 10853 ticks in future (Interval)
+83721000 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+83721000 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+83793000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+83793000 4 [INFO: TSCH Sched] 0
+83793000 4 [INFO: TSCH Sched] 0
+83793000 4 [INFO: App       ] Verify: 0 
+83793000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+83793000 4 [PRI : TSCH Sched] 2 1
+83793000 4 [PRI : TSCH Sched] 3 2
+83793000 4 [PRI : TSCH Sched] 3 2
+83793000 4 Energest:
+83793000 4  CPU            83s LPM         0s DEEP LPM    0s  Total time 83s
+83793000 4  Radio LISTEN   83s TRANSMIT    0s OFF         0s
+84077000 4 [INFO: TSCH      ] scanning on channel 25
+84407000 1 [INFO: App       ] app generate packet seqnum=8 node_id=1
+84407000 1 [INFO: RPL       ] Updating RPL option
+84407000 1 [WARN: IPv6 Route] No route found
+84407000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 8
+84407000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+84407000 1 [INFO: TSCH Sched] 2
+84407000 1 [INFO: TSCH Sched] 0
+84407000 1 [INFO: App       ] Verify: 1 
+84407000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+84407000 1 [PRI : TSCH Sched] 2 1
+84407000 1 [PRI : TSCH Sched] Match - 1 <- 2
+84407000 1 [PRI : TSCH Sched] 3 2
+84407000 1 [PRI : TSCH Sched] 3 2
+84407000 1 Enter here!
+84407000 1 handle: 0 - 2-> 1
+84407000 1 handle: 1 - 3-> 2
+84407000 1 Numero de ns : 4 | Numero de arestas: 2
+84407000 1 Matriz de adacncia do grafo da rede:
+84407000 1 0 0 0 0 
+84407000 1 0 0 0 0 
+84407000 1 0 1 0 0 
+84407000 1 0 0 1 0 
+84407000 1 Pacotes atribuidos!
+84407000 1 N 0: 0 pacotes
+84407000 1 N 1: 0 pacotes
+84407000 1 N 2: 1 pacotes
+84407000 1 N 3: 1 pacotes
+84407000 1 Mapa da matriz de conflito gerada:
+84407000 1 N 0: 2 -> 1
+84407000 1 N 1: 3 -> 2
+84407000 1 sorted n:2
+84407000 1 sorted n:2
+84407000 1 sorted n:1
+84407000 1 Camos no pior caso
+84407000 1 sorted n:0
+84407000 1 sorted n:0
+84407000 1 Camos no pior caso
+84407000 1 Canais alocados  | |
+84407000 1                 \   /
+84407000 1                  \ /
+84407000 1 1  2  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84407000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+84407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84407000 1 [PRI : TSCH Sched] -----------------------------
+84407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84407000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+84407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84407000 1 [PRI : TSCH Sched] -----------------------------
+84407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84407000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+84407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84407000 1 [PRI : TSCH Sched] -----------------------------
+84407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84407000 1 [PRI : TSCH Sched] -----------------------------
+84407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84407000 1 [PRI : TSCH Sched] -----------------------------
+84407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84407000 1 [PRI : TSCH Sched] -----------------------------
+84407000 1 [PRI : TSCH Sched] Escalonamento Concluido
+84407000 1 Energest:
+84407000 1  CPU            83s LPM         0s DEEP LPM    0s  Total time 83s
+84407000 1  Radio LISTEN    2s TRANSMIT    0s OFF        81s
+85087000 4 [INFO: TSCH      ] scanning on channel 15
+85269000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+85269000 3 [INFO: TSCH Sched] 2
+85269000 3 [INFO: TSCH Sched] 0
+85269000 3 [INFO: App       ] Verify: 1 
+85269000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+85269000 3 [PRI : TSCH Sched] 2 1
+85269000 3 [PRI : TSCH Sched] 3 2
+85269000 3 [PRI : TSCH Sched] 3 2
+85269000 3 Enter here!
+85269000 3 handle: 0 - 2-> 1
+85269000 3 handle: 1 - 3-> 2
+85269000 3 Numero de ns : 4 | Numero de arestas: 2
+85269000 3 Matriz de adacncia do grafo da rede:
+85269000 3 0 0 0 0 
+85269000 3 0 0 0 0 
+85269000 3 0 1 0 0 
+85269000 3 0 0 1 0 
+85269000 3 Pacotes atribuidos!
+85269000 3 N 0: 0 pacotes
+85269000 3 N 1: 0 pacotes
+85269000 3 N 2: 1 pacotes
+85269000 3 N 3: 1 pacotes
+85269000 3 Mapa da matriz de conflito gerada:
+85269000 3 N 0: 2 -> 1
+85269000 3 N 1: 3 -> 2
+85269000 3 sorted n:0
+85269000 3 sorted n:2
+85269000 3 sorted n:1
+85269000 3 Camos no pior caso
+85269000 3 sorted n:1
+85269000 3 Camos no pior caso
+85269000 3 sorted n:3
+85269000 3 sorted n:2
+85269000 3 Canais alocados  | |
+85269000 3                 \   /
+85269000 3                  \ /
+85269000 3 1  2  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+85269000 3 [PRI : TSCH Sched] ----CHANGE-Tx----
+85269000 3 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+85269000 3 [PRI : TSCH Sched] ----CHANNEL: 1-----
+85269000 3 [PRI : TSCH Sched] -----------------------------
+85269000 3 [PRI : TSCH Sched] Escalonamento Concluido
+85269000 3 Energest:
+85269000 3  CPU            84s LPM         0s DEEP LPM    0s  Total time 84s
+85269000 3  Radio LISTEN   41s TRANSMIT    0s OFF        42s
+85890000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+85966240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 166, status 0, tx 1
+85966240 2 [INFO: TSCH-LOG  ] {asn 00.00002156 link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 166, st 0  1
+85966240 1 [INFO: TSCH-LOG  ] {asn 00.00002156 link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 195, edr   0
+85966240 1 --------------------------------
+85966240 1 LL-0002->LL-0001
+85966240 1 --------------------------------
+85966240 3 [INFO: TSCH-LOG  ] {asn 00.00002156 link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0002->LL-NULL, len  35, seq   0, edr   0
+85966240 3 --------------------------------
+85966240 3 LL-0002->LL-0003
+85966240 3 --------------------------------
+86097000 4 [INFO: TSCH      ] scanning on channel 20
+87107000 4 [INFO: TSCH      ] scanning on channel 26
+88117000 4 [INFO: TSCH      ] scanning on channel 15
+89127000 4 [INFO: TSCH      ] scanning on channel 25
+90137000 4 [INFO: TSCH      ] scanning on channel 26
+91147000 4 [INFO: TSCH      ] scanning on channel 15
+91655000 2 [INFO: App       ] app generate packet seqnum=6 node_id=2
+91655000 2 [INFO: RPL       ] Updating RPL option
+91655000 2 [WARN: IPv6 Route] No route found
+91655000 2 [WARN: IPv6 Route] No route found
+91655000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 196, queue 1/64 1/64, len 21 43
+91656000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+91656000 2 [INFO: TSCH Sched] 1
+91656000 2 [INFO: TSCH Sched] 3
+91656000 2 [INFO: App       ] Verify: 1 
+91656000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+91656000 2 [PRI : TSCH Sched] 2 1
+91656000 2 [PRI : TSCH Sched] 3 2
+91656000 2 [PRI : TSCH Sched] Match - 2 <- 3
+91656000 2 [PRI : TSCH Sched] 3 2
+91656000 2 [PRI : TSCH Sched] Match - 2 <- 3
+91656000 2 Enter here!
+91656000 2 handle: 0 - 2-> 1
+91656000 2 handle: 1 - 3-> 2
+91656000 2 Numero de ns : 4 | Numero de arestas: 2
+91656000 2 Matriz de adacncia do grafo da rede:
+91656000 2 0 0 0 0 
+91656000 2 0 0 0 0 
+91656000 2 0 1 0 0 
+91656000 2 0 0 1 0 
+91656000 2 Pacotes atribuidos!
+91656000 2 N 0: 0 pacotes
+91656000 2 N 1: 0 pacotes
+91656000 2 N 2: 1 pacotes
+91656000 2 N 3: 1 pacotes
+91656000 2 Mapa da matriz de conflito gerada:
+91656000 2 N 0: 2 -> 1
+91656000 2 N 1: 3 -> 2
+91656000 2 sorted n:1
+91656000 2 sorted n:3
+91656000 2 sorted n:1
+91656000 2 Camos no pior caso
+91656000 2 sorted n:0
+91656000 2 sorted n:2
+91656000 2 Canais alocados  | |
+91656000 2                 \   /
+91656000 2                  \ /
+91656000 2 1  2  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+91656000 2 [PRI : TSCH Sched] ----CHANGE-Tx----
+91656000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+91656000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+91656000 2 [PRI : TSCH Sched] -----------------------------
+91656000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+91656000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+91656000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+91656000 2 [PRI : TSCH Sched] -----------------------------
+91656000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+91656000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+91656000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+91656000 2 [PRI : TSCH Sched] -----------------------------
+91656000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+91656000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+91656000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+91656000 2 [PRI : TSCH Sched] -----------------------------
+91656000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+91656000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+91656000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+91656000 2 [PRI : TSCH Sched] -----------------------------
+91656000 2 [PRI : TSCH Sched] Escalonamento Concluido
+91656000 2 Energest:
+91656000 2  CPU            90s LPM         0s DEEP LPM    0s  Total time 90s
+91656000 2  Radio LISTEN   16s TRANSMIT    0s OFF        74s
+91778136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 196
+91778136 1 [INFO: TSCH Sched] list of packets
+91778136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=15 
+91778136 1 [INFO: TSCH Sched] id=2 Tx=15 Rx=0 
+91778136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+91778136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+91778136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 6
+91778136 1 [INFO: TSCH-LOG  ] {asn 00.0000239b link  1  17   0  3  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  43, seq 196, edr   0
+91778136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 196, status 0, tx 1
+91778136 2 [INFO: TSCH Sched] Tx_try= 15 Tx_Success=0
+91778136 2 [INFO: TSCH-LOG  ] {asn 00.0000239b link  1  17   0  3  1 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+91778136 2 [INFO: TSCH-LOG  ] {asn 00.0000239b link  1  17   0  3  1 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq 196, st 0  1, dr   0
+92157000 4 [INFO: TSCH      ] scanning on channel 25
+92504000 2 [INFO: RPL       ] probing 3  last tx 1 min ago
+92504000 2 [INFO: RPL       ] Sending unicast-DIO with rank 779 to fe80::203:3:3:3
+92504000 2 [INFO: TSCH      ] send packet to 0003.0003.0003.0003 with seqno 197, queue 1/64 1/64, len 21 100
+92598320 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+92599960 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 197
+92599960 3 [INFO: TSCH Sched] list of packets
+92599960 3 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+92599960 3 [INFO: TSCH Sched] id=2 Tx=3 Rx=0 
+92599960 3 [INFO: TSCH Sched] id=3 Tx=0 Rx=3 
+92599960 3 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+92599960 3 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+92599960 3 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+92599960 3 [INFO: RPL       ] Copying prefix information
+92599960 3 [INFO: RPL       ] Prefix set - will announce this in DIOs
+92599960 3 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+92599960 3 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+92599960 3 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 65535, min_rank 693, parent rank 779, link metric 1097
+92599960 3 [WARN: RPL       ] Unacceptable rank 779 (Current min 693, MaxRankInc 896)
+92599960 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+92599960 3 [WARN: RPL       ] The candidate parent is rejected
+92599960 3 [INFO: TSCH-LOG  ] {asn 00.000023ed link  1  17   0  0  0 ch 25} uc-1-0 rx LL-0002->LL-0003, len 100, seq 197, edr   0
+92599960 2 [INFO: TSCH      ] packet sent to 0003.0003.0003.0003, seqno 197, status 0, tx 1
+92599960 2 [INFO: TSCH Sched] Tx_try= 16 Tx_Success=0
+92599960 2 [INFO: TSCH-LOG  ] {asn 00.000023ed link  1  17   0  0  0 ch 25} uc-1-0 tx LL-0002->LL-0003, len 100, seq 197, st 0  1
+92607000 4 [INFO: TSCH      ] scan: received packet (17 bytes) on channel 25
+92607000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 2, FCF 02 2e
+92607000 4 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0x0/0000.0000.0000.0000 to 0xabcd/0002.0002.0002.0002
+92721000 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+92721000 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+92766240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 75, status 0, tx 1
+92766240 1 [INFO: TSCH-LOG  ] {asn 00.000023fe link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  75, st 0  1
+92766240 2 [INFO: TSCH-LOG  ] {asn 00.000023fe link  1  17   0  0  0 ch 26} bc-0-0 rx LL-0001->LL-NULL, len  35, seq  42, edr   0, dr   0
+92766240 2 --------------------------------
+92766240 2 LL-0001->LL-0002
+92766240 2 --------------------------------
+92791000 3 [WARN: RPL       ] Unacceptable rank 779 (Current min 693, MaxRankInc 896)
+92791000 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+93167000 4 [INFO: TSCH      ] scanning on channel 25
+93793000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+93793000 4 [INFO: TSCH Sched] 0
+93793000 4 [INFO: TSCH Sched] 0
+93793000 4 [INFO: App       ] Verify: 0 
+93793000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+93793000 4 [PRI : TSCH Sched] 2 1
+93793000 4 [PRI : TSCH Sched] 3 2
+93793000 4 [PRI : TSCH Sched] 3 2
+93793000 4 Energest:
+93793000 4  CPU            93s LPM         0s DEEP LPM    0s  Total time 93s
+93793000 4  Radio LISTEN   93s TRANSMIT    0s OFF         0s
+93978000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 726
+93978000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 197, queue 1/64 1/64, len 14 94
+94128128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 167, status 0, tx 1
+94128128 2 [INFO: TSCH Sched] Tx_try= 17 Tx_Success=0
+94128128 2 [INFO: TSCH-LOG  ] {asn 00.00002486 link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 167, st 0  1
+94128128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+94128128 1 [INFO: TSCH Sched] list of packets
+94128128 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=16 
+94128128 1 [INFO: TSCH Sched] id=2 Tx=16 Rx=0 
+94128128 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+94128128 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+94128128 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+94128128 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+94128128 1 [INFO: RPL       ] Copying prefix information
+94128128 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+94128128 1 [INFO: TSCH-LOG  ] {asn 00.00002486 link  1  17   0  0  0 ch 26} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 197, edr   0
+94128128 1 --------------------------------
+94128128 1 LL-0002->LL-0001
+94128128 1 --------------------------------
+94128128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+94128128 3 [INFO: TSCH Sched] list of packets
+94128128 3 [INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+94128128 3 [INFO: TSCH Sched] id=2 Tx=4 Rx=0 
+94128128 3 [INFO: TSCH Sched] id=3 Tx=0 Rx=4 
+94128128 3 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+94128128 3 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+94128128 3 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+94128128 3 [INFO: RPL       ] Copying prefix information
+94128128 3 [INFO: RPL       ] Prefix set - will announce this in DIOs
+94128128 3 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+94128128 3 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+94128128 3 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 65535, min_rank 693, parent rank 726, link metric 1097
+94128128 3 [WARN: RPL       ] Unacceptable rank 726 (Current min 693, MaxRankInc 896)
+94128128 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+94128128 3 [WARN: RPL       ] The candidate parent is rejected
+94128128 3 [INFO: TSCH-LOG  ] {asn 00.00002486 link  1  17   0  0  0 ch 26} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 197, edr   0
+94128128 3 --------------------------------
+94128128 3 LL-0002->LL-0003
+94128128 3 --------------------------------
+94177000 4 [INFO: TSCH      ] scanning on channel 20
+94407000 1 [INFO: App       ] app generate packet seqnum=9 node_id=1
+94407000 1 [INFO: RPL       ] Updating RPL option
+94407000 1 [WARN: IPv6 Route] No route found
+94407000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 9
+94407000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+94407000 1 [INFO: TSCH Sched] 2
+94407000 1 [INFO: TSCH Sched] 0
+94407000 1 [INFO: App       ] Verify: 1 
+94407000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+94407000 1 [PRI : TSCH Sched] 2 1
+94407000 1 [PRI : TSCH Sched] Match - 1 <- 2
+94407000 1 [PRI : TSCH Sched] 3 2
+94407000 1 [PRI : TSCH Sched] 3 2
+94407000 1 Enter here!
+94407000 1 handle: 0 - 2-> 1
+94407000 1 handle: 1 - 3-> 2
+94407000 1 Numero de ns : 4 | Numero de arestas: 2
+94407000 1 Matriz de adacncia do grafo da rede:
+94407000 1 0 0 0 0 
+94407000 1 0 0 0 0 
+94407000 1 0 1 0 0 
+94407000 1 0 0 1 0 
+94407000 1 Pacotes atribuidos!
+94407000 1 N 0: 0 pacotes
+94407000 1 N 1: 0 pacotes
+94407000 1 N 2: 1 pacotes
+94407000 1 N 3: 1 pacotes
+94407000 1 Mapa da matriz de conflito gerada:
+94407000 1 N 0: 2 -> 1
+94407000 1 N 1: 3 -> 2
+94407000 1 sorted n:1
+94407000 1 sorted n:1
+94407000 1 Camos no pior caso
+94407000 1 sorted n:2
+94407000 1 sorted n:0
+94407000 1 sorted n:1
+94407000 1 Camos no pior caso
+94407000 1 Canais alocados  | |
+94407000 1                 \   /
+94407000 1                  \ /
+94407000 1 1  0  2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94407000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94407000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94407000 1 [PRI : TSCH Sched] -----------------------------
+94407000 1 [PRI : TSCH Sched] Escalonamento Concluido
+94407000 1 Energest:
+94407000 1  CPU            93s LPM         0s DEEP LPM    0s  Total time 93s
+94407000 1  Radio LISTEN    2s TRANSMIT    0s OFF        91s
+94448000 3 [INFO: RPL       ] Sending a multicast-DIO with rank 65535
+94448000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 44, queue 1/64 1/64, len 14 94
+94468128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 102, status 0, tx 1
+94468128 3 [INFO: TSCH Sched] Tx_try= 11 Tx_Success=0
+94468128 3 [INFO: TSCH-LOG  ] {asn 00.000024a8 link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0003->LL-NULL, len  94, seq 102, st 0  1
+94468128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+94468128 2 [INFO: TSCH Sched] list of packets
+94468128 2 [INFO: TSCH Sched] id=1 Tx=1 Rx=0 
+94468128 2 [INFO: TSCH Sched] id=2 Tx=0 Rx=11 
+94468128 2 [INFO: TSCH Sched] id=3 Tx=10 Rx=0 
+94468128 2 [INFO: TSCH Sched] id=4 Tx=1 Rx=0 
+94468128 2 [INFO: RPL       ] Received a DIO from fe80::203:3:3:3
+94468128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+94468128 2 [INFO: RPL       ] Copying prefix information
+94468128 2 [INFO: RPL       ] Prefix set - will announce this in DIOs
+94468128 2 [INFO: RPL       ] rpl_set_prefix - prefix NON-NULL
+94468128 2 [INFO: RPL       ] Set dag fd00::201:1:1:1 lifetime to 3145
+94468128 2 [INFO: RPL       ] Received consistent DIO
+94468128 2 [INFO: RPL       ] preferred DAG fd00::201:1:1:1, rank 726, min_rank 290, parent rank 65535, link metric 320
+94468128 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+94468128 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+94468128 2 [WARN: RPL       ] The candidate parent is rejected
+94468128 2 [INFO: TSCH-LOG  ] {asn 00.000024a8 link  1  17   0  0  0 ch 15} bc-1-0 rx LL-0003->LL-NULL, len  94, seq  42, edr   0
+94468128 2 --------------------------------
+94468128 2 LL-0003->LL-0002
+94468128 2 --------------------------------
+94721000 2 [WARN: RPL       ] Unacceptable rank 65535 (Current min 290, MaxRankInc 896)
+94721000 2 [INFO: RPL       ] Nullifying parent fe80::203:3:3:3
+94791000 3 [WARN: RPL       ] Unacceptable rank 726 (Current min 693, MaxRankInc 896)
+94791000 3 [INFO: RPL       ] Nullifying parent fe80::202:2:2:2
+95187000 4 [INFO: TSCH      ] scanning on channel 15
+95269000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+95269000 3 [INFO: TSCH Sched] 2
+95269000 3 [INFO: TSCH Sched] 0
+95269000 3 [INFO: App       ] Verify: 1 
+95269000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+95269000 3 [PRI : TSCH Sched] 2 1
+95269000 3 [PRI : TSCH Sched] 3 2
+95269000 3 [PRI : TSCH Sched] 3 2
+95269000 3 Enter here!
+95269000 3 handle: 0 - 2-> 1
+95269000 3 handle: 1 - 3-> 2
+95269000 3 Numero de ns : 4 | Numero de arestas: 2
+95269000 3 Matriz de adacncia do grafo da rede:
+95269000 3 0 0 0 0 
+95269000 3 0 0 0 0 
+95269000 3 0 1 0 0 
+95269000 3 0 0 1 0 
+95269000 3 Pacotes atribuidos!
+95269000 3 N 0: 0 pacotes
+95269000 3 N 1: 0 pacotes
+95269000 3 N 2: 1 pacotes
+95269000 3 N 3: 1 pacotes
+95269000 3 Mapa da matriz de conflito gerada:
+95269000 3 N 0: 2 -> 1
+95269000 3 N 1: 3 -> 2
+95269000 3 sorted n:0
+95269000 3 sorted n:2
+95269000 3 sorted n:3
+95269000 3 sorted n:0
+95269000 3 Camos no pior caso
+95269000 3 Canais alocados  | |
+95269000 3                 \   /
+95269000 3                  \ /
+95269000 3 1  2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+95269000 3 [PRI : TSCH Sched] ----CHANGE-Tx----
+95269000 3 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+95269000 3 [PRI : TSCH Sched] ----CHANNEL: 1-----
+95269000 3 [PRI : TSCH Sched] -----------------------------
+95269000 3 [PRI : TSCH Sched] Escalonamento Concluido
+95269000 3 Energest:
+95269000 3  CPU            94s LPM         0s DEEP LPM    0s  Total time 94s
+95269000 3  Radio LISTEN   42s TRANSMIT    0s OFF        52s
+96197000 4 [INFO: TSCH      ] scanning on channel 25
+97207000 4 [INFO: TSCH      ] scanning on channel 20
+98217000 4 [INFO: TSCH      ] scanning on channel 15
+99227000 4 [INFO: TSCH      ] scanning on channel 20
+99466000 3 [INFO: RPL       ] Scheduling DIO timer 22121 ticks in future (Interval)
+99510000 2 [INFO: RPL       ] Scheduling DIO timer 25689 ticks in future (Interval)
+Script timed out.
+TEST OK
+[if test was run without visualization, Cooja would now have been terminated]

@@ -1,0 +1,3155 @@
+Starting COOJA logger
+94000 1 [INFO: TSCH      ] scanning on channel 20
+94000 1 [INFO: TSCH      ] starting as node
+94000 1 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+94000 1 [INFO: Main      ] - Routing: RPL Classic
+94000 1 [INFO: Main      ] - Net: sicslowpan
+94000 1 [INFO: Main      ] - MAC: TSCH
+94000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+94000 1 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+94000 1 [INFO: Main      ] Node ID: 1
+94000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+94000 1 [INFO: RPL       ] rpl-classic started
+94000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+94000 1 [INFO: TSCH Sched] add_slotframe 1 17
+94000 1 [PRI : TSCH Sched] Handle : 13
+94000 1  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+94000 1 [INFO: RPL       ] Node set to be a DAG root with DAG ID fd00::201:1:1:1
+94000 1 [INFO: RPL       ] Scheduling DIO timer 3633 ticks in future (Interval)
+94000 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+94000 1 [INFO: RPL       ] root_set_prefix: created a new RPL dag
+94000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+94000 1 [INFO: TSCH Sched] 0
+94000 1 [INFO: TSCH Sched] 0
+94000 1 [INFO: App       ] Verify: 0 
+94000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+94000 1 [PRI : TSCH Sched] 7 1
+94000 1 [PRI : TSCH Sched] Match - 1 <- 7
+94000 1 [PRI : TSCH Sched] Handle : 13
+94000 1  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0007.0007.0007.0007
+94000 1 [PRI : TSCH Sched] 5 2
+94000 1 [PRI : TSCH Sched] 3 1
+94000 1 [PRI : TSCH Sched] Match - 1 <- 3
+94000 1 [PRI : TSCH Sched] Handle : 13
+94000 1  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0003.0003.0003.0003
+94000 1 [PRI : TSCH Sched] 14 9
+94000 1 [PRI : TSCH Sched] 17 10
+94000 1 [PRI : TSCH Sched] 9 2
+94000 1 [PRI : TSCH Sched] 11 10
+94000 1 [PRI : TSCH Sched] 4 2
+94000 1 [PRI : TSCH Sched] 6 2
+94000 1 [PRI : TSCH Sched] 16 1
+94000 1 [PRI : TSCH Sched] Match - 1 <- 16
+94000 1 [PRI : TSCH Sched] Handle : 13
+94000 1  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0010.0010.0010.0010
+94000 1 [PRI : TSCH Sched] 10 1
+94000 1 [PRI : TSCH Sched] Match - 1 <- 10
+94000 1 [PRI : TSCH Sched] Handle : 13
+94000 1  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=000a.000a.000a.000a
+94000 1 [PRI : TSCH Sched] 18 16
+94000 1 [PRI : TSCH Sched] 2 1
+94000 1 [PRI : TSCH Sched] Match - 1 <- 2
+94000 1 [PRI : TSCH Sched] Handle : 13
+94000 1  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0002.0002.0002.0002
+94000 1 [PRI : TSCH Sched] 2 1
+94000 1 [PRI : TSCH Sched] Match - 1 <- 2
+94000 1 Energest:
+94000 1  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+94000 1  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+104000 1 [INFO: TSCH      ] starting as coordinator, PAN ID abcd, asn-0.0
+194000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+277240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 69, status 0, tx 1
+277240 1 [INFO: TSCH-LOG  ] {asn 00.00000011 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  69, st 0  1
+373000 2 [INFO: TSCH      ] scanning on channel 15
+373000 2 [INFO: TSCH      ] starting as node
+373000 2 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+373000 2 [INFO: Main      ] - Routing: RPL Classic
+373000 2 [INFO: Main      ] - Net: sicslowpan
+373000 2 [INFO: Main      ] - MAC: TSCH
+373000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+373000 2 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+373000 2 [INFO: Main      ] Node ID: 2
+373000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+373000 2 [INFO: RPL       ] rpl-classic started
+373000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+373000 2 [INFO: TSCH Sched] add_slotframe 1 17
+373000 2 [PRI : TSCH Sched] Handle : 13
+373000 2  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+373000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+373000 2 [INFO: TSCH Sched] 0
+373000 2 [INFO: TSCH Sched] 0
+373000 2 [INFO: App       ] Verify: 0 
+373000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+373000 2 [PRI : TSCH Sched] 7 1
+373000 2 [PRI : TSCH Sched] 5 2
+373000 2 [PRI : TSCH Sched] Match - 2 <- 5
+373000 2 [PRI : TSCH Sched] Handle : 13
+373000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0005.0005.0005.0005
+373000 2 [PRI : TSCH Sched] 3 1
+373000 2 [PRI : TSCH Sched] 14 9
+373000 2 [PRI : TSCH Sched] 17 10
+373000 2 [PRI : TSCH Sched] 9 2
+373000 2 [PRI : TSCH Sched] Match - 2 <- 9
+373000 2 [PRI : TSCH Sched] Handle : 13
+373000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0009.0009.0009.0009
+373000 2 [PRI : TSCH Sched] 11 10
+373000 2 [PRI : TSCH Sched] 4 2
+373000 2 [PRI : TSCH Sched] Match - 2 <- 4
+373000 2 [PRI : TSCH Sched] Handle : 13
+373000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0004.0004.0004.0004
+373000 2 [PRI : TSCH Sched] 6 2
+373000 2 [PRI : TSCH Sched] Match - 2 <- 6
+373000 2 [PRI : TSCH Sched] Handle : 13
+373000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0006.0006.0006.0006
+373000 2 [PRI : TSCH Sched] 16 1
+373000 2 [PRI : TSCH Sched] 10 1
+373000 2 [PRI : TSCH Sched] 18 16
+373000 2 [PRI : TSCH Sched] 2 1
+373000 2 [PRI : TSCH Sched] 2 1
+373000 2 Energest:
+373000 2  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+373000 2  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+430000 4 [INFO: TSCH      ] scanning on channel 25
+430000 4 [INFO: TSCH      ] starting as node
+430000 4 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+430000 4 [INFO: Main      ] - Routing: RPL Classic
+430000 4 [INFO: Main      ] - Net: sicslowpan
+430000 4 [INFO: Main      ] - MAC: TSCH
+430000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+430000 4 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+430000 4 [INFO: Main      ] Node ID: 4
+430000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+430000 4 [INFO: RPL       ] rpl-classic started
+430000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+430000 4 [INFO: TSCH Sched] add_slotframe 1 17
+430000 4 [PRI : TSCH Sched] Handle : 13
+430000 4  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+430000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+430000 4 [INFO: TSCH Sched] 0
+430000 4 [INFO: TSCH Sched] 0
+430000 4 [INFO: App       ] Verify: 0 
+430000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+430000 4 [PRI : TSCH Sched] 7 1
+430000 4 [PRI : TSCH Sched] 5 2
+430000 4 [PRI : TSCH Sched] 3 1
+430000 4 [PRI : TSCH Sched] 14 9
+430000 4 [PRI : TSCH Sched] 17 10
+430000 4 [PRI : TSCH Sched] 9 2
+430000 4 [PRI : TSCH Sched] 11 10
+430000 4 [PRI : TSCH Sched] 4 2
+430000 4 [PRI : TSCH Sched] 6 2
+430000 4 [PRI : TSCH Sched] 16 1
+430000 4 [PRI : TSCH Sched] 10 1
+430000 4 [PRI : TSCH Sched] 18 16
+430000 4 [PRI : TSCH Sched] 2 1
+430000 4 [PRI : TSCH Sched] 2 1
+430000 4 Energest:
+430000 4  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+430000 4  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+875000 3 [INFO: TSCH      ] scanning on channel 26
+875000 3 [INFO: TSCH      ] starting as node
+875000 3 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+875000 3 [INFO: Main      ] - Routing: RPL Classic
+875000 3 [INFO: Main      ] - Net: sicslowpan
+875000 3 [INFO: Main      ] - MAC: TSCH
+875000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+875000 3 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+875000 3 [INFO: Main      ] Node ID: 3
+875000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+875000 3 [INFO: RPL       ] rpl-classic started
+875000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+875000 3 [INFO: TSCH Sched] add_slotframe 1 17
+875000 3 [PRI : TSCH Sched] Handle : 13
+875000 3  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+875000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+875000 3 [INFO: TSCH Sched] 0
+875000 3 [INFO: TSCH Sched] 0
+875000 3 [INFO: App       ] Verify: 0 
+875000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+875000 3 [PRI : TSCH Sched] 7 1
+875000 3 [PRI : TSCH Sched] 5 2
+875000 3 [PRI : TSCH Sched] 3 1
+875000 3 [PRI : TSCH Sched] 14 9
+875000 3 [PRI : TSCH Sched] 17 10
+875000 3 [PRI : TSCH Sched] 9 2
+875000 3 [PRI : TSCH Sched] 11 10
+875000 3 [PRI : TSCH Sched] 4 2
+875000 3 [PRI : TSCH Sched] 6 2
+875000 3 [PRI : TSCH Sched] 16 1
+875000 3 [PRI : TSCH Sched] 10 1
+875000 3 [PRI : TSCH Sched] 18 16
+875000 3 [PRI : TSCH Sched] 2 1
+875000 3 [PRI : TSCH Sched] 2 1
+875000 3 Energest:
+875000 3  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+875000 3  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+1383000 2 [INFO: TSCH      ] scanning on channel 15
+1440000 4 [INFO: TSCH      ] scanning on channel 20
+1875000 3 [INFO: RPL       ] Sending a DIS to ff02::1a
+1875000 3 [WARN: TSCH      ] Cannot compute max payload size: not associated
+1875000 3 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+1885000 3 [INFO: TSCH      ] scanning on channel 25
+2393000 2 [INFO: TSCH      ] scanning on channel 26
+2450000 4 [INFO: TSCH      ] scanning on channel 26
+2895000 3 [INFO: TSCH      ] scanning on channel 26
+3403000 2 [INFO: TSCH      ] scanning on channel 15
+3460000 4 [INFO: TSCH      ] scanning on channel 25
+3637000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+3637000 2 [INFO: TSCH Sched] 0
+3637000 2 [INFO: TSCH Sched] 0
+3637000 2 [INFO: App       ] Verify: 0 
+3637000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+3637000 2 [PRI : TSCH Sched] 7 1
+3637000 2 [PRI : TSCH Sched] 5 2
+3637000 2 [PRI : TSCH Sched] Match - 2 <- 5
+3637000 2 [PRI : TSCH Sched] 3 1
+3637000 2 [PRI : TSCH Sched] 14 9
+3637000 2 [PRI : TSCH Sched] 17 10
+3637000 2 [PRI : TSCH Sched] 9 2
+3637000 2 [PRI : TSCH Sched] Match - 2 <- 9
+3637000 2 [PRI : TSCH Sched] 11 10
+3637000 2 [PRI : TSCH Sched] 4 2
+3637000 2 [PRI : TSCH Sched] Match - 2 <- 4
+3637000 2 [PRI : TSCH Sched] 6 2
+3637000 2 [PRI : TSCH Sched] Match - 2 <- 6
+3637000 2 [PRI : TSCH Sched] 16 1
+3637000 2 [PRI : TSCH Sched] 10 1
+3637000 2 [PRI : TSCH Sched] 18 16
+3637000 2 [PRI : TSCH Sched] 2 1
+3637000 2 [PRI : TSCH Sched] 2 1
+3637000 2 Energest:
+3637000 2  CPU             3s LPM         0s DEEP LPM    0s  Total time 3s
+3637000 2  Radio LISTEN    3s TRANSMIT    0s OFF         0s
+3727000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+3727000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 147, queue 1/64 1/64, len 14 94
+3849128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 70, status 0, tx 1
+3849128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+3849128 1 [INFO: TSCH-LOG  ] {asn 00.00000176 link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  70, st 0  1
+3905000 3 [INFO: TSCH      ] scanning on channel 20
+4191000 1 [INFO: RPL       ] Scheduling DIO timer 4658 ticks in future (Interval)
+4193000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+4357240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 71, status 0, tx 1
+4357240 1 [INFO: TSCH-LOG  ] {asn 00.000001a9 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  71, st 0  1
+4413000 2 [INFO: TSCH      ] scanning on channel 15
+4470000 4 [INFO: TSCH      ] scanning on channel 20
+4915000 3 [INFO: TSCH      ] scanning on channel 26
+5423000 2 [INFO: TSCH      ] scanning on channel 25
+5480000 4 [INFO: TSCH      ] scanning on channel 15
+5925000 3 [INFO: TSCH      ] scanning on channel 20
+6433000 2 [INFO: TSCH      ] scanning on channel 20
+6490000 4 [INFO: TSCH      ] scanning on channel 15
+6935000 3 [INFO: TSCH      ] scanning on channel 25
+7443000 2 [INFO: TSCH      ] scanning on channel 26
+7500000 4 [INFO: TSCH      ] scanning on channel 15
+7945000 3 [INFO: TSCH      ] scanning on channel 25
+8453000 2 [INFO: TSCH      ] scanning on channel 26
+8510000 4 [INFO: TSCH      ] scanning on channel 25
+8849000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+8849000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 147, queue 1/64 1/64, len 14 94
+8949128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 72, status 0, tx 1
+8949128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+8949128 1 [INFO: TSCH-LOG  ] {asn 00.00000374 link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  72, st 0  1
+8955000 3 [INFO: TSCH      ] scanning on channel 26
+9463000 2 [INFO: TSCH      ] scanning on channel 26
+9520000 4 [INFO: TSCH      ] scanning on channel 15
+9965000 3 [INFO: TSCH      ] scanning on channel 26
+10440000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10473000 2 [INFO: TSCH      ] scanning on channel 20
+10477240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 73, status 0, tx 1
+10477240 1 [INFO: TSCH-LOG  ] {asn 00.0000040d link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  73, st 0  1
+10530000 4 [INFO: TSCH      ] scanning on channel 25
+10975000 3 [INFO: TSCH      ] scanning on channel 25
+11483000 2 [INFO: TSCH      ] scanning on channel 15
+11540000 4 [INFO: TSCH      ] scanning on channel 15
+11985000 3 [INFO: TSCH      ] scanning on channel 26
+12384000 1 [INFO: RPL       ] Scheduling DIO timer 14335 ticks in future (Interval)
+12493000 2 [INFO: TSCH      ] scanning on channel 15
+12550000 4 [INFO: TSCH      ] scanning on channel 20
+12995000 3 [INFO: TSCH      ] scanning on channel 26
+13503000 2 [INFO: TSCH      ] scanning on channel 15
+13560000 4 [INFO: TSCH      ] scanning on channel 26
+13637000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+13637000 2 [INFO: TSCH Sched] 0
+13637000 2 [INFO: TSCH Sched] 0
+13637000 2 [INFO: App       ] Verify: 0 
+13637000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+13637000 2 [PRI : TSCH Sched] 7 1
+13637000 2 [PRI : TSCH Sched] 5 2
+13637000 2 [PRI : TSCH Sched] Match - 2 <- 5
+13637000 2 [PRI : TSCH Sched] 3 1
+13637000 2 [PRI : TSCH Sched] 14 9
+13637000 2 [PRI : TSCH Sched] 17 10
+13637000 2 [PRI : TSCH Sched] 9 2
+13637000 2 [PRI : TSCH Sched] Match - 2 <- 9
+13637000 2 [PRI : TSCH Sched] 11 10
+13637000 2 [PRI : TSCH Sched] 4 2
+13637000 2 [PRI : TSCH Sched] Match - 2 <- 4
+13637000 2 [PRI : TSCH Sched] 6 2
+13637000 2 [PRI : TSCH Sched] Match - 2 <- 6
+13637000 2 [PRI : TSCH Sched] 16 1
+13637000 2 [PRI : TSCH Sched] 10 1
+13637000 2 [PRI : TSCH Sched] 18 16
+13637000 2 [PRI : TSCH Sched] 2 1
+13637000 2 [PRI : TSCH Sched] 2 1
+13637000 2 Energest:
+13637000 2  CPU            13s LPM         0s DEEP LPM    0s  Total time 13s
+13637000 2  Radio LISTEN   13s TRANSMIT    0s OFF         0s
+14005000 3 [INFO: TSCH      ] scanning on channel 26
+14222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+14222000 4 [INFO: TSCH Sched] 0
+14222000 4 [INFO: TSCH Sched] 0
+14222000 4 [INFO: App       ] Verify: 0 
+14222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+14222000 4 [PRI : TSCH Sched] 7 1
+14222000 4 [PRI : TSCH Sched] 5 2
+14222000 4 [PRI : TSCH Sched] 3 1
+14222000 4 [PRI : TSCH Sched] 14 9
+14222000 4 [PRI : TSCH Sched] 17 10
+14222000 4 [PRI : TSCH Sched] 9 2
+14222000 4 [PRI : TSCH Sched] 11 10
+14222000 4 [PRI : TSCH Sched] 4 2
+14222000 4 [PRI : TSCH Sched] 6 2
+14222000 4 [PRI : TSCH Sched] 16 1
+14222000 4 [PRI : TSCH Sched] 10 1
+14222000 4 [PRI : TSCH Sched] 18 16
+14222000 4 [PRI : TSCH Sched] 2 1
+14222000 4 [PRI : TSCH Sched] 2 1
+14222000 4 Energest:
+14222000 4  CPU            13s LPM         0s DEEP LPM    0s  Total time 13s
+14222000 4  Radio LISTEN   13s TRANSMIT    0s OFF         0s
+14513000 2 [INFO: TSCH      ] scanning on channel 20
+14570000 4 [INFO: TSCH      ] scanning on channel 20
+15015000 3 [INFO: TSCH      ] scanning on channel 20
+15523000 2 [INFO: TSCH      ] scanning on channel 25
+15580000 4 [INFO: TSCH      ] scanning on channel 26
+16025000 3 [INFO: TSCH      ] scanning on channel 20
+16533000 2 [INFO: TSCH      ] scanning on channel 20
+16590000 4 [INFO: TSCH      ] scanning on channel 15
+17035000 3 [INFO: TSCH      ] scanning on channel 26
+17543000 2 [INFO: TSCH      ] scanning on channel 15
+17600000 4 [INFO: TSCH      ] scanning on channel 26
+17766000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+17787240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 74, status 0, tx 1
+17787240 1 [INFO: TSCH-LOG  ] {asn 00.000006e8 link  1  17   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  74, st 0  1
+17793000 2 [INFO: TSCH      ] scan: received packet (35 bytes) on channel 15
+17793000 2 [INFO: TSCH      ] parse_eb: no schedule
+17793000 2 0001.0001.0001.0001[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0001.0001.0001.0001
+17793000 2 [INFO: TSCH      ] association done (1), sec 0, PAN ID abcd, asn-0.6e8, jp 1, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0001.0001.0001.0001
+18045000 3 [INFO: TSCH      ] scanning on channel 20
+18610000 4 [INFO: TSCH      ] scanning on channel 25
+19055000 3 [INFO: TSCH      ] scanning on channel 26
+19620000 4 [INFO: TSCH      ] scanning on channel 15
+20065000 3 [INFO: TSCH      ] scanning on channel 26
+20630000 4 [INFO: TSCH      ] scanning on channel 20
+21075000 3 [INFO: TSCH      ] scanning on channel 15
+21431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+21431000 3 [INFO: TSCH Sched] 0
+21431000 3 [INFO: TSCH Sched] 0
+21431000 3 [INFO: App       ] Verify: 0 
+21431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+21431000 3 [PRI : TSCH Sched] 7 1
+21431000 3 [PRI : TSCH Sched] 5 2
+21431000 3 [PRI : TSCH Sched] 3 1
+21431000 3 [PRI : TSCH Sched] 14 9
+21431000 3 [PRI : TSCH Sched] 17 10
+21431000 3 [PRI : TSCH Sched] 9 2
+21431000 3 [PRI : TSCH Sched] 11 10
+21431000 3 [PRI : TSCH Sched] 4 2
+21431000 3 [PRI : TSCH Sched] 6 2
+21431000 3 [PRI : TSCH Sched] 16 1
+21431000 3 [PRI : TSCH Sched] 10 1
+21431000 3 [PRI : TSCH Sched] 18 16
+21431000 3 [PRI : TSCH Sched] 2 1
+21431000 3 [PRI : TSCH Sched] 2 1
+21431000 3 Energest:
+21431000 3  CPU            20s LPM         0s DEEP LPM    0s  Total time 20s
+21431000 3  Radio LISTEN   20s TRANSMIT    0s OFF         0s
+21640000 4 [INFO: TSCH      ] scanning on channel 15
+21775000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 72, queue 1/64 1/64, len 21 21
+21775000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+21868432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 72
+21868432 1 [INFO: TSCH Sched] list of packets
+21868432 1 [WARN: 6LoWPAN   ] input: empty packet
+21868432 1 [INFO: TSCH-LOG  ] {asn 00.00000880 link  1  17   0  0  0 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq  72, edr   0
+21868432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 72, status 0, tx 1
+21868432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+21868432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+21868432 2 [INFO: TSCH-LOG  ] {asn 00.00000880 link  1  17   0  0  0 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq  72, st 0  1, dr   0
+22085000 3 [INFO: TSCH      ] scanning on channel 26
+22650000 4 [INFO: TSCH      ] scanning on channel 26
+23095000 3 [INFO: TSCH      ] scanning on channel 15
+23637000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+23637000 2 [INFO: TSCH Sched] 0
+23637000 2 [INFO: TSCH Sched] 0
+23637000 2 [INFO: App       ] Verify: 0 
+23637000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+23637000 2 [PRI : TSCH Sched] 7 1
+23637000 2 [PRI : TSCH Sched] 5 2
+23637000 2 [PRI : TSCH Sched] Match - 2 <- 5
+23637000 2 [PRI : TSCH Sched] 3 1
+23637000 2 [PRI : TSCH Sched] 14 9
+23637000 2 [PRI : TSCH Sched] 17 10
+23637000 2 [PRI : TSCH Sched] 9 2
+23637000 2 [PRI : TSCH Sched] Match - 2 <- 9
+23637000 2 [PRI : TSCH Sched] 11 10
+23637000 2 [PRI : TSCH Sched] 4 2
+23637000 2 [PRI : TSCH Sched] Match - 2 <- 4
+23637000 2 [PRI : TSCH Sched] 6 2
+23637000 2 [PRI : TSCH Sched] Match - 2 <- 6
+23637000 2 [PRI : TSCH Sched] 16 1
+23637000 2 [PRI : TSCH Sched] 10 1
+23637000 2 [PRI : TSCH Sched] 18 16
+23637000 2 [PRI : TSCH Sched] 2 1
+23637000 2 [PRI : TSCH Sched] 2 1
+23637000 2 Energest:
+23637000 2  CPU            23s LPM         0s DEEP LPM    0s  Total time 23s
+23637000 2  Radio LISTEN   17s TRANSMIT    0s OFF         5s
+23660000 4 [INFO: TSCH      ] scanning on channel 15
+24105000 3 [INFO: TSCH      ] scanning on channel 20
+24222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+24222000 4 [INFO: TSCH Sched] 0
+24222000 4 [INFO: TSCH Sched] 0
+24222000 4 [INFO: App       ] Verify: 0 
+24222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+24222000 4 [PRI : TSCH Sched] 7 1
+24222000 4 [PRI : TSCH Sched] 5 2
+24222000 4 [PRI : TSCH Sched] 3 1
+24222000 4 [PRI : TSCH Sched] 14 9
+24222000 4 [PRI : TSCH Sched] 17 10
+24222000 4 [PRI : TSCH Sched] 9 2
+24222000 4 [PRI : TSCH Sched] 11 10
+24222000 4 [PRI : TSCH Sched] 4 2
+24222000 4 [PRI : TSCH Sched] 6 2
+24222000 4 [PRI : TSCH Sched] 16 1
+24222000 4 [PRI : TSCH Sched] 10 1
+24222000 4 [PRI : TSCH Sched] 18 16
+24222000 4 [PRI : TSCH Sched] 2 1
+24222000 4 [PRI : TSCH Sched] 2 1
+24222000 4 Energest:
+24222000 4  CPU            23s LPM         0s DEEP LPM    0s  Total time 23s
+24222000 4  Radio LISTEN   23s TRANSMIT    0s OFF         0s
+24670000 4 [INFO: TSCH      ] scanning on channel 26
+25115000 3 [INFO: TSCH      ] scanning on channel 20
+25629000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 73, queue 1/64 1/64, len 21 21
+25629000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+25680000 4 [INFO: TSCH      ] scanning on channel 25
+25778432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 73
+25778432 1 [INFO: TSCH Sched] list of packets
+25778432 1 [WARN: 6LoWPAN   ] input: empty packet
+25778432 1 [INFO: TSCH-LOG  ] {asn 00.00000a07 link  1  17   0  0  0 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq  73, edr   0
+25778432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 73, status 0, tx 1
+25778432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+25778432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+25778432 2 [INFO: TSCH-LOG  ] {asn 00.00000a07 link  1  17   0  0  0 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  73, st 0  1, dr   0
+26125000 3 [INFO: TSCH      ] scanning on channel 20
+26373000 2 [INFO: RPL       ] Sending a DIS to ff02::1a
+26373000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 73, queue 1/64 1/64, len 14 24
+26456888 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 138, status 0, tx 1
+26456888 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+26456888 2 [INFO: TSCH-LOG  ] {asn 00.00000a4b link  1  17   0  0  0 ch 20} bc-1-0 tx LL-0002->LL-NULL, len  24, seq 138, st 0  1
+26456888 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+26456888 1 [INFO: TSCH Sched] list of packets
+26456888 1 [INFO: RPL       ] Received a DIS from fe80::202:2:2:2
+26456888 1 [INFO: RPL       ] Scheduling DIO timer 3589 ticks in future (Interval)
+26456888 1 [INFO: TSCH-LOG  ] {asn 00.00000a4b link  1  17   0  0  0 ch 20} bc-1-0 rx LL-0002->LL-NULL, len  24, seq  73, edr   0
+26456888 1 --------------------------------
+26456888 1 LL-0002->LL-0001
+26456888 1 --------------------------------
+26465000 3 [INFO: TSCH      ] scan: received packet (24 bytes) on channel 20
+26465000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 41 e9
+26465000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/ffff.0000.0000.0000
+26690000 4 [INFO: TSCH      ] scanning on channel 26
+27135000 3 [INFO: TSCH      ] scanning on channel 25
+27700000 4 [INFO: TSCH      ] scanning on channel 25
+28145000 3 [INFO: TSCH      ] scanning on channel 20
+28710000 4 [INFO: TSCH      ] scanning on channel 26
+29155000 3 [INFO: TSCH      ] scanning on channel 20
+29390000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 74, queue 1/64 1/64, len 21 21
+29390000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+29518432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 74
+29518432 1 [INFO: TSCH Sched] list of packets
+29518432 1 [WARN: 6LoWPAN   ] input: empty packet
+29518432 1 [INFO: TSCH-LOG  ] {asn 00.00000b7d link  1  17   0  0  0 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq  74, edr   0
+29518432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 74, status 0, tx 1
+29518432 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+29518432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+29518432 2 [INFO: TSCH-LOG  ] {asn 00.00000b7d link  1  17   0  0  0 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+29518432 2 [INFO: TSCH-LOG  ] {asn 00.00000b7d link  1  17   0  0  0 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  74, st 0  1, dr   0
+29720000 4 [INFO: TSCH      ] scanning on channel 20
+30045000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+30045000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 147, queue 1/64 1/64, len 14 94
+30165000 3 [INFO: TSCH      ] scanning on channel 20
+30199128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 75, status 0, tx 1
+30199128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+30199128 1 [INFO: TSCH-LOG  ] {asn 00.00000bc1 link  1  17   0  0  0 ch 25} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  75, st 0  1
+30199128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+30199128 2 [INFO: TSCH Sched] list of packets
+30199128 2 [INFO: RPL       ] Received a DIO from fe80::201:1:1:1
+30199128 2 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+30199128 2 [INFO: RPL       ] Copying prefix information
+30199128 2 [INFO: RPL       ] New instance detected (ID=30): Joining...
+30199128 2 [INFO: RPL       ] Neighbor added to neighbor cache fe80::201:1:1:1, 0001.0001.0001.0001
+30199128 2 [INFO: RPL       ] rpl_set_preferred_parent fe80::201:1:1:1 used to be NULL
+30199128 2 [INFO: RPL       ] Joined DAG with instance ID 30, rank 310, DAG ID fd00::201:1:1:1
+30199128 2 [INFO: RPL       ] Scheduling DIO timer 3967 ticks in future (Interval)
+30199128 2 [INFO: RPL       ] Reset MRHOF
+30199128 2 [INFO: TSCH-LOG  ] {asn 00.00000bc1 link  1  17   0  0  0 ch 25} bc-1-0 rx LL-0001->LL-NULL, len  94, seq   0, edr   0, dr   0
+30199128 2 --------------------------------
+30199128 2 LL-0001->LL-0002
+30199128 2 --------------------------------
+30553000 1 [INFO: RPL       ] Scheduling DIO timer 6834 ticks in future (Interval)
+30730000 4 [INFO: TSCH      ] scanning on channel 15
+31175000 3 [INFO: TSCH      ] scanning on channel 15
+31431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+31431000 3 [INFO: TSCH Sched] 0
+31431000 3 [INFO: TSCH Sched] 0
+31431000 3 [INFO: App       ] Verify: 0 
+31431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+31431000 3 [PRI : TSCH Sched] 7 1
+31431000 3 [PRI : TSCH Sched] 5 2
+31431000 3 [PRI : TSCH Sched] 3 1
+31431000 3 [PRI : TSCH Sched] 14 9
+31431000 3 [PRI : TSCH Sched] 17 10
+31431000 3 [PRI : TSCH Sched] 9 2
+31431000 3 [PRI : TSCH Sched] 11 10
+31431000 3 [PRI : TSCH Sched] 4 2
+31431000 3 [PRI : TSCH Sched] 6 2
+31431000 3 [PRI : TSCH Sched] 16 1
+31431000 3 [PRI : TSCH Sched] 10 1
+31431000 3 [PRI : TSCH Sched] 18 16
+31431000 3 [PRI : TSCH Sched] 2 1
+31431000 3 [PRI : TSCH Sched] 2 1
+31431000 3 Energest:
+31431000 3  CPU            30s LPM         0s DEEP LPM    0s  Total time 30s
+31431000 3  Radio LISTEN   30s TRANSMIT    0s OFF         0s
+31740000 4 [INFO: TSCH      ] scanning on channel 25
+31848000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+31883000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+31897240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 139, status 0, tx 1
+31897240 2 [INFO: TSCH-LOG  ] {asn 00.00000c6b link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 139, st 0  1
+31897240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 76, status 0, tx 1
+31897240 1 [INFO: TSCH-LOG  ] {asn 00.00000c6b link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  76, st 0  1
+32185000 3 [INFO: TSCH      ] scanning on channel 25
+32430000 4 [INFO: RPL       ] Sending a DIS to ff02::1a
+32430000 4 [WARN: TSCH      ] Cannot compute max payload size: not associated
+32430000 4 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+32750000 4 [INFO: TSCH      ] scanning on channel 15
+32870000 2 [INFO: RPL       ] handle_dao_timer - sending DAO
+32870000 2 [INFO: RPL       ] Sending a DAO with sequence number 241, lifetime 30, prefix fd00::202:2:2:2 to fe80::201:1:1:1 , parent fe80::201:1:1:1
+32870000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 75, queue 1/64 1/64, len 21 74
+32920128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 75
+32920128 1 [INFO: TSCH Sched] list of packets
+32920128 1 [INFO: RPL       ] Received a DAO from fe80::202:2:2:2
+32920128 1 [INFO: RPL       ] DAO lifetime: 30, prefix length: 128 prefix: fd00::202:2:2:2
+32920128 1 [WARN: IPv6 Route] No route found
+32920128 1 [INFO: RPL       ] Adding DAO route
+32920128 1 [INFO: RPL       ] Neighbor added to neighbor cache fe80::202:2:2:2, 0002.0002.0002.0002
+32920128 1 [WARN: IPv6 Route] No route found
+32920128 1 [INFO: RPL       ] Added a route to fd00::202:2:2:2/128 via fe80::202:2:2:2
+32920128 1 [INFO: TSCH-LOG  ] {asn 00.00000cd1 link  1  17   0  0  0 ch 25} uc-1-0 rx LL-0002->LL-0001, len  74, seq  75, edr   0
+32920128 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 75, status 0, tx 1
+32920128 2 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+32920128 2 [INFO: TSCH-LOG  ] {asn 00.00000cd1 link  1  17   0  0  0 ch 25} uc-1-0 tx LL-0002->LL-0001, len  74, seq  75, st 0  1, dr   0
+33195000 3 [INFO: TSCH      ] scanning on channel 15
+33637000 2 [INFO: App       ] app generate packet seqnum=1 node_id=2
+33637000 2 [INFO: RPL       ] Updating RPL option
+33637000 2 [WARN: IPv6 Route] No route found
+33637000 2 [WARN: IPv6 Route] No route found
+33637000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 76, queue 1/64 1/64, len 21 43
+33638000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+33638000 2 [INFO: TSCH Sched] 1
+33638000 2 [INFO: TSCH Sched] 0
+33638000 2 [INFO: App       ] Verify: 0 
+33638000 2 [PRI : App       ] Initialize tsch schedule
+33638000 2 [INFO: TSCH Sched] remove_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+33638000 2 [INFO: TSCH Sched] remove_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0005.0005.0005.0005
+33638000 2 [INFO: TSCH Sched] remove_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0009.0009.0009.0009
+33638000 2 [INFO: TSCH Sched] remove_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0004.0004.0004.0004
+33638000 2 [INFO: TSCH Sched] remove_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0006.0006.0006.0006
+33638000 2 [INFO: TSCH Sched] remove slotframe 1 17
+33638000 2 [PRI : App       ] Remove all slotframes[INFO: TSCH Sched] add_slotframe 1 17
+33638000 2 [PRI : TSCH Sched] Handle : 13
+33638000 2  [INFO: TSCH Sched] add_link sf=1 opt=Tx type=NORMAL ts=9 ch=5 addr=0001.0001.0001.0001
+33638000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+33638000 2 [PRI : TSCH Sched] 7 1
+33638000 2 [PRI : TSCH Sched] 5 2
+33638000 2 [PRI : TSCH Sched] Match - 2 <- 5
+33638000 2 [PRI : TSCH Sched] Handle : 14
+33638000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0005.0005.0005.0005
+33638000 2 [PRI : TSCH Sched] 3 1
+33638000 2 [PRI : TSCH Sched] 14 9
+33638000 2 [PRI : TSCH Sched] 17 10
+33638000 2 [PRI : TSCH Sched] 9 2
+33638000 2 [PRI : TSCH Sched] Match - 2 <- 9
+33638000 2 [PRI : TSCH Sched] Handle : 14
+33638000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0009.0009.0009.0009
+33638000 2 [PRI : TSCH Sched] 11 10
+33638000 2 [PRI : TSCH Sched] 4 2
+33638000 2 [PRI : TSCH Sched] Match - 2 <- 4
+33638000 2 [PRI : TSCH Sched] Handle : 14
+33638000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0004.0004.0004.0004
+33638000 2 [PRI : TSCH Sched] 6 2
+33638000 2 [PRI : TSCH Sched] Match - 2 <- 6
+33638000 2 [PRI : TSCH Sched] Handle : 14
+33638000 2  [INFO: TSCH Sched] add_link sf=1 opt=Rx type=NORMAL ts=0 ch=0 addr=0006.0006.0006.0006
+33638000 2 [PRI : TSCH Sched] 16 1
+33638000 2 [PRI : TSCH Sched] 10 1
+33638000 2 [PRI : TSCH Sched] 18 16
+33638000 2 [PRI : TSCH Sched] 2 1
+33638000 2 [PRI : TSCH Sched] 2 1
+33638000 2 [PRI : TSCH Sched] 2 1
+33638000 2 Enter here!
+33638000 2 handle: 0 - 3-> 1
+33638000 2 handle: 1 - 2-> 1
+33638000 2 Numero de ns : 4 | Numero de arestas: 2
+33638000 2 Matriz de adacncia do grafo da rede:
+33638000 2 0 0 0 0 
+33638000 2 0 0 0 0 
+33638000 2 0 1 0 0 
+33638000 2 0 1 0 0 
+33638000 2 Pacotes atribuidos!
+33638000 2 N 0: 0 pacotes
+33638000 2 N 1: 0 pacotes
+33638000 2 N 2: 1 pacotes
+33638000 2 N 3: 1 pacotes
+33638000 2 Mapa da matriz de conflito gerada:
+33638000 2 N 0: 2 -> 1
+33638000 2 N 1: 3 -> 1
+33638000 2 sorted n:0
+33638000 2 sorted n:2
+33638000 2 sorted n:0
+33638000 2 Camos no pior caso
+33638000 2 Canais alocados  | |
+33638000 2                 \   /
+33638000 2                  \ /
+33638000 2 1  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+33638000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+33638000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+33638000 2 [PRI : TSCH Sched] -----------------------------
+33638000 2 [PRI : TSCH Sched] Escalonamento Concluido
+33638000 2 Energest:
+33638000 2  CPU            33s LPM         0s DEEP LPM    0s  Total time 33s
+33638000 2  Radio LISTEN   17s TRANSMIT    0s OFF        15s
+33760000 4 [INFO: TSCH      ] scanning on channel 26
+33764000 2 [INFO: TSCH-LOG  ] {asn 00.00000d26 link-NULL} !skipped slot 0 0 1
+33859392 2 [INFO: TSCH-LOG  ] {asn 00.00000d2f link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  1
+33865000 3 [INFO: TSCH      ] scan: received packet (43 bytes) on channel 15
+33865000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+33865000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+34029392 2 [INFO: TSCH-LOG  ] {asn 00.00000d40 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  2
+34166000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 304
+34166000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 76, queue 1/64 2/64, len 14 94
+34199392 2 [INFO: TSCH-LOG  ] {asn 00.00000d51 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  3
+34205000 3 [INFO: TSCH      ] scanning on channel 25
+34222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+34222000 4 [INFO: TSCH Sched] 0
+34222000 4 [INFO: TSCH Sched] 0
+34222000 4 [INFO: App       ] Verify: 0 
+34222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+34222000 4 [PRI : TSCH Sched] 7 1
+34222000 4 [PRI : TSCH Sched] 5 2
+34222000 4 [PRI : TSCH Sched] 3 1
+34222000 4 [PRI : TSCH Sched] 14 9
+34222000 4 [PRI : TSCH Sched] 17 10
+34222000 4 [PRI : TSCH Sched] 9 2
+34222000 4 [PRI : TSCH Sched] 11 10
+34222000 4 [PRI : TSCH Sched] 4 2
+34222000 4 [PRI : TSCH Sched] 6 2
+34222000 4 [PRI : TSCH Sched] 16 1
+34222000 4 [PRI : TSCH Sched] 10 1
+34222000 4 [PRI : TSCH Sched] 18 16
+34222000 4 [PRI : TSCH Sched] 2 1
+34222000 4 [PRI : TSCH Sched] 2 1
+34222000 4 [PRI : TSCH Sched] 2 1
+34222000 4 Energest:
+34222000 4  CPU            33s LPM         0s DEEP LPM    0s  Total time 33s
+34222000 4  Radio LISTEN   33s TRANSMIT    0s OFF         0s
+34298020 2 [INFO: RPL       ] Scheduling DIO timer 7573 ticks in future (Interval)
+34369392 2 [INFO: TSCH-LOG  ] {asn 00.00000d62 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  4
+34539392 2 [INFO: TSCH-LOG  ] {asn 00.00000d73 link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  5
+34709392 2 [INFO: TSCH-LOG  ] {asn 00.00000d84 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  6
+34715000 3 [INFO: TSCH      ] scan: received packet (43 bytes) on channel 25
+34715000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+34715000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+34770000 4 [INFO: TSCH      ] scanning on channel 25
+34879392 2 [INFO: TSCH-LOG  ] {asn 00.00000d95 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  7
+35049392 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 76, status 2, tx 8
+35049392 2 [INFO: TSCH Sched] Tx_try= 1 Tx_Success=0
+35049392 2 [INFO: TSCH-LOG  ] {asn 00.00000da6 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq  76, st 2  8
+35214000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+35215000 3 [INFO: TSCH      ] scanning on channel 15
+35780000 4 [INFO: TSCH      ] scanning on channel 20
+36225000 3 [INFO: TSCH      ] scanning on channel 26
+36552000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 77, queue 1/64 3/64, len 21 21
+36552000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+36578688 2 [INFO: TSCH-LOG  ] {asn 00.00000e3f link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  1
+36748688 2 [INFO: TSCH-LOG  ] {asn 00.00000e50 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  2
+36790000 4 [INFO: TSCH      ] scanning on channel 25
+36918688 2 [INFO: TSCH-LOG  ] {asn 00.00000e61 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  3
+36925000 3 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 26
+36925000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+36925000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+37088688 2 [INFO: TSCH-LOG  ] {asn 00.00000e72 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  4
+37235000 3 [INFO: TSCH      ] scanning on channel 25
+37258688 2 [INFO: TSCH-LOG  ] {asn 00.00000e83 link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  5
+37387000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+37387000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 147, queue 1/64 1/64, len 14 94
+37428688 2 [INFO: TSCH-LOG  ] {asn 00.00000e94 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  6
+37435000 3 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 25
+37435000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+37435000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+37509128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 77, status 0, tx 1
+37509128 1 [INFO: TSCH Sched] Tx_try= 0 Tx_Success=0
+37509128 1 [INFO: TSCH-LOG  ] {asn 00.00000e9c link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  77, st 0  1
+37598688 2 [INFO: TSCH-LOG  ] {asn 00.00000ea5 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  7
+37768688 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 77, status 2, tx 8
+37768688 2 [INFO: TSCH Sched] Tx_try= 2 Tx_Success=0
+37768688 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 2-8
+37768688 2 [WARN: TSCH      ] not able to re-synchronize, received no EB from other neighbors
+37768688 2 [INFO: TSCH-LOG  ] {asn 00.00000eb6 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  77, st 2  8
+37800000 4 [INFO: TSCH      ] scanning on channel 15
+38245000 3 [INFO: TSCH      ] scanning on channel 26
+38746000 1 [INFO: RPL       ] Scheduling DIO timer 15053 ticks in future (Interval)
+38810000 4 [INFO: TSCH      ] scanning on channel 15
+39255000 3 [INFO: TSCH      ] scanning on channel 26
+39820000 4 [INFO: TSCH      ] scanning on channel 15
+39919000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+40057240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 78, status 0, tx 1
+40057240 1 [INFO: TSCH-LOG  ] {asn 00.00000f9b link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  78, st 0  1
+40265000 3 [INFO: TSCH      ] scanning on channel 15
+40830000 4 [INFO: TSCH      ] scanning on channel 20
+41275000 3 [INFO: TSCH      ] scanning on channel 26
+41431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+41431000 3 [INFO: TSCH Sched] 0
+41431000 3 [INFO: TSCH Sched] 0
+41431000 3 [INFO: App       ] Verify: 0 
+41431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+41431000 3 [PRI : TSCH Sched] 7 1
+41431000 3 [PRI : TSCH Sched] 5 2
+41431000 3 [PRI : TSCH Sched] 3 1
+41431000 3 [PRI : TSCH Sched] 14 9
+41431000 3 [PRI : TSCH Sched] 17 10
+41431000 3 [PRI : TSCH Sched] 9 2
+41431000 3 [PRI : TSCH Sched] 11 10
+41431000 3 [PRI : TSCH Sched] 4 2
+41431000 3 [PRI : TSCH Sched] 6 2
+41431000 3 [PRI : TSCH Sched] 16 1
+41431000 3 [PRI : TSCH Sched] 10 1
+41431000 3 [PRI : TSCH Sched] 18 16
+41431000 3 [PRI : TSCH Sched] 2 1
+41431000 3 [PRI : TSCH Sched] 2 1
+41431000 3 [PRI : TSCH Sched] 2 1
+41431000 3 Energest:
+41431000 3  CPU            40s LPM         0s DEEP LPM    0s  Total time 40s
+41431000 3  Radio LISTEN   40s TRANSMIT    0s OFF         0s
+41718000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 78, queue 1/64 3/64, len 21 21
+41718000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+41840000 4 [INFO: TSCH      ] scanning on channel 26
+41848688 2 [INFO: TSCH-LOG  ] {asn 00.0000104e link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  1
+41871000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 756
+41871000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 78, queue 2/64 4/64, len 14 94
+42018688 2 [INFO: TSCH-LOG  ] {asn 00.0000105f link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  2
+42188688 2 [INFO: TSCH-LOG  ] {asn 00.00001070 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  3
+42285000 3 [INFO: TSCH      ] scanning on channel 26
+42358688 2 [INFO: TSCH-LOG  ] {asn 00.00001081 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  4
+42365000 3 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 26
+42365000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+42365000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+42491000 2 [INFO: RPL       ] Scheduling DIO timer 9837 ticks in future (Interval)
+42528688 2 [INFO: TSCH-LOG  ] {asn 00.00001092 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  5
+42698688 2 [INFO: TSCH-LOG  ] {asn 00.000010a3 link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  6
+42850000 4 [INFO: TSCH      ] scanning on channel 15
+42868688 2 [INFO: TSCH-LOG  ] {asn 00.000010b4 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  7
+43038688 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 78, status 2, tx 8
+43038688 2 [INFO: TSCH Sched] Tx_try= 3 Tx_Success=0
+43038688 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 2-8
+43038688 2 [WARN: TSCH      ] not able to re-synchronize, received no EB from other neighbors
+43038688 2 [INFO: TSCH-LOG  ] {asn 00.000010c5 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq  78, st 2  8
+43045000 3 [INFO: TSCH      ] scan: received packet (21 bytes) on channel 26
+43045000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+43045000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+43295000 3 [INFO: TSCH      ] scanning on channel 25
+43638000 2 [INFO: App       ] app generate packet seqnum=2 node_id=2
+43638000 2 [INFO: RPL       ] Updating RPL option
+43638000 2 [WARN: IPv6 Route] No route found
+43638000 2 [WARN: IPv6 Route] No route found
+43638000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 79, queue 1/64 4/64, len 21 43
+43639000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+43639000 2 [INFO: TSCH Sched] 1
+43639000 2 [INFO: TSCH Sched] 0
+43639000 2 [INFO: App       ] Verify: 1 
+43639000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+43639000 2 [PRI : TSCH Sched] 7 1
+43639000 2 [PRI : TSCH Sched] 5 2
+43639000 2 [PRI : TSCH Sched] Match - 2 <- 5
+43639000 2 [PRI : TSCH Sched] 3 1
+43639000 2 [PRI : TSCH Sched] 14 9
+43639000 2 [PRI : TSCH Sched] 17 10
+43639000 2 [PRI : TSCH Sched] 9 2
+43639000 2 [PRI : TSCH Sched] Match - 2 <- 9
+43639000 2 [PRI : TSCH Sched] 11 10
+43639000 2 [PRI : TSCH Sched] 4 2
+43639000 2 [PRI : TSCH Sched] Match - 2 <- 4
+43639000 2 [PRI : TSCH Sched] 6 2
+43639000 2 [PRI : TSCH Sched] Match - 2 <- 6
+43639000 2 [PRI : TSCH Sched] 16 1
+43639000 2 [PRI : TSCH Sched] 10 1
+43639000 2 [PRI : TSCH Sched] 18 16
+43639000 2 [PRI : TSCH Sched] 2 1
+43639000 2 [PRI : TSCH Sched] 2 1
+43639000 2 [PRI : TSCH Sched] 2 1
+43639000 2 Enter here!
+43639000 2 handle: 0 - 3-> 1
+43639000 2 handle: 1 - 2-> 1
+43639000 2 Numero de ns : 4 | Numero de arestas: 2
+43639000 2 Matriz de adacncia do grafo da rede:
+43639000 2 0 0 0 0 
+43639000 2 0 0 0 0 
+43639000 2 0 1 0 0 
+43639000 2 0 1 0 0 
+43639000 2 Pacotes atribuidos!
+43639000 2 N 0: 0 pacotes
+43639000 2 N 1: 0 pacotes
+43639000 2 N 2: 1 pacotes
+43639000 2 N 3: 1 pacotes
+43639000 2 Mapa da matriz de conflito gerada:
+43639000 2 N 0: 2 -> 1
+43639000 2 N 1: 3 -> 1
+43639000 2 sorted n:2
+43639000 2 sorted n:2
+43639000 2 sorted n:0
+43639000 2 Camos no pior caso
+43639000 2 Canais alocados  | |
+43639000 2                 \   /
+43639000 2                  \ /
+43639000 2 1  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+43639000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+43639000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+43639000 2 [PRI : TSCH Sched] -----------------------------
+43639000 2 [PRI : TSCH Sched] Escalonamento Concluido
+43639000 2 Energest:
+43639000 2  CPU            43s LPM         0s DEEP LPM    0s  Total time 43s
+43639000 2  Radio LISTEN   18s TRANSMIT    0s OFF        24s
+43719392 2 [INFO: TSCH-LOG  ] {asn 00.00001109 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 2  1
+43860000 4 [INFO: TSCH      ] scanning on channel 26
+43889392 2 [INFO: TSCH-LOG  ] {asn 00.0000111a link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 2  2
+44059392 2 [INFO: TSCH-LOG  ] {asn 00.0000112b link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 2  3
+44222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+44222000 4 [INFO: TSCH Sched] 0
+44222000 4 [INFO: TSCH Sched] 0
+44222000 4 [INFO: App       ] Verify: 0 
+44222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+44222000 4 [PRI : TSCH Sched] 7 1
+44222000 4 [PRI : TSCH Sched] 5 2
+44222000 4 [PRI : TSCH Sched] 3 1
+44222000 4 [PRI : TSCH Sched] 14 9
+44222000 4 [PRI : TSCH Sched] 17 10
+44222000 4 [PRI : TSCH Sched] 9 2
+44222000 4 [PRI : TSCH Sched] 11 10
+44222000 4 [PRI : TSCH Sched] 4 2
+44222000 4 [PRI : TSCH Sched] 6 2
+44222000 4 [PRI : TSCH Sched] 16 1
+44222000 4 [PRI : TSCH Sched] 10 1
+44222000 4 [PRI : TSCH Sched] 18 16
+44222000 4 [PRI : TSCH Sched] 2 1
+44222000 4 [PRI : TSCH Sched] 2 1
+44222000 4 [PRI : TSCH Sched] 2 1
+44222000 4 Energest:
+44222000 4  CPU            43s LPM         0s DEEP LPM    0s  Total time 43s
+44222000 4  Radio LISTEN   43s TRANSMIT    0s OFF         0s
+44229392 2 [INFO: TSCH-LOG  ] {asn 00.0000113c link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 2  4
+44235000 3 [INFO: TSCH      ] scan: received packet (43 bytes) on channel 25
+44235000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+44235000 3 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+44305000 3 [INFO: TSCH      ] scanning on channel 25
+44399392 2 [INFO: TSCH-LOG  ] {asn 00.0000114d link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 2  5
+44517000 1 [INFO: App       ] app generate packet seqnum=1 node_id=1
+44517000 1 [INFO: RPL       ] Updating RPL option
+44517000 1 [WARN: IPv6 Route] No route found
+44517000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 1
+44517000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+44517000 1 [INFO: TSCH Sched] 2
+44517000 1 [INFO: TSCH Sched] 0
+44517000 1 [INFO: App       ] Verify: 0 
+44517000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+44517000 1 [PRI : TSCH Sched] 7 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 7
+44517000 1 [PRI : TSCH Sched] 5 2
+44517000 1 [PRI : TSCH Sched] 3 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 3
+44517000 1 [PRI : TSCH Sched] 14 9
+44517000 1 [PRI : TSCH Sched] 17 10
+44517000 1 [PRI : TSCH Sched] 9 2
+44517000 1 [PRI : TSCH Sched] 11 10
+44517000 1 [PRI : TSCH Sched] 4 2
+44517000 1 [PRI : TSCH Sched] 6 2
+44517000 1 [PRI : TSCH Sched] 16 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 16
+44517000 1 [PRI : TSCH Sched] 10 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 10
+44517000 1 [PRI : TSCH Sched] 18 16
+44517000 1 [PRI : TSCH Sched] 2 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 2
+44517000 1 [PRI : TSCH Sched] 2 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 2
+44517000 1 [PRI : TSCH Sched] 2 1
+44517000 1 [PRI : TSCH Sched] Match - 1 <- 2
+44517000 1 Enter here!
+44517000 1 handle: 0 - 3-> 1
+44517000 1 handle: 1 - 2-> 1
+44517000 1 Numero de ns : 4 | Numero de arestas: 2
+44517000 1 Matriz de adacncia do grafo da rede:
+44517000 1 0 0 0 0 
+44517000 1 0 0 0 0 
+44517000 1 0 1 0 0 
+44517000 1 0 1 0 0 
+44517000 1 Pacotes atribuidos!
+44517000 1 N 0: 0 pacotes
+44517000 1 N 1: 0 pacotes
+44517000 1 N 2: 1 pacotes
+44517000 1 N 3: 1 pacotes
+44517000 1 Mapa da matriz de conflito gerada:
+44517000 1 N 0: 2 -> 1
+44517000 1 N 1: 3 -> 1
+44517000 1 sorted n:3
+44517000 1 sorted n:3
+44517000 1 sorted n:1
+44517000 1 Camos no pior caso
+44517000 1 Canais alocados  | |
+44517000 1                 \   /
+44517000 1                  \ /
+44517000 1 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 6-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 3-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 11-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+44517000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+44517000 1 [PRI : TSCH Sched] ----CHANNEL: 4-----
+44517000 1 [PRI : TSCH Sched] -----------------------------
+44517000 1 [PRI : TSCH Sched] Escalonamento Concluido
+44517000 1 Energest:
+44517000 1  CPU            44s LPM         0s DEEP LPM    0s  Total time 44s
+44517000 1  Radio LISTEN    0s TRANSMIT    0s OFF        43s
+44569392 2 [INFO: TSCH-LOG  ] {asn 00.0000115e link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 2  6
+44739136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 79
+44739136 1 [INFO: TSCH Sched] list of packets
+44739136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=1 
+44739136 1 [INFO: TSCH Sched] id=2 Tx=1 Rx=0 
+44739136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+44739136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+44739136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 2
+44739136 1 [INFO: TSCH-LOG  ] {asn 00.0000116f link  1  17   0  9  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  43, seq  79, edr   0
+44739136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 79, status 0, tx 7
+44739136 2 [INFO: TSCH Sched] Tx_try= 4 Tx_Success=0
+44739136 2 [INFO: TSCH-LOG  ] {asn 00.0000116f link  1  17   0  9  5 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+44739136 2 [INFO: TSCH-LOG  ] {asn 00.0000116f link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq  79, st 0  7, dr   0
+44870000 4 [INFO: TSCH      ] scanning on channel 20
+45315000 3 [INFO: TSCH      ] scanning on channel 26
+45880000 4 [INFO: TSCH      ] scanning on channel 15
+46325000 3 [INFO: TSCH      ] scanning on channel 15
+46890000 4 [INFO: TSCH      ] scanning on channel 15
+47335000 3 [INFO: TSCH      ] scanning on channel 15
+47900000 4 [INFO: TSCH      ] scanning on channel 26
+48345000 3 [INFO: TSCH      ] scanning on channel 20
+48606000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 80, queue 1/64 4/64, len 21 21
+48606000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+48648432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 80
+48648432 1 [INFO: TSCH Sched] list of packets
+48648432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=2 
+48648432 1 [INFO: TSCH Sched] id=2 Tx=2 Rx=0 
+48648432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+48648432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+48648432 1 [WARN: 6LoWPAN   ] input: empty packet
+48648432 1 [INFO: TSCH-LOG  ] {asn 00.000012f6 link  1  17   0  9  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq  80, edr   0
+48648432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 80, status 0, tx 1
+48648432 2 [INFO: TSCH Sched] Tx_try= 5 Tx_Success=0
+48648432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+48648432 2 [INFO: TSCH-LOG  ] {asn 00.000012f6 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  80, st 0  1, dr   0
+48910000 4 [INFO: TSCH      ] scanning on channel 26
+49355000 3 [INFO: TSCH      ] scanning on channel 26
+49920000 4 [INFO: TSCH      ] scanning on channel 25
+50365000 3 [INFO: TSCH      ] scanning on channel 26
+50930000 4 [INFO: TSCH      ] scanning on channel 15
+51375000 3 [INFO: TSCH      ] scanning on channel 15
+51431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+51431000 3 [INFO: TSCH Sched] 0
+51431000 3 [INFO: TSCH Sched] 0
+51431000 3 [INFO: App       ] Verify: 0 
+51431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+51431000 3 [PRI : TSCH Sched] 7 1
+51431000 3 [PRI : TSCH Sched] 5 2
+51431000 3 [PRI : TSCH Sched] 3 1
+51431000 3 [PRI : TSCH Sched] 14 9
+51431000 3 [PRI : TSCH Sched] 17 10
+51431000 3 [PRI : TSCH Sched] 9 2
+51431000 3 [PRI : TSCH Sched] 11 10
+51431000 3 [PRI : TSCH Sched] 4 2
+51431000 3 [PRI : TSCH Sched] 6 2
+51431000 3 [PRI : TSCH Sched] 16 1
+51431000 3 [PRI : TSCH Sched] 10 1
+51431000 3 [PRI : TSCH Sched] 18 16
+51431000 3 [PRI : TSCH Sched] 2 1
+51431000 3 [PRI : TSCH Sched] 2 1
+51431000 3 [PRI : TSCH Sched] 2 1
+51431000 3 Energest:
+51431000 3  CPU            50s LPM         0s DEEP LPM    0s  Total time 50s
+51431000 3  Radio LISTEN   50s TRANSMIT    0s OFF         0s
+51940000 4 [INFO: TSCH      ] scanning on channel 15
+52302000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 81, queue 1/64 4/64, len 21 21
+52302000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+52328000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 886
+52328000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 81, queue 3/64 5/64, len 14 94
+52385000 3 [INFO: TSCH      ] scanning on channel 25
+52388432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 81
+52388432 1 [INFO: TSCH Sched] list of packets
+52388432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=3 
+52388432 1 [INFO: TSCH Sched] id=2 Tx=3 Rx=0 
+52388432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+52388432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+52388432 1 [WARN: 6LoWPAN   ] input: empty packet
+52388432 1 [INFO: TSCH-LOG  ] {asn 00.0000146c link  1  17   0  9  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq  81, edr   0
+52388432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 81, status 0, tx 1
+52388432 2 [INFO: TSCH Sched] Tx_try= 6 Tx_Success=0
+52388432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+52388432 2 [INFO: TSCH-LOG  ] {asn 00.0000146c link  1  17   0  9  5 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+52388432 2 [INFO: TSCH-LOG  ] {asn 00.0000146c link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  81, st 0  1, dr   0
+52481000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+52637240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 79, status 0, tx 1
+52637240 1 [INFO: TSCH-LOG  ] {asn 00.00001485 link  1  17   0  0  0 ch 25} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  79, st 0  1
+52950000 4 [INFO: TSCH      ] scanning on channel 25
+53395000 3 [INFO: TSCH      ] scanning on channel 25
+53639000 2 [INFO: App       ] app generate packet seqnum=3 node_id=2
+53639000 2 [INFO: RPL       ] Updating RPL option
+53639000 2 [WARN: IPv6 Route] No route found
+53639000 2 [WARN: IPv6 Route] No route found
+53639000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 82, queue 1/64 5/64, len 21 43
+53640000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+53640000 2 [INFO: TSCH Sched] 1
+53640000 2 [INFO: TSCH Sched] 0
+53640000 2 [INFO: App       ] Verify: 1 
+53640000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+53640000 2 [PRI : TSCH Sched] 7 1
+53640000 2 [PRI : TSCH Sched] 5 2
+53640000 2 [PRI : TSCH Sched] Match - 2 <- 5
+53640000 2 [PRI : TSCH Sched] 3 1
+53640000 2 [PRI : TSCH Sched] 14 9
+53640000 2 [PRI : TSCH Sched] 17 10
+53640000 2 [PRI : TSCH Sched] 9 2
+53640000 2 [PRI : TSCH Sched] Match - 2 <- 9
+53640000 2 [PRI : TSCH Sched] 11 10
+53640000 2 [PRI : TSCH Sched] 4 2
+53640000 2 [PRI : TSCH Sched] Match - 2 <- 4
+53640000 2 [PRI : TSCH Sched] 6 2
+53640000 2 [PRI : TSCH Sched] Match - 2 <- 6
+53640000 2 [PRI : TSCH Sched] 16 1
+53640000 2 [PRI : TSCH Sched] 10 1
+53640000 2 [PRI : TSCH Sched] 18 16
+53640000 2 [PRI : TSCH Sched] 2 1
+53640000 2 [PRI : TSCH Sched] 2 1
+53640000 2 [PRI : TSCH Sched] 2 1
+53640000 2 Enter here!
+53640000 2 handle: 0 - 3-> 1
+53640000 2 handle: 1 - 2-> 1
+53640000 2 Numero de ns : 4 | Numero de arestas: 2
+53640000 2 Matriz de adacncia do grafo da rede:
+53640000 2 0 0 0 0 
+53640000 2 0 0 0 0 
+53640000 2 0 1 0 0 
+53640000 2 0 1 0 0 
+53640000 2 Pacotes atribuidos!
+53640000 2 N 0: 0 pacotes
+53640000 2 N 1: 0 pacotes
+53640000 2 N 2: 1 pacotes
+53640000 2 N 3: 1 pacotes
+53640000 2 Mapa da matriz de conflito gerada:
+53640000 2 N 0: 2 -> 1
+53640000 2 N 1: 3 -> 1
+53640000 2 sorted n:0
+53640000 2 sorted n:0
+53640000 2 sorted n:3
+53640000 2 Canais alocados  | |
+53640000 2                 \   /
+53640000 2                  \ /
+53640000 2 1  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+53640000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+53640000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+53640000 2 [PRI : TSCH Sched] -----------------------------
+53640000 2 [PRI : TSCH Sched] Escalonamento Concluido
+53640000 2 Energest:
+53640000 2  CPU            53s LPM         0s DEEP LPM    0s  Total time 53s
+53640000 2  Radio LISTEN   19s TRANSMIT    0s OFF        34s
+53749136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 82
+53749136 1 [INFO: TSCH Sched] list of packets
+53749136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=4 
+53749136 1 [INFO: TSCH Sched] id=2 Tx=4 Rx=0 
+53749136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+53749136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+53749136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 3
+53749136 1 [INFO: TSCH-LOG  ] {asn 00.000014f4 link  1  17   0  9  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  43, seq  82, edr   0
+53749136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 82, status 0, tx 1
+53749136 2 [INFO: TSCH Sched] Tx_try= 7 Tx_Success=0
+53749136 2 [INFO: TSCH-LOG  ] {asn 00.000014f4 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq  82, st 0  1, dr   0
+53799000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+53799000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 147, queue 1/64 1/64, len 14 94
+53829128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 80, status 0, tx 1
+53829128 1 [INFO: TSCH Sched] Tx_try= 1 Tx_Success=0
+53829128 1 [INFO: TSCH-LOG  ] {asn 00.000014fc link  1  17   0  0  0 ch 15} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  80, st 0  1
+53960000 4 [INFO: TSCH      ] scanning on channel 15
+54222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+54222000 4 [INFO: TSCH Sched] 0
+54222000 4 [INFO: TSCH Sched] 0
+54222000 4 [INFO: App       ] Verify: 0 
+54222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+54222000 4 [PRI : TSCH Sched] 7 1
+54222000 4 [PRI : TSCH Sched] 5 2
+54222000 4 [PRI : TSCH Sched] 3 1
+54222000 4 [PRI : TSCH Sched] 14 9
+54222000 4 [PRI : TSCH Sched] 17 10
+54222000 4 [PRI : TSCH Sched] 9 2
+54222000 4 [PRI : TSCH Sched] 11 10
+54222000 4 [PRI : TSCH Sched] 4 2
+54222000 4 [PRI : TSCH Sched] 6 2
+54222000 4 [PRI : TSCH Sched] 16 1
+54222000 4 [PRI : TSCH Sched] 10 1
+54222000 4 [PRI : TSCH Sched] 18 16
+54222000 4 [PRI : TSCH Sched] 2 1
+54222000 4 [PRI : TSCH Sched] 2 1
+54222000 4 [PRI : TSCH Sched] 2 1
+54222000 4 Energest:
+54222000 4  CPU            53s LPM         0s DEEP LPM    0s  Total time 53s
+54222000 4  Radio LISTEN   53s TRANSMIT    0s OFF         0s
+54405000 3 [INFO: TSCH      ] scanning on channel 20
+54518020 1 [INFO: App       ] app generate packet seqnum=2 node_id=1
+54518020 1 [INFO: RPL       ] Updating RPL option
+54518020 1 [WARN: IPv6 Route] No route found
+54518020 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 2
+54518020 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+54518020 1 [INFO: TSCH Sched] 2
+54518020 1 [INFO: TSCH Sched] 0
+54518020 1 [INFO: App       ] Verify: 1 
+54518020 1 [PRI : TSCH Sched] Finding neighbor to Rx
+54518020 1 [PRI : TSCH Sched] 7 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 7
+54518020 1 [PRI : TSCH Sched] 5 2
+54518020 1 [PRI : TSCH Sched] 3 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 3
+54518020 1 [PRI : TSCH Sched] 14 9
+54518020 1 [PRI : TSCH Sched] 17 10
+54518020 1 [PRI : TSCH Sched] 9 2
+54518020 1 [PRI : TSCH Sched] 11 10
+54518020 1 [PRI : TSCH Sched] 4 2
+54518020 1 [PRI : TSCH Sched] 6 2
+54518020 1 [PRI : TSCH Sched] 16 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 16
+54518020 1 [PRI : TSCH Sched] 10 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 10
+54518020 1 [PRI : TSCH Sched] 18 16
+54518020 1 [PRI : TSCH Sched] 2 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+54518020 1 [PRI : TSCH Sched] 2 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+54518020 1 [PRI : TSCH Sched] 2 1
+54518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+54518020 1 Enter here!
+54518020 1 handle: 0 - 3-> 1
+54518020 1 handle: 1 - 2-> 1
+54518020 1 Numero de ns : 4 | Numero de arestas: 2
+54518020 1 Matriz de adacncia do grafo da rede:
+54518020 1 0 0 0 0 
+54518020 1 0 0 0 0 
+54518020 1 0 1 0 0 
+54518020 1 0 1 0 0 
+54518020 1 Pacotes atribuidos!
+54518020 1 N 0: 0 pacotes
+54518020 1 N 1: 0 pacotes
+54518020 1 N 2: 1 pacotes
+54518020 1 N 3: 1 pacotes
+54518020 1 Mapa da matriz de conflito gerada:
+54518020 1 N 0: 2 -> 1
+54518020 1 N 1: 3 -> 1
+54518020 1 sorted n:2
+54518020 1 sorted n:1
+54518020 1 Camos no pior caso
+54518020 1 sorted n:2
+54518020 1 sorted n:3
+54518020 1 Canais alocados  | |
+54518020 1                 \   /
+54518020 1                  \ /
+54518020 1 1  0  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 6-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 3-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 11-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+54518020 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+54518020 1 [PRI : TSCH Sched] ----CHANNEL: 4-----
+54518020 1 [PRI : TSCH Sched] -----------------------------
+54518020 1 [PRI : TSCH Sched] Escalonamento Concluido
+54518020 1 Energest:
+54518020 1  CPU            54s LPM         0s DEEP LPM    0s  Total time 54s
+54518020 1  Radio LISTEN    1s TRANSMIT    0s OFF        52s
+54970000 4 [INFO: TSCH      ] scanning on channel 25
+55131000 1 [INFO: RPL       ] Scheduling DIO timer 18603 ticks in future (Interval)
+55415000 3 [INFO: TSCH      ] scanning on channel 15
+55980000 4 [INFO: TSCH      ] scanning on channel 25
+56425000 3 [INFO: TSCH      ] scanning on channel 20
+56990000 4 [INFO: TSCH      ] scanning on channel 15
+57418020 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 83, queue 1/64 5/64, len 21 21
+57418020 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+57435000 3 [INFO: TSCH      ] scanning on channel 20
+57488432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 83
+57488432 1 [INFO: TSCH Sched] list of packets
+57488432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=5 
+57488432 1 [INFO: TSCH Sched] id=2 Tx=5 Rx=0 
+57488432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+57488432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+57488432 1 [WARN: 6LoWPAN   ] input: empty packet
+57488432 1 [INFO: TSCH-LOG  ] {asn 00.0000166a link  1  17   0  9  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq  83, edr   0
+57488432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 83, status 0, tx 1
+57488432 2 [INFO: TSCH Sched] Tx_try= 8 Tx_Success=0
+57488432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+57488432 2 [INFO: TSCH-LOG  ] {asn 00.0000166a link  1  17   0  9  5 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+57488432 2 [INFO: TSCH-LOG  ] {asn 00.0000166a link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  83, st 0  1, dr   0
+58000000 4 [INFO: TSCH      ] scanning on channel 26
+58445000 3 [INFO: TSCH      ] scanning on channel 20
+58878020 2 [INFO: RPL       ] Scheduling DIO timer 23925 ticks in future (Interval)
+59010000 4 [INFO: TSCH      ] scanning on channel 26
+59455000 3 [INFO: TSCH      ] scanning on channel 15
+60020000 4 [INFO: TSCH      ] scanning on channel 15
+60094000 1 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60094000 1 [INFO: Energest  ] Total time  :   60000000
+60094000 1 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60094000 1 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60094000 1 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60094000 1 [INFO: Energest  ] Radio Tx    :      27776/  60000000 (0 permil)
+60094000 1 [INFO: Energest  ] Radio Rx    :    2558040/  60000000 (42 permil)
+60094000 1 [INFO: Energest  ] Radio total :    2585816/  60000000 (43 permil)
+60373000 2 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60373000 2 [INFO: Energest  ] Total time  :   60000000
+60373000 2 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60373000 2 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60373000 2 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60373000 2 [INFO: Energest  ] Radio Tx    :      41056/  60000000 (0 permil)
+60373000 2 [INFO: Energest  ] Radio Rx    :   19491804/  60000000 (38 permil)
+60373000 2 [INFO: Energest  ] Radio total :   19532860/  60000000 (39 permil)
+60430000 4 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60430000 4 [INFO: Energest  ] Total time  :   60000000
+60430000 4 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60430000 4 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60430000 4 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60430000 4 [INFO: Energest  ] Radio Tx    :          0/  60000000 (0 permil)
+60430000 4 [INFO: Energest  ] Radio Rx    :   60000000/  60000000 (69 permil)
+60430000 4 [INFO: Energest  ] Radio total :   60000000/  60000000 (69 permil)
+60465000 3 [INFO: TSCH      ] scanning on channel 20
+60875000 3 [INFO: Energest  ] --- Period summary #0 (60 seconds)
+60875000 3 [INFO: Energest  ] Total time  :   60000000
+60875000 3 [INFO: Energest  ] CPU         :   60000000/  60000000 (69 permil)
+60875000 3 [INFO: Energest  ] LPM         :          0/  60000000 (0 permil)
+60875000 3 [INFO: Energest  ] Deep LPM    :          0/  60000000 (0 permil)
+60875000 3 [INFO: Energest  ] Radio Tx    :          0/  60000000 (0 permil)
+60875000 3 [INFO: Energest  ] Radio Rx    :   60000000/  60000000 (69 permil)
+60875000 3 [INFO: Energest  ] Radio total :   60000000/  60000000 (69 permil)
+61030000 4 [INFO: TSCH      ] scanning on channel 25
+61123000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 84, queue 1/64 5/64, len 21 21
+61123000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+61228432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 84
+61228432 1 [INFO: TSCH Sched] list of packets
+61228432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=6 
+61228432 1 [INFO: TSCH Sched] id=2 Tx=6 Rx=0 
+61228432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+61228432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+61228432 1 [WARN: 6LoWPAN   ] input: empty packet
+61228432 1 [INFO: TSCH-LOG  ] {asn 00.000017e0 link  1  17   0  9  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq  84, edr   0
+61228432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 84, status 0, tx 1
+61228432 2 [INFO: TSCH Sched] Tx_try= 9 Tx_Success=0
+61228432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+61228432 2 [INFO: TSCH-LOG  ] {asn 00.000017e0 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  84, st 0  1, dr   0
+61431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+61431000 3 [INFO: TSCH Sched] 0
+61431000 3 [INFO: TSCH Sched] 0
+61431000 3 [INFO: App       ] Verify: 0 
+61431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+61431000 3 [PRI : TSCH Sched] 7 1
+61431000 3 [PRI : TSCH Sched] 5 2
+61431000 3 [PRI : TSCH Sched] 3 1
+61431000 3 [PRI : TSCH Sched] 14 9
+61431000 3 [PRI : TSCH Sched] 17 10
+61431000 3 [PRI : TSCH Sched] 9 2
+61431000 3 [PRI : TSCH Sched] 11 10
+61431000 3 [PRI : TSCH Sched] 4 2
+61431000 3 [PRI : TSCH Sched] 6 2
+61431000 3 [PRI : TSCH Sched] 16 1
+61431000 3 [PRI : TSCH Sched] 10 1
+61431000 3 [PRI : TSCH Sched] 18 16
+61431000 3 [PRI : TSCH Sched] 2 1
+61431000 3 [PRI : TSCH Sched] 2 1
+61431000 3 [PRI : TSCH Sched] 2 1
+61431000 3 Energest:
+61431000 3  CPU            60s LPM         0s DEEP LPM    0s  Total time 60s
+61431000 3  Radio LISTEN   60s TRANSMIT    0s OFF         0s
+61475000 3 [INFO: TSCH      ] scanning on channel 20
+61875000 3 [INFO: RPL       ] Sending a DIS to ff02::1a
+61875000 3 [WARN: TSCH      ] Cannot compute max payload size: not associated
+61875000 3 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+62040000 4 [INFO: TSCH      ] scanning on channel 15
+62485000 3 [INFO: TSCH      ] scanning on channel 26
+63050000 4 [INFO: TSCH      ] scanning on channel 26
+63495000 3 [INFO: TSCH      ] scanning on channel 15
+63640000 2 [INFO: App       ] app generate packet seqnum=4 node_id=2
+63640000 2 [INFO: RPL       ] Updating RPL option
+63640000 2 [WARN: IPv6 Route] No route found
+63640000 2 [WARN: IPv6 Route] No route found
+63640000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 85, queue 1/64 5/64, len 21 43
+63641000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+63641000 2 [INFO: TSCH Sched] 1
+63641000 2 [INFO: TSCH Sched] 0
+63641000 2 [INFO: App       ] Verify: 1 
+63641000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+63641000 2 [PRI : TSCH Sched] 7 1
+63641000 2 [PRI : TSCH Sched] 5 2
+63641000 2 [PRI : TSCH Sched] Match - 2 <- 5
+63641000 2 [PRI : TSCH Sched] 3 1
+63641000 2 [PRI : TSCH Sched] 14 9
+63641000 2 [PRI : TSCH Sched] 17 10
+63641000 2 [PRI : TSCH Sched] 9 2
+63641000 2 [PRI : TSCH Sched] Match - 2 <- 9
+63641000 2 [PRI : TSCH Sched] 11 10
+63641000 2 [PRI : TSCH Sched] 4 2
+63641000 2 [PRI : TSCH Sched] Match - 2 <- 4
+63641000 2 [PRI : TSCH Sched] 6 2
+63641000 2 [PRI : TSCH Sched] Match - 2 <- 6
+63641000 2 [PRI : TSCH Sched] 16 1
+63641000 2 [PRI : TSCH Sched] 10 1
+63641000 2 [PRI : TSCH Sched] 18 16
+63641000 2 [PRI : TSCH Sched] 2 1
+63641000 2 [PRI : TSCH Sched] 2 1
+63641000 2 [PRI : TSCH Sched] 2 1
+63641000 2 Enter here!
+63641000 2 handle: 0 - 3-> 1
+63641000 2 handle: 1 - 2-> 1
+63641000 2 Numero de ns : 4 | Numero de arestas: 2
+63641000 2 Matriz de adacncia do grafo da rede:
+63641000 2 0 0 0 0 
+63641000 2 0 0 0 0 
+63641000 2 0 1 0 0 
+63641000 2 0 1 0 0 
+63641000 2 Pacotes atribuidos!
+63641000 2 N 0: 0 pacotes
+63641000 2 N 1: 0 pacotes
+63641000 2 N 2: 1 pacotes
+63641000 2 N 3: 1 pacotes
+63641000 2 Mapa da matriz de conflito gerada:
+63641000 2 N 0: 2 -> 1
+63641000 2 N 1: 3 -> 1
+63641000 2 sorted n:3
+63641000 2 sorted n:3
+63641000 2 sorted n:2
+63641000 2 Canais alocados  | |
+63641000 2                 \   /
+63641000 2                  \ /
+63641000 2 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+63641000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+63641000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+63641000 2 [PRI : TSCH Sched] -----------------------------
+63641000 2 [PRI : TSCH Sched] Escalonamento Concluido
+63641000 2 Energest:
+63641000 2  CPU            63s LPM         0s DEEP LPM    0s  Total time 63s
+63641000 2  Radio LISTEN   19s TRANSMIT    0s OFF        43s
+63779136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 85
+63779136 1 [INFO: TSCH Sched] list of packets
+63779136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=7 
+63779136 1 [INFO: TSCH Sched] id=2 Tx=7 Rx=0 
+63779136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+63779136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+63779136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 4
+63779136 1 [INFO: TSCH-LOG  ] {asn 00.000018df link  1  17   0  9  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  43, seq  85, edr   0
+63779136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 85, status 0, tx 1
+63779136 2 [INFO: TSCH Sched] Tx_try= 10 Tx_Success=0
+63779136 2 [INFO: TSCH-LOG  ] {asn 00.000018df link  1  17   0  9  5 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+63779136 2 [INFO: TSCH-LOG  ] {asn 00.000018df link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq  85, st 0  1, dr   0
+64060000 4 [INFO: TSCH      ] scanning on channel 26
+64222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+64222000 4 [INFO: TSCH Sched] 0
+64222000 4 [INFO: TSCH Sched] 0
+64222000 4 [INFO: App       ] Verify: 0 
+64222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+64222000 4 [PRI : TSCH Sched] 7 1
+64222000 4 [PRI : TSCH Sched] 5 2
+64222000 4 [PRI : TSCH Sched] 3 1
+64222000 4 [PRI : TSCH Sched] 14 9
+64222000 4 [PRI : TSCH Sched] 17 10
+64222000 4 [PRI : TSCH Sched] 9 2
+64222000 4 [PRI : TSCH Sched] 11 10
+64222000 4 [PRI : TSCH Sched] 4 2
+64222000 4 [PRI : TSCH Sched] 6 2
+64222000 4 [PRI : TSCH Sched] 16 1
+64222000 4 [PRI : TSCH Sched] 10 1
+64222000 4 [PRI : TSCH Sched] 18 16
+64222000 4 [PRI : TSCH Sched] 2 1
+64222000 4 [PRI : TSCH Sched] 2 1
+64222000 4 [PRI : TSCH Sched] 2 1
+64222000 4 Energest:
+64222000 4  CPU            63s LPM         0s DEEP LPM    0s  Total time 63s
+64222000 4  Radio LISTEN   63s TRANSMIT    0s OFF         0s
+64505000 3 [INFO: TSCH      ] scanning on channel 15
+64518000 1 [INFO: App       ] app generate packet seqnum=3 node_id=1
+64518000 1 [INFO: RPL       ] Updating RPL option
+64518000 1 [WARN: IPv6 Route] No route found
+64518000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 3
+64518000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+64518000 1 [INFO: TSCH Sched] 2
+64518000 1 [INFO: TSCH Sched] 0
+64518000 1 [INFO: App       ] Verify: 1 
+64518000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+64518000 1 [PRI : TSCH Sched] 7 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 7
+64518000 1 [PRI : TSCH Sched] 5 2
+64518000 1 [PRI : TSCH Sched] 3 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 3
+64518000 1 [PRI : TSCH Sched] 14 9
+64518000 1 [PRI : TSCH Sched] 17 10
+64518000 1 [PRI : TSCH Sched] 9 2
+64518000 1 [PRI : TSCH Sched] 11 10
+64518000 1 [PRI : TSCH Sched] 4 2
+64518000 1 [PRI : TSCH Sched] 6 2
+64518000 1 [PRI : TSCH Sched] 16 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 16
+64518000 1 [PRI : TSCH Sched] 10 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 10
+64518000 1 [PRI : TSCH Sched] 18 16
+64518000 1 [PRI : TSCH Sched] 2 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 2
+64518000 1 [PRI : TSCH Sched] 2 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 2
+64518000 1 [PRI : TSCH Sched] 2 1
+64518000 1 [PRI : TSCH Sched] Match - 1 <- 2
+64518000 1 Enter here!
+64518000 1 handle: 0 - 3-> 1
+64518000 1 handle: 1 - 2-> 1
+64518000 1 Numero de ns : 4 | Numero de arestas: 2
+64518000 1 Matriz de adacncia do grafo da rede:
+64518000 1 0 0 0 0 
+64518000 1 0 0 0 0 
+64518000 1 0 1 0 0 
+64518000 1 0 1 0 0 
+64518000 1 Pacotes atribuidos!
+64518000 1 N 0: 0 pacotes
+64518000 1 N 1: 0 pacotes
+64518000 1 N 2: 1 pacotes
+64518000 1 N 3: 1 pacotes
+64518000 1 Mapa da matriz de conflito gerada:
+64518000 1 N 0: 2 -> 1
+64518000 1 N 1: 3 -> 1
+64518000 1 sorted n:0
+64518000 1 sorted n:3
+64518000 1 sorted n:3
+64518000 1 Canais alocados  | |
+64518000 1                 \   /
+64518000 1                  \ /
+64518000 1 1  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 6-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 3-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 11-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+64518000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+64518000 1 [PRI : TSCH Sched] ----CHANNEL: 4-----
+64518000 1 [PRI : TSCH Sched] -----------------------------
+64518000 1 [PRI : TSCH Sched] Escalonamento Concluido
+64518000 1 Energest:
+64518000 1  CPU            64s LPM         0s DEEP LPM    0s  Total time 64s
+64518000 1  Radio LISTEN    3s TRANSMIT    0s OFF        61s
+65040000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+65047240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 81, status 0, tx 1
+65047240 1 [INFO: TSCH-LOG  ] {asn 00.0000195e link  1  17   0  0  0 ch 26} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  81, st 0  1
+65070000 4 [INFO: TSCH      ] scanning on channel 20
+65515000 3 [INFO: TSCH      ] scanning on channel 20
+66080000 4 [INFO: TSCH      ] scanning on channel 25
+66525000 3 [INFO: TSCH      ] scanning on channel 25
+67090000 4 [INFO: TSCH      ] scanning on channel 25
+67462000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 86, queue 1/64 5/64, len 21 21
+67462000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+67518432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 86
+67518432 1 [INFO: TSCH Sched] list of packets
+67518432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=8 
+67518432 1 [INFO: TSCH Sched] id=2 Tx=8 Rx=0 
+67518432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+67518432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+67518432 1 [WARN: 6LoWPAN   ] input: empty packet
+67518432 1 [INFO: TSCH-LOG  ] {asn 00.00001a55 link  1  17   0  9  1 ch 26} uc-1-0 rx LL-0002->LL-0001, len  21, seq  86, edr   0
+67518432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 86, status 0, tx 1
+67518432 2 [INFO: TSCH Sched] Tx_try= 11 Tx_Success=0
+67518432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+67518432 2 [INFO: TSCH-LOG  ] {asn 00.00001a55 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq  86, st 0  1, dr   0
+67535000 3 [INFO: TSCH      ] scanning on channel 15
+68100000 4 [INFO: TSCH      ] scanning on channel 20
+68545000 3 [INFO: TSCH      ] scanning on channel 15
+69110000 4 [INFO: TSCH      ] scanning on channel 20
+69555000 3 [INFO: TSCH      ] scanning on channel 25
+70120000 4 [INFO: TSCH      ] scanning on channel 15
+70565000 3 [INFO: TSCH      ] scanning on channel 15
+71130000 4 [INFO: TSCH      ] scanning on channel 26
+71229000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 87, queue 1/64 5/64, len 21 21
+71229000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+71258432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 87
+71258432 1 [INFO: TSCH Sched] list of packets
+71258432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=9 
+71258432 1 [INFO: TSCH Sched] id=2 Tx=9 Rx=0 
+71258432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+71258432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+71258432 1 [WARN: 6LoWPAN   ] input: empty packet
+71258432 1 [INFO: TSCH-LOG  ] {asn 00.00001bcb link  1  17   0  9  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  21, seq  87, edr   0
+71258432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 87, status 0, tx 1
+71258432 2 [INFO: TSCH Sched] Tx_try= 12 Tx_Success=0
+71258432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+71258432 2 [INFO: TSCH-LOG  ] {asn 00.00001bcb link  1  17   0  9  5 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+71258432 2 [INFO: TSCH-LOG  ] {asn 00.00001bcb link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  21, seq  87, st 0  1, dr   0
+71431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+71431000 3 [INFO: TSCH Sched] 0
+71431000 3 [INFO: TSCH Sched] 0
+71431000 3 [INFO: App       ] Verify: 0 
+71431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+71431000 3 [PRI : TSCH Sched] 7 1
+71431000 3 [PRI : TSCH Sched] 5 2
+71431000 3 [PRI : TSCH Sched] 3 1
+71431000 3 [PRI : TSCH Sched] 14 9
+71431000 3 [PRI : TSCH Sched] 17 10
+71431000 3 [PRI : TSCH Sched] 9 2
+71431000 3 [PRI : TSCH Sched] 11 10
+71431000 3 [PRI : TSCH Sched] 4 2
+71431000 3 [PRI : TSCH Sched] 6 2
+71431000 3 [PRI : TSCH Sched] 16 1
+71431000 3 [PRI : TSCH Sched] 10 1
+71431000 3 [PRI : TSCH Sched] 18 16
+71431000 3 [PRI : TSCH Sched] 2 1
+71431000 3 [PRI : TSCH Sched] 2 1
+71431000 3 [PRI : TSCH Sched] 2 1
+71431000 3 Energest:
+71431000 3  CPU            70s LPM         0s DEEP LPM    0s  Total time 70s
+71431000 3  Radio LISTEN   70s TRANSMIT    0s OFF         0s
+71575000 3 [INFO: TSCH      ] scanning on channel 25
+72140000 4 [INFO: TSCH      ] scanning on channel 15
+72585000 3 [INFO: TSCH      ] scanning on channel 15
+73150000 4 [INFO: TSCH      ] scanning on channel 15
+73595000 3 [INFO: TSCH      ] scanning on channel 20
+73641000 2 [INFO: App       ] app generate packet seqnum=5 node_id=2
+73641000 2 [INFO: RPL       ] Updating RPL option
+73641000 2 [WARN: IPv6 Route] No route found
+73641000 2 [WARN: IPv6 Route] No route found
+73641000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 88, queue 1/64 5/64, len 21 43
+73642000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+73642000 2 [INFO: TSCH Sched] 1
+73642000 2 [INFO: TSCH Sched] 0
+73642000 2 [INFO: App       ] Verify: 1 
+73642000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+73642000 2 [PRI : TSCH Sched] 7 1
+73642000 2 [PRI : TSCH Sched] 5 2
+73642000 2 [PRI : TSCH Sched] Match - 2 <- 5
+73642000 2 [PRI : TSCH Sched] 3 1
+73642000 2 [PRI : TSCH Sched] 14 9
+73642000 2 [PRI : TSCH Sched] 17 10
+73642000 2 [PRI : TSCH Sched] 9 2
+73642000 2 [PRI : TSCH Sched] Match - 2 <- 9
+73642000 2 [PRI : TSCH Sched] 11 10
+73642000 2 [PRI : TSCH Sched] 4 2
+73642000 2 [PRI : TSCH Sched] Match - 2 <- 4
+73642000 2 [PRI : TSCH Sched] 6 2
+73642000 2 [PRI : TSCH Sched] Match - 2 <- 6
+73642000 2 [PRI : TSCH Sched] 16 1
+73642000 2 [PRI : TSCH Sched] 10 1
+73642000 2 [PRI : TSCH Sched] 18 16
+73642000 2 [PRI : TSCH Sched] 2 1
+73642000 2 [PRI : TSCH Sched] 2 1
+73642000 2 [PRI : TSCH Sched] 2 1
+73642000 2 Enter here!
+73642000 2 handle: 0 - 3-> 1
+73642000 2 handle: 1 - 2-> 1
+73642000 2 Numero de ns : 4 | Numero de arestas: 2
+73642000 2 Matriz de adacncia do grafo da rede:
+73642000 2 0 0 0 0 
+73642000 2 0 0 0 0 
+73642000 2 0 1 0 0 
+73642000 2 0 1 0 0 
+73642000 2 Pacotes atribuidos!
+73642000 2 N 0: 0 pacotes
+73642000 2 N 1: 0 pacotes
+73642000 2 N 2: 1 pacotes
+73642000 2 N 3: 1 pacotes
+73642000 2 Mapa da matriz de conflito gerada:
+73642000 2 N 0: 2 -> 1
+73642000 2 N 1: 3 -> 1
+73642000 2 sorted n:3
+73642000 2 sorted n:1
+73642000 2 Camos no pior caso
+73642000 2 sorted n:1
+73642000 2 Camos no pior caso
+73642000 2 sorted n:2
+73642000 2 sorted n:2
+73642000 2 Canais alocados  | |
+73642000 2                 \   /
+73642000 2                  \ /
+73642000 2 2  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+73642000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+73642000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+73642000 2 [PRI : TSCH Sched] -----------------------------
+73642000 2 [PRI : TSCH Sched] Escalonamento Concluido
+73642000 2 Energest:
+73642000 2  CPU            73s LPM         0s DEEP LPM    0s  Total time 73s
+73642000 2  Radio LISTEN   20s TRANSMIT    0s OFF        52s
+73734000 1 [INFO: RPL       ] Sending a multicast-DIO with rank 128
+73734000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 147, queue 1/64 1/64, len 14 94
+73809136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 88
+73809136 1 [INFO: TSCH Sched] list of packets
+73809136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=10 
+73809136 1 [INFO: TSCH Sched] id=2 Tx=10 Rx=0 
+73809136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+73809136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+73809136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 5
+73809136 1 [INFO: TSCH-LOG  ] {asn 00.00001cca link  1  17   0  9  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  43, seq  88, edr   0
+73809136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 88, status 0, tx 1
+73809136 2 [INFO: TSCH Sched] Tx_try= 13 Tx_Success=0
+73809136 2 [INFO: TSCH-LOG  ] {asn 00.00001cca link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  43, seq  88, st 0  1, dr   0
+73889128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 82, status 0, tx 1
+73889128 1 [INFO: TSCH Sched] Tx_try= 2 Tx_Success=0
+73889128 1 [INFO: TSCH-LOG  ] {asn 00.00001cd2 link  1  17   0  0  0 ch 26} bc-1-0 tx LL-0001->LL-NULL, len  94, seq  82, st 0  1
+74160000 4 [INFO: TSCH      ] scanning on channel 15
+74222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+74222000 4 [INFO: TSCH Sched] 0
+74222000 4 [INFO: TSCH Sched] 0
+74222000 4 [INFO: App       ] Verify: 0 
+74222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+74222000 4 [PRI : TSCH Sched] 7 1
+74222000 4 [PRI : TSCH Sched] 5 2
+74222000 4 [PRI : TSCH Sched] 3 1
+74222000 4 [PRI : TSCH Sched] 14 9
+74222000 4 [PRI : TSCH Sched] 17 10
+74222000 4 [PRI : TSCH Sched] 9 2
+74222000 4 [PRI : TSCH Sched] 11 10
+74222000 4 [PRI : TSCH Sched] 4 2
+74222000 4 [PRI : TSCH Sched] 6 2
+74222000 4 [PRI : TSCH Sched] 16 1
+74222000 4 [PRI : TSCH Sched] 10 1
+74222000 4 [PRI : TSCH Sched] 18 16
+74222000 4 [PRI : TSCH Sched] 2 1
+74222000 4 [PRI : TSCH Sched] 2 1
+74222000 4 [PRI : TSCH Sched] 2 1
+74222000 4 Energest:
+74222000 4  CPU            73s LPM         0s DEEP LPM    0s  Total time 73s
+74222000 4  Radio LISTEN   73s TRANSMIT    0s OFF         0s
+74518000 1 [INFO: App       ] app generate packet seqnum=4 node_id=1
+74518000 1 [INFO: RPL       ] Updating RPL option
+74518000 1 [WARN: IPv6 Route] No route found
+74518000 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 4
+74518000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+74518000 1 [INFO: TSCH Sched] 2
+74518000 1 [INFO: TSCH Sched] 0
+74518000 1 [INFO: App       ] Verify: 1 
+74518000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+74518000 1 [PRI : TSCH Sched] 7 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 7
+74518000 1 [PRI : TSCH Sched] 5 2
+74518000 1 [PRI : TSCH Sched] 3 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 3
+74518000 1 [PRI : TSCH Sched] 14 9
+74518000 1 [PRI : TSCH Sched] 17 10
+74518000 1 [PRI : TSCH Sched] 9 2
+74518000 1 [PRI : TSCH Sched] 11 10
+74518000 1 [PRI : TSCH Sched] 4 2
+74518000 1 [PRI : TSCH Sched] 6 2
+74518000 1 [PRI : TSCH Sched] 16 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 16
+74518000 1 [PRI : TSCH Sched] 10 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 10
+74518000 1 [PRI : TSCH Sched] 18 16
+74518000 1 [PRI : TSCH Sched] 2 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 2
+74518000 1 [PRI : TSCH Sched] 2 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 2
+74518000 1 [PRI : TSCH Sched] 2 1
+74518000 1 [PRI : TSCH Sched] Match - 1 <- 2
+74518000 1 Enter here!
+74518000 1 handle: 0 - 3-> 1
+74518000 1 handle: 1 - 2-> 1
+74518000 1 Numero de ns : 4 | Numero de arestas: 2
+74518000 1 Matriz de adacncia do grafo da rede:
+74518000 1 0 0 0 0 
+74518000 1 0 0 0 0 
+74518000 1 0 1 0 0 
+74518000 1 0 1 0 0 
+74518000 1 Pacotes atribuidos!
+74518000 1 N 0: 0 pacotes
+74518000 1 N 1: 0 pacotes
+74518000 1 N 2: 1 pacotes
+74518000 1 N 3: 1 pacotes
+74518000 1 Mapa da matriz de conflito gerada:
+74518000 1 N 0: 2 -> 1
+74518000 1 N 1: 3 -> 1
+74518000 1 sorted n:3
+74518000 1 sorted n:2
+74518000 1 sorted n:0
+74518000 1 Camos no pior caso
+74518000 1 Canais alocados  | |
+74518000 1                 \   /
+74518000 1                  \ /
+74518000 1 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 6-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 3-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 11-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+74518000 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+74518000 1 [PRI : TSCH Sched] ----CHANNEL: 4-----
+74518000 1 [PRI : TSCH Sched] -----------------------------
+74518000 1 [PRI : TSCH Sched] Escalonamento Concluido
+74518000 1 Energest:
+74518000 1  CPU            74s LPM         0s DEEP LPM    0s  Total time 74s
+74518000 1  Radio LISTEN    4s TRANSMIT    0s OFF        70s
+74605000 3 [INFO: TSCH      ] scanning on channel 25
+75170000 4 [INFO: TSCH      ] scanning on channel 15
+75615000 3 [INFO: TSCH      ] scanning on channel 25
+76180000 4 [INFO: TSCH      ] scanning on channel 26
+76625000 3 [INFO: TSCH      ] scanning on channel 15
+77190000 4 [INFO: TSCH      ] scanning on channel 25
+77430000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 89, queue 1/64 5/64, len 21 21
+77430000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+77548432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 89
+77548432 1 [INFO: TSCH Sched] list of packets
+77548432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=11 
+77548432 1 [INFO: TSCH Sched] id=2 Tx=11 Rx=0 
+77548432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+77548432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+77548432 1 [WARN: 6LoWPAN   ] input: empty packet
+77548432 1 [INFO: TSCH-LOG  ] {asn 00.00001e40 link  1  17   0  9  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq  89, edr   0
+77548432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 89, status 0, tx 1
+77548432 2 [INFO: TSCH Sched] Tx_try= 14 Tx_Success=0
+77548432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+77548432 2 [INFO: TSCH-LOG  ] {asn 00.00001e40 link  1  17   0  9  5 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+77548432 2 [INFO: TSCH-LOG  ] {asn 00.00001e40 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  89, st 0  1, dr   0
+77635000 3 [INFO: TSCH      ] scanning on channel 20
+78200000 4 [INFO: TSCH      ] scanning on channel 25
+78645000 3 [INFO: TSCH      ] scanning on channel 20
+79210000 4 [INFO: TSCH      ] scanning on channel 26
+79407000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+79497240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 83, status 0, tx 1
+79497240 1 [INFO: TSCH-LOG  ] {asn 00.00001f03 link  1  17   0  0  0 ch 20} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  83, st 0  1
+79655000 3 [INFO: TSCH      ] scanning on channel 20
+80220000 4 [INFO: TSCH      ] scanning on channel 25
+80665000 3 [INFO: TSCH      ] scanning on channel 20
+81230000 4 [INFO: TSCH      ] scanning on channel 25
+81269000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 90, queue 1/64 5/64, len 21 21
+81269000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+81288432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 90
+81288432 1 [INFO: TSCH Sched] list of packets
+81288432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=12 
+81288432 1 [INFO: TSCH Sched] id=2 Tx=12 Rx=0 
+81288432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+81288432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+81288432 1 [WARN: 6LoWPAN   ] input: empty packet
+81288432 1 [INFO: TSCH-LOG  ] {asn 00.00001fb6 link  1  17   0  9  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq  90, edr   0
+81288432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 90, status 0, tx 1
+81288432 2 [INFO: TSCH Sched] Tx_try= 15 Tx_Success=0
+81288432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+81288432 2 [INFO: TSCH-LOG  ] {asn 00.00001fb6 link  1  17   0  9  5 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq  90, st 0  1, dr   0
+81431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+81431000 3 [INFO: TSCH Sched] 0
+81431000 3 [INFO: TSCH Sched] 0
+81431000 3 [INFO: App       ] Verify: 0 
+81431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+81431000 3 [PRI : TSCH Sched] 7 1
+81431000 3 [PRI : TSCH Sched] 5 2
+81431000 3 [PRI : TSCH Sched] 3 1
+81431000 3 [PRI : TSCH Sched] 14 9
+81431000 3 [PRI : TSCH Sched] 17 10
+81431000 3 [PRI : TSCH Sched] 9 2
+81431000 3 [PRI : TSCH Sched] 11 10
+81431000 3 [PRI : TSCH Sched] 4 2
+81431000 3 [PRI : TSCH Sched] 6 2
+81431000 3 [PRI : TSCH Sched] 16 1
+81431000 3 [PRI : TSCH Sched] 10 1
+81431000 3 [PRI : TSCH Sched] 18 16
+81431000 3 [PRI : TSCH Sched] 2 1
+81431000 3 [PRI : TSCH Sched] 2 1
+81431000 3 [PRI : TSCH Sched] 2 1
+81431000 3 Energest:
+81431000 3  CPU            80s LPM         0s DEEP LPM    0s  Total time 80s
+81431000 3  Radio LISTEN   80s TRANSMIT    0s OFF         0s
+81675000 3 [INFO: TSCH      ] scanning on channel 20
+82240000 4 [INFO: TSCH      ] scanning on channel 15
+82685000 3 [INFO: TSCH      ] scanning on channel 15
+82803000 2 [INFO: RPL       ] Sending a multicast-DIO with rank 473
+82803000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 90, queue 4/64 5/64, len 14 94
+83250000 4 [INFO: TSCH      ] scanning on channel 15
+83642000 2 [INFO: App       ] app generate packet seqnum=6 node_id=2
+83642000 2 [INFO: RPL       ] Updating RPL option
+83642000 2 [WARN: IPv6 Route] No route found
+83642000 2 [WARN: IPv6 Route] No route found
+83642000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 91, queue 1/64 6/64, len 21 43
+83643000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+83643000 2 [INFO: TSCH Sched] 1
+83643000 2 [INFO: TSCH Sched] 0
+83643000 2 [INFO: App       ] Verify: 1 
+83643000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+83643000 2 [PRI : TSCH Sched] 7 1
+83643000 2 [PRI : TSCH Sched] 5 2
+83643000 2 [PRI : TSCH Sched] Match - 2 <- 5
+83643000 2 [PRI : TSCH Sched] 3 1
+83643000 2 [PRI : TSCH Sched] 14 9
+83643000 2 [PRI : TSCH Sched] 17 10
+83643000 2 [PRI : TSCH Sched] 9 2
+83643000 2 [PRI : TSCH Sched] Match - 2 <- 9
+83643000 2 [PRI : TSCH Sched] 11 10
+83643000 2 [PRI : TSCH Sched] 4 2
+83643000 2 [PRI : TSCH Sched] Match - 2 <- 4
+83643000 2 [PRI : TSCH Sched] 6 2
+83643000 2 [PRI : TSCH Sched] Match - 2 <- 6
+83643000 2 [PRI : TSCH Sched] 16 1
+83643000 2 [PRI : TSCH Sched] 10 1
+83643000 2 [PRI : TSCH Sched] 18 16
+83643000 2 [PRI : TSCH Sched] 2 1
+83643000 2 [PRI : TSCH Sched] 2 1
+83643000 2 [PRI : TSCH Sched] 2 1
+83643000 2 Enter here!
+83643000 2 handle: 0 - 3-> 1
+83643000 2 handle: 1 - 2-> 1
+83643000 2 Numero de ns : 4 | Numero de arestas: 2
+83643000 2 Matriz de adacncia do grafo da rede:
+83643000 2 0 0 0 0 
+83643000 2 0 0 0 0 
+83643000 2 0 1 0 0 
+83643000 2 0 1 0 0 
+83643000 2 Pacotes atribuidos!
+83643000 2 N 0: 0 pacotes
+83643000 2 N 1: 0 pacotes
+83643000 2 N 2: 1 pacotes
+83643000 2 N 3: 1 pacotes
+83643000 2 Mapa da matriz de conflito gerada:
+83643000 2 N 0: 2 -> 1
+83643000 2 N 1: 3 -> 1
+83643000 2 sorted n:0
+83643000 2 sorted n:2
+83643000 2 sorted n:3
+83643000 2 Canais alocados  | |
+83643000 2                 \   /
+83643000 2                  \ /
+83643000 2 1  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+83643000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+83643000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+83643000 2 [PRI : TSCH Sched] -----------------------------
+83643000 2 [PRI : TSCH Sched] Escalonamento Concluido
+83643000 2 Energest:
+83643000 2  CPU            83s LPM         0s DEEP LPM    0s  Total time 83s
+83643000 2  Radio LISTEN   21s TRANSMIT    0s OFF        62s
+83669136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 91
+83669136 1 [INFO: TSCH Sched] list of packets
+83669136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=13 
+83669136 1 [INFO: TSCH Sched] id=2 Tx=13 Rx=0 
+83669136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+83669136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+83669136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 6
+83669136 1 [INFO: TSCH-LOG  ] {asn 00.000020a4 link  1  17   0  9  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  43, seq  91, edr   0
+83669136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 91, status 0, tx 1
+83669136 2 [INFO: TSCH Sched] Tx_try= 16 Tx_Success=0
+83669136 2 [INFO: TSCH-LOG  ] {asn 00.000020a4 link  1  17   0  9  5 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+83669136 2 [INFO: TSCH-LOG  ] {asn 00.000020a4 link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  43, seq  91, st 0  1, dr   0
+83695000 3 [INFO: TSCH      ] scanning on channel 15
+83792000 2 [INFO: RPL       ] probing 1  last tx 0 min ago
+83792000 2 [INFO: RPL       ] Sending unicast-DIO with rank 473 to fe80::201:1:1:1
+83792000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 92, queue 1/64 6/64, len 21 100
+83840960 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 92
+83840960 1 [INFO: TSCH Sched] list of packets
+83840960 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=14 
+83840960 1 [INFO: TSCH Sched] id=2 Tx=14 Rx=0 
+83840960 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+83840960 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+83840960 1 [INFO: RPL       ] Received a DIO from fe80::202:2:2:2
+83840960 1 [INFO: RPL       ] DAG conf:dbl=8, min=12 red=10 maxinc=896 mininc=128 ocp=1 d_l=30 l_u=60
+83840960 1 [INFO: RPL       ] Copying prefix information
+83840960 1 [INFO: RPL       ] Prefix set - will announce this in DIOs
+83840960 1 [INFO: TSCH-LOG  ] {asn 00.000020b5 link  1  17   0  9  1 ch 26} uc-1-0 rx LL-0002->LL-0001, len 100, seq  92, edr   0
+83840960 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 92, status 0, tx 1
+83840960 2 [INFO: TSCH Sched] Tx_try= 17 Tx_Success=0
+83840960 2 [INFO: TSCH-LOG  ] {asn 00.000020b5 link  1  17   0  9  5 ch 26} uc-1-0 tx LL-0002->LL-0001, len 100, seq  92, st 0  1, dr   0
+84222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+84222000 4 [INFO: TSCH Sched] 0
+84222000 4 [INFO: TSCH Sched] 0
+84222000 4 [INFO: App       ] Verify: 0 
+84222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+84222000 4 [PRI : TSCH Sched] 7 1
+84222000 4 [PRI : TSCH Sched] 5 2
+84222000 4 [PRI : TSCH Sched] 3 1
+84222000 4 [PRI : TSCH Sched] 14 9
+84222000 4 [PRI : TSCH Sched] 17 10
+84222000 4 [PRI : TSCH Sched] 9 2
+84222000 4 [PRI : TSCH Sched] 11 10
+84222000 4 [PRI : TSCH Sched] 4 2
+84222000 4 [PRI : TSCH Sched] 6 2
+84222000 4 [PRI : TSCH Sched] 16 1
+84222000 4 [PRI : TSCH Sched] 10 1
+84222000 4 [PRI : TSCH Sched] 18 16
+84222000 4 [PRI : TSCH Sched] 2 1
+84222000 4 [PRI : TSCH Sched] 2 1
+84222000 4 [PRI : TSCH Sched] 2 1
+84222000 4 Energest:
+84222000 4  CPU            83s LPM         0s DEEP LPM    0s  Total time 83s
+84222000 4  Radio LISTEN   83s TRANSMIT    0s OFF         0s
+84260000 4 [INFO: TSCH      ] scanning on channel 15
+84518020 1 [INFO: App       ] app generate packet seqnum=5 node_id=1
+84518020 1 [INFO: RPL       ] Updating RPL option
+84518020 1 [WARN: IPv6 Route] No route found
+84518020 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 5
+84518020 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+84518020 1 [INFO: TSCH Sched] 2
+84518020 1 [INFO: TSCH Sched] 0
+84518020 1 [INFO: App       ] Verify: 1 
+84518020 1 [PRI : TSCH Sched] Finding neighbor to Rx
+84518020 1 [PRI : TSCH Sched] 7 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 7
+84518020 1 [PRI : TSCH Sched] 5 2
+84518020 1 [PRI : TSCH Sched] 3 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 3
+84518020 1 [PRI : TSCH Sched] 14 9
+84518020 1 [PRI : TSCH Sched] 17 10
+84518020 1 [PRI : TSCH Sched] 9 2
+84518020 1 [PRI : TSCH Sched] 11 10
+84518020 1 [PRI : TSCH Sched] 4 2
+84518020 1 [PRI : TSCH Sched] 6 2
+84518020 1 [PRI : TSCH Sched] 16 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 16
+84518020 1 [PRI : TSCH Sched] 10 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 10
+84518020 1 [PRI : TSCH Sched] 18 16
+84518020 1 [PRI : TSCH Sched] 2 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+84518020 1 [PRI : TSCH Sched] 2 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+84518020 1 [PRI : TSCH Sched] 2 1
+84518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+84518020 1 Enter here!
+84518020 1 handle: 0 - 3-> 1
+84518020 1 handle: 1 - 2-> 1
+84518020 1 Numero de ns : 4 | Numero de arestas: 2
+84518020 1 Matriz de adacncia do grafo da rede:
+84518020 1 0 0 0 0 
+84518020 1 0 0 0 0 
+84518020 1 0 1 0 0 
+84518020 1 0 1 0 0 
+84518020 1 Pacotes atribuidos!
+84518020 1 N 0: 0 pacotes
+84518020 1 N 1: 0 pacotes
+84518020 1 N 2: 1 pacotes
+84518020 1 N 3: 1 pacotes
+84518020 1 Mapa da matriz de conflito gerada:
+84518020 1 N 0: 2 -> 1
+84518020 1 N 1: 3 -> 1
+84518020 1 sorted n:2
+84518020 1 sorted n:0
+84518020 1 sorted n:3
+84518020 1 Canais alocados  | |
+84518020 1                 \   /
+84518020 1                  \ /
+84518020 1 1  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 6-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 3-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 11-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+84518020 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+84518020 1 [PRI : TSCH Sched] ----CHANNEL: 4-----
+84518020 1 [PRI : TSCH Sched] -----------------------------
+84518020 1 [PRI : TSCH Sched] Escalonamento Concluido
+84518020 1 Energest:
+84518020 1  CPU            84s LPM         0s DEEP LPM    0s  Total time 84s
+84518020 1  Radio LISTEN    5s TRANSMIT    0s OFF        79s
+84705000 3 [INFO: TSCH      ] scanning on channel 25
+85270000 4 [INFO: TSCH      ] scanning on channel 15
+85715000 3 [INFO: TSCH      ] scanning on channel 26
+86280000 4 [INFO: TSCH      ] scanning on channel 26
+86725000 3 [INFO: TSCH      ] scanning on channel 15
+87290000 4 [INFO: TSCH      ] scanning on channel 25
+87686000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 93, queue 1/64 6/64, len 21 21
+87686000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+87735000 3 [INFO: TSCH      ] scanning on channel 15
+87748432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 93
+87748432 1 [INFO: TSCH Sched] list of packets
+87748432 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=15 
+87748432 1 [INFO: TSCH Sched] id=2 Tx=15 Rx=0 
+87748432 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+87748432 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+87748432 1 [WARN: 6LoWPAN   ] input: empty packet
+87748432 1 [INFO: TSCH-LOG  ] {asn 00.0000223c link  1  17   0  9  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq  93, edr   0
+87748432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 93, status 0, tx 1
+87748432 2 [INFO: TSCH Sched] Tx_try= 18 Tx_Success=0
+87748432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+87748432 2 [INFO: TSCH-LOG  ] {asn 00.0000223c link  1  17   0  9  5 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+87748432 2 [INFO: TSCH-LOG  ] {asn 00.0000223c link  1  17   0  9  5 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq  93, st 0  1, dr   0
+87900000 1 [INFO: RPL       ] Scheduling DIO timer 48961 ticks in future (Interval)
+88300000 4 [INFO: TSCH      ] scanning on channel 15
+88745000 3 [INFO: TSCH      ] scanning on channel 20
+89310000 4 [INFO: TSCH      ] scanning on channel 15
+89755000 3 [INFO: TSCH      ] scanning on channel 20
+90320000 4 [INFO: TSCH      ] scanning on channel 15
+90765000 3 [INFO: TSCH      ] scanning on channel 20
+91330000 4 [INFO: TSCH      ] scanning on channel 25
+91431000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+91431000 3 [INFO: TSCH Sched] 0
+91431000 3 [INFO: TSCH Sched] 0
+91431000 3 [INFO: App       ] Verify: 0 
+91431000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+91431000 3 [PRI : TSCH Sched] 7 1
+91431000 3 [PRI : TSCH Sched] 5 2
+91431000 3 [PRI : TSCH Sched] 3 1
+91431000 3 [PRI : TSCH Sched] 14 9
+91431000 3 [PRI : TSCH Sched] 17 10
+91431000 3 [PRI : TSCH Sched] 9 2
+91431000 3 [PRI : TSCH Sched] 11 10
+91431000 3 [PRI : TSCH Sched] 4 2
+91431000 3 [PRI : TSCH Sched] 6 2
+91431000 3 [PRI : TSCH Sched] 16 1
+91431000 3 [PRI : TSCH Sched] 10 1
+91431000 3 [PRI : TSCH Sched] 18 16
+91431000 3 [PRI : TSCH Sched] 2 1
+91431000 3 [PRI : TSCH Sched] 2 1
+91431000 3 [PRI : TSCH Sched] 2 1
+91431000 3 Energest:
+91431000 3  CPU            90s LPM         0s DEEP LPM    0s  Total time 90s
+91431000 3  Radio LISTEN   90s TRANSMIT    0s OFF         0s
+91647000 2 [INFO: RPL       ] Scheduling DIO timer 48010 ticks in future (Interval)
+91775000 3 [INFO: TSCH      ] scanning on channel 20
+92340000 4 [INFO: TSCH      ] scanning on channel 15
+92430000 4 [INFO: RPL       ] Sending a DIS to ff02::1a
+92430000 4 [WARN: TSCH      ] Cannot compute max payload size: not associated
+92430000 4 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+92785000 3 [INFO: TSCH      ] scanning on channel 25
+93350000 4 [INFO: TSCH      ] scanning on channel 25
+93643000 2 [INFO: App       ] app generate packet seqnum=7 node_id=2
+93643000 2 [INFO: RPL       ] Updating RPL option
+93643000 2 [WARN: IPv6 Route] No route found
+93643000 2 [WARN: IPv6 Route] No route found
+93643000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 94, queue 1/64 6/64, len 21 43
+93644000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+93644000 2 [INFO: TSCH Sched] 1
+93644000 2 [INFO: TSCH Sched] 0
+93644000 2 [INFO: App       ] Verify: 1 
+93644000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+93644000 2 [PRI : TSCH Sched] 7 1
+93644000 2 [PRI : TSCH Sched] 5 2
+93644000 2 [PRI : TSCH Sched] Match - 2 <- 5
+93644000 2 [PRI : TSCH Sched] 3 1
+93644000 2 [PRI : TSCH Sched] 14 9
+93644000 2 [PRI : TSCH Sched] 17 10
+93644000 2 [PRI : TSCH Sched] 9 2
+93644000 2 [PRI : TSCH Sched] Match - 2 <- 9
+93644000 2 [PRI : TSCH Sched] 11 10
+93644000 2 [PRI : TSCH Sched] 4 2
+93644000 2 [PRI : TSCH Sched] Match - 2 <- 4
+93644000 2 [PRI : TSCH Sched] 6 2
+93644000 2 [PRI : TSCH Sched] Match - 2 <- 6
+93644000 2 [PRI : TSCH Sched] 16 1
+93644000 2 [PRI : TSCH Sched] 10 1
+93644000 2 [PRI : TSCH Sched] 18 16
+93644000 2 [PRI : TSCH Sched] 2 1
+93644000 2 [PRI : TSCH Sched] 2 1
+93644000 2 [PRI : TSCH Sched] 2 1
+93644000 2 Enter here!
+93644000 2 handle: 0 - 3-> 1
+93644000 2 handle: 1 - 2-> 1
+93644000 2 Numero de ns : 4 | Numero de arestas: 2
+93644000 2 Matriz de adacncia do grafo da rede:
+93644000 2 0 0 0 0 
+93644000 2 0 0 0 0 
+93644000 2 0 1 0 0 
+93644000 2 0 1 0 0 
+93644000 2 Pacotes atribuidos!
+93644000 2 N 0: 0 pacotes
+93644000 2 N 1: 0 pacotes
+93644000 2 N 2: 1 pacotes
+93644000 2 N 3: 1 pacotes
+93644000 2 Mapa da matriz de conflito gerada:
+93644000 2 N 0: 2 -> 1
+93644000 2 N 1: 3 -> 1
+93644000 2 sorted n:3
+93644000 2 sorted n:3
+93644000 2 sorted n:1
+93644000 2 Camos no pior caso
+93644000 2 Canais alocados  | |
+93644000 2                 \   /
+93644000 2                  \ /
+93644000 2 2  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 3-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 8-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 7-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 2-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] ----CHANGE-Rx----
+93644000 2 [PRI : TSCH Sched] ----TIMESLOT: 12-----
+93644000 2 [PRI : TSCH Sched] ----CHANNEL: 1-----
+93644000 2 [PRI : TSCH Sched] -----------------------------
+93644000 2 [PRI : TSCH Sched] Escalonamento Concluido
+93644000 2 Energest:
+93644000 2  CPU            93s LPM         0s DEEP LPM    0s  Total time 93s
+93644000 2  Radio LISTEN   21s TRANSMIT    0s OFF        71s
+93699136 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 94
+93699136 1 [INFO: TSCH Sched] list of packets
+93699136 1 [INFO: TSCH Sched] id=1 Tx=0 Rx=16 
+93699136 1 [INFO: TSCH Sched] id=2 Tx=16 Rx=0 
+93699136 1 [INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+93699136 1 [INFO: TSCH Sched] id=4 Tx=2 Rx=0 
+93699136 1 [INFO: App       ] Received from fd00::202:2:2:2, seqnum 7
+93699136 1 [INFO: TSCH-LOG  ] {asn 00.0000248f link  1  17   0  9  1 ch 15} uc-1-0 rx LL-0002->LL-0001, len  43, seq  94, edr   0
+93699136 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 94, status 0, tx 1
+93699136 2 [INFO: TSCH Sched] Tx_try= 19 Tx_Success=0
+93699136 2 [INFO: TSCH-LOG  ] {asn 00.0000248f link  1  17   0  9  5 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+93699136 2 [INFO: TSCH-LOG  ] {asn 00.0000248f link  1  17   0  9  5 ch 15} uc-1-0 tx LL-0002->LL-0001, len  43, seq  94, st 0  1, dr   0
+93795000 3 [INFO: TSCH      ] scanning on channel 25
+94222000 4 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+94222000 4 [INFO: TSCH Sched] 0
+94222000 4 [INFO: TSCH Sched] 0
+94222000 4 [INFO: App       ] Verify: 0 
+94222000 4 [PRI : TSCH Sched] Finding neighbor to Rx
+94222000 4 [PRI : TSCH Sched] 7 1
+94222000 4 [PRI : TSCH Sched] 5 2
+94222000 4 [PRI : TSCH Sched] 3 1
+94222000 4 [PRI : TSCH Sched] 14 9
+94222000 4 [PRI : TSCH Sched] 17 10
+94222000 4 [PRI : TSCH Sched] 9 2
+94222000 4 [PRI : TSCH Sched] 11 10
+94222000 4 [PRI : TSCH Sched] 4 2
+94222000 4 [PRI : TSCH Sched] 6 2
+94222000 4 [PRI : TSCH Sched] 16 1
+94222000 4 [PRI : TSCH Sched] 10 1
+94222000 4 [PRI : TSCH Sched] 18 16
+94222000 4 [PRI : TSCH Sched] 2 1
+94222000 4 [PRI : TSCH Sched] 2 1
+94222000 4 [PRI : TSCH Sched] 2 1
+94222000 4 Energest:
+94222000 4  CPU            93s LPM         0s DEEP LPM    0s  Total time 93s
+94222000 4  Radio LISTEN   93s TRANSMIT    0s OFF         0s
+94360000 4 [INFO: TSCH      ] scanning on channel 15
+94489000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+94518020 1 [INFO: App       ] app generate packet seqnum=6 node_id=1
+94518020 1 [INFO: RPL       ] Updating RPL option
+94518020 1 [WARN: IPv6 Route] No route found
+94518020 1 [INFO: App       ] Received from fd00::201:1:1:1, seqnum 6
+94518020 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+94518020 1 [INFO: TSCH Sched] 2
+94518020 1 [INFO: TSCH Sched] 0
+94518020 1 [INFO: App       ] Verify: 1 
+94518020 1 [PRI : TSCH Sched] Finding neighbor to Rx
+94518020 1 [PRI : TSCH Sched] 7 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 7
+94518020 1 [PRI : TSCH Sched] 5 2
+94518020 1 [PRI : TSCH Sched] 3 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 3
+94518020 1 [PRI : TSCH Sched] 14 9
+94518020 1 [PRI : TSCH Sched] 17 10
+94518020 1 [PRI : TSCH Sched] 9 2
+94518020 1 [PRI : TSCH Sched] 11 10
+94518020 1 [PRI : TSCH Sched] 4 2
+94518020 1 [PRI : TSCH Sched] 6 2
+94518020 1 [PRI : TSCH Sched] 16 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 16
+94518020 1 [PRI : TSCH Sched] 10 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 10
+94518020 1 [PRI : TSCH Sched] 18 16
+94518020 1 [PRI : TSCH Sched] 2 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+94518020 1 [PRI : TSCH Sched] 2 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+94518020 1 [PRI : TSCH Sched] 2 1
+94518020 1 [PRI : TSCH Sched] Match - 1 <- 2
+94518020 1 Enter here!
+94518020 1 handle: 0 - 3-> 1
+94518020 1 handle: 1 - 2-> 1
+94518020 1 Numero de ns : 4 | Numero de arestas: 2
+94518020 1 Matriz de adacncia do grafo da rede:
+94518020 1 0 0 0 0 
+94518020 1 0 0 0 0 
+94518020 1 0 1 0 0 
+94518020 1 0 1 0 0 
+94518020 1 Pacotes atribuidos!
+94518020 1 N 0: 0 pacotes
+94518020 1 N 1: 0 pacotes
+94518020 1 N 2: 1 pacotes
+94518020 1 N 3: 1 pacotes
+94518020 1 Mapa da matriz de conflito gerada:
+94518020 1 N 0: 2 -> 1
+94518020 1 N 1: 3 -> 1
+94518020 1 sorted n:3
+94518020 1 sorted n:1
+94518020 1 Camos no pior caso
+94518020 1 sorted n:0
+94518020 1 sorted n:1
+94518020 1 Camos no pior caso
+94518020 1 Canais alocados  | |
+94518020 1                 \   /
+94518020 1                  \ /
+94518020 1 2  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 6-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 2-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 3-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 1-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 3-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 9-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 1-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 11-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 2-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] ----CHANGE-Rx----
+94518020 1 [PRI : TSCH Sched] ----TIMESLOT: 4-----
+94518020 1 [PRI : TSCH Sched] ----CHANNEL: 4-----
+94518020 1 [PRI : TSCH Sched] -----------------------------
+94518020 1 [PRI : TSCH Sched] Escalonamento Concluido
+94518020 1 Energest:
+94518020 1  CPU            94s LPM         0s DEEP LPM    0s  Total time 94s
+94518020 1  Radio LISTEN    6s TRANSMIT    0s OFF        88s
+94627240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 84, status 0, tx 1
+94627240 1 [INFO: TSCH-LOG  ] {asn 00.000024ec link  1  17   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq  84, st 0  1
+94805000 3 [INFO: TSCH      ] scanning on channel 26
+95370000 4 [INFO: TSCH      ] scanning on channel 26
+95815000 3 [INFO: TSCH      ] scanning on channel 15
+96380000 4 [INFO: TSCH      ] scanning on channel 15
+96825000 3 [INFO: TSCH      ] scanning on channel 25
+97390000 4 [INFO: TSCH      ] scanning on channel 25
+97835000 3 [INFO: TSCH      ] scanning on channel 15
+98400000 4 [INFO: TSCH      ] scanning on channel 15
+98845000 3 [INFO: TSCH      ] scanning on channel 25
+99410000 4 [INFO: TSCH      ] scanning on channel 20
+99855000 3 [INFO: TSCH      ] scanning on channel 26
+Script timed out.
+TEST OK
+[if test was run without visualization, Cooja would now have been terminated]
