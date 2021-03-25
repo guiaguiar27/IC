@@ -710,8 +710,7 @@ void count_sent_packs(){
     if(flag_schedule == 1){ 
       STpacks +=1 ; 
     } 
-    float throughput = Packets_sent[node]/STpacks;  
-    LOG_INFO("Tx_try= %u Tx_Success=%u Throughput=%f \n",STpacks, Packets_sent[node], throughput); 
+    LOG_INFO("Tx_try= %u Tx_Success=%u\n",STpacks, Packets_sent[node]); 
 }
 void count_packs( const linkaddr_t *address ){  
   // receive only  
@@ -722,10 +721,10 @@ void count_packs( const linkaddr_t *address ){
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
 
   if(flag_schedule){      
-    if(verify_in_topology(node_src, node)){
+    //if(verify_in_topology(node_src, node)){
       Packets_sent[node_src] += 1 ;  
       Packets_received[node] += 1 ;  
-    }
+    //}
     for(int i = 1 ; i <= MAX_NOS; i++){ 
       LOG_INFO("id=%u Tx=%u Rx=%u \n",i,Packets_sent[i], Packets_received[i]);
     } 
