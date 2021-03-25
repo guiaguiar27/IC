@@ -1077,15 +1077,18 @@ int sort_node_to_create_link(int n){
  
  int verify_in_topology(int sender, int receiver){ 
     int node_origin, node_destin; 
-    FILE *fl;  
+    FILE *fl;   
+    fl = fopen(endereco_T_CH, "r");    
+    if(fl == NULL) return 0; 
     while(!feof(fl)){       
           fscanf(fl,"%d %d",&node_origin, &node_destin);   
           if(node_origin == sender && node_destin == receiver){
               return 1 ;
-      }
+      } 
+    }
       fclose(fl); 
       return 0 ;    
- }
+ } 
 
 
 
