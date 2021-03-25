@@ -60,7 +60,11 @@
 #include <stdlib.h>
 #include "conf.h"  
 #define peso 1 
-#define no_raiz 1  
+#define no_raiz 1   
+
+#define Channel 8
+#define Timeslot 17 
+
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
 #define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
 
@@ -705,9 +709,9 @@ void count_sent_packs(){
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
     if(flag_schedule == 1){ 
       STpacks +=1 ; 
-    }
-   
-    LOG_INFO("Tx_Success=%u Throughput=%u \n",STpacks, Packets_sent[node]/STpacks); 
+    } 
+    float throughput = Packets_sent[node]/STpacks;  
+    LOG_INFO("Tx_try= %u Tx_Success=%u Throughput=%f \n",STpacks, Packets_sent[node], throughput); 
 }
 void count_packs( const linkaddr_t *address ){  
   // receive only  

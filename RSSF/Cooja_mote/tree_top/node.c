@@ -112,13 +112,7 @@ int initialize_tsch_schedule(void){
      
       linkaddr_t addr;  
 
-    // if(node_id == 1 ){
-    //   tsch_schedule_add_link(sf_common, LINK_OPTION_SHARED,
-    //     LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address,
-    //     slot_offset, channel_offset,0);
-    
-    // }
-    
+  
       #if NBR_TSCH 
         remote_id = sort_node_to_create_link(node_id);  
       #else  
