@@ -78,7 +78,8 @@ uint8_t Packets_received[MAX_NOS];
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
-#define LOG_LEVEL LOG_LEVEL_MAC
+#define LOG_LEVEL LOG_LEVEL_MAC 
+#define DBUG 1
 
 /* Pre-allocated space for links */
 MEMB(link_memb, struct tsch_link, TSCH_SCHEDULE_MAX_LINKS);
@@ -991,7 +992,9 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
     uint8_t flag = 0 ;  
     struct tsch_link *l = NULL; 
     l = memb_alloc(&link_memb); 
-    LOG_PRINT("Finding neighbor to Rx\n");
+    #ifdef DEBUG
+      LOG_PRINT("Finding neighbor to Rx\n");
+    #endif // DEBUG
     
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
@@ -1003,7 +1006,10 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
           fscanf(fl,"%d %d",&node_origin, &node_destin);   
           LOG_PRINT("%d %d\n",node_origin, node_destin);
           if(node_destin == node){
-              LOG_PRINT("Match - %u <- %d\n",node,node_origin);
+              #ifdef DEBUG
+                LOG_PRINT("Match - %u <- %d\n",node,node_origin);              
+              #endif // DEBUG
+
               for(int j = 0; j < sizeof(addr); j += 2) {
                 addr.u8[j + 1] = node_origin & 0xff;
                 addr.u8[j + 0] = node_origin >> 8;

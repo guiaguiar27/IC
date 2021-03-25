@@ -36,8 +36,9 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
             geraMaching(num_aresta, num_no, pacotes, graf_conf, mapa_graf_conf, x, matching, vetor );
             return;
         }
-
-    printf("Caímos no pior caso\n");
+    #if DEBUG 
+        printf("Caímos no pior caso\n");
+    #endif 
 }
 
 
