@@ -174,7 +174,7 @@ void tsch_write_in_file(int n_origin, int n_destin);
 int count_lines();    
 int sort_node_to_create_link(int n);     
 void find_neighbor_to_Rx(uint8_t node, int handle);  
-
+int verify_in_topology(int sender, int receiver); 
 /** 
  * \brief schedule
  */

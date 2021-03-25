@@ -707,7 +707,7 @@ void count_sent_packs(){
       STpacks +=1 ; 
     }
    
-    LOG_INFO("Node/Packets: %u %u \n",node, STpacks); 
+    LOG_INFO("Tx_Success=%u Throughput=%u \n",STpacks, Packets_sent[node]/STpacks); 
 }
 void count_packs( const linkaddr_t *address ){  
   // receive only  
@@ -716,20 +716,16 @@ void count_packs( const linkaddr_t *address ){
                 + ((*address).u8[LINKADDR_SIZE - 2] << 8);   
   uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-  // if(node == 1 ){ 
-  //   if(change_slotframe())
-  //     flag_schedule = 1; 
-  //   else  
-  //     flag_schedule = 0;
-  // }       
 
-  if(flag_schedule){     
-    Packets_sent[node_src] += 1 ;  
-    Packets_received[node] += 1 ;  
-    for(int i = 1 ; i <= MAX_NOS; i++){ 
-      LOG_INFO("%u %u %u\n",i,Packets_sent[i], Packets_received[i]);
+  if(flag_schedule){      
+    if(verify_in_topology(node_src, node)){
+      Packets_sent[node_src] += 1 ;  
+      Packets_received[node] += 1 ;  
     }
-  }
+    for(int i = 1 ; i <= MAX_NOS; i++){ 
+      LOG_INFO("id=%u Tx=%u Rx=%u \n",i,Packets_sent[i], Packets_received[i]);
+    } 
+  } 
 }  
 /*---------------------------------------------------------------------------*/
 
@@ -1077,8 +1073,19 @@ int sort_node_to_create_link(int n){
     
     else return 0 ;  
   } 
- #endif 
-
+ #endif  
+ 
+ int verify_in_topology(int sender, int receiver){ 
+    int node_origin, node_destin; 
+    FILE *fl;  
+    while(!feof(fl)){       
+          fscanf(fl,"%d %d",&node_origin, &node_destin);   
+          if(node_origin == sender && node_destin == receiver){
+              return 1 ;
+      }
+      fclose(fl); 
+      return 0 ;    
+ }
 
 
 
