@@ -55,14 +55,6 @@ PROCESS(node_process, "TSCH Schedule Node");
 AUTOSTART_PROCESSES(&node_process); 
 static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }};
 
-/*
- * Note! This is not an example how to design a *good* schedule for TSCH,
- * nor this is the right place for complete beginners in TSCH.
- * We recommend using the default Orchestra schedule for a start.
- *
- * The intention of this file is instead to serve a starting point for those interested in building
- * their own schedules for TSCH that are different from Orchestra and 6TiSCH minimal.
- */
 
 /* Put all cells on the same slotframe */
 #define APP_SLOTFRAME_HANDLE 1
@@ -210,7 +202,8 @@ PROCESS_THREAD(node_process, ev, data)
 
       find_neighbor_to_Rx(node_id,1); 
       if(aux_id >= 1 ){ 
-        SCHEDULE_static(); 
+        LOG_PRINT("aux_id test: %d\n", aux_id);
+        //SCHEDULE_static(); 
       }  
       #endif 
 
