@@ -111,10 +111,11 @@ int initialize_tsch_schedule(void){
       #else  
         remote_id = random_rand() % node_id ;                         
       #endif  
-      if(node_id == 1 || remote_id == 0){ 
+      if(remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
         return 0 ;
-      }  
+      }   
+      if(node_id == 1) return 1; 
       
       // confimed existence of neighbor wose id is less than the current one 
      
@@ -202,12 +203,11 @@ PROCESS_THREAD(node_process, ev, data)
         }
         } 
 
-      find_neighbor_to_Rx(node_id,1); 
       if(aux_id >= 1 ){ 
         LOG_PRINT("aux_id test: %d\n", aux_id); 
         tsch_schedule_print(); 
-        SCHEDULE_static();  
-        
+        SCHEDULE_static();   
+        find_neighbor_to_Rx(node_id,1);      
       }  
       #endif 
 
