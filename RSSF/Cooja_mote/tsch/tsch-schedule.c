@@ -754,10 +754,12 @@ int SCHEDULE_static(){
     /*******************************************************************/ 
     // inicia arquivo  
     //FILE *fl;    
-    if(tsch_get_lock()){ 
-
     struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE);  
-    LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle); 
+    LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
+
+    //if(tsch_get_lock()){ 
+
+    
     
     // int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
     // for(x = 0; x < Channel; x++){
@@ -896,7 +898,6 @@ int SCHEDULE_static(){
     // l = memb_alloc(&link_memb); 
     // for(x = 0 ; x < Channel; x++){ 
     // for(y = 0 ; y < Timeslot; y++){   
-    //     //l = memb_alloc(&link_memb); 
     //     l = list_head(sf->links_list);        
     //     while(l!= NULL){   
     //       if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
@@ -957,7 +958,7 @@ int SCHEDULE_static(){
   // flag_schedule = 1 ; 
   // LOG_PRINT("Escalonamento Concluido\n");  
   //tsch_release_lock();   
-  } 
+  //} 
   return 1;
 }    
 
