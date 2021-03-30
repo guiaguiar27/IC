@@ -753,8 +753,10 @@ int SCHEDULE_static(){
     // alocando espaco para receber o endereco 
     /*******************************************************************/ 
     // inicia arquivo  
-    //FILE *fl;    
-    struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE);  
+    //FILE *fl;     
+    
+    struct tsch_slotframe *sf = memb_alloc(&slotframe_memb);  
+    sf = tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE);  
     LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
 
     //if(tsch_get_lock()){ 
