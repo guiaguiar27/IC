@@ -57,7 +57,8 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 
 /* Put all cells on the same slotframe */
-#define APP_SLOTFRAME_HANDLE 1
+#define UNICAST_SLOTFRAME_HANDLE 2
+#define BROADCAST_SLOTFRAME_HANDLE 1
 #define APP_UNICAST_TIMESLOT 4
 #define APP_CHANNEL_OFSETT 8   
 
@@ -74,7 +75,7 @@ to_seconds(uint64_t time)
 #if NBR_TSCH 
 static void init_broad(void){  
 
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(BROADCAST_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset = 0;
   uint16_t channel_offset = 0; 
   
@@ -96,7 +97,7 @@ int initialize_tsch_schedule(void){
       LOG_PRINT("Initialize tsch schedule\n"); 
       // tsch_schedule_remove_all_slotframes(); 
       // LOG_PRINT("Remove all slotframes");
-      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
+      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(UNICAST_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
       int  j; 
     // APP_SLOTFRAME_SIZE
       uint16_t slot_offset = 0 ;
@@ -202,7 +203,8 @@ PROCESS_THREAD(node_process, ev, data)
 
       find_neighbor_to_Rx(node_id,1); 
       if(aux_id >= 1 ){ 
-        LOG_PRINT("aux_id test: %d\n", aux_id);
+        LOG_PRINT("aux_id test: %d\n", aux_id); 
+        tsch_schedule_print(); 
         //SCHEDULE_static(); 
       }  
       #endif 
