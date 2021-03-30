@@ -95,7 +95,7 @@ int initialize_tsch_schedule(void){
       LOG_PRINT("Initialize tsch schedule\n"); 
       //tsch_schedule_remove_all_slotframes(); 
       //LOG_PRINT("Remove all slotframes");
-      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
+      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_UNICAST_HANDLE, APP_SLOTFRAME_SIZE);  
       int  j; 
       // APP_SLOTFRAME_SIZE
       uint16_t slot_offset = 1 ;
