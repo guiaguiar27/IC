@@ -959,15 +959,15 @@ int SCHEDULE_static(){
 }     
 int aux_schedule(){  
   
-  struct tsch_slotframe *sf = memb_alloc(&slotframe_memb); 
-  sf = list_head(slotframe_list);
+ 
+ struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
+      LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
       if(sf->handle == unicast_slotframe_handle) {
         break; 
       }
       sf = list_item_next(sf);
     }
-  LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
   return 1; 
 }
 
