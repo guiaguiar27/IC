@@ -130,7 +130,10 @@ tsch_log_process_pending(void)
           src = log->rx.src.u8[LINKADDR_SIZE - 1]
                 + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8);  
           tsch_print_neighbors(src);
-        } 
+        }  
+        else if(log->rx.is_unicast){ 
+          count_packs(log->rx.src);  
+        }
         #endif  
 
         break;
