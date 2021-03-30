@@ -941,22 +941,22 @@ int SCHEDULE_static(){
     //     } // 1st if 
     //     l = list_item_next(l);
     //   } // while      
-    } // internal for 
-  } // external for 
+  //   } // internal for 
+  // } // external for 
 
-  // to Rx 
-  l = list_head(sf->links_list); 
-  while(l!= NULL){  
-    if(l->aux_options == 1  && l->link_type == LINK_TYPE_NORMAL)
-      rx_schedule_intern(l);
+  // // to Rx 
+  // l = list_head(sf->links_list); 
+  // while(l!= NULL){  
+  //   if(l->aux_options == 1  && l->link_type == LINK_TYPE_NORMAL)
+  //     rx_schedule_intern(l);
         
-      l = list_item_next(l);
+  //     l = list_item_next(l);
 
-  }
+  // }
 
-  flag_schedule = 1 ; 
-  LOG_PRINT("Escalonamento Concluido\n");  
-  tsch_release_lock();   
+  // flag_schedule = 1 ; 
+  // LOG_PRINT("Escalonamento Concluido\n");  
+  //tsch_release_lock();   
   } 
   return 1;
 }    
