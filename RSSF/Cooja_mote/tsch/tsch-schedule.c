@@ -63,7 +63,8 @@
 #define no_raiz 1   
 
 #define Channel 8
-#define Timeslot 17 
+#define Timeslot 17  
+#define UNICAST_SLOTFRAME_HANDLE 2
 
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
 #define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
@@ -755,7 +756,7 @@ int SCHEDULE_static(){
     FILE *fl;    
     if(tsch_get_lock()){ 
 
-    struct tsch_slotframe *sf = list_head(slotframe_list); 
+    struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE); 
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
     for(x = 0; x < Channel; x++){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
@@ -853,7 +854,8 @@ int SCHEDULE_static(){
                     
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
                             if(canal == Channel)
-                              break;    
+                              break;   
+                            
                             aloca_canais[canal][cont] = edge_selected;     
                             canal++;  
                     }   
@@ -890,7 +892,7 @@ int SCHEDULE_static(){
       
     struct tsch_link *l =   NULL;  
     l = memb_alloc(&link_memb); 
-
+    LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle); 
     for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){   
         //l = memb_alloc(&link_memb); 
@@ -985,7 +987,7 @@ rx_schedule_intern(struct tsch_link *l){
 
 
 void find_neighbor_to_Rx(uint8_t node, int handle){  
-    struct tsch_slotframe *sf_common =  list_head(slotframe_list); 
+    struct tsch_slotframe *sf_common =  tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE); 
     linkaddr_t addr;    
     int node_origin, node_destin;
     FILE *fl;  
