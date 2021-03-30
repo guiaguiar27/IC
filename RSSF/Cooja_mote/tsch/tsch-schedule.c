@@ -63,8 +63,8 @@
 #define no_raiz 1   
 
 #define Channel 8
-#define Timeslot 17  
-#define UNICAST_SLOTFRAME_HANDLE 2
+#define Timeslot 17   
+static uint16_t unicast_slotframe_handle = 2;
 
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
 #define endereco_T_CH  "/home/user/contiki-ng/os/TCH.txt"
@@ -752,7 +752,7 @@ int SCHEDULE_static(){
  
     /*******************************************************************/ 
     FILE *fl;     
-    struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE);  
+    struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(unicast_slotframe_handle);  
     LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
 
     if(tsch_get_lock()){  
@@ -957,11 +957,12 @@ int SCHEDULE_static(){
   } 
   return 1;
 }     
-int aux_schedule(){    
-  uint8_t handle = UNICAST_SLOTFRAME_HANDLE ; 
-  struct tsch_slotframe *sf = list_head(slotframe_list);
+int aux_schedule(){  
+  
+  struct tsch_slotframe *sf = memb_alloc(&slotframe_memb); 
+  sf = list_head(slotframe_list);
     while(sf != NULL) {
-      if(sf->handle == handle) {
+      if(sf->handle == unicast_slotframe_handle) {
         break; 
       }
       sf = list_item_next(sf);
