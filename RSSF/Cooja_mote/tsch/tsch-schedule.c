@@ -998,7 +998,7 @@ rx_schedule_intern(struct tsch_link *l){
 
 
 void find_neighbor_to_Rx(uint8_t node, int handle){  
-    struct tsch_slotframe *sf_common =  tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE); 
+    struct tsch_slotframe *sf_common =  tsch_schedule_get_slotframe_by_handle(unicast_slotframe_handle); 
     linkaddr_t addr;    
     int node_origin, node_destin;
     FILE *fl;  

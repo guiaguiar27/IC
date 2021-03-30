@@ -131,8 +131,8 @@ tsch_log_process_pending(void)
                 + (log->rx.src.u8[LINKADDR_SIZE - 2] << 8);  
           tsch_print_neighbors(src);
         }  
-        else if(log->rx.is_unicast){ 
-          count_packs(log->rx.src);  
+        else if(log->rx.is_unicast && log->link->slotframe_handle == 2){ 
+          count_packs(&log->rx.src);  
         }
         #endif  
 

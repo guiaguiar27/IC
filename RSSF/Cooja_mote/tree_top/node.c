@@ -92,7 +92,7 @@ int initialize_tsch_schedule(void){
     uint16_t remote_id = 0; 
 
 
-    if (node_id != 1) {
+   
     // create only one link per node 
       LOG_PRINT("Initialize tsch schedule\n"); 
       // tsch_schedule_remove_all_slotframes(); 
@@ -105,16 +105,17 @@ int initialize_tsch_schedule(void){
      
       linkaddr_t addr;  
 
-  
+      
       #if NBR_TSCH 
         remote_id = sort_node_to_create_link(node_id);  
       #else  
         remote_id = random_rand() % node_id ;                         
       #endif  
-      if(remote_id == 0){ 
+      if(node_id == 1 || remote_id == 0){ 
         LOG_INFO("There are no neighbors\n"); 
         return 0 ;
-      } 
+      }  
+      
       // confimed existence of neighbor wose id is less than the current one 
      
     
@@ -134,7 +135,7 @@ int initialize_tsch_schedule(void){
               LINK_TYPE_NORMAL, &addr,
               slot_offset, channel_offset,0);
       
-    }  
+     
     return remote_id;
 } 
      
@@ -205,7 +206,8 @@ PROCESS_THREAD(node_process, ev, data)
       if(aux_id >= 1 ){ 
         LOG_PRINT("aux_id test: %d\n", aux_id); 
         tsch_schedule_print(); 
-        //SCHEDULE_static(); 
+        SCHEDULE_static();  
+        
       }  
       #endif 
 
