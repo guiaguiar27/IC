@@ -79,7 +79,7 @@ static void init_broad(void){
   uint16_t channel_offset = 0; 
   
   tsch_schedule_add_link(sf_common,
-      LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_OPTION_TX | LINK_OPTION_RX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
     
@@ -94,8 +94,8 @@ int initialize_tsch_schedule(void){
     if (node_id != 1) {
     // create only one link per node 
       LOG_PRINT("Initialize tsch schedule\n"); 
-      tsch_schedule_remove_all_slotframes(); 
-      LOG_PRINT("Remove all slotframes");
+      // tsch_schedule_remove_all_slotframes(); 
+      // LOG_PRINT("Remove all slotframes");
       struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
       int  j; 
     // APP_SLOTFRAME_SIZE
