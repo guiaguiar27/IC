@@ -957,10 +957,11 @@ int SCHEDULE_static(){
   } 
   return 1;
 }     
-int aux_schedule(){   
-   struct tsch_slotframe *sf = list_head(slotframe_list);
+int aux_schedule(){    
+  uint8_t handle = UNICAST_SLOTFRAME_HANDLE ; 
+  struct tsch_slotframe *sf = list_head(slotframe_list);
     while(sf != NULL) {
-      if(sf->handle == UNICAST_SLOTFRAME_HANDLE) {
+      if(sf->handle == handle) {
         break; 
       }
       sf = list_item_next(sf);
