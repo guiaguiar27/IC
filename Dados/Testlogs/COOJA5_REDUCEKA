@@ -10623,3 +10623,2481 @@
 08:44.656	ID:3	[INFO: TSCH      ] scanning on channel 25
 08:44.905	ID:5	[INFO: TSCH      ] scanning on channel 20
 08:45.046	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:45.666	ID:3	[INFO: TSCH      ] scanning on channel 26
+08:45.915	ID:5	[INFO: TSCH      ] scanning on channel 25
+08:46.056	ID:4	[INFO: TSCH      ] scanning on channel 26
+08:46.676	ID:3	[INFO: TSCH      ] scanning on channel 15
+08:46.817	ID:4	[WARN: TSCH      ] Cannot compute max payload size: not associated
+08:46.817	ID:4	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+08:46.925	ID:5	[INFO: TSCH      ] scanning on channel 20
+08:47.066	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:47.454	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:47.686	ID:3	[INFO: TSCH      ] scanning on channel 26
+08:47.935	ID:5	[INFO: TSCH      ] scanning on channel 26
+08:47.961	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:48.076	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:48.696	ID:3	[INFO: TSCH      ] scanning on channel 20
+08:48.945	ID:5	[INFO: TSCH      ] scanning on channel 15
+08:49.086	ID:4	[INFO: TSCH      ] scanning on channel 25
+08:49.706	ID:3	[INFO: TSCH      ] scanning on channel 20
+08:49.955	ID:5	[INFO: TSCH      ] scanning on channel 25
+08:50.096	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:50.611	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:50.716	ID:3	[INFO: TSCH      ] scanning on channel 26
+08:50.965	ID:5	[INFO: TSCH      ] scanning on channel 26
+08:51.106	ID:4	[INFO: TSCH      ] scanning on channel 15
+08:51.120	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 40, packet 0xc2ea1b20
+08:51.120	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+08:51.195	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 152, status 0, tx 1
+08:51.195	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000cf58 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 152, st 0  1
+08:51.195	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000cf58 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 126, edr   0
+08:51.195	ID:1	--------------------------------
+08:51.195	ID:1	LL-0002->LL-0001
+08:51.475	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:51.726	ID:3	[INFO: TSCH      ] scanning on channel 15
+08:51.975	ID:5	[INFO: TSCH      ] scanning on channel 15
+08:52.116	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:52.736	ID:3	[INFO: TSCH      ] scanning on channel 25
+08:52.985	ID:5	[INFO: TSCH      ] scanning on channel 25
+08:53.126	ID:4	[INFO: TSCH      ] scanning on channel 26
+08:53.743	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:53.746	ID:3	[INFO: TSCH      ] scanning on channel 20
+08:53.761	ID:5	[WARN: TSCH      ] Cannot compute max payload size: not associated
+08:53.761	ID:5	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+08:53.995	ID:5	[INFO: TSCH      ] scanning on channel 20
+08:54.003	ID:2	[DBG : TSCH Queue] packet is added put_index 3, packet 0xc2ea1b20
+08:54.003	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 127, queue 1/64 1/64, len 21 21
+08:54.003	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+08:54.046	ID:1	--------------------------------[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 127
+08:54.046	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+08:54.046	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d075 link  2   8   0  5  1 ch 26} uc-1-0 rx LL-0002->LL-0001, len  21, seq 127, edr   0
+08:54.046	ID:1	[INFO: TSCH Sched] list of packets
+08:54.046	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=41 
+08:54.046	ID:1	[INFO: TSCH Sched] id=2 Tx=41 Rx=0 
+08:54.046	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+08:54.046	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+08:54.046	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+08:54.046	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 127, status 0, tx 1
+08:54.046	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+08:54.046	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d075 link  2   8   0  5  1 ch 26} drift 0 ppm (min/max delta seen: 0/0)
+08:54.046	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d075 link  2   8   0  5  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  21, seq 127, st 0  1, dr   0
+08:54.046	ID:2	[INFO: TSCH Sched] Tx_try= 57 Tx_Success=0
+08:54.136	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:54.722	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:54.756	ID:3	[INFO: TSCH      ] scanning on channel 26
+08:55.005	ID:5	[INFO: TSCH      ] scanning on channel 15
+08:55.146	ID:4	[INFO: TSCH      ] scanning on channel 15
+08:55.766	ID:3	[INFO: TSCH      ] scanning on channel 15
+08:56.015	ID:5	[INFO: TSCH      ] scanning on channel 15
+08:56.156	ID:4	[INFO: TSCH      ] scanning on channel 26
+08:56.776	ID:3	[INFO: TSCH      ] scanning on channel 25
+08:57.025	ID:5	[INFO: TSCH      ] scanning on channel 15
+08:57.166	ID:4	[INFO: TSCH      ] scanning on channel 20
+08:57.216	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:57.786	ID:3	[INFO: TSCH      ] scanning on channel 15
+08:58.035	ID:5	[INFO: TSCH      ] scanning on channel 26
+08:58.116	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:58.176	ID:4	[INFO: TSCH      ] scanning on channel 15
+08:58.796	ID:3	[INFO: TSCH      ] scanning on channel 15
+08:59.045	ID:5	[INFO: TSCH      ] scanning on channel 25
+08:59.083	ID:1	[DBG : TSCH Queue] packet is added put_index 40, packet 0xc2ea1b20
+08:59.083	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+08:59.115	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 182, status 0, tx 1
+08:59.115	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d270 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 182, st 0  1
+08:59.115	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d270 link  1   8   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+08:59.115	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d270 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+08:59.115	ID:2	--------------------------------
+08:59.115	ID:2	LL-0001->LL-0002
+08:59.186	ID:4	[INFO: TSCH      ] scanning on channel 15
+08:59.775	ID:2	--------------------------------[INFO: App       ] Send to 433a:e6c2:ee15:e6c2:14cf:e9c2:8864:e9c2, seqnum 9
+08:59.775	ID:2	[WARN: IPv6 Route] No route found
+08:59.775	ID:2	[DBG : TSCH Queue] packet is added put_index 4, packet 0xc2ea1b20
+08:59.775	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 128, queue 1/64 1/64, len 21 59
+08:59.776	ID:2	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+08:59.776	ID:2	[INFO: TSCH Sched] 1
+08:59.776	ID:2	[INFO: TSCH Sched] 3
+08:59.776	ID:2	[INFO: App       ] Verify: 1 
+08:59.776	ID:2	[PRI : TSCH Sched] -----Slotframe handle:2----
+08:59.776	ID:2	[PRI : TSCH Sched] Finding neighbor to Rx
+08:59.776	ID:2	[PRI : TSCH Sched] 2 1
+08:59.776	ID:2	[PRI : TSCH Sched] 3 2
+08:59.776	ID:2	[PRI : TSCH Sched] Match - 2 <- 3
+08:59.776	ID:2	[PRI : TSCH Sched] 4 3
+08:59.776	ID:2	[PRI : TSCH Sched] 4 3
+08:59.776	ID:2	[PRI : App       ] aux_id test: 1
+08:59.776	ID:2	[PRI : TSCH Sched] ----- start slotframe list -----
+08:59.776	ID:2	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+08:59.776	ID:2	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+08:59.776	ID:2	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+08:59.776	ID:2	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 5, channel offset 1, address 1
+08:59.776	ID:2	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 3
+08:59.776	ID:2	[PRI : TSCH Sched] ----- end slotframe list -----
+08:59.776	ID:2	[PRI : TSCH Sched] -----Slotframe handle:2----
+08:59.776	ID:2	Enter here!
+08:59.776	ID:2	handle: 0 - 2-> 1
+08:59.776	ID:2	handle: 1 - 3-> 2
+08:59.776	ID:2	handle: 2 - 4-> 3
+08:59.776	ID:2	Numero de ns : 5 | Numero de arestas: 3
+08:59.776	ID:2	Matriz de adacncia do grafo da rede:
+08:59.776	ID:2	0 0 0 0 0 
+08:59.776	ID:2	0 0 0 0 0 
+08:59.776	ID:2	0 1 0 0 0 
+08:59.776	ID:2	0 0 1 0 0 
+08:59.776	ID:2	0 0 0 1 0 
+08:59.776	ID:2	
+08:59.776	ID:2	Pacotes atribuidos!
+08:59.776	ID:2	N 0: 0 pacotes
+08:59.776	ID:2	N 1: 0 pacotes
+08:59.776	ID:2	N 2: 1 pacotes
+08:59.776	ID:2	N 3: 1 pacotes
+08:59.776	ID:2	N 4: 1 pacotes
+08:59.776	ID:2	
+08:59.776	ID:2	Mapa da matriz de conflito gerada:
+08:59.776	ID:2	N 0: 2 -> 1
+08:59.776	ID:2	N 1: 3 -> 2
+08:59.776	ID:2	N 2: 4 -> 3
+08:59.776	ID:2	sorted n:0
+08:59.776	ID:2	sorted n:0
+08:59.776	ID:2	sorted n:4
+08:59.776	ID:2	sorted n:2
+08:59.776	ID:2	sorted n:4
+08:59.776	ID:2	sorted n:1
+08:59.776	ID:2	Camos no pior caso
+08:59.776	ID:2	sorted n:2
+08:59.776	ID:2	sorted n:1
+08:59.776	ID:2	Camos no pior caso
+08:59.776	ID:2	
+08:59.776	ID:2	Canais alocados  | |
+08:59.776	ID:2	                \   /
+08:59.776	ID:2	                 \ /
+08:59.776	ID:2	
+08:59.776	ID:2	1  2  3  1  2  0  1  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	0  0  0  0  0  0  0  0  
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANGE-Tx----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 7-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 7-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 4-----
+08:59.776	ID:2	[PRI : TSCH Sched] -----------------------------
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ---------------------------
+08:59.776	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+08:59.776	ID:2	
+08:59.776	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+08:59.776	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+08:59.806	ID:3	[INFO: TSCH      ] scanning on channel 25
+08:59.807	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 128
+08:59.807	ID:1	[WARN: IPv6 Route] No route found
+08:59.807	ID:1	[ERR : TCP/IP    ] output: destination off-link and no default route
+08:59.807	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d2b5 link  2   8   0  5  1 ch 26} uc-1-0 rx LL-0002->LL-0001, len  59, seq 128, edr   0
+08:59.807	ID:1	[INFO: TSCH Sched] list of packets
+08:59.807	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=42 
+08:59.807	ID:1	[INFO: TSCH Sched] id=2 Tx=42 Rx=0 
+08:59.807	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+08:59.807	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+08:59.807	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+08:59.807	ID:2	[PRI : TSCH Sched] ----CHANNEL: 4-----[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 128, status 0, tx 1
+08:59.807	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d2b5 link  2   8   0  6  1 ch 26} uc-1-0 tx LL-0002->LL-0001, len  59, seq 128, st 0  1, dr   0
+08:59.807	ID:2	[INFO: TSCH Sched] Tx_try= 58 Tx_Success=0
+09:00.055	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:00.196	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:00.451	ID:2	[DBG : TSCH Queue] packet is added put_index 11, packet 0xc2ea1b20
+09:00.451	ID:2	[INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 128, queue 1/64 1/64, len 14 94
+09:00.477	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 153, status 0, tx 1
+09:00.477	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d2f8 link  1   8   0  0  0 ch 15} bc-1-0 tx LL-0002->LL-NULL, len  94, seq 153, st 0  1
+09:00.477	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+09:00.477	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d2f8 link  1   8   0  0  0 ch 15} bc-1-0 rx LL-0002->LL-NULL, len  94, seq 128, edr   0
+09:00.477	ID:1	--------------------------------
+09:00.477	ID:1	LL-0002->LL-0001
+09:00.816	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:00.828	ID:3	[WARN: TSCH      ] Cannot compute max payload size: not associated
+09:00.828	ID:3	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+09:00.844	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:01.065	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:01.206	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:01.450	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:01.826	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:02.075	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:02.216	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:02.757	ID:1	--------------------------------[INFO: App       ] Send to 433a:e6c2:ee15:e6c2:14cf:e9c2:8864:e9c2, seqnum 10
+09:02.757	ID:1	[WARN: IPv6 Route] No route found
+09:02.757	ID:1	[ERR : TCP/IP    ] output: destination off-link and no default route
+09:02.757	ID:1	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+09:02.757	ID:1	[INFO: TSCH Sched] 2
+09:02.757	ID:1	[INFO: TSCH Sched] 0
+09:02.757	ID:1	[INFO: App       ] Verify: 1 
+09:02.757	ID:1	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:02.757	ID:1	[PRI : TSCH Sched] Finding neighbor to Rx
+09:02.757	ID:1	[PRI : TSCH Sched] 2 1
+09:02.757	ID:1	[PRI : TSCH Sched] Match - 1 <- 2
+09:02.757	ID:1	[PRI : TSCH Sched] 3 2
+09:02.757	ID:1	[PRI : TSCH Sched] 4 3
+09:02.757	ID:1	[PRI : TSCH Sched] 4 3
+09:02.757	ID:1	[PRI : App       ] aux_id test: 1
+09:02.757	ID:1	[PRI : TSCH Sched] ----- start slotframe list -----
+09:02.757	ID:1	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+09:02.757	ID:1	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+09:02.757	ID:1	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+09:02.757	ID:1	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 5, channel offset 1, address 2
+09:02.757	ID:1	[PRI : TSCH Sched] ----- end slotframe list -----
+09:02.757	ID:1	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:02.757	ID:1	Enter here!
+09:02.757	ID:1	handle: 0 - 2-> 1
+09:02.757	ID:1	handle: 1 - 3-> 2
+09:02.757	ID:1	handle: 2 - 4-> 3
+09:02.757	ID:1	Numero de ns : 5 | Numero de arestas: 3
+09:02.757	ID:1	Matriz de adacncia do grafo da rede:
+09:02.757	ID:1	0 0 0 0 0 
+09:02.757	ID:1	0 0 0 0 0 
+09:02.757	ID:1	0 1 0 0 0 
+09:02.757	ID:1	0 0 1 0 0 
+09:02.757	ID:1	0 0 0 1 0 
+09:02.757	ID:1	
+09:02.757	ID:1	Pacotes atribuidos!
+09:02.757	ID:1	N 0: 0 pacotes
+09:02.757	ID:1	N 1: 0 pacotes
+09:02.757	ID:1	N 2: 1 pacotes
+09:02.757	ID:1	N 3: 1 pacotes
+09:02.757	ID:1	N 4: 1 pacotes
+09:02.757	ID:1	
+09:02.757	ID:1	Mapa da matriz de conflito gerada:
+09:02.757	ID:1	N 0: 2 -> 1
+09:02.757	ID:1	N 1: 3 -> 2
+09:02.757	ID:1	N 2: 4 -> 3
+09:02.757	ID:1	sorted n:1
+09:02.757	ID:1	sorted n:1
+09:02.757	ID:1	Camos no pior caso
+09:02.757	ID:1	sorted n:2
+09:02.757	ID:1	sorted n:4
+09:02.757	ID:1	sorted n:2
+09:02.757	ID:1	sorted n:2
+09:02.757	ID:1	sorted n:1
+09:02.757	ID:1	Camos no pior caso
+09:02.757	ID:1	sorted n:1
+09:02.757	ID:1	Camos no pior caso
+09:02.757	ID:1	sorted n:2
+09:02.757	ID:1	sorted n:1
+09:02.757	ID:1	Camos no pior caso
+09:02.757	ID:1	
+09:02.757	ID:1	Canais alocados  | |
+09:02.757	ID:1	                \   /
+09:02.757	ID:1	                 \ /
+09:02.757	ID:1	
+09:02.757	ID:1	1  0  2  3  1  2  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	0  0  0  0  0  0  0  0  
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+09:02.757	ID:1	
+09:02.757	ID:1	[PRI : TSCH Sched] Escalonamento Concluido
+09:02.757	ID:1	
+09:02.757	ID:1	Energest:
+09:02.757	ID:1	 CPU           542s LPM         0s DEEP LPM    0s  Total time 542s
+09:02.757	ID:1	 Radio LISTEN   38s TRANSMIT    0s OFF       504s
+09:02.836	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:03.085	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:03.226	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:03.784	ID:4	[WARN: TSCH      ] Cannot compute max payload size: not associated
+09:03.784	ID:4	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+09:03.846	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:04.095	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:04.168	ID:3	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+09:04.168	ID:3	[INFO: TSCH Sched] 2
+09:04.168	ID:3	[INFO: TSCH Sched] 4
+09:04.168	ID:3	[INFO: App       ] Verify: 1 
+09:04.168	ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:04.168	ID:3	[PRI : TSCH Sched] Finding neighbor to Rx
+09:04.168	ID:3	[PRI : TSCH Sched] 2 1
+09:04.168	ID:3	[PRI : TSCH Sched] 3 2
+09:04.168	ID:3	[PRI : TSCH Sched] 4 3
+09:04.168	ID:3	[PRI : TSCH Sched] Match - 3 <- 4
+09:04.168	ID:3	[PRI : TSCH Sched] 4 3
+09:04.168	ID:3	[PRI : TSCH Sched] Match - 3 <- 4
+09:04.168	ID:3	[PRI : App       ] aux_id test: 2
+09:04.168	ID:3	[PRI : TSCH Sched] ----- start slotframe list -----
+09:04.168	ID:3	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+09:04.168	ID:3	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+09:04.168	ID:3	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+09:04.168	ID:3	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 3, channel offset 1, address 2
+09:04.168	ID:3	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 4
+09:04.168	ID:3	[PRI : TSCH Sched] ----- end slotframe list -----
+09:04.168	ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:04.168	ID:3	Enter here!
+09:04.168	ID:3	handle: 0 - 2-> 1
+09:04.168	ID:3	handle: 1 - 3-> 2
+09:04.168	ID:3	handle: 2 - 4-> 3
+09:04.168	ID:3	Numero de ns : 5 | Numero de arestas: 3
+09:04.168	ID:3	Matriz de adacncia do grafo da rede:
+09:04.168	ID:3	0 0 0 0 0 
+09:04.168	ID:3	0 0 0 0 0 
+09:04.168	ID:3	0 1 0 0 0 
+09:04.168	ID:3	0 0 1 0 0 
+09:04.168	ID:3	0 0 0 1 0 
+09:04.168	ID:3	
+09:04.168	ID:3	Pacotes atribuidos!
+09:04.168	ID:3	N 0: 0 pacotes
+09:04.168	ID:3	N 1: 0 pacotes
+09:04.168	ID:3	N 2: 1 pacotes
+09:04.168	ID:3	N 3: 1 pacotes
+09:04.168	ID:3	N 4: 1 pacotes
+09:04.168	ID:3	
+09:04.168	ID:3	Mapa da matriz de conflito gerada:
+09:04.168	ID:3	N 0: 2 -> 1
+09:04.168	ID:3	N 1: 3 -> 2
+09:04.168	ID:3	N 2: 4 -> 3
+09:04.168	ID:3	sorted n:2
+09:04.168	ID:3	sorted n:3
+09:04.168	ID:3	sorted n:0
+09:04.168	ID:3	sorted n:1
+09:04.168	ID:3	Camos no pior caso
+09:04.168	ID:3	sorted n:1
+09:04.168	ID:3	Camos no pior caso
+09:04.168	ID:3	sorted n:4
+09:04.168	ID:3	sorted n:1
+09:04.168	ID:3	Camos no pior caso
+09:04.168	ID:3	sorted n:1
+09:04.168	ID:3	Camos no pior caso
+09:04.168	ID:3	sorted n:1
+09:04.168	ID:3	Camos no pior caso
+09:04.168	ID:3	sorted n:3
+09:04.168	ID:3	
+09:04.168	ID:3	Canais alocados  | |
+09:04.168	ID:3	                \   /
+09:04.168	ID:3	                 \ /
+09:04.168	ID:3	
+09:04.168	ID:3	1  2  1  0  0  3  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	0  0  0  0  0  0  0  0  
+09:04.168	ID:3	[PRI : TSCH Sched] ---------------------------
+09:04.168	ID:3	[PRI : TSCH Sched] ----HANDLE: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Tx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ---------------------------
+09:04.168	ID:3	[PRI : TSCH Sched] ----HANDLE: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----EXTRA-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+09:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+09:04.168	ID:3	
+09:04.168	ID:3	[PRI : TSCH Sched] Escalonamento Concluido
+09:04.168	ID:3	
+09:04.168	ID:3	Energest:
+09:04.168	ID:3	 CPU           543s LPM         0s DEEP LPM    0s  Total time 543s
+09:04.168	ID:3	 Radio LISTEN  211s TRANSMIT    0s OFF       331s
+09:04.236	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:04.761	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:04.856	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:05.082	ID:2	[DBG : TSCH Queue] packet is added put_index 41, packet 0xc2ea1b20
+09:05.082	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:05.105	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:05.115	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 154, status 0, tx 1
+09:05.115	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d4c8 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 154, st 0  1
+09:05.115	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d4c8 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 128, edr   0
+09:05.115	ID:1	--------------------------------
+09:05.115	ID:1	LL-0002->LL-0001
+09:05.165	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:05.246	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:05.866	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:06.115	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:06.256	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:06.876	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:07.125	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:07.266	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:07.886	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:08.135	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:08.226	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:08.276	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:08.896	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:09.128	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:09.145	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:09.286	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:09.744	ID:2	[DBG : TSCH Queue] packet is added put_index 5, packet 0xc2ea1b20
+09:09.744	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 129, queue 1/64 1/64, len 21 21
+09:09.744	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+09:09.816	ID:1	--------------------------------[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 129
+09:09.816	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+09:09.816	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d69e link  2   8   0  6  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq 129, edr   0
+09:09.816	ID:1	[INFO: TSCH Sched] list of packets
+09:09.816	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=43 
+09:09.816	ID:1	[INFO: TSCH Sched] id=2 Tx=43 Rx=0 
+09:09.816	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+09:09.816	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+09:09.816	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+09:09.816	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 129, status 0, tx 1
+09:09.816	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+09:09.816	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d69e link  2   8   0  6  1 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+09:09.816	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d69e link  2   8   0  6  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq 129, st 0  1, dr   0
+09:09.816	ID:2	[INFO: TSCH Sched] Tx_try= 59 Tx_Success=0
+09:09.906	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:10.155	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:10.296	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:10.916	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:11.165	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:11.306	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:11.926	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:12.021	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:12.175	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:12.316	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:12.909	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:12.936	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:13.185	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:13.326	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:13.796	ID:1	[DBG : TSCH Queue] packet is added put_index 41, packet 0xc2ea1b20
+09:13.796	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:13.835	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 183, status 0, tx 1
+09:13.835	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000d830 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 183, st 0  1
+09:13.835	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d830 link  1   8   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+09:13.835	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000d830 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+09:13.835	ID:2	--------------------------------
+09:13.835	ID:2	LL-0001->LL-0002
+09:13.946	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:14.195	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:14.336	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:14.507	ID:5	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+09:14.507	ID:5	[INFO: TSCH Sched] 0
+09:14.507	ID:5	[INFO: TSCH Sched] 0
+09:14.507	ID:5	[INFO: App       ] Verify: 0 
+09:14.507	ID:5	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:14.507	ID:5	[PRI : TSCH Sched] Finding neighbor to Rx
+09:14.507	ID:5	[PRI : TSCH Sched] 2 1
+09:14.507	ID:5	[PRI : TSCH Sched] 3 2
+09:14.507	ID:5	[PRI : TSCH Sched] 4 3
+09:14.507	ID:5	[PRI : TSCH Sched] 4 3
+09:14.507	ID:5	
+09:14.507	ID:5	Energest:
+09:14.507	ID:5	 CPU           553s LPM         0s DEEP LPM    0s  Total time 553s
+09:14.507	ID:5	 Radio LISTEN  553s TRANSMIT    0s OFF         0s
+09:14.956	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:15.205	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:15.346	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:15.581	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:15.966	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:16.215	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:16.356	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:16.529	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:16.976	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:17.225	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:17.366	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:17.986	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:18.235	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:18.376	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:18.996	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:19.245	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:19.386	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:19.423	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:19.706	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 42, packet 0xc2ea1b20
+09:19.706	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:19.755	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 155, status 0, tx 1
+09:19.755	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000da80 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 155, st 0  1
+09:19.755	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000da80 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 129, edr   0
+09:19.755	ID:1	--------------------------------
+09:19.755	ID:1	LL-0002->LL-0001
+09:19.756	ID:3	[INFO: TSCH      ] scan: received packet (35 bytes) on channel 15
+09:19.756	ID:3	[INFO: TSCH      ] parse_eb: no schedule
+09:19.756	ID:3	0002.0002.0002.0002[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0002.0002.0002.0002
+09:19.756	ID:3	[INFO: TSCH      ] association done (7), sec 0, PAN ID abcd, asn-0.da80, jp 2, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0002.0002.0002.0002
+09:20.255	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:20.396	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:20.444	ID:3	[DBG : TSCH      ] skip sending EB: not joined a routing DAG
+09:20.904	ID:4	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+09:20.904	ID:4	[INFO: TSCH Sched] 3
+09:20.904	ID:4	[INFO: TSCH Sched] 0
+09:20.904	ID:4	[INFO: App       ] Verify: 1 
+09:20.904	ID:4	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:20.904	ID:4	[PRI : TSCH Sched] Finding neighbor to Rx
+09:20.904	ID:4	[PRI : TSCH Sched] 2 1
+09:20.904	ID:4	[PRI : TSCH Sched] 3 2
+09:20.904	ID:4	[PRI : TSCH Sched] 4 3
+09:20.904	ID:4	[PRI : TSCH Sched] 4 3
+09:20.904	ID:4	[PRI : App       ] aux_id test: 3
+09:20.904	ID:4	[PRI : TSCH Sched] ----- start slotframe list -----
+09:20.904	ID:4	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+09:20.904	ID:4	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+09:20.904	ID:4	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+09:20.904	ID:4	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 3, channel offset 1, address 3
+09:20.904	ID:4	[PRI : TSCH Sched] ----- end slotframe list -----
+09:20.904	ID:4	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:20.904	ID:4	Enter here!
+09:20.904	ID:4	handle: 0 - 2-> 1
+09:20.904	ID:4	handle: 1 - 3-> 2
+09:20.904	ID:4	handle: 2 - 4-> 3
+09:20.904	ID:4	Numero de ns : 5 | Numero de arestas: 3
+09:20.904	ID:4	Matriz de adacncia do grafo da rede:
+09:20.904	ID:4	0 0 0 0 0 
+09:20.904	ID:4	0 0 0 0 0 
+09:20.904	ID:4	0 1 0 0 0 
+09:20.904	ID:4	0 0 1 0 0 
+09:20.904	ID:4	0 0 0 1 0 
+09:20.904	ID:4	
+09:20.904	ID:4	Pacotes atribuidos!
+09:20.904	ID:4	N 0: 0 pacotes
+09:20.904	ID:4	N 1: 0 pacotes
+09:20.904	ID:4	N 2: 1 pacotes
+09:20.904	ID:4	N 3: 1 pacotes
+09:20.904	ID:4	N 4: 1 pacotes
+09:20.904	ID:4	
+09:20.904	ID:4	Mapa da matriz de conflito gerada:
+09:20.904	ID:4	N 0: 2 -> 1
+09:20.904	ID:4	N 1: 3 -> 2
+09:20.904	ID:4	N 2: 4 -> 3
+09:20.904	ID:4	sorted n:0
+09:20.904	ID:4	sorted n:3
+09:20.904	ID:4	sorted n:3
+09:20.904	ID:4	sorted n:1
+09:20.904	ID:4	Camos no pior caso
+09:20.904	ID:4	sorted n:4
+09:20.904	ID:4	sorted n:3
+09:20.904	ID:4	sorted n:3
+09:20.904	ID:4	sorted n:1
+09:20.904	ID:4	Camos no pior caso
+09:20.904	ID:4	
+09:20.904	ID:4	Canais alocados  | |
+09:20.904	ID:4	                \   /
+09:20.904	ID:4	                 \ /
+09:20.904	ID:4	
+09:20.904	ID:4	1  2  1  0  3  2  1  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	0  0  0  0  0  0  0  0  
+09:20.904	ID:4	[PRI : TSCH Sched] ---------------------------
+09:20.904	ID:4	[PRI : TSCH Sched] ----HANDLE: 2-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:20.904	ID:4	
+09:20.904	ID:4	[PRI : TSCH Sched] ----CHANGE-Tx----
+09:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:20.904	ID:4	[PRI : TSCH Sched] -----------------------------
+09:20.904	ID:4	
+09:20.904	ID:4	[PRI : TSCH Sched] ---------------------------
+09:20.904	ID:4	[PRI : TSCH Sched] ----HANDLE: 2-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:20.904	ID:4	
+09:20.904	ID:4	[PRI : TSCH Sched] ----EXTRA-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:20.904	ID:4	[PRI : TSCH Sched] -----------------------------
+09:20.904	ID:4	
+09:20.904	ID:4	[PRI : TSCH Sched] Escalonamento Concluido
+09:20.904	ID:4	
+09:20.904	ID:4	Energest:
+09:20.904	ID:4	 CPU           560s LPM         0s DEEP LPM    0s  Total time 560s
+09:20.904	ID:4	 Radio LISTEN  252s TRANSMIT    0s OFF       307s
+09:21.265	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:21.406	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:21.646	ID:3	[DBG : TSCH Queue] packet is added put_index 62, packet 0xc2ea1b20
+09:21.646	ID:3	[INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 153, queue 1/64 1/64, len 21 21
+09:21.646	ID:3	[INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+09:21.686	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db41 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  1
+09:21.686	ID:3	[INFO: TSCH Sched] Tx_try= 102 Tx_Success=0
+09:21.766	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db49 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  2
+09:21.766	ID:3	[INFO: TSCH Sched] Tx_try= 103 Tx_Success=0
+09:21.846	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db51 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  3
+09:21.846	ID:3	[INFO: TSCH Sched] Tx_try= 104 Tx_Success=0
+09:21.926	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db59 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  4
+09:21.926	ID:3	[INFO: TSCH Sched] Tx_try= 105 Tx_Success=0
+09:22.006	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db61 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  5
+09:22.006	ID:3	[INFO: TSCH Sched] Tx_try= 106 Tx_Success=0
+09:22.086	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db69 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  6
+09:22.086	ID:3	[INFO: TSCH Sched] Tx_try= 107 Tx_Success=0
+09:22.166	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db71 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  7
+09:22.166	ID:3	[INFO: TSCH Sched] Tx_try= 108 Tx_Success=0
+09:22.246	ID:3	[INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 153, status 2, tx 8
+09:22.246	ID:3	[INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 2-8
+09:22.246	ID:3	[WARN: TSCH      ] not able to re-synchronize, received no EB from other neighbors
+09:22.246	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000db79 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 153, st 2  8
+09:22.246	ID:3	[INFO: TSCH Sched] Tx_try= 109 Tx_Success=0
+09:22.246	ID:3	[WARN: TSCH      ] leaving the network, stats: tx 8, rx 0, sync 0
+09:22.246	ID:3	[INFO: TSCH Queue] update time source: 0002.0002.0002.0002 -> (NULL LL addr)
+09:22.246	ID:3	[WARN: RPL       ] local repair (TSCH leaving)
+09:22.275	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:22.416	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:22.827	ID:3	[WARN: TSCH      ] Cannot compute max payload size: not associated
+09:22.827	ID:3	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+09:22.987	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:23.256	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:23.285	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:23.297	ID:2	[DBG : TSCH Queue] packet is added put_index 6, packet 0xc2ea1b20
+09:23.297	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 130, queue 1/64 1/64, len 21 21
+09:23.297	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+09:23.336	ID:1	--------------------------------[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 130
+09:23.336	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+09:23.336	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000dbe6 link  2   8   0  6  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq 130, edr   0
+09:23.336	ID:1	[INFO: TSCH Sched] list of packets
+09:23.336	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=44 
+09:23.336	ID:1	[INFO: TSCH Sched] id=2 Tx=44 Rx=0 
+09:23.336	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+09:23.336	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+09:23.336	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+09:23.336	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 130, status 0, tx 1
+09:23.336	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+09:23.336	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000dbe6 link  2   8   0  6  1 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+09:23.336	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000dbe6 link  2   8   0  6  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq 130, st 0  1, dr   0
+09:23.336	ID:2	[INFO: TSCH Sched] Tx_try= 60 Tx_Success=0
+09:23.426	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:24.218	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:24.266	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:24.295	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:24.436	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:25.276	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:25.305	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:25.446	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:26.286	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:26.315	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:26.437	ID:1	[DBG : TSCH Queue] packet is added put_index 42, packet 0xc2ea1b20
+09:26.437	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:26.456	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:26.475	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 184, status 0, tx 1
+09:26.475	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000dd20 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 184, st 0  1
+09:26.475	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000dd20 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+09:26.475	ID:2	--------------------------------
+09:26.475	ID:2	LL-0001->LL-0002
+09:26.596	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:27.296	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:27.325	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:27.462	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:27.466	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:28.306	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:28.335	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:28.476	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:29.316	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:29.345	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:29.486	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:30.326	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:30.355	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:30.386	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:30.496	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:30.846	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:31.336	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:31.365	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:31.506	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:32.266	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 43, packet 0xc2ea1b20
+09:32.266	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:32.315	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 156, status 0, tx 1
+09:32.315	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000df68 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 156, st 0  1
+09:32.315	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000df68 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 130, edr   0
+09:32.315	ID:1	--------------------------------
+09:32.315	ID:1	LL-0002->LL-0001
+09:32.346	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:32.375	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:32.516	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:33.356	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:33.385	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:33.526	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:34.366	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:34.372	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:34.395	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:34.453	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:34.536	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:34.764	ID:5	[WARN: TSCH      ] Cannot compute max payload size: not associated
+09:34.764	ID:5	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+09:35.376	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:35.405	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:35.538	ID:2	[DBG : TSCH Queue] packet is added put_index 7, packet 0xc2ea1b20
+09:35.538	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 131, queue 1/64 1/64, len 21 21
+09:35.538	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+09:35.546	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:35.576	ID:1	--------------------------------[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 131
+09:35.576	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+09:35.576	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000e0ae link  2   8   0  6  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq 131, edr   0
+09:35.576	ID:1	[INFO: TSCH Sched] list of packets
+09:35.576	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=45 
+09:35.576	ID:1	[INFO: TSCH Sched] id=2 Tx=45 Rx=0 
+09:35.576	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+09:35.576	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+09:35.576	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+09:35.576	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 131, status 0, tx 1
+09:35.576	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+09:35.576	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e0ae link  2   8   0  6  1 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+09:35.576	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e0ae link  2   8   0  6  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq 131, st 0  1, dr   0
+09:35.576	ID:2	[INFO: TSCH Sched] Tx_try= 61 Tx_Success=0
+09:36.386	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:36.415	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:36.556	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:37.396	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:37.425	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:37.566	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:37.661	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:37.735	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:38.406	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:38.435	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:38.576	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:38.989	ID:1	[DBG : TSCH Queue] packet is added put_index 43, packet 0xc2ea1b20
+09:38.989	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:39.035	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 185, status 0, tx 1
+09:39.035	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000e208 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 185, st 0  1
+09:39.035	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e208 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+09:39.035	ID:2	--------------------------------
+09:39.035	ID:2	LL-0001->LL-0002
+09:39.416	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:39.445	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:39.586	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:39.770	ID:4	[WARN: TSCH      ] Cannot compute max payload size: not associated
+09:39.770	ID:4	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+09:40.426	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:40.455	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:40.596	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:40.699	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:41.436	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:41.465	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:41.507	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:41.606	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:42.446	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:42.475	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:42.616	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:43.456	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:43.485	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:43.626	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:44.263	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:44.466	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:44.495	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:44.636	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:45.034	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:45.183	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 44, packet 0xc2ea1b20
+09:45.183	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:45.195	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 157, status 0, tx 1
+09:45.195	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e470 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 157, st 0  1
+09:45.195	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000e470 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 131, edr   0
+09:45.195	ID:1	--------------------------------
+09:45.195	ID:1	LL-0002->LL-0001
+09:45.476	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:45.505	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:45.646	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:46.486	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:46.515	ID:5	[INFO: TSCH      ] scanning on channel 25
+09:46.656	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:47.318	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:47.496	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:47.525	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:47.666	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:48.127	ID:2	[DBG : TSCH Queue] packet is added put_index 8, packet 0xc2ea1b20
+09:48.127	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 132, queue 1/64 1/64, len 21 21
+09:48.127	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+09:48.136	ID:3	[INFO: TSCH      ] scan: received packet (21 bytes) on channel 20
+09:48.136	ID:3	[INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+09:48.136	ID:3	[INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+09:48.136	ID:3	[DBG : TSCH      ] ! failed to parse packet as EB while scanning (len 21)
+09:48.136	ID:1	--------------------------------[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 132
+09:48.136	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+09:48.136	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000e596 link  2   8   0  6  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  21, seq 132, edr   0
+09:48.136	ID:1	[INFO: TSCH Sched] list of packets
+09:48.136	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=46 
+09:48.136	ID:1	[INFO: TSCH Sched] id=2 Tx=46 Rx=0 
+09:48.136	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+09:48.136	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+09:48.136	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+09:48.136	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 132, status 0, tx 1
+09:48.136	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+09:48.136	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e596 link  2   8   0  6  1 ch 20} drift 0 ppm (min/max delta seen: 0/0)
+09:48.136	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e596 link  2   8   0  6  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  21, seq 132, st 0  1, dr   0
+09:48.136	ID:2	[INFO: TSCH Sched] Tx_try= 62 Tx_Success=0
+09:48.160	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:48.506	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:48.535	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:48.676	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:49.516	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:49.545	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:49.686	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:50.526	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:50.555	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:50.696	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:51.046	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:51.400	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:51.536	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:51.565	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:51.706	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:52.546	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:52.575	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:52.716	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:53.556	ID:3	[INFO: TSCH      ] scanning on channel 25
+09:53.585	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:53.726	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:54.140	ID:1	[DBG : TSCH Queue] packet is added put_index 44, packet 0xc2ea1b20
+09:54.140	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+09:54.155	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 186, status 0, tx 1
+09:54.155	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000e7f0 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 186, st 0  1
+09:54.155	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e7f0 link  1   8   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+09:54.155	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000e7f0 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+09:54.155	ID:2	--------------------------------
+09:54.155	ID:2	LL-0001->LL-0002
+09:54.467	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:54.566	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:54.595	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:54.736	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:55.127	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:55.576	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:55.605	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:55.746	ID:4	[INFO: TSCH      ] scanning on channel 20
+09:56.135	ID:3	[WARN: TSCH      ] Cannot compute max payload size: not associated
+09:56.135	ID:3	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+09:56.586	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:56.615	ID:5	[INFO: TSCH      ] scanning on channel 20
+09:56.756	ID:4	[INFO: TSCH      ] scanning on channel 26
+09:57.596	ID:3	[INFO: TSCH      ] scanning on channel 20
+09:57.625	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:57.766	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:58.186	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:58.600	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+09:58.606	ID:3	[INFO: TSCH      ] scanning on channel 15
+09:58.635	ID:5	[INFO: TSCH      ] scanning on channel 15
+09:58.776	ID:4	[INFO: TSCH      ] scanning on channel 25
+09:59.616	ID:3	[INFO: TSCH      ] scanning on channel 26
+09:59.645	ID:5	[INFO: TSCH      ] scanning on channel 26
+09:59.776	ID:2	--------------------------------[INFO: App       ] Send to 433a:e6c2:ee15:e6c2:14cf:e9c2:8864:e9c2, seqnum 10
+09:59.776	ID:2	[WARN: IPv6 Route] No route found
+09:59.776	ID:2	[DBG : TSCH Queue] packet is added put_index 9, packet 0xc2ea1b20
+09:59.776	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 133, queue 1/64 1/64, len 21 59
+09:59.777	ID:2	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+09:59.777	ID:2	[INFO: TSCH Sched] 1
+09:59.777	ID:2	[INFO: TSCH Sched] 3
+09:59.777	ID:2	[INFO: App       ] Verify: 1 
+09:59.777	ID:2	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:59.777	ID:2	[PRI : TSCH Sched] Finding neighbor to Rx
+09:59.777	ID:2	[PRI : TSCH Sched] 2 1
+09:59.777	ID:2	[PRI : TSCH Sched] 3 2
+09:59.777	ID:2	[PRI : TSCH Sched] Match - 2 <- 3
+09:59.777	ID:2	[PRI : TSCH Sched] 4 3
+09:59.777	ID:2	[PRI : TSCH Sched] 4 3
+09:59.777	ID:2	[PRI : App       ] aux_id test: 1
+09:59.777	ID:2	[PRI : TSCH Sched] ----- start slotframe list -----
+09:59.777	ID:2	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+09:59.777	ID:2	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+09:59.777	ID:2	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+09:59.777	ID:2	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 6, channel offset 1, address 1
+09:59.777	ID:2	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 3, channel offset 1, address 3
+09:59.777	ID:2	[PRI : TSCH Sched] ----- end slotframe list -----
+09:59.777	ID:2	[PRI : TSCH Sched] -----Slotframe handle:2----
+09:59.777	ID:2	Enter here!
+09:59.777	ID:2	handle: 0 - 2-> 1
+09:59.777	ID:2	handle: 1 - 3-> 2
+09:59.777	ID:2	handle: 2 - 4-> 3
+09:59.777	ID:2	Numero de ns : 5 | Numero de arestas: 3
+09:59.777	ID:2	Matriz de adacncia do grafo da rede:
+09:59.777	ID:2	0 0 0 0 0 
+09:59.777	ID:2	0 0 0 0 0 
+09:59.777	ID:2	0 1 0 0 0 
+09:59.777	ID:2	0 0 1 0 0 
+09:59.777	ID:2	0 0 0 1 0 
+09:59.777	ID:2	
+09:59.777	ID:2	Pacotes atribuidos!
+09:59.777	ID:2	N 0: 0 pacotes
+09:59.777	ID:2	N 1: 0 pacotes
+09:59.777	ID:2	N 2: 1 pacotes
+09:59.777	ID:2	N 3: 1 pacotes
+09:59.777	ID:2	N 4: 1 pacotes
+09:59.777	ID:2	
+09:59.777	ID:2	Mapa da matriz de conflito gerada:
+09:59.777	ID:2	N 0: 2 -> 1
+09:59.777	ID:2	N 1: 3 -> 2
+09:59.777	ID:2	N 2: 4 -> 3
+09:59.777	ID:2	sorted n:0
+09:59.777	ID:2	sorted n:3
+09:59.777	ID:2	sorted n:4
+09:59.777	ID:2	sorted n:1
+09:59.777	ID:2	Camos no pior caso
+09:59.777	ID:2	sorted n:1
+09:59.777	ID:2	Camos no pior caso
+09:59.777	ID:2	sorted n:1
+09:59.777	ID:2	Camos no pior caso
+09:59.777	ID:2	sorted n:0
+09:59.777	ID:2	sorted n:0
+09:59.777	ID:2	sorted n:2
+09:59.777	ID:2	sorted n:0
+09:59.777	ID:2	Camos no pior caso
+09:59.777	ID:2	
+09:59.777	ID:2	Canais alocados  | |
+09:59.777	ID:2	                \   /
+09:59.777	ID:2	                 \ /
+09:59.777	ID:2	
+09:59.777	ID:2	1  2  3  0  0  0  1  2  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	0  0  0  0  0  0  0  0  
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANGE-Tx----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 7-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 7-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+09:59.777	ID:2	[PRI : TSCH Sched] -----------------------------
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ---------------------------
+09:59.777	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+09:59.777	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+09:59.777	ID:2	
+09:59.777	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+09:59.786	ID:4	[INFO: TSCH      ] scanning on channel 15
+09:59.797	ID:2	[PRI : TSC[INFO: TSCH-LOG  ] {asn 00.0000ea24 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  1
+09:59.797	ID:2	[INFO: TSCH Sched] Tx_try= 63 Tx_Success=0
+09:59.877	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea2c link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  2
+09:59.877	ID:2	[INFO: TSCH Sched] Tx_try= 64 Tx_Success=0
+09:59.957	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea34 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  3
+09:59.957	ID:2	[INFO: TSCH Sched] Tx_try= 65 Tx_Success=0
+10:00.037	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea3c link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  4
+10:00.037	ID:2	[INFO: TSCH Sched] Tx_try= 66 Tx_Success=0
+10:00.117	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea44 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  5
+10:00.117	ID:2	[INFO: TSCH Sched] Tx_try= 67 Tx_Success=0
+10:00.197	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea4c link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  6
+10:00.197	ID:2	[INFO: TSCH Sched] Tx_try= 68 Tx_Success=0
+10:00.277	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea54 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  7
+10:00.277	ID:2	[INFO: TSCH Sched] Tx_try= 69 Tx_Success=0
+10:00.357	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 133, status 2, tx 8
+10:00.357	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ea5c link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 133, st 2  8
+10:00.357	ID:2	[INFO: TSCH Sched] Tx_try= 70 Tx_Success=0
+10:00.626	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:00.655	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:00.796	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:01.179	ID:2	[DBG : TSCH Queue] packet is added put_index 45, packet 0xc2ea1b20
+10:01.179	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:01.195	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 158, status 0, tx 1
+10:01.195	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000eab0 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 158, st 0  1
+10:01.195	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000eab0 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 132, edr   0
+10:01.195	ID:1	--------------------------------
+10:01.195	ID:1	LL-0002->LL-0001
+10:01.636	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:01.665	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:01.806	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:01.837	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:02.182	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:02.646	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:02.675	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:02.757	ID:1	--------------------------------[INFO: App       ] Send to 433a:e6c2:ee15:e6c2:14cf:e9c2:8864:e9c2, seqnum 11
+10:02.757	ID:1	[WARN: IPv6 Route] No route found
+10:02.757	ID:1	[ERR : TCP/IP    ] output: destination off-link and no default route
+10:02.757	ID:1	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+10:02.757	ID:1	[INFO: TSCH Sched] 2
+10:02.757	ID:1	[INFO: TSCH Sched] 0
+10:02.757	ID:1	[INFO: App       ] Verify: 1 
+10:02.757	ID:1	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:02.757	ID:1	[PRI : TSCH Sched] Finding neighbor to Rx
+10:02.757	ID:1	[PRI : TSCH Sched] 2 1
+10:02.757	ID:1	[PRI : TSCH Sched] Match - 1 <- 2
+10:02.757	ID:1	[PRI : TSCH Sched] 3 2
+10:02.757	ID:1	[PRI : TSCH Sched] 4 3
+10:02.757	ID:1	[PRI : TSCH Sched] 4 3
+10:02.757	ID:1	[PRI : App       ] aux_id test: 1
+10:02.757	ID:1	[PRI : TSCH Sched] ----- start slotframe list -----
+10:02.757	ID:1	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+10:02.757	ID:1	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+10:02.757	ID:1	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+10:02.757	ID:1	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 6, channel offset 1, address 2
+10:02.757	ID:1	[PRI : TSCH Sched] ----- end slotframe list -----
+10:02.757	ID:1	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:02.757	ID:1	Enter here!
+10:02.757	ID:1	handle: 0 - 2-> 1
+10:02.757	ID:1	handle: 1 - 3-> 2
+10:02.757	ID:1	handle: 2 - 4-> 3
+10:02.757	ID:1	Numero de ns : 5 | Numero de arestas: 3
+10:02.757	ID:1	Matriz de adacncia do grafo da rede:
+10:02.757	ID:1	0 0 0 0 0 
+10:02.757	ID:1	0 0 0 0 0 
+10:02.757	ID:1	0 1 0 0 0 
+10:02.757	ID:1	0 0 1 0 0 
+10:02.757	ID:1	0 0 0 1 0 
+10:02.757	ID:1	
+10:02.757	ID:1	Pacotes atribuidos!
+10:02.757	ID:1	N 0: 0 pacotes
+10:02.757	ID:1	N 1: 0 pacotes
+10:02.757	ID:1	N 2: 1 pacotes
+10:02.757	ID:1	N 3: 1 pacotes
+10:02.757	ID:1	N 4: 1 pacotes
+10:02.757	ID:1	
+10:02.757	ID:1	Mapa da matriz de conflito gerada:
+10:02.757	ID:1	N 0: 2 -> 1
+10:02.757	ID:1	N 1: 3 -> 2
+10:02.757	ID:1	N 2: 4 -> 3
+10:02.757	ID:1	sorted n:3
+10:02.757	ID:1	sorted n:1
+10:02.757	ID:1	sorted n:0
+10:02.757	ID:1	sorted n:0
+10:02.757	ID:1	sorted n:2
+10:02.757	ID:1	sorted n:0
+10:02.757	ID:1	Camos no pior caso
+10:02.757	ID:1	
+10:02.757	ID:1	Canais alocados  | |
+10:02.757	ID:1	                \   /
+10:02.757	ID:1	                 \ /
+10:02.757	ID:1	
+10:02.757	ID:1	2  1  3  2  1  0  0  0  
+10:02.757	ID:1	0  1  0  0  0  0  0  0  
+10:02.757	ID:1	0  0  0  0  0  0  0  0  
+10:02.757	ID:1	0  0  0  0  0  0  0  0  
+10:02.757	ID:1	0  0  0  0  0  0  0  0  
+10:02.757	ID:1	0  0  0  0  0  0  0  0  
+10:02.757	ID:1	0  0  0  0  0  0  0  0  
+10:02.757	ID:1	0  0  0  0  0  0  0  0  
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:02.757	ID:1	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:02.757	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:02.757	ID:1	[PRI : TSCH Sched] -----------------------------
+10:02.757	ID:1	
+10:02.757	ID:1	[PRI : TSCH Sched] Escalonamento Concluido
+10:02.757	ID:1	
+10:02.757	ID:1	Energest:
+10:02.757	ID:1	 CPU           602s LPM         0s DEEP LPM    0s  Total time 602s
+10:02.757	ID:1	 Radio LISTEN   42s TRANSMIT    0s OFF       559s
+10:02.816	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:03.656	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:03.685	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:03.826	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:03.927	ID:2	[DBG : TSCH Queue] packet is added put_index 10, packet 0xc2ea1b20
+10:03.927	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 134, queue 1/64 1/64, len 21 21
+10:03.927	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+10:03.956	ID:3	[INFO: TSCH      ] scan: received packet (21 bytes) on channel 25
+10:03.956	ID:3	[INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+10:03.956	ID:3	[INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+10:03.956	ID:3	[DBG : TSCH      ] ! failed to parse packet as EB while scanning (len 21)
+10:03.956	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 134
+10:03.956	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+10:03.956	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000ebc4 link  2   8   0  4  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq 134, edr   0
+10:03.956	ID:1	[INFO: TSCH Sched] list of packets
+10:03.956	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=47 
+10:03.956	ID:1	[INFO: TSCH Sched] id=2 Tx=47 Rx=0 
+10:03.956	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+10:03.956	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+10:03.956	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+10:03.956	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 134, status 0, tx 1
+10:03.956	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+10:03.956	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ebc4 link  2   8   0  4  1 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+10:03.956	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000ebc4 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq 134, st 0  1, dr   0
+10:03.956	ID:2	[INFO: TSCH Sched] Tx_try= 71 Tx_Success=0
+10:04.168	ID:3	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+10:04.168	ID:3	[INFO: TSCH Sched] 2
+10:04.168	ID:3	[INFO: TSCH Sched] 4
+10:04.168	ID:3	[INFO: App       ] Verify: 1 
+10:04.168	ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:04.168	ID:3	[PRI : TSCH Sched] Finding neighbor to Rx
+10:04.168	ID:3	[PRI : TSCH Sched] 2 1
+10:04.168	ID:3	[PRI : TSCH Sched] 3 2
+10:04.168	ID:3	[PRI : TSCH Sched] 4 3
+10:04.168	ID:3	[PRI : TSCH Sched] Match - 3 <- 4
+10:04.168	ID:3	[PRI : TSCH Sched] 4 3
+10:04.168	ID:3	[PRI : TSCH Sched] Match - 3 <- 4
+10:04.168	ID:3	[PRI : App       ] aux_id test: 2
+10:04.168	ID:3	[PRI : TSCH Sched] ----- start slotframe list -----
+10:04.168	ID:3	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+10:04.168	ID:3	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+10:04.168	ID:3	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+10:04.168	ID:3	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 1, channel offset 1, address 2
+10:04.168	ID:3	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 3, channel offset 1, address 4
+10:04.168	ID:3	[PRI : TSCH Sched] ----- end slotframe list -----
+10:04.168	ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:04.168	ID:3	Enter here!
+10:04.168	ID:3	handle: 0 - 2-> 1
+10:04.168	ID:3	handle: 1 - 3-> 2
+10:04.168	ID:3	handle: 2 - 4-> 3
+10:04.168	ID:3	Numero de ns : 5 | Numero de arestas: 3
+10:04.168	ID:3	Matriz de adacncia do grafo da rede:
+10:04.168	ID:3	0 0 0 0 0 
+10:04.168	ID:3	0 0 0 0 0 
+10:04.168	ID:3	0 1 0 0 0 
+10:04.168	ID:3	0 0 1 0 0 
+10:04.168	ID:3	0 0 0 1 0 
+10:04.168	ID:3	
+10:04.168	ID:3	Pacotes atribuidos!
+10:04.168	ID:3	N 0: 0 pacotes
+10:04.168	ID:3	N 1: 0 pacotes
+10:04.168	ID:3	N 2: 1 pacotes
+10:04.168	ID:3	N 3: 1 pacotes
+10:04.168	ID:3	N 4: 1 pacotes
+10:04.168	ID:3	
+10:04.168	ID:3	Mapa da matriz de conflito gerada:
+10:04.168	ID:3	N 0: 2 -> 1
+10:04.168	ID:3	N 1: 3 -> 2
+10:04.168	ID:3	N 2: 4 -> 3
+10:04.168	ID:3	sorted n:0
+10:04.168	ID:3	sorted n:4
+10:04.168	ID:3	sorted n:1
+10:04.168	ID:3	sorted n:0
+10:04.168	ID:3	sorted n:4
+10:04.168	ID:3	
+10:04.168	ID:3	Canais alocados  | |
+10:04.168	ID:3	                \   /
+10:04.168	ID:3	                 \ /
+10:04.168	ID:3	
+10:04.168	ID:3	1  3  2  1  0  0  0  0  
+10:04.168	ID:3	0  0  2  1  0  0  0  0  
+10:04.168	ID:3	0  0  0  0  0  0  0  0  
+10:04.168	ID:3	0  0  0  0  0  0  0  0  
+10:04.168	ID:3	0  0  0  0  0  0  0  0  
+10:04.168	ID:3	0  0  0  0  0  0  0  0  
+10:04.168	ID:3	0  0  0  0  0  0  0  0  
+10:04.168	ID:3	0  0  0  0  0  0  0  0  
+10:04.168	ID:3	[PRI : TSCH Sched] ---------------------------
+10:04.168	ID:3	[PRI : TSCH Sched] ----HANDLE: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Tx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ---------------------------
+10:04.168	ID:3	[PRI : TSCH Sched] ----HANDLE: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----EXTRA-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ---------------------------
+10:04.168	ID:3	[PRI : TSCH Sched] ----HANDLE: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----EXTRA-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANGE-Rx----
+10:04.168	ID:3	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:04.168	ID:3	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:04.168	ID:3	[PRI : TSCH Sched] -----------------------------
+10:04.168	ID:3	
+10:04.168	ID:3	[PRI : TSCH Sched] Escalonamento Concluido
+10:04.168	ID:3	
+10:04.168	ID:3	Energest:
+10:04.168	ID:3	 CPU           603s LPM         0s DEEP LPM    0s  Total time 603s
+10:04.168	ID:3	 Radio LISTEN  269s TRANSMIT    0s OFF       333s
+10:04.666	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:04.695	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:04.836	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:04.917	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:05.517	ID:5	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:05.517	ID:5	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:05.676	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:05.705	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:05.846	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:06.032	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:06.156	ID:1	[DBG : TSCH Queue] packet is added put_index 45, packet 0xc2ea1b20
+10:06.156	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:06.235	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 187, status 0, tx 1
+10:06.235	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000eca8 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 187, st 0  1
+10:06.235	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000eca8 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+10:06.235	ID:2	--------------------------------
+10:06.235	ID:2	LL-0001->LL-0002
+10:06.686	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:06.715	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:06.856	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:07.696	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:07.725	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:07.866	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:08.547	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:08.706	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:08.735	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:08.876	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:09.186	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:09.716	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:09.745	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:09.886	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:10.726	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:10.755	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:10.896	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:11.736	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:11.765	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:11.865	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:11.906	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:12.305	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:12.729	ID:4	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:12.729	ID:4	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:12.746	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:12.775	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:12.916	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:13.756	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:13.785	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:13.926	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:14.507	ID:5	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+10:14.507	ID:5	[INFO: TSCH Sched] 0
+10:14.507	ID:5	[INFO: TSCH Sched] 0
+10:14.507	ID:5	[INFO: App       ] Verify: 0 
+10:14.507	ID:5	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:14.507	ID:5	[PRI : TSCH Sched] Finding neighbor to Rx
+10:14.507	ID:5	[PRI : TSCH Sched] 2 1
+10:14.507	ID:5	[PRI : TSCH Sched] 3 2
+10:14.507	ID:5	[PRI : TSCH Sched] 4 3
+10:14.507	ID:5	[PRI : TSCH Sched] 4 3
+10:14.507	ID:5	
+10:14.507	ID:5	Energest:
+10:14.507	ID:5	 CPU           613s LPM         0s DEEP LPM    0s  Total time 613s
+10:14.507	ID:5	 Radio LISTEN  613s TRANSMIT    0s OFF         0s
+10:14.766	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:14.795	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:14.936	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:15.291	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:15.776	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:15.805	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:15.805	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:15.934	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 11, packet 0xc2ea1b20
+10:15.934	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 135, queue 1/64 1/64, len 21 21
+10:15.934	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+10:15.934	ID:2	[DBG : TSCH Queue] packet is added put_index 46, packet 0xc2ea1b34
+10:15.934	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:15.946	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:15.956	ID:3	[INFO: TSCH      ] scan: received packet (21 bytes) on channel 25
+10:15.956	ID:3	[INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 21 ec
+10:15.956	ID:3	[INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0002.0002.0002.0002 to 0xabcd/0001.0001.0001.0001
+10:15.956	ID:3	[DBG : TSCH      ] ! failed to parse packet as EB while scanning (len 21)
+10:15.956	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 135
+10:15.956	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+10:15.956	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000f074 link  2   8   0  4  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq 135, edr   0
+10:15.956	ID:1	[INFO: TSCH Sched] list of packets
+10:15.956	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=48 
+10:15.956	ID:1	[INFO: TSCH Sched] id=2 Tx=48 Rx=0 
+10:15.956	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+10:15.956	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+10:15.956	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+10:15.956	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 135, status 0, tx 1
+10:15.956	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+10:15.956	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f074 link  2   8   0  4  1 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+10:15.956	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f074 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq 135, st 0  1, dr   0
+10:15.956	ID:2	[INFO: TSCH Sched] Tx_try= 72 Tx_Success=0
+10:15.995	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 159, status 0, tx 1
+10:15.995	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f078 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 159, st 0  1
+10:15.995	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000f078 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 135, edr   0
+10:15.995	ID:1	--------------------------------
+10:15.995	ID:1	LL-0002->LL-0001
+10:16.786	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:16.815	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:16.956	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:17.796	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:17.825	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:17.966	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:18.806	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:18.835	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:18.976	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:18.993	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:19.520	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:19.566	ID:1	--------------------------------[DBG : TSCH Queue] packet is added put_index 46, packet 0xc2ea1b20
+10:19.566	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:19.595	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 188, status 0, tx 1
+10:19.595	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000f1e0 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 188, st 0  1
+10:19.595	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f1e0 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+10:19.595	ID:2	--------------------------------
+10:19.595	ID:2	LL-0001->LL-0002
+10:19.816	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:19.845	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:19.986	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:20.826	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:20.855	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:20.904	ID:4	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+10:20.904	ID:4	[INFO: TSCH Sched] 3
+10:20.904	ID:4	[INFO: TSCH Sched] 0
+10:20.904	ID:4	[INFO: App       ] Verify: 1 
+10:20.904	ID:4	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:20.904	ID:4	[PRI : TSCH Sched] Finding neighbor to Rx
+10:20.904	ID:4	[PRI : TSCH Sched] 2 1
+10:20.904	ID:4	[PRI : TSCH Sched] 3 2
+10:20.904	ID:4	[PRI : TSCH Sched] 4 3
+10:20.904	ID:4	[PRI : TSCH Sched] 4 3
+10:20.904	ID:4	[PRI : App       ] aux_id test: 3
+10:20.904	ID:4	[PRI : TSCH Sched] ----- start slotframe list -----
+10:20.904	ID:4	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+10:20.904	ID:4	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+10:20.904	ID:4	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+10:20.904	ID:4	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 2, channel offset 1, address 3
+10:20.904	ID:4	[PRI : TSCH Sched] ----- end slotframe list -----
+10:20.904	ID:4	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:20.904	ID:4	Enter here!
+10:20.904	ID:4	handle: 0 - 2-> 1
+10:20.904	ID:4	handle: 1 - 3-> 2
+10:20.904	ID:4	handle: 2 - 4-> 3
+10:20.904	ID:4	Numero de ns : 5 | Numero de arestas: 3
+10:20.904	ID:4	Matriz de adacncia do grafo da rede:
+10:20.904	ID:4	0 0 0 0 0 
+10:20.904	ID:4	0 0 0 0 0 
+10:20.904	ID:4	0 1 0 0 0 
+10:20.904	ID:4	0 0 1 0 0 
+10:20.904	ID:4	0 0 0 1 0 
+10:20.904	ID:4	
+10:20.904	ID:4	Pacotes atribuidos!
+10:20.904	ID:4	N 0: 0 pacotes
+10:20.904	ID:4	N 1: 0 pacotes
+10:20.904	ID:4	N 2: 1 pacotes
+10:20.904	ID:4	N 3: 1 pacotes
+10:20.904	ID:4	N 4: 1 pacotes
+10:20.904	ID:4	
+10:20.904	ID:4	Mapa da matriz de conflito gerada:
+10:20.904	ID:4	N 0: 2 -> 1
+10:20.904	ID:4	N 1: 3 -> 2
+10:20.904	ID:4	N 2: 4 -> 3
+10:20.904	ID:4	sorted n:0
+10:20.904	ID:4	sorted n:0
+10:20.904	ID:4	sorted n:2
+10:20.904	ID:4	sorted n:1
+10:20.904	ID:4	Camos no pior caso
+10:20.904	ID:4	sorted n:1
+10:20.904	ID:4	Camos no pior caso
+10:20.904	ID:4	sorted n:1
+10:20.904	ID:4	Camos no pior caso
+10:20.904	ID:4	sorted n:3
+10:20.904	ID:4	sorted n:0
+10:20.904	ID:4	sorted n:3
+10:20.904	ID:4	sorted n:2
+10:20.904	ID:4	
+10:20.904	ID:4	Canais alocados  | |
+10:20.904	ID:4	                \   /
+10:20.904	ID:4	                 \ /
+10:20.904	ID:4	
+10:20.904	ID:4	1  2  1  0  0  0  3  2  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	0  0  0  0  0  0  0  0  
+10:20.904	ID:4	[PRI : TSCH Sched] ---------------------------
+10:20.904	ID:4	[PRI : TSCH Sched] ----HANDLE: 2-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:20.904	ID:4	
+10:20.904	ID:4	[PRI : TSCH Sched] ----CHANGE-Tx----
+10:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:20.904	ID:4	[PRI : TSCH Sched] -----------------------------
+10:20.904	ID:4	
+10:20.904	ID:4	[PRI : TSCH Sched] ---------------------------
+10:20.904	ID:4	[PRI : TSCH Sched] ----HANDLE: 2-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:20.904	ID:4	
+10:20.904	ID:4	[PRI : TSCH Sched] ----EXTRA-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+10:20.904	ID:4	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:20.904	ID:4	[PRI : TSCH Sched] -----------------------------
+10:20.904	ID:4	
+10:20.904	ID:4	[PRI : TSCH Sched] Escalonamento Concluido
+10:20.904	ID:4	
+10:20.904	ID:4	Energest:
+10:20.904	ID:4	 CPU           620s LPM         0s DEEP LPM    0s  Total time 620s
+10:20.904	ID:4	 Radio LISTEN  312s TRANSMIT    0s OFF       307s
+10:20.996	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:21.836	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:21.865	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:22.006	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:22.403	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:22.524	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:22.846	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:22.875	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:23.016	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:23.856	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:23.885	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:24.026	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:24.866	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:24.895	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:25.036	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:25.789	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:25.876	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:25.905	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:26.046	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:26.175	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:26.886	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:26.915	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:27.056	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:27.896	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:27.925	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:28.066	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:28.554	ID:4	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:28.554	ID:4	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:28.906	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:28.935	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:28.946	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 12, packet 0xc2ea1b20
+10:28.946	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 136, queue 1/64 1/64, len 21 21
+10:28.946	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+10:28.996	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 136
+10:28.996	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+10:28.996	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000f58c link  2   8   0  4  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq 136, edr   0
+10:28.996	ID:1	[INFO: TSCH Sched] list of packets
+10:28.996	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=49 
+10:28.996	ID:1	[INFO: TSCH Sched] id=2 Tx=49 Rx=0 
+10:28.996	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+10:28.996	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+10:28.996	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+10:28.996	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 136, status 0, tx 1
+10:28.996	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+10:28.996	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f58c link  2   8   0  4  1 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+10:28.996	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f58c link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq 136, st 0  1, dr   0
+10:28.996	ID:2	[INFO: TSCH Sched] Tx_try= 73 Tx_Success=0
+10:29.076	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:29.207	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:29.358	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:29.461	ID:5	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:29.461	ID:5	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:29.916	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:29.945	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:30.086	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:30.479	ID:2	[DBG : TSCH Queue] packet is added put_index 47, packet 0xc2ea1b20
+10:30.479	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:30.555	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 160, status 0, tx 1
+10:30.555	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f628 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 160, st 0  1
+10:30.555	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000f628 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 136, edr   0
+10:30.555	ID:1	--------------------------------
+10:30.555	ID:1	LL-0002->LL-0001
+10:30.926	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:30.955	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:31.096	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:31.799	ID:1	--------------------------------[DBG : TSCH Queue] packet is added put_index 47, packet 0xc2ea1b20
+10:31.799	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:31.835	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 189, status 0, tx 1
+10:31.835	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000f6a8 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 189, st 0  1
+10:31.835	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000f6a8 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+10:31.835	ID:2	--------------------------------
+10:31.835	ID:2	LL-0001->LL-0002
+10:31.936	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:31.965	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:32.106	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:32.563	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:32.593	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:32.946	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:32.975	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:33.116	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:33.956	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:33.985	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:34.126	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:34.966	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:34.995	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:35.136	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:35.624	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:35.976	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:36.005	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:36.146	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:36.321	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:36.986	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:37.015	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:37.156	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:37.996	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:38.025	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:38.166	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:39.006	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:39.035	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:39.043	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:39.176	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:39.187	ID:3	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:39.187	ID:3	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:40.016	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:40.045	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:40.186	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:40.316	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:41.026	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:41.055	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:41.196	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:41.502	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 13, packet 0xc2ea1b20
+10:41.502	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 137, queue 1/64 1/64, len 21 21
+10:41.502	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+10:41.556	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 137
+10:41.556	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+10:41.556	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000fa74 link  2   8   0  4  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq 137, edr   0
+10:41.556	ID:1	[INFO: TSCH Sched] list of packets
+10:41.556	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=50 
+10:41.556	ID:1	[INFO: TSCH Sched] id=2 Tx=50 Rx=0 
+10:41.556	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+10:41.556	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+10:41.556	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+10:41.556	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 137, status 0, tx 1
+10:41.556	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+10:41.556	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000fa74 link  2   8   0  4  1 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+10:41.556	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000fa74 link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq 137, st 0  1, dr   0
+10:41.556	ID:2	[INFO: TSCH Sched] Tx_try= 74 Tx_Success=0
+10:42.036	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:42.065	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:42.206	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:42.601	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:43.046	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:43.075	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:43.216	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:43.640	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:44.056	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:44.085	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:44.226	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:44.482	ID:2	[DBG : TSCH Queue] packet is added put_index 48, packet 0xc2ea1b20
+10:44.482	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:44.555	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 161, status 0, tx 1
+10:44.555	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000fba0 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 161, st 0  1
+10:44.555	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000fba0 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 137, edr   0
+10:44.555	ID:1	--------------------------------
+10:44.555	ID:1	LL-0002->LL-0001
+10:45.066	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:45.095	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:45.236	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:46.076	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:46.105	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:46.117	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:46.246	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:47.086	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:47.115	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:47.156	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:47.256	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:47.651	ID:1	--------------------------------[DBG : TSCH Queue] packet is added put_index 48, packet 0xc2ea1b20
+10:47.651	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:47.675	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 190, status 0, tx 1
+10:47.675	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000fcd8 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 190, st 0  1
+10:47.675	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000fcd8 link  1   8   0  0  0 ch 15} drift 0 ppm (min/max delta seen: 0/0)
+10:47.675	ID:2	[INFO: TSCH-LOG  ] {asn 00.0000fcd8 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 146, edr   0, dr   0
+10:47.675	ID:2	--------------------------------
+10:47.675	ID:2	LL-0001->LL-0002
+10:48.096	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:48.125	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:48.266	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:48.651	ID:5	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:48.651	ID:5	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:49.106	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:49.135	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:49.276	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:50.114	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:50.116	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:50.145	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:50.286	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:51.043	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:51.126	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:51.155	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:51.296	ID:4	[INFO: TSCH      ] scanning on channel 20
+10:52.136	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:52.165	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:52.306	ID:4	[INFO: TSCH      ] scanning on channel 26
+10:53.146	ID:3	[INFO: TSCH      ] scanning on channel 20
+10:53.175	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:53.316	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:53.606	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:54.156	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:54.185	ID:5	[INFO: TSCH      ] scanning on channel 25
+10:54.326	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:54.706	ID:4	[WARN: TSCH      ] Cannot compute max payload size: not associated
+10:54.706	ID:4	[WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+10:54.749	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:55.166	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:55.195	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:55.336	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:56.176	ID:3	[INFO: TSCH      ] scanning on channel 25
+10:56.205	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:56.346	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:57.186	ID:3	[INFO: TSCH      ] scanning on channel 26
+10:57.215	ID:5	[INFO: TSCH      ] scanning on channel 20
+10:57.356	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:57.581	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:57.607	ID:2	--------------------------------[DBG : TSCH Queue] packet is added put_index 14, packet 0xc2ea1b20
+10:57.607	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 138, queue 1/64 1/64, len 21 21
+10:57.607	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+10:57.636	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 138
+10:57.636	ID:1	[WARN: 6LoWPAN   ] input: empty packet
+10:57.636	ID:1	[INFO: TSCH-LOG  ] {asn 00.000100bc link  2   8   0  4  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  21, seq 138, edr   0
+10:57.636	ID:1	[INFO: TSCH Sched] list of packets
+10:57.636	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=51 
+10:57.636	ID:1	[INFO: TSCH Sched] id=2 Tx=51 Rx=0 
+10:57.636	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+10:57.636	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+10:57.636	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+10:57.636	ID:2	[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 138, status 0, tx 1
+10:57.636	ID:2	[INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+10:57.636	ID:2	[INFO: TSCH-LOG  ] {asn 00.000100bc link  2   8   0  4  1 ch 25} drift 0 ppm (min/max delta seen: 0/0)
+10:57.636	ID:2	[INFO: TSCH-LOG  ] {asn 00.000100bc link  2   8   0  4  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  21, seq 138, st 0  1, dr   0
+10:57.636	ID:2	[INFO: TSCH Sched] Tx_try= 75 Tx_Success=0
+10:58.196	ID:3	[INFO: TSCH      ] scanning on channel 15
+10:58.225	ID:5	[INFO: TSCH      ] scanning on channel 15
+10:58.366	ID:4	[INFO: TSCH      ] scanning on channel 15
+10:58.597	ID:4	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+10:59.129	ID:2	[DBG : TSCH Queue] packet is added put_index 49, packet 0xc2ea1b20
+10:59.129	ID:2	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+10:59.195	ID:2	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 162, status 0, tx 1
+10:59.195	ID:2	[INFO: TSCH-LOG  ] {asn 00.00010158 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0002->LL-NULL, len  35, seq 162, st 0  1
+10:59.195	ID:1	[INFO: TSCH-LOG  ] {asn 00.00010158 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0002->LL-NULL, len  35, seq 138, edr   0
+10:59.195	ID:1	--------------------------------
+10:59.195	ID:1	LL-0002->LL-0001
+10:59.196	ID:3	[INFO: TSCH      ] scan: received packet (35 bytes) on channel 15
+10:59.196	ID:3	[INFO: TSCH      ] parse_eb: no schedule
+10:59.196	ID:3	0002.0002.0002.0002[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0002.0002.0002.0002
+10:59.196	ID:3	[INFO: TSCH      ] association done (8), sec 0, PAN ID abcd, asn-0.10158, jp 3, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0002.0002.0002.0002
+10:59.235	ID:5	[INFO: TSCH      ] scanning on channel 26
+10:59.376	ID:4	[INFO: TSCH      ] scanning on channel 25
+10:59.777	ID:2	[INFO: App       ] Send to 433a:e6c2:ee15:e6c2:14cf:e9c2:8864:e9c2, seqnum 11
+10:59.777	ID:2	[WARN: IPv6 Route] No route found
+10:59.777	ID:2	[DBG : TSCH Queue] packet is added put_index 15, packet 0xc2ea1b20
+10:59.777	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 139, queue 1/64 1/64, len 21 59
+10:59.778	ID:2	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+10:59.778	ID:2	[INFO: TSCH Sched] 1
+10:59.778	ID:2	[INFO: TSCH Sched] 3
+10:59.778	ID:2	[INFO: App       ] Verify: 1 
+10:59.778	ID:2	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:59.778	ID:2	[PRI : TSCH Sched] Finding neighbor to Rx
+10:59.778	ID:2	[PRI : TSCH Sched] 2 1
+10:59.778	ID:2	[PRI : TSCH Sched] 3 2
+10:59.778	ID:2	[PRI : TSCH Sched] Match - 2 <- 3
+10:59.778	ID:2	[PRI : TSCH Sched] 4 3
+10:59.778	ID:2	[PRI : TSCH Sched] 4 3
+10:59.778	ID:2	[PRI : App       ] aux_id test: 1
+10:59.778	ID:2	[PRI : TSCH Sched] ----- start slotframe list -----
+10:59.778	ID:2	[PRI : TSCH Sched] Slotframe Handle 1, size 8
+10:59.778	ID:2	[PRI : TSCH Sched] * Link Options 07, type 1, timeslot 0, channel offset 0, address 255
+10:59.778	ID:2	[PRI : TSCH Sched] Slotframe Handle 2, size 8
+10:59.778	ID:2	[PRI : TSCH Sched] * Link Options 01, type 0, timeslot 4, channel offset 1, address 1
+10:59.778	ID:2	[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 3
+10:59.778	ID:2	[PRI : TSCH Sched] ----- end slotframe list -----
+10:59.778	ID:2	[PRI : TSCH Sched] -----Slotframe handle:2----
+10:59.778	ID:2	Enter here!
+10:59.778	ID:2	handle: 0 - 2-> 1
+10:59.778	ID:2	handle: 1 - 3-> 2
+10:59.778	ID:2	handle: 2 - 4-> 3
+10:59.778	ID:2	Numero de ns : 5 | Numero de arestas: 3
+10:59.778	ID:2	Matriz de adacncia do grafo da rede:
+10:59.778	ID:2	0 0 0 0 0 
+10:59.778	ID:2	0 0 0 0 0 
+10:59.778	ID:2	0 1 0 0 0 
+10:59.778	ID:2	0 0 1 0 0 
+10:59.778	ID:2	0 0 0 1 0 
+10:59.778	ID:2	
+10:59.778	ID:2	Pacotes atribuidos!
+10:59.778	ID:2	N 0: 0 pacotes
+10:59.778	ID:2	N 1: 0 pacotes
+10:59.778	ID:2	N 2: 1 pacotes
+10:59.778	ID:2	N 3: 1 pacotes
+10:59.778	ID:2	N 4: 1 pacotes
+10:59.778	ID:2	
+10:59.778	ID:2	Mapa da matriz de conflito gerada:
+10:59.778	ID:2	N 0: 2 -> 1
+10:59.778	ID:2	N 1: 3 -> 2
+10:59.778	ID:2	N 2: 4 -> 3
+10:59.778	ID:2	sorted n:1
+10:59.778	ID:2	sorted n:3
+10:59.778	ID:2	sorted n:1
+10:59.778	ID:2	Camos no pior caso
+10:59.778	ID:2	sorted n:1
+10:59.778	ID:2	Camos no pior caso
+10:59.778	ID:2	sorted n:0
+10:59.778	ID:2	sorted n:2
+10:59.778	ID:2	sorted n:2
+10:59.778	ID:2	sorted n:1
+10:59.778	ID:2	Camos no pior caso
+10:59.778	ID:2	sorted n:2
+10:59.778	ID:2	sorted n:0
+10:59.778	ID:2	Camos no pior caso
+10:59.778	ID:2	
+10:59.778	ID:2	Canais alocados  | |
+10:59.778	ID:2	                \   /
+10:59.778	ID:2	                 \ /
+10:59.778	ID:2	
+10:59.778	ID:2	1  2  0  0  1  3  2  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	0  0  0  0  0  0  0  0  
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANGE-Tx----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 7-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 1-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 2-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 4-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 5-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 6-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 7-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 8-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] -----------------------------
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ---------------------------
+10:59.778	ID:2	[PRI : TSCH Sched] ----HANDLE: 0-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----TIMESLOT: 3-----
+10:59.778	ID:2	[PRI : TSCH Sched] ----CHANNEL: 1-----
+10:59.778	ID:2	
+10:59.778	ID:2	[PRI : TSCH Sched] ----EXTRA-----
+10:59.797	ID:1	--------------------------------[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 139
+10:59.797	ID:1	[WARN: IPv6 Route] No route found
+10:59.797	ID:1	[ERR : TCP/IP    ] output: destination off-link and no default route
+10:59.797	ID:1	[INFO: TSCH-LOG  ] {asn 00.00010194 link  2   8   0  4  1 ch 25} uc-1-0 rx LL-0002->LL-0001, len  59, seq 139, edr   0
+10:59.797	ID:1	[INFO: TSCH Sched] list of packets
+10:59.797	ID:1	[INFO: TSCH Sched] id=1 Tx=0 Rx=52 
+10:59.797	ID:1	[INFO: TSCH Sched] id=2 Tx=52 Rx=0 
+10:59.797	ID:1	[INFO: TSCH Sched] id=3 Tx=0 Rx=0 
+10:59.797	ID:1	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+10:59.797	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+10:59.797	ID:2	[PRI : TSC[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 139, status 0, tx 1
+10:59.797	ID:2	[INFO: TSCH-LOG  ] {asn 00.00010194 link  2   8   0  3  1 ch 25} uc-1-0 tx LL-0002->LL-0001, len  59, seq 139, st 0  1, dr   0
+10:59.797	ID:2	[INFO: TSCH Sched] Tx_try= 76 Tx_Success=0
+11:00.245	ID:5	[INFO: TSCH      ] scanning on channel 15
+11:00.386	ID:4	[INFO: TSCH      ] scanning on channel 25
+11:01.063	ID:3	[DBG : TSCH Queue] packet is added put_index 63, packet 0xc2ea1b20
+11:01.063	ID:3	[INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 154, queue 1/64 1/64, len 21 21
+11:01.063	ID:3	[INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+11:01.126	ID:2	[INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 154
+11:01.126	ID:2	[WARN: 6LoWPAN   ] input: empty packet
+11:01.126	ID:2	[INFO: TSCH-LOG  ] {asn 00.00010219 link  2   8   0  1  1 ch 26} uc-1-0 rx LL-0003->LL-0002, len  21, seq 154, edr   0
+11:01.126	ID:2	[INFO: TSCH Sched] list of packets
+11:01.126	ID:2	[INFO: TSCH Sched] id=1 Tx=0 Rx=0 
+11:01.126	ID:2	[INFO: TSCH Sched] id=2 Tx=0 Rx=38 
+11:01.126	ID:2	[INFO: TSCH Sched] id=3 Tx=38 Rx=0 
+11:01.126	ID:2	[INFO: TSCH Sched] id=4 Tx=0 Rx=0 
+11:01.126	ID:2	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+11:01.126	ID:3	[INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 154, status 0, tx 1
+11:01.126	ID:3	[INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+11:01.126	ID:3	[INFO: TSCH-LOG  ] {asn 00.00010219 link  2   8   0  1  1 ch 26} uc-1-0 tx LL-0003->LL-0002, len  21, seq 154, st 0  1, dr   0
+11:01.126	ID:3	[INFO: TSCH Sched] Tx_try= 110 Tx_Success=0
+11:01.159	ID:3	[DBG : TSCH      ] skip sending EB: not joined a routing DAG
+11:01.255	ID:5	[INFO: TSCH      ] scanning on channel 25
+11:01.266	ID:1	[DBG : TSCH Queue] packet is added put_index 49, packet 0xc2ea1b20
+11:01.266	ID:1	[INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+11:01.275	ID:1	[INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 191, status 0, tx 1
+11:01.275	ID:1	[INFO: TSCH-LOG  ] {asn 00.00010228 link  1   8   0  0  0 ch 15} bc-0-0 tx LL-0001->LL-NULL, len  35, seq 191, st 0  1
+11:01.275	ID:2	[INFO: TSCH-LOG  ] {asn 00.00010228 link  1   8   0  0  0 ch 15} bc-0-0 rx LL-0001->LL-NULL, len  35, seq 154, edr   0, dr   0
+11:01.275	ID:2	--------------------------------
+11:01.275	ID:2	LL-0001->LL-0002
