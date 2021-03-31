@@ -101,7 +101,13 @@ tsch_log_process_pending(void)
         if(log->tx.drift_used) {
           printf(", dr %3d", log->tx.drift);
         }
-        printf("\n");
+        printf("\n"); 
+        #if NBR_TSCH
+          if(!linkaddr_cmp(&log->tx.dest, &linkaddr_null)){  
+            if(log->link->slotframe_handle == 2)
+              count_sent_packs();
+          }
+        #endif  
         break;
       case tsch_log_rx:
         printf("%s-%u-%u rx ",
