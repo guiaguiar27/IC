@@ -1,0 +1,13 @@
+01:59.777	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 89
+01:59.777	ID:1	[WARN: IPv6 Route] No route found
+01:59.777	ID:1	[ERR : TCP/IP    ] output: destination off-link and no default route
+01:59.777	ID:1	[INFO: TSCH-LOG  ] {asn 00.00002ea2 link  2   8   0  2  1 ch 20} uc-1-0 rx LL-0002->LL-0001, len  59, seq  89, edr   0
+01:59.777	ID:1	[INFO: TSCH Sched] list of packets
+01:59.777	ID:1	[INFO: TSCH Sched] Pckt 1 0 5 *
+01:59.777	ID:1	[INFO: TSCH Sched] Pckt 2 5 0 *
+01:59.777	ID:1	[INFO: TSCH Sched] Pckt 3 0 0 *
+01:59.777	ID:1	[INFO: TSCH Sched] Pckt 4 0 0 *
+01:59.777	ID:1	[INFO: TSCH Sched] id=5 Tx=0 Rx=0 
+01:59.777	ID:2	[PRI : TSCH Sch[INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 89, status 0, tx 1
+01:59.777	ID:2	[INFO: TSCH-LOG  ] {asn 00.00002ea2 link  2   8   0  3  1 ch 20} uc-1-0 tx LL-0002->LL-0001, len  59, seq  89, st 0  1, dr   0
+01:59.777	ID:2	[INFO: TSCH Sched] Tx_try= 13 Tx_Success=0

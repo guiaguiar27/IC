@@ -60,7 +60,7 @@
 #include <stdlib.h>
 #include "conf.h"  
 #define peso 1 
-#define no_raiz 1   
+#define no_raiz 1     
 
 #define Channel 8
 #define Timeslot 8   
@@ -712,7 +712,7 @@ void count_sent_packs(){
     if(flag_schedule == 1){ 
       STpacks +=1 ; 
     } 
-    LOG_INFO("Tx_try= %u Tx_Success=%u\n",STpacks, Packets_sent[node]); 
+    LOG_INFO("Tx_try %u %u \n",node,STpacks); 
 }
 void count_packs( const linkaddr_t *address ){  
   // receive only  
@@ -728,7 +728,7 @@ void count_packs( const linkaddr_t *address ){
       Packets_received[node] += 1 ;  
     //}
     for(int i = 1 ; i <= MAX_NOS; i++){ 
-      LOG_INFO("id=%u Tx=%u Rx=%u \n",i,Packets_sent[i], Packets_received[i]);
+      LOG_INFO("Pckt %u %u %u \n",i,Packets_sent[i], Packets_received[i]);
     } 
   } 
 }  
