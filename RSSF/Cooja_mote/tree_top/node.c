@@ -98,6 +98,9 @@ int initialize_tsch_schedule(void){
       // tsch_schedule_remove_all_slotframes(); 
       // LOG_PRINT("Remove all slotframes");
       struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(UNICAST_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);  
+      if(sf_common == NULL){ 
+          sf_common = tsch_schedule_get_slotframe_by_handle(UNICAST_SLOTFRAME_HANDLE);
+      }
       int  j; 
     // APP_SLOTFRAME_SIZE
       uint16_t slot_offset = 0 ;
@@ -202,12 +205,14 @@ PROCESS_THREAD(node_process, ev, data)
         
         }
         } 
-
+      // com a fing neighbor fora do if eu preciso criar o slotframe de unicast caso esse não exista. 
+      find_neighbor_to_Rx(node_id,1);   
       if(aux_id >= 1 ){ 
         LOG_PRINT("aux_id test: %d\n", aux_id); 
         tsch_schedule_print(); 
         SCHEDULE_static();   
-        find_neighbor_to_Rx(node_id,1);      
+        // com o find neighbor dentro desse if eu garanto que o slotframe de unicast já estará criado
+        //find_neighbor_to_Rx(node_id,1);      
       }  
       #endif 
 

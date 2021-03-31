@@ -786,7 +786,7 @@ int SCHEDULE_static(){
                 printf("handle: %d - %d-> %d\n",i, node_origin, node_destin);   
                 adj.mat_adj[node_origin][node_destin] = 1;
                 i++; 
-                 
+
             }
         }
     }
@@ -897,10 +897,10 @@ int SCHEDULE_static(){
         l = list_head(sf->links_list);        
         while(l!= NULL){   
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
-            // LOG_PRINT("---------------------------\n"); 
-            // LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
-            // LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            // LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);   
+            LOG_PRINT("---------------------------\n"); 
+            LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+            LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+            LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);   
             if(verify == 0 ){  
               // indica que é de TX 
             if(l->aux_options == 2){ 
@@ -929,12 +929,12 @@ int SCHEDULE_static(){
             } 
               
           }
-          // else { 
-          //   LOG_PRINT("----EXTRA-----\n"); 
-          //   LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
-          //   LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
-          //   LOG_PRINT("-----------------------------\n\n");
-          // } 
+          else { 
+            LOG_PRINT("----EXTRA-----\n"); 
+            LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
+            LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
+            LOG_PRINT("-----------------------------\n\n");
+          } 
         } // 1st if 
         l = list_item_next(l);
       } // while      
@@ -999,7 +999,10 @@ rx_schedule_intern(struct tsch_link *l){
 
 
 void find_neighbor_to_Rx(uint8_t node, int handle){  
-    struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(unicast_slotframe_handle);  
+    struct tsch_slotframe *sf = tsch_schedule_add_slotframe(unicast_slotframe_handle, 17); 
+    if(sf == NULL){ 
+      sf = tsch_schedule_get_slotframe_by_handle(unicast_slotframe_handle);
+    }  
     LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
     linkaddr_t addr;    
     int node_origin, node_destin;
