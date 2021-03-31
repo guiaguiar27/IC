@@ -63,7 +63,7 @@
 #define no_raiz 1   
 
 #define Channel 8
-#define Timeslot 17   
+#define Timeslot 8   
 static uint16_t unicast_slotframe_handle = 2;
 
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
@@ -999,7 +999,7 @@ rx_schedule_intern(struct tsch_link *l){
 
 
 void find_neighbor_to_Rx(uint8_t node, int handle){  
-    struct tsch_slotframe *sf = tsch_schedule_add_slotframe(unicast_slotframe_handle, 17); 
+    struct tsch_slotframe *sf = tsch_schedule_add_slotframe(unicast_slotframe_handle, SLOTFRAME_SIZE); 
     if(sf == NULL){ 
       sf = tsch_schedule_get_slotframe_by_handle(unicast_slotframe_handle);
     }  
