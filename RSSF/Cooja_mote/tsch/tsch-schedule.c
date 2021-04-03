@@ -858,7 +858,7 @@ int SCHEDULE_static(){
                               break;   
                             
                             aloca_canais[canal][cont] = edge_selected;     
-                            canal++;  
+                            canal++;   
                     }   
                 }
                 if(canal == Channel)
@@ -934,10 +934,11 @@ int SCHEDULE_static(){
           }
           else   
             if(x+1 >= l->channel_offset){ 
-              channel_bandwidth += 1;    
+              
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8); 
-              LOG_PRINT("increased_Bandwidth %d %u\n",node_origin, channel_bandwidth); 
+                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);   
+              channel_bandwidth = x+1;    
+              
             }
            
         } // 1st if 
@@ -956,7 +957,8 @@ int SCHEDULE_static(){
 
   }
 
-  flag_schedule = 1 ; 
+  flag_schedule = 1 ; // allow count packets 
+  LOG_PRINT("increased_Bandwidth %d %u\n",node_origin, channel_bandwidth);  
   LOG_PRINT("Escalonamento Concluido\n");  
   tsch_release_lock();   
   } 
@@ -1108,6 +1110,8 @@ int sort_node_to_create_link(int n){
   } 
  #endif  
  
+
+ // not used 
  int verify_in_topology(int sender, int receiver){ 
     int node_origin, node_destin; 
     FILE *fl;   
