@@ -898,11 +898,12 @@ int SCHEDULE_static(){
         l = list_head(sf->links_list);        
         while(l!= NULL){   
           if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+            
+            if(verify == 0 ){ 
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-            LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);   
-            if(verify == 0 ){  
+            LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);     
               // indica que é de TX 
             if(l->aux_options == 2){ 
               l-> timeslot = y+1; 
@@ -932,7 +933,7 @@ int SCHEDULE_static(){
               
           }
           else   
-            if(y+1 >= l->channel_offset){ 
+            if(x+1 >= l->channel_offset){ 
               channel_bandwidth += 1;    
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
                       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8); 
