@@ -78,11 +78,52 @@ static void init_broad(void){
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_BROADCAST_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset = 0;
   uint16_t channel_offset = 0; 
-  
-  tsch_schedule_add_link(sf_common,
+  switch (node_id)
+  {  
+  case 1:   
+    slot_offset = 1;  
+    channel_offset = 2 ; 
+    tsch_schedule_add_link(sf_common,
       LINK_OPTION_TX |  LINK_OPTION_TX | LINK_OPTION_SHARED,
       LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
       slot_offset, channel_offset,0);
+    break; 
+  case 2: 
+    slot_offset = 2;  
+    channel_offset = 2 ; 
+    tsch_schedule_add_link(sf_common,
+      LINK_OPTION_TX |  LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset,0); 
+  break;  
+  case 3:  
+    slot_offset = 3;  
+    channel_offset = 1 ; 
+    tsch_schedule_add_link(sf_common,
+      LINK_OPTION_TX |  LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset,0); 
+  break; 
+  case 4:  
+    slot_offset = 4;  
+    channel_offset = 1 ; 
+    tsch_schedule_add_link(sf_common,
+      LINK_OPTION_TX |  LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset,0); 
+  break; 
+  case 5:  
+    slot_offset = 2;  
+    channel_offset = 3 ; 
+    tsch_schedule_add_link(sf_common,
+      LINK_OPTION_TX |  LINK_OPTION_TX | LINK_OPTION_SHARED,
+      LINK_TYPE_ADVERTISING, &tsch_broadcast_address,
+      slot_offset, channel_offset,0); 
+  break;
+  default:
+    break;
+  }
+  
     
 } 
 #endif  
@@ -169,7 +210,75 @@ int initialize_tsch_schedule(void){
       tsch_schedule_add_link(sf_common,
               LINK_OPTION_TX,
               LINK_TYPE_NORMAL, &addr,
+              slot_offset, channel_offset,0); 
+      
+      slot_offset = 4 ;
+      channel_offset = 3 ;  
+      remote_id = 4 ;  // recebe do dois  
+      for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = remote_id & 0xff;
+            addr.u8[j + 0] = remote_id >> 8;
+          } 
+      tsch_schedule_add_link(sf_common,
+              LINK_OPTION_RX,
+              LINK_TYPE_NORMAL, &addr,
+              slot_offset, channel_offset,0);
+      return remote_id;    
+    } 
+    else if(node_id == 4){ 
+      LOG_PRINT("Initialize tsch schedule\n"); 
+      //tsch_schedule_remove_all_slotframes(); 
+      //LOG_PRINT("Remove all slotframes");
+      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_UNICAST_HANDLE, APP_SLOTFRAME_SIZE);  
+      int  j; 
+      // APP_SLOTFRAME_SIZE
+      uint16_t slot_offset = 4 ;
+      uint16_t channel_offset = 3 ;  
+     
+      linkaddr_t addr;   
+      remote_id = 3;  // recebe do dois  
+      for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = remote_id & 0xff;
+            addr.u8[j + 0] = remote_id >> 8;
+          } 
+      tsch_schedule_add_link(sf_common,
+              LINK_OPTION_TX,
+              LINK_TYPE_NORMAL, &addr,
               slot_offset, channel_offset,0);  
+      slot_offset = 5 ;
+      channel_offset = 5 ;  
+      remote_id = 5 ;  // recebe do dois  
+      for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = remote_id & 0xff;
+            addr.u8[j + 0] = remote_id >> 8;
+          } 
+      tsch_schedule_add_link(sf_common,
+              LINK_OPTION_RX,
+              LINK_TYPE_NORMAL, &addr,
+              slot_offset, channel_offset,0); 
+      return remote_id; 
+    } 
+    else if(node_id == 5){ 
+      LOG_PRINT("Initialize tsch schedule\n"); 
+      //tsch_schedule_remove_all_slotframes(); 
+      //LOG_PRINT("Remove all slotframes");
+      struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_UNICAST_HANDLE, APP_SLOTFRAME_SIZE);  
+      int  j; 
+      // APP_SLOTFRAME_SIZE
+      uint16_t slot_offset = 5 ;
+      uint16_t channel_offset = 5 ;  
+     
+      linkaddr_t addr;   
+      remote_id = 4;  // recebe do dois  
+      for(j = 0; j < sizeof(addr); j += 2) {
+            addr.u8[j + 1] = remote_id & 0xff;
+            addr.u8[j + 0] = remote_id >> 8;
+          } 
+      tsch_schedule_add_link(sf_common,
+              LINK_OPTION_TX,
+              LINK_TYPE_NORMAL, &addr,
+              slot_offset, channel_offset,0);  
+      
       return remote_id; 
     } 
     return 0;
