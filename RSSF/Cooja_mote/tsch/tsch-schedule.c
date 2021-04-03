@@ -603,7 +603,7 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void executa(uint8_t num_aresta, uint8_t num_no,  int **aloca_canal, uint8_t  tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, uint8_t raiz, int (*pacotes)[num_no]){
+void executa(int  num_aresta, int  num_no,  int **aloca_canal, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
     int i;
 
     for(i = 0; i < Channel; i++){
@@ -735,18 +735,18 @@ void count_packs( const linkaddr_t *address ){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
-    uint8_t tamNo; 
-    uint8_t verify = 0 ;  
+    int  tamNo; 
+    int  verify = 0 ;  
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     //uint16_t timeslot, slotframe, channel_offset; 
-    uint8_t tamAresta,                  //Nº de arestas da rede
+    int  tamAresta,                  //Nº de arestas da rede
     z, i,j ;                       //Variáveis temporárias
-    uint8_t pacote_entregue = 0, 
+    int pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz ;                  
-    uint8_t  cont = 0;               //Time do slotframe
-    uint8_t x, y, canal = 0,            //Variáveis temporárias
+    int  cont = 0;               //Time do slotframe
+    int x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;    
     uint8_t channel_bandwidth = 0 ; 
