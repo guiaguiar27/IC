@@ -735,20 +735,21 @@ void count_packs( const linkaddr_t *address ){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
-    int tamNo; 
+    uint8_t tamNo; 
     uint8_t verify = 0 ;  
     //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
     //uint16_t timeslot, slotframe, channel_offset; 
-    int tamAresta,                  //Nº de arestas da rede
+    uint8_t tamAresta,                  //Nº de arestas da rede
     z, i,j ;                       //Variáveis temporárias
-    int pacote_entregue = 0, 
+    uint8_t pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz ;                  
-    int cont = 0;               //Time do slotframe
-    int x, y, canal = 0,            //Variáveis temporárias
+    uint8_t cont = 0;               //Time do slotframe
+    uint8_t x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ;   
+    int node_origin, node_destin ;    
+    uint8_t channel_bandwidth = 0 ; 
  
     /*******************************************************************/ 
     FILE *fl;     
@@ -905,7 +906,8 @@ int SCHEDULE_static(){
               // indica que é de TX 
             if(l->aux_options == 2){ 
               l-> timeslot = y+1; 
-              l-> channel_offset = x+1 ;   
+              l-> channel_offset = x+1 ; 
+              channel_bandwidth = 1 ;    
               
               
               LOG_PRINT("----CHANGE-Tx----\n"); 
@@ -929,12 +931,14 @@ int SCHEDULE_static(){
             } 
               
           }
-          else { 
-            LOG_PRINT("----EXTRA-----\n"); 
-            LOG_PRINT("----TIMESLOT: %u-----\n", y+1); 
-            LOG_PRINT("----CHANNEL: %u-----\n", x+1); 
-            LOG_PRINT("-----------------------------\n\n");
-          } 
+          else   
+            if(y+1 >= l->channel_offset){ 
+              channel_bandwidth += 1;    
+              node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8); 
+              LOG_PRINT("increased_Bandwidth %d %u\n",node_origin, channel_bandwidth); 
+            }
+           
         } // 1st if 
         l = list_item_next(l);
       } // while      
@@ -956,7 +960,8 @@ int SCHEDULE_static(){
   tsch_release_lock();   
   } 
   return 1;
-}     
+}      
+
 int aux_schedule(){  
   
  

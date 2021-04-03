@@ -53,7 +53,6 @@
 #define TSCH_KEEPALIVE_TIMEOUT TSCH_CONF_KEEPALIVE_TIMEOUT
 #else
 /* Time to desynch assuming a drift of 40 PPM (80 PPM between two nodes) and guard time of +/-1ms: 12.5s. */
-//#define TSCH_KEEPALIVE_TIMEOUT (12 * CLOCK_SECOND) 
 #define TSCH_KEEPALIVE_TIMEOUT (12 * CLOCK_SECOND)
 #endif
 
@@ -80,10 +79,8 @@
  */
 #ifdef TSCH_CONF_EB_PERIOD
 #define TSCH_EB_PERIOD TSCH_CONF_EB_PERIOD
-#else 
-// ****************modifiquei auqi ******************************
-// original é 16  
-#define TSCH_EB_PERIOD (4 * CLOCK_SECOND)
+#else
+#define TSCH_EB_PERIOD (16 * CLOCK_SECOND)
 #endif
 
 /* Max Period between two consecutive EBs.
@@ -365,7 +362,7 @@
 
 /* A custom feature allowing upper layers to assign packets to
  * a specific slotframe and link */
-#ifdef TSCH_CONF_WITH_LINK_SELECTOR 
+#ifdef TSCH_CONF_WITH_LINK_SELECTOR
 #define TSCH_WITH_LINK_SELECTOR TSCH_CONF_WITH_LINK_SELECTOR
 #else /* TSCH_CONF_WITH_LINK_SELECTOR */
 #define TSCH_WITH_LINK_SELECTOR (BUILD_WITH_ORCHESTRA)
