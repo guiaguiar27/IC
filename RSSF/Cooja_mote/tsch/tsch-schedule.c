@@ -603,7 +603,7 @@ tsch_schedule_print(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-void executa(uint8_t num_aresta, uint8_t num_no,  int **aloca_canal, int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]){
+void executa(uint8_t num_aresta, uint8_t num_no,  int **aloca_canal, uint8_t  tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, uint8_t raiz, int (*pacotes)[num_no]){
     int i;
 
     for(i = 0; i < Channel; i++){
@@ -650,7 +650,7 @@ void executa(uint8_t num_aresta, uint8_t num_no,  int **aloca_canal, int tempo, 
     fclose(fl);
  }
 
-void alocaPacotes2(int num_no, ng *adj, int (*vetor)[num_no]){
+void alocaPacotes2(uint8_t num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;
     //Percorre o vetor de pacotes
     for(x = 0; x < num_no; x++){
@@ -745,7 +745,7 @@ int SCHEDULE_static(){
     uint8_t pacote_entregue = 0, 
     total_pacotes = 0, 
     raiz ;                  
-    uint8_t cont = 0;               //Time do slotframe
+    uint8_t  cont = 0;               //Time do slotframe
     uint8_t x, y, canal = 0,            //Variáveis temporárias
     edge_selected, temp;        //Variáveis temporárias
     int node_origin, node_destin ;    
