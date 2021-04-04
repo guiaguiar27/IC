@@ -653,9 +653,9 @@ void executa(int  num_aresta, int  num_no,  int **aloca_canal, int tempo, int (*
 void alocaPacotes2(uint8_t num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;
     //Percorre o vetor de pacotes
-    for(x = 1; x <= num_no; x++){
+    for(x = 1; x < num_no; x++){
         //Percorre a linha da matriz para saber se o nó X está conectado à alguém
-        for(y = 1; y <= num_no; y++)
+        for(y = 1; y < num_no; y++)
             //Se sim, adiciona um pacote
             if(adj->mat_adj[x][y]){
                 qtd_pacotes = peso;
@@ -773,13 +773,14 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for( i = 1 ; i <= tamNo; i++){ 
-        for( j = 1 ; j<= tamNo; j++){  
+    for( i = 0 ; i < tamNo; i++){ 
+        for( j = 0 ; j< tamNo; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
 
     i = 0;
+    printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
@@ -795,18 +796,26 @@ int SCHEDULE_static(){
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
-  
+    printf("\nMatriz de adacência do grafo da rede:\n");
+    for(i = 1; i < tamNo; i++){ 
+        for( j = 1 ;j < tamNo ; j++)
+             printf("%d ", adj.mat_adj[i][j]);
+        printf("\n");
+    }
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 1; x <= tamNo ; x++)
+    for(x = 0; x < tamNo ; x++)
         printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
     int conf[tamAresta][2];
     mapGraphConf(&adj, tamNo, tamAresta, &conf);
+    printf("\nMapa da matriz de conflito gerada:\n"); 
+    for(x = 0; x < tamAresta ; x++)
+        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
     
     //Gera a matriz de conflito
     int matconf[tamAresta][tamAresta];
@@ -822,7 +831,7 @@ int SCHEDULE_static(){
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
-    for(z = 1; z <= tamNo; z++)
+    for(z = 1; z < tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z];
 
@@ -837,8 +846,8 @@ int SCHEDULE_static(){
     
     while(pacote_entregue < total_pacotes){
 
-        for(x = 1 ; x <= tamNo; x ++){
-            for(y = 1; y <= tamNo; y++){
+        for(x = 1 ; x < tamNo; x ++){
+            for(y = 1; y < tamNo; y++){
                 if(adj.mat_adj[x][y]){
                     for(temp = 0; temp < tamAresta; temp++)
                         if(conf[temp][0] == x && conf[temp][1] == y)
@@ -859,7 +868,7 @@ int SCHEDULE_static(){
             if(canal == Channel)
                 break;
         }
-       // if(cont == Timeslot) cont = 0;
+        if(cont == Timeslot) cont = 0;
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
         canal = 0; 

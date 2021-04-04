@@ -21,11 +21,11 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     //Seleciona o nó com maior carga pra ser transmitida
     no_atual = rand() % num_no;   
     
-    while(no_atual == raiz || no_atual >= num_no || no_atual <= 0){ 
+    while(no_atual == raiz || no_atual >= num_no - 1  || no_atual <= 0){ 
         no_atual = rand() % num_no;
     }
     
-    for(x = 1; x <= num_no; x++){
+    for(x = 1; x < num_no; x++){
         if((*pacotes)[x] > (*pacotes)[no_atual] && x != raiz)
             no_atual = x; 
     }
@@ -65,8 +65,8 @@ void geraMaching(int tam, int tam_rede, int (*pacotes)[tam_rede], int (*graf_con
     int x, y, maior_peso = -1, cont = 1, flg = 1;
 	//node = 5 ; 
     //Preenchendo com zeros a matriz do matching
-    for(x = 1; x <= tam_rede; x++){ 
-        for(y = 1; y <= tam_rede; y++)
+    for(x = 1; x < tam_rede; x++){ 
+        for(y = 1; y < tam_rede; y++)
             resultado->mat_adj[x][y] = 0;
     }
 
@@ -141,8 +141,8 @@ void mapGraphConf(ng *mat, int tam_no, int tam_aresta, int (*alocado)[tam_aresta
     int noConf = 0;
 
     //"Captura" as arestas e armazena
-    for(x = 1; x <= tam_no; x++)
-        for(y = 1; y <= tam_no; y++)
+    for(x = 1; x < tam_no; x++)
+        for(y = 1; y < tam_no; y++)
             if(mat->mat_adj[x][y] != 0){
                 (*alocado)[noConf][0] = x;
                 (*alocado)[noConf][1] = y;
