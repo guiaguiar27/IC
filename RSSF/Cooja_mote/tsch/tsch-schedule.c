@@ -961,14 +961,28 @@ int SCHEDULE_static(){
 }      
 
 int aux_schedule(){  
-  
- int try[MAX_NOS]; 
- for(int i = 1 ; i <= MAX_NOS; i++){ 
+ int value = 101 ;  
+ int try[value]; 
+ for(int i = 1 ; i < value; i++){ 
    try[i] = i ; 
- }
- for(int i = 1; i<= MAX_NOS; i++){ 
-   printf("%d ",try[i]);
- } 
+ }  
+ LOG_PRINT("Try");
+ for(int i = 1; i< value; i++){ 
+   LOG_PRINT("%d\n",try[i]);
+ }  
+int try2[value][value];  
+ for(int i = 0; i < value; i++){
+         for(int j = 0; j < value; j++)
+             try2[i][j] = -1; 
+      } 
+for(int i = 0; i < value; i++){
+         for(int j = 0; j < value; j++)
+             printf("%d",try2[i][j]);
+      printf("\n");
+      }  
+
+
+
  return 0; 
 }
 
