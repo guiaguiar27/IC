@@ -653,9 +653,9 @@ void executa(int  num_aresta, int  num_no,  int **aloca_canal, int tempo, int (*
 void alocaPacotes2(uint8_t num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;
     //Percorre o vetor de pacotes
-    for(x = 0; x < num_no; x++){
+    for(x = 1; x <= num_no; x++){
         //Percorre a linha da matriz para saber se o nó X está conectado à alguém
-        for(y = 0; y < num_no; y++)
+        for(y = 1; y <= num_no; y++)
             //Se sim, adiciona um pacote
             if(adj->mat_adj[x][y]){
                 qtd_pacotes = peso;
@@ -767,8 +767,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for( i = 0 ; i < tamNo; i++){ 
-        for( j = 0 ; j< tamNo; j++){  
+    for( i = 1 ; i <= tamNo; i++){ 
+        for( j = 1 ; j<= tamNo; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -791,8 +791,8 @@ int SCHEDULE_static(){
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
-    for(i = 0; i < tamNo; i++){ 
-        for( j = 0 ;j < tamNo ; j++)
+    for(i = 1; i <= tamNo; i++){ 
+        for( j = 1; j <= tamNo ; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
@@ -801,7 +801,7 @@ int SCHEDULE_static(){
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 0; x < tamNo ; x++)
+    for(x = 1; x <= tamNo ; x++)
         printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
@@ -825,7 +825,7 @@ int SCHEDULE_static(){
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
-    for(z = 0; z < tamNo; z++)
+    for(z = 1; z <= tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z];
 
@@ -840,8 +840,8 @@ int SCHEDULE_static(){
     
     while(pacote_entregue < total_pacotes){
 
-        for(x = 0; x < tamNo; x ++){
-            for(y = 0; y < tamNo; y++){
+        for(x = 1; x <= tamNo; x ++){
+            for(y = 1; y <= tamNo; y++){
                 if(adj.mat_adj[x][y]){
                     for(temp = 0; temp < tamAresta; temp++)
                         if(conf[temp][0] == x && conf[temp][1] == y)
@@ -960,31 +960,6 @@ int SCHEDULE_static(){
   return 1;
 }      
 
-int aux_schedule(){  
- int value = 101 ;  
- int try[value]; 
- for(int i = 1 ; i < value; i++){ 
-   try[i] = i ; 
- }  
- LOG_PRINT("Try");
- for(int i = 1; i< value; i++){ 
-   LOG_PRINT("%d\n",try[i]);
- }  
-int try2[value][value];  
- for(int i = 0; i < value; i++){
-         for(int j = 0; j < value; j++)
-             try2[i][j] = -1; 
-      } 
-for(int i = 0; i < value; i++){
-         for(int j = 0; j < value; j++)
-             printf("%d",try2[i][j]);
-      printf("\n");
-      }  
-
-
-
- return 0; 
-}
 
 void  
 rx_schedule_intern(struct tsch_link *l){  
