@@ -780,7 +780,6 @@ int SCHEDULE_static(){
     }  
 
     i = 0;
-    printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
         if(node_origin <= MAX_NOS && node_destin <= MAX_NOS){
@@ -796,12 +795,7 @@ int SCHEDULE_static(){
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
 
-    printf("\nMatriz de adacência do grafo da rede:\n");
-    for(i = 1; i <= tamNo; i++){ 
-        for( j = 1 ;j <= tamNo ; j++)
-             printf("%d ", adj.mat_adj[i][j]);
-        printf("\n");
-    }
+  
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
@@ -813,9 +807,6 @@ int SCHEDULE_static(){
 
     int conf[tamAresta][2];
     mapGraphConf(&adj, tamNo, tamAresta, &conf);
-    printf("\nMapa da matriz de conflito gerada:\n"); 
-    for(x = 0; x < tamAresta ; x++)
-        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
     
     //Gera a matriz de conflito
     int matconf[tamAresta][tamAresta];
@@ -868,7 +859,7 @@ int SCHEDULE_static(){
             if(canal == Channel)
                 break;
         }
-        if(cont == Timeslot) cont = 0;
+       // if(cont == Timeslot) cont = 0;
         executa(tamAresta, tamNo, aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes); 
         cont++;
         canal = 0; 
