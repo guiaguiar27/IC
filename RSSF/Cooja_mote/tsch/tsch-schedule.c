@@ -763,7 +763,7 @@ int SCHEDULE_static(){
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
-        return 0  ; 
+        return 0 ; 
     } 
     // matriz  
 

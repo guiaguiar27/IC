@@ -21,7 +21,7 @@ void DCFL(int num_aresta, int num_no, int (*pacotes)[num_no], int (*graf_conf)[n
     no_atual = random_rand() % num_no;   
     printf("sorted nó:%d\n",no_atual); 
 
-    while(no_atual == raiz && no_atual >= num_no){ 
+    while(no_atual == raiz || no_atual >= num_no || no_atual <= 0){ 
         no_atual = random_rand() % num_no;
     }
     
