@@ -735,15 +735,28 @@ void count_packs( const linkaddr_t *address ){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
+<<<<<<< HEAD
     ng adj;
     int  tamNo,  verify = 0 , 
     tamAresta,                 
     z, i,j, 
     pacote_entregue = 0, 
+=======
+    int  tamNo; 
+    int  verify = 0 ;  
+    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
+    ng adj;
+    //uint16_t timeslot, slotframe, channel_offset; 
+    int  tamAresta,                  //Nº de arestas da rede
+    z, i,j ;                       //Variáveis temporárias
+    int pacote_entregue = 0, 
+>>>>>>> parent of 5f46bfe (loop boundaries)
     total_pacotes = 0, 
-    raiz, cont, x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp, 
-    node_origin, node_destin;    
+    raiz ;                  
+    int  cont = 0;               //Time do slotframe
+    int x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+    int node_origin, node_destin ;    
     uint8_t channel_bandwidth = 0 ; 
  
     /*******************************************************************/ 
@@ -767,8 +780,13 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
+<<<<<<< HEAD
     for( i = 1 ; i <= tamNo; i++){ 
         for( j = 1 ; j<= tamNo; j++){  
+=======
+    for( i = 0 ; i < tamNo; i++){ 
+        for( j = 0 ; j< tamNo; j++){  
+>>>>>>> parent of 5f46bfe (loop boundaries)
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -791,8 +809,13 @@ int SCHEDULE_static(){
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
+<<<<<<< HEAD
     for(i = 1; i <= tamNo; i++){ 
         for( j = 1; j <= tamNo ; j++)
+=======
+    for(i = 0; i < tamNo; i++){ 
+        for( j = 0 ;j < tamNo ; j++)
+>>>>>>> parent of 5f46bfe (loop boundaries)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
@@ -801,7 +824,7 @@ int SCHEDULE_static(){
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 1; x <= tamNo ; x++)
+    for(x = 0; x < tamNo ; x++)
         printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
@@ -825,7 +848,7 @@ int SCHEDULE_static(){
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
-    for(z = 1; z <= tamNo; z++)
+    for(z = 0; z < tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z];
 
