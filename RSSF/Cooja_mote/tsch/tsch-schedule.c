@@ -737,7 +737,7 @@ void count_packs( const linkaddr_t *address ){
 int SCHEDULE_static(){  
     ng adj;
     int  tamNo,  verify = 0 , 
-    tamAresta, tamNo,  verify = 0,                  //Nº de arestas da rede
+    tamAresta,                 
     z, i,j, 
     pacote_entregue = 0, 
     total_pacotes = 0, 
