@@ -653,9 +653,9 @@ void executa(int  num_aresta, int  num_no,  int **aloca_canal, int tempo, int (*
 void alocaPacotes2(uint8_t num_no, ng *adj, int (*vetor)[num_no]){
     int x, y, qtd_pacotes = 0;
     //Percorre o vetor de pacotes
-    for(x = 1; x <= num_no; x++){
+    for(x = 0; x < num_no; x++){
         //Percorre a linha da matriz para saber se o nó X está conectado à alguém
-        for(y = 1; y <= num_no; y++)
+        for(y = 0; y < num_no; y++)
             //Se sim, adiciona um pacote
             if(adj->mat_adj[x][y]){
                 qtd_pacotes = peso;
@@ -713,7 +713,8 @@ void count_sent_packs(){
       STpacks +=1 ; 
     } 
     LOG_INFO("Tx_try %u %u \n",node,STpacks); 
-}
+} 
+
 void count_packs( const linkaddr_t *address ){  
   // receive only  
   LOG_INFO("list of packets\n");
@@ -735,38 +736,15 @@ void count_packs( const linkaddr_t *address ){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
-<<<<<<< HEAD
-<<<<<<< HEAD
     ng adj;
     int  tamNo,  verify = 0 , 
     tamAresta,                 
     z, i,j, 
     pacote_entregue = 0, 
-=======
-    int  tamNo; 
-    int  verify = 0 ;  
-    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
-    ng adj;
-=======
-    int  tamNo; 
-    int  verify = 0 ;  
-    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
-    ng adj;
->>>>>>> parent of 5f46bfe (loop boundaries)
-    //uint16_t timeslot, slotframe, channel_offset; 
-    int  tamAresta,                  //Nº de arestas da rede
-    z, i,j ;                       //Variáveis temporárias
-    int pacote_entregue = 0, 
-<<<<<<< HEAD
->>>>>>> parent of 5f46bfe (loop boundaries)
-=======
->>>>>>> parent of 5f46bfe (loop boundaries)
     total_pacotes = 0, 
-    raiz ;                  
-    int  cont = 0;               //Time do slotframe
-    int x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp;        //Variáveis temporárias
-    int node_origin, node_destin ;    
+    raiz, cont, x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp, 
+    node_origin, node_destin;    
     uint8_t channel_bandwidth = 0 ; 
  
     /*******************************************************************/ 
@@ -790,18 +768,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    for( i = 1 ; i <= tamNo; i++){ 
-        for( j = 1 ; j<= tamNo; j++){  
-=======
     for( i = 0 ; i < tamNo; i++){ 
         for( j = 0 ; j< tamNo; j++){  
->>>>>>> parent of 5f46bfe (loop boundaries)
-=======
-    for( i = 0 ; i < tamNo; i++){ 
-        for( j = 0 ; j< tamNo; j++){  
->>>>>>> parent of 5f46bfe (loop boundaries)
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -824,18 +792,8 @@ int SCHEDULE_static(){
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
-<<<<<<< HEAD
-<<<<<<< HEAD
-    for(i = 1; i <= tamNo; i++){ 
-        for( j = 1; j <= tamNo ; j++)
-=======
     for(i = 0; i < tamNo; i++){ 
-        for( j = 0 ;j < tamNo ; j++)
->>>>>>> parent of 5f46bfe (loop boundaries)
-=======
-    for(i = 0; i < tamNo; i++){ 
-        for( j = 0 ;j < tamNo ; j++)
->>>>>>> parent of 5f46bfe (loop boundaries)
+        for( j = 0 ; j < tamNo ; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
@@ -883,8 +841,8 @@ int SCHEDULE_static(){
     
     while(pacote_entregue < total_pacotes){
 
-        for(x = 1; x <= tamNo; x ++){
-            for(y = 1; y <= tamNo; y++){
+        for(x = 0 ; x < tamNo; x ++){
+            for(y = 0; y < tamNo; y++){
                 if(adj.mat_adj[x][y]){
                     for(temp = 0; temp < tamAresta; temp++)
                         if(conf[temp][0] == x && conf[temp][1] == y)
