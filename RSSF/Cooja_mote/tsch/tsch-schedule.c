@@ -962,17 +962,14 @@ int SCHEDULE_static(){
 
 int aux_schedule(){  
   
- 
- struct tsch_slotframe *sf = list_head(slotframe_list);
-    while(sf != NULL) {
-      LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
-      if(sf->handle == unicast_slotframe_handle) {
-        break; 
-      }
-      sf = list_item_next(sf);
-    } 
-
-  return 1; 
+ int try[MAX_NOS]; 
+ for(int i = 1 ; i <= MAX_NOS; i++){ 
+   try[i] = i ; 
+ }
+ for(int i = 1; i<= MAX_NOS; i++){ 
+   printf("%d ",try[i]);
+ } 
+ return 0; 
 }
 
 void  
