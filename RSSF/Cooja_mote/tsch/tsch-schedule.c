@@ -734,9 +734,10 @@ void count_packs( const linkaddr_t *address ){
 }  
 /*---------------------------------------------------------------------------*/
 
-int SCHEDULE_static(){
+int SCHEDULE_static(){  
     ng adj;
-    int  tamAresta, tamNo,  verify = 0,                  
+    int  tamNo,  verify = 0 , 
+    tamAresta, tamNo,  verify = 0,                  //Nº de arestas da rede
     z, i,j, 
     pacote_entregue = 0, 
     total_pacotes = 0, 
@@ -755,11 +756,10 @@ int SCHEDULE_static(){
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
     for(x = 0; x < Channel; x++){
          aloca_canais[x] = (int*)malloc(Timeslot * sizeof(int));
-     } 
 
+     }
     tamNo = MAX_NOS;  
-    tamAresta = 0 ;     
-
+    tamAresta = 0 ;    
     fl = fopen(endereco, "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
@@ -767,8 +767,8 @@ int SCHEDULE_static(){
     } 
     // matriz  
 
-    for( i = 1 ; i <= tamNo; i++){ 
-        for( j = 1 ; j<=  tamNo; j++){  
+    for( i = 0 ; i < tamNo; i++){ 
+        for( j = 0 ; j< tamNo; j++){  
             adj.mat_adj[i][j] = 0 ; 
         }
     }  
@@ -791,8 +791,8 @@ int SCHEDULE_static(){
     fclose(fl);
 
     printf("\nMatriz de adacência do grafo da rede:\n");
-    for(i = 1; i <= tamNo; i++){ 
-        for( j = 1 ;j <= tamNo ; j++)
+    for(i = 0; i < tamNo; i++){ 
+        for( j = 0 ;j < tamNo ; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
@@ -801,7 +801,7 @@ int SCHEDULE_static(){
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 1; x <= tamNo ; x++)
+    for(x = 0; x < tamNo ; x++)
         printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
 
@@ -825,7 +825,7 @@ int SCHEDULE_static(){
     raiz = no_raiz;
 
     //Guarda o total de pacotes a serem enviados pela
-    for(z = 1; z <= tamNo; z++)
+    for(z = 0; z < tamNo; z++)
         if(z != raiz)
             total_pacotes += pacotes[z];
 
