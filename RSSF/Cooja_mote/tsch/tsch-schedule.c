@@ -736,15 +736,20 @@ void count_packs( const linkaddr_t *address ){
 /*---------------------------------------------------------------------------*/
 
 int SCHEDULE_static(){  
+    int  tamNo; 
+    int  verify = 0 ;  
+    //int **adj = (int**)malloc(MAX_NOS * sizeof(int*));                  //grafo da rede
     ng adj;
-    int  tamNo,  verify = 0 , 
-    tamAresta,                 
-    z, i,j, 
-    pacote_entregue = 0, 
+    //uint16_t timeslot, slotframe, channel_offset; 
+    int  tamAresta,                  //Nº de arestas da rede
+    z, i,j ;                       //Variáveis temporárias
+    int pacote_entregue = 0, 
     total_pacotes = 0, 
-    raiz, cont, x, y, canal = 0,            //Variáveis temporárias
-    edge_selected, temp, 
-    node_origin, node_destin;    
+    raiz ;                  
+    int  cont = 0;               //Time do slotframe
+    int x, y, canal = 0,            //Variáveis temporárias
+    edge_selected, temp;        //Variáveis temporárias
+    int node_origin, node_destin ;    
     uint8_t channel_bandwidth = 0 ; 
  
     /*******************************************************************/ 
@@ -793,7 +798,7 @@ int SCHEDULE_static(){
 
     printf("\nMatriz de adacência do grafo da rede:\n");
     for(i = 0; i < tamNo; i++){ 
-        for( j = 0 ; j < tamNo ; j++)
+        for( j = 0 ;j < tamNo ; j++)
              printf("%d ", adj.mat_adj[i][j]);
         printf("\n");
     }
