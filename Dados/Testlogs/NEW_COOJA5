@@ -12713,4 +12713,5 @@
 08:05.870	ID:4	[INFO: TSCH      ] scanning on channel 25
 08:05.884	ID:3	[INFO: TSCH      ] scanning on channel 25
 08:05.904	ID:5	[INFO: TSCH      ] scanning on channel 26
-08:05.907	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network
+08:05.907	ID:3	[DBG : TSCH      ] skip sending EB: not joined a TSCH network 
+topologia 5 ->3 ->2  4->2 2->1
