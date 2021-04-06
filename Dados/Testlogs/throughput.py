@@ -12,8 +12,9 @@ def extract_node(source):
             if w == "Pckt": 
                 return words[i+1]  
             if w == "Tx_try":   
+                return words[i+1] 
+            if w == "increased_Bandwidth": 
                 return words[i+1]
-
 def extract_tx_success(source):   
     for i,w in enumerate(words):
             if w == "Pckt": 
@@ -25,6 +26,11 @@ def extract_rx(source):
 def extract_tx_try(source):  
     for i,w in enumerate(words):
             if w == "Tx_try": 
+                return words[i+2] 
+
+def extract_tx_widerband(source):   
+    for i,w in enumerate(words):
+            if w == "increased_Bandwidth": 
                 return words[i+2]
     
 #network parameters  
@@ -37,7 +43,8 @@ nodes = [0 for i in range(numNodes)]
 Tx_per_node = [0 for i in range(0,aux_numNode)] 
 Rx_per_node = [0 for i in range(0,aux_numNode)] 
 Tx_try_per_node = [0 for i in range(0,aux_numNode)] 
-throughput_per_node = [0 for i in range(0,aux_numNode)] 
+throughput_per_node = [0 for i in range(0,aux_numNode)]  
+Wider_band = [0 for i in range(0,aux_numNode)] 
 #fill nodes  
 for i in range(0,numNodes): 
     nodes.append(i) 
@@ -54,7 +61,7 @@ with open('teste.txt','r') as f:
         if "Tx_try" in words:  
             node = int(extract_node(words))
             aux_tx_try = int(extract_tx_try(words))  
-            for i in range(1,6): 
+            for i in range(1,aux_numNode): 
                 if i == node:
                     Tx_try_per_node[i] = aux_tx_try
             
@@ -66,15 +73,24 @@ with open('teste.txt','r') as f:
             aux_rx = int(extract_rx(words)) 
            
             Lrx = int(extract_rx(words))  
-            for i in range(len(Rx_per_node)): 
+            for i in range(1,aux_numNode): 
                 if i == node:   
                     if Rx_per_node[i] < Lrx:
                         Rx_per_node[i] = Lrx
             Ltx = int(extract_tx_success(words))  
-            for i in range(len(Tx_per_node)): 
+            for i in range(1,aux_numNode): 
                 if i == node:  
                     if Tx_per_node[i] < Ltx:
-                        Tx_per_node[i] = Ltx
+                        Tx_per_node[i] = Ltx 
+        if "increased_Bandwidth" in words:   
+
+            node = int(extract_node(words)) 
+            Bw = int(extract_tx_widerband(words))  
+            for i in range(1,aux_numNode): 
+                if i == node:    
+                    if Bw == 1 : Bw = 2
+                    Wider_band[i] = Bw
+
             
                 
 
@@ -94,13 +110,19 @@ print("Total Rx:",Rx_total)
 #print("Throughput:",throughput)  
 print("PDR(%):",(Rx_total/Tx_total)*100)
 
-print("Metrics for TSCH-LBV:")  
+print("Metrics for TSCH-LBV:")   
 
+print("Wider bandwidth:",Wider_band[:])
 print("Tx per node: ",Tx_try_per_node[:]) 
-print("Rx per node: ",Rx_per_node[:])
+print("Rx per node: ",Rx_per_node[:]) 
 Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
 Rx_total =  reduce(lambda x, y:x+y, Rx_per_node) 
-
+#multiplica os pacotes apenas daqueles que conseguiram mandar pacotes
+print("Rx pre TSCH-LBV: ",Tx_per_node[:])
+for i in range(0, aux_numNode): 
+    Tx_per_node[i] = Tx_per_node[i] * Wider_band[i]   
+print("Rx pos TSCH-LBV: ",Tx_per_node[:]) 
+Rx_total =  reduce(lambda x, y:x+y, Tx_per_node) 
 print("Total Tx:",Tx_total)  
 print("Total Rx:",Rx_total)  
 #throughput = Rx_total/slotframe_size 
