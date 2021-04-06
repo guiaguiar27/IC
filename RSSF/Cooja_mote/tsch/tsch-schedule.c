@@ -910,10 +910,8 @@ int SCHEDULE_static(){
               // indica que é de TX 
             if(l->aux_options == 2){  
               l_aux = tsch_schedule_get_link_by_timeslot(sf,y+1,x+1); 
-              if(l_aux != NULL){ 
-                if(l_aux->channel_offset = x+1){ 
+              if(l_aux != NULL){  
                   verify = 0 ; 
-                }
               } 
               else{
               l-> timeslot = y+1; 
