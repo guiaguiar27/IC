@@ -4148,7 +4148,7 @@
 01:33.527	ID:1	[INFO: TSCH Sched] list of packets
 01:33.527	ID:1	[INFO: TSCH Sched] Pckt 1 0 3 
 01:33.527	ID:1	[INFO: TSCH Sched] Pckt 2 2 0 
-01:33.527	ID:1	[INFO: TSCH Sched] Pckt 3 1 0 
+01:33.527	ID:1	[INFO: TSCH Sched] Pckt 3 1 0  
 01:33.527	ID:1	[INFO: TSCH Sched] Pckt 4 0 0 
 01:33.527	ID:1	[INFO: TSCH Sched] Pckt 5 0 0 
 01:33.527	ID:1	[INFO: TSCH Sched] Pckt 6 0 0 

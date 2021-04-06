@@ -1,0 +1,21 @@
+metrics simulation 5 nodes
+Tx per node:  [0, 0, 21, 17, 16, 26]
+Rx per node:  [0, 6, 0, 0, 26, 0]
+Total Tx: 80
+Total Rx: 32
+PDR(%): 40.0 
+
+metrics simulation 6 nodes
+Tx per node:  [0, 0, 39, 10, 0, 8, 0]
+Rx per node:  [0, 33, 2, 0, 0, 0, 0]
+Total Tx: 57
+Total Rx: 35
+PDR(%): 61.40350877192983  
+
+metrics simulation 7 nodes
+Tx per node:  [0, 0, 58, 48, 79, 105, 0, 0]
+Rx per node:  [0, 88, 39, 0, 0, 42, 0, 0]
+Total Tx: 290
+Total Rx: 169
+PDR(%): 58.27586206896552
+
