@@ -53,7 +53,7 @@
 #define TSCH_KEEPALIVE_TIMEOUT TSCH_CONF_KEEPALIVE_TIMEOUT
 #else
 /* Time to desynch assuming a drift of 40 PPM (80 PPM between two nodes) and guard time of +/-1ms: 12.5s. */
-#define TSCH_KEEPALIVE_TIMEOUT (12 * CLOCK_SECOND)
+#define TSCH_KEEPALIVE_TIMEOUT (1 * CLOCK_SECOND)
 #endif
 
 /* With TSCH_ADAPTIVE_TIMESYNC enabled: keep-alive timeout used after reaching
@@ -68,7 +68,7 @@
 #ifdef TSCH_CONF_DESYNC_THRESHOLD
 #define TSCH_DESYNC_THRESHOLD TSCH_CONF_DESYNC_THRESHOLD
 #else
-#define TSCH_DESYNC_THRESHOLD (2 * TSCH_MAX_KEEPALIVE_TIMEOUT)
+#define TSCH_DESYNC_THRESHOLD (1 * TSCH_MAX_KEEPALIVE_TIMEOUT)
 #endif
 
 /* The default period between two consecutive EBs (not taking into account any randomization).
@@ -80,7 +80,7 @@
 #ifdef TSCH_CONF_EB_PERIOD
 #define TSCH_EB_PERIOD TSCH_CONF_EB_PERIOD
 #else
-#define TSCH_EB_PERIOD (16 * CLOCK_SECOND)
+#define TSCH_EB_PERIOD (2 * CLOCK_SECOND)
 #endif
 
 /* Max Period between two consecutive EBs.
@@ -88,7 +88,7 @@
 #ifdef TSCH_CONF_MAX_EB_PERIOD
 #define TSCH_MAX_EB_PERIOD TSCH_CONF_MAX_EB_PERIOD
 #else
-#define TSCH_MAX_EB_PERIOD (16 * CLOCK_SECOND)
+#define TSCH_MAX_EB_PERIOD (4 * CLOCK_SECOND)
 #endif
 
 /* Use SFD timestamp for synchronization? By default we merely rely on rtimer and busy wait
