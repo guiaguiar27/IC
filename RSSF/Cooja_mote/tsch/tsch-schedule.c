@@ -892,7 +892,9 @@ int SCHEDULE_static(){
      
     
       
-    struct tsch_link *l =   NULL;  
+    struct tsch_link *l =   NULL; 
+    struct tsch_link *l_aux = NULL;  
+    l_aux = memb_alloc(&link_memb);  
     l = memb_alloc(&link_memb); 
     for(x = 0 ; x < Channel; x++){ 
     for(y = 0 ; y < Timeslot; y++){   
@@ -906,7 +908,14 @@ int SCHEDULE_static(){
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);     
               // indica que é de TX 
-            if(l->aux_options == 2){ 
+            if(l->aux_options == 2){  
+              l_aux = tsch_schedule_get_link_by_timeslot(sf,y+1,x+1); 
+              if(l_aux != NULL){ 
+                if(l_aux->channel_offset = x+1){ 
+                  verify = 0 ; 
+                }
+              } 
+              else{
               l-> timeslot = y+1; 
               l-> channel_offset = x+1 ; 
               channel_bandwidth = 1 ;    
@@ -930,6 +939,7 @@ int SCHEDULE_static(){
               fclose(fl);
               
               verify = 1 ;  
+              } 
             } 
               
           }
