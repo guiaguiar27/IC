@@ -34,8 +34,8 @@ def extract_tx_widerband(source):
                 return words[i+2]
     
 #network parameters  
-numNodes = 7
-slotframe_size =  9
+numNodes = 6
+slotframe_size =  8
 aux_numNode = numNodes + 1
 
 nodes = [0 for i in range(numNodes)]
@@ -87,9 +87,9 @@ with open('teste.txt','r') as f:
             node = int(extract_node(words)) 
             Bw = int(extract_tx_widerband(words))  
             for i in range(1,aux_numNode): 
-                if i == node:    
-                    if Bw == 1 : Bw = 2
-                    Wider_band[i] = Bw
+                if i == node:     
+                    if Wider_band[i] <= Bw: 
+                        Wider_band[i] = Bw
 
             
                 
@@ -121,7 +121,11 @@ Rx_total =  reduce(lambda x, y:x+y, Rx_per_node)
 print("Rx pre TSCH-LBV: ",Tx_per_node[:])
 for i in range(0, aux_numNode): 
     Tx_per_node[i] = Tx_per_node[i] * Wider_band[i]   
-print("Rx pos TSCH-LBV: ",Tx_per_node[:]) 
+for i in range(0, aux_numNode): 
+    Tx_try_per_node[i] = Tx_try_per_node[i] * Wider_band[i]   
+
+print("Rx pos TSCH-LBV: ",Tx_per_node[:])  
+Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
 Rx_total =  reduce(lambda x, y:x+y, Tx_per_node) 
 print("Total Tx:",Tx_total)  
 print("Total Rx:",Rx_total)  
