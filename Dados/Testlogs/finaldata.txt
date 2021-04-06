@@ -20,6 +20,7 @@ Metrics for TASA
 Tx per node:  [0, 0, 70, 32, 52, 61, 0]
 Rx per node:  [0, 38, 36, 0, 30, 0, 0]
 Total Tx: 215
+Total Rx: 104
 PDR(%): 48.372093023255815
 Metrics for TSCH-LBV:
 Wider bandwidth: [0, 0, 8, 1, 2, 1, 0]
