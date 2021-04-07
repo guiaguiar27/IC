@@ -34,8 +34,8 @@ def extract_tx_widerband(source):
                 return words[i+2]
     
 #network parameters  
-numNodes = 6
-slotframe_size =  8
+numNodes = 20
+slotframe_size = 22
 aux_numNode = numNodes + 1
 
 nodes = [0 for i in range(numNodes)]
@@ -44,7 +44,7 @@ Tx_per_node = [0 for i in range(0,aux_numNode)]
 Rx_per_node = [0 for i in range(0,aux_numNode)] 
 Tx_try_per_node = [0 for i in range(0,aux_numNode)] 
 throughput_per_node = [0 for i in range(0,aux_numNode)]  
-Wider_band = [0 for i in range(0,aux_numNode)] 
+Wider_band = [1 for i in range(0,aux_numNode)] 
 #fill nodes  
 for i in range(0,numNodes): 
     nodes.append(i) 
@@ -96,7 +96,8 @@ with open('teste.txt','r') as f:
 
 print("metrics simulation {} nodes".format(numNodes))
 #print("nodes:", nodes[:]) 
- 
+
+print("---------------------------------------------------------------------------") 
 print("Metrics for TASA") 
 
 print("Tx per node: ",Tx_try_per_node[:]) 
@@ -110,26 +111,34 @@ print("Total Rx:",Rx_total)
 #print("Throughput:",throughput)  
 print("PDR(%):",(Rx_total/Tx_total)*100)
 
+print("****************************************************************************")
 print("Metrics for TSCH-LBV:")   
 
 print("Wider bandwidth:",Wider_band[:])
 print("Tx per node: ",Tx_try_per_node[:]) 
 print("Rx per node: ",Rx_per_node[:]) 
 Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
-Rx_total =  reduce(lambda x, y:x+y, Rx_per_node) 
-#multiplica os pacotes apenas daqueles que conseguiram mandar pacotes
-print("Rx pre TSCH-LBV: ",Tx_per_node[:])
+#multiplica os pacotes apenas daqueles que conseguiram mandar pacotes  
+
+print("****************************************************************************")
+print("Wider only Rx")
 for i in range(0, aux_numNode): 
     Tx_per_node[i] = Tx_per_node[i] * Wider_band[i]   
+print("Rx pos TSCH-LBV: ",Tx_per_node[:])   
+Rx_total =  reduce(lambda x, y:x+y, Tx_per_node)  
+print("Total Rx:",Rx_total)  
+print("PDR(%):",(Rx_total/Tx_total)*100)
+
+print("****************************************************************************")
+print("Wider Tx and Rx")
 for i in range(0, aux_numNode): 
     Tx_try_per_node[i] = Tx_try_per_node[i] * Wider_band[i]   
 
-print("Rx pos TSCH-LBV: ",Tx_per_node[:])  
 Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
-Rx_total =  reduce(lambda x, y:x+y, Tx_per_node) 
 print("Total Tx:",Tx_total)  
 print("Total Rx:",Rx_total)  
 #throughput = Rx_total/slotframe_size 
 #print("Throughput:",throughput)  
 print("PDR(%):",(Rx_total/Tx_total)*100)
 
+print("---------------------------------------------------------------------------") 
