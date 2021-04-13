@@ -1028,7 +1028,7 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
     #ifdef DEBUG_SCHEDULE_STATIC 
       LOG_PRINT("Finding neighbor to Rx\n");
     #endif // DEBUG
-    
+    if(tsch_get_lock()){
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
           LOG_PRINT("The file was not opened\n");
@@ -1052,14 +1052,19 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
                 if(linkaddr_cmp(&addr,&l->addr)) flag = 1 ; 
                 l = list_item_next(l);
               } 
-              if(flag == 0)
+              if(flag == 0){
+                tsch_release_lock();
                 tsch_schedule_add_link(sf,
                   LINK_OPTION_RX,
                   LINK_TYPE_NORMAL, &addr,
-                  0, 0,0); 
+                  0, 0,0);  
+                tsch_release_lock();  
+              }
           }  
       }
       fclose(fl);   
+    tsch_release_lock(); 
+    }
 }
 
 #if NBR_TSCH 

@@ -72,7 +72,7 @@
 #define DEBUG_SCHEDULE_STATIC 1
 #define ENERGEST_CONF_ON 1 
 #if WITH_SECURITY
-
+    
  
 /* Enable security */
 #define LLSEC802154_CONF_ENABLED 1
