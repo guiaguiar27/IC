@@ -71,10 +71,10 @@ static uint16_t unicast_slotframe_handle = 2;
 
 
 //uint16_t Rpackets = 0 ; 
-uint16_t flag_schedule = 0 ;   
-uint8_t Packets_sent[MAX_NOS]; 
-uint8_t STpacks = 0 ;  
-uint8_t Packets_received[MAX_NOS]; 
+uint8_t flag_schedule = 0 ;   
+uint32_t Packets_sent[MAX_NOS]; 
+uint32_t STpacks = 0 ;  
+uint32_t Packets_received[MAX_NOS]; 
 
 /* Log configuration */
 #include "sys/log.h"
@@ -755,8 +755,11 @@ int SCHEDULE_static(){
     /*******************************************************************/ 
     FILE *fl;     
     struct tsch_slotframe *sf = tsch_schedule_get_slotframe_by_handle(unicast_slotframe_handle);  
-    LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
-
+    
+    #ifdef DEBUG_SCHEDULE_STATIC 
+      LOG_PRINT("-----Slotframe handle:%d----\n", sf->handle);  
+    #endif 
+    
     if(tsch_get_lock()){  
     
     int  **aloca_canais = (int**)malloc(Channel * sizeof(int*));
@@ -795,27 +798,32 @@ int SCHEDULE_static(){
     tamAresta = i;   
     printf("Numero de nós : %d | Numero de arestas: %d", tamNo, tamAresta);
     fclose(fl);
-
-    printf("\nMatriz de adacência do grafo da rede:\n");
-    for(i = 1; i < tamNo; i++){ 
-        for( j = 1 ;j < tamNo ; j++)
-             printf("%d ", adj.mat_adj[i][j]);
-        printf("\n");
-    }
+    #ifdef DEBUG_SCHEDULE_STATIC 
+      printf("\nMatriz de adacência do grafo da rede:\n");
+      for(i = 1; i < tamNo; i++){ 
+          for( j = 1 ;j < tamNo ; j++)
+              printf("%d ", adj.mat_adj[i][j]);
+          printf("\n");
+      } 
+    #endif
     
     int pacotes[tamNo];               //Pacotes por nó no grafo da rede
     alocaPacotes2(tamNo, &adj, &pacotes);
     printf("\nPacotes atribuidos!\n");
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
-    for(x = 0; x < tamNo ; x++)
-        printf("Nó %d: %d pacotes\n", x, pacotes[x]);
-
+    #ifdef DEBUG_SCHEDULE_STATIC 
+      for(x = 0; x < tamNo ; x++)
+          printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+    #endif
 
     int conf[tamAresta][2];
     mapGraphConf(&adj, tamNo, tamAresta, &conf);
-    printf("\nMapa da matriz de conflito gerada:\n"); 
-    for(x = 0; x < tamAresta ; x++)
-        printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
+    
+    #ifdef DEBUG_SCHEDULE_STATIC 
+      printf("\nMapa da matriz de conflito gerada:\n"); 
+      for(x = 0; x < tamAresta ; x++)
+          printf("Nó %d: %d -> %d\n", x, conf[x][0], conf[x][1]);
+    #endif
     
     //Gera a matriz de conflito
     int matconf[tamAresta][tamAresta];
@@ -878,17 +886,19 @@ int SCHEDULE_static(){
         DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &adj,&vetor);
     
     }
-
-    printf("\nCanais alocados  | |");
-    printf("\n                \\   /");
-    printf("\n                 \\ /\n\n");
-    for(x = 0 ; x < Channel; x++){
-        for(y = 0; y < Timeslot; y++) 
-            // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
-             
-        printf("\n"); 
-    } 
+    #ifdef DEBUG_SCHEDULE_STATIC 
+      printf("\nCanais alocados  | |");
+      printf("\n                \\   /");
+      printf("\n                 \\ /\n\n");
+      
+      for(x = 0 ; x < Channel; x++){
+          for(y = 0; y < Timeslot; y++) 
+              // linhas = tempo - coluna = canal  
+              printf("%d  ", aloca_canais[x][y] + 1);  
+              
+          printf("\n"); 
+      } 
+    #endif  
      
     
       
@@ -989,10 +999,12 @@ rx_schedule_intern(struct tsch_link *l){
                 if(node_origin == node && nbr == node_destin){    
                   l->timeslot = aux_timeslot; 
                   l->channel_offset = aux_channel_offset;  
-                  LOG_PRINT("----CHANGE-Rx----\n"); 
-                  LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
-                  LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
-                  LOG_PRINT("-----------------------------\n\n");        
+                  #ifdef DEBUG_SCHEDULE_STATIC 
+                    LOG_PRINT("----CHANGE-Rx----\n"); 
+                    LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                    LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                    LOG_PRINT("-----------------------------\n\n");    
+                  #endif      
                 } 
               }
     fclose(fl);
@@ -1013,7 +1025,7 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
     uint8_t flag = 0 ;  
     struct tsch_link *l = NULL; 
     //l = memb_alloc(&link_memb); 
-    #ifdef DEBUG
+    #ifdef DEBUG_SCHEDULE_STATIC 
       LOG_PRINT("Finding neighbor to Rx\n");
     #endif // DEBUG
     
@@ -1027,7 +1039,7 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
           fscanf(fl,"%d %d",&node_origin, &node_destin);   
           LOG_PRINT("%d %d\n",node_origin, node_destin);
           if(node_destin == node){
-              #ifdef DEBUG
+              #ifdef DEBUG_SCHEDULE_STATIC 
                 LOG_PRINT("Match - %u <- %d\n",node,node_origin);              
               #endif // DEBUG
 
