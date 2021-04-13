@@ -3,6 +3,7 @@ metrics simulation 5 nodes
 Metrics for TASA
 Tx per node:  [0, 0, 122, 229, 0, 40]
 Rx per node:  [0, 277, 0, 0, 0, 0]
+Total Tx: 391
 Total Rx: 277
 PDR(%): 70.84398976982096
 ****************************************************************************
