@@ -39,8 +39,7 @@
 #include "net/mac/tsch/tsch.h"
 #include "lib/random.h"
 #include "sys/node-id.h" 
-#include "sys/energest.h"    
-#include "net/ipv6/uip-ds6-nbr.h"  
+#include "sys/energest.h"     
 
 
 #include "sys/log.h"
@@ -232,17 +231,18 @@ PROCESS_THREAD(node_process, ev, data)
                          - energest_type_time(ENERGEST_TYPE_LISTEN)));
 
       PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-        if(tsch_is_associated) { 
-
-          /* Send network uptime timestamp to the network root node */
-          seqnum++;
-          LOG_INFO("Send to ");
-          LOG_INFO_6ADDR(&dst);
-          LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
-          simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
-        }
-        etimer_set(&periodic_timer, SEND_INTERVAL);
+      
+    if(NETSTACK_ROUTING.node_is_reachable()
+       && NETSTACK_ROUTING.get_root_ipaddr(&dst)) {
+      /* Send network uptime timestamp to the network root node */
+      seqnum++;
+      LOG_INFO("Send to ");
+      LOG_INFO_6ADDR(&dst);
+      LOG_INFO_(", seqnum %" PRIu32 "\n", seqnum);
+      simple_udp_sendto(&udp_conn, &seqnum, sizeof(seqnum), &dst);
     }
+    etimer_set(&periodic_timer, SEND_INTERVAL);
+  }
 
   PROCESS_END();
 }
