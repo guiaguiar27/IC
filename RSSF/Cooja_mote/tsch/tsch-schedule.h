@@ -174,7 +174,10 @@ void tsch_write_in_file(int n_origin, int n_destin);
 int count_lines();    
 int sort_node_to_create_link(int n);     
 void find_neighbor_to_Rx(uint8_t node, int handle);   
-int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf); 
+int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf);  
+int setZero_Id_reception();
+int fill_id(uint8_t id);
+int verify_link_by_id(uint8_t id);
 int verify_in_topology(int sender, int receiver);  
 /** 
  * \brief schedule

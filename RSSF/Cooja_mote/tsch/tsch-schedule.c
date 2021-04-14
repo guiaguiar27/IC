@@ -75,6 +75,7 @@ uint8_t flag_schedule = 0 ;
 uint32_t Packets_sent[MAX_NOS]; 
 uint32_t STpacks = 0 ;  
 uint32_t Packets_received[MAX_NOS]; 
+uintt8_t PossNeighbor[Max_NOS];  
 
 /* Log configuration */
 #include "sys/log.h"
@@ -534,7 +535,8 @@ tsch_schedule_init(void)
     list_init(slotframe_list);  
     
     #if NBR_TSCH
-      list_init_nbr(); 
+      list_init_nbr();  
+      setZero_Id_reception(); 
     #endif 
     
 
@@ -1040,19 +1042,22 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
               #ifdef DEBUG_SCHEDULE_STATIC 
                 LOG_PRINT("Match - %u <- %d\n",node,node_origin);              
               #endif // DEBUG
-
+              
               for(int j = 0; j < sizeof(addr); j += 2) {
                 addr.u8[j + 1] = node_origin & 0xff;
                 addr.u8[j + 0] = node_origin >> 8;
               }   
               
-              if(tsch_get_same_link(&addr,sf) ==1) flag = 1 ; 
-               
-              if(flag == 0)
+              if(verify_link_by_id(node_origin)) flag = 1; 
+              if(flag == 0){
                 tsch_schedule_add_link(sf,
                   LINK_OPTION_RX,
                   LINK_TYPE_NORMAL, &addr,
-                  0, 0,0); 
+                  0, 0,0);  
+                fill_id(node_origin); 
+              }
+
+
               else LOG_PRINT("Link already exists!\n "); 
           }  
       }
@@ -1070,6 +1075,29 @@ int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){
     } 
     return 0 ; 
   
+}    
+
+int setZero_Id_reception(){ 
+  for(int i = 0 ; i < MAX_NOS; i++){ 
+    PossNeighbor[i] = 0 ;  
+  }
+} 
+
+int fill_id(uint8_t id){ 
+  for(int i = 0 ; i < MAX_NOS; i++){ 
+      if(PossNeighbor[i] == 0){ 
+          PossNeighbor[i] = id;  
+          return 1;  
+      }
+  } 
+  return 0 ; 
+} 
+
+int verify_link_by_id(uint8_t id){ 
+  for(int i = 0 ; i < MAX_NOS; i++ ){ 
+    if(PossNeighbor[i]== id ) return 1; 
+  } 
+  return 0 ;  
 }
 
 #if NBR_TSCH 
