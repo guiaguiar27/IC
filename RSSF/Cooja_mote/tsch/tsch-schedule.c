@@ -258,7 +258,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
        * to keep neighbor state in sync with link options etc.) */
       tsch_schedule_remove_link_by_timeslot(slotframe, timeslot, channel_offset);
     }
-    if(!tsch_get_lock()) {
+   if(!tsch_get_lock()) {
       LOG_ERR("! add_link memb_alloc couldn't take lock\n");
     } else {
       l = memb_alloc(&link_memb);
@@ -318,9 +318,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         }
       }
     }
-  }
+  } 
+
   return l;
-}
+} 
 /*---------------------------------------------------------------------------*/
 /* Removes a link from slotframe. Return 1 if success, 0 if failure */
 int
@@ -1028,7 +1029,6 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
     #ifdef DEBUG_SCHEDULE_STATIC 
       LOG_PRINT("Finding neighbor to Rx\n");
     #endif // DEBUG
-    if(tsch_get_lock()){
       fl = fopen(endereco, "r"); 
       if(fl == NULL){
           LOG_PRINT("The file was not opened\n");
@@ -1046,25 +1046,32 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
               for(int j = 0; j < sizeof(addr); j += 2) {
                 addr.u8[j + 1] = node_origin & 0xff;
                 addr.u8[j + 0] = node_origin >> 8;
-              }  
-              l = list_head(sf->links_list); 
-              while(l!= NULL){ 
-                if(linkaddr_cmp(&addr,&l->addr)) flag = 1 ; 
-                l = list_item_next(l);
-              } 
-              if(flag == 0){
-                tsch_release_lock();
+              }   
+              
+              if(tsch_get_same_link(&addr,sf) ==1) flag = 1 ; 
+               
+              if(flag == 0)
                 tsch_schedule_add_link(sf,
                   LINK_OPTION_RX,
                   LINK_TYPE_NORMAL, &addr,
-                  0, 0,0);  
-                tsch_release_lock();  
-              }
+                  0, 0,0); 
+              else LOG_PRINT("Link already exists!\n "); 
           }  
       }
-      fclose(fl);   
-    tsch_release_lock(); 
-    }
+      fclose(fl);  
+} 
+int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){ 
+  if(!tsch_is_locked()) {
+    struct tsch_link *l = list_head(sf->links_list);
+    while(l != NULL) {
+        if(linkaddr_cmp(&addr,&l->addr))  
+          return 1; 
+        l = list_item_next(l);
+      }
+      sf = list_item_next(sf);
+    } 
+    return 0 ; 
+  
 }
 
 #if NBR_TSCH 
