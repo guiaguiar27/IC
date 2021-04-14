@@ -75,7 +75,7 @@ uint8_t flag_schedule = 0 ;
 uint32_t Packets_sent[MAX_NOS]; 
 uint32_t STpacks = 0 ;  
 uint32_t Packets_received[MAX_NOS]; 
-uintt8_t PossNeighbor[Max_NOS];  
+uint8_t PossNeighbor[MAX_NOS];  
 
 /* Log configuration */
 #include "sys/log.h"
@@ -1080,7 +1080,8 @@ int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){
 int setZero_Id_reception(){ 
   for(int i = 0 ; i < MAX_NOS; i++){ 
     PossNeighbor[i] = 0 ;  
-  }
+  } 
+  return 1;  
 } 
 
 int fill_id(uint8_t id){ 
