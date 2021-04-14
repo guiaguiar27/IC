@@ -1024,8 +1024,6 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
     int node_origin, node_destin;
     FILE *fl;  
     uint8_t flag = 0 ;  
-    struct tsch_link *l = NULL; 
-    //l = memb_alloc(&link_memb); 
     #ifdef DEBUG_SCHEDULE_STATIC 
       LOG_PRINT("Finding neighbor to Rx\n");
     #endif // DEBUG
@@ -1064,7 +1062,7 @@ int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){
   if(!tsch_is_locked()) {
     struct tsch_link *l = list_head(sf->links_list);
     while(l != NULL) {
-        if(linkaddr_cmp(&addr,&l->addr))  
+        if(linkaddr_cmp(addr,&l->addr))  
           return 1; 
         l = list_item_next(l);
       }
