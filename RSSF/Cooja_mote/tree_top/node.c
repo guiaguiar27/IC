@@ -47,7 +47,7 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 #define UDP_PORT	8765
-#define SEND_INTERVAL		  (0.01 * CLOCK_SECOND) 
+#define SEND_INTERVAL		  (1* CLOCK_SECOND) 
 
 
 PROCESS(node_process, "TSCH Schedule Node");
@@ -178,8 +178,9 @@ PROCESS_THREAD(node_process, ev, data)
 
     tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
     /* Initialization; `rx_packet` is the function for packet reception */
-    simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet);
-    etimer_set(&periodic_timer, SEND_INTERVAL);  
+    simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet); 
+    float aux_send = SEND_INTERVAL/100; 
+    etimer_set(&periodic_timer, aux_send);  
     // para mudar o slotframe;  
     if(node_id == 1) {  /* Running on the root? */
       NETSTACK_ROUTING.root_start();

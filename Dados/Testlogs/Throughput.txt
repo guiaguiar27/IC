@@ -4,8 +4,11 @@ Throughput
 i 01.04.197       1 packet  
 03.50.048       32 packets TASA
 f 03.50.048       32 packets LBV 
+(pckt/ms)
+
 Throughput TASA:  0.01929442692(%)
-Throughput TSCH-LBV:  0.01929442692(%)
+Throughput TSCH-LBV:  0.01929442692(%) 
+
 ----------------------------------------------- 
 6nodes  
 i 01.20.976     1 packet  

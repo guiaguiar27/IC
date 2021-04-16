@@ -34,8 +34,8 @@ def extract_tx_widerband(source):
                 return words[i+2]
     
 #network parameters  
-numNodes = 9
-slotframe_size = 11
+numNodes = 20
+slotframe_size = 22
 aux_numNode = numNodes + 1
 
 nodes = [0 for i in range(numNodes)]

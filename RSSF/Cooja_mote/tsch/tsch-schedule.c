@@ -1056,10 +1056,9 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
                   0, 0,0);  
                 fill_id(node_origin); 
               }
-
-
               else LOG_PRINT("Link already exists!\n "); 
-          }  
+          }   
+          flag = 0; 
       }
       fclose(fl);  
 } 
