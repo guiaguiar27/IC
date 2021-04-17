@@ -408,7 +408,7 @@
 3566	ID:10	
 3566	ID:10	Energest:
 3566	ID:10	 CPU             3s LPM         0s DEEP LPM    0s  Total time 3s
-3566	ID:10	 Radio LISTEN    3s TRANSMIT    0s OFF         0s
+3566	ID:10	 Radio LISTEiN    3s TRANSMIT    0s OFF         0s
 3586	ID:10	[INFO: TSCH      ] scanning on channel 15
 3604	ID:12	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
 3604	ID:12	[INFO: TSCH Sched] 0
@@ -12414,7 +12414,6 @@
 17415	ID:7	Energest:
 17415	ID:7	 CPU            17s LPM         0s DEEP LPM    0s  Total time 17s
 17415	ID:7	 Radio LISTEN    0s TRANSMIT    0s OFF        16s
-17506	ID:1	[PRI : TSCH Sched] increased_Bandwidth 13[INFO: TSCH      ] received from 0007.0007.0007.0007 with seqno 49
 17506	ID:1	[WARN: 6LoWPAN   ] input: empty packet
 17506	ID:1	[INFO: TSCH-LOG  ] {asn 00.000006af link  2  15   0  1  1 ch 15} uc-1-0 rx LL-0007->LL-0001, len  21, seq  49, edr   0
 17506	ID:1	[INFO: TSCH Sched] list of packets

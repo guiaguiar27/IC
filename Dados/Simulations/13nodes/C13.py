@@ -43,11 +43,12 @@ PDR_LBV = []
 PRR_TASA = [] 
 PRR_LBV = [] 
 
-for i in range(1,11):    
-    path = "N{}LOG{}.txt".format(i,5) 
+for i in range(1,11):     
+    print("Simulation {}".format(i))
+    path = "N{}log{}.txt".format(i,13) 
     #network parameters  
-    numNodes = 5
-    slotframe_size = 5+ 2 
+    numNodes = 13
+    slotframe_size = 13+ 2 
     aux_numNode = numNodes + 1
 
     nodes = [0 for i in range(numNodes)]
@@ -120,7 +121,8 @@ for i in range(1,11):
     #print("Total Rx:",Rx_total)  
     #throughput = Rx_total/slotframe_size 
     #print("Throughput:",throughput)   
-    prr = Tx_total - Rx_total
+    prr = Tx_total - Rx_total 
+    prr = prr/Tx_total
     aux_tasa =  (Rx_total/Tx_total)*100 
      
     PDR_TASA.append(aux_tasa)
@@ -152,11 +154,12 @@ for i in range(1,11):
     #print("Total Rx:",Rx_total)  
     #throughput = Rx_total/slotframe_size 
     #print("Throughput:",throughput) 
-    prr = Tx_total - Rx_total   
+    prr = Tx_total - Rx_total    
+    prr = prr/Tx_total
     aux_lbv = (Rx_total/Tx_total)*100
     print("PDR(%):",aux_lbv)  
     print("PRR(%):",prr)
     PDR_LBV.append(aux_lbv)
     print("---------------------------------------------------------------------------") 
 print("PDR average TASA:",average(PDR_TASA)) 
-print("PDR AVR LBV:",average(PDR_LBV))
+print("PDR average LBV:",average(PDR_LBV))
