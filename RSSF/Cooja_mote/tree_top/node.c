@@ -47,7 +47,7 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 #define UDP_PORT	8765
-#define SEND_INTERVAL		  (1* CLOCK_SECOND) 
+#define SEND_INTERVAL		  (1 * CLOCK_SECOND) 
 
 
 PROCESS(node_process, "TSCH Schedule Node");

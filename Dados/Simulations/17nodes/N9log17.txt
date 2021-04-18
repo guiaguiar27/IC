@@ -10865,7 +10865,7 @@
 19417	ID:1	[INFO: TSCH Sched] Pckt 15 0 0 
 19417	ID:1	[INFO: TSCH Sched] Pckt 16 0 0 
 19417	ID:1	[INFO: TSCH Sched] Pckt 17 0 0 
-19417	ID:6	[PRI : TSCH Sched] increased_Bandwidth 6 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 198, status 0, tx 1
+19417	ID:6	[PRI : TSCH Sched] increased_Bandwidth 6 16
 19417	ID:6	[INFO: TSCH-LOG  ] {asn 00.0000076e link  2  19   0  2  1 ch 20} uc-1-0 tx LL-0006->LL-0001, len  43, seq 198, st 0  1, dr   0
 19417	ID:6	[INFO: TSCH Sched] Tx_try 6 29 
 19424	ID:12	[INFO: TSCH      ] scan: received packet (17 bytes) on channel 20

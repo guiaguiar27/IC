@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "conf.h"
-#define temp_canais 23
+#define temp_canais 16
 #define peso 1 
-#define MAX_NOS 50
+#define MAX_NOS 6
 #define no_raiz 1
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
@@ -80,7 +80,10 @@ int main(){
     //Mapeia os nós do grafo de conflito para os respectivos nós do grafo da rede
 
     conf = mapGraphConf(adj, tamNo, tamAresta); 
-    printf("Matriz de conflito gerada"); 
+    printf("Matriz de conflito gerada\n"); 
+    for(int i= 0; i < tamAresta; i++ ){ 
+            printf(" %d -> %d\n",conf[i][0],conf[i][1]);
+    }
     
     
     //Gera a matriz de conflito
@@ -211,7 +214,7 @@ int main(){
     for(x = 0 ; x < 16; x++){
         for(y = 0; y < temp_canais; y++) {
             // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1); 
+            printf("%d  ", aloca_canais[x][y]); 
             if(x == 0 && aloca_canais[x][y] != -1 ) ma_ts += 1 ; 
         }  
         printf("\n"); 

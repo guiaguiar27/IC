@@ -1,31 +1,31 @@
-899	ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
-899	ID:3	[PRI : TSCH Sched] Finding neighbor to Rx
-899	ID:3	[PRI : TSCH Sched] -1027388608 -135363007
-899	ID:3	
-899	ID:3	Energest:
-899	ID:3	 CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
-899	ID:3	 Radio LISTEN    0s TRANSMIT    0s OFF         0s
-899	ID:3	[WARN: TSCH-LOG  ] logs dropped 29
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.0000000f link-NULL} !dl-miss assoc 367000 10000
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000010 link-NULL} !dl-miss assoc 357000 10000
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000011 link-NULL} !dl-miss assoc 347000 10000
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000012 link-NULL} !dl-miss assoc 337000 10000
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000013 link-NULL} !dl-miss assoc 327000 10000
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000014 link-NULL} !dl-miss assoc 317000 10000
-899	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000015 link-NULL} !dl-miss assoc 307000 10000
-902	ID:3	[INFO: TSCH-LOG  ] {asn 00.00000033 link-NULL} !skipped slot 0 0 1
-909	ID:3	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
-909	ID:3	[INFO: TSCH Sched] 0
-909	ID:3	[INFO: TSCH Sched] 0
-909	ID:3	[INFO: TSCH Sched] 0
-909	ID:3	[INFO: App       ] Verify: 0 
-909	ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
-909	ID:3	[PRI : TSCH Sched] Finding neighbor to Rx
-909	ID:3	[PRI : TSCH Sched] -1027415036 20
-909	ID:3	
-909	ID:3	Energest:
-909	ID:3	 CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
-909	ID:3	 Radio LISTEN    0s TRANSMIT    0s OFF         0s
+899	    ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
+899	    ID:3	[PRI : TSCH Sched] Finding neighbor to Rx
+899	    ID:3	[PRI : TSCH Sched] -1027388608 -135363007
+899	    ID:3	
+899	    ID:3	Energest:
+899	    ID:3	 CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+899	    ID:3	 Radio LISTEN    0s TRANSMIT    0s OFF         0s
+899	    ID:3	[WARN: TSCH-LOG  ] logs dropped 29
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.0000000f link-NULL} !dl-miss assoc 367000 10000
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000010 link-NULL} !dl-miss assoc 357000 10000
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000011 link-NULL} !dl-miss assoc 347000 10000
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000012 link-NULL} !dl-miss assoc 337000 10000
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000013 link-NULL} !dl-miss assoc 327000 10000
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000014 link-NULL} !dl-miss assoc 317000 10000
+899	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000015 link-NULL} !dl-miss assoc 307000 10000
+902	    ID:3	[INFO: TSCH-LOG  ] {asn 00.00000033 link-NULL} !skipped slot 0 0 1
+909	    ID:3	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+909	    ID:3	[INFO: TSCH Sched] 0
+909	    ID:3	[INFO: TSCH Sched] 0
+909	    ID:3	[INFO: TSCH Sched] 0
+909	    ID:3	[INFO: App       ] Verify: 0 
+909	    ID:3	[PRI : TSCH Sched] -----Slotframe handle:2----
+909	    ID:3	[PRI : TSCH Sched] Finding neighbor to Rx
+909	    ID:3	[PRI : TSCH Sched] -1027415036 20
+909	    ID:3	
+909	    ID:3	Energest:
+909	    ID:3	 CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+909	    ID:3	 Radio LISTEN    0s TRANSMIT    0s OFF         0s
 1083	ID:8	[INFO: TSCH      ] scanning on channel 20
 1083	ID:8	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
 1083	ID:8	[INFO: TSCH Sched] 0

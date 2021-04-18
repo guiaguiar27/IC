@@ -1,7 +1,36 @@
 # code to collect throughput from cooja simulations  
- 
+import re
+import scipy.stats
+import numpy as np
+from functools import reduce  
 
-from functools import reduce 
+
+def confident_interval_data(X, confidence = 0.95, sigma = -1):
+    def S(X): #funcao para calcular o desvio padrao amostral
+        s = 0
+        for i in range(0,len(X)):
+            s = s + (X[i] - np.mean(X))**2
+        s = np.sqrt(s/(len(X)-1))
+        return s
+    n = len(X) # numero de elementos na amostra
+    Xs = np.mean(X) # media amostral
+    s = S(X) # desvio padrao amostral
+    zalpha = abs(scipy.stats.norm.ppf((1 - confidence)/2))
+    if(sigma != -1): # se a variancia eh conhecida
+        IC1 = Xs - zalpha*sigma/np.sqrt(n)
+        IC2 = Xs + zalpha*sigma/np.sqrt(n)
+    else: # se a variancia eh desconhecida
+        if(n >= 50): # se o tamanho da amostra eh maior do que 50
+            # Usa a distribuicao normal
+            IC1 = Xs - zalpha*s/np.sqrt(n)
+            IC2 = Xs + zalpha*s/np.sqrt(n)
+        else: # se o tamanho da amostra eh menor do que 50
+            # Usa a distribuicao t de Student
+            talpha = scipy.stats.t.ppf((1 + confidence) / 2., n-1)
+            IC1 = Xs - talpha*s/np.sqrt(n)
+            IC2 = Xs + talpha*s/np.sqrt(n)
+    return talpha*s/np.sqrt(n) 
+
 def average(list): 
     return sum(list)/len(list)
 
@@ -35,20 +64,43 @@ def extract_tx_try(source):
 def extract_tx_widerband(source):   
     for i,w in enumerate(words):
             if w == "increased_Bandwidth": 
-                return words[i+2]
+                return words[i+2] 
+
+#boundaries for throughput
+def calctime(string):  
+    aux =  re.findall(r"[\w']+", string)
+    Iminutes = int(aux[0])  
+    totalMilMin = Iminutes*60000 
+    Iseconds = int(aux[1])  
+    totalMilSeconds = Iseconds*1000  
+    Iml = int(aux[2])  
+    Itotal = totalMilMin + totalMilSeconds + Iml 
+    return Itotal  
+
+def justTime(string): 
+    return int(string)
     
 # for j in range(5,19)      
 PDR_TASA = [] 
 PDR_LBV = []
-PRR_TASA = [] 
-PRR_LBV = [] 
+PRR_TASA = []  
+Throughput_TASA = [] 
+Throughput_LBV = []
+PRR_LBV = []  
+init_time = 0  
+final_time = 0
+numNodes = 13
 
-for i in range(1,11):     
-    print("Simulation {}".format(i))
-    path = "N{}log{}.txt".format(i,13) 
+for i in range(1,11):    
+    print("i:",i)
+    flag = 0   
+    if i == 1:
+        flag_esq = 1 
+    else: 
+        flag_esq = 0 
+    path = "N{}log{}.txt".format(i,numNodes) 
     #network parameters  
-    numNodes = 13
-    slotframe_size = 13+ 2 
+    slotframe_size = numNodes+ 2 
     aux_numNode = numNodes + 1
 
     nodes = [0 for i in range(numNodes)]
@@ -76,10 +128,29 @@ for i in range(1,11):
                 aux_tx_try = int(extract_tx_try(words))  
                 for i in range(1,aux_numNode): 
                     if i == node:
-                        Tx_try_per_node[i] = aux_tx_try
-                
-                
-            if "Pckt" in words:
+                        Tx_try_per_node[i] = aux_tx_try    
+            if "Pckt" in words:  
+                if flag_esq == 1 : 
+                    if flag == 0 : 
+                        itime = words[0]  
+                        #quando não é dado em milisegundos
+                        init_time=  calctime(itime)
+                        flag = 1  
+                    else: 
+                        fTime = words[0] 
+                        #quando não é dado em milisegundos
+                        final_time = calctime(fTime)  
+                else : 
+                    if flag == 0 : 
+                        itime = words[0]  
+                        #quando não é dado em milisegundos
+                        init_time = justTime(itime)
+                        flag = 1  
+                    else: 
+                        fTime = words[0] 
+                        #quando não é dado em milisegundos
+                        final_time = justTime(fTime)
+
                 node = int(extract_node(words))
             
                 aux_tx = int(extract_tx_success(words)) 
@@ -108,9 +179,9 @@ for i in range(1,11):
                     
 
     print("metrics simulation {} nodes".format(numNodes))
-    #print("nodes:", nodes[:]) 
+    print("nodes:", nodes[:]) 
 
-    print("Metrics for TASA") 
+    #print("Metrics for TASA") 
 
     #print("Tx per node: ",Tx_try_per_node[:]) 
     #print("Rx per node: ",Rx_per_node[:])
@@ -122,11 +193,17 @@ for i in range(1,11):
     #throughput = Rx_total/slotframe_size 
     #print("Throughput:",throughput)   
     prr = Tx_total - Rx_total 
-    prr = prr/Tx_total
-    aux_tasa =  (Rx_total/Tx_total)*100 
+    prr = prr/Tx_total 
+    prr = prr*100
+    aux_tasa =  (Rx_total/Tx_total)*100  
+    PRR_TASA.append(prr)
      
-    PDR_TASA.append(aux_tasa)
-
+    PDR_TASA.append(aux_tasa) 
+    #* 10 por conta de que cada slot tem 10 ms 
+    #por 100 para dar em percentual
+    Throughput = ((Rx_total/(final_time - init_time))*10)*100
+    print("Througput(%)",Throughput) 
+    Throughput_TASA.append(Throughput)
     print("PDR(%):",aux_tasa) 
     print("PRR(%)",prr) 
 
@@ -154,12 +231,42 @@ for i in range(1,11):
     #print("Total Rx:",Rx_total)  
     #throughput = Rx_total/slotframe_size 
     #print("Throughput:",throughput) 
-    prr = Tx_total - Rx_total    
-    prr = prr/Tx_total
+    prr = Tx_total - Rx_total 
+    prr = prr/Tx_total 
+    prr = prr*100
+    
     aux_lbv = (Rx_total/Tx_total)*100
+    Throughput = ((Rx_total/(final_time - init_time))*10)*100
+    print("Througput(%)",Throughput) 
+    Throughput_LBV.append(Throughput)
+    
+    
     print("PDR(%):",aux_lbv)  
     print("PRR(%):",prr)
+    PRR_LBV.append(prr)
     PDR_LBV.append(aux_lbv)
     print("---------------------------------------------------------------------------") 
-print("PDR average TASA:",average(PDR_TASA)) 
-print("PDR average LBV:",average(PDR_LBV))
+
+
+
+arq=open("../saida.txt","a")
+arq.write("{}nodes\n".format(numNodes))   
+
+arq.write("PDRTASA = {}\n".format(average(PDR_TASA)))   
+arq.write("Interval_conf_TASA_PDR:{} \n".format(confident_interval_data(PDR_TASA,0.95)))
+arq.write("PDRLBV = {}\n".format(average(PDR_LBV)))  
+arq.write("Interval_conf_LBV_PDR:{} \n".format(confident_interval_data(PDR_LBV,0.95)))
+
+arq.write("RELTASA = {}\n".format(average(PRR_TASA)))  
+arq.write("Interval_conf_TASA_confiabilidade:{} \n".format(confident_interval_data(PRR_TASA,0.95)))
+
+arq.write("RELLBV = {}\n".format(average(PRR_LBV)))   
+arq.write("Interval_conf_LBV_confiabilidade:{} \n".format(confident_interval_data(PRR_LBV,0.95)))
+
+arq.write("THTASA = {}\n".format(average(Throughput_TASA)))  
+arq.write("Interval_conf_THTASA:{} \n".format(confident_interval_data(Throughput_TASA,0.95)))
+
+arq.write("THLBV = {}\n".format(average(Throughput_LBV)))   
+arq.write("Interval_conf_THLBV:{} \n".format(confident_interval_data(Throughput_LBV,0.95)))
+
+arq.close()      
