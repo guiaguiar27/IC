@@ -61,7 +61,7 @@ static linkaddr_t coordinator_addr =  {{ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 #define APP_SLOTFRAME_BROADCAST_HANDLE 2 
 #define APP_UNICAST_TIMESLOT 4
 #define APP_CHANNEL_OFSETT 8   
-
+  
 
 int  verify = 0, aux_id  ;  
 
@@ -74,7 +74,7 @@ to_seconds(uint64_t time)
 
 #if NBR_TSCH 
 static void init_broad(void){  
-  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(BROADCAST_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
+  struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(APP_SLOTFRAME_BROADCAST_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset = 0;
   uint16_t channel_offset = 0; 
   

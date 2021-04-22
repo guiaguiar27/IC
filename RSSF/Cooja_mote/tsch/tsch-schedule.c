@@ -926,7 +926,8 @@ int SCHEDULE_static(){
               if(l_aux != NULL){  
                   verify = 0 ; 
               } 
-              else{
+              else{ 
+                
               l-> timeslot = y+1; 
               l-> channel_offset = x+1 ; 
               channel_bandwidth = 1 ;    
@@ -1061,7 +1062,8 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
           flag = 0; 
       }
       fclose(fl);  
-} 
+}  
+// pesquisa no slotframe com operação de slot bloquado  
 int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){ 
   if(!tsch_is_locked()) {
     struct tsch_link *l = list_head(sf->links_list);
@@ -1075,7 +1077,7 @@ int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){
     return 0 ; 
   
 }    
-
+// comparação de ids de links já criados -> não precisa bloquar o slot e consegue criar
 int setZero_Id_reception(){ 
   for(int i = 0 ; i < MAX_NOS; i++){ 
     PossNeighbor[i] = 0 ;  
