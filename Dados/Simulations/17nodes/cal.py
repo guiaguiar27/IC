@@ -205,7 +205,10 @@ for i in range(1,11):
     #* 10 por conta de que cada slot tem 10 ms 
     #por 100 para dar em percentual 
     #Throughput = ((Rx_total/(final_time - init_time))*10)*100 
-    Throughput = (((Rx_total*pckt_len)/(final_time - init_time))*10) 
+    #Throughput = (((Rx_total*pckt_len)/(final_time - init_time))*10) 
+    time = final_time - init_time 
+    time = time * 0.001
+    Throughput = ((Rx_total*pckt_len)/time)
     print("Througput(%)",Throughput) 
     Throughput_TASA.append(Throughput)
     print("PDR(%):",aux_tasa) 
@@ -239,9 +242,12 @@ for i in range(1,11):
     prr = prr/Tx_total 
     prr = prr*100
     
-    aux_lbv = (Rx_total/Tx_total)*100 
+    aux_lbv = (Rx_total/Tx_total)*100
     #Throughput = ((Rx_total/(final_time - init_time))*10)*100 
-    Throughput = (((Rx_total*pckt_len)/(final_time - init_time))*10) 
+    #Throughput = (((Rx_total*pckt_len)/(final_time - init_time))*10) 
+    time = final_time - init_time 
+    time = time * 0.001
+    Throughput = ((Rx_total*pckt_len)/time)
     print("Througput(%)",Throughput) 
     Throughput_LBV.append(Throughput)
     
@@ -255,7 +261,7 @@ for i in range(1,11):
 
 
 
-arq=open("../saida2.txt","a")
+arq=open("../saida3.txt","a")
 arq.write("{}nodes\n".format(numNodes))   
 
 arq.write("PDRTASA = {}\n".format(average(PDR_TASA)))   
