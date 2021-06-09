@@ -179,7 +179,7 @@ PROCESS_THREAD(node_process, ev, data)
     tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
     /* Initialization; `rx_packet` is the function for packet reception */
     simple_udp_register(&udp_conn, UDP_PORT, NULL, UDP_PORT, rx_packet); 
-    float aux_send = SEND_INTERVAL/100; 
+    float aux_send = SEND_INTERVAL/1000; 
     etimer_set(&periodic_timer, aux_send);  
     // para mudar o slotframe;  
     if(node_id == 1) {  /* Running on the root? */

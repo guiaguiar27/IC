@@ -244,8 +244,8 @@ for i in range(1,11):
     aux_lbv = (Rx_total/Tx_total)*100 
     #Throughput = ((Rx_total/(final_time - init_time))*10)*100 
     #Throughput = (((Rx_total*pckt_len)/(final_time - init_time))*10) 
-    time = final_time - init_time 
-    time = time * 0.001
+    time = final_time - init_time #ms
+    time = time * 0.001      #s 
     Throughput = ((Rx_total*pckt_len)/time)
     print("Througput(%)",Throughput) 
     Throughput_LBV.append(Throughput)
