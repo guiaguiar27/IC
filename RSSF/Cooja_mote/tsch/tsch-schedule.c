@@ -62,8 +62,8 @@
 #define peso 1 
 #define no_raiz 1     
 
-#define Channel 8
-#define Timeslot 8   
+#define Channel 16
+#define Timeslot 7
 static uint16_t unicast_slotframe_handle = 2;
 
 #define endereco "/home/user/contiki-ng/os/arvore.txt"  
@@ -297,7 +297,10 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
         tsch_release_lock();
         if(l->link_options & LINK_OPTION_RX){ 
           l->aux_options = 1;  
-          l->handle = -2; 
+          l->handle = -2;   
+          node_neighbor =  l->addr.u8[LINKADDR_SIZE - 1]
+                 + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
+          fill_id(node_neighbor); 
 
         }
         if(l->link_options & LINK_OPTION_TX) {
@@ -314,6 +317,7 @@ tsch_schedule_add_link(struct tsch_slotframe *slotframe,
                  + (l->addr.u8[LINKADDR_SIZE - 2] << 8);  
               
               tsch_write_in_file(node, node_neighbor);   
+               
                           }
           }
         }
@@ -866,7 +870,7 @@ int SCHEDULE_static(){
                     edge_selected = temp;
                     
                     for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                            if(canal == Channel)
+                            if(canal == 8)
                               break;   
                             
                             aloca_canais[canal][cont] = edge_selected;     
@@ -926,8 +930,7 @@ int SCHEDULE_static(){
               if(l_aux != NULL){  
                   verify = 0 ; 
               } 
-              else{ 
-                
+              else{
               l-> timeslot = y+1; 
               l-> channel_offset = x+1 ; 
               channel_bandwidth = 1 ;    
@@ -1049,21 +1052,24 @@ void find_neighbor_to_Rx(uint8_t node, int handle){
                 addr.u8[j + 0] = node_origin >> 8;
               }   
               
-              if(verify_link_by_id(node_origin)) flag = 1; 
+              if(verify_link_by_id(node_origin) == 1) flag = 1;  
+              LOG_PRINT("FLAG= %d\n",flag);
               if(flag == 0){
                 tsch_schedule_add_link(sf,
                   LINK_OPTION_RX,
                   LINK_TYPE_NORMAL, &addr,
                   0, 0,0);  
-                fill_id(node_origin); 
+                
               }
+
+
               else LOG_PRINT("Link already exists!\n "); 
-          }   
-          flag = 0; 
-      }
+          }
+      flag = 0; 
+            
+      }   
       fclose(fl);  
-}  
-// pesquisa no slotframe com operação de slot bloquado  
+} 
 int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){ 
   if(!tsch_is_locked()) {
     struct tsch_link *l = list_head(sf->links_list);
@@ -1077,7 +1083,7 @@ int tsch_get_same_link(const linkaddr_t *addr, struct tsch_slotframe *sf){
     return 0 ; 
   
 }    
-// comparação de ids de links já criados -> não precisa bloquar o slot e consegue criar
+
 int setZero_Id_reception(){ 
   for(int i = 0 ; i < MAX_NOS; i++){ 
     PossNeighbor[i] = 0 ;  
@@ -1096,8 +1102,9 @@ int fill_id(uint8_t id){
 } 
 
 int verify_link_by_id(uint8_t id){ 
-  for(int i = 0 ; i < MAX_NOS; i++ ){ 
-    if(PossNeighbor[i]== id ) return 1; 
+  for(int i = 0 ; i < MAX_NOS; i++ ){  
+  	LOG_PRINT("%d\n",PossNeighbor[i]);
+    if(PossNeighbor[i] == id ) return 1; 
   } 
   return 0 ;  
 }
