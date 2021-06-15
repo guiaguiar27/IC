@@ -18,11 +18,12 @@ int **DCFL(int *pacotes, int **matriz, int **graf_conf, int **mapa_graf_conf, in
     srand(time(NULL));
     
     //Seleciona o nó com maior carga pra ser transmitida
-    no_atual = rand() % num_no;   
-    printf("sorted nó:%d\n",no_atual);
-    while(no_atual == raiz){ 
-        no_atual = rand() % num_no;
-    }
+    no_atual = 15;
+    //no_atual = rand() % num_no;   
+    // printf("sorted nó:%d\n",no_atual);
+    // while(no_atual == raiz){ 
+    //     no_atual = rand() % num_no;
+    // }
     // do{
         
         
