@@ -350,7 +350,7 @@
 #ifdef TSCH_SCHEDULE_CONF_MAX_LINKS
 #define TSCH_SCHEDULE_MAX_LINKS TSCH_SCHEDULE_CONF_MAX_LINKS
 #else
-#define TSCH_SCHEDULE_MAX_LINKS 50
+#define TSCH_SCHEDULE_MAX_LINKS 60
 #endif
 
 /* To include Sixtop Implementation */
