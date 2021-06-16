@@ -901,7 +901,7 @@ int SCHEDULE_static(){
       for(x = 0 ; x < Channel; x++){
           for(y = 0; y < Timeslot; y++) 
               // linhas = tempo - coluna = canal  
-              printf("%d  ", aloca_canais[x][y] + 1);  
+              printf("%d  ", aloca_canais[x][y]);  
               
           printf("\n"); 
       } 
@@ -917,15 +917,18 @@ int SCHEDULE_static(){
     for(y = 0 ; y < Timeslot; y++){   
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){
+          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){ 
+            LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
+           
             
-            if(verify == 0 ){ 
+            if(verify == 0){ 
             LOG_PRINT("---------------------------\n"); 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
             LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
             LOG_PRINT("----CHANNEL: %u-----\n\n", l->channel_offset);     
-              // indica que é de TX 
+            // indica que é de TX 
             if(l->aux_options == 2){  
+              // pesquisa se já tem algum link no timeslot, caso haja a verify continua desmarcada para nova adequação  
               l_aux = tsch_schedule_get_link_by_timeslot(sf,y+1,x+1); 
               if(l_aux != NULL){  
                   verify = 0 ; 
@@ -962,7 +965,7 @@ int SCHEDULE_static(){
             if(x+1 >= l->channel_offset){ 
               
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
-                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);   
+                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2] << 8);   
               channel_bandwidth = x+1;    
               
             }
@@ -973,7 +976,7 @@ int SCHEDULE_static(){
     } // internal for 
   } // external for 
 
-  // to Rx 
+  // schedule Rx links (with the same parameters of TX) 
   l = list_head(sf->links_list); 
   while(l!= NULL){  
     if(l->aux_options == 1  && l->link_type == LINK_TYPE_NORMAL)
