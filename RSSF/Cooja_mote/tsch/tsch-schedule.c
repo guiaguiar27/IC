@@ -598,8 +598,8 @@ tsch_schedule_print(void)
       LOG_PRINT("Slotframe Handle %u, size %u\n", sf->handle, sf->size.val);
 
       while(l != NULL) {
-        LOG_PRINT("* Link Options %02x, type %u, timeslot %u, channel offset %u, address %u\n",
-               l->link_options, l->link_type, l->timeslot, l->channel_offset, l->addr.u8[7]);
+        LOG_PRINT("* Link Options %02x, type %u, handle: %u, timeslot %u, channel offset %u, address %u\n",
+               l->link_options, l->link_type,l->handle, l->timeslot, l->channel_offset, l->addr.u8[7]);
         l = list_item_next(l);
       }
 
@@ -961,7 +961,8 @@ int SCHEDULE_static(){
             } 
               
           }
-          else   
+          else{   
+            
             if(x+1 >= l->channel_offset){ 
               
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
@@ -969,6 +970,8 @@ int SCHEDULE_static(){
               channel_bandwidth = x+1;    
               
             }
+
+          }
            
         } // 1st if 
         l = list_item_next(l);
