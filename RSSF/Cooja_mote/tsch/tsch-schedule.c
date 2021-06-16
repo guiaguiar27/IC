@@ -917,7 +917,8 @@ int SCHEDULE_static(){
     for(y = 0 ; y < Timeslot; y++){   
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y] + 1 == l->handle && l->link_type == LINK_TYPE_NORMAL){ 
+          if(aloca_canais[x][y]  == l->handle && l->link_type == LINK_TYPE_NORMAL){  
+
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
            
             
@@ -967,7 +968,7 @@ int SCHEDULE_static(){
               
               node_origin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
                       + (linkaddr_node_addr.u8[LINKADDR_SIZE -2] << 8);   
-              channel_bandwidth = x+1;    
+              channel_bandwidth +=1;    
               
             }
 
