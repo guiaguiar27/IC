@@ -36252,7 +36252,6 @@
 43467	ID:1	[INFO: TSCH Sched] Pckt 11 0 0 
 43467	ID:1	[INFO: TSCH Sched] Pckt 12 0 0 
 43467	ID:1	[INFO: TSCH Sched] Pckt 13 0 0 
-43467	ID:4	[PRI : TSCH Sched] increased_Bandwidth [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 98, status 0, tx 1
 43467	ID:4	[INFO: TSCH-LOG  ] {asn 00.000010d3 link  2  15   0  2  1 ch 15} uc-1-0 tx LL-0004->LL-0001, len  43, seq  98, st 0  1, dr   0
 43467	ID:4	[INFO: TSCH Sched] Tx_try 4 41 
 43526	ID:1	[INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 85

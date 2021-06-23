@@ -16295,7 +16295,6 @@
 23260	ID:6	Energest:
 23260	ID:6	 CPU            23s LPM         0s DEEP LPM    0s  Total time 23s
 23260	ID:6	 Radio LISTEN   17s TRANSMIT    0s OFF         5s
-23291	ID:2	[PRI : TSCH Sched] increased_Bandwidth 2[DBG : TSCH Queue] packet is added put_index 19, packet 0xc26e5394
 23291	ID:2	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 75, queue 2/64 2/64, len 21 21
 23291	ID:2	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
 23336	ID:18	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
