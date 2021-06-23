@@ -66,17 +66,8 @@ def extract_tx_widerband(source):
             if w == "increased_Bandwidth": 
                 return words[i+2] 
 
-#boundaries for throughput
-def calctime(string):  
-    aux =  re.findall(r"[\w']+", string)
-    Iminutes = int(aux[0])  
-    totalMilMin = Iminutes*60000 
-    Iseconds = int(aux[1])  
-    totalMilSeconds = Iseconds*1000  
-    Iml = int(aux[2])  
-    Itotal = totalMilMin + totalMilSeconds + Iml 
-    return Itotal  
 
+#converte tempo (string) para inteiro
 def justTime(string): 
     return int(string)
     
@@ -89,7 +80,8 @@ for j in range(5,19):
     PRR_LBV = []  
     init_time = 0  
     final_time = 0
-    numNodes = j
+    numNodes = j 
+    pckt_len = 43
 
     for i in range(1,11):    
         print("i:",i)
@@ -99,7 +91,7 @@ for j in range(5,19):
             flag_esq = 1 
         else: 
             flag_esq = 0 
-        path = "../{}nodes/N{}log{}.txt".format(j,i,numNodes) 
+        path = "{}nodes/N{}log{}.txt".format(j,i,numNodes) 
         #network parameters  
         slotframe_size = numNodes+ 2 
         aux_numNode = numNodes + 1
@@ -131,26 +123,15 @@ for j in range(5,19):
                         if i == node:
                             Tx_try_per_node[i] = aux_tx_try    
                 if "Pckt" in words:  
-                    if flag_esq == 1 : 
-                        if flag == 0 : 
-                            itime = words[0]  
-                            #quando não é dado em milisegundos
-                            init_time=  calctime(itime)
-                            flag = 1  
-                        else: 
-                            fTime = words[0] 
-                            #quando não é dado em milisegundos
-                            final_time = calctime(fTime)  
-                    else : 
-                        if flag == 0 : 
-                            itime = words[0]  
-                            #quando não é dado em milisegundos
-                            init_time = justTime(itime)
-                            flag = 1  
-                        else: 
-                            fTime = words[0] 
-                            #quando não é dado em milisegundos
-                            final_time = justTime(fTime)
+                    if flag == 0 : 
+                        itime = words[0]  
+                        #quando  é dado em milisegundos
+                        init_time = justTime(itime)
+                        flag = 1  
+                    else: 
+                        fTime = words[0] 
+                        #quando é dado em milisegundos
+                        final_time = justTime(fTime)
 
                     node = int(extract_node(words))
                 
@@ -171,6 +152,11 @@ for j in range(5,19):
 
                     node = int(extract_node(words)) 
                     Bw = int(extract_tx_widerband(words))  
+                    #garante que não haja canais usados sem no minimo 1 canal computado
+                    if Bw == 0: 
+                        Bw = 1 
+                    elif Bw > 1 and Bw%2 != 0: 
+                        Bw += 1   
                     for i in range(1,aux_numNode): 
                         if i == node:     
                             if Wider_band[i] <= Bw: 
@@ -201,8 +187,11 @@ for j in range(5,19):
         
         PDR_TASA.append(aux_tasa) 
         #* 10 por conta de que cada slot tem 10 ms 
-        #por 100 para dar em percentual
-        Throughput = ((Rx_total/(final_time - init_time))*10)*100
+        #por 100 para dar em percentual 
+        time = final_time - init_time 
+        time = time * 0.001
+        Throughput = ((Rx_total*pckt_len)/time) 
+
         print("Througput(%)",Throughput) 
         Throughput_TASA.append(Throughput)
         print("PDR(%):",aux_tasa) 
@@ -236,8 +225,11 @@ for j in range(5,19):
         prr = prr/Tx_total 
         prr = prr*100
         
-        aux_lbv = (Rx_total/Tx_total)*100
-        Throughput = ((Rx_total/(final_time - init_time))*10)*100
+        aux_lbv = (Rx_total/Tx_total)*100 
+        time = final_time - init_time 
+        time = time * 0.001
+        Throughput = ((Rx_total*pckt_len)/time) 
+
         print("Througput(%)",Throughput) 
         Throughput_LBV.append(Throughput)
         
@@ -250,7 +242,7 @@ for j in range(5,19):
 
 
 
-    arq=open("../saida.txt","a")
+    arq=open("saida.txt","a")
     arq.write("{}nodes\n".format(numNodes))   
 
     arq.write("PDRTASA = {}\n".format(average(PDR_TASA)))   

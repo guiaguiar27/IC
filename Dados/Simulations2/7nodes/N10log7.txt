@@ -33755,7 +33755,7 @@
 38396	ID:1	[PRI : TSCH Sched] ----CHANNEL: 1-----
 38396	ID:1	[PRI : TSCH Sched] -----------------------------
 38396	ID:1	
-38404	ID:4	[PRI : TSCH Sched] increased_Bandwidth 4[DBG : TSCH Queue] packet is added put_index 50, packet 0xc25e5234
+38404	ID:4	[PRI : TSCH Sched] increased_Bandwidth 4 1
 38404	ID:4	[INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 116, queue 2/64 2/64, len 21 21
 38404	ID:4	[INFO: TSCH      ] sending KA to 0001.0001.0001.0001
 38407	ID:1	[PRI : [INFO: TSCH      ] received from 0005.0005.0005.0005 with seqno 181

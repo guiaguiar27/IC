@@ -7926,7 +7926,6 @@
 10726	ID:5	Energest:
 10726	ID:5	 CPU            10s LPM         0s DEEP LPM    0s  Total time 10s
 10726	ID:5	 Radio LISTEN    0s TRANSMIT    0s OFF         9s
-10737	ID:1	[INFO: TSCH Sched] Pckt 11 0 0[INFO: TSCH      ] received from 0005.0005.0005.0005 with seqno 125
 10737	ID:1	[INFO: App       ] Received from fd00::205:5:5:5, seqnum 1
 10737	ID:1	[INFO: TSCH-LOG  ] {asn 00.0000040a link  2  12   0  2  1 ch 20} uc-1-0 rx LL-0005->LL-0001, len  43, seq 125, edr   0
 10737	ID:1	[INFO: TSCH Sched] list of packets

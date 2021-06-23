@@ -917,7 +917,7 @@ int SCHEDULE_static(){
     for(y = 0 ; y < Timeslot; y++){   
         l = list_head(sf->links_list);        
         while(l!= NULL){   
-          if(aloca_canais[x][y]  == l->handle && l->link_type == LINK_TYPE_NORMAL){  
+          if(aloca_canais[x][y] == l->handle && l->link_type == LINK_TYPE_NORMAL){  
 
             LOG_PRINT("----HANDLE: %u-----\n", l->handle); 
            
