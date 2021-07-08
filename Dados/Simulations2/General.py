@@ -4,7 +4,7 @@ import scipy.stats
 import numpy as np
 from functools import reduce  
 
-
+# to calculate confidence interval  
 def confident_interval_data(X, confidence = 0.95, sigma = -1):
     def S(X): #funcao para calcular o desvio padrao amostral
         s = 0
@@ -29,17 +29,20 @@ def confident_interval_data(X, confidence = 0.95, sigma = -1):
             talpha = scipy.stats.t.ppf((1 + confidence) / 2., n-1)
             IC1 = Xs - talpha*s/np.sqrt(n)
             IC2 = Xs + talpha*s/np.sqrt(n)
-    return  talpha*s/np.sqrt(n)
+    return  talpha*s/np.sqrt(n) 
 
+#avarage 
 def average(list): 
     return sum(list)/len(list)
-
+# just add two numbers 
 def add(a,b): 
-    return a + b 
+    return a + b  
+# get the next word by a word reference     
 def next(a,source): 
     for i,w in enumerate(source): 
         if w == a: 
-            return source[i+1]
+            return source[i+1]  
+# this functions is specific to the file format adopted in the data collection 
 def extract_node(source): 
     for i,w in enumerate(words):
             if w == "Pckt": 
@@ -47,20 +50,23 @@ def extract_node(source):
             if w == "Tx_try":   
                 return words[i+1] 
             if w == "increased_Bandwidth": 
-                return words[i+1]
+                return words[i+1] 
+# get the number of packets sent by a specif node 
 def extract_tx_success(source):   
     for i,w in enumerate(words):
             if w == "Pckt": 
-                return words[i+2]
+                return words[i+2]  
+# get the packets received in a specific node 
 def extract_rx(source): 
     for i,w in enumerate(words):
             if w == "Pckt": 
-                return words[i+3]
+                return words[i+3] 
+# get the number of attempts to send packets on this node 
 def extract_tx_try(source):  
     for i,w in enumerate(words):
             if w == "Tx_try": 
                 return words[i+2] 
-
+# get the amount of channels used in the transmission 
 def extract_tx_widerband(source):   
     for i,w in enumerate(words):
             if w == "increased_Bandwidth": 
@@ -87,13 +93,10 @@ for j in range(5,19):
         print("i:",i)
         flag = 0   
          
-        if i == 1:
-            flag_esq = 1 
-        else: 
-            flag_esq = 0 
         path = "{}nodes/N{}log{}.txt".format(j,i,numNodes) 
-        #network parameters  
-        slotframe_size = numNodes+ 2 
+        #network parameters   
+        # define slotframe size here  
+        slotframe_size = numNodes + 2 
         aux_numNode = numNodes + 1
 
         nodes = [0 for i in range(numNodes)]
