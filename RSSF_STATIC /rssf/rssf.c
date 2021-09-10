@@ -3,7 +3,7 @@
 #include "conf.h"
 #define temp_canais 23
 #define peso 1 
-#define MAX_NOS 6
+#define MAX_NOS 126
 #define no_raiz 1
 
 void executa(int **aloca_canal, int tempo, int **mapa_graf_conf, int *pacote_entregue, int raiz, int *pacotes);
@@ -37,7 +37,7 @@ int main(){
     // inicia arquivo  
     FILE *fl;   
     tamAresta = MAX_NOS;    
-    fl = fopen("teste.txt", "r"); 
+    fl = fopen("text.txt", "r"); 
     if(fl == NULL){
         printf("The file was not opened\n");
         return 0  ; 

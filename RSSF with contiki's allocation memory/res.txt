@@ -1,0 +1,56 @@
+Balanceada com cortes 
+100 nos 
+TSCH-LBV timeslots: 66
+TASA timeslot:319
+200 
+TASA timeslot: 597
+TSCH-LBV timeslots: 126 
+300 
+TASA timeslot:807 
+TSCH-LBV timeslots: 193
+400 
+TSCH-LBV timeslots: 266
+TASA timeslot: 976
+500 
+TSCH-LBV timeslots: 333 
+TASA timeslot: 1276 
+
+
+Balanceada sem cortes 
+31 level 5 
+TSCH-LBV timeslot:  15 
+TASA timeslot:67
+62 level 6  
+TSCH-LBV timeslots: 32 
+TASA timeslot:148
+126 level 7 
+TSCH-LBV timeslots: 68
+TASA timeslot:314
+255 level 8 
+TSCH-LBV timeslots: 149
+TASA timeslot:647 
+511 level 9
+TSCH-LBV timeslots: 346 
+TASA timeslot:1309
+
+
+
+Desbalanceada  
+100
+TSCH-LBV timeslots: 56 
+TASA timeslot:293 
+
+200
+TSCH-LBV timeslots: 126
+TASA timeslot:597 
+
+300  
+TSCH-LBV timeslots: 213 
+TASA timeslot:903
+
+400 
+TSCH-LBV timeslots: 284 
+TASA timeslot:1205
+500 
+TSCH-LBV timeslots: 366 
+TASA timeslot:1515

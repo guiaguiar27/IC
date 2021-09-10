@@ -73,7 +73,8 @@ to_seconds(uint64_t time)
 
 #if NBR_TSCH 
 static void init_broad(void){  
-
+  // envia mensagens de broadcast para todos os nós  
+  
   struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(BROADCAST_SLOTFRAME_HANDLE, APP_SLOTFRAME_SIZE);
   uint16_t slot_offset = 0;
   uint16_t channel_offset = 0; 

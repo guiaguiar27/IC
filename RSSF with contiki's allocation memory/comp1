@@ -1,0 +1,1 @@
+gcc rssf.c conf.c -lcgraph -o a

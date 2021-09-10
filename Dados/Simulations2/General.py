@@ -158,8 +158,6 @@ for j in range(5,19):
                     #garante que não haja canais usados sem no minimo 1 canal computado
                     if Bw == 0: 
                         Bw = 1 
-                    elif Bw > 1 and Bw%2 != 0: 
-                        Bw += 1   
                     for i in range(1,aux_numNode): 
                         if i == node:     
                             if Wider_band[i] <= Bw: 
@@ -173,18 +171,12 @@ for j in range(5,19):
 
         #print("Metrics for TASA") 
 
-        #print("Tx per node: ",Tx_try_per_node[:]) 
-        #print("Rx per node: ",Rx_per_node[:])
         Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
         Rx_total =  reduce(lambda x, y:x+y, Rx_per_node) 
 
-        #print("Total Tx:",Tx_total)  
-        #print("Total Rx:",Rx_total)  
-        #throughput = Rx_total/slotframe_size 
-        #print("Throughput:",throughput)   
+        
         prr = Tx_total - Rx_total 
         prr = prr/Tx_total 
-        prr = prr*100
         aux_tasa =  (Rx_total/Tx_total)*100  
         PRR_TASA.append(prr)
         
@@ -201,12 +193,8 @@ for j in range(5,19):
         print("PRR(%)",prr) 
 
 
-        #print("****************************************************************************")
         print("Metrics for TSCH-LBV:")   
 
-        #print("Wider bandwidth:",Wider_band[:])
-        #print("Tx per node: ",Tx_try_per_node[:]) 
-        #print("Rx per node: ",Rx_per_node[:]) 
         Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
         #multiplica os pacotes apenas daqueles que conseguiram mandar pacotes  
 
@@ -214,19 +202,13 @@ for j in range(5,19):
             Tx_per_node[i] = Tx_per_node[i] * Wider_band[i]   
         Rx_total =  reduce(lambda x, y:x+y, Tx_per_node)  
 
-        #print("****************************************************************************")
-        #print("Wider Tx and Rx")
         for i in range(0, aux_numNode): 
             Tx_try_per_node[i] = Tx_try_per_node[i] * Wider_band[i]   
 
         Tx_total =  reduce(lambda x, y:x+y, Tx_try_per_node) 
-        #print("Total Tx:",Tx_total)  
-        #print("Total Rx:",Rx_total)  
-        #throughput = Rx_total/slotframe_size 
-        #print("Throughput:",throughput) 
+        
         prr = Tx_total - Rx_total 
         prr = prr/Tx_total 
-        prr = prr*100
         
         aux_lbv = (Rx_total/Tx_total)*100 
         time = final_time - init_time 
@@ -245,7 +227,7 @@ for j in range(5,19):
 
 
 
-    arq=open("saida.txt","a")
+    arq=open("saida4.txt","a")
     arq.write("{}nodes\n".format(numNodes))   
 
     arq.write("PDRTASA = {}\n".format(average(PDR_TASA)))   
