@@ -27,11 +27,11 @@ public class RandomPositioner extends Positioner {
     double ipos[] = new double[2];  
     ipos[0] = 0.0;  
     ipos[1] = 0.0;
-    nextPos(startX,endX,startY,endY,4,ipos);
+    nextPos(startX,endX,startY,endY,ipos);
     }
   
 
-    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, int NiveisRestantes, double[] BasePos){ 
+    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
         double ua,udx,udy, dx,dy;  
         double maxDistanceX = maxRangeX - minRangeX; 
         double maxDistanceY = maxRangeY - minRangeY; 
@@ -41,8 +41,9 @@ public class RandomPositioner extends Positioner {
         udx = minRangeX + rand.nextInt() * maxDistanceX;  
         udy = minRangeY + rand.nextInt() * maxDistanceY;  
         
-        dx = BasePos[0] + udx * Math.cos(ua); 
-        dy = BasePos[1] + udy * Math.sin(ua);  
+
+        dx =  rand.nextInt() + udx * Math.cos(ua); 
+        dy =  rand.nextInt() + udy * Math.sin(ua);  
         xPos = dx;  
         yPos = dy;  
         double aux[] = new double[2]; 
@@ -50,10 +51,6 @@ public class RandomPositioner extends Positioner {
         aux[1] = dy;
 
 
-
-        if (NiveisRestantes != 1){  
-            nextPos(minRangeX, maxRangeX,minRangeY, maxRangeY, NiveisRestantes-1, aux);             
-        }  
 
 
     }   
