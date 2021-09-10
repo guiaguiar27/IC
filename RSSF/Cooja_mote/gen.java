@@ -42,7 +42,10 @@ public class gen {
         }  
 
 
-    }  
+    }   
+    public void generate_degenerated_binary_tree(){ 
+        
+    }
     public void show(){ 
 
         for( float i[]: Nodes){ 
