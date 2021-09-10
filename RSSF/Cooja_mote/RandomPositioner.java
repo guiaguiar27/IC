@@ -42,8 +42,8 @@ public class RandomPositioner extends Positioner {
         udy = minRangeY + rand.nextInt() * maxDistanceY;  
         
 
-        dx =  rand.nextInt() + udx * Math.cos(ua); 
-        dy =  rand.nextInt() + udy * Math.sin(ua);  
+        dx =  this.startX +  rand.nextDouble() + udx * Math.cos(ua); 
+        dy =  this.startY + rand.nextDouble() + udy * Math.sin(ua);  
         xPos = dx;  
         yPos = dy;  
         double aux[] = new double[2]; 

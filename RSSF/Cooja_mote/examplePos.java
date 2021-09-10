@@ -1,17 +1,60 @@
-//import org.contikios.cooja.*;
-import java.util.Random; 
-import java.util.*;  
+/*
+ * Copyright (c) 2006, Swedish Institute of Computer Science.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. Neither the name of the Institute nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ */
 
-//@ClassDescription("FULLTREE") 
+package org.contikios.cooja.positioners;
+import java.util.Random;
+
+import org.contikios.cooja.*;
+
+/**
+ * Generates positions randomly distributed in a given interval.
+ *
+ * @author Fredrik Osterlind
+ */
+@ClassDescription("Random positioning")
 public class RandomPositioner extends Positioner {
-    double startX, endX, startY, endY, startZ, endZ;
-    private double pi = 3.14159265358979323846;  
-    private double xPos, yPos, zPos; 
+  double startX, endX, startY, endY, startZ, endZ;
 
+  private Random random = new Random(); /* Do not use main random generator for setup */
 
-    Random rand = new Random(); 
-    
-    public RandomPositioner(int totalNumberOfMotes,
+  /**
+   * Creates a random positioner.
+   * @param totalNumberOfMotes Total number of motes
+   * @param startX X interval start
+   * @param endX X interval end
+   * @param startY Y interval start
+   * @param endY Y interval end
+   * @param startZ Z interval start
+   * @param endZ Z interval end
+   */
+  public RandomPositioner(int totalNumberOfMotes,
 			  double startX, double endX,
 			  double startY, double endY,
 			  double startZ, double endZ) {
@@ -20,49 +63,15 @@ public class RandomPositioner extends Positioner {
     this.startY = startY;
     this.endY = endY;
     this.startZ = startZ;
-    this.endZ = endZ;  
-    double ipos[] = new double[2];  
-    ipos[0] = 0.0;  
-    ipos[1] = 0.0;
-    nextPos(startX,endX,startY,endY,4,ipos);
-    }
-  
+    this.endZ = endZ;
+  }
 
-    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, int NiveisRestantes, double[] BasePos){ 
-        double ua,udx,udy, dx,dy;  
-        double maxDistanceX = maxRangeX - minRangeX; 
-        double maxDistanceY = maxRangeY - minRangeY; 
+  public double[] getNextPosition() {
+    return new double[] {
+        startX + random.nextDouble()*(endX - startX),
+        startY + random.nextDouble()*(endY - startY),
+        startZ + random.nextDouble()*(endZ - startZ)
+    };
+  }
 
-        // coordenadas geograficas
-        ua = rand.nextInt() * (pi/2) * (-1); 
-        udx = minRangeX + rand.nextInt() * maxDistanceX;  
-        udy = minRangeY + rand.nextInt() * maxDistanceY;  
-        
-        dx = BasePos[0] + udx * Math.cos(ua); 
-        dy = BasePos[1] + udy * Math.sin(ua);  
-        xPos = dx;  
-        yPos = dy;  
-        double aux[] = new double[2]; 
-        aux[0] = dx; 
-        aux[1] = dy;
-
-
-
-        if (NiveisRestantes != 1){ 
-            nextPos(minRangeX, maxRangeX,minRangeY, maxRangeY, NiveisRestantes-1, aux);             
-        }  
-
-
-    }   
-    // função de retorno para o simulador
-    public double[] getNextPosition() {
-        return new double[] {
-            xPos,
-            yPos,
-            zPos};
-      } 
-
-} 
-
-
-
+}
