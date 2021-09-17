@@ -11,16 +11,9 @@ public class RandomPositioner extends Positioner {
     private double pi = 3.14159265358979323846;  
     private double xPos, yPos, zPos; 
 
-    private Random rand = new Random();
-    
-    ipos[0] = 0.0;  
-    ipos[1] = 0.0;
-    nextPos(startX,endX,startY,endY,ipos);
-    }
-  
 
-    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
-        double ua,udx,udy, dx,dy;  
+    Random rand = new Random(); 
+    
     public RandomPositioner(int totalNumberOfMotes,
 			  double startX, double endX,
 			  double startY, double endY,
@@ -32,6 +25,14 @@ public class RandomPositioner extends Positioner {
     this.startZ = startZ;
     this.endZ = endZ;  
     double ipos[] = new double[2];  
+    ipos[0] = 0.0;  
+    ipos[1] = 0.0;
+    nextPos(startX,endX,startY,endY,ipos);
+    }
+  
+
+    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
+        double ua,udx,udy, dx,dy;  
         double maxDistanceX = maxRangeX - minRangeX; 
         double maxDistanceY = maxRangeY - minRangeY; 
 
@@ -55,11 +56,9 @@ public class RandomPositioner extends Positioner {
     }   
     // função de retorno para o simulador
     public double[] getNextPosition() {
-        return new double[] {
-        startX + rand.nextDouble()*(endX - startX),
-        startY + rand.nextDouble()*(endY - startY),
-        startZ + rand.nextDouble()*(endZ - startZ) 
-    };
+        return new double[] {startX + rand.nextDouble()*(endX - startX),
+            startY + rand.nextDouble()*(endY - startY),
+            startZ + rand.nextDouble()*(endZ - startZ)};
       } 
 
 } 
