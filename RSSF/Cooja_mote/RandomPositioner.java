@@ -27,7 +27,6 @@ public class RandomPositioner extends Positioner {
     double ipos[] = new double[2];  
     ipos[0] = 0.0;  
     ipos[1] = 0.0;
-    nextPos(startX,endX,startY,endY,ipos);
     }
   
 
@@ -55,10 +54,13 @@ public class RandomPositioner extends Positioner {
 
     }   
     // função de retorno para o simulador
-    public double[] getNextPosition() {
-        return new double[] {startX + rand.nextDouble()*(endX - startX),
-            startY + rand.nextDouble()*(endY - startY),
-            startZ + rand.nextDouble()*(endZ - startZ)};
+    public double[] getNextPosition() { 
+        nextPos(startX,endX,startY,endY,ipos);
+        return new double[] { 
+            xpos, 
+            ypos,  
+            startZ + rand.nextDouble() * (endZ - startZ)
+        };
       } 
 
 } 

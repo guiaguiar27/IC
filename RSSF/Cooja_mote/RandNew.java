@@ -67,7 +67,7 @@ public class RandomPositioner extends Positioner {
     this.endZ = endZ;
   } 
 
-  public getRandom(){ 
+  public void getRandom(){ 
     ReturnX  = startX + random.nextDouble()*(endX - startX); 
     ReturnY = startY + random.nextDouble()*(endY - startY); 
     ReturnZ = startZ + random.nextDouble()*(endZ - startZ);
@@ -82,6 +82,3 @@ public class RandomPositioner extends Positioner {
     };
   }
 
-}
-
-}
