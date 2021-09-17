@@ -31,10 +31,12 @@ public class RandomPositioner extends Positioner {
     ipos[0] = 0.0;  
     ipos[1] = 0.0;  
     nextPos(startX, endX, startY, endY, ipos, 0, finalPos); 
-    
+
+    for(double i: finalPos) { 
+        System.out.println(i);
     }
   
-
+}
     public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int count, double[] Final){ 
         double ua,udx,udy, dx,dy;  
         double maxDistanceX = maxRangeX - minRangeX; 
