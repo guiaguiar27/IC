@@ -10,7 +10,7 @@ public class RandomPositioner extends Positioner {
     double startX, endX, startY, endY, startZ, endZ;
     private double pi = 3.14159265358979323846;  
     private double xPos, yPos, zPos;  
-    private int TotalMotes;
+    private int TotalNumNodes; 
 
 
     Random rand = new Random(); 
@@ -24,20 +24,13 @@ public class RandomPositioner extends Positioner {
     this.startY = startY;
     this.endY = endY;
     this.startZ = startZ;
-    this.endZ = endZ;    
-    this.TotalMotes = totalNumberOfMotes; 
-    double ipos[] = new double[2]; 
-    double finalPos[] = new double[totalNumberOfMotes];  
-    ipos[0] = 0.0;  
-    ipos[1] = 0.0;  
-    nextPos(startX, endX, startY, endY, ipos, 0, finalPos); 
-
-    for(double i: finalPos) { 
-        System.out.println(i);
+    this.endZ = endZ;  
+    this.TotalNumNodes = totalNumberOfMotes;
+    }  
     }
   
-}
-    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int count, double[] Final){ 
+
+    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
         double ua,udx,udy, dx,dy;  
         double maxDistanceX = maxRangeX - minRangeX; 
         double maxDistanceY = maxRangeY - minRangeY; 
@@ -54,15 +47,7 @@ public class RandomPositioner extends Positioner {
         yPos = dy;  
         double aux[] = new double[2]; 
         aux[0] = dx; 
-        aux[1] = dy;   
-
-        Final[count] = aux[0]; 
-        count++; 
-        Final[count] = aux[1]; 
-        count++;
-        if (count <= this.TotalMotes){ 
-            nextPos(minRangeX, maxRangeX, minRangeY, maxRangeY, aux, count, Final); 
-        }
+        aux[1] = dy;
 
 
 
@@ -74,7 +59,7 @@ public class RandomPositioner extends Positioner {
         ipos[0] = 0.0;  
         ipos[1] = 0.0;
      
-        //nextPos(startX,endX,startY,endY,ipos);
+        nextPos(startX,endX,startY,endY,ipos);
         return new double[] { 
             xPos, 
             yPos,  
