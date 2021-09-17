@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2006, Swedish Institute of Computer Science.
+
+ /* Copyright (c) 2006, Swedish Institute of Computer Science.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -68,15 +68,20 @@ public class RandomPositioner extends Positioner {
   } 
 
   public getRandom(){ 
-
+    ReturnX  = startX + random.nextDouble()*(endX - startX); 
+    ReturnY = startY + random.nextDouble()*(endY - startY); 
+    ReturnZ = startZ + random.nextDouble()*(endZ - startZ);
   }
 
   public double[] getNextPosition() {
-    return new double[] {
-        startX + random.nextDouble()*(endX - startX),
-        startY + random.nextDouble()*(endY - startY),
-        startZ + random.nextDouble()*(endZ - startZ)
+    return new double[]{
+        ReturnX,
+        ReturnY,
+        ReturnZ
+        };
     };
   }
+
+}
 
 }
