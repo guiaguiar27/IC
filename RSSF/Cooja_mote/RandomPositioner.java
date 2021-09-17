@@ -10,7 +10,7 @@ public class RandomPositioner extends Positioner {
     double startX, endX, startY, endY, startZ, endZ;
     private double pi = 3.14159265358979323846;  
     private double xPos, yPos, zPos;  
-    private TotalNumNodes; 
+     
 
 
     Random rand = new Random(); 
@@ -26,7 +26,7 @@ public class RandomPositioner extends Positioner {
     this.startZ = startZ;
     this.endZ = endZ;   
     double ipos[] = new double[2]; 
-    double finalPos = new double[totalNumberOfMotes];  
+    double finalPos[] = new double[totalNumberOfMotes];  
     ipos[0] = 0.0;  
     ipos[1] = 0.0;  
     nextPos(startX, endX, startY, endY, ipos, 0, totalNumberOfMotes, finalPos); 
@@ -34,7 +34,7 @@ public class RandomPositioner extends Positioner {
     }
   
 
-    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int count, int total, double Final){ 
+    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int count, int total, double[] Final){ 
         double ua,udx,udy, dx,dy;  
         double maxDistanceX = maxRangeX - minRangeX; 
         double maxDistanceY = maxRangeY - minRangeY; 
@@ -55,8 +55,9 @@ public class RandomPositioner extends Positioner {
 
         Final[count] = aux[0]; 
         count++; 
-        Final[count] = aux[1];
-        if count <= this.TotalNumNodes){ 
+        Final[count] = aux[1]; 
+        count++;
+        if (count <= this.TotalNumNodes){ 
             nextPos(minRangeX, maxRangeX, minRangeY, maxRangeY, aux, count, Final); 
         }
 
