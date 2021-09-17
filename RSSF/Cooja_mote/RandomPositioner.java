@@ -25,12 +25,14 @@ public class RandomPositioner extends Positioner {
     this.endY = endY;
     this.startZ = startZ;
     this.endZ = endZ;  
-    this.TotalNumNodes = totalNumberOfMotes;
-    }  
+    this.TotalNumNodes = totalNumberOfMotes; 
+    System.out.println("Total nodes: " + this.TotalNumNodes);
+     
     }
   
 
     public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
+        System.out.println("*****RandomPositioner.nextPos()");
         double ua,udx,udy, dx,dy;  
         double maxDistanceX = maxRangeX - minRangeX; 
         double maxDistanceY = maxRangeY - minRangeY; 
@@ -41,8 +43,8 @@ public class RandomPositioner extends Positioner {
         udy = minRangeY + rand.nextInt() * maxDistanceY;  
         
 
-        dx =  BasePos[0]+ udx * Math.cos(ua); 
-        dy =  BasePos[1]+ udy * Math.sin(ua);  
+        dx =  BasePos[0] + udx * Math.cos(ua); 
+        dy =  BasePos[1] + udy * Math.sin(ua);  
         xPos = dx;  
         yPos = dy;  
         double aux[] = new double[2]; 
@@ -54,7 +56,9 @@ public class RandomPositioner extends Positioner {
 
     }   
     // função de retorno para o simulador
-    public double[] getNextPosition() { 
+    public double[] getNextPosition() {   
+        
+        System.out.println("*****RandomPositioner.getNextPosition()");
         double ipos[] = new double[2];  
         ipos[0] = 0.0;  
         ipos[1] = 0.0;
