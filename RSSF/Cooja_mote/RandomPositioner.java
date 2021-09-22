@@ -11,6 +11,7 @@ public class RandomPositioner extends Positioner {
     private double pi = 3.14159265358979323846;  
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
+    private int inTest = 0;
 
 
     Random rand = new Random(); 
@@ -27,7 +28,7 @@ public class RandomPositioner extends Positioner {
     this.endZ = endZ;  
     this.TotalNumNodes = totalNumberOfMotes; 
     System.out.println("Total nodes: " + this.TotalNumNodes);
-     
+     // executa uma vez para inicializar o random
     }
   
 
@@ -57,8 +58,8 @@ public class RandomPositioner extends Positioner {
     }   
     // função de retorno para o simulador
     public double[] getNextPosition() {   
-        
-        System.out.println("*****RandomPositioner.getNextPosition()");
+        this.inTest++;  
+        System.out.println("*****RandomPositioner.getNextPosition() - test: " + this.inTest);
         double ipos[] = new double[2];  
         ipos[0] = 0.0;  
         ipos[1] = 0.0;
