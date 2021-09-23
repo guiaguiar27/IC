@@ -8,7 +8,6 @@ import org.contikios.cooja.*;
 public class RandomPositioner extends Positioner { 
     
     double startX, endX, startY, endY, startZ, endZ;
-    private double pi = 3.14159265358979323846;  
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
     private int inTest = 0;     
@@ -34,35 +33,34 @@ public class RandomPositioner extends Positioner {
     public void getFinal(double maxRange, double minRange, int node){  
         System.out.println("Enter in get Final");
         
-        double Maxdistance = maxRange - minRange;  
+        // double Maxdistance = maxRange - minRange;  
         
-        if(node%2 != 0){
-            double ua = rand.nextDouble() * (Math.PI/2); 
-            double ud = minRange + rand.nextDouble() * Maxdistance;  
-            double ux = nodes[0][node-1] + ud * Math.cos(ua); 
-            double uy = nodes[1][node-1] + ud * Math.sin(ua); 
-            nodes[0][node] = ux; 
-            nodes[1][node] = uy;  
-            xPos = ux;  
-            yPos = uy;  
+        // if(node%2 != 0){
+        //     double ua = rand.nextDouble() * (Math.PI/2); 
+        //     double ud = minRange + rand.nextDouble() * Maxdistance;  
+        //     double ux = nodes[0][node-1] + ud * Math.cos(ua); 
+        //     double uy = nodes[1][node-1] + ud * Math.sin(ua); 
+        //     nodes[0][node] = ux; 
+        //     nodes[1][node] = uy;  
+        //     xPos = ux;  
+        //     yPos = uy;  
         
               
-        }
-        if(node%2 == 0){ 
+        // }
+        // if(node%2 == 0){ 
 
-            double da = rand.nextDouble() * (Math.PI/2) *(-1); 
-            double dd = minRange + rand.nextDouble() * Maxdistance;  
-            double dx = nodes[0][node-1] + dd * Math.cos(da); 
-            double dy = nodes[1][node-1] + dd * Math.sin(da); 
-            nodes[0][node] = dx; 
-            nodes[1][node] = dy;  
-            xPos = dx;  
-            yPos = dy;  
+        //     double da = rand.nextDouble() * (Math.PI/2) *(-1); 
+        //     double dd = minRange + rand.nextDouble() * Maxdistance;  
+        //     double dx = nodes[0][node-1] + dd * Math.cos(da); 
+        //     double dy = nodes[1][node-1] + dd * Math.sin(da); 
+        //     nodes[0][node] = dx; 
+        //     nodes[1][node] = dy;  
+        //     xPos = dx;  
+        //     yPos = dy;  
         
               
-        } 
-       
-        return;   
+        // } 
+          
     }
 
     public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int node){ 
