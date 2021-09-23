@@ -51,7 +51,7 @@ public class RandomPositioner extends Positioner {
         pid = pid - 1; 
         double Maxdistance = maxRange - minRange;  
 
-        double ua = (double) rand.nextFloat() * (Math.PI/2); 
+        double ua = rand.nextDouble() * (Math.PI/2); 
         double ud = minRange + rand.nextDouble() * Maxdistance;  
         double ux = basePos[0] + ud * Math.cos(ua); 
         double uy = basePos[1] + ud * Math.sin(ua); 
@@ -66,7 +66,7 @@ public class RandomPositioner extends Positioner {
             getFinal(aux, maxRange, minRange, node);
         } 
 
-        double da = (double) rand.nextFloat() * (Math.PI/2) *(-1); 
+        double da = rand.nextFloat() * (Math.PI/2) *(-1); 
         double dd = minRange + rand.nextDouble() * Maxdistance;  
         double dx = basePos[0] + dd * Math.cos(da); 
         double dy = basePos[1] + dd * Math.sin(da); 
@@ -79,6 +79,7 @@ public class RandomPositioner extends Positioner {
         if (node <= this.TotalNumNodes){ 
             getFinal(aux, maxRange, minRange, node);
         } 
+        return;   
     }
 
     public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
