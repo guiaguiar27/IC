@@ -11,7 +11,7 @@ public class RandomPositioner extends Positioner {
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
     private int inTest = 0;     
-    double [][] nodes = new double[2][];  
+    private double [][] nodes = new double[2][];  
 
     Random rand = new Random(); 
     
@@ -38,10 +38,10 @@ public class RandomPositioner extends Positioner {
         if(node%2 != 0){
             double ua = rand.nextDouble() * (Math.PI/2); 
             double ud = minRange + rand.nextDouble() * Maxdistance;  
-            double ux = nodes[0][node-1] + ud * Math.cos(ua); 
-            double uy = nodes[1][node-1] + ud * Math.sin(ua); 
-            nodes[0][node] = ux; 
-            nodes[1][node] = uy;  
+            double ux = this.nodes[0][node-1] + ud * Math.cos(ua); 
+            double uy = this.nodes[1][node-1] + ud * Math.sin(ua); 
+            this.nodes[0][node] = ux; 
+            this.nodes[1][node] = uy;  
             xPos = ux;  
             yPos = uy;  
         
@@ -51,10 +51,10 @@ public class RandomPositioner extends Positioner {
 
             double da = rand.nextDouble() * (Math.PI/2) *(-1); 
             double dd = minRange + rand.nextDouble() * Maxdistance;  
-            double dx = nodes[0][node-1] + dd * Math.cos(da); 
-            double dy = nodes[1][node-1] + dd * Math.sin(da); 
-            nodes[0][node] = dx; 
-            nodes[1][node] = dy;  
+            double dx = this.nodes[0][node-1] + dd * Math.cos(da); 
+            double dy = this.nodes[1][node-1] + dd * Math.sin(da); 
+            this.nodes[0][node] = dx; 
+            this.nodes[1][node] = dy;  
             xPos = dx;  
             yPos = dy;  
         
