@@ -26,67 +26,67 @@ public class RandomPositioner extends Positioner {
     this.startZ = startZ;
     this.endZ = endZ;  
     this.TotalNumNodes = totalNumberOfMotes; 
-    nodes[0][0] = 0.0; 
-    nodes[1][0] = 0.0;
-}
+    //nodes[0][0] = 0.0; 
+    //nodes[1][0] = 0.0;
+    }
   
     public void getFinal(double maxRange, double minRange, int node){  
         System.out.println("Enter in get Final");
         
-        // double Maxdistance = maxRange - minRange;  
+        double Maxdistance = maxRange - minRange;  
         
-        // if(node%2 != 0){
-        //     double ua = rand.nextDouble() * (Math.PI/2); 
-        //     double ud = minRange + rand.nextDouble() * Maxdistance;  
-        //     double ux = nodes[0][node-1] + ud * Math.cos(ua); 
-        //     double uy = nodes[1][node-1] + ud * Math.sin(ua); 
-        //     nodes[0][node] = ux; 
-        //     nodes[1][node] = uy;  
-        //     xPos = ux;  
-        //     yPos = uy;  
+        if(node%2 != 0){
+            double ua = rand.nextDouble() * (Math.PI/2); 
+            double ud = minRange + rand.nextDouble() * Maxdistance;  
+            double ux = nodes[0][node-1] + ud * Math.cos(ua); 
+            double uy = nodes[1][node-1] + ud * Math.sin(ua); 
+            nodes[0][node] = ux; 
+            nodes[1][node] = uy;  
+            xPos = ux;  
+            yPos = uy;  
         
               
-        // }
-        // if(node%2 == 0){ 
+        }
+        if(node%2 == 0){ 
 
-        //     double da = rand.nextDouble() * (Math.PI/2) *(-1); 
-        //     double dd = minRange + rand.nextDouble() * Maxdistance;  
-        //     double dx = nodes[0][node-1] + dd * Math.cos(da); 
-        //     double dy = nodes[1][node-1] + dd * Math.sin(da); 
-        //     nodes[0][node] = dx; 
-        //     nodes[1][node] = dy;  
-        //     xPos = dx;  
-        //     yPos = dy;  
+            double da = rand.nextDouble() * (Math.PI/2) *(-1); 
+            double dd = minRange + rand.nextDouble() * Maxdistance;  
+            double dx = nodes[0][node-1] + dd * Math.cos(da); 
+            double dy = nodes[1][node-1] + dd * Math.sin(da); 
+            nodes[0][node] = dx; 
+            nodes[1][node] = dy;  
+            xPos = dx;  
+            yPos = dy;  
         
               
-        // } 
+        } 
           
     }
 
-    public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int node){ 
+    // public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int node){ 
 
-        double ua,udx,udy, dx,dy;  
-        double maxDistanceX = maxRangeX - minRangeX; 
-        double maxDistanceY = maxRangeY - minRangeY; 
+    //     double ua,udx,udy, dx,dy;  
+    //     double maxDistanceX = maxRangeX - minRangeX; 
+    //     double maxDistanceY = maxRangeY - minRangeY; 
 
-        // coordenadas geograficas
-        ua = rand.nextInt() * (Math.PI/2) * (-1); 
-        udx = minRangeX + rand.nextInt() * maxDistanceX;  
-        udy = minRangeY + rand.nextInt() * maxDistanceY;  
+    //     // coordenadas geograficas
+    //     ua = rand.nextInt() * (Math.PI/2) * (-1); 
+    //     udx = minRangeX + rand.nextInt() * maxDistanceX;  
+    //     udy = minRangeY + rand.nextInt() * maxDistanceY;  
         
 
-        dx =  BasePos[0] + udx * Math.cos(ua); 
-        dy =  BasePos[1] + udy * Math.sin(ua);  
-        xPos = dx;  
-        yPos = dy;  
-        double aux[] = new double[2]; 
-        aux[0] = dx; 
-        aux[1] = dy;
+    //     dx =  BasePos[0] + udx * Math.cos(ua); 
+    //     dy =  BasePos[1] + udy * Math.sin(ua);  
+    //     xPos = dx;  
+    //     yPos = dy;  
+    //     double aux[] = new double[2]; 
+    //     aux[0] = dx; 
+    //     aux[1] = dy;
 
 
 
 
-    }   
+    // }   
     // função de retorno para o simulador
     public double[] getNextPosition() {   
         this.inTest++;  
@@ -94,7 +94,8 @@ public class RandomPositioner extends Positioner {
         double ipos[] = new double[2];  
         ipos[0] = 0.0;  
         ipos[1] = 0.0;
-        getFinal(this.endX,0, this.inTest);
+        getFinal(this.endX,0, this.inTest); 
+
         return new double[] { 
             xPos, 
             yPos,  
