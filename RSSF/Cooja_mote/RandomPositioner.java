@@ -10,7 +10,9 @@ public class RandomPositioner extends Positioner {
     double startX, endX, startY, endY, startZ, endZ;
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
-    private int inTest = 0;     
+    private int node = 0;     
+    private double iposX = 0.0; 
+    private double iposY = 0.0;  
     private double [][] nodes = new double[2][];  
 
     Random rand = new Random(); 
@@ -89,16 +91,28 @@ public class RandomPositioner extends Positioner {
     // }   
     // função de retorno para o simulador
     public double[] getNextPosition() {   
-        this.inTest++;  
-        System.out.println("*****RandomPositioner.getNextPosition() - test: " + this.inTest);
-        double ipos[] = new double[2];  
-        ipos[0] = 0.0;  
-        ipos[1] = 0.0;
-        getFinal(this.endX,0, this.inTest); 
+        this.node++;  
+        double Maxdistance = endX - startX;  
+        double ua; 
+        if(this.node%2 != 0){
+            ua = rand.nextDouble() * (Math.PI/2); 
+        } 
+        else { 
+            ua = rand.nextDouble() * (Math.PI/2) *(-1);
+        }    
+            double ud = startX + rand.nextDouble() * Maxdistance;  
+            double ux = this.iposX + ud * Math.cos(ua); 
+            double uy = this.iposY + ud * Math.sin(ua); 
+            iposX = ux;  
+            iposY = uy;  
+    
+        System.out.println("*****RandomPositioner.getNextPosition() - test: " + this.node);
+        
+        //getFinal(this.endX,0, this.node); 
 
         return new double[] { 
-            xPos, 
-            yPos,  
+            ux, 
+            uy,  
             startZ + rand.nextDouble() * (endZ - startZ)
         };
       } 
