@@ -1,5 +1,5 @@
 package org.contikios.cooja.positioners;
-import java.util.Random;
+import java.util.*;  
 
 import org.contikios.cooja.*;
 
@@ -11,8 +11,8 @@ public class RandomPositioner extends Positioner {
     private double pi = 3.14159265358979323846;  
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
-    private int inTest = 0;
-
+    private int inTest = 0;     
+    double [][] nodes = new double[2][];  
 
     Random rand = new Random(); 
     
@@ -27,10 +27,49 @@ public class RandomPositioner extends Positioner {
     this.startZ = startZ;
     this.endZ = endZ;  
     this.TotalNumNodes = totalNumberOfMotes; 
+    double []initPos = new double[2]; 
+    initPos[1] =initPos[0] = 0.0;       
+    getFinal(initPos,this.endX,0, 0);  
+    
+
     System.out.println("Total nodes: " + this.TotalNumNodes);
      // executa uma vez para inicializar o random
     }
   
+    public void getFinal(double []basePos, double maxRange, double minRange, int node){ 
+        int pid = nodes.length; 
+        pid = pid - 1; 
+        double Maxdistance = maxRange - minRange;  
+
+        double ua = (double) rand.nextFloat() * (Math.PI/2); 
+        double ud = minRange + rand.nextDouble() * Maxdistance;  
+        double ux = basePos[0] + ud * Math.cos(ua); 
+        double uy = basePos[1] + ud * Math.sin(ua); 
+        double []aux = new double[2];  
+        aux[0] = ux;  
+        aux[1] = uy;    
+        nodes[0][node] = aux[0]; 
+        nodes[1][node] = aux[1]; 
+        node++;  
+        
+        if (node <= this.TotalNumNodes){ 
+            getFinal(aux, maxRange, minRange, node);
+        } 
+
+        double da = (double) rand.nextFloat() * (Math.PI/2) *(-1); 
+        double dd = minRange + rand.nextDouble() * Maxdistance;  
+        double dx = basePos[0] + dd * Math.cos(da); 
+        double dy = basePos[1] + dd * Math.sin(da); 
+        aux[0] = ux;  
+        aux[1] = uy;    
+        nodes[0][node] = aux[0]; 
+        nodes[1][node] = aux[1]; 
+        node++;  
+        
+        if (node <= this.TotalNumNodes){ 
+            getFinal(aux, maxRange, minRange, node);
+        } 
+    }
 
     public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos){ 
         System.out.println("*****RandomPositioner.nextPos()");
