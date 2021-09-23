@@ -32,11 +32,21 @@ public class RandomPositioner extends Positioner {
     getFinal(initPos,this.endX,0, 0);  
     
 
-    System.out.println("Total nodes: " + this.TotalNumNodes);
+    System.out.println("Total nodes: " + this.TotalNumNodes); 
+    for (int i = 0; i < nodes.length; i++)
+    {
+           System.out.print(nodes[ i ] [ 0 ] + ": ");
+           for (int j = 1; j < nodes[ i ].length; j++)
+           {
+                      System.out.print(nodes[ i ][ j ] + " ");
+           }
+          System.out.println( );
+    }
      // executa uma vez para inicializar o random
     }
   
-    public void getFinal(double []basePos, double maxRange, double minRange, int node){ 
+    public void getFinal(double []basePos, double maxRange, double minRange, int node){  
+        System.out.println("Enter in get Final");
         int pid = nodes.length; 
         pid = pid - 1; 
         double Maxdistance = maxRange - minRange;  
