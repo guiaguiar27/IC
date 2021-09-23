@@ -29,25 +29,13 @@ public class RandomPositioner extends Positioner {
     this.TotalNumNodes = totalNumberOfMotes; 
     nodes[0][0] = 0.0; 
     nodes[1][0] = 0.0;
-
-    System.out.println("Total nodes: " + this.TotalNumNodes); 
-    for (int i = 0; i < nodes.length; i++)
-    {
-           System.out.print(nodes[ i ] [ 0 ] + ": ");
-           for (int j = 1; j < nodes[ i ].length; j++)
-           {
-                      System.out.print(nodes[ i ][ j ] + " ");
-           }
-          System.out.println( );
-    }
-     // executa uma vez para inicializar o random
-    }
+}
   
     public void getFinal(double maxRange, double minRange, int node){  
         System.out.println("Enter in get Final");
-        int pid = nodes.length; 
-        pid = pid - 1; 
+        
         double Maxdistance = maxRange - minRange;  
+        
         if(node%2 != 0){
             double ua = rand.nextDouble() * (Math.PI/2); 
             double ud = minRange + rand.nextDouble() * Maxdistance;  
@@ -62,14 +50,14 @@ public class RandomPositioner extends Positioner {
         }
         if(node%2 == 0){ 
 
-            double ua = rand.nextDouble() * (Math.PI/2); 
-            double ud = minRange + rand.nextDouble() * Maxdistance;  
-            double ux = nodes[0][node-1] + ud * Math.cos(ua); 
-            double uy = nodes[1][node-1] + ud * Math.sin(ua); 
-            nodes[0][node] = ux; 
-            nodes[1][node] = uy;  
-            xPos = ux;  
-            yPos = uy;  
+            double da = rand.nextDouble() * (Math.PI/2) *(-1); 
+            double dd = minRange + rand.nextDouble() * Maxdistance;  
+            double dx = nodes[0][node-1] + dd * Math.cos(da); 
+            double dy = nodes[1][node-1] + dd * Math.sin(da); 
+            nodes[0][node] = dx; 
+            nodes[1][node] = dy;  
+            xPos = dx;  
+            yPos = dy;  
         
               
         } 
