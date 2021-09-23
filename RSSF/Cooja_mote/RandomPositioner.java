@@ -70,7 +70,7 @@ public class RandomPositioner extends Positioner {
         double maxDistanceY = maxRangeY - minRangeY; 
 
         // coordenadas geograficas
-        ua = rand.nextInt() * (pi/2) * (-1); 
+        ua = rand.nextInt() * (Math.PI/2) * (-1); 
         udx = minRangeX + rand.nextInt() * maxDistanceX;  
         udy = minRangeY + rand.nextInt() * maxDistanceY;  
         
