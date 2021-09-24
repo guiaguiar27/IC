@@ -37,7 +37,8 @@ public class RandomPositioner extends Positioner {
         
         double Maxdistance = maxRange - minRange;  
         
-        if(node%2 != 0){
+        if(node%2 != 0){ 
+
             double ua = rand.nextDouble() * (Math.PI/2); 
             double ud = minRange + rand.nextDouble() * Maxdistance;  
             double ux = this.nodes[0][node-1] + ud * Math.cos(ua); 
@@ -92,17 +93,19 @@ public class RandomPositioner extends Positioner {
     // função de retorno para o simulador
     public double[] getNextPosition() {   
         this.node++;  
-        double Maxdistance = endX - startX;  
+        double MaxdistanceX = (endX - startX)/2; 
+        double MaxdistanceY = (endX - startY)/2;    
         double ua; 
         if(this.node%2 != 0){
-            ua = rand.nextDouble() * (Math.PI/2); 
+            ua = Math.random() * (Math.PI/2); 
         } 
         else { 
-            ua = rand.nextDouble() * (Math.PI/2) *(-1);
+            ua = Math.random() * (Math.PI/2) * (-1);
         }    
-            double ud = startX + rand.nextDouble() * Maxdistance;  
-            double ux = this.iposX + ud * Math.cos(ua); 
-            double uy = this.iposY + ud * Math.sin(ua); 
+            double udX = startX + Math.random() * MaxdistanceX;   
+            double udY = startX + Math.random() * MaxdistanceX;  
+            double ux = this.iposX + udX * Math.cos(ua); 
+            double uy = this.iposY + udY * Math.sin(ua); 
             iposX = ux;  
             iposY = uy;  
     
