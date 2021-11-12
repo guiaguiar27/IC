@@ -10,10 +10,9 @@ public class RandomPositioner extends Positioner {
     double startX, endX, startY, endY, startZ, endZ;
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
-    private int node = 0;     
-    private double iposX = 0.0; 
-    private double iposY = 0.0;  
-    private double [][] nodes = new double[2][];  
+    private int node = 0; 
+    private double IposX, IposY;  // para ser o nó pai de cada dois nós.
+    //private double [][] nodes = new double[2][];  
 
     Random rand = new Random(); 
     
@@ -32,82 +31,33 @@ public class RandomPositioner extends Positioner {
     //nodes[1][0] = 0.0;
     }
   
-    public void getFinal(double maxRange, double minRange, int node){  
-        System.out.println("Enter in get Final");
-        
-        double Maxdistance = maxRange - minRange;  
-        
-        if(node%2 != 0){ 
 
-            double ua = rand.nextDouble() * (Math.PI/2); 
-            double ud = minRange + rand.nextDouble() * Maxdistance;  
-            double ux = this.nodes[0][node-1] + ud * Math.cos(ua); 
-            double uy = this.nodes[1][node-1] + ud * Math.sin(ua); 
-            this.nodes[0][node] = ux; 
-            this.nodes[1][node] = uy;  
-            xPos = ux;  
-            yPos = uy;  
-        
-              
-        }
-        if(node%2 == 0){ 
-
-            double da = rand.nextDouble() * (Math.PI/2) *(-1); 
-            double dd = minRange + rand.nextDouble() * Maxdistance;  
-            double dx = this.nodes[0][node-1] + dd * Math.cos(da); 
-            double dy = this.nodes[1][node-1] + dd * Math.sin(da); 
-            this.nodes[0][node] = dx; 
-            this.nodes[1][node] = dy;  
-            xPos = dx;  
-            yPos = dy;  
-        
-              
-        } 
-          
-    }
-
-    // public void nextPos(double minRangeX, double maxRangeX,  double minRangeY, double maxRangeY, double[] BasePos, int node){ 
-
-    //     double ua,udx,udy, dx,dy;  
-    //     double maxDistanceX = maxRangeX - minRangeX; 
-    //     double maxDistanceY = maxRangeY - minRangeY; 
-
-    //     // coordenadas geograficas
-    //     ua = rand.nextInt() * (Math.PI/2) * (-1); 
-    //     udx = minRangeX + rand.nextInt() * maxDistanceX;  
-    //     udy = minRangeY + rand.nextInt() * maxDistanceY;  
-        
-
-    //     dx =  BasePos[0] + udx * Math.cos(ua); 
-    //     dy =  BasePos[1] + udy * Math.sin(ua);  
-    //     xPos = dx;  
-    //     yPos = dy;  
-    //     double aux[] = new double[2]; 
-    //     aux[0] = dx; 
-    //     aux[1] = dy;
-
-
-
-
-    // }   
     // função de retorno para o simulador
     public double[] getNextPosition() {   
         this.node++;  
         double MaxdistanceX = (endX - startX)/2; 
         double MaxdistanceY = (endX - startY)/2;    
-        double ua; 
+        double ua;  
+
         if(this.node%2 != 0){
             ua = Math.random() * (Math.PI/2); 
+            double udX = startX + Math.random() * MaxdistanceX;   
+            double udY = startY + Math.random() * MaxdistanceX;  
+            double ux = this.IposX + udX * Math.cos(ua); 
+            double uy = this.IposY + udY * Math.sin(ua); 
+            IposX = ux; 
+            IposY = uy; 
         } 
         else { 
             ua = Math.random() * (Math.PI/2) * (-1);
-        }    
             double udX = startX + Math.random() * MaxdistanceX;   
-            double udY = startX + Math.random() * MaxdistanceX;  
-            double ux = this.iposX + udX * Math.cos(ua); 
-            double uy = this.iposY + udY * Math.sin(ua); 
-            iposX = ux;  
-            iposY = uy;  
+            double udY = startY + Math.random() * MaxdistanceX;  
+            double ux = this.IposX + udX * Math.cos(ua); 
+            double uy = this.IposY + udY * Math.sin(ua); 
+            IposX = ux; 
+            IposY = uy; 
+        }    
+            
     
         System.out.println("*****RandomPositioner.getNextPosition() - test: " + this.node);
         
