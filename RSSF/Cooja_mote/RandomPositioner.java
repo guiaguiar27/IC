@@ -10,10 +10,9 @@ public class RandomPositioner extends Positioner {
     double startX, endX, startY, endY, startZ, endZ;
     private double xPos, yPos, zPos;  
     private int TotalNumNodes; 
-    private int node = 0; 
-    private double IposX, IposY;  // para ser o nó pai de cada dois nós.
-    //private double [][] nodes = new double[2][]; 
-    // talvez isso nao funcione  
+    private int node = 0;  
+    private int index;
+    
     List<Double> nodesX = new ArrayList<>(); 
     List<Double> nodesY = new ArrayList<>();
     
@@ -56,7 +55,6 @@ public class RandomPositioner extends Positioner {
 
     public void Generate_full_binary_tree(double levels, double nodeX, double nodeY){   
 
-        this.node++;   
         double lv = levels; 
         double MaxdistanceX = (this.endX - this.startX)/2; 
         double MaxdistanceY = (this.endY - this.startY)/2;    
