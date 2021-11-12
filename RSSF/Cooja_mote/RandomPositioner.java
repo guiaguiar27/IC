@@ -38,7 +38,7 @@ public class RandomPositioner extends Positioner {
     this.level = getLevel(totalNumberOfMotes); 
     Generate_full_binary_tree(this.level, this.startX, this.startY); 
     for(int i = 0 ; i < TotalNumNodes;i++){ 
-        System.out.print(this.nodesX.get(i)); 
+        System.out.print(this.nodesX.get(i)+  " "); 
         System.out.print(this.nodesY.get(i)); 
         System.out.println();
     }
@@ -95,29 +95,35 @@ public class RandomPositioner extends Positioner {
 
     // função de retorno para o simulador
     public double[] getNextPosition() {   
-        this.node++;  
-        double MaxdistanceX = (endX - startX)/2; 
-        double MaxdistanceY = (endY - startY)/2;    
-        double ua,ud,ux,uy;  
+        
+        int index = node;
+        this.node++;    
+        double posX, posY; 
+        posX = this.nodesX.get(index); 
+        posY = this.nodesY.get(index); 
+        
+        // double MaxdistanceX = (endX - startX)/2; 
+        // double MaxdistanceY = (endY - startY)/2;    
+        // double ua,ud,ux,uy;  
 
-        ua = Math.random() * (Math.PI/2);  
-        double udX =  Math.random() * MaxdistanceX;   
-        double udY =  Math.random() * MaxdistanceX;  
-        ux = this.IposX + udX * Math.cos(ua); 
-        uy = this.IposY + udY * Math.sin(ua); 
-        IposX = ux; 
-        IposY = uy; 
+        // ua = Math.random() * (Math.PI/2);  
+        // double udX =  Math.random() * MaxdistanceX;   
+        // double udY =  Math.random() * MaxdistanceX;  
+        // ux = this.IposX + udX * Math.cos(ua); 
+        // uy = this.IposY + udY * Math.sin(ua); 
+        // IposX = ux; 
+        // IposY = uy; 
          
-          
-            
+        
     
         System.out.println("*****RandomPositioner.getNextPosition() - test: " + this.node);
-        
+        System.out.print(posX +  " "); 
+        System.out.print(posY); 
         //getFinal(this.endX,0, this.node); 
         
         return new double[] { 
-            ux, 
-            uy,  
+            posX, 
+            posY,  
             startZ + rand.nextDouble() * (endZ - startZ)
         };
       } 
