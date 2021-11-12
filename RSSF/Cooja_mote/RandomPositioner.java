@@ -12,7 +12,11 @@ public class RandomPositioner extends Positioner {
     private int TotalNumNodes; 
     private int node = 0; 
     private double IposX, IposY;  // para ser o nó pai de cada dois nós.
-    //private double [][] nodes = new double[2][];  
+    //private double [][] nodes = new double[2][]; 
+    // talvez isso nao funcione 
+    private double [] nodesX  = new double[TotalNumNodes]; 
+    private double [] nodesY = new double[TotalNumNodes];
+    private int levelCheck;   
 
     Random rand = new Random(); 
     
@@ -26,43 +30,54 @@ public class RandomPositioner extends Positioner {
     this.endY = endY;
     this.startZ = startZ;
     this.endZ = endZ;  
-    this.TotalNumNodes = totalNumberOfMotes; 
+    this.TotalNumNodes = totalNumberOfMotes;   
+    int aux_node = totalNumberOfMotes +1; 
+    double level = Math.log(aux_node) / Math.log(2); 
+    System.out.println(level);
+
+
     //nodes[0][0] = 0.0; 
     //nodes[1][0] = 0.0;
     }
-  
+  public void Generate_full_binary_tree(){  
+        this.node++;  
+        double MaxdistanceX = (this.endX - this.startX)/2; 
+        double MaxdistanceY = (this.endY - this.startY)/2;    
+        double ua,ud,ux,uy;  
+
+        ua = Math.random() * (Math.PI/2);  
+        double udX =  Math.random() * MaxdistanceX;   
+        double udY =  Math.random() * MaxdistanceX;  
+        ux = this.IposX + udX * Math.cos(ua); 
+        uy = this.IposY + udY * Math.sin(ua);  
+        this.nodesX[node] = ux; 
+        this.nodesY[node] = uy; 
+
+         
+  }
 
     // função de retorno para o simulador
     public double[] getNextPosition() {   
         this.node++;  
         double MaxdistanceX = (endX - startX)/2; 
-        double MaxdistanceY = (endX - startY)/2;    
-        double ua;  
+        double MaxdistanceY = (endY - startY)/2;    
+        double ua,ud,ux,uy;  
 
-        if(this.node%2 != 0){
-            ua = Math.random() * (Math.PI/2); 
-            double udX = startX + Math.random() * MaxdistanceX;   
-            double udY = startY + Math.random() * MaxdistanceX;  
-            double ux = this.IposX + udX * Math.cos(ua); 
-            double uy = this.IposY + udY * Math.sin(ua); 
-            IposX = ux; 
-            IposY = uy; 
-        } 
-        else { 
-            ua = Math.random() * (Math.PI/2) * (-1);
-            double udX = startX + Math.random() * MaxdistanceX;   
-            double udY = startY + Math.random() * MaxdistanceX;  
-            double ux = this.IposX + udX * Math.cos(ua); 
-            double uy = this.IposY + udY * Math.sin(ua); 
-            IposX = ux; 
-            IposY = uy; 
-        }    
+        ua = Math.random() * (Math.PI/2);  
+        double udX =  Math.random() * MaxdistanceX;   
+        double udY =  Math.random() * MaxdistanceX;  
+        ux = this.IposX + udX * Math.cos(ua); 
+        uy = this.IposY + udY * Math.sin(ua); 
+        IposX = ux; 
+        IposY = uy; 
+         
+          
             
     
         System.out.println("*****RandomPositioner.getNextPosition() - test: " + this.node);
         
         //getFinal(this.endX,0, this.node); 
-
+        
         return new double[] { 
             ux, 
             uy,  
