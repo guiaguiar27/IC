@@ -74,7 +74,6 @@ public class RandomPositioner extends Positioner {
             Generate_full_binary_tree(lv, ux,uy);
         }
         // down child   
-        this.node ++; 
         double da,dd,dx,dy; 
         da = Math.random() * (Math.PI/2) * (-1);  
         double ddX =  Math.random() * MaxdistanceX;   
@@ -96,6 +95,7 @@ public class RandomPositioner extends Positioner {
         
         int index = node;
         this.node++;    
+        System.out.println("index: "+ index);
         double posX, posY; 
         posX = this.nodesX.get(index); 
         posY = this.nodesY.get(index); 
