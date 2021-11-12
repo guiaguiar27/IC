@@ -42,7 +42,10 @@ public class RandomPositioner extends Positioner {
         System.out.print(this.nodesX.get(i)+  " "); 
         System.out.print(this.nodesY.get(i)); 
         System.out.println();
-    }
+    } 
+    System.out.println("Tamanho do vetor: " + this.nodesX.size()); 
+    System.out.println("Quantidade de nos: " + this.TotalNumNodes); 
+    
     
 
 
