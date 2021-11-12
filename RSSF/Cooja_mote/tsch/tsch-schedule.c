@@ -1142,7 +1142,7 @@ int sort_node_to_create_link(int n){
     for(count = 0; count < MAX_NEIGHBORS ; count++ ){ 
         if(NBRlist[count] == nbr) return ; 
         
-        if(NBRlist[count] == 0 ){  
+        if(NBRlist[count] == 0 ){  // não tem nenhum nó nessa célula do vetor
           NBRlist[count] = nbr; 
           break; 
         }   
