@@ -13,9 +13,10 @@ public class RandomPositioner extends Positioner {
     private int node = 0; 
     private double IposX, IposY;  // para ser o nó pai de cada dois nós.
     //private double [][] nodes = new double[2][]; 
-    // talvez isso nao funcione 
-    private double [] nodesX  = new double[TotalNumNodes]; 
-    private double [] nodesY = new double[TotalNumNodes];
+    // talvez isso nao funcione  
+    List<Double> nodesX = new ArrayList<>(); 
+    List<Double> nodesY = new ArrayList<>();
+    
     private int levelCheck;   
     private double level;  
 
@@ -37,8 +38,8 @@ public class RandomPositioner extends Positioner {
     this.level = getLevel(totalNumberOfMotes); 
     Generate_full_binary_tree(this.level, this.startX, this.startY); 
     for(int i = 0 ; i < TotalNumNodes;i++){ 
-        System.out.print(this.nodesX[i]); 
-        System.out.print(this.nodesY[i]); 
+        System.out.print(this.nodesX.get(i)); 
+        System.out.print(this.nodesY.get(i)); 
         System.out.println();
     }
     
@@ -67,8 +68,9 @@ public class RandomPositioner extends Positioner {
         double udY =  Math.random() * MaxdistanceX;  
         ux = nodeX + udX * Math.cos(ua); 
         uy = nodeY + udY * Math.sin(ua);  
-        this.nodesX[this.node] = ux; 
-        this.nodesY[this.node] = uy;  
+        this.nodesX.add(ux);
+        this.nodesY.add(uy);
+        
         if (lv != 1){  
             lv --; 
             Generate_full_binary_tree(lv, ux,uy);
@@ -81,8 +83,8 @@ public class RandomPositioner extends Positioner {
         double ddY =  Math.random() * MaxdistanceX;  
         dx = nodeX + ddX * Math.cos(ua); 
         dy = nodeY + ddY * Math.sin(ua);  
-        this.nodesX[this.node] = dx; 
-        this.nodesY[this.node] = dy;  
+        this.nodesX.add(dx);
+        this.nodesY.add(dy); 
         if (lv != 1){  
             lv --; 
             Generate_full_binary_tree(lv, dx,dy);
