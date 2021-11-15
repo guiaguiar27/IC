@@ -52,7 +52,8 @@ public class RandomPositioner extends Positioner {
     } 
     public double getLevel(int nodes){ 
     int aux_node = nodes +1; 
-    double level = Math.log(aux_node) / Math.log(2); 
+    double level = Math.log(aux_node) / Math.log(2);  
+    System.out.println("Levels: " + level);
     return level; 
 
     } 
@@ -60,9 +61,13 @@ public class RandomPositioner extends Positioner {
 
     public void Generate_full_binary_tree(double levels, double nodeX, double nodeY){   
 
-        double lv = levels; 
-        double MaxdistanceX = (this.endX - this.startX)/2; 
-        double MaxdistanceY = (this.endY - this.startY)/2;    
+        double lv = levels;  
+        // half  
+        // double MaxdistanceX = (this.endX - this.startX)/2; 
+        // double MaxdistanceY = (this.endY - this.startY)/2; 
+        
+        double MaxdistanceX = (this.endX - this.startX); 
+        double MaxdistanceY = (this.endY - this.startY);    
         double ua,ud,ux,uy;  
 
         // up child 
@@ -74,7 +79,7 @@ public class RandomPositioner extends Positioner {
         this.nodesX.add(ux);
         this.nodesY.add(uy);
         
-        if (lv != 1){  
+        if (lv <=  1){  
             lv --; 
             Generate_full_binary_tree(lv, ux,uy);
         }
@@ -87,7 +92,7 @@ public class RandomPositioner extends Positioner {
         dy = nodeY + ddY * Math.sin(ua);  
         this.nodesX.add(dx);
         this.nodesY.add(dy); 
-        if (lv != 1){  
+        if (lv <= 1){  
             lv --; 
             Generate_full_binary_tree(lv, dx,dy);
         }
