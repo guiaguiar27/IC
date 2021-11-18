@@ -58,7 +58,47 @@ public class RandomPositioner extends Positioner {
 
     } 
 
+    public void Gen(int level){  
 
+        
+        // 1 - 1  
+        // 2 - 2  
+        // 3 - 4
+        // 4 - 8  
+        double ux, uy;    
+        int expo = level -1 ; 
+        int numNodesPerLevel  = (int) Math.pow(2,expo); 
+        if(level == 1 ){ 
+            ux = this.startX + 50.0; 
+            uy = this.startY;  
+            this.nodesX.add(ux); 
+            this.nodesY.add(uy);
+        }   
+        else { 
+            for(int leaf = 1 ; leaf <= numNodesPerLevel ; leaf++){ 
+                uy = this.nodesY.get(level-2) + 40.0;  
+                if(leaf > 1){ 
+                    ux = this.nodesX.get(leaf-2) + 40.0;
+                } 
+                else { 
+                    ux = this.startX + 20.0;  
+                } 
+                this.nodesX.add(ux) 
+                this.nodesY.add(uy);
+
+            } 
+
+        }  
+        double aux_level = (double) level;  
+        if (aux_level <= this.level){ 
+            level ++; 
+            Gen(level);
+        }
+
+        
+
+
+    }
     public void Generate_full_binary_tree(double levels, double nodeX, double nodeY){   
 
         double lv = levels;  
@@ -70,7 +110,10 @@ public class RandomPositioner extends Positioner {
         double MaxdistanceY = (this.endY - this.startY);    
         double ua,ud,ux,uy;  
 
-        // up child 
+        // up child  
+
+        // coordenada y é apenas o nível (fazer a modificação necessária) 
+
         ua = Math.random() * (Math.PI/2);  
         double udX =  Math.random() * MaxdistanceX;   
         double udY =  Math.random() * MaxdistanceX;  
@@ -79,7 +122,7 @@ public class RandomPositioner extends Positioner {
         this.nodesX.add(ux);
         this.nodesY.add(uy);
         
-        if (lv <=  1){  
+        if (lv >=  1){  
             lv --; 
             Generate_full_binary_tree(lv, ux,uy);
         }
@@ -92,7 +135,7 @@ public class RandomPositioner extends Positioner {
         dy = nodeY + ddY * Math.sin(ua);  
         this.nodesX.add(dx);
         this.nodesY.add(dy); 
-        if (lv <= 1){  
+        if (lv >= 1){  
             lv --; 
             Generate_full_binary_tree(lv, dx,dy);
         }
