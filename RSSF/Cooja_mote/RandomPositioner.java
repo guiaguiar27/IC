@@ -15,7 +15,8 @@ public class RandomPositioner extends Positioner {
     
     List<Double> nodesX = new ArrayList<>(); 
     List<Double> nodesY = new ArrayList<>();
-    
+    List<Double> Xpos = new ArrayList<>(); 
+    List<Double> Ypos = new ArrayList<>();
     private int levelCheck;   
     private double level;  
 
@@ -36,8 +37,8 @@ public class RandomPositioner extends Positioner {
     
     this.TotalNumNodes = totalNumberOfMotes;  
     this.level = getLevel(totalNumberOfMotes); 
-
-    Generate_full_binary_tree(this.level, this.startX, this.startY); 
+    Gen(0);
+    //Generate_full_binary_tree(this.level, this.startX, this.startY); 
     for(int i = 0 ; i < this.nodesX.size(); i++){ 
         System.out.print(this.nodesX.get(i)+  " "); 
         System.out.print(this.nodesY.get(i)); 
@@ -59,44 +60,67 @@ public class RandomPositioner extends Positioner {
     } 
 
     public void Gen(int level){  
+        double ux,uy; 
+        int expo = level;  
+        int limit = (int) Math.pow(2,expo); 
+        System.out.println("limit: "+ limit); 
 
-        
-        // 1 - 1  
-        // 2 - 2  
-        // 3 - 4
-        // 4 - 8  
-        double ux, uy;    
-        int expo = level -1 ; 
-        int numNodesPerLevel  = (int) Math.pow(2,expo); 
-        if(level == 1 ){ 
-            ux = this.startX + 50.0; 
+        if(level == 0){ 
             uy = this.startY;  
+            ux = this.startX; 
             this.nodesX.add(ux); 
-            this.nodesY.add(uy);
-        }   
-        else { 
-            for(int leaf = 1 ; leaf <= numNodesPerLevel ; leaf++){ 
-                uy = this.nodesY.get(level-2) + 40.0;  
-                if(leaf > 1){ 
-                    ux = this.nodesX.get(leaf-2) + 40.0;
+            this.nodesY.add(uy); 
+            this.Xpos.add(ux); 
+            this.Ypos.add(uy);
+        } 
+        else{ 
+            if(level%2 != 0){ 
+                System.out.println("level impar: " + level); 
+                for(int j = 1 ; j <=limit;j++){ 
+                    uy = this.nodesY.get(level-1) + 30.0 * level;  
+                    this.nodesY.add(uy);  
+                    this.Ypos.add(uy);
                 } 
-                else { 
-                    ux = this.startX + 20.0;  
-                } 
-                this.nodesX.add(ux) 
-                this.nodesY.add(uy);
-
+                for(int j =1 ; j <= limit ; j++){ 
+                    if(j > 1) 
+                        ux = this.Xpos.get(level -1)+30*j - 30; 
+                    else { 
+                        ux = this.Xpos.get(level-1) - 30.0; 
+                        this.Xpos.add(ux); 
+                    } 
+                    this.nodesX.add(ux);
+                }
             } 
+            else{ 
+                int half_limit = limit/2; 
+                System.out.println("--Definicao do eixo x-- ");
+                for(int j = 1; j <= half_limit; j++ ){ 
+                    System.out.println("X(primeira metade):"+ level); 
+                    ux = this.nodesX.get(0) + 30.0*level;  
+                    this.nodesX.add(ux); 
+                } 
+                for(int j = half_limit +1 ; j <= limit; j++){ 
+                    System.out.println("X(segunda metade):" + level); 
+                    ux = this.nodesX.get(0) - 30.0*level;  
+                    this.nodesX.add(ux);
+                } 
 
-        }  
-        double aux_level = (double) level;  
-        if (aux_level <= this.level){ 
-            level ++; 
-            Gen(level);
+                for(int j = 1; j <= limit ; j++){ 
+                    System.out.println("Y(Parte unica)");  
+                    if(j%2 == 0) 
+                        uy = this.Ypos.get(level-1) - 30.0; 
+                    else 
+                        uy = this.Ypos.get(level-1) + 30.0;  
+                    this.nodesY.add(uy);  
+                }
+            }
+        } 
+
+        if(level <  this.level -1){ 
+            level++; 
+            Gen(level); 
+
         }
-
-        
-
 
     }
     public void Generate_full_binary_tree(double levels, double nodeX, double nodeY){   
