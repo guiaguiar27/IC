@@ -97,7 +97,8 @@ public class RandomPositioner extends Positioner {
                 for(int j = 1; j <= half_limit; j++ ){ 
                     System.out.println("X(primeira metade):"+ level); 
                     ux = this.nodesX.get(0) + 30.0*level;  
-                    this.nodesX.add(ux); 
+                    this.nodesX.add(ux);  
+                    
                 } 
                 for(int j = half_limit +1 ; j <= limit; j++){ 
                     System.out.println("X(segunda metade):" + level); 

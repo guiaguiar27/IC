@@ -1,0 +1,1065 @@
+Starting COOJA logger
+236000 2 [INFO: TSCH      ] scanning on channel 26
+236000 2 [INFO: TSCH      ] starting as node
+236000 2 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+236000 2 [INFO: Main      ] - Routing: RPL Lite
+236000 2 [INFO: Main      ] - Net: sicslowpan
+236000 2 [INFO: Main      ] - MAC: TSCH
+236000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+236000 2 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+236000 2 [INFO: Main      ] Node ID: 2
+236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+236000 2 [INFO: RPL       ] initializing
+236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+236000 2 [INFO: TSCH Sched] add_slotframe 1 4
+236000 2 [PRI : TSCH Sched] Handle : 0
+236000 2  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+236000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+236000 2 [INFO: TSCH Sched] 0
+236000 2 [INFO: App       ] Verify: 0 
+236000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+236000 2 [PRI : TSCH Sched] -1024994364 -1024967872
+236000 2 Energest:
+236000 2  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+236000 2  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+382000 1 [INFO: TSCH      ] scanning on channel 25
+382000 1 [INFO: TSCH      ] starting as node
+382000 1 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+382000 1 [INFO: Main      ] - Routing: RPL Lite
+382000 1 [INFO: Main      ] - Net: sicslowpan
+382000 1 [INFO: Main      ] - MAC: TSCH
+382000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+382000 1 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+382000 1 [INFO: Main      ] Node ID: 1
+382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+382000 1 [INFO: RPL       ] initializing
+382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+382000 1 [INFO: TSCH Sched] add_slotframe 1 4
+382000 1 [PRI : TSCH Sched] Handle : 0
+382000 1  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+382000 1 [INFO: RPL       ] IPv6 addresses:
+382000 1 [INFO: RPL       ] -- fd00::201:1:1:1
+382000 1 [INFO: RPL       ] -- fe80::201:1:1:1
+382000 1 [INFO: RPL       ] reset DIO timer (Init root)
+382000 1 [INFO: RPL       ] created DAG with instance ID 0, DAG ID fd00::201:1:1:1, rank 128
+382000 1 [INFO: RPL       ] created a new RPL DAG
+382000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+382000 1 [INFO: TSCH Sched] 0
+382000 1 [INFO: App       ] Verify: 0 
+382000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+382000 1 [PRI : TSCH Sched] -1024994364 0
+382000 1 Energest:
+382000 1  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+382000 1  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+392000 1 [INFO: TSCH      ] starting as coordinator, PAN ID abcd, asn-0.0
+482000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+515240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 135, status 0, tx 1
+899000 3 [INFO: TSCH      ] scanning on channel 15
+899000 3 [INFO: TSCH      ] starting as node
+899000 3 [INFO: Main      ] Starting Contiki-NG-release/v4.6-67-gb6d839e-dirty
+899000 3 [INFO: Main      ] - Routing: RPL Lite
+899000 3 [INFO: Main      ] - Net: sicslowpan
+899000 3 [INFO: Main      ] - MAC: TSCH
+899000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+899000 3 [INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+899000 3 [INFO: Main      ] Node ID: 3
+899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+899000 3 [INFO: RPL       ] initializing
+899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+899000 3 [INFO: TSCH Sched] add_slotframe 1 4
+899000 3 [PRI : TSCH Sched] Handle : 0
+899000 3  [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
+899000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+899000 3 [INFO: TSCH Sched] 0
+899000 3 [INFO: App       ] Verify: 0 
+899000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+899000 3 [PRI : TSCH Sched] -1024994364 -1024967872
+899000 3 Energest:
+899000 3  CPU             0s LPM         0s DEEP LPM    0s  Total time 0s
+899000 3  Radio LISTEN    0s TRANSMIT    0s OFF         0s
+1246000 2 [INFO: TSCH      ] scanning on channel 20
+1909000 3 [INFO: TSCH      ] scanning on channel 20
+2256000 2 [INFO: TSCH      ] scanning on channel 15
+2430000 1 [INFO: RPL       ] sending a multicast-DIO with rank 128 to ff02::1a
+2430000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 9, queue 1/64 1/64, len 14 94
+2437128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 136, status 0, tx 1
+2437128 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+2437128 2 [INFO: TSCH      ] scan: received packet (94 bytes) on channel 15
+2437128 2 [INFO: TSCH Pkt  ] ! parse_eb: frame is not a TSCH beacon. Frame version 2, type 1, FCF 41 e9
+2437128 2 [INFO: TSCH Pkt  ] ! parse_eb: frame was from 0xabcd/0001.0001.0001.0001 to 0xabcd/ffff.0000.0000.0000
+2757000 1 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 1
+2757000 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+2757000 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+2757000 1 [WARN: IPv6 Route] No route found
+2757000 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+2757000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+2757000 1 [INFO: TSCH Sched] 0
+2757000 1 [INFO: App       ] Verify: 0 
+2757000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+2757000 1 [PRI : TSCH Sched] -1024994268 15650
+2757000 1 Energest:
+2757000 1  CPU             2s LPM         0s DEEP LPM    0s  Total time 2s
+2757000 1  Radio LISTEN    0s TRANSMIT    0s OFF         2s
+2919000 3 [INFO: TSCH      ] scanning on channel 20
+3266000 2 [INFO: TSCH      ] scanning on channel 15
+3929000 3 [INFO: TSCH      ] scanning on channel 15
+3970000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+3995240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 137, status 0, tx 1
+3996000 2 [INFO: TSCH      ] scan: received packet (35 bytes) on channel 15
+3996000 2 [INFO: TSCH      ] parse_eb: no schedule
+3996000 2 0001.0001.0001.0001[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0001.0001.0001.0001
+3996000 2 [INFO: TSCH      ] association done (1), sec 0, PAN ID abcd, asn-0.168, jp 1, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0001.0001.0001.0001
+4163000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+4163000 3 [INFO: TSCH Sched] 0
+4163000 3 [INFO: App       ] Verify: 0 
+4163000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+4163000 3 [PRI : TSCH Sched] -1024994268 -1024981056
+4163000 3 Energest:
+4163000 3  CPU             3s LPM         0s DEEP LPM    0s  Total time 3s
+4163000 3  Radio LISTEN    3s TRANSMIT    0s OFF         0s
+4939000 3 [INFO: TSCH      ] scanning on channel 25
+5890000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 56, queue 1/64 1/64, len 21 21
+5890000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+5916432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 56
+5916432 1 [INFO: TSCH Sched] list of packets
+5916432 1 [WARN: 6LoWPAN   ] input: empty packet
+5916432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 56, status 0, tx 1
+5916432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+5916432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+5949000 3 [INFO: TSCH      ] scanning on channel 26
+6959000 3 [INFO: TSCH      ] scanning on channel 26
+7871000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 57, queue 1/64 1/64, len 21 21
+7871000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+7876432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 57
+7876432 1 [INFO: TSCH Sched] list of packets
+7876432 1 [WARN: 6LoWPAN   ] input: empty packet
+7876432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 57, status 0, tx 1
+7876432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+7876432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+7935000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+7955240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 138, status 0, tx 1
+7969000 3 [INFO: TSCH      ] scanning on channel 25
+8979000 3 [INFO: TSCH      ] scanning on channel 15
+9877000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 58, queue 1/64 1/64, len 21 21
+9877000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+9916432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 58
+9916432 1 [INFO: TSCH Sched] list of packets
+9916432 1 [WARN: 6LoWPAN   ] input: empty packet
+9916432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 58, status 0, tx 1
+9916432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+9916432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+9989000 3 [INFO: TSCH      ] scanning on channel 25
+10999000 3 [INFO: TSCH      ] scanning on channel 20
+11883000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 59, queue 1/64 1/64, len 21 21
+11883000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+11916432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 59
+11916432 1 [INFO: TSCH Sched] list of packets
+11916432 1 [WARN: 6LoWPAN   ] input: empty packet
+11916432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 59, status 0, tx 1
+11916432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+11916432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+12009000 3 [INFO: TSCH      ] scanning on channel 20
+12432000 1 [INFO: RPL       ] sending a multicast-DIO with rank 128 to ff02::1a
+12432000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 9, queue 1/64 1/64, len 14 94
+12477128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 139, status 0, tx 1
+12477128 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+12477128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+12477128 2 [INFO: TSCH Sched] list of packets
+12477128 2 [INFO: RPL       ] received a multicast-DIO from fe80::201:1:1:1, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 128
+12477128 2 [INFO: RPL       ] adding global IP address fd00::202:2:2:2
+12477128 2 [INFO: RPL       ] reset MRHOF
+12477128 2 [INFO: RPL       ] initialized DAG with instance ID 0, DAG ID fd00::201:1:1:1, prexix fd00::/64, rank 65535
+12477128 2 [WARN: RPL       ] just joined, no parent yet, setting timer for leaving
+12477128 2 [INFO: RPL       ] refreshing lifetime
+12477128 2 [INFO: RPL       ] parent switch: (NULL IP addr) -> fe80::201:1:1:1
+12477128 2 [WARN: RPL       ] found parent: fe80::201:1:1:1, staying in DAG
+12477128 2 [INFO: RPL       ] nbr: own state, addr fd00::202:2:2:2, DAG state: joined, MOP 1 OCP 1 rank 304 max-rank 1328, dioint 0, nbr count 1 (Parent switch)
+12477128 2 [INFO: RPL       ] nbr: fe80::201:1:1:1  128,   176 =>   304 --  4 rbafp (last tx 0 min ago)
+12477128 2 [INFO: RPL       ] nbr: end of list
+13019000 3 [INFO: TSCH      ] scanning on channel 26
+13742000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+13755240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 201, status 0, tx 1
+14029000 3 [INFO: TSCH      ] scanning on channel 26
+14302000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 60, queue 1/64 1/64, len 21 21
+14302000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+14316432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 60
+14316432 1 [INFO: TSCH Sched] list of packets
+14316432 1 [WARN: 6LoWPAN   ] input: empty packet
+14316432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 60, status 0, tx 1
+14316432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+14316432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 171
+14316432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+15039000 3 [INFO: TSCH      ] scanning on channel 20
+15319000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+15355240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 140, status 0, tx 1
+15615000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+15635240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 202, status 0, tx 1
+16049000 3 [INFO: TSCH      ] scanning on channel 26
+16583000 2 [INFO: RPL       ] sending a DAO seqno 241, tx count 1, lifetime 30, prefix fd00::202:2:2:2 to fd00::201:1:1:1, parent fe80::201:1:1:1
+16583000 2 [INFO: RPL       ] creating hop-by-hop option
+16583000 2 [WARN: IPv6 Route] No route found
+16583000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 61, queue 1/64 1/64, len 21 83
+16598416 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 61
+16598416 1 [INFO: TSCH Sched] list of packets
+16598416 1 [INFO: RPL       ] ext hdr: packet from fd00::202:2:2:2 to fd00::201:1:1:1 going up, sender closer 0 (299 < 128), rank error 0, loop detected 0
+16598416 1 [INFO: RPL       ] ext hdr: packet from fd00::202:2:2:2 to fd00::201:1:1:1 going up, sender closer 0 (299 < 128), rank error 0, loop detected 0
+16598416 1 [INFO: RPL       ] received a DAO from fd00::202:2:2:2, seqno 241, lifetime 30, prefix fd00::202:2:2:2, prefix length 128, parent fd00::201:1:1:1 
+16598416 1 [INFO: RPL       ] sending a DAO-ACK seqno 241 to fd00::202:2:2:2 with status 0
+16598416 1 [INFO: RPL       ] SRH creating source routing header with destination fd00::202:2:2:2 
+16598416 1 [INFO: RPL       ] SRH path len: 0, ComprI 15, ComprE 15, ext len 8 (padding 0)
+16598416 1 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 10, queue 1/64 1/64, len 21 41
+16598416 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 61, status 0, tx 1
+16598416 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+16598416 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 166
+16637072 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 10
+16637072 2 [INFO: TSCH Sched] list of packets
+16637072 2 [INFO: RPL       ] received a DAO-ACK with seqno 241 (241 241) and status 0 from fd00::201:1:1:1
+16637072 2 [INFO: RPL       ] reset DIO timer (Reachable)
+16637072 1 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 10, status 0, tx 1
+16637072 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+17059000 3 [INFO: TSCH      ] scanning on channel 25
+17400000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+17435240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 203, status 0, tx 1
+18069000 3 [INFO: TSCH      ] scanning on channel 25
+18580000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 62, queue 1/64 1/64, len 21 21
+18580000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+18596432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 62
+18596432 1 [INFO: TSCH Sched] list of packets
+18596432 1 [WARN: 6LoWPAN   ] input: empty packet
+18596432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 62, status 0, tx 1
+18596432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+18596432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 162
+18596432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+19079000 3 [INFO: TSCH      ] scanning on channel 20
+19436020 2 [INFO: RPL       ] sending a multicast-DIO with rank 290 to ff02::1a
+19436020 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 62, queue 1/64 1/64, len 14 94
+19477128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 204, status 0, tx 1
+19477128 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+19477128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+19477128 1 [INFO: TSCH Sched] list of packets
+19477128 1 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 290
+20089000 3 [INFO: TSCH      ] scanning on channel 25
+20406000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 63, queue 1/64 1/64, len 21 21
+20406000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+20436432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 63
+20436432 1 [INFO: TSCH Sched] list of packets
+20436432 1 [WARN: 6LoWPAN   ] input: empty packet
+20436432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 63, status 0, tx 1
+20436432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+20436432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 158
+20436432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+20881000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+20915240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 205, status 0, tx 1
+21099000 3 [INFO: TSCH      ] scanning on channel 25
+21377000 1 [INFO: RPL       ] sending a multicast-DIO with rank 128 to ff02::1a
+21377000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 10, queue 1/64 1/64, len 14 94
+21397128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 141, status 0, tx 1
+21397128 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+21397128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+21397128 2 [INFO: TSCH Sched] list of packets
+21397128 2 [INFO: RPL       ] received a multicast-DIO from fe80::201:1:1:1, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 128
+21397128 2 [INFO: RPL       ] refreshing lifetime
+22109000 3 [INFO: TSCH      ] scanning on channel 15
+23119000 3 [INFO: TSCH      ] scanning on channel 20
+23224000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 64, queue 1/64 1/64, len 21 21
+23224000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+23236432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 64
+23236432 1 [INFO: TSCH Sched] list of packets
+23236432 1 [WARN: 6LoWPAN   ] input: empty packet
+23236432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 64, status 0, tx 1
+23236432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+23236432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 155
+23236432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+24129000 3 [INFO: TSCH      ] scanning on channel 20
+25139000 3 [INFO: TSCH      ] scanning on channel 15
+25193000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 65, queue 1/64 1/64, len 21 21
+25193000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+25236432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65
+25236432 1 [INFO: TSCH Sched] list of packets
+25236432 1 [WARN: 6LoWPAN   ] input: empty packet
+25236432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 65, status 0, tx 1
+25236432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+25236432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 152
+25236432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+25853000 3 [INFO: RPL       ] sending a DIS to ff02::1a
+25853000 3 [WARN: TSCH      ] Cannot compute max payload size: not associated
+25853000 3 [WARN: 6LoWPAN   ] output: failed to calculate payload size - dropping packet
+26149000 3 [INFO: TSCH      ] scanning on channel 25
+27104000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 66, queue 1/64 1/64, len 21 21
+27104000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+27116432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 66
+27116432 1 [INFO: TSCH Sched] list of packets
+27116432 1 [WARN: 6LoWPAN   ] input: empty packet
+27116432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 66, status 0, tx 1
+27116432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+27116432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 149
+27116432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+27159000 3 [INFO: TSCH      ] scanning on channel 15
+28116020 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+28155240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 206, status 0, tx 1
+28159000 3 [INFO: TSCH      ] scan: received packet (35 bytes) on channel 15
+28159000 3 [INFO: TSCH      ] parse_eb: no schedule
+28159000 3 0002.0002.0002.0002[INFO: TSCH Queue] update time source: (NULL LL addr) -> 0002.0002.0002.0002
+28159000 3 [INFO: TSCH      ] association done (1), sec 0, PAN ID abcd, asn-0.ad8, jp 2, timeslot id 0, hopping id 0, slotframe len 0 with 0 links, from 0002.0002.0002.0002
+28341000 2 [INFO: RPL       ] sending a multicast-DIO with rank 277 to ff02::1a
+28341000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 66, queue 1/64 1/64, len 14 94
+28357128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 207, status 0, tx 1
+28357128 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+28357128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+28357128 1 [INFO: TSCH Sched] list of packets
+28357128 1 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 277
+28357128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+28357128 3 [INFO: TSCH Sched] list of packets
+28357128 3 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 277
+28357128 3 [INFO: RPL       ] adding global IP address fd00::203:3:3:3
+28357128 3 [INFO: RPL       ] reset MRHOF
+28357128 3 [INFO: RPL       ] initialized DAG with instance ID 0, DAG ID fd00::201:1:1:1, prexix fd00::/64, rank 65535
+28357128 3 [WARN: RPL       ] just joined, no parent yet, setting timer for leaving
+28357128 3 [INFO: RPL       ] refreshing lifetime
+28357128 3 [INFO: RPL       ] best parent is not fresh, schedule urgent probing to fe80::202:2:2:2
+28998000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 67, queue 1/64 1/64, len 21 21
+28998000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+29036432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 67
+29036432 1 [INFO: TSCH Sched] list of packets
+29036432 1 [WARN: 6LoWPAN   ] input: empty packet
+29036432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 67, status 0, tx 1
+29036432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+29036432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 146
+29036432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+30284000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 72, queue 1/64 1/64, len 21 21
+30284000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+30316432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 72
+30316432 2 [INFO: TSCH Sched] list of packets
+30316432 2 [WARN: 6LoWPAN   ] input: empty packet
+30316432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 72, status 0, tx 1
+30316432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+30316432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 320
+30316432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+30316432 3 [INFO: RPL       ] best parent is not fresh, schedule urgent probing to fe80::202:2:2:2
+30415000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+30435240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 142, status 0, tx 1
+32253000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 73, queue 1/64 1/64, len 21 21
+32253000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+32276432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 73
+32276432 2 [INFO: TSCH Sched] list of packets
+32276432 2 [WARN: 6LoWPAN   ] input: empty packet
+32276432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 73, status 0, tx 1
+32276432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+32276432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 272
+32276432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+32276432 3 [INFO: RPL       ] best parent is not fresh, schedule urgent probing to fe80::202:2:2:2
+32303000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 68, queue 1/64 1/64, len 21 21
+32303000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+32316432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 68
+32316432 1 [INFO: TSCH Sched] list of packets
+32316432 1 [WARN: 6LoWPAN   ] input: empty packet
+32316432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 68, status 0, tx 1
+32316432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+32316432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 144
+32316432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+34143000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 74, queue 1/64 1/64, len 21 21
+34143000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+34156432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 74
+34156432 2 [INFO: TSCH Sched] list of packets
+34156432 2 [WARN: 6LoWPAN   ] input: empty packet
+34156432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 74, status 0, tx 1
+34156432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+34156432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 236
+34156432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+34156432 3 [INFO: RPL       ] best parent is not fresh, schedule urgent probing to fe80::202:2:2:2
+34181000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 69, queue 1/64 1/64, len 21 21
+34181000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+34196432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 69
+34196432 1 [INFO: TSCH Sched] list of packets
+34196432 1 [WARN: 6LoWPAN   ] input: empty packet
+34196432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 69, status 0, tx 1
+34196432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+34196432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 142
+34196432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+34952000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+34995240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 208, status 0, tx 1
+36156020 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 70, queue 1/64 1/64, len 21 21
+36156020 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+36196432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 70
+36196432 1 [INFO: TSCH Sched] list of packets
+36196432 1 [WARN: 6LoWPAN   ] input: empty packet
+36196432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 70, status 0, tx 1
+36196432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+36196432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 140
+36196432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+36823000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 75, queue 1/64 1/64, len 21 21
+36823000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+36836432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 75
+36836432 2 [INFO: TSCH Sched] list of packets
+36836432 2 [WARN: 6LoWPAN   ] input: empty packet
+36836432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 75, status 0, tx 1
+36836432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+36836432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 225
+36836432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+36836432 3 [INFO: RPL       ] parent switch: (NULL IP addr) -> fe80::202:2:2:2
+36836432 3 [WARN: RPL       ] found parent: fe80::202:2:2:2, staying in DAG
+36836432 3 [INFO: RPL       ] nbr: own state, addr fd00::203:3:3:3, DAG state: joined, MOP 1 OCP 1 rank 502 max-rank 1526, dioint 0, nbr count 1 (Parent switch)
+36836432 3 [INFO: RPL       ] nbr: fe80::202:2:2:2  277,   225 =>   502 --  4  bafp (last tx 0 min ago)
+36836432 3 [INFO: RPL       ] nbr: end of list
+37317000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+37317000 3 [INFO: RPL       ] no neighbor needs probing
+37355240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 78, status 0, tx 1
+38005000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 71, queue 1/64 1/64, len 21 21
+38005000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+38036432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 71
+38036432 1 [INFO: TSCH Sched] list of packets
+38036432 1 [WARN: 6LoWPAN   ] input: empty packet
+38036432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 71, status 0, tx 1
+38036432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+38036432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 138
+38036432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+38669000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 76, queue 1/64 1/64, len 21 21
+38669000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+38676432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 76
+38676432 2 [INFO: TSCH Sched] list of packets
+38676432 2 [WARN: 6LoWPAN   ] input: empty packet
+38676432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 76, status 0, tx 1
+38676432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+38676432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 215
+38676432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+39308000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+39315240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 79, status 0, tx 1
+39970000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 72, queue 1/64 1/64, len 21 21
+39970000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+39996432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 72
+39996432 1 [INFO: TSCH Sched] list of packets
+39996432 1 [WARN: 6LoWPAN   ] input: empty packet
+39996432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 72, status 0, tx 1
+39996432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+39996432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 137
+39996432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+40566000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 77, queue 1/64 1/64, len 21 21
+40566000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+40596432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 77
+40596432 2 [INFO: TSCH Sched] list of packets
+40596432 2 [WARN: 6LoWPAN   ] input: empty packet
+40596432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 77, status 0, tx 1
+40596432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+40596432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 206
+40596432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+41276020 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+41315240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 80, status 0, tx 1
+41923000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 73, queue 1/64 1/64, len 21 21
+41923000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+41956432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 73
+41956432 1 [INFO: TSCH Sched] list of packets
+41956432 1 [WARN: 6LoWPAN   ] input: empty packet
+41956432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 73, status 0, tx 1
+41956432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+41956432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 136
+41956432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+42477000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 78, queue 1/64 1/64, len 21 21
+42477000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+42516432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 78
+42516432 2 [INFO: TSCH Sched] list of packets
+42516432 2 [WARN: 6LoWPAN   ] input: empty packet
+42516432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 78, status 0, tx 1
+42516432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+42516432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 198
+42516432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+42596020 3 [INFO: RPL       ] sending a DAO seqno 241, tx count 1, lifetime 30, prefix fd00::203:3:3:3 to fd00::201:1:1:1, parent fe80::202:2:2:2
+42596020 3 [INFO: RPL       ] creating hop-by-hop option
+42596020 3 [WARN: IPv6 Route] No route found
+42596020 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 79, queue 1/64 1/64, len 21 91
+42638672 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 79
+42638672 2 [INFO: TSCH Sched] list of packets
+42638672 2 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to fd00::201:1:1:1 going up, sender closer 0 (475 < 264), rank error 0, loop detected 0
+42638672 2 [WARN: IPv6 Route] No route found
+42638672 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 74, queue 1/64 1/64, len 21 92
+42638672 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 79, status 0, tx 1
+42638672 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+42638672 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 191
+42678704 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 74
+42678704 1 [INFO: TSCH Sched] list of packets
+42678704 1 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to fd00::201:1:1:1 going up, sender closer 0 (264 < 128), rank error 0, loop detected 0
+42678704 1 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to fd00::201:1:1:1 going up, sender closer 0 (264 < 128), rank error 0, loop detected 0
+42678704 1 [INFO: RPL       ] received a DAO from fd00::203:3:3:3, seqno 241, lifetime 30, prefix fd00::203:3:3:3, prefix length 128, parent fd00::202:2:2:2 
+42678704 1 [INFO: RPL       ] sending a DAO-ACK seqno 241 to fd00::203:3:3:3 with status 0
+42678704 1 [INFO: RPL       ] SRH creating source routing header with destination fd00::203:3:3:3 
+42678704 1 [INFO: RPL       ] SRH Hop fd00::202:2:2:2
+42678704 1 [INFO: RPL       ] SRH path len: 1, ComprI 9, ComprE 9, ext len 16 (padding 1)
+42678704 1 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 11, queue 1/64 1/64, len 21 49
+42678704 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 74, status 0, tx 1
+42678704 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+42678704 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 135
+42717328 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 11
+42717328 2 [INFO: TSCH Sched] list of packets
+42717328 2 [INFO: RPL       ] read SRH, path len 1, segments left 1, Cmpri 9, Cmpre 9, ext len 16 (padding 1)
+42717328 2 [INFO: RPL       ] SRH next hop fd00::203:3:3:3
+42717328 2 [INFO: TSCH      ] send packet to 0003.0003.0003.0003 with seqno 75, queue 1/64 1/64, len 21 58
+42717328 1 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 11, status 0, tx 1
+42717328 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+42717328 1 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 272
+42757616 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 75
+42757616 3 [INFO: TSCH Sched] list of packets
+42757616 3 [INFO: RPL       ] received a DAO-ACK with seqno 241 (241 241) and status 0 from fd00::201:1:1:1
+42757616 3 [INFO: RPL       ] reset DIO timer (Reachable)
+42757616 2 [INFO: TSCH      ] packet sent to 0003.0003.0003.0003, seqno 75, status 0, tx 1
+42757616 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+43179000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+43195240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 81, status 0, tx 1
+43840000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+43875240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 143, status 0, tx 1
+44366000 2 [INFO: RPL       ] sending a multicast-DIO with rank 263 to ff02::1a
+44366000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 75, queue 1/64 1/64, len 14 94
+44397128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 209, status 0, tx 1
+44397128 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+44397128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+44397128 1 [INFO: TSCH Sched] list of packets
+44397128 1 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 263
+44397128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+44397128 3 [INFO: TSCH Sched] list of packets
+44397128 3 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 263
+44397128 3 [INFO: RPL       ] refreshing lifetime
+45723000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 76, queue 1/64 1/64, len 21 21
+45723000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+45756432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 76
+45756432 1 [INFO: TSCH Sched] list of packets
+45756432 1 [WARN: 6LoWPAN   ] input: empty packet
+45756432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 76, status 0, tx 1
+45756432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+45756432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 134
+45756432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+46262000 3 [INFO: RPL       ] sending a multicast-DIO with rank 454 to ff02::1a
+46262000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 79, queue 1/64 1/64, len 14 94
+46277128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 82, status 0, tx 1
+46277128 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+46277128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+46277128 2 [INFO: TSCH Sched] list of packets
+46277128 2 [INFO: RPL       ] received a multicast-DIO from fe80::203:3:3:3, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 454
+46333000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 80, queue 1/64 1/64, len 21 21
+46333000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+46356432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 80
+46356432 2 [INFO: TSCH Sched] list of packets
+46356432 2 [WARN: 6LoWPAN   ] input: empty packet
+46356432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 80, status 0, tx 1
+46356432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+46356432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 184
+46356432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+46630000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+46635240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 83, status 0, tx 1
+47565000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 77, queue 1/64 1/64, len 21 21
+47565000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+47596432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 77
+47596432 1 [INFO: TSCH Sched] list of packets
+47596432 1 [WARN: 6LoWPAN   ] input: empty packet
+47596432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 77, status 0, tx 1
+47596432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+47596432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 133
+47596432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+48316020 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 81, queue 1/64 1/64, len 21 21
+48316020 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+48356432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 81
+48356432 2 [INFO: TSCH Sched] list of packets
+48356432 2 [WARN: 6LoWPAN   ] input: empty packet
+48356432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 81, status 0, tx 1
+48356432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+48356432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 178
+48356432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+49528000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 78, queue 1/64 1/64, len 21 21
+49528000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+49556432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 78
+49556432 1 [INFO: TSCH Sched] list of packets
+49556432 1 [WARN: 6LoWPAN   ] input: empty packet
+49556432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 78, status 0, tx 1
+49556432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+49556432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 132
+49556432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+49893000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+49915240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 210, status 0, tx 1
+50677000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+50715240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 84, status 0, tx 1
+51491000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 79, queue 1/64 1/64, len 21 21
+51491000 2 [INFO: TSCH      ] sending KA to 0001.0001.0001.0001
+51516432 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 79
+51516432 1 [INFO: TSCH Sched] list of packets
+51516432 1 [WARN: 6LoWPAN   ] input: empty packet
+51516432 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 79, status 0, tx 1
+51516432 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+51516432 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 131
+51516432 2 [INFO: TSCH      ] KA sent to 0001.0001.0001.0001, st 0-1
+51606000 3 [INFO: RPL       ] sending a multicast-DIO with rank 441 to ff02::1a
+51606000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 81, queue 1/64 1/64, len 14 94
+51637128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 85, status 0, tx 1
+51637128 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+51637128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+51637128 2 [INFO: TSCH Sched] list of packets
+51637128 2 [INFO: RPL       ] received a multicast-DIO from fe80::203:3:3:3, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 441
+51895000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 82, queue 1/64 1/64, len 21 21
+51895000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+51916432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 82
+51916432 2 [INFO: TSCH Sched] list of packets
+51916432 2 [WARN: 6LoWPAN   ] input: empty packet
+51916432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 82, status 0, tx 1
+51916432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+51916432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 173
+51916432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+53894000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 83, queue 1/64 1/64, len 21 21
+53894000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+53916432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 83
+53916432 2 [INFO: TSCH Sched] list of packets
+53916432 2 [WARN: 6LoWPAN   ] input: empty packet
+53916432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 83, status 0, tx 1
+53916432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+53916432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 168
+53916432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+55721000 1 [INFO: RPL       ] sending a multicast-DIO with rank 128 to ff02::1a
+55721000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 11, queue 1/64 1/64, len 14 94
+55757128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 144, status 0, tx 1
+55757128 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+55757128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+55757128 2 [INFO: TSCH Sched] list of packets
+55757128 2 [INFO: RPL       ] received a multicast-DIO from fe80::201:1:1:1, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 128
+55757128 2 [INFO: RPL       ] refreshing lifetime
+55867000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 84, queue 1/64 1/64, len 21 21
+55867000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+55876432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 84
+55876432 2 [INFO: TSCH Sched] list of packets
+55876432 2 [WARN: 6LoWPAN   ] input: empty packet
+55876432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 84, status 0, tx 1
+55876432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+55876432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 164
+55876432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+56882000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+56915240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 86, status 0, tx 1
+57773000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 85, queue 1/64 1/64, len 21 21
+57773000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+57796432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 85
+57796432 2 [INFO: TSCH Sched] list of packets
+57796432 2 [WARN: 6LoWPAN   ] input: empty packet
+57796432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 85, status 0, tx 1
+57796432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+57796432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 160
+57796432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+58667000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+58675240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 145, status 0, tx 1
+59695000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 86, queue 1/64 1/64, len 21 21
+59695000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+59716432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 86
+59716432 2 [INFO: TSCH Sched] list of packets
+59716432 2 [WARN: 6LoWPAN   ] input: empty packet
+59716432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 86, status 0, tx 1
+59716432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+59716432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 156
+59716432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+59767000 2 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 1
+59767000 2 [INFO: RPL       ] creating hop-by-hop option
+59767000 2 [WARN: IPv6 Route] No route found
+59767000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 80, queue 1/64 1/64, len 21 59
+59768000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+59768000 2 [INFO: TSCH Sched] 0
+59768000 2 [INFO: App       ] Verify: 0 
+59768000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+59768000 2 [PRI : TSCH Sched] -1024994268 15650
+59768000 2 Energest:
+59768000 2  CPU            59s LPM         0s DEEP LPM    0s  Total time 59s
+59768000 2  Radio LISTEN    7s TRANSMIT    0s OFF        51s
+59797648 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 80
+59797648 1 [INFO: TSCH Sched] list of packets
+59797648 1 [INFO: RPL       ] ext hdr: packet from fd00::202:2:2:2 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (259 < 128), rank error 0, loop detected 0
+59797648 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+59797648 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+59797648 1 [WARN: IPv6 Route] No route found
+59797648 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+59797648 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 80, status 0, tx 1
+59797648 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+59797648 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 130
+60236020 2 [INFO: RPL       ] nbr: own state, addr fd00::202:2:2:2, DAG state: reachable, MOP 1 OCP 1 rank 258 max-rank 1282, dioint 15, nbr count 2 (Periodic)
+60236020 2 [INFO: RPL       ] nbr: fe80::201:1:1:1  128,   130 =>   258 -- 16 rbafp (last tx 0 min ago)
+60236020 2 [INFO: RPL       ] nbr: fe80::203:3:3:3  441,   320 =>   761 --  1   a   (last tx 0 min ago)
+60236020 2 [INFO: RPL       ] nbr: end of list
+60382000 1 [INFO: RPL       ] nbr: own state, addr fd00::201:1:1:1, DAG state: reachable, MOP 1 OCP 1 rank 128 max-rank 65535, dioint 15, nbr count 1 (Periodic)
+60382000 1 [INFO: RPL       ] nbr: fe80::202:2:2:2  263,   272 =>   535 --  2  ba   (last tx 0 min ago)
+60382000 1 [INFO: RPL       ] nbr: end of list
+60382000 1 [INFO: RPL       ] links: 3 routing links in total (Periodic)
+60382000 1 [INFO: RPL       ] links: fd00::201:1:1:1  (DODAG root) (lifetime: infinite)
+60382000 1 [INFO: RPL       ] links: fd00::202:2:2:2  to fd00::201:1:1:1 (lifetime: 1740 seconds)
+60382000 1 [INFO: RPL       ] links: fd00::203:3:3:3  to fd00::202:2:2:2 (lifetime: 1740 seconds)
+60382000 1 [INFO: RPL       ] links: end of list
+60899000 3 [INFO: RPL       ] nbr: own state, addr fd00::203:3:3:3, DAG state: reachable, MOP 1 OCP 1 rank 419 max-rank 1443, dioint 14, nbr count 1 (Periodic)
+60899000 3 [INFO: RPL       ] nbr: fe80::202:2:2:2  263,   156 =>   419 -- 15  bafp (last tx 0 min ago)
+60899000 3 [INFO: RPL       ] nbr: end of list
+61622000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 87, queue 1/64 1/64, len 21 21
+61622000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+61636432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 87
+61636432 2 [INFO: TSCH Sched] list of packets
+61636432 2 [WARN: 6LoWPAN   ] input: empty packet
+61636432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 87, status 0, tx 1
+61636432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+61636432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 153
+61636432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+62757000 1 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 2
+62757000 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+62757000 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+62757000 1 [WARN: IPv6 Route] No route found
+62757000 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+62757000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+62757000 1 [INFO: TSCH Sched] 0
+62757000 1 [INFO: App       ] Verify: 0 
+62757000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+62757000 1 [PRI : TSCH Sched] -1024994268 15650
+62757000 1 Energest:
+62757000 1  CPU            62s LPM         0s DEEP LPM    0s  Total time 62s
+62757000 1  Radio LISTEN    4s TRANSMIT    0s OFF        57s
+63575000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 88, queue 1/64 1/64, len 21 21
+63575000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+63596432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 88
+63596432 2 [INFO: TSCH Sched] list of packets
+63596432 2 [WARN: 6LoWPAN   ] input: empty packet
+63596432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 88, status 0, tx 1
+63596432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+63596432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 150
+63596432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+64163000 3 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 1
+64163000 3 [INFO: RPL       ] creating hop-by-hop option
+64163000 3 [WARN: IPv6 Route] No route found
+64163000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 89, queue 1/64 1/64, len 21 59
+64164000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+64164000 3 [INFO: TSCH Sched] 0
+64164000 3 [INFO: App       ] Verify: 0 
+64164000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+64164000 3 [PRI : TSCH Sched] -1024994268 15650
+64164000 3 Energest:
+64164000 3  CPU            63s LPM         0s DEEP LPM    0s  Total time 63s
+64164000 3  Radio LISTEN   29s TRANSMIT    0s OFF        33s
+64197648 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 89
+64197648 2 [INFO: TSCH Sched] list of packets
+64197648 2 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (413 < 258), rank error 0, loop detected 0
+64197648 2 [WARN: IPv6 Route] No route found
+64197648 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 81, queue 1/64 1/64, len 21 68
+64197648 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 89, status 0, tx 1
+64197648 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+64197648 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 147
+64237936 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 81
+64237936 1 [INFO: TSCH Sched] list of packets
+64237936 1 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (258 < 128), rank error 0, loop detected 0
+64237936 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+64237936 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+64237936 1 [WARN: IPv6 Route] No route found
+64237936 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+64237936 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 81, status 0, tx 1
+64237936 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+64237936 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 129
+64783000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+64795240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 211, status 0, tx 1
+65429000 3 [INFO: RPL       ] sending a multicast-DIO with rank 410 to ff02::1a
+65429000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 89, queue 1/64 1/64, len 14 94
+65437128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 87, status 0, tx 1
+65437128 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+65437128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+65437128 2 [INFO: TSCH Sched] list of packets
+65437128 2 [INFO: RPL       ] received a multicast-DIO from fe80::203:3:3:3, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 410
+66697000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 90, queue 1/64 1/64, len 21 21
+66697000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+66716432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 90
+66716432 2 [INFO: TSCH Sched] list of packets
+66716432 2 [WARN: 6LoWPAN   ] input: empty packet
+66716432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 90, status 0, tx 1
+66716432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+66716432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 145
+66716432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+68581000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 91, queue 1/64 1/64, len 21 21
+68581000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+68596432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 91
+68596432 2 [INFO: TSCH Sched] list of packets
+68596432 2 [WARN: 6LoWPAN   ] input: empty packet
+68596432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 91, status 0, tx 1
+68596432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+68596432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 143
+68596432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+69749000 2 [INFO: RPL       ] sending a multicast-DIO with rank 257 to ff02::1a
+69749000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 81, queue 1/64 1/64, len 14 94
+69757128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 212, status 0, tx 1
+69757128 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+69757128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+69757128 1 [INFO: TSCH Sched] list of packets
+69757128 1 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 257
+69757128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+69757128 3 [INFO: TSCH Sched] list of packets
+69757128 3 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 257
+69757128 3 [INFO: RPL       ] refreshing lifetime
+71683000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 92, queue 1/64 1/64, len 21 21
+71683000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+71716432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 92
+71716432 2 [INFO: TSCH Sched] list of packets
+71716432 2 [WARN: 6LoWPAN   ] input: empty packet
+71716432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 92, status 0, tx 1
+71716432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+71716432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 141
+71716432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+71810000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+71835240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 88, status 0, tx 1
+73710000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 93, queue 1/64 1/64, len 21 21
+73710000 3 [INFO: TSCH      ] sending KA to 0002.0002.0002.0002
+73716432 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 93
+73716432 2 [INFO: TSCH Sched] list of packets
+73716432 2 [WARN: 6LoWPAN   ] input: empty packet
+73716432 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 93, status 0, tx 1
+73716432 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+73716432 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 139
+73716432 3 [INFO: TSCH      ] KA sent to 0002.0002.0002.0002, st 0-1
+74165000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+74195240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 146, status 0, tx 1
+76802000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+76835240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 213, status 0, tx 1
+84869000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+84875240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 89, status 0, tx 1
+87295000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+87315240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 147, status 0, tx 1
+88951000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+88955240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 214, status 0, tx 1
+98175000 1 [INFO: RPL       ] sending a multicast-DIO with rank 128 to ff02::1a
+98175000 1 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 11, queue 1/64 1/64, len 14 94
+98197128 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 148, status 0, tx 1
+98197128 1 [INFO: TSCH Sched] Node/Packets: 1 0 
+98197128 2 [INFO: TSCH      ] received from 0001.0001.0001.0001 with seqno 65535
+98197128 2 [INFO: TSCH Sched] list of packets
+98197128 2 [INFO: RPL       ] received a multicast-DIO from fe80::201:1:1:1, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 128
+98197128 2 [INFO: RPL       ] refreshing lifetime
+98596020 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+98635240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 90, status 0, tx 1
+100701000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+100715240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 149, status 0, tx 1
+103770000 3 [INFO: RPL       ] sending a multicast-DIO with rank 396 to ff02::1a
+103770000 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 93, queue 1/64 1/64, len 14 94
+103784000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+103795240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 215, status 0, tx 1
+103797128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 91, status 0, tx 1
+103797128 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+109343000 2 [INFO: RPL       ] probing fe80::203:3:3:3  last tx 1 min ago
+109343000 2 [INFO: RPL       ] sending a unicast-DIO with rank 257 to fe80::203:3:3:3
+109343000 2 [INFO: TSCH      ] send packet to 0003.0003.0003.0003 with seqno 82, queue 1/64 1/64, len 21 100
+109358960 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 82
+109358960 3 [INFO: TSCH Sched] list of packets
+109358960 3 [INFO: RPL       ] received a unicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 257
+109358960 3 [INFO: RPL       ] refreshing lifetime
+109358960 2 [INFO: TSCH      ] packet sent to 0003.0003.0003.0003, seqno 82, status 0, tx 1
+109358960 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+109358960 2 [INFO: RPL       ] packet sent to 0003.0003.0003.0003, status 0, tx 1, new link metric 272
+112592000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+112635240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 92, status 0, tx 1
+113367000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+113395240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 150, status 0, tx 1
+119687000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+119715240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 216, status 0, tx 1
+119768000 2 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 2
+119768000 2 [INFO: RPL       ] creating hop-by-hop option
+119768000 2 [WARN: IPv6 Route] No route found
+119768000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 83, queue 1/64 1/64, len 21 59
+119769000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+119769000 2 [INFO: TSCH Sched] 0
+119769000 2 [INFO: App       ] Verify: 0 
+119769000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+119769000 2 [PRI : TSCH Sched] -1024994268 15650
+119769000 2 Energest:
+119769000 2  CPU           119s LPM         0s DEEP LPM    0s  Total time 119s
+119769000 2  Radio LISTEN   12s TRANSMIT    0s OFF       107s
+119797648 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 83
+119797648 1 [INFO: TSCH Sched] list of packets
+119797648 1 [INFO: RPL       ] ext hdr: packet from fd00::202:2:2:2 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (257 < 128), rank error 0, loop detected 0
+119797648 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+119797648 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+119797648 1 [WARN: IPv6 Route] No route found
+119797648 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+119797648 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 83, status 0, tx 1
+119797648 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+119797648 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 128
+120236020 2 [INFO: RPL       ] nbr: own state, addr fd00::202:2:2:2, DAG state: reachable, MOP 1 OCP 1 rank 256 max-rank 1280, dioint 16, nbr count 2 (Periodic)
+120236020 2 [INFO: RPL       ] nbr: fe80::201:1:1:1  128,   128 =>   256 -- 16 rbafp (last tx 0 min ago)
+120236020 2 [INFO: RPL       ] nbr: fe80::203:3:3:3  410,   272 =>   682 --  2   a   (last tx 0 min ago)
+120236020 2 [INFO: RPL       ] nbr: end of list
+120382000 1 [INFO: RPL       ] nbr: own state, addr fd00::201:1:1:1, DAG state: reachable, MOP 1 OCP 1 rank 128 max-rank 65535, dioint 16, nbr count 1 (Periodic)
+120382000 1 [INFO: RPL       ] nbr: fe80::202:2:2:2  257,   272 =>   529 --  2  ba   (last tx 1 min ago)
+120382000 1 [INFO: RPL       ] nbr: end of list
+120382000 1 [INFO: RPL       ] links: 3 routing links in total (Periodic)
+120382000 1 [INFO: RPL       ] links: fd00::201:1:1:1  (DODAG root) (lifetime: infinite)
+120382000 1 [INFO: RPL       ] links: fd00::202:2:2:2  to fd00::201:1:1:1 (lifetime: 1680 seconds)
+120382000 1 [INFO: RPL       ] links: fd00::203:3:3:3  to fd00::202:2:2:2 (lifetime: 1680 seconds)
+120382000 1 [INFO: RPL       ] links: end of list
+120899000 3 [INFO: RPL       ] nbr: own state, addr fd00::203:3:3:3, DAG state: reachable, MOP 1 OCP 1 rank 396 max-rank 1420, dioint 16, nbr count 1 (Periodic)
+120899000 3 [INFO: RPL       ] nbr: fe80::202:2:2:2  257,   139 =>   396 -- 16  bafp (last tx 0 min ago)
+120899000 3 [INFO: RPL       ] nbr: end of list
+122757000 1 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 3
+122757000 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+122757000 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+122757000 1 [WARN: IPv6 Route] No route found
+122757000 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+122757000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+122757000 1 [INFO: TSCH Sched] 0
+122757000 1 [INFO: App       ] Verify: 0 
+122757000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+122757000 1 [PRI : TSCH Sched] -1024994268 15650
+122757000 1 Energest:
+122757000 1  CPU           122s LPM         0s DEEP LPM    0s  Total time 122s
+122757000 1  Radio LISTEN    9s TRANSMIT    0s OFF       113s
+124164000 3 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 2
+124164000 3 [INFO: RPL       ] creating hop-by-hop option
+124164000 3 [WARN: IPv6 Route] No route found
+124164000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 94, queue 1/64 1/64, len 21 59
+124165000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+124165000 3 [INFO: TSCH Sched] 0
+124165000 3 [INFO: App       ] Verify: 0 
+124165000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+124165000 3 [PRI : TSCH Sched] -1024994268 15650
+124165000 3 Energest:
+124165000 3  CPU           123s LPM         0s DEEP LPM    0s  Total time 123s
+124165000 3  Radio LISTEN   34s TRANSMIT    0s OFF        88s
+124197648 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 94
+124197648 2 [INFO: TSCH Sched] list of packets
+124197648 2 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (396 < 256), rank error 0, loop detected 0
+124197648 2 [WARN: IPv6 Route] No route found
+124197648 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 84, queue 1/64 1/64, len 21 68
+124197648 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 94, status 0, tx 1
+124197648 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+124197648 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 137
+124237936 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 84
+124237936 1 [INFO: TSCH Sched] list of packets
+124237936 1 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (256 < 128), rank error 0, loop detected 0
+124237936 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+124237936 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+124237936 1 [WARN: IPv6 Route] No route found
+124237936 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+124237936 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 84, status 0, tx 1
+124237936 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+124237936 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 128
+127212000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+127235240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 93, status 0, tx 1
+128039000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+128075240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 151, status 0, tx 1
+131055000 3 [INFO: RPL       ] no neighbor needs probing
+132790000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+132795240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 217, status 0, tx 1
+135103000 2 [INFO: RPL       ] sending a multicast-DIO with rank 256 to ff02::1a
+135103000 2 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 84, queue 1/64 1/64, len 14 94
+135117128 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 218, status 0, tx 1
+135117128 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+135117128 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+135117128 1 [INFO: TSCH Sched] list of packets
+135117128 1 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 256
+135117128 3 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 65535
+135117128 3 [INFO: TSCH Sched] list of packets
+135117128 3 [INFO: RPL       ] received a multicast-DIO from fe80::202:2:2:2, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 256
+135117128 3 [INFO: RPL       ] refreshing lifetime
+140602000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+140635240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 94, status 0, tx 1
+143802000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+143835240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 152, status 0, tx 1
+145429000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+145435240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 219, status 0, tx 1
+149316020 3 [INFO: RPL       ] sending a multicast-DIO with rank 393 to ff02::1a
+149316020 3 [INFO: TSCH      ] send packet to ffff.ffff.ffff.ffff with seqno 94, queue 1/64 1/64, len 14 94
+149357128 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 95, status 0, tx 1
+149357128 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+149357128 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 65535
+149357128 2 [INFO: TSCH Sched] list of packets
+149357128 2 [INFO: RPL       ] received a multicast-DIO from fe80::203:3:3:3, instance_id 0, DAG ID fd00::201:1:1:1, version 240, dtsn 240, rank 393
+153112000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+153155240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 96, status 0, tx 1
+157203000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+157235240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 153, status 0, tx 1
+158022000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+158035240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 220, status 0, tx 1
+167455000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+167475240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 97, status 0, tx 1
+171321000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+171355240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 154, status 0, tx 1
+173060000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+173075240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 221, status 0, tx 1
+179769000 2 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 3
+179769000 2 [INFO: RPL       ] creating hop-by-hop option
+179769000 2 [WARN: IPv6 Route] No route found
+179769000 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 85, queue 1/64 1/64, len 21 59
+179770000 2 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+179770000 2 [INFO: TSCH Sched] 0
+179770000 2 [INFO: App       ] Verify: 0 
+179770000 2 [PRI : TSCH Sched] Finding neighbor to Rx
+179770000 2 [PRI : TSCH Sched] -1024994268 15650
+179770000 2 Energest:
+179770000 2  CPU           179s LPM         0s DEEP LPM    0s  Total time 179s
+179770000 2  Radio LISTEN   16s TRANSMIT    0s OFF       162s
+179797648 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 85
+179797648 1 [INFO: TSCH Sched] list of packets
+179797648 1 [INFO: RPL       ] ext hdr: packet from fd00::202:2:2:2 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (256 < 128), rank error 0, loop detected 0
+179797648 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+179797648 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+179797648 1 [WARN: IPv6 Route] No route found
+179797648 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+179797648 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 85, status 0, tx 1
+179797648 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+179797648 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 128
+180236020 2 [INFO: RPL       ] nbr: own state, addr fd00::202:2:2:2, DAG state: reachable, MOP 1 OCP 1 rank 256 max-rank 1280, dioint 17, nbr count 2 (Periodic)
+180236020 2 [INFO: RPL       ] nbr: fe80::201:1:1:1  128,   128 =>   256 -- 16 rbafp (last tx 0 min ago)
+180236020 2 [INFO: RPL       ] nbr: fe80::203:3:3:3  393,   272 =>   665 --  2   a   (last tx 1 min ago)
+180236020 2 [INFO: RPL       ] nbr: end of list
+180382000 1 [INFO: RPL       ] nbr: own state, addr fd00::201:1:1:1, DAG state: reachable, MOP 1 OCP 1 rank 128 max-rank 65535, dioint 17, nbr count 1 (Periodic)
+180382000 1 [INFO: RPL       ] nbr: fe80::202:2:2:2  256,   272 =>   528 --  2  ba   (last tx 2 min ago)
+180382000 1 [INFO: RPL       ] nbr: end of list
+180382000 1 [INFO: RPL       ] links: 3 routing links in total (Periodic)
+180382000 1 [INFO: RPL       ] links: fd00::201:1:1:1  (DODAG root) (lifetime: infinite)
+180382000 1 [INFO: RPL       ] links: fd00::202:2:2:2  to fd00::201:1:1:1 (lifetime: 1620 seconds)
+180382000 1 [INFO: RPL       ] links: fd00::203:3:3:3  to fd00::202:2:2:2 (lifetime: 1620 seconds)
+180382000 1 [INFO: RPL       ] links: end of list
+180899000 3 [INFO: RPL       ] nbr: own state, addr fd00::203:3:3:3, DAG state: reachable, MOP 1 OCP 1 rank 393 max-rank 1417, dioint 17, nbr count 1 (Periodic)
+180899000 3 [INFO: RPL       ] nbr: fe80::202:2:2:2  256,   137 =>   393 -- 16  bafp (last tx 0 min ago)
+180899000 3 [INFO: RPL       ] nbr: end of list
+181662000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+181675240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 98, status 0, tx 1
+182757000 1 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 4
+182757000 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+182757000 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+182757000 1 [WARN: IPv6 Route] No route found
+182757000 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+182757000 1 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+182757000 1 [INFO: TSCH Sched] 0
+182757000 1 [INFO: App       ] Verify: 0 
+182757000 1 [PRI : TSCH Sched] Finding neighbor to Rx
+182757000 1 [PRI : TSCH Sched] -1024994268 15650
+182757000 1 Energest:
+182757000 1  CPU           182s LPM         0s DEEP LPM    0s  Total time 182s
+182757000 1  Radio LISTEN   13s TRANSMIT    0s OFF       168s
+184165000 3 [INFO: App       ] Send to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2, seqnum 3
+184165000 3 [INFO: RPL       ] creating hop-by-hop option
+184165000 3 [WARN: IPv6 Route] No route found
+184165000 3 [INFO: TSCH      ] send packet to 0002.0002.0002.0002 with seqno 95, queue 1/64 1/64, len 21 59
+184166000 3 [INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
+184166000 3 [INFO: TSCH Sched] 0
+184166000 3 [INFO: App       ] Verify: 0 
+184166000 3 [PRI : TSCH Sched] Finding neighbor to Rx
+184166000 3 [PRI : TSCH Sched] -1024994268 15650
+184166000 3 Energest:
+184166000 3  CPU           183s LPM         0s DEEP LPM    0s  Total time 183s
+184166000 3  Radio LISTEN   38s TRANSMIT    0s OFF       144s
+184197648 2 [INFO: TSCH      ] received from 0003.0003.0003.0003 with seqno 95
+184197648 2 [INFO: TSCH Sched] list of packets
+184197648 2 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (393 < 256), rank error 0, loop detected 0
+184197648 2 [WARN: IPv6 Route] No route found
+184197648 2 [INFO: TSCH      ] send packet to 0001.0001.0001.0001 with seqno 86, queue 1/64 1/64, len 21 68
+184197648 3 [INFO: TSCH      ] packet sent to 0002.0002.0002.0002, seqno 95, status 0, tx 1
+184197648 3 [INFO: TSCH Sched] Node/Packets: 3 0 
+184197648 3 [INFO: RPL       ] packet sent to 0002.0002.0002.0002, status 0, tx 1, new link metric 136
+184237936 1 [INFO: TSCH      ] received from 0002.0002.0002.0002 with seqno 86
+184237936 1 [INFO: TSCH Sched] list of packets
+184237936 1 [INFO: RPL       ] ext hdr: packet from fd00::203:3:3:3 to 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 going up, sender closer 0 (256 < 128), rank error 0, loop detected 0
+184237936 1 [INFO: RPL       ] SRH creating source routing header with destination 44ad:e4c2:ef88:e4c2:143f:e8c2:88d4:e7c2 
+184237936 1 [INFO: RPL       ] SRH destination not in our DAG, skip SRH insertion
+184237936 1 [WARN: IPv6 Route] No route found
+184237936 1 [ERR : TCP/IP    ] output: destination off-link and no default route
+184237936 2 [INFO: TSCH      ] packet sent to 0001.0001.0001.0001, seqno 86, status 0, tx 1
+184237936 2 [INFO: TSCH Sched] Node/Packets: 2 0 
+184237936 2 [INFO: RPL       ] packet sent to 0001.0001.0001.0001, status 0, tx 1, new link metric 128
+186373000 1 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+186395240 1 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 155, status 0, tx 1
+186734000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+186755240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 222, status 0, tx 1
+196278000 3 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+196315240 3 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 99, status 0, tx 1
+198872000 2 [INFO: TSCH      ] TSCH: enqueue EB packet 35 16
+198915240 2 [INFO: TSCH      ] packet sent to 0000.0000.0000.0000, seqno 223, status 0, tx 1
+Script timed out.
+TEST OK
+[if test was run without visualization, Cooja would now have been terminated]
