@@ -1,0 +1,208 @@
+3nodes
+PDRTASA = 96.55172413793103
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 96.55172413793103
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.034482758620689655
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.034482758620689655
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 92.60387762467384
+Interval_conf_THTASA: nan 
+THLBV = 92.60387762467384
+Interval_conf_THLBV: nan 
+4nodes
+PDRTASA = 95.28795811518324
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 95.37366548042705
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.04712041884816754
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.046263345195729534
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 150.9538291401714
+Interval_conf_THTASA: nan 
+THLBV = 222.28366049212053
+Interval_conf_THLBV: nan 
+5nodes
+PDRTASA = 81.56565656565657
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 82.3125
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.18434343434343434
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.176875
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 245.42916381971116
+Interval_conf_THTASA: nan 
+THLBV = 333.5709068633226
+Interval_conf_THLBV: nan 
+6nodes
+PDRTASA = 76.09756097560975
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 82.23121907332434
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.23902439024390243
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.17768780926675665
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 256.99344235079275
+Interval_conf_THTASA: nan 
+THLBV = 501.90599638594995
+Interval_conf_THLBV: nan 
+7nodes
+PDRTASA = 42.98310066127847
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 47.55877034358047
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.5701689933872153
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.5244122965641953
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 172.29216038136462
+Interval_conf_THTASA: nan 
+THLBV = 232.37352912973793
+Interval_conf_THLBV: nan 
+8nodes
+PDRTASA = 41.91886670959433
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 54.975473020322355
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.5808113329040566
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.4502452697967765
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 177.5293155167712
+Interval_conf_THTASA: nan 
+THLBV = 427.8701936187619
+Interval_conf_THLBV: nan 
+9nodes
+PDRTASA = 57.77777777777777
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 58.91891891891892
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.4222222222222222
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.41081081081081083
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 113.90148234934543
+Interval_conf_THTASA: nan 
+THLBV = 238.7550303092048
+Interval_conf_THLBV: nan 
+10nodes
+PDRTASA = 66.34086744043984
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 70.24866785079928
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.33659132559560173
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.2975133214920071
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 350.08621335932224
+Interval_conf_THTASA: nan 
+THLBV = 764.9673888597346
+Interval_conf_THLBV: nan 
+11nodes
+PDRTASA = 66.35467980295566
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 70.68731323010051
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.33645320197044337
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.2931268676989948
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 357.8860864299749
+Interval_conf_THTASA: nan 
+THLBV = 691.3285797259055
+Interval_conf_THLBV: nan 
+12nodes
+PDRTASA = 45.24271844660194
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 56.15459564793765
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.5475728155339806
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.43845404352062356
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 217.70811452908495
+Interval_conf_THTASA: nan 
+THLBV = 538.5083405161487
+Interval_conf_THLBV: nan 
+13nodes
+PDRTASA = 63.009500459699666
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 64.72538860103627
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.36990499540300337
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.3527461139896373
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 539.5963159404545
+Interval_conf_THTASA: nan 
+THLBV = 819.6300071410697
+Interval_conf_THLBV: nan 
+14nodes
+PDRTASA = 53.258036490008685
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 58.18875780707842
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.46741963509991313
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.4181124219292158
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 515.3543358402524
+Interval_conf_THTASA: nan 
+THLBV = 939.9121492159903
+Interval_conf_THLBV: nan 
+15nodes
+PDRTASA = 61.74210076857387
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 56.93126591066883
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.3825789923142613
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.43068734089331173
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 565.6607927511576
+Interval_conf_THTASA: nan 
+THLBV = 962.3274897426332
+Interval_conf_THLBV: nan 
+16nodes
+PDRTASA = 59.51698731068359
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 66.1172863165964
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.40483012689316417
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.33882713683403604
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 617.8551664163175
+Interval_conf_THTASA: nan 
+THLBV = 1466.0249822120325
+Interval_conf_THLBV: nan 
+17nodes
+PDRTASA = 48.24265767934521
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 56.899408284023664
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.5175734232065479
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.43100591715976333
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 431.4554084636798
+Interval_conf_THTASA: nan 
+THLBV = 1035.1485049368127
+Interval_conf_THLBV: nan 
+18nodes
+PDRTASA = 56.00000000000001
+Interval_conf_TASA_PDR: nan 
+PDRLBV = 52.77108433734939
+Interval_conf_LBV_PDR: nan 
+RELTASA = 0.44
+Interval_conf_TASA_confiabilidade: nan 
+RELLBV = 0.472289156626506
+Interval_conf_LBV_confiabilidade: nan 
+THTASA = 285.6781296466196
+Interval_conf_THTASA: nan 
+THLBV = 595.8429561200924
+Interval_conf_THLBV: nan 
