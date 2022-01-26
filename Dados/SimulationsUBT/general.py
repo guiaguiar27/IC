@@ -89,7 +89,7 @@ for j in range(3,17):
     numNodes = j 
     pckt_len = 43
 
-    for i in range(3,3):    
+    for i in range(1,11):    
         print("i:",i)
         flag = 0   
          
