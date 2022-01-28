@@ -1,0 +1,98 @@
+metrics simulation 3 nodes
+[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+max_band: 1
+Avarege: 1.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 4 nodes
+[2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+max_band: 2
+Avarege: 2.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 5 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 6 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 7 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 8 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 9 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 10 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 11 nodes
+[4, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+max_band: 6
+Avarege: 5.8
+Interval_conf_MaxBand_PDR: 0.4524314325481983 
+
+---------------------------------------------------------------------------
+metrics simulation 12 nodes
+[4, 4, 4, 6, 6, 6, 6, 6, 6, 6]
+max_band: 6
+Avarege: 5.4
+Interval_conf_MaxBand_PDR: 0.6911004288098086 
+
+---------------------------------------------------------------------------
+metrics simulation 13 nodes
+[4, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+max_band: 6
+Avarege: 5.8
+Interval_conf_MaxBand_PDR: 0.4524314325481983 
+
+---------------------------------------------------------------------------
+metrics simulation 14 nodes
+[6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+max_band: 6
+Avarege: 6.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 15 nodes
+[4, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+max_band: 6
+Avarege: 5.8
+Interval_conf_MaxBand_PDR: 0.4524314325481983 
+
+---------------------------------------------------------------------------
+metrics simulation 16 nodes
+[6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+max_band: 6
+Avarege: 6.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------

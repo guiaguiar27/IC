@@ -1,0 +1,100 @@
+(base) MacBook-Pro-de-Macbook:SimulationsUBT Guilherme$ python band.py
+metrics simulation 3 nodes
+[1, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+max_band: 2
+Avarege: 1.9
+Interval_conf_MaxBand_PDR: 0.22621571627409914 
+
+---------------------------------------------------------------------------
+metrics simulation 4 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 5 nodes
+[2, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 3.8
+Interval_conf_MaxBand_PDR: 0.4524314325481983 
+
+---------------------------------------------------------------------------
+metrics simulation 6 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 7 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 8 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 9 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 10 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 11 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 12 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 6, 6]
+max_band: 6
+Avarege: 4.4
+Interval_conf_MaxBand_PDR: 0.6032419100642643 
+
+---------------------------------------------------------------------------
+metrics simulation 13 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 14 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+metrics simulation 15 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 6]
+max_band: 6
+Avarege: 4.2
+Interval_conf_MaxBand_PDR: 0.4524314325481983 
+
+---------------------------------------------------------------------------
+metrics simulation 16 nodes
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+max_band: 4
+Avarege: 4.0
+Interval_conf_MaxBand_PDR: 0.0 
+
+---------------------------------------------------------------------------
+(base) MacBook-Pro-de-Macbook:SimulationsUBT Guilherme$ 
