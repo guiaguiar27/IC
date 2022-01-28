@@ -9,7 +9,9 @@
 190	ID:1	[INFO: Main      ] Node ID: 1
 190	ID:1	[INFO: Main      ] Link-layer address: 0001.0001.0001.0001
 190	ID:1	[INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+190	ID:1	[INFO: TSCH Sched] add_slotframe 1 8
 190	ID:1	[PRI : TSCH Sched] Handle : 0
+190	ID:1	 [INFO: TSCH Sched] add_link sf=1 opt=Tx|Rx|Sh type=ADV ts=0 ch=0 addr=ffff.ffff.ffff.ffff
 190	ID:1	[INFO: TSCH Sched] Lista de vizinhos que mandaram mensagem:
 190	ID:1	[INFO: TSCH Sched] 0
 190	ID:1	[INFO: TSCH Sched] 0
