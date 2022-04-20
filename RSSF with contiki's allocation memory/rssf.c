@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "conf.h"
-#define temp_canais 600
+#define temp_canais 1000
 #define peso 1 
 #define no_raiz 1 
-#define endereco "text.txt" 
+#define endereco "degen.txt" 
 
 
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
@@ -56,7 +56,7 @@ int main(){
     printf("Enter here!\n");
     while(!feof(fl)){      
         fscanf(fl,"%d %d",&node_origin, &node_destin);   
-        printf(" %d-> %d\n",node_origin, node_destin);    
+        //printf(" %d-> %d\n",node_origin, node_destin);    
         if(node_origin < MAX_NOS && node_destin < MAX_NOS){
             if (adj.mat_adj[node_origin][node_destin] == 0 && node_origin != no_raiz){
                 adj.mat_adj[node_origin][node_destin] = 1;
@@ -126,79 +126,70 @@ int main(){
     //     printf("\n");
     // }
 
-    ng matching;
-    DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
-    while(pacote_entregue < total_pacotes){
-        // printf("\nMatching\n");
-        // for(x = 0; x < tamNo; x++){
-        //     for(y = 0; y < tamNo; y++)
-        //         printf("%d ", matching.mat_adj[x][y]);
-        //     printf("\n");
-        // }
-        // printf("\nPacotes:\n");
-        // for(x = 1; x < tamNo ; x++)
-        //     printf("Nó %d: %d pacotes\n", x, pacotes[x]);
+    ng matching; 
+    for(int i = 0; i < 10; i++){
+        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+        while(pacote_entregue < total_pacotes){
+            // printf("\nMatching\n");
+            // for(x = 0; x < tamNo; x++){
+            //     for(y = 0; y < tamNo; y++)
+            //         printf("%d ", matching.mat_adj[x][y]);
+            //     printf("\n");
+            // }
+            // printf("\nPacotes:\n");
+            // for(x = 1; x < tamNo ; x++)
+            //     printf("Nó %d: %d pacotes\n", x, pacotes[x]);
 
-        //Aloca os canais
-        for(x = 0; x < tamNo; x ++){
-            for(y = 0; y < tamNo; y++){
-                if(matching.mat_adj[x][y]){
-                    for(temp = 0; temp < tamAresta; temp++)
-                        if(conf[temp][0] == x && conf[temp][1] == y)
-                            break;
-                    edge_selected = temp;
-                    for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
-                        if(canal == 16)
-                            break;
-                        aloca_canais[canal][cont] = edge_selected; 
-                        canal++;
+            //Aloca os canais
+            for(x = 0; x < tamNo; x ++){
+                for(y = 0; y < tamNo; y++){
+                    if(matching.mat_adj[x][y]){
+                        for(temp = 0; temp < tamAresta; temp++)
+                            if(conf[temp][0] == x && conf[temp][1] == y)
+                                break;
+                        edge_selected = temp;
+                        for(temp = 0; temp < pacotes[conf[edge_selected][0]]; temp++){
+                            if(canal == 16)
+                                break;
+                            aloca_canais[canal][cont] = edge_selected; 
+                            canal++;
+                        }
                     }
+                    if(canal == 16)
+                        break;
                 }
                 if(canal == 16)
                     break;
             }
-            if(canal == 16)
-                break;
-        }
-        
-        // printf("\nCanais alocados  | |");
-        // printf("\n                \\   /");
-        // printf("\n                 \\ /\n\n");
-        // for(x = 0; x < 16; x++){
-        //     for(y = 0; y < temp_canais; y++)
-        //         printf("%d  ", aloca_canais[x][y] + 1);
-        //     printf("\n");
-        // }
-        // printf("\n");
+            
+            // printf("\nCanais alocados  | |");
+            // printf("\n                \\   /");
+            // printf("\n                 \\ /\n\n");
+            // for(x = 0; x < 16; x++){
+            //     for(y = 0; y < temp_canais; y++)
+            //         printf("%d  ", aloca_canais[x][y] + 1);
+            //     printf("\n");
+            // }
+            // printf("\n");
 
-        //Executa a primeira carga de transferência
-        executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
-        cont++;
-        canal = 0;
-        
-        //mostram os pacotes contentes em cada nó da rede
-        // printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
-        
-        /*for(z = 0; z < tamNo; z++){
-            printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
+            //Executa a primeira carga de transferência
+            executa(tamAresta, tamNo, &aloca_canais, cont, &conf, &pacote_entregue, raiz, &pacotes);
+            cont++;
+            canal = 0;
+            
+            //mostram os pacotes contentes em cada nó da rede
+            // printf("\nPacotes por nó da rede\nTempo: %d\nPac    otes entregues: %d\nTotal de pacotes: %d\n", cont, pacote_entregue, total_pacotes);
+            
+            /*for(z = 0; z < tamNo; z++){
+                printf("[%s] - > %d\n", nome_no[z], pacotes[z]);
+            }
+            printf("\n");
+            */ 
+            DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
+            total_canais_alocados++;
         }
-        printf("\n");
-        */ 
-        DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
-        total_canais_alocados++;
-    }
 
-    printf("\nCanais alocados  | |");
-    printf("\n                \\   /");
-    printf("\n                 \\ /\n\n");
-    printf(" temp_canais =  %d\n",temp_canais);
-    for(x = 0 ; x < 16; x++){
-        for(y = 0; y < temp_canais; y++) 
-            // linhas = tempo - coluna = canal  
-            printf("%d  ", aloca_canais[x][y] + 1);  
-             
-        printf("\n"); 
-    } 
+         
     /*  
     for(y = 0 ; y < temp_canais; y++){ 
         for(x = 0 ; x < 16 ; x++){ 
@@ -218,10 +209,25 @@ int main(){
     // fprintf(novo, "    n: %.4f", (float)tamNo/(float)total_canais_alocados);
     // fclose(novo);
 
-    printf("TSCH-LBV timeslots: %d", total_canais_alocados);
-    printf("\nTempo de execucao total: %.2fs", ((double)(clock() - tempo)/(double)CLOCKS_PER_SEC));
-    printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot);
+    printf("TSCH-LBV timeslots: %d\n", total_canais_alocados);
+    //printf("\nTempo de execucao total: %.2fs", ((double)(clock() - tempo)/(double)CLOCKS_PER_SEC));
+    //printf("\nGrafo de conflito gerado: %s\n", nome_arq_dot);
 
+    
+    } 
+    // printf("\nCanais alocados  | |");
+    //     printf("\n                \\   /");
+    //     printf("\n                 \\ /\n\n");
+    //     printf(" temp_canais =  %d\n",temp_canais);
+    
+    //     for(x = 0 ; x < 16; x++){
+    
+    //     for(y = 0; y < temp_canais; y++) 
+    //         // linhas = tempo - coluna = canal  
+    //         printf("%d  ", aloca_canais[x][y] + 1);  
+             
+    //     printf("\n"); 
+    // }
     return 0;
 }
 

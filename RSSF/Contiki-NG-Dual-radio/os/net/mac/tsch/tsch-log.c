@@ -105,7 +105,12 @@ tsch_log_process_pending(void)
         if(log->tx.drift_used) {
           printf(", dr %d", log->tx.drift);
         }
-        printf("\n");
+        printf("\n"); 
+
+         if(!linkaddr_cmp(&log->tx.dest, &linkaddr_null)){  
+            if(log->link->slotframe_handle == 2)
+              count_sent_packs();
+          }
         break;
       case tsch_log_rx:
         printf("%s-%u-%u rx ",
@@ -118,7 +123,12 @@ tsch_log_process_pending(void)
         if(log->rx.drift_used) {
           printf(", dr %d", log->rx.drift);
         }
-        printf(", edr %d\n", log->rx.estimated_drift);
+        printf(", edr %d\n", log->rx.estimated_drift); 
+
+        if(log->rx.is_unicast && log->link->slotframe_handle == 2){ 
+          count_packs(&log->rx.src);  
+        }
+
         break;
       case tsch_log_message:
         printf("%s\n", log->message);

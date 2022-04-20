@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "conf.h"
-#define temp_canais 1600
+#define temp_canais 1000
 #define peso 1 
 #define no_raiz 1 
-#define endereco "text.txt" 
+#define endereco "degen.txt" 
 
 
 void executa(int num_aresta, int num_no, int (*aloca_canal)[16][temp_canais], int tempo, int (*mapa_graf_conf)[num_aresta][2], int *pacote_entregue, int raiz, int (*pacotes)[num_no]);
@@ -106,6 +106,7 @@ int main(){
             total_pacotes += pacotes[z];
 
     ng matching;
+    for(int i = 0; i <10; i++ ){
     DCFL(tamAresta, tamNo, &pacotes, &matconf, &conf, raiz, &matching);
     while(pacote_entregue < total_pacotes){
 
@@ -137,17 +138,7 @@ int main(){
         total_canais_alocados++;
     }
 
-    // printf("\nCanais alocados  | |");
-    // printf("\n                \\   /");
-    // printf("\n                 \\ /\n\n");
-    // printf(" temp_canais =  %d\n",temp_canais);
-    // for(x = 0 ; x < 16; x++){
-    //     for(y = 0; y < temp_canais; y++) 
-    //         // linhas = tempo - coluna = canal  
-    //         printf("%d  ", aloca_canais[x][y] + 1);  
-             
-    //     printf("\n"); 
-    // } 
+    
     /*  
     for(y = 0 ; y < temp_canais; y++){ 
         for(x = 0 ; x < 16 ; x++){ 
@@ -163,9 +154,21 @@ int main(){
     //nome_arq_dot = criaGrafoConf(matconf, conf, nome_no, tamAresta);
 
     FILE *novo;
-    novo = fopen("res.txt", "a");
-    fprintf(novo,"\nTASA timeslot:%d\n",total_canais_alocados);
-    fclose(novo);
+    novo = fopen("tasa.txt", "a");
+    fprintf(novo,"TASA timeslot:%d\n",total_canais_alocados);
+    fclose(novo); 
+    } 
+    // printf("\nCanais alocados  | |");
+    // printf("\n                \\   /");
+    // printf("\n                 \\ /\n\n");
+    // printf(" temp_canais =  %d\n",temp_canais);
+    // for(x = 0 ; x < 16; x++){
+    //     for(y = 0; y < temp_canais; y++) 
+    //         // linhas = tempo - coluna = canal  
+    //         printf("%d  ", aloca_canais[x][y] + 1);  
+             
+    //     printf("\n"); 
+    // } 
 
     // printf("Relacao numero de nos da rede por numero de timeslots alocados: %f", (float)tamNo/(float)total_canais_alocados);
     // printf("\nTempo de execucao total: %.2fs", ((double)(clock() - tempo)/(double)CLOCKS_PER_SEC));
