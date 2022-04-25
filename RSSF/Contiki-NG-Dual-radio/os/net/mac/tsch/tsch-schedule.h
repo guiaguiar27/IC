@@ -169,5 +169,8 @@ struct tsch_link * tsch_schedule_get_next_active_link(struct tsch_asn_t *asn, ui
 struct tsch_slotframe *tsch_schedule_slotframe_head(void);
 struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
 
+
+void count_sent_packs();
+void count_packs(const linkaddr_t *address);
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

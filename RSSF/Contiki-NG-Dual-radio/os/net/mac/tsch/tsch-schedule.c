@@ -62,8 +62,7 @@
 
 /* Log configuration */ 
 
-#define MAX_NOS 10 
-#define 
+#define MAX_NOS 10
 uint8_t flag_schedule = 0 ;   
 uint32_t Packets_sent[MAX_NOS]; 
 uint32_t STpacks = 0 ;  
@@ -487,7 +486,7 @@ void count_sent_packs(){
      
     LOG_INFO("Tx_try %u %u \n",node,STpacks); 
 } 
-void count_packs( const linkaddr_t *address ){  
+void count_packs(const linkaddr_t *address ){  
   // receive only  
   LOG_INFO("list of packets\n");
   uint8_t  node_src = (*address).u8[LINKADDR_SIZE - 1]
