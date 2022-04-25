@@ -62,13 +62,13 @@
 
 /* Log configuration */ 
 
-
+#define MAX_NOS 10 
+#define 
 uint8_t flag_schedule = 0 ;   
 uint32_t Packets_sent[MAX_NOS]; 
 uint32_t STpacks = 0 ;  
 uint32_t Packets_received[MAX_NOS]; 
-uint8_t PossNeighbor[MAX_NOS];  
-int NBRlist[MAX_NEIGHBORS]; 
+uint8_t PossNeighbor[MAX_NOS];
 
 #include "sys/log.h"
 #define LOG_MODULE "TSCH Sched"
@@ -481,25 +481,10 @@ tsch_schedule_print(void)
   }
 } 
 
-void tsch_print_neighbors(int nbr){   
-    int count = 0 ;
-    
-    for(count = 0; count < MAX_NEIGHBORS ; count++ ){ 
-        if(NBRlist[count] == nbr) return ; 
-        
-        if(NBRlist[count] == 0 ){  
-          NBRlist[count] = nbr; 
-          break; 
-        }   
-    }
-
-  } 
 void count_sent_packs(){ 
     uint32_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
-    if(flag_schedule == 1){ 
-      STpacks +=1 ; 
-    } 
+     
     LOG_INFO("Tx_try %u %u \n",node,STpacks); 
 } 
 void count_packs( const linkaddr_t *address ){  
@@ -510,15 +495,14 @@ void count_packs( const linkaddr_t *address ){
   uint8_t node = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
               + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);  
 
-  if(flag_schedule){      
-    //if(verify_in_topology(node_src, node)){
+   //if(verify_in_topology(node_src, node)){
       Packets_sent[node_src] += 1 ;  
       Packets_received[node] += 1 ;  
     //}
     for(int i = 1 ; i < MAX_NOS; i++){ 
       LOG_INFO("Pckt %u %u %u \n",i,Packets_sent[i], Packets_received[i]);
     } 
-  } 
+   
 }  
 /*---------------------------------------------------------------------------*/
 /** @} */
