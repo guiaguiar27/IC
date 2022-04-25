@@ -108,7 +108,6 @@ tsch_log_process_pending(void)
         printf("\n"); 
 
          if(!linkaddr_cmp(&log->tx.dest, &linkaddr_null)){  
-            if(log->link->slotframe_handle == 2)
               count_sent_packs();
           }
         break;
@@ -125,7 +124,7 @@ tsch_log_process_pending(void)
         }
         printf(", edr %d\n", log->rx.estimated_drift); 
 
-        if(log->rx.is_unicast && log->link->slotframe_handle == 2){ 
+        if(log->rx.is_unicast){ 
           count_packs(&log->rx.src);  
         }
 
