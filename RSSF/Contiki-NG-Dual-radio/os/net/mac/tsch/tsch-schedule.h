@@ -171,6 +171,8 @@ struct tsch_slotframe *tsch_schedule_slotframe_next(struct tsch_slotframe *sf);
 
 
 void count_sent_packs();
-void count_packs(const linkaddr_t *address);
+void count_packs(const linkaddr_t *address); 
+void simple_schedule();  
+ 
 #endif /* __TSCH_SCHEDULE_H__ */
 /** @} */

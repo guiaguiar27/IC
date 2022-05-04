@@ -502,6 +502,99 @@ void count_packs(const linkaddr_t *address ){
       LOG_INFO("Pckt %u %u %u \n",i,Packets_sent[i], Packets_received[i]);
     } 
    
-}  
+} 
+
+void simple_schedule(){ 
+  l = list_head(sf->links_list);  
+
+  FILE *fl;  
+  fl = fopen(endereco_T_CH, "r");   
+  int node_origin, nbr, aux_timeslot, aux_channel_offset;
+  node_origin = 1;  
+  uint8_t node_destin = linkaddr_node_addr.u8[LINKADDR_SIZE -1] 
+                      + (linkaddr_node_addr.u8[LINKADDR_SIZE -2 ] << 8);    
+  uint8_t node = l->addr.u8[LINKADDR_SIZE -1] 
+                      + (l->addr.u8[LINKADDR_SIZE -2 ] << 8);
+  while(!feof(fl)){ 
+                fscanf(fl, "%d %d (%d %d)",&node_origin,&nbr,&aux_timeslot, &aux_channel_offset); 
+                if(node_origin == node && nbr == node_destin){    
+                  l->timeslot = aux_timeslot; 
+                  l->channel_offset = aux_channel_offset;  
+                  #ifdef DEBUG_SCHEDULE_STATIC 
+                    LOG_PRINT("----CHANGE-Rx----\n"); 
+                    LOG_PRINT("----TIMESLOT: %u-----\n", l->timeslot); 
+                    LOG_PRINT("----CHANNEL: %u-----\n", l->channel_offset); 
+                    LOG_PRINT("-----------------------------\n\n");    
+                  #endif      
+                } 
+              }
+    fclose(fl);
+} 
+
+void simple_node(){ 
+
+    int current_node = ode = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
+     
+    
+    int j; 
+    // APP_SLOTFRAME_SIZE  
+    // colocar um id de sloframe diferente para diferenciar os pacotes e poder testar com maior confiabilidade
+    // parametros do slotframe aleatorios apenas para teste
+    struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(2, 4);
+    uint16_t slot_offset;
+    uint16_t channel_offset;  
+    uint8_t link_options;
+    
+    
+    // ======== criando de tx ==========
+    slot_offset = 0;
+    channel_offset = 0;
+    int num_links = 1 ;    
+    uint16_t remote_id = 0; 
+    linkaddr_t addr;  
+
+  
+    if(current_node == 1)
+      remote_id = 2; 
+    else 
+      remote_id = 1;    
+   
+
+  
+    for(j = 0; j < sizeof(addr); j += 2) {
+        addr.u8[j + 1] = remote_id & 0xff;
+        addr.u8[j + 0] = remote_id >> 8;
+      } 
+    // definido para testar alocação de banda em dois canais  
+    slot_offset = 0;
+    channel_offset = 1;
+    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
+    * backoff windows will not be reset correctly! */
+    link_options = LINK_OPTION_TX;
+
+    tsch_schedule_add_link(sf_common,
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset);
+    // ======== criando de rx ==========
+ 
+    linkaddr_t addr;     
+    int node_origin; 
+    if(remote_id == 1) 
+      node_origin = 2; 
+    else  
+      node_origin = 1; 
+
+    for(int j = 0; j < sizeof(addr); j += 2) {
+                addr.u8[j + 1] = node_origin & 0xff;
+                addr.u8[j + 0] = node_origin >> 8;
+              } 
+    tsch_schedule_add_link(sf,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addr,
+                  0, slot_offset,channel_offset);      
+
+}
 /*---------------------------------------------------------------------------*/
 /** @} */
