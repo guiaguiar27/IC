@@ -506,7 +506,7 @@ void count_packs(const linkaddr_t *address ){
 
 void simple_schedule(){ 
   
-    int current_node = ode = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+    int current_node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
      
     
@@ -522,8 +522,7 @@ void simple_schedule(){
     
     // ======== criando de tx ==========
     slot_offset = 0;
-    channel_offset = 0;
-    int num_links = 1 ;    
+    channel_offset = 0;  
     uint16_t remote_id = 0; 
     linkaddr_t addr;  
 
@@ -561,12 +560,11 @@ void simple_schedule(){
 
     for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
-                addrRx.u8[j + 0] = node_origin >> 8;
+                addrRX.u8[j + 0] = node_origin >> 8;
               } 
     tsch_schedule_add_link(sf,
                   LINK_OPTION_RX,
-                  LINK_TYPE_NORMAL, &addrRX,
-                  0, slot_offset,channel_offset);      
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
 
 }
 /*---------------------------------------------------------------------------*/
