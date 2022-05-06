@@ -560,8 +560,9 @@ void simple_schedule(){
         link_options = LINK_OPTION_TX;
 
         tsch_schedule_add_link(sf_common,
-            link_options,
-            LINK_TYPE_NORMAL, &addr
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset);
     
     } 
     else if(current_node == 3){  
