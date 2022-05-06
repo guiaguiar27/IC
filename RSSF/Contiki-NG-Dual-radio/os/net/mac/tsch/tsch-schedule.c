@@ -510,21 +510,20 @@ void simple_schedule(){
                  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
      
     
-    int j; 
+   
     // APP_SLOTFRAME_SIZE  
     // colocar um id de sloframe diferente para diferenciar os pacotes e poder testar com maior confiabilidade
     // parametros do slotframe aleatorios apenas para teste
     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(2, 4);
     uint16_t slot_offset;
     uint16_t channel_offset;  
-    uint8_t link_options;
+    //uint8_t link_options;
     
     
     // ======== criando de tx ==========
-    slot_offset = 0;
-    channel_offset = 0;  
-    uint16_t remote_id = 0; 
-    linkaddr_t addr;   
+    slot_offset = 2;
+    channel_offset = 15;  
+    //linkaddr_t addr;   
 
     if(current_node == 1){  
       linkaddr_t addrRX;   
@@ -540,7 +539,35 @@ void simple_schedule(){
                     LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
       } 
 
+    } 
+    else if(current_node == 2){  
+        int j;
+        uint16_t remote_id = 1; 
+        for(j = 0; j < sizeof(addr); j += 2) {
+          addr.u8[j + 1] = remote_id & 0xff;
+          addr.u8[j + 0] = remote_id >> 8;
+        } 
+        link_options = LINK_OPTION_TX;
+
+        tsch_schedule_add_link(sf_common,
+            link_options,
+            LINK_TYPE_NORMAL, &addr,
+    
+    } 
+    else if(current_node == 3){  
+        int j;
+        uint16_t remote_id = 1; 
+        for(j = 0; j < sizeof(addr); j += 2) {
+          addr.u8[j + 1] = remote_id & 0xff;
+          addr.u8[j + 0] = remote_id >> 8;
+        } 
+        link_options = LINK_OPTION_TX;
+
+        tsch_schedule_add_link(sf_common,
+            link_options,
+            LINK_TYPE_NORMAL, &addr,
     }
+
 
   
 }
