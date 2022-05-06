@@ -526,16 +526,26 @@ void simple_schedule(){
     if(current_node == 1){  
       linkaddr_t addrRX;   
       int node_origin; 
-      for(node_origin = 2; node_origin <= 3; node_origin++){   
+     
       // cria links de recepção para os nós 2 e 3
-        for(int j = 0; j < sizeof(addrRX); j += 2) {
-                  addrRX.u8[j + 1] = node_origin & 0xff;
-                  addrRX.u8[j + 0] = node_origin >> 8;
-                } 
-        tsch_schedule_add_link(sf_common,
-                    LINK_OPTION_RX,
-                    LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
-      } 
+      node_origin = 2;
+      for(int j = 0; j < sizeof(addrRX); j += 2) {
+                addrRX.u8[j + 1] = node_origin & 0xff;
+                addrRX.u8[j + 0] = node_origin >> 8;
+              } 
+      tsch_schedule_add_link(sf_common,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
+
+      node_origin = 3;
+      for(int j = 0; j < sizeof(addrRX); j += 2) {
+                addrRX.u8[j + 1] = node_origin & 0xff;
+                addrRX.u8[j + 0] = node_origin >> 8;
+              } 
+      tsch_schedule_add_link(sf_common,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
+       
 
     } 
     else if(current_node == 2){  
@@ -550,9 +560,8 @@ void simple_schedule(){
         link_options = LINK_OPTION_TX;
 
         tsch_schedule_add_link(sf_common,
-        link_options,
-        LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset);
+            link_options,
+            LINK_TYPE_NORMAL, &addr
     
     } 
     else if(current_node == 3){  
