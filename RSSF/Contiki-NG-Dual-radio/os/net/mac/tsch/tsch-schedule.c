@@ -524,48 +524,25 @@ void simple_schedule(){
     slot_offset = 0;
     channel_offset = 0;  
     uint16_t remote_id = 0; 
-    linkaddr_t addr;  
+    linkaddr_t addr;   
 
-  
-    if(current_node == 1)
-      remote_id = 2; 
-    else 
-      remote_id = 1;    
-   
-
-  
-    for(j = 0; j < sizeof(addr); j += 2) {
-        addr.u8[j + 1] = remote_id & 0xff;
-        addr.u8[j + 0] = remote_id >> 8;
+    if(current_node == 1){  
+      linkaddr_t addrRX;   
+      int node_origin; 
+      for(node_origin = 2; node_origin <= 3; node_origin++){   
+      // cria links de recepção para os nós 2 e 3
+        for(int j = 0; j < sizeof(addrRX); j += 2) {
+                  addrRX.u8[j + 1] = node_origin & 0xff;
+                  addrRX.u8[j + 0] = node_origin >> 8;
+                } 
+        tsch_schedule_add_link(sf_common,
+                    LINK_OPTION_RX,
+                    LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
       } 
-    // definido para testar alocação de banda em dois canais  
-    slot_offset = 0;
-    channel_offset = 1;
-    /* Warning: LINK_OPTION_SHARED cannot be configured, as with this schedule
-    * backoff windows will not be reset correctly! */
-    link_options = LINK_OPTION_TX;
 
-    tsch_schedule_add_link(sf_common,
-        link_options,
-        LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset);
-    // ======== criando de rx ==========
- 
-    linkaddr_t addrRX;     
-    int node_origin; 
-    if(remote_id == 1) 
-      node_origin = 2; 
-    else  
-      node_origin = 1; 
+    }
 
-    for(int j = 0; j < sizeof(addrRX); j += 2) {
-                addrRX.u8[j + 1] = node_origin & 0xff;
-                addrRX.u8[j + 0] = node_origin >> 8;
-              } 
-    tsch_schedule_add_link(sf,
-                  LINK_OPTION_RX,
-                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
-
+  
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
