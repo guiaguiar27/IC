@@ -536,16 +536,16 @@ void simple_schedule(){
               } 
       tsch_schedule_add_link(sf_common,
                   LINK_OPTION_RX,
-                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset, channel_offset);      
 
-      // node_origin = 3;
-      // for(int j = 0; j < sizeof(addrRX); j += 2) {
-      //           addrRX.u8[j + 1] = node_origin & 0xff;
-      //           addrRX.u8[j + 0] = node_origin >> 8;
-      //         } 
-      // tsch_schedule_add_link(sf_common,
-      //             LINK_OPTION_RX,
-      //             LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
+      node_origin = 3;
+      for(int j = 0; j < sizeof(addrRX); j += 2) {
+                addrRX.u8[j + 1] = node_origin & 0xff;
+                addrRX.u8[j + 0] = node_origin >> 8;
+              } 
+      tsch_schedule_add_link(sf_common,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
        
 
     } 

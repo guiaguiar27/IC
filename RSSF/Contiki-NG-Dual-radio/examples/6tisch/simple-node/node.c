@@ -69,9 +69,8 @@ PROCESS_THREAD(node_process, ev, data)
     NETSTACK_ROUTING.root_start();
   }
   NETSTACK_MAC.on();
-
-#if WITH_PERIODIC_ROUTES_PRINT
-  {
+  simple_schedule(); 
+  tsch_schedule_print();
     static struct etimer et;
     /* Print out routing tables every minute */
     etimer_set(&et, CLOCK_SECOND * 60);
@@ -86,8 +85,7 @@ PROCESS_THREAD(node_process, ev, data)
       PROCESS_YIELD_UNTIL(etimer_expired(&et));
       etimer_reset(&et);
     }
-  }
-#endif /* WITH_PERIODIC_ROUTES_PRINT */
+  
 
   PROCESS_END();
 }
