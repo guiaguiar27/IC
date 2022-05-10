@@ -505,7 +505,8 @@ void count_packs(const linkaddr_t *address ){
 } 
 
 void simple_schedule(){ 
-  
+   
+    LOG_INFO("Simple schedule\n");
     int current_node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
                  + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
      
