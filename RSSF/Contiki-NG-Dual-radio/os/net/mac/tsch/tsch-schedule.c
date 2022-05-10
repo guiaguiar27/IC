@@ -521,15 +521,16 @@ void simple_schedule(){
   
     
     
-    slot_offset = 2;
-    channel_offset = 15; 
 
     if(current_node == 1){  
       linkaddr_t addrRX;   
       int node_origin; 
       LOG_PRINT("Node 1\n");
       // cria links de recepção para os nós 2 e 3
-      node_origin = 2;
+      node_origin = 2; 
+
+      slot_offset = 2;
+      channel_offset = 3; 
       for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
                 addrRX.u8[j + 0] = node_origin >> 8;
@@ -539,6 +540,8 @@ void simple_schedule(){
                   LINK_TYPE_NORMAL, &addrRX, slot_offset, channel_offset);      
 
       node_origin = 3;
+      slot_offset = 2;
+      channel_offset = 4; 
       for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
                 addrRX.u8[j + 0] = node_origin >> 8;
@@ -552,8 +555,10 @@ void simple_schedule(){
     else if(current_node == 2){  
         int j;
         uint16_t remote_id = 1; 
-        linkaddr_t addr;     
+        linkaddr_t addr;      
         uint8_t link_options; 
+        slot_offset = 2;
+        channel_offset = 3;  
         LOG_PRINT("Node 2\n");
         for(j = 0; j < sizeof(addr); j += 2) {
           addr.u8[j + 1] = remote_id & 0xff;
@@ -572,6 +577,9 @@ void simple_schedule(){
         uint16_t remote_id = 1; 
         linkaddr_t addr;     
         uint8_t link_options; 
+        
+        slot_offset = 2;
+        channel_offset = 4; 
         for(j = 0; j < sizeof(addr); j += 2) {
           addr.u8[j + 1] = remote_id & 0xff;
           addr.u8[j + 0] = remote_id >> 8;
