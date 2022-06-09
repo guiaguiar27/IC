@@ -518,7 +518,7 @@ void simple_schedule(){
     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(2, 4);
     uint16_t slot_offset;
     uint16_t channel_offset;  
-  
+    uint16_t common_timeSlot =2; 
     
     
 
@@ -529,7 +529,7 @@ void simple_schedule(){
       // cria links de recepção para os nós 2 e 3
       node_origin = 2; 
 
-      slot_offset = 2;
+      slot_offset = common_timeSlot;
       channel_offset = 3; 
       for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
@@ -540,7 +540,7 @@ void simple_schedule(){
                   LINK_TYPE_NORMAL, &addrRX, slot_offset, channel_offset);      
 
       node_origin = 3;
-      slot_offset = 2;
+      slot_offset = common_timeSlot;
       channel_offset = 4; 
       for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
@@ -552,7 +552,7 @@ void simple_schedule(){
        
 
     } 
-    else if(current_node == 2){  
+    if(current_node == 2){  
         int j;
         uint16_t remote_id = 1; 
         linkaddr_t addr;      
@@ -572,13 +572,13 @@ void simple_schedule(){
         slot_offset, channel_offset);
     
     } 
-    else if(current_node == 3){  
+    if(current_node == 3){  
         int j;
         uint16_t remote_id = 1; 
         linkaddr_t addr;     
         uint8_t link_options; 
         
-        slot_offset = 2;
+        slot_offset = common_timeSlot;
         channel_offset = 4; 
         for(j = 0; j < sizeof(addr); j += 2) {
           addr.u8[j + 1] = remote_id & 0xff;
