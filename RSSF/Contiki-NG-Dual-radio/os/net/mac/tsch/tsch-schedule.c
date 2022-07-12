@@ -502,7 +502,92 @@ void count_packs(const linkaddr_t *address ){
       LOG_INFO("Pckt %u %u %u \n",i,Packets_sent[i], Packets_received[i]);
     } 
    
-} 
+}  
+void binary_nodes_schedule(){ 
+    LOG_INFO("Simple schedule\n");
+    int current_node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
+                 + (linkaddr_node_addr.u8[LINKADDR_SIZE - 2] << 8);   
+     
+    
+   
+    // APP_SLOTFRAME_SIZE  
+    // colocar um id de sloframe diferente para diferenciar os pacotes e poder testar com maior confiabilidade
+    // parametros do slotframe aleatorios apenas para teste
+    struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(2, 4);
+    uint16_t slot_offset;
+    uint16_t channel_offset;  
+    uint16_t common_timeSlot =2; 
+    
+    
+
+    if(current_node == 1){  
+      linkaddr_t addrRX;   
+      int node_origin; 
+      LOG_PRINT("Node 1\n");
+      // cria links de recepção para os nós 2 e 3
+      node_origin = 2; 
+
+      slot_offset = common_timeSlot;
+      channel_offset = 3; 
+      for(int j = 0; j < sizeof(addrRX); j += 2) {
+                addrRX.u8[j + 1] = node_origin & 0xff;
+                addrRX.u8[j + 0] = node_origin >> 8;
+              } 
+      tsch_schedule_add_link(sf_common,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset, channel_offset);      
+
+      node_origin = 2;
+      slot_offset = common_timeSlot;
+      channel_offset = 4; 
+      for(int j = 0; j < sizeof(addrRX); j += 2) {
+                addrRX.u8[j + 1] = node_origin & 0xff;
+                addrRX.u8[j + 0] = node_origin >> 8;
+              } 
+      tsch_schedule_add_link(sf_common,
+                  LINK_OPTION_RX,
+                  LINK_TYPE_NORMAL, &addrRX, slot_offset,channel_offset);      
+       
+
+    } 
+    if(current_node == 2){  
+        int j;
+        uint16_t remote_id = 1; 
+        linkaddr_t addr;      
+        uint8_t link_options; 
+        slot_offset = 2;
+        channel_offset = 3;  
+        LOG_PRINT("Node 2\n");
+        for(j = 0; j < sizeof(addr); j += 2) {
+          addr.u8[j + 1] = remote_id & 0xff;
+          addr.u8[j + 0] = remote_id >> 8;
+        } 
+        link_options = LINK_OPTION_TX;
+
+        tsch_schedule_add_link(sf_common,
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset); 
+
+        slot_offset = 2;
+        channel_offset = 4;  
+        LOG_PRINT("Node 2\n");
+        for(j = 0; j < sizeof(addr); j += 2) {
+          addr.u8[j + 1] = remote_id & 0xff;
+          addr.u8[j + 0] = remote_id >> 8;
+        } 
+        link_options = LINK_OPTION_TX;
+
+        tsch_schedule_add_link(sf_common,
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset);
+    
+    
+    } 
+    
+
+}
 
 void simple_schedule(){ 
    
