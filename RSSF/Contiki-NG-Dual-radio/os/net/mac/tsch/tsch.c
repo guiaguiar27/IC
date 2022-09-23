@@ -725,24 +725,24 @@ PT_THREAD(tsch_scan(struct pt *pt))
     if(current_channel == 0 || now_time - current_channel_since > TSCH_CHANNEL_SCAN_DURATION) {
       
       /* Pick a channel at random in TSCH_JOIN_HOPPING_SEQUENCE */
-      uint8_t scan_channel = TSCH_JOIN_HOPPING_SEQUENCE[
-          random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
+      // uint8_t scan_channel = TSCH_JOIN_HOPPING_SEQUENCE[
+      //     random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
 
-	do
-	{
-	  scan_channeldummy=TSCH_JOIN_HOPPING_SEQUENCE[
-          random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
-	}
-	while(scan_channel==scan_channeldummy);
+	// do
+	// {
+	//   scan_channeldummy=TSCH_JOIN_HOPPING_SEQUENCE[
+  //         random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
+	// }
+	// while(scan_channel==scan_channeldummy);
      
-      if(current_channel != scan_channel) {
-        NETSTACK_RADIO.set_value(RADIO_PARAM_CHANNEL, scan_channel);
-        NETSTACK_RADIO.set_value(RADIO_PARAM_CHANNELDummy, scan_channeldummy);
-        current_channel = scan_channel;
-        printf("scanning on channel %u and %u \n", scan_channel,scan_channeldummy);
-      }
-      current_channel_since = now_time;
-    }
+  //     if(current_channel != scan_channel) {
+  //       NETSTACK_RADIO.set_value(RADIO_PARAM_CHANNEL, scan_channel);
+  //       NETSTACK_RADIO.set_value(RADIO_PARAM_CHANNELDummy, scan_channeldummy);
+  //       current_channel = scan_channel;
+  //       printf("scanning on channel %u and %u \n", scan_channel,scan_channeldummy);
+  //     }
+  //     current_channel_since = now_time;
+  //   }
 
     /* Turn radio on and wait for EB */
     NETSTACK_RADIO.on();
@@ -755,8 +755,8 @@ PT_THREAD(tsch_scan(struct pt *pt))
     }
     
     if(is_packet_pending) {
-      /* Read packet */
-      printf("Right channel match %i or %i\n", current_channel,scan_channeldummy);
+      // /* Read packet */
+      // printf("Right channel match %i or %i\n", current_channel,scan_channeldummy);
       input_eb.len = NETSTACK_RADIO.read(input_eb.payload, TSCH_PACKET_MAX_LEN);
          /* Save packet timestamp */
       NETSTACK_RADIO.get_object(RADIO_PARAM_LAST_PACKET_TIMESTAMPContikiRadio, &t0, sizeof(rtimer_clock_t));

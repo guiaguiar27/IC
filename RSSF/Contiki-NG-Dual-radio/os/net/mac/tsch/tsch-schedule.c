@@ -604,8 +604,29 @@ void simple_schedule(){
     uint16_t slot_offset;
     uint16_t channel_offset;  
     uint16_t common_timeSlot =2; 
+    uint16_t scan_channeldummy; 
+    uint16_t scan_channell ;
+    uint16_t current_channel; 
+    uint16_t current_channel_since;  
+
+    uint8_t scan_channel = TSCH_JOIN_HOPPING_SEQUENCE[
+          random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
+
+    do
+	  {
+	  scan_channeldummy=TSCH_JOIN_HOPPING_SEQUENCE[
+          random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
+	  }
+	  while(scan_channel==scan_channeldummy);
+     
+      if(current_channel != scan_channel) {
+        NETSTACK_RADIO.set_value(RADIO_PARAM_CHANNEL, scan_channel);
+        NETSTACK_RADIO.set_value(RADIO_PARAM_CHANNELDummy, scan_channeldummy);
+        current_channel = scan_channel;
+        printf("scanning on channel %u and %u \n", scan_channel,scan_channeldummy);
+      }
     
-    
+
 
     if(current_node == 1){  
       linkaddr_t addrRX;   
@@ -615,18 +636,19 @@ void simple_schedule(){
       node_origin = 2; 
 
       slot_offset = common_timeSlot;
-      channel_offset = 3; 
+      channel_offset = scan_channel; 
+
       for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
                 addrRX.u8[j + 0] = node_origin >> 8;
-              } 
+      } 
       tsch_schedule_add_link(sf_common,
                   LINK_OPTION_RX,
                   LINK_TYPE_NORMAL, &addrRX, slot_offset, channel_offset);      
 
-      node_origin = 3;
       slot_offset = common_timeSlot;
-      channel_offset = 4; 
+      channel_offset = scan_channeldummy;  
+
       for(int j = 0; j < sizeof(addrRX); j += 2) {
                 addrRX.u8[j + 1] = node_origin & 0xff;
                 addrRX.u8[j + 0] = node_origin >> 8;
@@ -643,8 +665,21 @@ void simple_schedule(){
         linkaddr_t addr;      
         uint8_t link_options; 
         slot_offset = 2;
-        channel_offset = 3;  
+        channel_offset = scan_channel;  
         LOG_PRINT("Node 2\n");
+        for(j = 0; j < sizeof(addr); j += 2) {
+          addr.u8[j + 1] = remote_id & 0xff;
+          addr.u8[j + 0] = remote_id >> 8;
+        } 
+        link_options = LINK_OPTION_TX;
+
+        tsch_schedule_add_link(sf_common,
+        link_options,
+        LINK_TYPE_NORMAL, &addr,
+        slot_offset, channel_offset); 
+
+        slot_offset = 3;
+        channel_offset = scan_channeldummy;  
         for(j = 0; j < sizeof(addr); j += 2) {
           addr.u8[j + 1] = remote_id & 0xff;
           addr.u8[j + 0] = remote_id >> 8;
@@ -657,26 +692,7 @@ void simple_schedule(){
         slot_offset, channel_offset);
     
     } 
-    if(current_node == 3){  
-        int j;
-        uint16_t remote_id = 1; 
-        linkaddr_t addr;     
-        uint8_t link_options; 
-        
-        slot_offset = common_timeSlot;
-        channel_offset = 4; 
-        for(j = 0; j < sizeof(addr); j += 2) {
-          addr.u8[j + 1] = remote_id & 0xff;
-          addr.u8[j + 0] = remote_id >> 8;
-        } 
-        link_options = LINK_OPTION_TX;
-
-       tsch_schedule_add_link(sf_common,
-        link_options,
-        LINK_TYPE_NORMAL, &addr,
-        slot_offset, channel_offset);
-    }
-
+    
 
   
 }
