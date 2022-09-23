@@ -604,10 +604,8 @@ void simple_schedule(){
     struct tsch_slotframe *sf_common = tsch_schedule_add_slotframe(2, 4);
     uint16_t slot_offset;
     uint16_t channel_offset;  
-    uint16_t common_timeSlot =2; 
-    uint16_t scan_channeldummy; 
-    uint16_t scan_channell ;
-    uint16_t current_channel;   
+    uint16_t scan_channeldummy;
+    uint16_t current_channel = 0;   
 
     uint8_t scan_channel = TSCH_JOIN_HOPPING_SEQUENCE[
           random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
