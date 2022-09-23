@@ -59,6 +59,7 @@
 #include "sys/process.h"
 #include "sys/rtimer.h"
 #include <string.h>
+#include "lib/random.h"   
 
 /* Log configuration */ 
 
@@ -606,8 +607,7 @@ void simple_schedule(){
     uint16_t common_timeSlot =2; 
     uint16_t scan_channeldummy; 
     uint16_t scan_channell ;
-    uint16_t current_channel; 
-    uint16_t current_channel_since;  
+    uint16_t current_channel;   
 
     uint8_t scan_channel = TSCH_JOIN_HOPPING_SEQUENCE[
           random_rand() % sizeof(TSCH_JOIN_HOPPING_SEQUENCE)];
@@ -635,7 +635,7 @@ void simple_schedule(){
       // cria links de recepção para os nós 2 e 3
       node_origin = 2; 
 
-      slot_offset = common_timeSlot;
+      slot_offset = 2;
       channel_offset = scan_channel; 
 
       for(int j = 0; j < sizeof(addrRX); j += 2) {
@@ -646,7 +646,7 @@ void simple_schedule(){
                   LINK_OPTION_RX,
                   LINK_TYPE_NORMAL, &addrRX, slot_offset, channel_offset);      
 
-      slot_offset = common_timeSlot;
+      slot_offset = 3;
       channel_offset = scan_channeldummy;  
 
       for(int j = 0; j < sizeof(addrRX); j += 2) {
@@ -678,13 +678,14 @@ void simple_schedule(){
         LINK_TYPE_NORMAL, &addr,
         slot_offset, channel_offset); 
 
+        // new parameters 
         slot_offset = 3;
-        channel_offset = scan_channeldummy;  
+        channel_offset = scan_channeldummy; 
+
         for(j = 0; j < sizeof(addr); j += 2) {
           addr.u8[j + 1] = remote_id & 0xff;
           addr.u8[j + 0] = remote_id >> 8;
         } 
-        link_options = LINK_OPTION_TX;
 
         tsch_schedule_add_link(sf_common,
         link_options,
