@@ -503,7 +503,8 @@ void count_packs(const linkaddr_t *address ){
       LOG_INFO("Pckt %u %u %u \n",i,Packets_sent[i], Packets_received[i]);
     } 
    
-}  
+}   
+
 void binary_nodes_schedule(){ 
     LOG_INFO("Simple schedule\n");
     int current_node = linkaddr_node_addr.u8[LINKADDR_SIZE - 1]
@@ -589,6 +590,9 @@ void binary_nodes_schedule(){
     
 
 }
+
+#first version  
+# is not working with two radios   
 
 void simple_schedule(){ 
    
